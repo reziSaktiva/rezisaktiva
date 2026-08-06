@@ -18,12 +18,6 @@ Format entri:
 
 ## 2026-08-06
 
-### Fixed
-
-- Hapus referensi nama project eksternal dari `README.md`, ADR-001, dan `CONVERSATIONS.md`
-
-## 2026-08-06
-
 ### Added
 
 - ADR-003 — repo publik + folder `private/` untuk materi sensitif

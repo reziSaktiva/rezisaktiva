@@ -19,12 +19,6 @@ Lihat Snapshot di [`project-manager/PROJECT_STATE.md`](project-manager/PROJECT_S
 1. Baca [`AGENTS.md`](AGENTS.md) (pintu masuk AI agent).
 2. Isi discovery bersama mulai dari [`product-discovery/01-business/product-vision.md`](product-discovery/01-business/product-vision.md).
 
-## Privasi (repo publik)
-
-Repo ini **public**. `product-discovery/` ikut dipublikasikan.
-
-Materi sensitif (kontak mentah, draft kasar, catatan pribadi) taruh di [`private/`](private/) — folder itu diabaikan Git. Lihat [ADR-003](project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md).
-
 ## Catatan
 
 Belum ada implementasi kode website. Fokus saat ini adalah Product Discovery.
