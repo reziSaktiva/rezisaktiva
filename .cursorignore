@@ -1,0 +1,7 @@
+# Proteksi secret untuk Cursor (deny baca).
+
+.env
+.env.local
+.env.*.local
+**/*.pem
+**/credentials*.json

@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Local private notes (tidak dipublikasikan)
+# Taruh draft kasar, kontak pribadi, catatan sensitif di sini.
+/private/*
+!/private/README.md
+
+# Dependencies (future)
+node_modules/
+.bun/
+dist/
+.next/
+.turbo/
+coverage/
+
+# Editors
+*.swp
+*.swo
+.idea/
