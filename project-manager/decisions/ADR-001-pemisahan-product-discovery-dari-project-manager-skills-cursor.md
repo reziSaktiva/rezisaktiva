@@ -22,10 +22,10 @@ Accepted
 ### Reason
 
 - Memisahkan SoT produk vs proses mengurangi duplikasi dan konflik status.
-- Pola sudah terbukti di project `social-media-management`.
+- Memisahkan SoT produk vs proses adalah pola yang jelas dan mudah diikuti agent.
 - Boss Rezi mengerjakan project ini di Cursor; lokasi skill native project adalah `.cursor/skills/`.
 
 ### Alternatives Considered
 
 - Menyatukan semua dokumen di satu folder `docs/` — ditolak karena campur SoT.
-- Menyalin pola `.claude/skills/` dari SMM — ditolak karena tool utama adalah Cursor.
+- Menempatkan skills di lokasi non-Cursor — ditolak karena tool utama adalah Cursor.

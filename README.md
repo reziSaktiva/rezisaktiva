@@ -2,7 +2,7 @@
 
 Website portofolio pribadi **Rezi Saktiva**.
 
-Project ini dikelola dengan **Project Operating System** (mirip pola di `social-media-management`):
+Project ini dikelola dengan **Project Operating System**:
 
 | Folder | Peran |
 | ------ | ----- |

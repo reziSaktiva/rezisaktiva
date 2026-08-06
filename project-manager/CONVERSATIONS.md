@@ -31,6 +31,6 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 ## 2026-08-06 — Kickoff template Project OS
 
 **Phase:** Phase 1 — Business Discovery
-**Summary:** Disepakati membuat template Project OS untuk portofolio `rezisaktiva` mirror penuh SMM (fase 01–06), docs-only, skills di `.cursor/skills/`.
+**Summary:** Disepakati membuat template Project OS untuk portofolio `rezisaktiva` (fase discovery 01–06), docs-only, skills di `.cursor/skills/`.
 **Key Decision/Insight:** ADR-001 — pemisahan PD/PM; Cursor-first.
 **Impact:** Scaffold selesai; sesi berikutnya isi `01-business/product-vision.md`.
