@@ -17,6 +17,15 @@ Format entri:
 ---
 
 ## 2026-08-06
+### Added
+- `product-discovery/01-business/problem-statement.md` draft v0.1 (framing dual; rantai visibility → narrative → evaluasi)
+- `project-manager/decisions/ADR-004-problem-statement-dual-chain.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-004
+- T-001 subtask `problem-statement.md` dicentang; fokus lanjut `target-market.md`
+- `PROJECT_STATE.md` / `TASKS.md` — fokus & progress diselaraskan
+
+## 2026-08-06
 
 ### Added
 

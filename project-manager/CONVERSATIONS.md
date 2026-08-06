@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-06 — Problem statement framing
+
+**Phase:** Phase 1 — Business Discovery
+**Summary:** Disepakati framing dual (Rezi + founder/PO) dan rantai masalah visibility → narrative → evaluasi. Situasi saat ini: akun banyak platform ada, tetapi belum menonjol; aktif hampir hanya GitHub karena kerja.
+**Key Decision/Insight:** ADR-004; draft `problem-statement.md` v0.1.
+**Impact:** Lanjut `target-market.md` selaras ADR-002 / ADR-004.
+
 ## 2026-08-06 — Public repo & privacy
 
 **Phase:** Phase 1 — Business Discovery

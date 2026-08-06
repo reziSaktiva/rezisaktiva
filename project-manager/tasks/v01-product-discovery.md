@@ -13,7 +13,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 ### Subtasks
 
 - [x] `product-vision.md`
-- [ ] `problem-statement.md`
+- [x] `problem-statement.md`
 - [ ] `target-market.md`
 - [ ] `competitor-analysis.md`
 - [ ] `business-model.md`
