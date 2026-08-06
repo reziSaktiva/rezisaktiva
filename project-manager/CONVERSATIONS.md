@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-06 — Target market ICP
+
+**Phase:** Phase 1 — Business Discovery
+**Summary:** Diperdalam audiens primer founder/PO: dua archetipe setara (early founder/indie + PO perusahaan), fokus geo SEA, domain digital product/tech.
+**Key Decision/Insight:** ADR-005; draft `target-market.md` v0.1.
+**Impact:** Lanjut `competitor-analysis.md` selaras ADR-002 / ADR-005.
+
 ## 2026-08-06 — Problem statement framing
 
 **Phase:** Phase 1 — Business Discovery

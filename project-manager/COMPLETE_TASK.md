@@ -18,6 +18,15 @@ Format entri:
 
 ## 2026-08-06
 ### Added
+- `product-discovery/01-business/target-market.md` draft v0.1 (ICP hybrid founder/PO setara; SEA; digital product/tech)
+- `project-manager/decisions/ADR-005-target-market-icp-sea-tech.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-005
+- T-001 subtask `target-market.md` dicentang; fokus lanjut `competitor-analysis.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya competitor-analysis
+
+## 2026-08-06
+### Added
 - `product-discovery/01-business/problem-statement.md` draft v0.1 (framing dual; rantai visibility → narrative → evaluasi)
 - `project-manager/decisions/ADR-004-problem-statement-dual-chain.md`
 ### Changed

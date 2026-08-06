@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-005 | Target market: ICP hybrid founder/PO setara, fokus SEA, domain digital product/tech | Accepted | 2026-08-06 | Dua archetipe setara; SEA; tech/SaaS/app/platform | [ADR-005](decisions/ADR-005-target-market-icp-sea-tech.md) |
 | ADR-004 | Problem statement: framing dual + rantai visibility → narrative → evaluasi | Accepted | 2026-08-06 | Dual; akun tersebar tapi belum menonjol; rantai lengkap | [ADR-004](decisions/ADR-004-problem-statement-dual-chain.md) |
 | ADR-003 | Repo publik; product-discovery terbuka; folder private/ untuk sensitif | Accepted | 2026-08-06 | Public repo + privasi selektif via private/ | [ADR-003](decisions/ADR-003-public-repo-privacy-private-folder.md) |
 | ADR-002 | Visi portofolio: brand primer, product builder, audiens founder/PO, bilingual geo-aware | Accepted | 2026-08-06 | Model A; positioning berlapis; bahasa geo-aware | [ADR-002](decisions/ADR-002-portfolio-vision-positioning-audience-language.md) |

@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Phase 1 — Business Discovery · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-001 lanjut `target-market.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-001 lanjut `competitor-analysis.md` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -27,15 +27,15 @@
 | ---- | ----- |
 | Current Phase | Phase 1 — Business Discovery |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | Vision + problem statement draft v0.1 (ADR-002, ADR-004); Business Discovery masih berjalan |
+| Overall Progress | Vision + problem + target market draft v0.1 (ADR-002, ADR-004, ADR-005); Business Discovery masih berjalan |
 | Project Status | Collaborative discovery in progress |
 
 ---
 
 ## Current Focus
 
-* `product-vision.md` + `problem-statement.md` draft v0.1 terkunci (ADR-002, ADR-004).
-* Fokus berikutnya: lanjut `01-business/` — `target-market.md`, lalu `competitor-analysis.md`.
+* `product-vision.md` + `problem-statement.md` + `target-market.md` draft v0.1 terkunci (ADR-002, ADR-004, ADR-005).
+* Fokus berikutnya: lanjut `01-business/` — `competitor-analysis.md`, lalu `business-model.md`.
 
 ---
 
@@ -65,6 +65,7 @@ Tidak ada.
 
 | ADR | Ringkasan |
 | --- | --------- |
+| ADR-005 | Target market: ICP hybrid founder/PO setara; SEA; digital product/tech |
 | ADR-004 | Problem statement dual + rantai visibility → narrative → evaluasi |
 | ADR-003 | Repo publik; discovery terbuka; `private/` untuk materi sensitif |
 | ADR-002 | Brand primer; product builder + fullstack + AI edge; audiens founder/PO; bilingual geo-aware |

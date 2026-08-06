@@ -14,7 +14,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 - [x] `product-vision.md`
 - [x] `problem-statement.md`
-- [ ] `target-market.md`
+- [x] `target-market.md`
 - [ ] `competitor-analysis.md`
 - [ ] `business-model.md`
 - [ ] `pricing-strategy.md` (boleh N/A bila tidak relevan)
