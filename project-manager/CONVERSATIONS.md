@@ -14,6 +14,34 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Roles & permissions N/A (T-002.7)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Disepakati `roles-permissions.md` N/A: tidak ada login/RBAC/area member; file tetap diisi sebagai jejak (pola ADR-008). ADR-011.
+**Key Decision/Insight:** Situs = read-only publik; authoring di luar permission in-app.
+**Impact:** Lanjut **T-002.8** Baseline Product v1.0 + ADR.
+
+## 2026-08-07 — Release + future roadmap (T-002.5 / T-002.6)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Rilis milestone R1 MVP Clarity → R2 Magnet ringan → R3 Presence/craft; future menampung writing/experiments/distribusi tanpa mengubah brand primer. Tanpa tanggal kalender spekulatif; tanpa ADR baru.
+**Key Decision/Insight:** Milestone-based; R2 = aktivasi magnet ADR-007 setelah R1 exit.
+**Impact:** Lanjut **T-002.7** `roles-permissions.md` (boleh N/A).
+
+## 2026-08-07 — Feature priority MoSCoW (T-002.4)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Diisi `feature-priority.md`: Must = M1–M7; Should = poles clarity; Could = form/motion/early case; Won't MVP = M9–M12 + sales/CMS/blog berat. Selaras ADR-010 tanpa ADR baru.
+**Key Decision/Insight:** Magnet (M9/M10) tetap Won't untuk rilis MVP.
+**Impact:** Lanjut **T-002.5** `release-roadmap.md`.
+
+## 2026-08-07 — MVP surface Hybrid lean (C)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Disepakati struktur MVP Hybrid lean: Home + About + Contact; karya sebagai teaser di Home; case/Work detail menyusul setelah kerangka clarity. Draft T-002.1–T-002.3 + ADR-010.
+**Key Decision/Insight:** Opsi C; bukan single-page (B) dan bukan case wajib di MVP (D).
+**Impact:** Lanjut **T-002.4** `feature-priority.md`.
+
 ## 2026-08-07 — Success metrics dual north star + Business Baseline v1.0
 
 **Phase:** Phase 1 — Business Discovery → Phase 2 (02-product)
