@@ -18,6 +18,16 @@ Format entri:
 
 ## 2026-08-07
 ### Added
+- `product-discovery/01-business/pricing-strategy.md` N/A v0.1 (tidak relevan untuk situs; file tetap)
+- `project-manager/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-008
+- `01-business/README.md` — pricing dicatat N/A
+- T-001 subtask `pricing-strategy.md` dicentang (N/A); fokus lanjut `success-metrics.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya success-metrics
+
+## 2026-08-07
+### Added
 - `product-discovery/01-business/business-model.md` draft v0.1 (brand + soft inbound; growth destination + magnet ringan)
 - `project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
 ### Changed

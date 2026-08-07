@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Pricing strategy N/A
+
+**Phase:** Phase 1 — Business Discovery
+**Summary:** Disepakati pricing tidak relevan untuk situs; file tetap diisi N/A (bukan dihapus).
+**Key Decision/Insight:** ADR-008; opsi 1 terkunci.
+**Impact:** Lanjut `success-metrics.md`.
+
 ## 2026-08-07 — Business model growth B
 
 **Phase:** Phase 1 — Business Discovery

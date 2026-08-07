@@ -17,7 +17,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 - [x] `target-market.md`
 - [x] `competitor-analysis.md`
 - [x] `business-model.md`
-- [ ] `pricing-strategy.md` (boleh N/A bila tidak relevan)
+- [x] `pricing-strategy.md` (N/A — ADR-008)
 - [ ] `success-metrics.md`
 - [ ] Baseline Business v1.0 + ADR (bila disepakati)
 

@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Phase 1 — Business Discovery · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-001 lanjut `pricing-strategy.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-001 lanjut `success-metrics.md` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -27,15 +27,15 @@
 | ---- | ----- |
 | Current Phase | Phase 1 — Business Discovery |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | Vision + problem + target market + competitor + business model draft v0.1 (ADR-002, ADR-004–007); Business Discovery masih berjalan |
+| Overall Progress | 01-business hampir lengkap: vision → business model + pricing N/A (ADR-002, ADR-004–008); sisa `success-metrics.md` + baseline v1.0 |
 | Project Status | Collaborative discovery in progress |
 
 ---
 
 ## Current Focus
 
-* `product-vision.md` + `problem-statement.md` + `target-market.md` + `competitor-analysis.md` + `business-model.md` draft v0.1 terkunci (ADR-002, ADR-004–007).
-* Fokus berikutnya: lanjut `01-business/` — `pricing-strategy.md` (boleh N/A), lalu `success-metrics.md`.
+* Draft v0.1 terkunci: vision, problem, target market, competitor, business model; `pricing-strategy.md` = **N/A** (ADR-002, ADR-004–008).
+* Fokus berikutnya: `success-metrics.md`, lalu Baseline Business v1.0 + ADR bila disepakati.
 
 ---
 
@@ -65,6 +65,7 @@ Tidak ada.
 
 | ADR | Ringkasan |
 | --- | --------- |
+| ADR-008 | Pricing strategy N/A untuk situs; file tetap sebagai jejak keputusan |
 | ADR-007 | Business model: brand + soft inbound; growth destination + magnet ringan |
 | ADR-006 | Competitor/reference: clarity → presence → craft; hybrid named + kategori |
 | ADR-005 | Target market: ICP hybrid founder/PO setara; SEA; digital product/tech |

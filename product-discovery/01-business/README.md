@@ -33,7 +33,7 @@ Topik berikut tidak dibahas di sini:
 * `target-market.md` — audiens utama dan sekunder.
 * `competitor-analysis.md` — referensi portofolio/kompetitor positioning.
 * `business-model.md` — cara portofolio menciptakan nilai (brand, opportunity, dll.).
-* `pricing-strategy.md` — monetisasi bila relevan; boleh N/A.
+* `pricing-strategy.md` — **N/A** untuk situs ini (ADR-008); file tetap sebagai jejak keputusan.
 * `success-metrics.md` — KPI keberhasilan portofolio.
 * `../README.md` — dokumentasi fase Product Discovery.
 * `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
