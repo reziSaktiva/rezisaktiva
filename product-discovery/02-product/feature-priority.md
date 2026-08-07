@@ -1,6 +1,6 @@
 # Feature Priority
 
-> Status: **Draft v0.1** — MoSCoW selaras Hybrid lean (ADR-010) + `mvp-definition.md` / `feature-modules.md`. Belum Product Baseline (T-002.8).
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini menetapkan prioritas fitur/modul website portofolio **rezisaktiva** dengan kerangka MoSCoW untuk **rilis MVP (kerangka clarity)**.
 
@@ -122,9 +122,8 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 
 # Review Process
 
-* Draft prioritas ini ditinjau bersama Boss Rezi sebelum Product Baseline (T-002.8).
+* Baseline v1.0 dikunci (ADR-012); perubahan MoSCoW material → ADR + update `mvp-definition.md` / roadmap.
 * Naikkan item Won't → Must/Should hanya dengan alasan tertulis + dampak ke MVP (dan ADR bila material).
-* Setelah baseline, perubahan MoSCoW material → ADR + update `mvp-definition.md` / roadmap.
 * Detail interaksi/wireframe tidak diputus di dokumen ini (fase UX).
 
 ---
@@ -148,5 +147,6 @@ Prioritas dianggap cukup jika:
 * `feature-modules.md` — katalog modul M1–M12
 * `release-roadmap.md` — jadwal rilis (berikutnya)
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

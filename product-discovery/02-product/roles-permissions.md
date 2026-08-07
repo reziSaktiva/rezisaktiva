@@ -1,6 +1,6 @@
 # Roles & Permissions
 
-> Status: **N/A** — ditetapkan bersama Boss Rezi (2026-08-07). Roles & permissions tidak relevan untuk website portofolio publik **rezisaktiva** tanpa area login / multi-user. File tidak dihapus — lihat ADR-011.
+> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-07). Roles & permissions tidak relevan untuk website portofolio publik **rezisaktiva** tanpa area login / multi-user. File tidak dihapus — lihat ADR-011 / ADR-012.
 
 Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat (bukan dokumen yang terlupa).
 
@@ -98,6 +98,7 @@ Dokumen roles & permissions dianggap selesai (N/A) jika:
 * `product-scope.md` — batas produk (tanpa auth/member)
 * `mvp-definition.md` — out of scope CMS/auth
 * `../../project-manager/decisions/ADR-011-roles-permissions-na-for-portfolio-site.md`
+* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
 * `../../project-manager/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md` — pola N/A serupa
 * `../../project-manager/PROJECT_STATE.md`

@@ -25,7 +25,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-002 — Isi Product Discovery (02-product)
 
-* **Status:** 🟡 In progress
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/02-product/README.md`, baseline 01-business
 
@@ -38,7 +38,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 - [x] **T-002.5** — `release-roadmap.md`
 - [x] **T-002.6** — `future-roadmap.md`
 - [x] **T-002.7** — `roles-permissions.md` (N/A — ADR-011)
-- [ ] **T-002.8** — Baseline Product v1.0 + ADR
+- [x] **T-002.8** — Baseline Product v1.0 + ADR (ADR-012)
 
 ---
 

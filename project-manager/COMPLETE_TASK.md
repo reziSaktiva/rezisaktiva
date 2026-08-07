@@ -18,6 +18,16 @@ Format entri:
 
 ## 2026-08-07
 ### Added
+- **T-002.8** / **ADR-012** — Product Baseline v1.0 untuk seluruh `02-product/`
+### Changed
+- Status semua dokumen `02-product/` → Baseline v1.0 (`roles-permissions.md` tetap N/A)
+- T-002 ✅ Done; Fokus → **T-003.1** isi `03-user/`
+- `PROJECT_STATE.md` → Phase 3 — User Discovery (03-user)
+
+---
+
+## 2026-08-07
+### Added
 - **T-002.7** — `roles-permissions.md` **N/A** (situs publik tanpa auth/RBAC)
 - **ADR-011** — Roles & permissions N/A; file tetap ada
 ### Changed

@@ -1,6 +1,6 @@
 # Feature Modules
 
-> Status: **Draft v0.1** — arah **Hybrid lean (C)** disepakati Boss Rezi (2026-08-07); ADR-010. Belum Product Baseline (T-002.8).
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** untuk fase Product — bukan wireframe UX dan bukan stack Engineering.
 
@@ -159,5 +159,6 @@ Modul dianggap cukup terdefinisi jika:
 * `mvp-definition.md` — Must/Should/Could
 * `feature-priority.md` — prioritas (berikutnya)
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

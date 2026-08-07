@@ -1,6 +1,6 @@
 # Release Roadmap
 
-> Status: **Draft v0.1** — milestone-based, selaras Hybrid lean (ADR-010) + MoSCoW. Belum Product Baseline (T-002.8).
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** — urutan nilai yang di-ship, bukan jadwal kalender kaku dan bukan sprint engineering detail.
 
@@ -116,8 +116,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 # Roadmap Review
 
-* Ditinjau bersama Boss Rezi sebelum Product Baseline (T-002.8).
-* Geser M9/M10 ke R1 = perubahan material (opsi D) → ADR + update MVP/priority.
+* Baseline v1.0 dikunci (ADR-012); geser M9/M10 ke R1 = perubahan material (opsi D) → ADR + update MVP/priority.
 * Setelah live, review exit R1 sebelum memulai build R2 secara serius.
 * Tanggal/estimasi minggu boleh ditambah di Engineering planning — bukan syarat dokumen ini.
 
@@ -152,5 +151,6 @@ Roadmap rilis dianggap cukup jika:
 * `future-roadmap.md` — peluang jangka panjang
 * `../01-business/success-metrics.md` — Validation / Traction / Growth
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

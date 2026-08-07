@@ -52,22 +52,26 @@ Topik berikut tidak dibahas di sini:
 
 # Expected Output
 
-Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
+**Product Baseline v1.0 sudah ditetapkan** (ADR-012, 2026-08-07). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `roles-permissions.md` sebagai N/A).
+
+Langkah berikutnya: lanjut **Phase 3 — User Discovery** di `../03-user/`. Status fase aktif ada di `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
+Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+
 * Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material sudah tercatat di `DECISIONS.md` bila diperlukan.
+* Keputusan material tercatat di `DECISIONS.md` (ADR-010, ADR-011, ADR-012, dll.).
 * Boss Rezi menyetujui baseline fase ini.
 
 ---
 
 # Decision Rules
 
-* Jangan mengisi fase berikutnya sebelum exit criteria fase ini terpenuhi (kecuali eksplisit diminta).
-* Perubahan material setelah baseline → ADR baru.
+* Fase Product selesai — lanjut isi `03-user/` sesuai Workflow Product Discovery.
+* Perubahan material pada baseline produk → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 
 ---

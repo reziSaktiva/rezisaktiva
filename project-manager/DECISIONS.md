@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-012 | Product Baseline v1.0: kunci `02-product/` (Hybrid lean + MoSCoW + R1–R3) | Accepted | 2026-08-07 | Kunci 02-product; surface Hybrid lean; roles N/A | [ADR-012](decisions/ADR-012-product-baseline-v1.md) |
 | ADR-011 | Roles & permissions: N/A untuk situs portofolio publik (file tetap ada) | Accepted | 2026-08-07 | Tidak ada RBAC/auth in-app; jejak N/A eksplisit | [ADR-011](decisions/ADR-011-roles-permissions-na-for-portfolio-site.md) |
 | ADR-010 | MVP surface: Hybrid lean (Home + About + Contact; Work teaser di Home) | Accepted | 2026-08-07 | Opsi C; case/Work detail post-kerangka clarity | [ADR-010](decisions/ADR-010-mvp-surface-hybrid-lean.md) |
 | ADR-009 | Business Baseline v1.0 + dual north star success metrics | Accepted | 2026-08-07 | Kunci 01-business; NS = brand recall + inbound berkualitas | [ADR-009](decisions/ADR-009-business-baseline-v1-dual-north-star.md) |

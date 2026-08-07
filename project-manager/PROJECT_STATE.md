@@ -2,9 +2,9 @@
 
 ## Snapshot
 
-* **Phase / Milestone:** Phase 2 — Product Discovery (02-product) · Product Discovery
+* **Phase / Milestone:** Phase 3 — User Discovery (03-user) · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-002.8 Baseline Product v1.0 + ADR — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-003.1 Isi dokumen `03-user/` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -25,9 +25,9 @@
 
 | Item | Value |
 | ---- | ----- |
-| Current Phase | Phase 2 — Product Discovery (02-product) |
+| Current Phase | Phase 3 — User Discovery (03-user) |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | Business Baseline v1.0 (T-001 ✅); 02-product hampir lengkap (T-002.1–T-002.7 ✅; tinggal T-002.8) |
+| Overall Progress | Business Baseline v1.0 (T-001 ✅); Product Baseline v1.0 (T-002 ✅ / ADR-012); lanjut 03-user (T-003) |
 | Project Status | Collaborative discovery in progress |
 
 ---
@@ -35,7 +35,8 @@
 ## Current Focus
 
 * **01-business** = Baseline v1.0 (ADR-002, ADR-004–009); dual north star di `success-metrics.md`.
-* **02-product** draft lengkap kecuali baseline: Hybrid lean + MoSCoW + roadmap; `roles-permissions.md` **N/A** (ADR-011). Fokus: **T-002.8** Baseline Product v1.0.
+* **02-product** = Baseline v1.0 (ADR-010–012); Hybrid lean + MoSCoW + R1–R3; roles N/A.
+* **03-user** = fokus berikutnya — **T-003.1**.
 
 ---
 
@@ -65,6 +66,7 @@ Tidak ada.
 
 | ADR | Ringkasan |
 | --- | --------- |
+| ADR-012 | Product Baseline v1.0; Hybrid lean + MoSCoW + R1–R3 |
 | ADR-011 | Roles & permissions N/A untuk situs publik; file tetap sebagai jejak |
 | ADR-010 | MVP surface Hybrid lean: Home + About + Contact; Work teaser di Home |
 | ADR-009 | Business Baseline v1.0; dual north star (brand recall + inbound berkualitas) |
