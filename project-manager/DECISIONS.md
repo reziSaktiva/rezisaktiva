@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-010 | MVP surface: Hybrid lean (Home + About + Contact; Work teaser di Home) | Accepted | 2026-08-07 | Opsi C; case/Work detail post-kerangka clarity | [ADR-010](decisions/ADR-010-mvp-surface-hybrid-lean.md) |
 | ADR-009 | Business Baseline v1.0 + dual north star success metrics | Accepted | 2026-08-07 | Kunci 01-business; NS = brand recall + inbound berkualitas | [ADR-009](decisions/ADR-009-business-baseline-v1-dual-north-star.md) |
 | ADR-008 | Pricing strategy: N/A untuk situs portofolio (file tetap ada) | Accepted | 2026-08-07 | Tidak ada harga di situs; jejak N/A eksplisit | [ADR-008](decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md) |
 | ADR-007 | Business model: brand + soft inbound; growth destination + magnet ringan | Accepted | 2026-08-07 | Tanpa revenue situs; opsi B growth | [ADR-007](decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md) |

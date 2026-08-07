@@ -18,6 +18,18 @@ Format entri:
 
 ## 2026-08-07
 ### Added
+- **T-002.1** — `product-scope.md` Draft v0.1 (Hybrid lean)
+- **T-002.2** — `mvp-definition.md` Draft v0.1
+- **T-002.3** — `feature-modules.md` Draft v0.1 (M1–M12)
+- **ADR-010** — MVP surface Hybrid lean (opsi C)
+### Changed
+- T-002 → 🟡 In progress; Fokus → **T-002.4** `feature-priority.md`
+- `PROJECT_STATE.md` / `TASKS.md` / `DECISIONS.md` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
 - **T-001.7** — `success-metrics.md` Draft→Baseline: dual north star (brand recall + inbound berkualitas)
 - **T-001.8** / **ADR-009** — Business Baseline v1.0 untuk seluruh `01-business/`
 ### Changed

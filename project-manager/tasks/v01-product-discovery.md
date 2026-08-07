@@ -25,15 +25,15 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-002 — Isi Product Discovery (02-product)
 
-* **Status:** ⏳ Pending
+* **Status:** 🟡 In progress
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/02-product/README.md`, baseline 01-business
 
 ### Subtasks
 
-- [ ] **T-002.1** — `product-scope.md`
-- [ ] **T-002.2** — `mvp-definition.md`
-- [ ] **T-002.3** — `feature-modules.md`
+- [x] **T-002.1** — `product-scope.md`
+- [x] **T-002.2** — `mvp-definition.md`
+- [x] **T-002.3** — `feature-modules.md`
 - [ ] **T-002.4** — `feature-priority.md`
 - [ ] **T-002.5** — `release-roadmap.md`
 - [ ] **T-002.6** — `future-roadmap.md`

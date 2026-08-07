@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — MVP surface Hybrid lean (C)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Disepakati struktur MVP Hybrid lean: Home + About + Contact; karya sebagai teaser di Home; case/Work detail menyusul setelah kerangka clarity. Draft T-002.1–T-002.3 + ADR-010.
+**Key Decision/Insight:** Opsi C; bukan single-page (B) dan bukan case wajib di MVP (D).
+**Impact:** Lanjut **T-002.4** `feature-priority.md`.
+
 ## 2026-08-07 — Success metrics dual north star + Business Baseline v1.0
 
 **Phase:** Phase 1 — Business Discovery → Phase 2 (02-product)
