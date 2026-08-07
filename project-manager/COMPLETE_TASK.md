@@ -18,6 +18,17 @@ Format entri:
 
 ## 2026-08-07
 ### Added
+- **T-003.1** — Seluruh dokumen `03-user/` Baseline v1.0 (discovery-plan → insights)
+- **T-003.2** / **ADR-013** — User Baseline v1.0 (assumption-led + riset ringan opsional; journey R1 primer + sekunder tipis)
+### Changed
+- T-003 ✅ Done; Fokus → **T-004.1** isi `04-ux/`
+- `PROJECT_STATE.md` → Phase 4 — UX Planning (04-ux)
+- `TASKS.md` / `tasks/v01-product-discovery.md` / `DECISIONS.md` / `03-user/README.md`
+
+---
+
+## 2026-08-07
+### Added
 - **T-002.8** / **ADR-012** — Product Baseline v1.0 untuk seluruh `02-product/`
 ### Changed
 - Status semua dokumen `02-product/` → Baseline v1.0 (`roles-permissions.md` tetap N/A)
