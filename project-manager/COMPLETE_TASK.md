@@ -17,6 +17,12 @@ Format entri:
 ---
 
 ## 2026-08-07
+### Fixed
+- **T-003** review: PP9 → Should (tipis); social jobs `S1–S3` → `SJ1–SJ3`; prioritas segmen `Pri-0/1/2`; I3 case → Later (R2 magnet)
+
+---
+
+## 2026-08-07
 ### Added
 - **T-003.1** — Seluruh dokumen `03-user/` Baseline v1.0 (discovery-plan → insights)
 - **T-003.2** / **ADR-013** — User Baseline v1.0 (assumption-led + riset ringan opsional; journey R1 primer + sekunder tipis)

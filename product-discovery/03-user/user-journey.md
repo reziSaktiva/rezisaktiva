@@ -77,7 +77,7 @@ Tanpa situs milik sendiri (hari ini):
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |
 | **Act** | Soft CTA (email / tautan) | Contact | J3 |
-| **Share** (opsional) | URL layak dikirim ke tim | Meta + clarity | S1 |
+| **Share** (opsional) | URL layak dikirim ke tim | Meta + clarity | SJ1 |
 
 ### Cabang sekunder tipis
 

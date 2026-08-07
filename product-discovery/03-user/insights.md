@@ -53,7 +53,7 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 | -- | ------- | ----------- |
 | I1 | **Clarity is the product of the first visit** — pengunjung membayar dengan perhatian singkat | UX harus memenangkan Orient dalam viewport awal |
 | I2 | **Satu lapisan pesan, dua penekanan evaluasi** — P1 ↔ P2 beda pertanyaan, sama brand | Jangan split Home jadi dua mode; bedakan lewat About/teaser emphasis |
-| I3 | **Teaser mengantar trust; case memperdalam** — memaksa case di R1 menunda destination | Pertahankan teaser Must; case Should/Later |
+| I3 | **Teaser mengantar trust; case memperdalam** — memaksa case di R1 menunda destination | Pertahankan teaser Must; case Later (R2 magnet) |
 | I4 | **Soft path menentukan NS-2** — tanpa Contact yang tenang, clarity tidak jadi inbound | Contact = first-class surface, bukan footer afterthought |
 | I5 | **Secondary success = signal, not conversion UI** — P3/P4 sukses jika menemukan bukti/kontak | Jangan tambah job board / pricing untuk “melayani” mereka |
 | I6 | **Bahasa adalah bagian journey, bukan chrome kosmetik** — J7 memengaruhi bounce early | Geo-default + switcher masuk acceptance UX R1 |

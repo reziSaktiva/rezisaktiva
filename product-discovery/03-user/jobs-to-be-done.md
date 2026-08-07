@@ -72,9 +72,9 @@ Setiap job punya: ID, persona utama, prioritas R1 (Must / Should / Later).
 
 | ID | Job | Catatan |
 | -- | --- | ------- |
-| S1 | Bisa menunjuk satu URL ke cofounder / tim (“ini orangnya”) | Destination hygiene |
-| S2 | Terlihat profesional saat share ke hiring chain | Clarity > gimmick |
-| S3 | Peer recognition (opsional) | Bukan driver CTA R1 |
+| SJ1 | Bisa menunjuk satu URL ke cofounder / tim (“ini orangnya”) | Destination hygiene |
+| SJ2 | Terlihat profesional saat share ke hiring chain | Clarity > gimmick |
+| SJ3 | Peer recognition (opsional) | Bukan driver CTA R1 |
 
 ---
 

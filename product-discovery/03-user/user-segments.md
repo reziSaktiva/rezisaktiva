@@ -88,9 +88,9 @@ Kedua segmen primer **setara** — tidak ada “persona utama tunggal”. Lapisa
 
 | Prioritas | Segmen | Implikasi |
 | --------- | ------ | --------- |
-| P0 — optimasi utama | S1, S2 | Salinan, bukti, journey R1 dirancang untuk mereka |
-| P1 — dilayani tipis | S3, S4 | Secondary journey: temukan sinyal & kontak tanpa rebrand |
-| P2 — didukung pasif | S5, S6 | Jangan dioptimasi sebagai KPI; jangan dikorbankan total |
+| Pri-0 — optimasi utama (primer) | S1, S2 | Salinan, bukti, journey R1 dirancang untuk mereka |
+| Pri-1 — dilayani tipis (sekunder) | S3, S4 | Secondary journey: temukan sinyal & kontak tanpa rebrand |
+| Pri-2 — didukung pasif | S5, S6 | Jangan dioptimasi sebagai KPI; jangan dikorbankan total |
 
 **Bukan segmen target optimasi:** pure design-agency shoppers, AI specialist murni tanpa fondasi product/engineering, funnel vendor berpricing agresif, mass consumer social.
 
@@ -106,7 +106,7 @@ Pemetaan segmen yang selaras ADR-005 dan siap diterjemahkan ke personas + journe
 
 * Primer vs sekunder jelas
 * Dual primer setara terdokumentasi
-* Prioritas P0/P1/P2 disepakati
+* Prioritas Pri-0 / Pri-1 / Pri-2 disepakati
 
 ---
 

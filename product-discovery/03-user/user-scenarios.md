@@ -87,7 +87,7 @@ Setiap skenario memuat: ID, persona, trigger, langkah ringkas, job terkait, hasi
 
 * **Trigger:** Mau align dengan cofounder/tim sebelum kontak
 * **Langkah:** Buka situs → share URL → rekan melakukan SC1/SC2 singkat
-* **Jobs:** S1, J1
+* **Jobs:** SJ1, J1
 * **Sukses:** Rekan paham positioning dari URL yang sama
 * **Failure:** Halaman tidak layak dishare (meta/clarity lemah)
 

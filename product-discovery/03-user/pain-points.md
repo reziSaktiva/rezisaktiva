@@ -69,7 +69,7 @@ Pain mengikuti rantai **visibility → narrative → evaluasi & kontak** (ADR-00
 | PP6 | Tidak tahu channel kontak yang “aman” / soft | P1, P2, P4 | High | Often | Must ease |
 | PP7 | Bahasa default terasa salah untuk konteks geo | P1, P2, S6 | Med | Sometimes | Must ease (fondasi) |
 | PP8 | Sinyal kolaborasi / profesionalisme lemah bagi PO | P2 | Med | Sometimes | Must ease (About) |
-| PP9 | Hiring sulit lihat fit teknis+produk tanpa CV panjang | P3 | Med | Sometimes | Later / tipis |
+| PP9 | Hiring sulit lihat fit teknis+produk tanpa CV panjang | P3 | Med | Sometimes | Should (tipis) |
 | PP10 | Tidak ada harga → ketidakpastian klien project | P4 | Low–Med | Sometimes | Out (ADR-008); soft path saja |
 | PP11 | Case detail belum ada di R1 → rasa “kurang bukti” | P1, P2 | Med | Sometimes | Later (R2 magnet) |
 
