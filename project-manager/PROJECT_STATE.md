@@ -2,9 +2,9 @@
 
 ## Snapshot
 
-* **Phase / Milestone:** Phase 1 — Business Discovery · Product Discovery
+* **Phase / Milestone:** Phase 2 — Product Discovery (02-product) · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-001.7 `success-metrics.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-002.1 `product-scope.md` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -25,17 +25,17 @@
 
 | Item | Value |
 | ---- | ----- |
-| Current Phase | Phase 1 — Business Discovery |
+| Current Phase | Phase 2 — Product Discovery (02-product) |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | 01-business hampir lengkap: T-001.1–T-001.6 selesai (pricing N/A, ADR-002, ADR-004–008); sisa T-001.7 `success-metrics.md` + T-001.8 baseline v1.0 |
+| Overall Progress | Business Baseline v1.0 terkunci (T-001 ✅, ADR-009); lanjut 02-product (T-002) |
 | Project Status | Collaborative discovery in progress |
 
 ---
 
 ## Current Focus
 
-* Draft v0.1 terkunci: vision, problem, target market, competitor, business model; `pricing-strategy.md` = **N/A** (ADR-002, ADR-004–008).
-* Fokus berikutnya: T-001.7 `success-metrics.md`, lalu T-001.8 Baseline Business v1.0 + ADR bila disepakati.
+* **01-business** = Baseline v1.0 (ADR-002, ADR-004–009); dual north star di `success-metrics.md`.
+* Fokus sekarang: **T-002.1** `product-scope.md` (lalu sisa T-002).
 
 ---
 
@@ -65,6 +65,7 @@ Tidak ada.
 
 | ADR | Ringkasan |
 | --- | --------- |
+| ADR-009 | Business Baseline v1.0; dual north star (brand recall + inbound berkualitas) |
 | ADR-008 | Pricing strategy N/A untuk situs; file tetap sebagai jejak keputusan |
 | ADR-007 | Business model: brand + soft inbound; growth destination + magnet ringan |
 | ADR-006 | Competitor/reference: clarity → presence → craft; hybrid named + kategori |

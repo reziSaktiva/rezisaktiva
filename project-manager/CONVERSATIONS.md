@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Success metrics dual north star + Business Baseline v1.0
+
+**Phase:** Phase 1 — Business Discovery → Phase 2 (02-product)
+**Summary:** Disepakati dual north star (brand recall + inbound berkualitas); vanity traffic bukan KPI. Seluruh `01-business/` dikunci Baseline v1.0.
+**Key Decision/Insight:** Opsi C dual; ADR-009; T-001.7 + T-001.8 selesai.
+**Impact:** Lanjut **T-002.1** `product-scope.md`.
+
 ## 2026-08-07 — Sinkron laporan ke ID subtask
 
 **Phase:** Phase 1 — Business Discovery

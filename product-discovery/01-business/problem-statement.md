@@ -1,6 +1,6 @@
 # Problem Statement
 
-> Status: **Draft v0.1** — disepakati arah awal bersama Boss Rezi (2026-08-06). Baseline Business v1.0 menunggu seluruh dokumen `01-business/` selesai.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan masalah dan kesempatan yang ingin dijawab oleh website portofolio pribadi **rezisaktiva** — dari sisi pemilik brand (Rezi) dan sisi audiens primer (founder / product owner).
 

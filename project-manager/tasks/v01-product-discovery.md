@@ -6,7 +6,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-001 — Isi Business Discovery (01-business)
 
-* **Status:** 🟡 In progress
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/01-business/README.md`, `product-discovery/README.md`
 
@@ -18,8 +18,8 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 - [x] **T-001.4** — `competitor-analysis.md`
 - [x] **T-001.5** — `business-model.md`
 - [x] **T-001.6** — `pricing-strategy.md` (N/A — ADR-008)
-- [ ] **T-001.7** — `success-metrics.md`
-- [ ] **T-001.8** — Baseline Business v1.0 + ADR (bila disepakati)
+- [x] **T-001.7** — `success-metrics.md`
+- [x] **T-001.8** — Baseline Business v1.0 + ADR (ADR-009)
 
 ---
 

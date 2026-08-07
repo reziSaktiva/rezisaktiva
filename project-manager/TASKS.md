@@ -4,9 +4,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-001.7** — `success-metrics.md` (parent: T-001 Business Discovery)
-2. **T-001.8** — Baseline Business v1.0 + ADR (bila disepakati)
-3. **T-002** — Isi Product Discovery (02-product)
+1. **T-002.1** — `product-scope.md` (parent: T-002 Product Discovery)
+2. **T-002** — Isi Product Discovery (02-product)
+3. **T-003** — Isi User Discovery (03-user)
 
 ## Indeks release
 

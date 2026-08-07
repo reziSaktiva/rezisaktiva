@@ -8,8 +8,8 @@ Dokumentasi pada folder ini berfokus pada fase **Business** untuk website portof
 
 * Mendefinisikan arah portofolio dari sisi tujuan pribadi/profesional.
 * Memastikan masalah/kesempatan yang dijawab bernilai nyata.
-* Menentukan audiens, positioning, dan (opsional) model value.
-* Menetapkan metrik keberhasilan yang terukur.
+* Menentukan audiens, positioning, dan model nilai (brand primer + soft inbound).
+* Menetapkan metrik keberhasilan — dual north star: brand recall + inbound berkualitas.
 
 ---
 
@@ -32,9 +32,9 @@ Topik berikut tidak dibahas di sini:
 * `problem-statement.md` — masalah/kesempatan yang ingin dijawab.
 * `target-market.md` — audiens utama dan sekunder.
 * `competitor-analysis.md` — referensi portofolio/kompetitor positioning.
-* `business-model.md` — cara portofolio menciptakan nilai (brand, opportunity, dll.).
+* `business-model.md` — cara portofolio menciptakan nilai (brand primer, soft inbound, magnet ringan).
 * `pricing-strategy.md` — **N/A** untuk situs ini (ADR-008); file tetap sebagai jejak keputusan.
-* `success-metrics.md` — KPI keberhasilan portofolio.
+* `success-metrics.md` — KPI dual north star (brand recall + inbound berkualitas).
 * `../README.md` — dokumentasi fase Product Discovery.
 * `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
 * `../../project-manager/PROJECT_RULES.md` — aturan project.
@@ -54,22 +54,26 @@ Topik berikut tidak dibahas di sini:
 
 # Expected Output
 
-Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
+**Baseline Business v1.0 sudah ditetapkan** (ADR-009, 2026-08-07). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `pricing-strategy.md` sebagai N/A).
+
+Langkah berikutnya: lanjut **Phase 2 — Product Discovery** di `../02-product/` (mulai dari `product-scope.md` / T-002.1). Status fase aktif ada di `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
+Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+
 * Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material sudah tercatat di `DECISIONS.md` bila diperlukan.
+* Keputusan material tercatat di `DECISIONS.md` (ADR-002, ADR-004–009, dll.).
 * Boss Rezi menyetujui baseline fase ini.
 
 ---
 
 # Decision Rules
 
-* Jangan mengisi fase berikutnya sebelum exit criteria fase ini terpenuhi (kecuali eksplisit diminta).
-* Perubahan material setelah baseline → ADR baru.
+* Fase Business selesai — lanjut isi `02-product/` sesuai Workflow Product Discovery.
+* Perubahan material pada baseline bisnis → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 
 ---

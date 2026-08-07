@@ -1,6 +1,6 @@
 # Target Market
 
-> Status: **Draft v0.1** — disepakati arah awal bersama Boss Rezi (2026-08-06). Baseline Business v1.0 menunggu seluruh dokumen `01-business/` selesai.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendalami audiens website portofolio pribadi **rezisaktiva** — siapa yang ingin merasa “situs ini relevan untuk keputusan saya”, dan bagaimana situs harus berbicara kepada mereka.
 
