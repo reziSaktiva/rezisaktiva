@@ -21,7 +21,7 @@ Dokumen ini **bukan** Source of Truth produk. Ia mengarahkan agent ke dokumen ya
 ## Wajib di awal sesi
 
 1. Baca **Snapshot** di `project-manager/PROJECT_STATE.md`.
-2. Kalau akan mengerjakan task: buka `TASKS.md`, lalu **hanya** file `tasks/vXX-*.md` yang memuat task itu. Ikuti field **Baca dulu**.
+2. Kalau akan mengerjakan task: buka `TASKS.md`, lalu **hanya** file `tasks/vXX-*.md` yang memuat task/subtask itu (`T-XXX` / `T-XXX.N`). Ikuti field **Baca dulu**.
 3. Ikuti skill: `.cursor/skills/project-os-navigator/SKILL.md`.
 4. Untuk keputusan yang belum ada di baseline: `.cursor/skills/proactive-clarification/SKILL.md`.
 5. Setelah pekerjaan selesai: `.cursor/skills/work-report-simple/SKILL.md`.
@@ -48,8 +48,9 @@ Docs-only. Belum ada app framework. Stack akan dikunci di `product-discovery/06-
 * **Boss Rezi** adalah pemilik keputusan akhir.
 * **Documentation First** — dokumentasi acuan sebelum kode.
 * **Tidak ada implementasi kode** selama Active Mode = Product Discovery (kecuali diminta eksplisit).
-* Status/progress hanya di `PROJECT_STATE.md` / `TASKS.md` — bukan di README Static Reference.
-* `COMPLETE_TASK.md`: append saja; jangan dibaca penuh kecuali diperintah.
+* Status/progress hanya di `PROJECT_STATE.md` / `TASKS.md` — bukan di README Static Reference. ID: parent `T-XXX`, subtask `T-XXX.N`.
+* `COMPLETE_TASK.md`: append saja; jangan dibaca penuh kecuali diperintah (rewrite sejarah hanya jika Boss Rezi memerintahkan eksplisit).
+* Saat selesai checklist: sebut kode subtask `T-XXX.N` di COMPLETE_TASK / Fokus.
 * Jangan berasumsi pada fork keputusan — tanya dulu.
 * Proteksi secret: `.cursorignore`.
 

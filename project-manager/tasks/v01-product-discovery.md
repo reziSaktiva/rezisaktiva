@@ -12,14 +12,14 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [x] `product-vision.md`
-- [x] `problem-statement.md`
-- [x] `target-market.md`
-- [x] `competitor-analysis.md`
-- [x] `business-model.md`
-- [x] `pricing-strategy.md` (N/A — ADR-008)
-- [ ] `success-metrics.md`
-- [ ] Baseline Business v1.0 + ADR (bila disepakati)
+- [x] **T-001.1** — `product-vision.md`
+- [x] **T-001.2** — `problem-statement.md`
+- [x] **T-001.3** — `target-market.md`
+- [x] **T-001.4** — `competitor-analysis.md`
+- [x] **T-001.5** — `business-model.md`
+- [x] **T-001.6** — `pricing-strategy.md` (N/A — ADR-008)
+- [ ] **T-001.7** — `success-metrics.md`
+- [ ] **T-001.8** — Baseline Business v1.0 + ADR (bila disepakati)
 
 ---
 
@@ -31,14 +31,14 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] `product-scope.md`
-- [ ] `mvp-definition.md`
-- [ ] `feature-modules.md`
-- [ ] `feature-priority.md`
-- [ ] `release-roadmap.md`
-- [ ] `future-roadmap.md`
-- [ ] `roles-permissions.md` (boleh N/A)
-- [ ] Baseline Product v1.0 + ADR
+- [ ] **T-002.1** — `product-scope.md`
+- [ ] **T-002.2** — `mvp-definition.md`
+- [ ] **T-002.3** — `feature-modules.md`
+- [ ] **T-002.4** — `feature-priority.md`
+- [ ] **T-002.5** — `release-roadmap.md`
+- [ ] **T-002.6** — `future-roadmap.md`
+- [ ] **T-002.7** — `roles-permissions.md` (boleh N/A)
+- [ ] **T-002.8** — Baseline Product v1.0 + ADR
 
 ---
 
@@ -50,8 +50,8 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] Semua dokumen di `03-user/`
-- [ ] Baseline User v1.0 + ADR
+- [ ] **T-003.1** — Semua dokumen di `03-user/`
+- [ ] **T-003.2** — Baseline User v1.0 + ADR
 
 ---
 
@@ -63,8 +63,8 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] Semua dokumen di `04-ux/`
-- [ ] Baseline UX v1.0 + ADR
+- [ ] **T-004.1** — Semua dokumen di `04-ux/`
+- [ ] **T-004.2** — Baseline UX v1.0 + ADR
 
 ---
 
@@ -76,8 +76,8 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] Semua dokumen di `05-architecture/` (N/A diizinkan jika tidak relevan)
-- [ ] Baseline Architecture v1.0 + ADR
+- [ ] **T-005.1** — Semua dokumen di `05-architecture/` (N/A diizinkan jika tidak relevan)
+- [ ] **T-005.2** — Baseline Architecture v1.0 + ADR
 
 ---
 
@@ -89,8 +89,8 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] Semua dokumen di `06-engineering/`
-- [ ] Baseline Engineering v1.0 + ADR
+- [ ] **T-006.1** — Semua dokumen di `06-engineering/`
+- [ ] **T-006.2** — Baseline Engineering v1.0 + ADR
 
 ---
 
@@ -102,6 +102,6 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] Semua exit criteria Product Discovery terpenuhi
-- [ ] Update `PROJECT_STATE.md` ke fase Bootstrap
-- [ ] Catat di `COMPLETE_TASK.md`
+- [ ] **T-007.1** — Semua exit criteria Product Discovery terpenuhi
+- [ ] **T-007.2** — Update `PROJECT_STATE.md` ke fase Bootstrap
+- [ ] **T-007.3** — Catat di `COMPLETE_TASK.md`

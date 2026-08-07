@@ -22,7 +22,7 @@ Accepted
 ### Reason
 
 - Selaras ADR-002 (brand primer, soft CTA) dan ADR-007 (tanpa revenue langsung dari situs).
-- Task T-001 sudah mengizinkan N/A bila tidak relevan.
+- Subtask **T-001.6** (parent T-001) sudah mengizinkan N/A bila tidak relevan.
 - Menghapus file menghilangkan jejak keputusan; N/A eksplisit lebih aman untuk agent/manusia sesi berikutnya.
 
 ### Alternatives Considered

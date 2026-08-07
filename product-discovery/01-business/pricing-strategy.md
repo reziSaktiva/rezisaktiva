@@ -75,7 +75,7 @@ Dokumen pricing dianggap selesai (N/A) jika:
 1. Jelas bahwa **tidak ada harga di situs** dan itu disengaja
 2. Tidak ada angka fee/salary prematur di repo discovery publik
 3. Rujukan ke ADR-002 / ADR-007 / ADR-008 konsisten
-4. Subtask T-001 untuk file ini bisa dicentang sebagai **N/A completed**
+4. Subtask **T-001.6** untuk file ini bisa dicentang sebagai **N/A completed**
 
 ---
 

@@ -17,14 +17,28 @@ Format entri:
 ---
 
 ## 2026-08-07
+### Changed
+- Sinkron referensi kode subtask `T-XXX.N` di laporan/aturan: `CONVERSATIONS.md`, `PROJECT_RULES.md`, `AGENTS.md`, `DEVELOPER_WORKFLOW.md`, `PROJECT_STATE.md` (Overall Progress), `pricing-strategy.md`, ADR-008, navigator skill
+### Fixed
+- Impact lama di `CONVERSATIONS.md` dan rujukan “Subtask T-001” tanpa nomor anak diselaraskan ke `T-001.N`
+
+## 2026-08-07
+### Changed
+- Konvensi ID subtask `T-XXX.N` (contoh T-001.1) — retrofit semua subtask di `tasks/v01-product-discovery.md`
+- `TASKS.md` — aturan ID subtask; Fokus sekarang `T-001.7`
+- `PROJECT_STATE.md` — Top Next / Current Focus pakai kode subtask
+- `.cursor/skills/project-os-navigator/SKILL.md` — rujuk `T-XXX.N`
+- Riwayat COMPLETE_TASK di bawah diselaraskan ke kode subtask (atas perintah Boss Rezi)
+
+## 2026-08-07
 ### Added
 - `product-discovery/01-business/pricing-strategy.md` N/A v0.1 (tidak relevan untuk situs; file tetap)
 - `project-manager/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md`
 ### Changed
 - `DECISIONS.md` — indeks ADR-008
 - `01-business/README.md` — pricing dicatat N/A
-- T-001 subtask `pricing-strategy.md` dicentang (N/A); fokus lanjut `success-metrics.md`
-- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya success-metrics
+- **T-001.6** dicentang (N/A); fokus lanjut **T-001.7** `success-metrics.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.7
 
 ## 2026-08-07
 ### Added
@@ -32,8 +46,8 @@ Format entri:
 - `project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
 ### Changed
 - `DECISIONS.md` — indeks ADR-007
-- T-001 subtask `business-model.md` dicentang; fokus lanjut `pricing-strategy.md`
-- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya pricing-strategy
+- **T-001.5** dicentang; fokus lanjut **T-001.6** `pricing-strategy.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.6
 
 ## 2026-08-07
 ### Added
@@ -41,8 +55,8 @@ Format entri:
 - `project-manager/decisions/ADR-006-competitor-reference-lens-clarity-presence-craft.md`
 ### Changed
 - `DECISIONS.md` — indeks ADR-006
-- T-001 subtask `competitor-analysis.md` dicentang; fokus lanjut `business-model.md`
-- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya business-model
+- **T-001.4** dicentang; fokus lanjut **T-001.5** `business-model.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.5
 
 ## 2026-08-06
 ### Added
@@ -50,8 +64,8 @@ Format entri:
 - `project-manager/decisions/ADR-005-target-market-icp-sea-tech.md`
 ### Changed
 - `DECISIONS.md` — indeks ADR-005
-- T-001 subtask `target-market.md` dicentang; fokus lanjut `competitor-analysis.md`
-- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya competitor-analysis
+- **T-001.3** dicentang; fokus lanjut **T-001.4** `competitor-analysis.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.4
 
 ## 2026-08-06
 ### Added
@@ -59,7 +73,7 @@ Format entri:
 - `project-manager/decisions/ADR-004-problem-statement-dual-chain.md`
 ### Changed
 - `DECISIONS.md` — indeks ADR-004
-- T-001 subtask `problem-statement.md` dicentang; fokus lanjut `target-market.md`
+- **T-001.2** dicentang; fokus lanjut **T-001.3** `target-market.md`
 - `PROJECT_STATE.md` / `TASKS.md` — fokus & progress diselaraskan
 
 ## 2026-08-06
@@ -83,7 +97,7 @@ Format entri:
 
 ### Changed
 
-- T-001 subtask `product-vision.md` dicentang; fokus lanjut `problem-statement.md`
+- **T-001.1** dicentang; fokus lanjut **T-001.2** `problem-statement.md`
 - `TASKS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, `CONVERSATIONS.md` diselaraskan
 
 ## 2026-08-06
@@ -92,4 +106,3 @@ Format entri:
 
 - Scaffold Project OS: `product-discovery/` 01–06 (placeholder), `project-manager/`, `.cursor/skills/` (3 process skills), `AGENTS.md`, `.cursorignore`
 - ADR-001 — pemisahan PD/PM + skills Cursor
-

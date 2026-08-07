@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Phase 1 — Business Discovery · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-001 lanjut `success-metrics.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-001.7 `success-metrics.md` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -27,7 +27,7 @@
 | ---- | ----- |
 | Current Phase | Phase 1 — Business Discovery |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | 01-business hampir lengkap: vision → business model + pricing N/A (ADR-002, ADR-004–008); sisa `success-metrics.md` + baseline v1.0 |
+| Overall Progress | 01-business hampir lengkap: T-001.1–T-001.6 selesai (pricing N/A, ADR-002, ADR-004–008); sisa T-001.7 `success-metrics.md` + T-001.8 baseline v1.0 |
 | Project Status | Collaborative discovery in progress |
 
 ---
@@ -35,7 +35,7 @@
 ## Current Focus
 
 * Draft v0.1 terkunci: vision, problem, target market, competitor, business model; `pricing-strategy.md` = **N/A** (ADR-002, ADR-004–008).
-* Fokus berikutnya: `success-metrics.md`, lalu Baseline Business v1.0 + ADR bila disepakati.
+* Fokus berikutnya: T-001.7 `success-metrics.md`, lalu T-001.8 Baseline Business v1.0 + ADR bila disepakati.
 
 ---
 

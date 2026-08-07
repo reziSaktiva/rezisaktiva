@@ -4,9 +4,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-001** — Isi Business Discovery (lanjut `success-metrics.md`)
-2. **T-002** — Isi Product Discovery (02-product)
-3. **T-003** — Isi User Discovery (03-user)
+1. **T-001.7** — `success-metrics.md` (parent: T-001 Business Discovery)
+2. **T-001.8** — Baseline Business v1.0 + ADR (bila disepakati)
+3. **T-002** — Isi Product Discovery (02-product)
 
 ## Indeks release
 
@@ -16,9 +16,11 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Aturan
 
-* ID task `T-XXX` global, tidak didaur ulang.
+* ID task parent `T-XXX` global, tidak didaur ulang.
+* ID subtask `T-XXX.N` (contoh: `T-001.1`, `T-001.2`) — nomor berurutan dalam parent; tidak didaur ulang setelah dipakai.
 * Status task hidup di file release `tasks/vXX-*.md`, bukan di `PROJECT_STATE.md`.
 * Task yang ditunda: `⏸️ Deferred` + alasan, jangan dihapus.
+* Referensi kerja (Fokus, Snapshot, COMPLETE_TASK) sebaiknya menyebut kode subtask bila menyentuh item checklist.
 
 ## Related Documents
 

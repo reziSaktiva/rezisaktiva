@@ -6,7 +6,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-08-06 |
+| Last Updated | 2026-08-07 |
 
 ---
 
@@ -81,16 +81,22 @@ Diperbarui setiap sesi kerja relevan.
 * `PROJECT_STATE.md`
 * `TASKS.md` + `tasks/`
 
+Konvensi ID backlog (detail di `TASKS.md`):
+
+* Parent: `T-XXX` (global, tidak didaur ulang)
+* Subtask: `T-XXX.N` (contoh `T-001.1`; tidak didaur ulang setelah dipakai)
+* Referensi kerja (Fokus, Snapshot, COMPLETE_TASK, Impact di CONVERSATIONS) menyebut kode subtask bila menyentuh checklist
+
 **Append-Only**
 
-Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah.
+Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah — **kecuali Boss Rezi memerintahkan secara eksplisit** (contoh: retrofit kode subtask di riwayat).
 
 * `DECISIONS.md` (indeks) + `decisions/ADR-*.md`
 * `COMPLETE_TASK.md`
 * `CONVERSATIONS.md`
 * `BRAINSTORM.md`
 
-⚠️ AI **tidak** boleh membaca seluruh `COMPLETE_TASK.md` kecuali Boss Rezi memerintahkan secara eksplisit. AI tetap wajib **append** entri baru di bagian atas.
+⚠️ AI **tidak** boleh membaca seluruh `COMPLETE_TASK.md` kecuali Boss Rezi memerintahkan secara eksplisit. Default: **append** entri baru di bagian atas.
 
 ---
 

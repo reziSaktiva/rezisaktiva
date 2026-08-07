@@ -24,13 +24,13 @@ Jangan langsung baca semua dokumen `project-manager/` untuk setiap pesan. Eskala
 **Tingkat 2 — Task nyata** (Pekerjaan Baru, Planning Change, Bug): baca berurutan:
 
 1. `project-manager/PROJECT_STATE.md` — Snapshot dulu, lalu detail bila perlu
-2. `project-manager/TASKS.md` — temukan ID task
+2. `project-manager/TASKS.md` — temukan ID task/subtask (`T-XXX` / `T-XXX.N`)
 3. `project-manager/tasks/vXX-*.md` — **hanya satu file** release; ikuti field **Baca dulu**
 4. `project-manager/PROJECT_RULES.md` — bila menyentuh tata kelola dokumen
 5. ADR spesifik yang relevan
 6. `project-manager/PROJECT_OVERVIEW.md` — bila perlu gambaran umum
 
-Kalau pekerjaan belum punya ID task: tanyakan ke Boss Rezi apakah perlu ditambahkan ke backlog.
+Kalau pekerjaan belum punya ID task/subtask: tanyakan ke Boss Rezi apakah perlu ditambahkan ke backlog.
 
 Jika diskusi menyentuh domain spesifik, baca dokumen relevan dari:
 
@@ -98,10 +98,10 @@ Jika ditemukan: **jangan diamkan**. Sebutkan ke user, lalu tawarkan perbaikan (b
 2. Cek `Active Conversation Mode`.
 3. Baca baseline relevan sebelum menulis.
 4. Setelah selesai, update:
-   - `tasks/vXX-*.md` — centang subtask + status
-   - `TASKS.md` — indeks + Fokus sekarang
+   - `tasks/vXX-*.md` — centang subtask ber-ID (`T-XXX.N`) + status parent
+   - `TASKS.md` — indeks + Fokus sekarang (sebut kode subtask bila relevan)
    - `PROJECT_STATE.md` — hanya jika phase/milestone/KI/fokus berubah (jangan salin detail task)
-   - `COMPLETE_TASK.md` — append entri baru di atas (jangan baca riwayat lama)
+   - `COMPLETE_TASK.md` — append entri baru di atas (jangan baca riwayat lama); sebut `T-XXX.N`
 
 **Format COMPLETE_TASK.md:**
 
@@ -164,7 +164,7 @@ YYYY-MM-DD
 - Jangan membuat dokumen di luar scope phase aktif.
 - Jangan perbaiki inkonsistensi diam-diam.
 - Jangan salin detail task ke `PROJECT_STATE.md`.
-- Jangan daur ulang ID task; deferred = `⏸️` + alasan.
+- Jangan daur ulang ID task/subtask (`T-XXX` / `T-XXX.N`); deferred = `⏸️` + alasan.
 - Skills resmi project hanya di `.cursor/skills/`.
 
 ---

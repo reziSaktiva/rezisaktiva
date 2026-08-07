@@ -5,10 +5,10 @@
 ## Alur kerja saat ini (Product Discovery)
 
 1. Baca Snapshot di `PROJECT_STATE.md`.
-2. Lihat `TASKS.md` → buka file `tasks/` yang relevan.
+2. Lihat `TASKS.md` → buka file `tasks/` yang relevan (`T-XXX` / `T-XXX.N`).
 3. Isi/revisi dokumen di `product-discovery/` sesuai fase aktif.
 4. Catat keputusan material sebagai ADR.
-5. Update TASKS / STATE / COMPLETE_TASK.
+5. Update TASKS / STATE / COMPLETE_TASK (sebut kode subtask bila relevan).
 6. Laporkan dengan skill `work-report-simple`.
 
 ## Related Documents
