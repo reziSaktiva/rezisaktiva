@@ -1,6 +1,6 @@
 # Pricing Strategy
 
-> Status: **N/A (Draft v0.1)** — disepakati bersama Boss Rezi (2026-08-07). Pricing tidak relevan sebagai strategi untuk website portofolio **rezisaktiva**.
+> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-07). Pricing tidak relevan sebagai strategi untuk website portofolio **rezisaktiva**. Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat (bukan dokumen yang terlupa). File tidak dihapus — lihat ADR-008.
 

@@ -1,6 +1,6 @@
 # Competitor Analysis
 
-> Status: **Draft v0.1** — disepakati arah awal bersama Boss Rezi (2026-08-07). Baseline Business v1.0 menunggu seluruh dokumen `01-business/` selesai.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini memetakan **referensi** (inspirasi bernama) dan **pesaing kategori** (alternatif perhatian) untuk website portofolio pribadi **rezisaktiva** — bukan daftar rival bisnis klasik.
 

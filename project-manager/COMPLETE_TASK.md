@@ -17,6 +17,17 @@ Format entri:
 ---
 
 ## 2026-08-07
+### Added
+- **T-001.7** — `success-metrics.md` Draft→Baseline: dual north star (brand recall + inbound berkualitas)
+- **T-001.8** / **ADR-009** — Business Baseline v1.0 untuk seluruh `01-business/`
+### Changed
+- Status semua dokumen `01-business/` → Baseline v1.0 (`pricing-strategy.md` tetap N/A)
+- T-001 ✅ Done; Fokus → **T-002.1** `product-scope.md`
+- `PROJECT_STATE.md` — Phase 2 (02-product); `TASKS.md` / `DECISIONS.md` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
 ### Changed
 - Sinkron referensi kode subtask `T-XXX.N` di laporan/aturan: `CONVERSATIONS.md`, `PROJECT_RULES.md`, `AGENTS.md`, `DEVELOPER_WORKFLOW.md`, `PROJECT_STATE.md` (Overall Progress), `pricing-strategy.md`, ADR-008, navigator skill
 ### Fixed

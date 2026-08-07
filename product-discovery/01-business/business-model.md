@@ -1,6 +1,6 @@
 # Business Model
 
-> Status: **Draft v0.1** — disepakati arah awal bersama Boss Rezi (2026-08-07). Baseline Business v1.0 menunggu seluruh dokumen `01-business/` selesai.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini menjelaskan bagaimana website portofolio **rezisaktiva** menciptakan dan menangkap nilai — sebagai **aset brand**, bukan bisnis SaaS atau toko jasa di situs.
 

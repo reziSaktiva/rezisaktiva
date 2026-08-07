@@ -1,6 +1,6 @@
 # Product Vision
 
-> Status: **Draft v0.1** — disepakati arah awal bersama Boss Rezi (2026-08-06). Baseline Business v1.0 menunggu seluruh dokumen `01-business/` selesai.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan visi dan arah jangka panjang website portofolio pribadi **rezisaktiva**.
 
@@ -123,5 +123,6 @@ Metrik detail (trafik, conversion, dll.) ditetapkan di `success-metrics.md`.
 * `problem-statement.md` — pendalaman masalah/kesempatan
 * `target-market.md` — pendalaman audiens
 * `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — keputusan material
+* `../../project-manager/decisions/ADR-009-business-baseline-v1-dual-north-star.md` — Business Baseline v1.0
 * `../../project-manager/PROJECT_STATE.md` — status project
 * `../../project-manager/DECISIONS.md` — indeks ADR
