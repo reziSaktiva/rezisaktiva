@@ -4,7 +4,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-001** — Isi Business Discovery (lanjut `competitor-analysis.md`)
+1. **T-001** — Isi Business Discovery (lanjut `pricing-strategy.md`)
 2. **T-002** — Isi Product Discovery (02-product)
 3. **T-003** — Isi User Discovery (03-user)
 

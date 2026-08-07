@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Business model growth B
+
+**Phase:** Phase 1 — Business Discovery
+**Summary:** Disepakati growth destination + magnet ringan (case/proses); tanpa revenue langsung di situs; soft inbound job/client.
+**Key Decision/Insight:** ADR-007; opsi B terkunci.
+**Impact:** Lanjut `pricing-strategy.md` (kemungkinan N/A untuk situs).
+
+## 2026-08-07 — Competitor analysis lens D
+
+**Phase:** Phase 1 — Business Discovery
+**Summary:** Disepakati hybrid: lima referensi bernama + pesaing kategori; prioritas pelajaran clarity → presence → craft. Draft `competitor-analysis.md` v0.1.
+**Key Decision/Insight:** ADR-006; opsi D terkunci.
+**Impact:** Lanjut `business-model.md` selaras ADR-002 / ADR-006.
+
 ## 2026-08-06 — Target market ICP
 
 **Phase:** Phase 1 — Business Discovery

@@ -16,6 +16,24 @@ Format entri:
 
 ---
 
+## 2026-08-07
+### Added
+- `product-discovery/01-business/business-model.md` draft v0.1 (brand + soft inbound; growth destination + magnet ringan)
+- `project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-007
+- T-001 subtask `business-model.md` dicentang; fokus lanjut `pricing-strategy.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya pricing-strategy
+
+## 2026-08-07
+### Added
+- `product-discovery/01-business/competitor-analysis.md` draft v0.1 (referensi bernama + pesaing kategori; prioritas clarity → presence → craft)
+- `project-manager/decisions/ADR-006-competitor-reference-lens-clarity-presence-craft.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-006
+- T-001 subtask `competitor-analysis.md` dicentang; fokus lanjut `business-model.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya business-model
+
 ## 2026-08-06
 ### Added
 - `product-discovery/01-business/target-market.md` draft v0.1 (ICP hybrid founder/PO setara; SEA; digital product/tech)
