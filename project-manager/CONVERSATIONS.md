@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Release + future roadmap (T-002.5 / T-002.6)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Rilis milestone R1 MVP Clarity → R2 Magnet ringan → R3 Presence/craft; future menampung writing/experiments/distribusi tanpa mengubah brand primer. Tanpa tanggal kalender spekulatif; tanpa ADR baru.
+**Key Decision/Insight:** Milestone-based; R2 = aktivasi magnet ADR-007 setelah R1 exit.
+**Impact:** Lanjut **T-002.7** `roles-permissions.md` (boleh N/A).
+
 ## 2026-08-07 — Feature priority MoSCoW (T-002.4)
 
 **Phase:** Phase 2 — Product Discovery (02-product)

@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Phase 2 — Product Discovery (02-product) · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-002.5 `release-roadmap.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-002.7 `roles-permissions.md` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -27,7 +27,7 @@
 | ---- | ----- |
 | Current Phase | Phase 2 — Product Discovery (02-product) |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | Business Baseline v1.0 (T-001 ✅); 02-product in progress (T-002.1–T-002.4 ✅, ADR-010 Hybrid lean) |
+| Overall Progress | Business Baseline v1.0 (T-001 ✅); 02-product in progress (T-002.1–T-002.6 ✅, ADR-010 Hybrid lean) |
 | Project Status | Collaborative discovery in progress |
 
 ---
@@ -35,7 +35,7 @@
 ## Current Focus
 
 * **01-business** = Baseline v1.0 (ADR-002, ADR-004–009); dual north star di `success-metrics.md`.
-* **02-product** draft awal: Hybrid lean (ADR-010); fokus sekarang **T-002.5** `release-roadmap.md`.
+* **02-product** draft: Hybrid lean + MoSCoW + roadmap R1–R3; fokus sekarang **T-002.7** `roles-permissions.md` (boleh N/A).
 
 ---
 
