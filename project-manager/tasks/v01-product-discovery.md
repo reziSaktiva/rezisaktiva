@@ -37,7 +37,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 - [x] **T-002.4** — `feature-priority.md`
 - [x] **T-002.5** — `release-roadmap.md`
 - [x] **T-002.6** — `future-roadmap.md`
-- [ ] **T-002.7** — `roles-permissions.md` (boleh N/A)
+- [x] **T-002.7** — `roles-permissions.md` (N/A — ADR-011)
 - [ ] **T-002.8** — Baseline Product v1.0 + ADR
 
 ---

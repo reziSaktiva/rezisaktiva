@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Roles & permissions N/A (T-002.7)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Disepakati `roles-permissions.md` N/A: tidak ada login/RBAC/area member; file tetap diisi sebagai jejak (pola ADR-008). ADR-011.
+**Key Decision/Insight:** Situs = read-only publik; authoring di luar permission in-app.
+**Impact:** Lanjut **T-002.8** Baseline Product v1.0 + ADR.
+
 ## 2026-08-07 — Release + future roadmap (T-002.5 / T-002.6)
 
 **Phase:** Phase 2 — Product Discovery (02-product)

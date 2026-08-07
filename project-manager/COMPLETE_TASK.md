@@ -18,6 +18,16 @@ Format entri:
 
 ## 2026-08-07
 ### Added
+- **T-002.7** — `roles-permissions.md` **N/A** (situs publik tanpa auth/RBAC)
+- **ADR-011** — Roles & permissions N/A; file tetap ada
+### Changed
+- Fokus → **T-002.8** Baseline Product v1.0 + ADR
+- `PROJECT_STATE.md` / `TASKS.md` / `DECISIONS.md` / `v01` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
 - **T-002.5** — `release-roadmap.md` Draft v0.1 (R1 Clarity → R2 Magnet → R3 Presence/craft)
 - **T-002.6** — `future-roadmap.md` Draft v0.1 (peluang M11/M12, distribusi, batas ekspansi)
 ### Changed

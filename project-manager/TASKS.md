@@ -4,7 +4,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-002.7** — `roles-permissions.md` (parent: T-002 Product Discovery; boleh N/A)
+1. **T-002.8** — Baseline Product v1.0 + ADR (parent: T-002 Product Discovery)
 2. **T-002** — Isi Product Discovery (02-product)
 3. **T-003** — Isi User Discovery (03-user)
 
