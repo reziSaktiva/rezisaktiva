@@ -1,6 +1,6 @@
 # MVP Definition
 
-> Status: **Draft v0.1** — arah **Hybrid lean (C)** disepakati Boss Rezi (2026-08-07); ADR-010. Belum Product Baseline (T-002.8).
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
@@ -102,8 +102,8 @@ MVP dianggap cukup jika:
 | Item | Status |
 | ---- | ------ |
 | Arah permukaan | **Hybrid lean (C)** — ADR-010 |
-| Draft MVP | **v0.1** (dokumen ini) |
-| Product Baseline | Belum (T-002.8) |
+| MVP definition | **Baseline v1.0** (dokumen ini) |
+| Product Baseline | **v1.0** — ADR-012 |
 | Case detail di MVP | Tidak (magnet bertahap) |
 
 ---
@@ -115,5 +115,6 @@ MVP dianggap cukup jika:
 * `feature-modules.md` — modul
 * `../01-business/success-metrics.md` — dual north star
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

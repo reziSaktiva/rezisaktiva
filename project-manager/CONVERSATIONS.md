@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Product Baseline v1.0 (T-002.8)
+
+**Phase:** Phase 2 → 3 — Product → User Discovery
+**Summary:** Seluruh `02-product/` dikunci Baseline v1.0: Hybrid lean, MoSCoW M1–M7 Must R1, roadmap R1→R2→R3, roles N/A.
+**Key Decision/Insight:** ADR-012; tidak ada fork baru — paket ADR-010/011 sudah cukup.
+**Impact:** Lanjut **T-003.1** isi `03-user/`.
+
 ## 2026-08-07 — Roles & permissions N/A (T-002.7)
 
 **Phase:** Phase 2 — Product Discovery (02-product)

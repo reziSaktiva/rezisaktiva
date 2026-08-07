@@ -1,6 +1,6 @@
 # Future Roadmap
 
-> Status: **Draft v0.1** — peluang jangka panjang di luar R1–R3 inti. Belum Product Baseline (T-002.8).
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mencatat **arah dan peluang** website portofolio **rezisaktiva** setelah kerangka clarity + magnet ringan berjalan — tanpa mengunci jadwal atau mengubah positioning inti.
 
@@ -94,7 +94,7 @@ Jika “tidak” pada 1–4 → discard atau tunda. Jika “ya” pada 6 → bua
 | Rilis inti terencana | R1–R3 di `release-roadmap.md` |
 | Future opportunities | Tercatat; belum dikomit ke nomor rilis |
 | Distribusi aktif / ship-in-public mesin | Ditunda (ADR-007) |
-| Product Baseline | Belum (T-002.8) |
+| Product Baseline | **v1.0** — ADR-012 |
 
 ---
 
@@ -127,5 +127,6 @@ Future roadmap dianggap cukup jika:
 * `../01-business/product-vision.md` — visi jangka panjang
 * `../01-business/business-model.md` — growth & prinsip
 * `../../project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
+* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
