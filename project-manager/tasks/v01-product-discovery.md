@@ -44,14 +44,14 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-003 — Isi User Discovery (03-user)
 
-* **Status:** ⏳ Pending
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/03-user/README.md`, baseline 01–02
 
 ### Subtasks
 
-- [ ] **T-003.1** — Semua dokumen di `03-user/`
-- [ ] **T-003.2** — Baseline User v1.0 + ADR
+- [x] **T-003.1** — Semua dokumen di `03-user/`
+- [x] **T-003.2** — Baseline User v1.0 + ADR (ADR-013)
 
 ---
 

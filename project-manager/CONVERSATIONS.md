@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — User Baseline v1.0 (T-003)
+
+**Phase:** Phase 3 → 4 — User → UX Planning
+**Summary:** T-003 selesai. Metode discovery: assumption-led + rencana riset ringan opsional (non-blocking). Journey: R1 Clarity primer + cabang sekunder tipis untuk hiring/klien. Dual persona primer setara tetap; tidak ada Must produk baru.
+**Key Decision/Insight:** ADR-013; insight I1–I7 (clarity first visit; satu brand dua penekanan; teaser vs case; soft path; i18n sebagai journey).
+**Impact:** `03-user/*`, ADR-013, PROJECT_STATE → Phase 4; fokus T-004.1.
+
 ## 2026-08-07 — Product Baseline v1.0 (T-002.8)
 
 **Phase:** Phase 2 → 3 — Product → User Discovery
