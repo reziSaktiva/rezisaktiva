@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-07 — Feature priority MoSCoW (T-002.4)
+
+**Phase:** Phase 2 — Product Discovery (02-product)
+**Summary:** Diisi `feature-priority.md`: Must = M1–M7; Should = poles clarity; Could = form/motion/early case; Won't MVP = M9–M12 + sales/CMS/blog berat. Selaras ADR-010 tanpa ADR baru.
+**Key Decision/Insight:** Magnet (M9/M10) tetap Won't untuk rilis MVP.
+**Impact:** Lanjut **T-002.5** `release-roadmap.md`.
+
 ## 2026-08-07 — MVP surface Hybrid lean (C)
 
 **Phase:** Phase 2 — Product Discovery (02-product)

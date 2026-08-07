@@ -18,6 +18,15 @@ Format entri:
 
 ## 2026-08-07
 ### Added
+- **T-002.4** — `feature-priority.md` Draft v0.1 (MoSCoW M1–M12 untuk rilis MVP)
+### Changed
+- Fokus → **T-002.5** `release-roadmap.md`
+- `PROJECT_STATE.md` / `TASKS.md` / `v01` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
 - **T-002.1** — `product-scope.md` Draft v0.1 (Hybrid lean)
 - **T-002.2** — `mvp-definition.md` Draft v0.1
 - **T-002.3** — `feature-modules.md` Draft v0.1 (M1–M12)

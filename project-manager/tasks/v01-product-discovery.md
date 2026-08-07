@@ -34,7 +34,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 - [x] **T-002.1** — `product-scope.md`
 - [x] **T-002.2** — `mvp-definition.md`
 - [x] **T-002.3** — `feature-modules.md`
-- [ ] **T-002.4** — `feature-priority.md`
+- [x] **T-002.4** — `feature-priority.md`
 - [ ] **T-002.5** — `release-roadmap.md`
 - [ ] **T-002.6** — `future-roadmap.md`
 - [ ] **T-002.7** — `roles-permissions.md` (boleh N/A)
