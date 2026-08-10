@@ -16,6 +16,23 @@ Format entri:
 
 ---
 
+## 2026-08-10
+### Changed
+- `04-ux/information-architecture.md` — Site Map memakai notasi param `/[id/en]/...` (setara path prefix; bukan query)
+
+---
+
+## 2026-08-10
+### Added
+- **T-004.1** — Seluruh dokumen `04-ux/` Baseline v1.0 (ux-principles → key-screen-patterns)
+- **T-004.2** / **ADR-014** — UX Baseline v1.0 (path locale `/id`/`/en` + geo default + switcher; Contact Email primer; LinkedIn/GitHub satelit; tanpa WA/IG R1)
+### Changed
+- T-004 ✅ Done; Fokus → **T-005.1** isi `05-architecture/`
+- `PROJECT_STATE.md` → Phase 5 — Architecture (05-architecture)
+- `TASKS.md` / `tasks/v01-product-discovery.md` / `DECISIONS.md`
+
+---
+
 ## 2026-08-07
 ### Fixed
 - **T-003** review: PP9 → Should (tipis); social jobs `S1–S3` → `SJ1–SJ3`; prioritas segmen `Pri-0/1/2`; I3 case → Later (R2 magnet)

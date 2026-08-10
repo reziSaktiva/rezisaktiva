@@ -4,9 +4,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-004.1** — Isi dokumen `04-ux/` (parent: T-004 UX Planning)
-2. **T-004** — Isi UX Planning (04-ux)
-3. **T-004.2** — Baseline UX v1.0 + ADR
+1. **T-005.1** — Isi dokumen `05-architecture/` (parent: T-005 Architecture)
+2. **T-005** — Isi Architecture (05-architecture)
+3. **T-005.2** — Baseline Architecture v1.0 + ADR
 
 ## Indeks release
 
