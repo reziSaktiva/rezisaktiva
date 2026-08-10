@@ -1,54 +1,109 @@
 # UX Principles
 
-> Status: **Draft / TBD** — akan diisi bersama selama Product Discovery.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-10). Perubahan material setelah ini memerlukan ADR baru.
 
-Dokumen ini adalah template kosong untuk website portofolio pribadi **rezisaktiva**.
+Dokumen ini menetapkan prinsip UX website portofolio pribadi **rezisaktiva**.
 
 ---
 
 # Overview
 
-TBD
+UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** — bukan katalog karya, bukan funnel penjualan. Prinsip di bawah mengikat IA, flows, navigasi, dan pola layar.
 
 ---
 
 # Purpose
 
-TBD
+* Menjadi filter keputusan UX sebelum visual/token (06) dan implementasi
+* Menjaga selaras ADR-002, ADR-010–013
+* Mencegah anti-pattern: stack-list Home, hard sell, dual brand, over-chrome
 
 ---
 
 # Core Principles
 
-TBD
+| ID | Prinsip | Implikasi |
+| -- | ------- | --------- |
+| **UX1** | **Clarity first** | First viewport menjawab “siapa & untuk siapa”; tidak menunda positioning ke bawah fold |
+| **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About/teaser, bukan mode Home terpisah |
+| **UX3** | **Lean surface** | Hanya Home / About / Contact (+ teaser di Home); jangan menambah halaman untuk “melayani” hiring |
+| **UX4** | **Presence tanpa katalog** | Teaser 1–3 item cukup untuk trust R1; case detail = Later R2 |
+| **UX5** | **Soft path** | Contact first-class; Email primer; LinkedIn & GitHub satelit; tanpa harga, form wajib, WA/IG di R1 |
+| **UX6** | **Bahasa adalah journey** | Geo-default + path prefix `/id` & `/en` + switcher selalu ada; makna ID/EN setara |
+| **UX7** | **Kurasi > kelengkapan** | Lebih baik sedikit bukti tajam daripada meniru layout GitHub |
 
 ---
 
 # Content Principles
 
-TBD
+1. **Hierarchy pesan:** product builder → fullstack sebagai bukti → AI sebagai edge jujur.
+2. **Salinan singkat:** cukup untuk evaluasi cepat; About memperdalam, bukan essay panjang.
+3. **Teaser actionable:** nama + peran/outcome + tautan bukti eksternal bila ada; bukan stub kosong.
+4. **Contact tenang:** ajakan soft + konteks kapan relevan; ekspektasi = percakapan, bukan checkout.
+5. **Availability (Should):** satu kalimat soft opsional; jangan hard “hire me now”.
+6. **Secondary tipis:** hiring/klien menemukan sinyal di permukaan yang sama — tanpa job board / pricing.
 
 ---
 
 # Interaction Principles
 
-TBD
+1. **Navigasi + switcher selalu terlihat** di desktop dan mobile R1 (jangan hamburger); Contact tidak dikubur.
+2. **Switcher bahasa** mengganti locale dengan URL path yang shareable; preferensi user (setelah switch) hanya memengaruhi redirect `/` / URL tanpa locale — tidak menulis ulang path `/id/...` atau `/en/...` yang dibuka langsung.
+3. **Primary CTA di Contact** = mulai email; satelit tidak bersaing visual dengan Email.
+4. **Tidak ada dead end:** dari Home selalu ada jalur jelas ke About dan Contact.
+5. **Share hygiene:** meta & URL locale stabil agar SC6 (share ke tim) berhasil.
+6. **Gerakan (Could):** hanya jika memperkuat hierarchy; jangan mengorbankan clarity.
 
 ---
 
 # Accessibility Principles
 
-TBD
+1. Hierarki heading logis per halaman.
+2. Kontras teks/latar wajar; fokus keyboard terlihat pada nav, switcher, tautan Contact.
+3. Target sentuh memadai di mobile (nav & switcher).
+4. Teks tautan deskriptif (hindari “klik di sini”); Email/mailto dapat diakses keyboard.
+5. Bahasa dokumen (`lang`) mengikuti locale aktif (`id` / `en`).
+
+Detail token/visual final tetap di fase Engineering / design execution — bukan di dokumen ini.
 
 ---
 
 # Success Criteria
 
-TBD
+* Reviewer ICP paham positioning dari first viewport Home (selaras I1, NS-1).
+* Soft CTA Email jelas; satelit LinkedIn/GitHub tidak mengaburkan primer.
+* Switcher + path locale memungkinkan lanjut evaluasi tanpa bounce bahasa (J7, SC3).
+* Tidak ada permukaan terpisah untuk P3/P4; tidak ada WA/IG sebagai CTA Contact R1.
+* Prinsip ini cukup menjadi acceptance untuk IA, flows, nav, dan key screens.
 
+---
+
+# Decision Rules
+
+* Menambah halaman Work/case ke R1 → bertentangan ADR-010; butuh ADR baru.
+* Mengangkat form/calendar/WA/IG ke Must Contact → keputusan Boss Rezi + ADR bila material.
+* Mengubah skema bahasa dari path prefix → ADR baru.
+* Perubahan material prinsip setelah Baseline UX → ADR baru.
+
+---
+
+# Current Status
+
+| Item | Status |
+| ---- | ------ |
+| UX Principles | **Baseline v1.0** (dokumen ini) |
+| UX Baseline | **v1.0** — ADR-014 |
+
+---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — keputusan (ADR)
+* `README.md`
+* `information-architecture.md`
+* `user-flows.md`
+* `navigation-patterns.md`
+* `key-screen-patterns.md`
+* `../03-user/insights.md`
+* `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/PROJECT_STATE.md`
+* `../../project-manager/DECISIONS.md`

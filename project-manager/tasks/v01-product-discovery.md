@@ -57,14 +57,14 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-004 — Isi UX Planning (04-ux)
 
-* **Status:** ⏳ Pending
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/04-ux/README.md`, baseline 01–03
 
 ### Subtasks
 
-- [ ] **T-004.1** — Semua dokumen di `04-ux/`
-- [ ] **T-004.2** — Baseline UX v1.0 + ADR
+- [x] **T-004.1** — Semua dokumen di `04-ux/`
+- [x] **T-004.2** — Baseline UX v1.0 + ADR (ADR-014)
 
 ---
 

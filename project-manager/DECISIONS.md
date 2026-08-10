@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-014 | UX Baseline v1.0: kunci `04-ux/` (path locale + Contact soft Email primer) | Accepted | 2026-08-10 | Kunci 04-ux; `/id`/`/en`; Email primer; LinkedIn/GitHub satelit | [ADR-014](decisions/ADR-014-ux-baseline-v1.md) |
 | ADR-013 | User Baseline v1.0: kunci `03-user/` (assumption-led + R1 primer & sekunder tipis) | Accepted | 2026-08-07 | Kunci 03-user; metode B; journey R1+sekunder tipis | [ADR-013](decisions/ADR-013-user-baseline-v1.md) |
 | ADR-012 | Product Baseline v1.0: kunci `02-product/` (Hybrid lean + MoSCoW + R1–R3) | Accepted | 2026-08-07 | Kunci 02-product; surface Hybrid lean; roles N/A | [ADR-012](decisions/ADR-012-product-baseline-v1.md) |
 | ADR-011 | Roles & permissions: N/A untuk situs portofolio publik (file tetap ada) | Accepted | 2026-08-07 | Tidak ada RBAC/auth in-app; jejak N/A eksplisit | [ADR-011](decisions/ADR-011-roles-permissions-na-for-portfolio-site.md) |

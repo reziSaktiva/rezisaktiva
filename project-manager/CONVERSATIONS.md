@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-10 — UX Baseline v1.0 (T-004)
+
+**Phase:** Phase 4 → 5 — UX → Architecture
+**Summary:** T-004 selesai. `04-ux/` dikunci: prinsip UX1–UX7, IA Hybrid lean + path `/id`/`/en`, flows F1–F6 (+ F7 Later), nav lean, pola layar S0–S3. Soft CTA: Email primer; LinkedIn/GitHub satelit; tanpa WA/IG di R1.
+**Key Decision/Insight:** ADR-014; locale path prefix shareable; Contact lean opsi A.
+**Impact:** `04-ux/*`, ADR-014, PROJECT_STATE → Phase 5; fokus T-005.1.
+
 ## 2026-08-07 — User Baseline v1.0 (T-003)
 
 **Phase:** Phase 3 → 4 — User → UX Planning
