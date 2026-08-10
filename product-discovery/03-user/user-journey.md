@@ -72,7 +72,7 @@ Tanpa situs milik sendiri (hari ini):
 | ----- | ----------------- | ------- | ---- |
 | **Arrive** | Positioning langsung terbaca | Home (above fold) | J1 |
 | **Orient** | Paham product builder → fullstack → AI edge jujur | Home | J1, E2 |
-| **Evidence** | 1–3 teaser outcome; opsi ke About | Home teaser / About | J2, J4 |
+| **Evidence** | Credibility line (1 klaim non-kartu) + 1–3 work teaser; opsi ke About | Home | J2, J4 |
 | **Deepen** (opsional) | Narasi & cara kerja | About | J4, E4 |
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |
@@ -111,7 +111,7 @@ Titik kritis: **Orient → Evidence**. Jika gagal di sini, Act jarang terjadi (N
 Peluang untuk UX (bukan spesifikasi UI):
 
 1. **First-screen clarity** — jawaban “siapa & untuk siapa” tanpa scroll panjang
-2. **Bukti proporsional** — teaser outcome mengalahkan list stack
+2. **Bukti proporsional** — credibility line + teaser outcome mengalahkan list stack; kedua blok tidak boleh menduplikasi isi
 3. **About sebagai risk-reducer** — terutama untuk P2
 4. **Contact sebagai soft landing** — kurangi awkward; jangan sales desk
 5. **Secondary signals without rebrand** — P3 dapat sinyal tanpa mengubah Home jadi CV

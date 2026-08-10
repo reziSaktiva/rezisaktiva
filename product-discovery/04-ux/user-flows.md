@@ -40,7 +40,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. Masuk via URL (locale default atau link ber-locale)
 2. **Home** — baca first viewport (positioning)
-3. Skim bukti ringkas + **work teaser** (1–3)
+3. Skim **credibility line** (1 klaim non-kartu) + **work teaser** (1–3 kartu karya)
 4. Opsional: buka **About** bila butuh narasi
 5. Buka **Contact** → kirim Email **atau** simpan URL / lanjut satelit bila perlu
 6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan

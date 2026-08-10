@@ -54,27 +54,23 @@ Topik berikut tidak dibahas di sini:
 
 # Expected Output
 
-**User Baseline v1.0 sudah ditetapkan** (ADR-013, 2026-08-07). Seluruh dokumen di folder ini terisi dan disepakati.
+Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
 
-Metode: assumption-led + rencana riset ringan opsional. Journey: R1 primer + sekunder tipis (hiring / klien).
-
-Langkah berikutnya: lanjut **Phase 4 — UX Planning** di `../04-ux/`. Status fase aktif ada di `PROJECT_STATE.md`.
+Metode acuan fase: assumption-led + rencana riset ringan opsional; journey R1 primer + sekunder tipis (hiring / klien). Keputusan terkunci tercatat di ADR (lihat `DECISIONS.md`); status fase aktif di `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
-
 * Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material tercatat di `DECISIONS.md` (ADR-013; selaras ADR-002, 004, 005, 009, 010–012).
+* Keputusan material tercatat di `DECISIONS.md` bila diperlukan.
 * Boss Rezi menyetujui baseline fase ini.
 
 ---
 
 # Decision Rules
 
-* Fase User selesai — lanjut isi `04-ux/` sesuai Workflow Product Discovery.
+* Jangan mengisi fase berikutnya sebelum exit criteria fase ini terpenuhi (kecuali eksplisit diminta).
 * Perubahan material pada baseline user → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 
