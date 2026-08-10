@@ -46,7 +46,7 @@ Setiap skenario memuat: ID, persona, trigger, langkah ringkas, job terkait, hasi
 ### SC1 — Founder menilai fit cepat (P1, primer)
 
 * **Trigger:** Dapat link rezisaktiva dari peer / bio / chat
-* **Langkah:** Buka Home → baca positioning & teaser → skim About bila perlu → Contact (email/LinkedIn)
+* **Langkah:** Buka Home → baca positioning & teaser → skim About bila perlu → Contact (**Email primer**; LinkedIn/GitHub satelit bila perlu)
 * **Jobs:** J1, J2, J3
 * **Sukses:** Bisa bilang “Rezi = product builder…”; outreach soft terkirim atau URL disimpan
 * **Failure:** Home terasa tech-stack list; tidak ada jalur kontak jelas
@@ -54,7 +54,7 @@ Setiap skenario memuat: ID, persona, trigger, langkah ringkas, job terkait, hasi
 ### SC2 — PO evaluasi kolaborasi (P2, primer)
 
 * **Trigger:** Cari builder untuk inisiatif roadmap; buka situs dari referral/search
-* **Langkah:** Home clarity → About (cara berpikir/kolaborasi) → teaser outcome → Contact
+* **Langkah:** Home clarity → About (cara berpikir/kolaborasi) → teaser outcome → Contact (**Email primer**)
 * **Jobs:** J1, J2, J4, J3
 * **Sukses:** Cukup sinyal profesional + product thinking; soft outreach
 * **Failure:** Tone terlalu indie kosong; About tidak menambah kepercayaan
@@ -78,7 +78,7 @@ Setiap skenario memuat: ID, persona, trigger, langkah ringkas, job terkait, hasi
 ### SC5 — Calon klien soft outreach (P4, sekunder tipis)
 
 * **Trigger:** Butuh bantuan project terbatas; evaluasi cepat
-* **Langkah:** Home/teaser → Contact (tanpa cari harga)
+* **Langkah:** Home/teaser → Contact (**Email primer**, tanpa cari harga)
 * **Jobs:** J3, J2
 * **Sukses:** Outreach terkirim; ekspektasi: diskusi dulu, bukan checkout
 * **Failure:** Mencari pricing page dan frustrasi — diterima sebagai non-goal (ADR-008); salinan Contact harus mengarahkan ke percakapan

@@ -50,10 +50,12 @@ Contoh konkret: `/id/`, `/id/about`, `/en/contact`.
 ### Home (urutan konten)
 
 1. **Hero / first viewport** — positioning product builder (+ sinyal fullstack & AI edge)
-2. **Bukti ringkas** — highlight pengalaman/outcome singkat
-3. **Work teaser** — 1–3 item kurasi
+2. **Credibility line (bukti non-kartu)** — **satu** klaim singkat pengalaman/outcome (bukan grid, bukan list stack). Contoh bentuk: “~6 tahun fullstack · shipped produk live” — mendukung hero, **bukan** menggantikan teaser
+3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome · tautan bukti opsional. Ini **satu-satunya** blok karya di Home; jangan duplikasi isi credibility line sebagai daftar project
 4. **Arah soft** — ke About dan/atau Contact
 5. **Availability line** (Should, opsional)
+
+**Aturan beda blok:** credibility line = sinyal kredibel 1 baris; work teaser = bukti karya terkurasi. Anti-pattern: dua blok yang sama-sama menumpuk tech stack / highlight identik.
 
 ### About
 
@@ -109,13 +111,39 @@ Berlaku untuk memilih locale saat **masuk tanpa locale di URL** (terutama redire
 
 ---
 
+# Share & Meta Hygiene (R1 acceptance)
+
+Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Engineering:
+
+1. Setiap halaman R1 (`Home`, `About`, `Contact`) punya **title** dan **meta description** unik per locale (`id` / `en`), makna setara
+2. **Open Graph** dasar (title, description, url kanonis ber-locale) agar URL layak dishare ke chat/tim
+3. URL yang dishare **ber-locale** (contoh `/id/about`); bare `/` hanya entry redirect — bukan URL share yang dianjurkan
+4. Canonical per locale; jangan mengandalkan cookie untuk menentukan bahasa halaman yang dibuka via link langsung
+5. Detail tool (generator meta, sitemap) → Engineering; kontrak di atas wajib terpenuhi di R1
+
+---
+
+# Content readiness (jangan ship kosong)
+
+Sebelum R1 dianggap siap live:
+
+1. **Home** — hero positioning terisi; **minimal 1** work teaser kartu (ideal 1–3); credibility line boleh singkat tapi tidak boleh diganti list stack
+2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
+3. **About** — narasi product builder minimal ada (bukan placeholder Lorem)
+4. Jangan ship Home tanpa teaser **atau** Contact tanpa Email — keduanya menutup J2/J3
+5. Tautan satelit/teaser eksternal yang mati → jangan ditampilkan (sembunyikan item) sampai URL diperbaiki
+
+---
+
 # Success Criteria
 
 * Site map hanya tiga destinasi konten R1 + locale mirror
-* Hierarki Home memenangkan clarity di first viewport
+* Hierarki Home memenangkan clarity di first viewport; credibility line ≠ work teaser
 * Contact Email = primer; LinkedIn/GitHub satelit; tanpa WA/IG
 * Path prefix shareable dan konsisten untuk kedua bahasa
+* Meta/share acceptance di atas terpenuhi (title/description/OG per locale)
 * Tidak ada IA terpisah untuk P3/P4
+* Content readiness: tidak ship tanpa teaser Home + Email Contact
 
 ---
 
@@ -134,6 +162,8 @@ Berlaku untuk memilih locale saat **masuk tanpa locale di URL** (terutama redire
 | Information Architecture | **Baseline v1.0** (dokumen ini) |
 | Locale URL | Path prefix `/id` & `/en` |
 | Soft CTA Contact | Email primer; LinkedIn/GitHub satelit; tanpa WA/IG |
+| Home evidence | Credibility line (non-kartu) ≠ work teaser (kartu) |
+| Meta / content readiness | Acceptance R1 di dokumen ini |
 
 ---
 

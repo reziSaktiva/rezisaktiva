@@ -38,7 +38,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 1. **Hierarchy pesan:** product builder → fullstack sebagai bukti → AI sebagai edge jujur.
 2. **Salinan singkat:** cukup untuk evaluasi cepat; About memperdalam, bukan essay panjang.
-3. **Teaser actionable:** nama + peran/outcome + tautan bukti eksternal bila ada; bukan stub kosong.
+3. **Teaser actionable:** nama + peran/outcome + tautan bukti eksternal bila ada; bukan stub kosong. Credibility line di Home = 1 klaim non-kartu — **bukan** daftar project kedua.
 4. **Contact tenang:** ajakan soft + konteks kapan relevan; ekspektasi = percakapan, bukan checkout.
 5. **Availability (Should):** satu kalimat soft opsional; jangan hard “hire me now”.
 6. **Secondary tipis:** hiring/klien menemukan sinyal di permukaan yang sama — tanpa job board / pricing.

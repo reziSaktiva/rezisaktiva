@@ -67,7 +67,7 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 | -- | -------------------- | ------- |
 | A1 Dual primer setara | Accepted (ADR-005) | Tetap; pantau tone bias di salinan |
 | A2 Clarity tanpa case penuh | Accepted untuk R1 | Validasi setelah teaser live; PP11 known |
-| A3 Soft CTA cukup | Provisional | Riset ringan / observasi inbound setelah R1 |
+| A3 Soft CTA cukup | Provisional (saluran dikunci) | **Email primer** (ADR-014); form/calendar tetap Could; validasi inbound setelah R1 |
 | A4 Secondary thin cukup | Accepted untuk fase ini | Jika hiring jadi sumber utama opportunity → ADR |
 | A5 Bilingual mengurangi alienasi | Accepted arah (ADR-002) | Detail deteksi geo di UX/Eng |
 | A6 Riset ringan pasca-baseline | Planned | 3–5 chat; tidak memblokir ADR-013 |
@@ -107,10 +107,10 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 | # | Pertanyaan | Kapan dijawab |
 | - | ---------- | ------------- |
 | OQ1 | Apakah teaser 1–3 item cukup tanpa case untuk P2 yang risk-averse? | Setelah draft/live + riset ringan |
-| OQ2 | Soft CTA mana yang paling natural (email vs LinkedIn vs keduanya)? | UX + preferensi Boss Rezi |
-| OQ3 | Seberapa agresif availability line tanpa terasa sales? | UX copy |
+| OQ2 | Soft CTA mana yang paling natural (email vs LinkedIn vs keduanya)? | **Closed (ADR-014)** — Email primer; LinkedIn & GitHub satelit; tanpa WA/IG di R1 |
+| OQ3 | Seberapa agresif availability line tanpa terasa sales? | UX copy / eksekusi konten |
 | OQ4 | Apakah hiring inbound cukup besar sehingga secondary path perlu diperkuat? | Observasi pasca-R1 |
-| OQ5 | Aturan default bahasa di edge cases (VPN, bahasa browser)? | UX + Engineering |
+| OQ5 | Aturan default bahasa di edge cases (VPN, bahasa browser)? | **Closed di lapisan UX** (IA Entry Points); detail deteksi geo → Engineering |
 
 ---
 

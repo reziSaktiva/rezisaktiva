@@ -52,6 +52,8 @@ Topik berikut tidak dibahas di sini:
 
 Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
 
+Acuan fase: prinsip UX1–UX7; IA Hybrid lean + path locale; flows F1–F6 (+ F7 Later); Contact Email primer. Keputusan terkunci tercatat di ADR (lihat `DECISIONS.md`); status fase aktif di `PROJECT_STATE.md`.
+
 ---
 
 # Exit Criteria

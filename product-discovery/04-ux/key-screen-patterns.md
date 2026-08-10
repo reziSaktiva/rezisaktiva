@@ -51,12 +51,14 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 
 **Di bawah fold / lanjut scroll:**
 
-4. Bukti ringkas (bukan daftar stack panjang)
-5. **Work teaser** — 1–3 kartu: nama · peran/outcome · tautan bukti opsional
+4. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
+5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome · tautan bukti opsional; **satu-satunya** blok karya di Home
 6. Penguat arah ke About / Contact
 7. Availability line (Should, opsional)
 
-**Anti-pattern:** hero yang hanya nama tanpa klaim; grid teaser berlebihan; dual CTA agresif (“Hire me” + pricing).
+**Bedakan blok:** credibility line ≠ teaser. Jangan isi keduanya dengan daftar project/stack yang sama.
+
+**Anti-pattern:** hero yang hanya nama tanpa klaim; grid teaser berlebihan; dual CTA agresif (“Hire me” + pricing); duplikasi credibility + teaser sebagai tech bingo.
 
 ---
 
@@ -84,7 +86,7 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 4. Availability line bila belum di Home
 5. Tanpa form, calendar, harga, WA, Instagram
 
-**Anti-pattern:** deretan ikon sosial setara Email; Contact hanya footer; hard sell.
+**Anti-pattern:** deretan ikon sosial setara Email; Contact hanya footer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi.
 
 ---
 
@@ -100,8 +102,10 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 # Success Criteria
 
 * S1 first viewport lulus uji “siapa & untuk siapa” tanpa scroll panjang
+* S1 membedakan credibility line (non-kartu) vs work teaser (kartu karya); tidak duplikasi tech bingo
 * S3 Email jelas sebagai primer; satelit terbatas LinkedIn + GitHub
 * S0 memungkinkan F3 (ganti bahasa) dari setiap screen
+* Meta/share & content readiness di `information-architecture.md` terpenuhi sebelum live
 * Pola cukup untuk handoff Architecture/Engineering tanpa wireframe wajib
 
 ---

@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-10 — Review ketat T-003 / T-004 (hygiene)
+
+**Phase:** Phase 5 — Architecture (docs User/UX)
+**Summary:** Review defect-first terhadap baseline User & UX. Diperbaiki: overlap bukti Home, OQ2/SC Contact selaras ADR-014, acceptance meta/share + content readiness, README fase tanpa living status.
+**Key Decision/Insight:** Tidak ada Must produk baru; klarifikasi credibility line ≠ work teaser; Email tetap primer.
+**Impact:** `03-user/*`, `04-ux/*`, COMPLETE_TASK; lanjut **T-005.1**.
+
 ## 2026-08-10 — UX Baseline v1.0 (T-004)
 
 **Phase:** Phase 4 → 5 — UX → Architecture

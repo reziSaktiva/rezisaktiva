@@ -18,6 +18,19 @@ Format entri:
 
 ## 2026-08-10
 ### Fixed
+- Review ketat T-003/T-004: bedakan Home **credibility line** (1 klaim non-kartu) vs **work teaser** (1–3 kartu karya) — IA, key screens, flows, journey
+- Tutup handoff User→UX: **OQ2** Closed (Email primer ADR-014); OQ5 Closed di lapisan UX; SC1/SC2/SC5 selaras Email primer
+- README `03-user/` & `04-ux/` — hapus living status / “lanjut Phase X”; arahkan ke PROJECT_STATE + DECISIONS
+### Added
+- IA: **Share & Meta Hygiene** (title/description/OG per locale) + **Content readiness** (jangan ship tanpa teaser Home + Email Contact)
+### Changed
+- `insights.md` assumption A3: saluran Contact dikunci Email primer; inbound tetap provisional
+- Fokus tetap **T-005.1** (tidak ada perubahan phase)
+
+---
+
+## 2026-08-10
+### Fixed
 - Review UX baseline: nav+switcher always-visible mobile R1 (hilangkan opsi hamburger yang bentrok acceptance ≤1 ketukan)
 - Preferensi locale hanya untuk redirect `/` — tidak rewrite URL `/id|en/...` eksplisit
 - Notasi route diseragamkan ke `/[id/en]/...` di IA, nav, key screens; ADR-014 diperjelas
