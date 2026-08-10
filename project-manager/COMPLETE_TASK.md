@@ -17,6 +17,14 @@ Format entri:
 ---
 
 ## 2026-08-10
+### Fixed
+- Review UX baseline: nav+switcher always-visible mobile R1 (hilangkan opsi hamburger yang bentrok acceptance ≤1 ketukan)
+- Preferensi locale hanya untuk redirect `/` — tidak rewrite URL `/id|en/...` eksplisit
+- Notasi route diseragamkan ke `/[id/en]/...` di IA, nav, key screens; ADR-014 diperjelas
+
+---
+
+## 2026-08-10
 ### Changed
 - `04-ux/information-architecture.md` — Site Map memakai notasi param `/[id/en]/...` (setara path prefix; bukan query)
 

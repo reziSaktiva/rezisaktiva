@@ -24,11 +24,11 @@ Navigasi R1 **lean dan selalu tersedia**: tiga destinasi konten + switcher bahas
 
 | Item | Target | Catatan |
 | ---- | ------ | ------- |
-| Brand / nama | `/{locale}/` (Home) | Selalu kembali ke Home locale aktif |
-| Home | `/{locale}/` | Boleh disembunyikan sebagai label jika brand = Home; tetap satu destinasi |
-| About | `/{locale}/about` | |
-| Contact | `/{locale}/contact` | Jangan dikubur hanya di footer |
-| Language switcher | Sibling path locale | Label jelas `ID` / `EN` (atau setara); satu ketukan |
+| Brand / nama | `/[id/en]/` (Home) | Selalu kembali ke Home locale aktif |
+| Home | `/[id/en]/` | Boleh disembunyikan sebagai label jika brand = Home; tetap satu destinasi |
+| About | `/[id/en]/about` | |
+| Contact | `/[id/en]/contact` | Jangan dikubur hanya di footer |
+| Language switcher | Sibling path locale | Label jelas `ID` / `EN` (atau setara); selalu terlihat; satu ketukan |
 
 **Penempatan:** header/sticky top pada desktop; pola yang sama di mobile (lihat bawah).
 
@@ -51,18 +51,18 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 # Language Switching Pattern
 
-1. User di `/{localeA}/{page}`
-2. Aktifkan switcher → navigasi ke `/{localeB}/{page}` (page yang sama)
+1. User di `/[id|en]/{page}` (path ber-locale)
+2. Aktifkan switcher → navigasi ke sibling `/[en|id]/{page}` (page yang sama)
 3. Jika page tidak ada di locale target (tidak diharapkan di R1) → fallback Home locale target
-4. Preferensi setelah switch disimpan (cookie/local — Eng) agar kunjungan berikutnya menghormati pilihan
+4. Preferensi setelah switch disimpan (cookie/local — Eng) dan **hanya** dipakai saat redirect `/` / URL tanpa locale — tidak rewrite URL ber-locale yang dibuka langsung
 5. Konten harus tersedia di kedua locale dengan **makna setara**
 
 ---
 
 # Mobile Considerations
 
-* Tiga link + switcher: **boleh selalu terlihat** (paling sederhana) atau di balik kontrol ringkas — asalkan Contact & switcher tidak lebih dari satu ketukan ekstra yang membingungkan.
-* Hindari hamburger yang menyembunyikan Contact di balik banyak item (item sedikit = jangan over-engineer).
+* R1 (hanya 3 destinasi + switcher): **primary nav dan switcher selalu terlihat** — sama dengan desktop; jangan taruh di balik hamburger/kontrol ringkas.
+* Alasan: item sedikit; hamburger menambah ketukan dan bertentangan dengan acceptance “≤ satu ketukan” serta “switcher selalu visible” di `key-screen-patterns.md`.
 * Footer satelit tetap ada; Email primer tetap di halaman Contact, bukan hanya ikon kecil di footer.
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
 
@@ -70,8 +70,8 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 # Success Criteria
 
-* Dari halaman mana pun, user mencapai Home / About / Contact ≤ satu ketukan nav
-* Switcher selalu ada dan memindahkan ke sibling path
+* Dari halaman mana pun (desktop & mobile), user mencapai Home / About / Contact **≤ satu ketukan** nav (tanpa buka menu dulu)
+* Switcher **selalu terlihat** di chrome dan memindahkan ke sibling path dalam satu ketukan
 * Footer tidak menggantikan peran Contact
 * Tidak ada item nav untuk permukaan non-R1
 

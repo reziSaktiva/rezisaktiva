@@ -75,15 +75,15 @@ Contoh konkret: `/id/`, `/id/about`, `/en/contact`.
 
 # Page Inventory
 
+Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (setara `/{locale}/` di dokumen nav/flows bila ditulis demikian).
+
 | Route (pola) | Nama | Modul | R1 |
 | ------------ | ---- | ----- | -- |
-| `/{locale}/` | Home | M1 + M4 | Must |
-| `/{locale}/about` | About | M2 | Must |
-| `/{locale}/contact` | Contact | M3 | Must |
+| `/[id/en]/` | Home | M1 + M4 | Must |
+| `/[id/en]/about` | About | M2 | Must |
+| `/[id/en]/contact` | Contact | M3 | Must |
 | Chrome global | Nav + switcher + footer | M5, M6 | Must |
-| `/{locale}/work` (+ detail) | Work / case | M9/M10 | Later R2 |
-
-`locale` ∈ `{ id, en }`.
+| `/[id/en]/work` (+ detail) | Work / case | M9/M10 | Later R2 |
 
 ---
 
@@ -91,19 +91,21 @@ Contoh konkret: `/id/`, `/id/about`, `/en/contact`.
 
 | Entry | Perilaku yang diharapkan |
 | ----- | ------------------------ |
-| URL bare domain | Redirect ke `/id/...` atau `/en/...` sesuai aturan default |
-| Link langsung `/id/about` atau `/en/contact` | Buka halaman itu; chrome + switcher siap |
+| URL bare domain `/` | Redirect ke `/id/...` atau `/en/...` sesuai aturan default di bawah |
+| Link langsung ber-locale (mis. `/id/about`, `/en/contact`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
 | Switcher | Pindah ke path sibling locale yang sama (Home↔Home, About↔About, dst.) |
 | Share URL | Prefer URL ber-locale agar penerima melihat bahasa yang sama (SC6) |
 | Satelit GitHub/LinkedIn (keluar) | Boleh; Contact & Home tetap destination utama |
 
 ### Aturan default bahasa (UX)
 
+Berlaku untuk memilih locale saat **masuk tanpa locale di URL** (terutama redirect dari `/`). **Tidak** menimpa path yang sudah berisi `/id/` atau `/en/`.
+
 1. **Geo Indonesia** → default `id`
 2. **Geo luar Indonesia** → default `en`
 3. **Geo tidak diketahui / gagal deteksi** → fallback `Accept-Language` browser; jika tidak ada sinyal ID → `en`
-4. **Setelah user memakai switcher** → hormati preferensi itu (cookie/local; detail Eng) di kunjungan berikutnya
-5. **VPN / edge case** — switcher selalu memperbaiki salah default dalam satu ketukan (OQ5 diterima di lapisan UX)
+4. **Setelah user memakai switcher** → simpan preferensi (cookie/local; detail Eng); pada kunjungan berikutnya ke `/` (atau URL tanpa locale), hormati preferensi itu **di atas** geo/browser
+5. **VPN / edge case** — switcher selalu memperbaiki salah default dalam satu ketukan (OQ5 diterima di lapisan UX); URL eksplisit tetap dihormati
 
 ---
 

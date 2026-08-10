@@ -17,9 +17,9 @@ Accepted
 1. **UX Baseline v1.0 ditetapkan** untuk seluruh dokumen di `product-discovery/04-ux/`.
 2. Paket yang terkunci bersama baseline ini:
    - **Prinsip** = UX1–UX7 di `ux-principles.md` (clarity first; lean surface; soft path; bahasa sebagai journey)
-   - **IA** = tiga halaman R1 (Home / About / Contact) + work teaser di Home; **locale path prefix** `/id/...` dan `/en/...`; geo default (ID di Indonesia, EN di luar) + fallback browser language + switcher selalu ada; preferensi setelah switch dihormati
+   - **IA** = tiga halaman R1 (Home / About / Contact) + work teaser di Home; **locale path prefix** `/[id/en]/...`; geo default (ID di Indonesia, EN di luar) + fallback browser language + switcher selalu ada; preferensi setelah switch **hanya** untuk redirect `/` / URL tanpa locale (tidak rewrite path ber-locale)
    - **Flows** = F1–F3, F6 primer; F4–F5 sekunder tipis; F7 case = Later R2
-   - **Navigasi** = chrome lean Home · About · Contact + switcher; footer satelit bukan pengganti Contact
+   - **Navigasi** = chrome lean Home · About · Contact + switcher **selalu terlihat** (desktop & mobile R1; tanpa hamburger); footer satelit bukan pengganti Contact
    - **Key screens** = pola blok S0–S3 (bukan token visual final)
    - **Soft CTA Contact** = **Email primer**; **LinkedIn & GitHub** satelit; **tanpa** WA / Instagram / form / calendar di R1
 3. Tidak ada perubahan Must terhadap Product Baseline (ADR-010–012) atau User Baseline (ADR-013); keputusan URL bahasa mengisi celah yang ditunda di ADR-002.

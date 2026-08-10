@@ -47,8 +47,8 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** â€
 
 # Interaction Principles
 
-1. **Navigasi selalu terlihat** pada desktop; mobile tetap akses 3 destinasi + switcher tanpa mengubur Contact.
-2. **Switcher bahasa** mengganti locale dengan URL path yang shareable; preferensi user (setelah switch) dihormati di sesi berikutnya bila memungkinkan (detail Eng).
+1. **Navigasi + switcher selalu terlihat** di desktop dan mobile R1 (jangan hamburger); Contact tidak dikubur.
+2. **Switcher bahasa** mengganti locale dengan URL path yang shareable; preferensi user (setelah switch) hanya memengaruhi redirect `/` / URL tanpa locale â€” tidak menulis ulang path `/id/...` atau `/en/...` yang dibuka langsung.
 3. **Primary CTA di Contact** = mulai email; satelit tidak bersaing visual dengan Email.
 4. **Tidak ada dead end:** dari Home selalu ada jalur jelas ke About dan Contact.
 5. **Share hygiene:** meta & URL locale stabil agar SC6 (share ke tim) berhasil.

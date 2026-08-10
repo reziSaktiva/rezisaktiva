@@ -25,9 +25,9 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 | Screen | Route | Jobs utama |
 | ------ | ----- | ---------- |
 | S0 Chrome | Global | J7, navigasi F1–F6 |
-| S1 Home | `/{locale}/` | J1, J2, (J7) |
-| S2 About | `/{locale}/about` | J4, E4 |
-| S3 Contact | `/{locale}/contact` | J3 |
+| S1 Home | `/[id/en]/` | J1, J2, (J7) |
+| S2 About | `/[id/en]/about` | J4, E4 |
+| S3 Contact | `/[id/en]/contact` | J3 |
 
 ---
 
@@ -37,7 +37,7 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 
 **Blok:** brand · primary nav · language switcher · (opsional) availability tipis di header/footer.
 
-**Aturan:** Contact selalu reachable; switcher selalu visible; footer memuat LinkedIn & GitHub sebagai satelit, bukan WA/IG.
+**Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible** di desktop dan mobile R1 (bukan di balik menu); footer memuat LinkedIn & GitHub sebagai satelit, bukan WA/IG.
 
 ---
 
