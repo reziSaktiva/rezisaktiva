@@ -4,14 +4,15 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. Susun backlog **Repository & Bootstrap** (release berikutnya) sesuai Engineering Baseline ADR-016
-2. Scaffold Next.js single-app + pnpm + Vercel sesuai `06-engineering/`
+1. Eksekusi **T-008.1** — Init Next.js App Router + TypeScript (`strict`) + pnpm di root
+2. Lanjut T-008.2 … T-012 sesuai `tasks/v02-bootstrap.md`
 
 ## Indeks release
 
 | Release | File | Tasks | Status |
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
+| v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ⏳ Todo |
 
 ## Aturan
 
@@ -25,3 +26,4 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 * `PROJECT_STATE.md`
 * `tasks/v01-product-discovery.md`
+* `tasks/v02-bootstrap.md`
