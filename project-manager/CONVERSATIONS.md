@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-11 — Architecture Baseline v1.0 (T-005)
+
+**Phase:** Phase 5 → 6 — Architecture → Engineering Planning
+**Summary:** T-005 selesai. Bentuk sistem dikunci **static-first SSG + konten di repo** (opsi A). Domain lean; application + integration tipis; DB/jobs/realtime/auth = N/A sadar.
+**Key Decision/Insight:** ADR-015; SSR default & headless CMS ditolak untuk R1.
+**Impact:** `05-architecture/*`, ADR-015, PROJECT_STATE → Phase 6; fokus **T-006.1**.
+
 ## 2026-08-10 — Review ketat T-003 / T-004 (hygiene)
 
 **Phase:** Phase 5 — Architecture (docs User/UX)
