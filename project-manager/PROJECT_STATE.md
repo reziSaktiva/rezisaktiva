@@ -4,9 +4,9 @@
 
 * **Phase / Milestone:** Repository & Bootstrap · acuan Engineering Baseline (ADR-016)
 * **Active Mode:** Repository & Bootstrap — scaffold app sesuai baseline; belum Development fitur penuh
-* **Top Next Tasks:** Susun backlog Bootstrap + scaffold Next — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** Eksekusi **T-008.1** (init Next.js + pnpm) — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done); release Bootstrap belum dibuat
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (⏳ Todo, T-008…T-012)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -27,16 +27,17 @@
 | ---- | ----- |
 | Current Phase | Repository & Bootstrap |
 | Current Milestone | Scaffold app sesuai Engineering Baseline |
-| Overall Progress | Product Discovery T-001–T-007 ✅; siap Bootstrap |
-| Project Status | Discovery complete — bootstrap pending |
+| Overall Progress | Product Discovery T-001–T-007 ✅; backlog Bootstrap (T-008…T-012) siap eksekusi |
+| Project Status | Discovery complete — bootstrap in progress (fokus T-008.1) |
 
 ---
 
 ## Current Focus
 
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
+* Backlog Bootstrap **sudah disusun** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-016.
-* Berikutnya: backlog Bootstrap + scaffold Next single-app (pnpm, Vercel, ESLint/Prettier, Tailwind tokens) sesuai ADR-016.
+* Berikutnya: eksekusi **T-008.1** — init Next single-app + pnpm, lanjut T-008.2 … T-012.
 
 ---
 

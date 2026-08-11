@@ -17,6 +17,15 @@ Format entri:
 ---
 
 ## 2026-08-11
+### Added
+- `project-manager/tasks/v02-bootstrap.md` — backlog release Bootstrap (T-008…T-012 + subtasks, mengikuti Engineering Baseline ADR-016)
+### Changed
+- `TASKS.md` — indeks release v0.2 Bootstrap; Fokus → **T-008.1**
+- `PROJECT_STATE.md` — Snapshot/Fokus: backlog Bootstrap sudah ada, next = eksekusi T-008.1
+
+---
+
+## 2026-08-11
 ### Fixed
 - Review PR #10: Decision Rules `03–05` arahkan ke `PROJECT_STATE.md` (bukan “lanjut isi” discovery)
 - Review PR #10: Exit Criteria root `product-discovery/README.md` kembali definisi (tanpa stamp status T-007)
