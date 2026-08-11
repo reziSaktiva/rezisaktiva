@@ -70,14 +70,20 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-005 — Isi Architecture (05-architecture)
 
-* **Status:** ⏳ Pending
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/05-architecture/README.md`, baseline 01–04
 
 ### Subtasks
 
-- [ ] **T-005.1** — Semua dokumen di `05-architecture/` (N/A diizinkan jika tidak relevan)
-- [ ] **T-005.2** — Baseline Architecture v1.0 + ADR
+- [x] **T-005.1** — `domain-model.md` (lean content model; DDD N/A)
+- [x] **T-005.2** — `database-strategy.md` (N/A — konten di repo)
+- [x] **T-005.3** — `application-layer.md` (static-first SSG)
+- [x] **T-005.4** — `integration-layer.md` (mailto + satelit + locale redirect)
+- [x] **T-005.5** — `background-jobs.md` (N/A)
+- [x] **T-005.6** — `realtime-strategy.md` (N/A)
+- [x] **T-005.7** — `auth-architecture.md` (N/A — ADR-011)
+- [x] **T-005.8** — Baseline Architecture v1.0 + ADR (ADR-015)
 
 ---
 
@@ -89,8 +95,16 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ### Subtasks
 
-- [ ] **T-006.1** — Semua dokumen di `06-engineering/`
-- [ ] **T-006.2** — Baseline Engineering v1.0 + ADR
+- [ ] **T-006.1** — `monorepo-setup.md`
+- [ ] **T-006.2** — `deployment-infrastructure.md`
+- [ ] **T-006.3** — `auth-strategy.md`
+- [ ] **T-006.4** — `database-orm.md`
+- [ ] **T-006.5** — `cicd-pipeline.md`
+- [ ] **T-006.6** — `environment-management.md`
+- [ ] **T-006.7** — `dx-tooling.md`
+- [ ] **T-006.8** — `dependency-strategy.md`
+- [ ] **T-006.9** — `design-tokens.md`
+- [ ] **T-006.10** — Baseline Engineering v1.0 + ADR
 
 ---
 

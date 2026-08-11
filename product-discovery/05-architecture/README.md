@@ -53,6 +53,8 @@ Topik berikut tidak dibahas di sini:
 
 Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
 
+Acuan fase: **static-first SSG + konten di repo**; lean content model; DB/jobs/realtime/auth = N/A sadar. Keputusan terkunci tercatat di ADR (lihat `DECISIONS.md`); status fase aktif di `PROJECT_STATE.md`.
+
 ---
 
 # Exit Criteria

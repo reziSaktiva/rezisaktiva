@@ -16,6 +16,38 @@ Format entri:
 
 ---
 
+## 2026-08-11
+### Fixed
+- PR #7 review: Entry Points `application-layer.md` selaras path locale ADR-014 (`/[id|en]/…`, bukan `/about` tanpa prefix)
+
+---
+
+## 2026-08-11
+### Added
+- **T-005.1** — `domain-model.md` (lean content model; DDD N/A)
+- **T-005.2** — `database-strategy.md` (N/A — konten di repo)
+- **T-005.3** — `application-layer.md` (static-first SSG)
+- **T-005.4** — `integration-layer.md` (mailto + satelit + locale redirect)
+- **T-005.5** — `background-jobs.md` (N/A)
+- **T-005.6** — `realtime-strategy.md` (N/A)
+- **T-005.7** — `auth-architecture.md` (N/A)
+- **T-005.8** / **ADR-015** — Architecture Baseline v1.0 (opsi A: SSG + konten repo)
+### Changed
+- T-005 ✅ Done; Fokus → **T-006.1** `monorepo-setup.md`
+- `PROJECT_STATE.md` → Phase 6 — Engineering Planning (06-engineering)
+- `TASKS.md` / `tasks/v01-product-discovery.md` / `DECISIONS.md`
+
+---
+
+## 2026-08-10
+### Changed
+- **T-005 / T-006** subtasks dipecah per dokumen (pola T-001/T-002): 1 file = 1 subtask + baseline/ADR di akhir
+- T-005: `T-005.1`…`T-005.7` dokumen architecture; `T-005.8` Baseline + ADR (N/A diizinkan per file)
+- T-006: `T-006.1`…`T-006.9` dokumen engineering; `T-006.10` Baseline + ADR
+- `TASKS.md` / `PROJECT_STATE.md` Fokus → **T-005.1** `domain-model.md`
+
+---
+
 ## 2026-08-10
 ### Fixed
 - Review ketat T-003/T-004: bedakan Home **credibility line** (1 klaim non-kartu) vs **work teaser** (1–3 kartu karya) — IA, key screens, flows, journey
