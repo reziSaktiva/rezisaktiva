@@ -17,6 +17,25 @@ Format entri:
 ---
 
 ## 2026-08-11
+### Fixed
+- Review PR #10: Decision Rules `03–05` arahkan ke `PROJECT_STATE.md` (bukan “lanjut isi” discovery)
+- Review PR #10: Exit Criteria root `product-discovery/README.md` kembali definisi (tanpa stamp status T-007)
+- Review PR #10: commit PR tanpa trailer atribusi AI
+
+---
+
+## 2026-08-11
+### Added
+- **T-007.1** — Exit criteria Product Discovery diverifikasi & disetujui (baseline 01–06 + ADR-001…016)
+### Changed
+- **T-007.2** — `PROJECT_STATE.md` → fase **Repository & Bootstrap**; Active Mode Bootstrap
+- T-007 ✅ Done; v0.1 Product Discovery release ✅; Fokus → backlog Bootstrap + scaffold Next
+### Fixed
+- Wording README fase **03–06** + `product-discovery/README.md` Exit Criteria selaras baseline (sudah ditetapkan / sudah terpenuhi)
+
+---
+
+## 2026-08-11
 ### Added
 - **T-006.10** / **ADR-016** — Engineering Baseline v1.0 untuk seluruh `06-engineering/`
 ### Changed

@@ -50,24 +50,28 @@ Topik berikut tidak dibahas di sini:
 
 # Expected Output
 
-Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
+**UX Baseline v1.0 sudah ditetapkan** (ADR-014, 2026-08-10). Seluruh dokumen di folder ini terisi dan disepakati.
 
-Acuan fase: prinsip UX1–UX7; IA Hybrid lean + path locale; flows F1–F6 (+ F7 Later); Contact Email primer. Keputusan terkunci tercatat di ADR (lihat `DECISIONS.md`); status fase aktif di `PROJECT_STATE.md`.
+Acuan fase: prinsip UX1–UX7; IA Hybrid lean + path locale; flows F1–F6 (+ F7 Later); Contact Email primer.
+
+Langkah berikutnya (historis fase): lanjut **Phase 5 — Architecture** di `../05-architecture/`. Status fase aktif ada di `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
+Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+
 * Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material sudah tercatat di `DECISIONS.md` bila diperlukan.
+* Keputusan material tercatat di `DECISIONS.md` (ADR-014, dll.).
 * Boss Rezi menyetujui baseline fase ini.
 
 ---
 
 # Decision Rules
 
-* Jangan mengisi fase berikutnya sebelum exit criteria fase ini terpenuhi (kecuali eksplisit diminta).
-* Perubahan material setelah baseline → ADR baru.
+* Baseline UX terkunci — jangan memakai README ini sebagai penunjuk fase aktif; ikuti `PROJECT_STATE.md` (saat ini Repository & Bootstrap).
+* Perubahan material setelah baseline → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 
 ---

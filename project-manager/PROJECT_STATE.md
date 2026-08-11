@@ -2,11 +2,11 @@
 
 ## Snapshot
 
-* **Phase / Milestone:** Product Discovery — Exit Criteria (T-007) · siap acuan Bootstrap
-* **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-007.1 Exit criteria Product Discovery — lihat [`TASKS.md`](TASKS.md)
+* **Phase / Milestone:** Repository & Bootstrap · acuan Engineering Baseline (ADR-016)
+* **Active Mode:** Repository & Bootstrap — scaffold app sesuai baseline; belum Development fitur penuh
+* **Top Next Tasks:** Susun backlog Bootstrap + scaffold Next — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done); release Bootstrap belum dibuat
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -25,37 +25,36 @@
 
 | Item | Value |
 | ---- | ----- |
-| Current Phase | Product Discovery — Exit Criteria (T-007) |
-| Current Milestone | Product Discovery scaffold |
-| Overall Progress | Business + Product + User + UX + Architecture + Engineering Baseline v1.0 (T-001–T-006 ✅); lanjut T-007 Exit |
-| Project Status | Collaborative discovery in progress |
+| Current Phase | Repository & Bootstrap |
+| Current Milestone | Scaffold app sesuai Engineering Baseline |
+| Overall Progress | Product Discovery T-001–T-007 ✅; siap Bootstrap |
+| Project Status | Discovery complete — bootstrap pending |
 
 ---
 
 ## Current Focus
 
-* **01-business** = Baseline v1.0 (ADR-002, ADR-004–009); dual north star di `success-metrics.md`.
-* **02-product** = Baseline v1.0 (ADR-010–012); Hybrid lean + MoSCoW + R1–R3; roles N/A.
-* **03-user** = Baseline v1.0 (ADR-013); assumption-led + journey R1 primer & sekunder tipis.
-* **04-ux** = Baseline v1.0 (ADR-014); path `/id`/`/en`; Email primer; LinkedIn/GitHub satelit.
-* **05-architecture** = Baseline v1.0 (ADR-015); static-first SSG + konten di repo; DB/jobs/realtime/auth N/A.
-* **06-engineering** = Baseline v1.0 (ADR-016); Next single-app + Vercel + ESLint/Prettier + Tailwind tokens A+.
+* Product Discovery **selesai** (baseline 01–06 + exit T-007).
+* Acuan implementasi: `product-discovery/` + ADR-001 … ADR-016.
+* Berikutnya: backlog Bootstrap + scaffold Next single-app (pnpm, Vercel, ESLint/Prettier, Tailwind tokens) sesuai ADR-016.
 
 ---
 
 ## Active Conversation Mode
 
-**Product Discovery**
+**Repository & Bootstrap**
 
 Diizinkan:
 
-* Diskusi, brainstorm, mengisi/revisi dokumen discovery
-* Membuat ADR untuk keputusan material
+* Scaffold aplikasi sesuai Engineering Baseline (ADR-016 / `06-engineering/`)
+* Setup tooling, CI, env, deploy sesuai dokumen planning
+* Diskusi, ADR untuk keputusan material bootstrap
 * Update TASKS / PROJECT_STATE / COMPLETE_TASK
 
 Tidak diizinkan (kecuali diminta eksplisit):
 
-* Implementasi kode website / scaffold app framework
+* Implementasi fitur/konten produk penuh di luar skeleton Bootstrap
+* Mengubah baseline Product Discovery tanpa ADR baru
 
 ---
 

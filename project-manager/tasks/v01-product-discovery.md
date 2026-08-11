@@ -110,12 +110,12 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-007 — Exit Product Discovery → siap Bootstrap
 
-* **Status:** ⏳ Pending
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/README.md` (Exit Criteria), `PROJECT_STATE.md`
 
 ### Subtasks
 
-- [ ] **T-007.1** — Semua exit criteria Product Discovery terpenuhi
-- [ ] **T-007.2** — Update `PROJECT_STATE.md` ke fase Bootstrap
-- [ ] **T-007.3** — Catat di `COMPLETE_TASK.md`
+- [x] **T-007.1** — Semua exit criteria Product Discovery terpenuhi
+- [x] **T-007.2** — Update `PROJECT_STATE.md` ke fase Bootstrap
+- [x] **T-007.3** — Catat di `COMPLETE_TASK.md`

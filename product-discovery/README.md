@@ -98,20 +98,22 @@ Fokus pada keputusan teknis sebelum implementasi dimulai.
 
 Fase Product Discovery dianggap selesai apabila:
 
-* Business Baseline v1.0 ditetapkan.
-* Product Baseline v1.0 ditetapkan.
-* User Baseline v1.0 ditetapkan.
-* UX Baseline v1.0 ditetapkan.
-* Architecture Baseline v1.0 ditetapkan (jika relevan).
-* Engineering Planning Baseline v1.0 ditetapkan.
+* Business Baseline v1.0 ditetapkan (lihat ADR-009).
+* Product Baseline v1.0 ditetapkan (lihat ADR-012).
+* User Baseline v1.0 ditetapkan (lihat ADR-013).
+* UX Baseline v1.0 ditetapkan (lihat ADR-014).
+* Architecture Baseline v1.0 ditetapkan (lihat ADR-015).
+* Engineering Planning Baseline v1.0 ditetapkan (lihat ADR-016).
 * Keputusan penting tercatat di `DECISIONS.md`.
 * Dokumentasi siap menjadi acuan implementasi.
+
+Status penyelesaian fase aktif ada di `PROJECT_STATE.md` (bukan di README ini).
 
 ---
 
 # Next Phase
 
-Setelah Exit Criteria terpenuhi: **Repository & Bootstrap** (inisialisasi stack sesuai Engineering Planning), lalu Development.
+Setelah Exit Criteria terpenuhi: **Repository & Bootstrap** (inisialisasi stack sesuai Engineering Planning), lalu Development. Status fase aktif ada di `PROJECT_STATE.md`.
 
 ---
 

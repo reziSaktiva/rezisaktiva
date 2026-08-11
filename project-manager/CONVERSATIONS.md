@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-11 — Exit Product Discovery (T-007) + review README
+
+**Phase:** Exit Criteria → Repository & Bootstrap
+**Summary:** Review walkthrough 01–06 sebelum exit. Tidak ada gap material. README 03–06 + Exit Criteria root dirapikan wording “sudah ditetapkan / sudah terpenuhi”, lalu T-007 ditutup dan state pindah ke Bootstrap.
+**Key Decision/Insight:** Product Discovery resmi selesai; implementasi scaffold diizinkan di mode Bootstrap; baseline PD terkunci (perubahan material butuh ADR).
+**Impact:** README 03–06 + `product-discovery/README.md`; PROJECT_STATE; TASKS; T-007 ✅.
+
 ## 2026-08-11 — Engineering Baseline v1.0 (T-006.10)
 
 **Phase:** Phase 6 → Exit Criteria (T-007)
