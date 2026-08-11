@@ -17,6 +17,12 @@ Format entri:
 ---
 
 ## 2026-08-11
+### Fixed
+- PR #7 review: Entry Points `application-layer.md` selaras path locale ADR-014 (`/[id|en]/…`, bukan `/about` tanpa prefix)
+
+---
+
+## 2026-08-11
 ### Added
 - **T-005.1** — `domain-model.md` (lean content model; DDD N/A)
 - **T-005.2** — `database-strategy.md` (N/A — konten di repo)

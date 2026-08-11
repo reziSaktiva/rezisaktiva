@@ -40,7 +40,7 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 
 | Entry | Perilaku |
 | ----- | -------- |
-| `/{id\|en}/`, `/about`, `/contact` | Sajikan halaman yang di-build untuk locale itu |
+| `/[id\|en]/`, `/[id\|en]/about`, `/[id\|en]/contact` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/about`, `/en/contact`) |
 | `/` atau URL tanpa locale | Redirect ke locale default (geo → browser → preferensi setelah switcher) per ADR-014 |
 | Switcher | Navigasi ke sibling path locale; set preferensi untuk kunjungan `/` berikutnya saja |
 | Link satelit | Keluar situs (GitHub/LinkedIn) |
