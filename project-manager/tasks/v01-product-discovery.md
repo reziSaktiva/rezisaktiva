@@ -89,7 +89,7 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-006 — Isi Engineering Planning (06-engineering)
 
-* **Status:** 🔄 In Progress
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/06-engineering/README.md`, baseline 05
 
@@ -101,10 +101,10 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 - [x] **T-006.4** — `database-orm.md` (N/A — ADR-015)
 - [x] **T-006.5** — `cicd-pipeline.md` (Actions lint/typecheck + Vercel deploy)
 - [x] **T-006.6** — `environment-management.md` (Local/Preview/Production; env tipis)
-- [ ] **T-006.7** — `dx-tooling.md`
-- [ ] **T-006.8** — `dependency-strategy.md`
-- [ ] **T-006.9** — `design-tokens.md`
-- [ ] **T-006.10** — Baseline Engineering v1.0 + ADR
+- [x] **T-006.7** — `dx-tooling.md` (ESLint + Prettier; CI saja; test belum wajib)
+- [x] **T-006.8** — `dependency-strategy.md` (pnpm lockfile + `^` + Dependabot)
+- [x] **T-006.9** — `design-tokens.md` (Tailwind + CSS vars; light default; dark fondasi A+)
+- [x] **T-006.10** — Baseline Engineering v1.0 + ADR (ADR-016)
 
 ---
 

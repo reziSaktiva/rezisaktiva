@@ -2,9 +2,9 @@
 
 ## Snapshot
 
-* **Phase / Milestone:** Phase 6 — Engineering Planning (06-engineering) · Product Discovery
+* **Phase / Milestone:** Product Discovery — Exit Criteria (T-007) · siap acuan Bootstrap
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-006.7 `dx-tooling.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-007.1 Exit criteria Product Discovery — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -25,9 +25,9 @@
 
 | Item | Value |
 | ---- | ----- |
-| Current Phase | Phase 6 — Engineering Planning (06-engineering) |
+| Current Phase | Product Discovery — Exit Criteria (T-007) |
 | Current Milestone | Product Discovery scaffold |
-| Overall Progress | Business + Product + User + UX + Architecture Baseline v1.0 (T-001–T-005 ✅); lanjut 06-engineering (T-006) |
+| Overall Progress | Business + Product + User + UX + Architecture + Engineering Baseline v1.0 (T-001–T-006 ✅); lanjut T-007 Exit |
 | Project Status | Collaborative discovery in progress |
 
 ---
@@ -39,7 +39,7 @@
 * **03-user** = Baseline v1.0 (ADR-013); assumption-led + journey R1 primer & sekunder tipis.
 * **04-ux** = Baseline v1.0 (ADR-014); path `/id`/`/en`; Email primer; LinkedIn/GitHub satelit.
 * **05-architecture** = Baseline v1.0 (ADR-015); static-first SSG + konten di repo; DB/jobs/realtime/auth N/A.
-* **06-engineering** = in progress — T-006.1–T-006.6 ✅; fokus **T-006.7** `dx-tooling.md`.
+* **06-engineering** = Baseline v1.0 (ADR-016); Next single-app + Vercel + ESLint/Prettier + Tailwind tokens A+.
 
 ---
 
@@ -69,6 +69,7 @@ Tidak ada.
 
 | ADR | Ringkasan |
 | --- | --------- |
+| ADR-016 | Engineering Baseline v1.0; Next single-app + Vercel + ESLint/Prettier + Tailwind A+ |
 | ADR-015 | Architecture Baseline v1.0; static-first SSG + konten repo; N/A DB/jobs/realtime/auth |
 | ADR-014 | UX Baseline v1.0; path locale `/id`/`/en`; Contact Email primer + LinkedIn/GitHub |
 | ADR-013 | User Baseline v1.0; assumption-led + riset ringan opsional; journey R1 + sekunder tipis |

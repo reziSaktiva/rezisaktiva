@@ -1,6 +1,6 @@
 # Monorepo / Repo Setup
 
-> Status: **Draft (T-006.1)** — disepakati bersama Boss Rezi (2026-08-11). Kunci formal Baseline Engineering + ADR di **T-006.10**.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan bentuk repo aplikasi untuk website portofolio **rezisaktiva**.
 
@@ -105,7 +105,7 @@ Docs dan app **co-located di git**, bukan co-imported di runtime.
 | Package manager | pnpm |
 | Monorepo / multi-package | Tidak untuk R1 |
 | Repo app terpisah | Tidak |
-| Kunci formal ADR | T-006.10 (Baseline Engineering) |
+| Baseline Engineering | ADR-016 |
 
 ---
 
@@ -124,5 +124,6 @@ Docs dan app **co-located di git**, bukan co-imported di runtime.
 * `../05-architecture/application-layer.md` — kontrak SSG
 * `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-manager/decisions/ADR-016-engineering-baseline-v1.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

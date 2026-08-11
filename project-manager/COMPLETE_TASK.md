@@ -18,6 +18,25 @@ Format entri:
 
 ## 2026-08-11
 ### Added
+- **T-006.10** / **ADR-016** — Engineering Baseline v1.0 untuk seluruh `06-engineering/`
+### Changed
+- Status semua dokumen `06-engineering/` → Baseline v1.0 (`auth-strategy.md`, `database-orm.md` tetap N/A)
+- T-006 ✅ Done; Fokus → **T-007.1** Exit criteria Product Discovery
+
+---
+
+## 2026-08-11
+### Added
+- **T-006.7** — `dx-tooling.md` (ESLint + Prettier; tanpa husky; test belum wajib)
+- **T-006.8** — `dependency-strategy.md` (pnpm lockfile + `^` + Dependabot; Bun ditolak)
+- **T-006.9** — `design-tokens.md` (Tailwind + CSS vars; light default; dark fondasi A+)
+### Changed
+- Fokus → **T-006.10** Baseline Engineering v1.0 + ADR
+
+---
+
+## 2026-08-11
+### Added
 - **T-006.4** — `database-orm.md` (N/A — selaras ADR-015; konten di repo)
 - **T-006.5** — `cicd-pipeline.md` (opsi B: GitHub Actions lint/typecheck + Vercel deploy)
 - **T-006.6** — `environment-management.md` (Local/Preview/Production; env tipis; secret di Vercel)

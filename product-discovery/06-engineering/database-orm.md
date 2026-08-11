@@ -1,6 +1,6 @@
 # Database & ORM
 
-> Status: **N/A (Draft T-006.4)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada database/ORM produk untuk R1. File tetap ada sebagai jejak — selaras ADR-015 / `database-strategy.md`. Kunci formal Baseline Engineering + ADR di **T-006.10**.
+> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada database/ORM produk untuk R1. File tetap ada sebagai jejak — selaras ADR-015 / ADR-016 / `database-strategy.md`.
 
 Dokumen ini **sengaja diisi sebagai N/A** agar keputusan engineering tercatat.
 
@@ -70,7 +70,7 @@ Tidak ada Docker Postgres, seed DB, atau `.env` `DATABASE_URL` untuk R1.
 | --------- | ------- |
 | DB / ORM R1 | N/A |
 | Selaras | ADR-015, `database-strategy.md` |
-| Kunci formal ADR Engineering | T-006.10 |
+| Baseline Engineering | ADR-016 |
 
 ---
 

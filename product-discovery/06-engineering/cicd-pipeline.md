@@ -1,6 +1,6 @@
 # CI/CD Pipeline
 
-> Status: **Draft (T-006.5)** — disepakati bersama Boss Rezi (2026-08-11). Kunci formal Baseline Engineering + ADR di **T-006.10**.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan pipeline CI/CD untuk website portofolio **rezisaktiva**.
 
@@ -101,7 +101,7 @@ Jangan menaruh secret produk di log Actions atau di repo publik.
 | Model CI/CD | **B** — Actions (lint/typecheck) + Vercel deploy |
 | Vercel-only (tanpa Actions) | Tidak dipilih |
 | Deploy penuh dari Actions | Tidak untuk R1 |
-| Kunci formal ADR | T-006.10 |
+| Baseline Engineering | ADR-016 |
 
 ---
 
@@ -119,6 +119,6 @@ Jangan menaruh secret produk di log Actions atau di repo publik.
 * `deployment-infrastructure.md` — Vercel Preview/Production
 * `environment-management.md` — env & secrets
 * `monorepo-setup.md` — pnpm / Next
-* `dx-tooling.md` — lint/format (menyusul)
+* `dx-tooling.md` — ESLint + Prettier; CI tanpa husky
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

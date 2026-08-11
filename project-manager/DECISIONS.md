@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-016 | Engineering Baseline v1.0: kunci `06-engineering/` (Next + Vercel + ESLint/Prettier + Tailwind) | Accepted | 2026-08-11 | Kunci 06-engineering; single-app pnpm; CI Actions + Vercel; tokens A+ | [ADR-016](decisions/ADR-016-engineering-baseline-v1.md) |
 | ADR-015 | Architecture Baseline v1.0: static-first SSG + konten di repo | Accepted | 2026-08-11 | Kunci 05-architecture; opsi A; DB/jobs/realtime/auth N/A | [ADR-015](decisions/ADR-015-architecture-baseline-v1-static-first.md) |
 | ADR-014 | UX Baseline v1.0: kunci `04-ux/` (path locale + Contact soft Email primer) | Accepted | 2026-08-10 | Kunci 04-ux; `/id`/`/en`; Email primer; LinkedIn/GitHub satelit | [ADR-014](decisions/ADR-014-ux-baseline-v1.md) |
 | ADR-013 | User Baseline v1.0: kunci `03-user/` (assumption-led + R1 primer & sekunder tipis) | Accepted | 2026-08-07 | Kunci 03-user; metode B; journey R1+sekunder tipis | [ADR-013](decisions/ADR-013-user-baseline-v1.md) |

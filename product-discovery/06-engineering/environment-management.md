@@ -1,6 +1,6 @@
 # Environment Management
 
-> Status: **Draft (T-006.6)** — disepakati bersama Boss Rezi (2026-08-11). Kunci formal Baseline Engineering + ADR di **T-006.10**.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan pengelolaan environment & secrets untuk website portofolio **rezisaktiva**.
 
@@ -89,7 +89,7 @@ Tambah variabel baru hanya jika fitur membutuhkannya; update `.env.example` + do
 | Vault eksternal | Tidak |
 | Env untuk DB/auth | Tidak ada |
 | CI secrets | Tidak wajib (pipeline B) |
-| Kunci formal ADR | T-006.10 |
+| Baseline Engineering | ADR-016 |
 
 ---
 
