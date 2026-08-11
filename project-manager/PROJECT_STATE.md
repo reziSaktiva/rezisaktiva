@@ -27,8 +27,8 @@
 | ---- | ----- |
 | Current Phase | Repository & Bootstrap |
 | Current Milestone | Scaffold app sesuai Engineering Baseline |
-| Overall Progress | Product Discovery T-001–T-007 ✅; siap Bootstrap |
-| Project Status | Discovery complete — bootstrap pending |
+| Overall Progress | Product Discovery T-001–T-007 ✅; backlog Bootstrap (T-008…T-012) siap eksekusi |
+| Project Status | Discovery complete — bootstrap in progress (fokus T-008.1) |
 
 ---
 
