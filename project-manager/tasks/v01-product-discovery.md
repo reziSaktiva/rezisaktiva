@@ -89,18 +89,18 @@ Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap imple
 
 ## T-006 — Isi Engineering Planning (06-engineering)
 
-* **Status:** ⏳ Pending
+* **Status:** 🔄 In Progress
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/06-engineering/README.md`, baseline 05
 
 ### Subtasks
 
-- [ ] **T-006.1** — `monorepo-setup.md`
-- [ ] **T-006.2** — `deployment-infrastructure.md`
-- [ ] **T-006.3** — `auth-strategy.md`
-- [ ] **T-006.4** — `database-orm.md`
-- [ ] **T-006.5** — `cicd-pipeline.md`
-- [ ] **T-006.6** — `environment-management.md`
+- [x] **T-006.1** — `monorepo-setup.md` (single-app + Next.js + pnpm)
+- [x] **T-006.2** — `deployment-infrastructure.md` (Vercel)
+- [x] **T-006.3** — `auth-strategy.md` (N/A — ADR-011/015)
+- [x] **T-006.4** — `database-orm.md` (N/A — ADR-015)
+- [x] **T-006.5** — `cicd-pipeline.md` (Actions lint/typecheck + Vercel deploy)
+- [x] **T-006.6** — `environment-management.md` (Local/Preview/Production; env tipis)
 - [ ] **T-006.7** — `dx-tooling.md`
 - [ ] **T-006.8** — `dependency-strategy.md`
 - [ ] **T-006.9** — `design-tokens.md`
