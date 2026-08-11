@@ -51,22 +51,28 @@ Topik berikut tidak dibahas di sini:
 
 # Expected Output
 
-Setelah seluruh dokumen pada folder ini selesai diisi dan disepakati, phase ini siap ditetapkan sebagai Baseline v1.0 (via ADR).
+**Engineering Baseline v1.0 sudah ditetapkan** (ADR-016, 2026-08-11). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `auth-strategy.md` / `database-orm.md` sebagai N/A).
+
+Acuan fase: Next.js single-app + pnpm; Vercel; CI Actions lint/typecheck; ESLint/Prettier; Tailwind + CSS vars (light default, dark fondasi A+).
+
+Langkah berikutnya: **Repository & Bootstrap** (inisialisasi stack sesuai baseline ini). Status fase aktif ada di `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
+Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+
 * Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material sudah tercatat di `DECISIONS.md` bila diperlukan.
+* Keputusan material tercatat di `DECISIONS.md` (ADR-016, dll.).
 * Boss Rezi menyetujui baseline fase ini.
 
 ---
 
 # Decision Rules
 
-* Jangan mengisi fase berikutnya sebelum exit criteria fase ini terpenuhi (kecuali eksplisit diminta).
-* Perubahan material setelah baseline → ADR baru.
+* Fase Engineering Planning selesai — lanjut **Repository & Bootstrap** sesuai baseline ini.
+* Perubahan material setelah baseline → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 
 ---

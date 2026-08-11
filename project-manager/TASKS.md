@@ -4,15 +4,14 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-007.1** — Exit criteria Product Discovery (parent: T-007)
-2. **T-007** — Exit Product Discovery → siap Bootstrap
-3. **T-007.2** — Update `PROJECT_STATE.md` ke fase Bootstrap
+1. Susun backlog **Repository & Bootstrap** (release berikutnya) sesuai Engineering Baseline ADR-016
+2. Scaffold Next.js single-app + pnpm + Vercel sesuai `06-engineering/`
 
 ## Indeks release
 
 | Release | File | Tasks | Status |
 | ------- | ---- | ----- | ------ |
-| v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | In progress |
+| v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
 
 ## Aturan
 
