@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Phase 6 — Engineering Planning (06-engineering) · Product Discovery
 * **Active Mode:** Product Discovery — isi dokumentasi bersama, belum ada implementasi kode
-* **Top Next Tasks:** T-006.1 `monorepo-setup.md` — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** T-006.7 `dx-tooling.md` — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
@@ -39,7 +39,7 @@
 * **03-user** = Baseline v1.0 (ADR-013); assumption-led + journey R1 primer & sekunder tipis.
 * **04-ux** = Baseline v1.0 (ADR-014); path `/id`/`/en`; Email primer; LinkedIn/GitHub satelit.
 * **05-architecture** = Baseline v1.0 (ADR-015); static-first SSG + konten di repo; DB/jobs/realtime/auth N/A.
-* **06-engineering** = fokus berikutnya — **T-006.1** `monorepo-setup.md`.
+* **06-engineering** = in progress — T-006.1–T-006.6 ✅; fokus **T-006.7** `dx-tooling.md`.
 
 ---
 

@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-11 — Engineering T-006.4–T-006.6
+
+**Phase:** Phase 6 — Engineering Planning
+**Summary:** DB/ORM = N/A. CI/CD dikunci opsi B (GitHub Actions lint/typecheck + Vercel Preview/Production). Env tipis: Local/Preview/Production; tanpa vault; tanpa secret DB/auth.
+**Key Decision/Insight:** Quality gate di PR tanpa menduplikasi CD ke Actions; katalog env minimal (`SITE_URL`, analytics opsional).
+**Impact:** `database-orm.md`, `cicd-pipeline.md`, `environment-management.md`; fokus **T-006.7**.
+
+## 2026-08-11 — Engineering awal T-006.1–T-006.3
+
+**Phase:** Phase 6 — Engineering Planning
+**Summary:** Dikunci single-app di repo ini, Next.js (App Router, static-first), pnpm, hosting Vercel. Auth strategy R1 = N/A (sudah baseline arsitektur).
+**Key Decision/Insight:** Bukan monorepo; bukan `output: 'export'` wajib — SSG di Vercel + Middleware untuk redirect locale. ADR formal menyusul di T-006.10.
+**Impact:** `06-engineering/monorepo-setup.md`, `deployment-infrastructure.md`, `auth-strategy.md`; fokus **T-006.4**.
+
 ## 2026-08-11 — Architecture Baseline v1.0 (T-005)
 
 **Phase:** Phase 5 → 6 — Architecture → Engineering Planning

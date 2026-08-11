@@ -4,7 +4,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-006.1** — `monorepo-setup.md` (parent: T-006 Engineering)
+1. **T-006.7** — `dx-tooling.md` (parent: T-006 Engineering)
 2. **T-006** — Isi Engineering Planning (06-engineering)
 3. **T-006.10** — Baseline Engineering v1.0 + ADR
 

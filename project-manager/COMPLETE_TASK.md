@@ -17,6 +17,26 @@ Format entri:
 ---
 
 ## 2026-08-11
+### Added
+- **T-006.4** — `database-orm.md` (N/A — selaras ADR-015; konten di repo)
+- **T-006.5** — `cicd-pipeline.md` (opsi B: GitHub Actions lint/typecheck + Vercel deploy)
+- **T-006.6** — `environment-management.md` (Local/Preview/Production; env tipis; secret di Vercel)
+### Changed
+- Fokus → **T-006.7** `dx-tooling.md`
+
+---
+
+## 2026-08-11
+### Added
+- **T-006.1** — `monorepo-setup.md` (single-app di repo ini; Next.js App Router SSG; pnpm; bukan monorepo)
+- **T-006.2** — `deployment-infrastructure.md` (Vercel; Preview PR; Middleware locale `/`)
+- **T-006.3** — `auth-strategy.md` (N/A — selaras ADR-011/015)
+### Changed
+- T-006 → 🔄 In Progress; Fokus → **T-006.4** `database-orm.md`
+
+---
+
+## 2026-08-11
 ### Fixed
 - PR #7 review: Entry Points `application-layer.md` selaras path locale ADR-014 (`/[id|en]/…`, bukan `/about` tanpa prefix)
 
