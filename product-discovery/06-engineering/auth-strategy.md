@@ -1,6 +1,6 @@
 # Authentication Strategy
 
-> Status: **N/A (Draft T-006.3)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada autentikasi produk untuk R1. File tetap ada sebagai jejak — selaras ADR-011 / ADR-015. Kunci formal Baseline Engineering + ADR di **T-006.10**.
+> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada autentikasi produk untuk R1. File tetap ada sebagai jejak — selaras ADR-011 / ADR-015 / ADR-016.
 
 Dokumen ini **sengaja diisi sebagai N/A** agar keputusan engineering tercatat.
 
@@ -73,7 +73,7 @@ Menambah auth produk (preview berbayar, area klien, CMS editor) memerlukan **ADR
 | --------- | ------- |
 | Auth produk R1 | N/A |
 | Selaras | ADR-011, ADR-015, `auth-architecture.md` |
-| Kunci formal ADR Engineering | T-006.10 |
+| Baseline Engineering | ADR-016 |
 
 ---
 

@@ -1,6 +1,6 @@
 # Deployment & Infrastructure
 
-> Status: **Draft (T-006.2)** — disepakati bersama Boss Rezi (2026-08-11). Kunci formal Baseline Engineering + ADR di **T-006.10**.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan platform deploy dan topologi infrastruktur untuk website portofolio **rezisaktiva**.
 
@@ -108,7 +108,7 @@ Tidak ada blue-green kustom atau multi-region aktif-aktif untuk R1.
 | Preview | Vercel Preview (PR) |
 | Static export murni wajib | Tidak — SSG di Vercel + Middleware |
 | Cloudflare / Netlify / GitHub Pages | Tidak untuk R1 |
-| Kunci formal ADR | T-006.10 (Baseline Engineering) |
+| Baseline Engineering | ADR-016 |
 
 ---
 

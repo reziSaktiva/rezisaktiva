@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## 2026-08-11 — Engineering Baseline v1.0 (T-006.10)
+
+**Phase:** Phase 6 → Exit Criteria (T-007)
+**Summary:** T-006 selesai. Seluruh `06-engineering/` dikunci Baseline v1.0: Next single-app + pnpm, Vercel, CI Actions + deploy Vercel, ESLint/Prettier, Dependabot, Tailwind tokens A+; auth/ORM N/A.
+**Key Decision/Insight:** ADR-016; perubahan material engineering setelah ini butuh ADR baru; nilai visual token tetap boleh diiterasi.
+**Impact:** `06-engineering/*`, ADR-016, PROJECT_STATE → fokus **T-007.1**.
+
+## 2026-08-11 — Engineering T-006.7–T-006.9
+
+**Phase:** Phase 6 — Engineering Planning
+**Summary:** DX = ESLint + Prettier (bukan Biome); quality gate CI saja tanpa husky; test belum wajib. Dependency = pnpm tetap + lockfile + `^` + Dependabot. Tokens = Tailwind + CSS vars; light default; dark fondasi siap, toggle Later (A+).
+**Key Decision/Insight:** Familiaritas Next menang vs Biome untuk R1; Bun ditolak sebagai pengganti pnpm; dark mode disiapkan tanpa wajib toggle di MVP.
+**Impact:** `dx-tooling.md`, `dependency-strategy.md`, `design-tokens.md`; fokus **T-006.10**.
+
 ## 2026-08-11 — Engineering T-006.4–T-006.6
 
 **Phase:** Phase 6 — Engineering Planning
