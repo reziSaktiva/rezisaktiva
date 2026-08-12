@@ -18,6 +18,21 @@ Format entri:
 
 ## 2026-08-12
 ### Added
+- `content/README.md` — folder SoT konten situs berdampingan `app/` + `public/` + docs (**T-008.2**)
+- Script `typecheck` (`tsc --noEmit`) di `package.json` (**T-008.3**)
+- Stub halaman minimal di `app/` agar `pnpm build` hijau (**T-008.4**)
+### Changed
+- `package.json` — scripts lengkap: `dev`, `build`, `start`, `lint`, `typecheck` (**T-008.3**)
+- `app/page.tsx`, `app/layout.tsx`, `app/globals.css` — stub bootstrap (hapus `page.module.css` create-next-app)
+- `README.md` — tabel struktur app Bootstrap
+- `tasks/v02-bootstrap.md` — **T-008.2** … **T-008.4** ✅; parent **T-008** ✅ Done
+- `TASKS.md` — Fokus → **T-009.1**
+- `PROJECT_STATE.md` — Snapshot/Fokus → next **T-009.1**
+
+---
+
+## 2026-08-12
+### Added
 - Scaffold Next.js App Router + TypeScript (`strict`) + pnpm di root (**T-008.1**): `package.json`, `pnpm-lock.yaml`, `packageManager`, `app/`, `public/`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`
 ### Changed
 - `tasks/v02-bootstrap.md` — centang **T-008.1**; parent T-008 tetap ⏳

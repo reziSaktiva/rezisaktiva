@@ -4,8 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. Eksekusi **T-008.2** — Struktur folder: `app/`, `content/`, `public/` berdampingan docs
-2. Lanjut T-008.3 … T-012 sesuai `tasks/v02-bootstrap.md`
+1. Eksekusi **T-009.1** — ESLint + Prettier + `eslint-config-prettier`; script `lint` / `format` / `format:check`
+2. Lanjut T-009.2 … T-012 sesuai `tasks/v02-bootstrap.md`
 
 ## Indeks release
 
