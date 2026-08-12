@@ -67,24 +67,7 @@ Tidak ada.
 
 ## Recent Decisions (Ringkasan)
 
-| ADR | Ringkasan |
-| --- | --------- |
-| ADR-016 | Engineering Baseline v1.0; Next single-app + Vercel + ESLint/Prettier + Tailwind A+ |
-| ADR-015 | Architecture Baseline v1.0; static-first SSG + konten repo; N/A DB/jobs/realtime/auth |
-| ADR-014 | UX Baseline v1.0; path locale `/id`/`/en`; Contact Email primer + LinkedIn/GitHub |
-| ADR-013 | User Baseline v1.0; assumption-led + riset ringan opsional; journey R1 + sekunder tipis |
-| ADR-012 | Product Baseline v1.0; Hybrid lean + MoSCoW + R1–R3 |
-| ADR-011 | Roles & permissions N/A untuk situs publik; file tetap sebagai jejak |
-| ADR-010 | MVP surface Hybrid lean: Home + About + Contact; Work teaser di Home |
-| ADR-009 | Business Baseline v1.0; dual north star (brand recall + inbound berkualitas) |
-| ADR-008 | Pricing strategy N/A untuk situs; file tetap sebagai jejak keputusan |
-| ADR-007 | Business model: brand + soft inbound; growth destination + magnet ringan |
-| ADR-006 | Competitor/reference: clarity → presence → craft; hybrid named + kategori |
-| ADR-005 | Target market: ICP hybrid founder/PO setara; SEA; digital product/tech |
-| ADR-004 | Problem statement dual + rantai visibility → narrative → evaluasi |
-| ADR-003 | Repo publik; discovery terbuka; `private/` untuk materi sensitif |
-| ADR-002 | Brand primer; product builder + fullstack + AI edge; audiens founder/PO; bilingual geo-aware |
-| ADR-001 | Pemisahan `product-discovery/` dari `project-manager/`; skills di `.cursor/skills/` |
+ADR terbaru: **ADR-017** (Motion sebagai identitas visual R1). Indeks lengkap ADR-001…ADR-017 (title, status, tanggal, ringkasan): lihat [`DECISIONS.md`](DECISIONS.md).
 
 ---
 
