@@ -120,11 +120,13 @@ Menjadikan dark **Must** (toggle + QA kontras penuh) = perlu keputusan eksplisit
 
 # Motion
 
+> Diperbarui **ADR-017** (2026-08-12): motion naik peran menjadi **bagian identitas visual R1**, bukan sekadar Could minimal — dengan clarity tetap prioritas tertinggi.
+
 | Tingkat | R1 |
 | ------- | --- |
-| Must | Tidak ada motion wajib |
-| Could | 2–3 motion sengaja: mis. fade/slide halus hierarchy, hover CTA/teaser, transisi locale switch yang tidak mengganggu |
-| Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity |
+| Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
+| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/teaser, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya) |
+| Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya |
 
 Hormati `prefers-reduced-motion`.
 

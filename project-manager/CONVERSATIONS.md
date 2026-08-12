@@ -14,6 +14,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-12] — Pendekatan visualisasi design & motion sebagai identitas
+
+**Phase:** Repository & Bootstrap (menjelang T-009.2 design tokens)
+**Summary:** Diskusi cara merancang design tanpa Figma. Disepakati: mulai visualisasi dari mockup HTML/Tailwind statis (dibuka di browser, iteratif via obrolan) untuk Home saja dulu (one-screen proof), sebelum porting ke komponen Next.js asli. Font arah: General Sans (display) + Satoshi (body). Referensi visual dipertajam: cristianoronaldo.com untuk presence/identitas, p5aholic.me untuk teknik gerak/interaksi saja (bukan struktur playground-nya).
+**Key Decision/Insight:** Motion R1 naik peran dari "Could minimal" menjadi bagian identitas visual, dengan clarity tetap prioritas tertinggi dan urutan clarity → presence → craft (ADR-006) tidak berubah — diformalkan sebagai **ADR-017**.
+**Impact:** `design-tokens.md` (§Motion diperbarui), `DECISIONS.md` (+ADR-017). Langkah berikutnya: susun mockup HTML/Tailwind Home dengan token warna/font arah ini.
+
+---
+
+## [2026-08-12] — Iterasi mockup: 3 halaman, palet muted, toggle tema
+
+**Phase:** Repository & Bootstrap (menjelang T-009.2 design tokens)
+**Summary:** Mockup diperluas ke About & Contact (`design-mockups/`). Percobaan pertama mencampur band gelap/terang per section ternyata terasa mengganggu ("bikin sakit kepala") — direvisi menjadi satu sistem tema konsisten berbasis CSS variable (semantik: bg/fg/border/brand/accent + on-brand/on-accent) dengan **toggle dark/light** di header (localStorage, default light sesuai baseline). Referensi presence dikoreksi dari cristianoronaldo.com → **bepatrickdavid.com** (lihat Update di ADR-017), selaras kembali dengan pasangan referensi asli di `competitor-analysis.md`. Ditambah section baru "Cara Kerja" di About (4 langkah: Discover → Design → Build → Ship & Iterate) menjawab kebutuhan menunjukkan proses berpikir/bekerja secara scannable.
+**Key Decision/Insight:** Sistem CSS variable (RGB triplet + Tailwind `rgb(var(...) / <alpha-value>)`) terbukti jadi cara bersih untuk toggle tema tanpa duplikasi class per section — pola ini relevan dipakai lagi saat implementasi token asli di T-009.2.
+**Impact:** `ADR-017` (update referensi). Belum ada perubahan baseline lain; mockup masih di `design-mockups/` (di luar `app/`), menunggu approval sebelum porting ke komponen Next.js.
+
+---
+
 ## 2026-08-11 — Exit Product Discovery (T-007) + review README
 
 **Phase:** Exit Criteria → Repository & Bootstrap

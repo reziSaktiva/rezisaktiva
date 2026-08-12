@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>rezisaktiva — mockup Home</title>
+
+<!-- Anti-flash: terapkan tema tersimpan sebelum render -->
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('rz-theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link
+  href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500&display=swap"
+  rel="stylesheet"
+/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: "rgb(var(--c-bg) / <alpha-value>)",
+          "bg-elevated": "rgb(var(--c-bg-elevated) / <alpha-value>)",
+          fg: "rgb(var(--c-fg) / <alpha-value>)",
+          "fg-muted": "rgb(var(--c-fg-muted) / <alpha-value>)",
+          border: "rgb(var(--c-border) / <alpha-value>)",
+          brand: "rgb(var(--c-brand) / <alpha-value>)",
+          "on-brand": "rgb(var(--c-on-brand) / <alpha-value>)",
+          accent: "rgb(var(--c-accent) / <alpha-value>)",
+          "on-accent": "rgb(var(--c-on-accent) / <alpha-value>)",
+          "accent-muted": "rgb(var(--c-accent-muted) / <alpha-value>)",
+        },
+        fontFamily: {
+          display: ["General Sans", "sans-serif"],
+          sans: ["Satoshi", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+
+<body class="antialiased bg-bg text-fg">
+
+  <div class="cursor-glow"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- S0 — Chrome -->
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
+        <a href="about.html" class="hover:text-fg transition-colors">About</a>
+        <a href="#work" class="hover:text-fg transition-colors">Work</a>
+      </nav>
+
+      <div class="flex items-center gap-3 text-sm">
+        <div class="hidden sm:flex items-center gap-1 text-fg-muted">
+          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
+          <span class="opacity-40">/</span>
+          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
+        </div>
+
+        <button data-theme-toggle aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        </button>
+
+        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors">
+          Contact
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section index rail (desktop) -->
+  <nav aria-label="Section index" class="hidden lg:flex flex-col gap-5 fixed right-6 top-1/2 -translate-y-1/2 z-40">
+    <a href="#hero" class="rail-dot is-active" data-rail="hero"><span class="rail-label">Home</span></a>
+    <a href="#credibility" class="rail-dot" data-rail="credibility"><span class="rail-label">Bukti</span></a>
+    <a href="#work" class="rail-dot" data-rail="work"><span class="rail-label">Karya</span></a>
+    <a href="#contact-cta" class="rail-dot" data-rail="contact-cta"><span class="rail-label">Contact</span></a>
+  </nav>
+
+  <main class="relative">
+
+    <!-- Hero — asimetris, split visual panel -->
+    <section id="hero" class="relative min-h-screen flex items-center noise-dot overflow-hidden">
+      <div class="ambient-blob w-[460px] h-[460px] bg-accent/25 -top-24 -left-24"></div>
+      <div class="ambient-blob blob-2 w-[380px] h-[380px] bg-brand/10 top-1/3 right-0"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6 w-full pt-16 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-center">
+
+        <div>
+          <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase">Product Builder · Fullstack · AI Edge</p>
+
+          <h1 class="font-display text-[13vw] lg:text-[5.2vw] font-semibold leading-[0.98] tracking-tight" data-word-reveal>
+            <span class="word">Membangun</span><br class="hidden lg:block" />
+            <span class="word">produk,</span> <span class="word">dari</span>
+            <span class="word text-accent">ide</span><br class="hidden lg:block" />
+            <span class="word text-accent">hingga</span> <span class="word text-accent">live.</span>
+          </h1>
+
+          <p class="reveal mt-7 text-lg text-fg-muted max-w-md leading-relaxed">
+            Fullstack sebagai fondasi, AI sebagai edge yang jujur — bukan klaim kosong.
+            Satu rumah untuk melihat cara saya berpikir dan berkarya.
+          </p>
+
+          <!-- Foto profil versi mobile: kecil, menyatu dengan teks hero -->
+          <div class="reveal lg:hidden mt-6 flex items-center gap-3">
+            <div class="photo-duotone w-14 h-14 rounded-full border border-border shrink-0">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+                alt="Placeholder — ganti dengan foto pribadi Rezi"
+              />
+            </div>
+            <p class="text-xs text-fg-muted leading-snug">Rezi — <span class="text-accent">available</span> for select projects</p>
+          </div>
+
+          <div class="reveal mt-9 flex items-center gap-6">
+            <a href="contact.html" class="magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors">
+              Mulai percakapan
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="#work" class="cta-underline text-fg-muted font-medium">Lihat karya</a>
+          </div>
+        </div>
+
+        <!-- Visual panel: foto pribadi (duotone) + floating chips -->
+        <div class="reveal relative hidden lg:block">
+          <div class="photo-duotone aspect-[4/5] rounded-3xl border border-border">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+              alt="Placeholder — ganti dengan foto pribadi Rezi (potret 4:5)"
+            />
+          </div>
+
+          <div class="absolute -bottom-4 -left-4 w-24 h-24 rounded-full bg-accent flex items-center justify-center text-on-accent font-display text-[10px] text-center px-3 leading-snug border-4 border-bg">
+            available now
+          </div>
+
+          <span class="floaty absolute top-6 -right-4 px-3 py-1.5 rounded-full bg-bg border border-border text-xs font-medium text-fg-muted shadow-sm">Product Thinking</span>
+          <span class="floaty delay-1 absolute top-1/2 -left-6 px-3 py-1.5 rounded-full bg-bg border border-border text-xs font-medium text-fg-muted shadow-sm">Fullstack</span>
+          <span class="floaty delay-2 absolute bottom-16 -right-6 px-3 py-1.5 rounded-full bg-bg border border-border text-xs font-medium text-fg-muted shadow-sm">AI Edge</span>
+
+          <p class="text-center text-[10px] text-fg-muted/70 mt-6 italic">
+            Foto stand-in — ganti dengan foto pribadi (potret 4:5, treatment duotone otomatis)
+          </p>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-fg-muted text-xs flex flex-col items-center gap-2 opacity-70">
+        <span>scroll</span>
+        <span class="w-px h-8 bg-fg-muted/40"></span>
+      </div>
+    </section>
+
+    <!-- Marquee strip -->
+    <section class="border-y border-border bg-bg-elevated/60 py-4 overflow-hidden">
+      <div class="marquee-track font-display text-sm text-fg-muted uppercase tracking-wide">
+        <span>Product Builder</span><span>·</span><span>Fullstack</span><span>·</span><span>AI Edge</span><span>·</span>
+        <span>Product Builder</span><span>·</span><span>Fullstack</span><span>·</span><span>AI Edge</span><span>·</span>
+        <span>Product Builder</span><span>·</span><span>Fullstack</span><span>·</span><span>AI Edge</span><span>·</span>
+      </div>
+    </section>
+
+    <!-- Credibility line -->
+    <section id="credibility" class="max-w-6xl mx-auto px-6 py-16">
+      <p class="reveal text-xs font-medium text-accent tracking-wide uppercase mb-4">(02) Bukti</p>
+      <p class="reveal font-display text-xl md:text-2xl text-fg-muted max-w-3xl leading-snug">
+        <span class="text-fg">~6 tahun</span> membangun software fullstack —
+        kini memakai AI sebagai cara kerja, bukan sekadar kata kunci.
+      </p>
+    </section>
+
+    <!-- Work teaser — horizontal scroll-snap strip -->
+    <section id="work" class="py-20 border-t border-border">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="reveal flex items-baseline justify-between mb-10">
+          <div>
+            <p class="text-xs font-medium text-accent tracking-wide uppercase mb-2">(03) Karya Terpilih</p>
+            <h2 class="font-display text-2xl md:text-3xl font-semibold">Beberapa hal yang sudah dibangun</h2>
+          </div>
+          <a href="#" class="cta-underline text-sm text-fg-muted hidden sm:inline-block">Lihat semua →</a>
+        </div>
+      </div>
+
+      <div class="snap-row flex gap-6 overflow-x-auto px-6 max-w-6xl mx-auto pb-4">
+        <article class="tilt-card reveal shrink-0 w-[78vw] sm:w-80 border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs">
+            preview
+          </div>
+          <h3 class="font-display font-semibold mb-1">Nama Project</h3>
+          <p class="text-sm text-fg-muted">Peran / outcome singkat, satu kalimat.</p>
+        </article>
+
+        <article class="tilt-card reveal shrink-0 w-[78vw] sm:w-80 border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs">
+            preview
+          </div>
+          <h3 class="font-display font-semibold mb-1">Nama Project</h3>
+          <p class="text-sm text-fg-muted">Peran / outcome singkat, satu kalimat.</p>
+        </article>
+
+        <article class="tilt-card reveal shrink-0 w-[78vw] sm:w-80 border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs">
+            preview
+          </div>
+          <h3 class="font-display font-semibold mb-1">Nama Project</h3>
+          <p class="text-sm text-fg-muted">Peran / outcome singkat, satu kalimat.</p>
+        </article>
+      </div>
+
+      <p class="text-center text-xs text-fg-muted mt-2 sm:hidden">← geser untuk lihat lebih banyak →</p>
+    </section>
+
+    <!-- Contact soft -->
+    <section id="contact-cta" class="max-w-6xl mx-auto px-6 py-24 border-t border-border">
+      <p class="reveal text-xs font-medium text-accent tracking-wide uppercase mb-4">(04) Contact</p>
+      <div class="reveal max-w-2xl">
+        <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4">Mari mengobrol.</h2>
+        <p class="text-fg-muted mb-8 leading-relaxed">
+          Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.
+        </p>
+        <a href="contact.html" class="magnetic inline-flex items-center gap-3 font-display text-2xl md:text-3xl font-semibold text-brand hover:text-accent transition-colors">
+          Ke halaman Contact
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
+      <span>© 2026 rezisaktiva</span>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-fg transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
