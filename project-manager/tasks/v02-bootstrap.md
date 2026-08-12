@@ -21,15 +21,15 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 
 ## T-009 — DX + design tokens fondasi
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done
 * **Domain:** Engineering
 * **Baca dulu:** `product-discovery/06-engineering/dx-tooling.md`, `design-tokens.md`, `dependency-strategy.md`
 
 ### Subtasks
 
-- [ ] **T-009.1** — ESLint (`eslint-config-next`) + Prettier + `eslint-config-prettier`; script `lint` / `format` / `format:check`
-- [ ] **T-009.2** — Tailwind + CSS variables (light default; fondasi `dark:` tanpa toggle UI)
-- [ ] **T-009.3** — Dependabot (atau setara) untuk update dependency ringan
+- [x] **T-009.1** — ESLint (`eslint-config-next`) + Prettier + `eslint-config-prettier`; script `lint` / `format` / `format:check`
+- [x] **T-009.2** — Tailwind + CSS variables (light default; fondasi `dark:` tanpa toggle UI)
+- [x] **T-009.3** — Dependabot (atau setara) untuk update dependency ringan
 
 ---
 
