@@ -12,7 +12,7 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 
 ### Subtasks
 
-- [ ] **T-008.1** — Init Next.js App Router + TypeScript (`strict`) + pnpm di root (`package.json`, `pnpm-lock.yaml`, `packageManager`)
+- [x] **T-008.1** — Init Next.js App Router + TypeScript (`strict`) + pnpm di root (`package.json`, `pnpm-lock.yaml`, `packageManager`)
 - [ ] **T-008.2** — Struktur folder: `app/`, `content/`, `public/` berdampingan docs (`product-discovery/`, `project-manager/`, `private/`)
 - [ ] **T-008.3** — Script minimal: `dev`, `build`, `start`, `lint`, `typecheck`
 - [ ] **T-008.4** — Pastikan `pnpm build` hijau dengan stub minimal

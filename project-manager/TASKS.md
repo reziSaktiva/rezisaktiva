@@ -4,8 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. Eksekusi **T-008.1** — Init Next.js App Router + TypeScript (`strict`) + pnpm di root
-2. Lanjut T-008.2 … T-012 sesuai `tasks/v02-bootstrap.md`
+1. Eksekusi **T-008.2** — Struktur folder: `app/`, `content/`, `public/` berdampingan docs
+2. Lanjut T-008.3 … T-012 sesuai `tasks/v02-bootstrap.md`
 
 ## Indeks release
 

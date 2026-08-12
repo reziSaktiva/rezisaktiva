@@ -16,6 +16,17 @@ Format entri:
 
 ---
 
+## 2026-08-12
+### Added
+- Scaffold Next.js App Router + TypeScript (`strict`) + pnpm di root (**T-008.1**): `package.json`, `pnpm-lock.yaml`, `packageManager`, `app/`, `public/`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`
+### Changed
+- `tasks/v02-bootstrap.md` — centang **T-008.1**; parent T-008 tetap ⏳
+- `TASKS.md` — Fokus → **T-008.2**
+- `PROJECT_STATE.md` — Snapshot/Fokus → next **T-008.2**
+- `README.md` / `AGENTS.md` — status stack diselaraskan (bukan docs-only lagi)
+
+---
+
 ## 2026-08-11
 ### Added
 - `project-manager/tasks/v02-bootstrap.md` — backlog release Bootstrap (T-008…T-012 + subtasks, mengikuti Engineering Baseline ADR-016)
