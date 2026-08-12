@@ -1,0 +1,236 @@
+/* Shared style — mockup rezisaktiva (bukan final token, arah visual R1) */
+
+/* ---------- Theme variables (RGB triplet agar bisa dipakai dgn opacity Tailwind) ---------- */
+:root {
+  --c-bg: 237 234 225;
+  --c-bg-elevated: 228 223 209;
+  --c-fg: 20 24 31;
+  --c-fg-muted: 110 106 95;
+  --c-border: 218 213 199;
+  --c-brand: 10 15 26;
+  --c-on-brand: 237 234 225;
+  --c-accent: 76 122 115;
+  --c-on-accent: 237 234 225;
+  --c-accent-muted: 216 226 222;
+}
+
+html.dark {
+  --c-bg: 10 15 26;
+  --c-bg-elevated: 18 26 43;
+  --c-fg: 237 234 225;
+  --c-fg-muted: 155 150 138;
+  --c-border: 34 43 61;
+  --c-brand: 237 234 225;
+  --c-on-brand: 10 15 26;
+  --c-accent: 127 179 170;
+  --c-on-accent: 10 15 26;
+  --c-accent-muted: 30 48 46;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Satoshi', sans-serif;
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-fg));
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.font-display { font-family: 'General Sans', sans-serif; }
+
+/* ---------- Motion signature (ADR-017): reveal, headline word, cta ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.4em);
+  filter: blur(4px);
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+}
+.word.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+.cta-underline { position: relative; display: inline-block; }
+.cta-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  opacity: 0.4;
+}
+.cta-underline:hover::after { transform: scaleX(1); opacity: 1; }
+
+.noise-dot {
+  background-image: radial-gradient(circle, rgb(var(--c-fg) / 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  transition: background-image 0.4s ease;
+}
+
+/* ---------- Attractive layer: ambient gradient blobs (muted, low-key) ---------- */
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  will-change: transform;
+  animation: blob-float 14s ease-in-out infinite;
+}
+.ambient-blob.blob-2 { animation-duration: 18s; animation-delay: -4s; }
+.ambient-blob.blob-3 { animation-duration: 22s; animation-delay: -9s; }
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, 6%) scale(1.08); }
+  66% { transform: translate(-5%, -4%) scale(0.95); }
+}
+
+/* Cursor glow that follows pointer — subtle, desktop only */
+.cursor-glow {
+  position: fixed;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--c-accent) / 0.10), transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  transition: opacity 0.3s ease, background 0.4s ease;
+  opacity: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cursor-glow.is-active { opacity: 1; }
+}
+
+/* Tilt card on hover */
+.tilt-card { transform-style: preserve-3d; transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease; }
+.tilt-card:hover { box-shadow: 0 18px 40px -18px rgb(var(--c-brand) / 0.18); }
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: marquee 26s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Magnetic button wrapper */
+.magnetic { transition: transform 0.2s ease; }
+
+/* Process step (About — cara kerja) */
+.step-row {
+  border-top: 1px solid rgb(var(--c-border));
+  transition: background-color 0.3s ease, padding-left 0.3s ease, border-color 0.4s ease;
+}
+.step-row:hover { padding-left: 0.75rem; background-color: rgb(var(--c-accent) / 0.06); }
+.step-num {
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.step-row:hover .step-num { color: rgb(var(--c-accent)); transform: translateX(2px); }
+
+/* Custom cursor ring — desktop only, layer di atas cursor-glow */
+.cursor-ring {
+  position: fixed;
+  width: 30px; height: 30px;
+  border: 1px solid rgb(var(--c-fg) / 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 60;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  opacity: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cursor-ring.is-active { opacity: 1; }
+}
+.cursor-ring.is-hover {
+  width: 54px; height: 54px;
+  border-color: rgb(var(--c-accent));
+  background: rgb(var(--c-accent) / 0.08);
+}
+
+/* Section index rail (dot nav samping) */
+.rail-dot {
+  position: relative;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgb(var(--c-fg-muted) / 0.4);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.rail-dot.is-active { background: rgb(var(--c-accent)); transform: scale(1.4); }
+.rail-dot .rail-label {
+  position: absolute;
+  right: 18px; top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgb(var(--c-fg));
+  background: rgb(var(--c-bg-elevated));
+  border: 1px solid rgb(var(--c-border));
+  padding: 3px 10px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.rail-dot:hover .rail-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+/* Horizontal scroll-snap strip */
+.snap-row { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.snap-row > * { scroll-snap-align: start; }
+.snap-row::-webkit-scrollbar { display: none; }
+.snap-row { scrollbar-width: none; }
+
+/* Foto profil — duotone (ink -> accent), reveal natural saat hover */
+.photo-duotone { position: relative; overflow: hidden; }
+.photo-duotone img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transform: scale(1.02);
+  transition: filter 0.6s ease, transform 8s ease;
+}
+.photo-duotone::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(155deg, rgb(var(--c-brand) / 0.9), rgb(var(--c-accent) / 0.55));
+  mix-blend-mode: color;
+  transition: opacity 0.6s ease;
+}
+.photo-duotone:hover img { filter: grayscale(0.35) contrast(1.02); transform: scale(1.06); }
+.photo-duotone:hover::after { opacity: 0.45; }
+
+/* Floating tag chip */
+.floaty { animation: floaty 6s ease-in-out infinite; }
+.floaty.delay-1 { animation-delay: -2s; }
+.floaty.delay-2 { animation-delay: -4s; }
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Theme toggle button */
+.theme-toggle svg { transition: opacity 0.2s ease, transform 0.3s ease; }
+.theme-toggle .icon-moon { display: none; }
+html.dark .theme-toggle .icon-sun { display: none; }
+html.dark .theme-toggle .icon-moon { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .word, .ambient-blob, .marquee-track, .magnetic {
+    transition: none !important; animation: none !important;
+    opacity: 1 !important; transform: none !important; filter: none !important;
+  }
+}

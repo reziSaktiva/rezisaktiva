@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>rezisaktiva — mockup About</title>
+
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('rz-theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link
+  href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500&display=swap"
+  rel="stylesheet"
+/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: "rgb(var(--c-bg) / <alpha-value>)",
+          "bg-elevated": "rgb(var(--c-bg-elevated) / <alpha-value>)",
+          fg: "rgb(var(--c-fg) / <alpha-value>)",
+          "fg-muted": "rgb(var(--c-fg-muted) / <alpha-value>)",
+          border: "rgb(var(--c-border) / <alpha-value>)",
+          brand: "rgb(var(--c-brand) / <alpha-value>)",
+          "on-brand": "rgb(var(--c-on-brand) / <alpha-value>)",
+          accent: "rgb(var(--c-accent) / <alpha-value>)",
+          "on-accent": "rgb(var(--c-on-accent) / <alpha-value>)",
+          "accent-muted": "rgb(var(--c-accent-muted) / <alpha-value>)",
+        },
+        fontFamily: { display: ["General Sans", "sans-serif"], sans: ["Satoshi", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+
+<body class="antialiased bg-bg text-fg">
+
+  <div class="cursor-glow"></div>
+  <div class="cursor-ring"></div>
+
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
+        <a href="about.html" class="text-fg">About</a>
+        <a href="home.html#work" class="hover:text-fg transition-colors">Work</a>
+      </nav>
+      <div class="flex items-center gap-3 text-sm">
+        <div class="hidden sm:flex items-center gap-1 text-fg-muted">
+          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
+          <span class="opacity-40">/</span>
+          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
+        </div>
+
+        <button data-theme-toggle aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        </button>
+
+        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors">
+          Contact
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative">
+
+    <!-- Hero About -->
+    <section class="relative overflow-hidden noise-dot pt-32 pb-24">
+      <div class="ambient-blob w-[380px] h-[380px] bg-accent/20 -top-32 right-0"></div>
+      <div class="ambient-blob blob-2 w-[280px] h-[280px] bg-accent-muted/50 bottom-0 left-0"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto px-6">
+        <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase">About</p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight" data-word-reveal>
+          <span class="word">Saya</span> <span class="word">membangun</span>
+          <span class="word">produk</span> <span class="word">dari</span>
+          <span class="word text-accent">nol</span> <span class="word text-accent">hingga</span>
+          <span class="word text-accent">live.</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- Narasi product builder -->
+    <section class="max-w-3xl mx-auto px-6 py-14 border-b border-border">
+      <p class="reveal font-display text-xl md:text-2xl leading-snug text-fg mb-6">
+        Saya mulai dari ide kasar, lalu ikut memikirkan produknya, membangun sistemnya,
+        dan mengantarnya sampai dipakai orang sungguhan.
+      </p>
+      <p class="reveal text-fg-muted leading-relaxed">
+        Bukan sekadar mengeksekusi spesifikasi — saya ikut duduk di pertanyaan
+        "apakah ini yang seharusnya dibangun", lalu memastikan jawabannya jadi kode yang jalan.
+      </p>
+    </section>
+
+    <!-- Konteks fullstack -->
+    <section class="max-w-3xl mx-auto px-6 py-14 border-b border-border">
+      <h2 class="reveal font-display text-2xl font-semibold mb-4">Fullstack sebagai fondasi</h2>
+      <p class="reveal text-fg-muted leading-relaxed mb-6">
+        Sekitar enam tahun terakhir dihabiskan di seluruh lapisan produk digital —
+        dari desain data, API, hingga interface yang dipakai pengguna akhir.
+        Fondasi ini yang membuat saya nyaman bicara trade-off, bukan hanya "bisa coding".
+      </p>
+      <div class="reveal flex flex-wrap gap-3">
+        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">Product Thinking</span>
+        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">Fullstack Engineering</span>
+        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">System Design</span>
+        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">Shipping ke Production</span>
+      </div>
+    </section>
+
+    <!-- AI edge -->
+    <section class="max-w-3xl mx-auto px-6 py-14 border-b border-border">
+      <h2 class="reveal font-display text-2xl font-semibold mb-4">AI sebagai edge, bukan klaim</h2>
+      <p class="reveal text-fg-muted leading-relaxed">
+        AI sekarang bagian dari cara saya bekerja — mempercepat eksplorasi, menajamkan keputusan,
+        membantu ship lebih rapi. Saya jujur soal batasannya: AI mempercepat proses,
+        bukan pengganti fondasi engineering dan product thinking yang sudah dibangun.
+      </p>
+    </section>
+
+    <!-- Cara Kerja — proses berpikir & bekerja -->
+    <section class="max-w-3xl mx-auto px-6 py-16">
+      <div class="reveal mb-10">
+        <p class="text-sm font-medium text-accent mb-2 tracking-wide uppercase">Cara Kerja</p>
+        <h2 class="font-display text-2xl md:text-3xl font-semibold">Bagaimana saya menggerakkan sebuah project</h2>
+      </div>
+
+      <div>
+        <div class="step-row reveal py-6 flex items-start gap-6">
+          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">01</span>
+          <div>
+            <h3 class="font-display font-semibold mb-1">Discover</h3>
+            <p class="text-sm text-fg-muted leading-relaxed">Pahami masalah dan konteks nyata dulu — siapa yang pakai, kenapa penting — sebelum menyentuh kode.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-6 flex items-start gap-6">
+          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">02</span>
+          <div>
+            <h3 class="font-display font-semibold mb-1">Design</h3>
+            <p class="text-sm text-fg-muted leading-relaxed">Susun alur produk dan keputusan teknis yang bisa dipertanggungjawabkan — bukan asal pilih stack yang lagi tren.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-6 flex items-start gap-6">
+          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">03</span>
+          <div>
+            <h3 class="font-display font-semibold mb-1">Build</h3>
+            <p class="text-sm text-fg-muted leading-relaxed">Eksekusi cepat dan iteratif; AI dipakai sebagai akselerator, bukan pengganti keputusan.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-6 flex items-start gap-6 border-b border-border">
+          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">04</span>
+          <div>
+            <h3 class="font-display font-semibold mb-1">Ship & Iterate</h3>
+            <p class="text-sm text-fg-muted leading-relaxed">Rilis ke pemakaian nyata, lalu perbaiki berdasarkan yang benar-benar terjadi — bukan asumsi di atas kertas.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="reveal text-fg-muted leading-relaxed mt-8 text-sm">
+        Efektivitasnya sederhana: siklus pendek dari ide ke sesuatu yang bisa dicoba,
+        supaya keputusan berikutnya dibuat berdasarkan bukti, bukan tebakan.
+      </p>
+    </section>
+
+    <!-- Soft CTA ke Contact -->
+    <section class="max-w-3xl mx-auto px-6 py-20 border-t border-border">
+      <div class="reveal">
+        <p class="text-fg-muted mb-4">Tertarik mengobrol lebih jauh?</p>
+        <a href="contact.html" class="magnetic inline-flex items-center gap-3 font-display text-2xl md:text-3xl font-semibold text-brand hover:text-accent transition-colors">
+          Hubungi saya
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
+      <span>© 2026 rezisaktiva</span>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-fg transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
