@@ -18,6 +18,20 @@ Format entri:
 
 ## 2026-08-12
 ### Added
+- Prettier (`.prettierrc.json`, `.prettierignore`) + `eslint-config-prettier` terpasang di ESLint flat config (**T-009.1**)
+- Script `format` / `format:check` di `package.json` (**T-009.1**)
+- Tailwind CSS v4 (`@tailwindcss/postcss`, `postcss.config.mjs`) + CSS variables token (brand/accent/bg/fg/border/focus/danger/success) di `app/globals.css`, light default + fondasi `.dark` class strategy via `@custom-variant dark` (**T-009.2**)
+- `.github/dependabot.yml` — ekosistem `npm` (grouping patch/minor) + `github-actions`, update mingguan (**T-009.3**)
+### Changed
+- `app/page.tsx` — stub memakai utility Tailwind + token (`font-display`, `text-brand`, `text-fg-muted`) sebagai bukti kontrak token jalan
+- `tasks/v02-bootstrap.md` — **T-009.1** … **T-009.3** ✅; parent **T-009** ✅ Done
+- `TASKS.md` — Fokus → **T-010**
+- `PROJECT_STATE.md` — Snapshot/Fokus → next **T-010**
+
+---
+
+## 2026-08-12
+### Added
 - `content/README.md` — folder SoT konten situs berdampingan `app/` + `public/` + docs (**T-008.2**)
 - Script `typecheck` (`tsc --noEmit`) di `package.json` (**T-008.3**)
 - Stub halaman minimal di `app/` agar `pnpm build` hijau (**T-008.4**)

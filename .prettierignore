@@ -1,0 +1,18 @@
+.next/
+out/
+build/
+dist/
+coverage/
+node_modules/
+pnpm-lock.yaml
+next-env.d.ts
+*.tsbuildinfo
+
+# Dokumentasi & konten non-app-code — bukan scope format DX tooling (dx-tooling.md)
+product-discovery/
+project-manager/
+private/
+design-mockups/
+README.md
+AGENTS.md
+.cursor/

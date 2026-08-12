@@ -4,8 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. Eksekusi **T-009.1** — ESLint + Prettier + `eslint-config-prettier`; script `lint` / `format` / `format:check`
-2. Lanjut T-009.2 … T-012 sesuai `tasks/v02-bootstrap.md`
+1. **T-009** selesai (T-009.1 ESLint+Prettier, T-009.2 Tailwind+token, T-009.3 Dependabot).
+2. Lanjut **T-010** (Locale routing skeleton) sesuai `tasks/v02-bootstrap.md`
 
 ## Indeks release
 
