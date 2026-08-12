@@ -41,7 +41,7 @@ Tidak ada `.claude/skills/` atau `CLAUDE.md` — project ini Cursor-first (ADR-0
 
 ## Stack & layout (saat ini)
 
-Docs-only. Belum ada app framework. Stack akan dikunci di `product-discovery/06-engineering/`.
+Next.js (App Router) + TypeScript + pnpm di root — single-app (ADR-016). Docs tetap di `product-discovery/` + `project-manager/`. Detail stack: `product-discovery/06-engineering/`.
 
 ## Aturan keras
 

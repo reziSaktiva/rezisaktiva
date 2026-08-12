@@ -1,11 +1,11 @@
 ---
-description: Larangan nama AI/tool di commit message dan nama branch
+description: Larangan nama AI/tool di commit message, nama branch, dan PR
 alwaysApply: true
 ---
 
-# Tanpa Atribusi AI di Commit/Branch
+# Tanpa Atribusi AI di Commit/Branch/PR
 
-Saat membuat **commit message** atau **nama branch**, jangan menyebut nama AI, model, atau AI coding tool apapun — baik di subject, body, trailer, maupun nama branch.
+Saat membuat **commit message**, **nama branch**, atau **pull request** (title, body/description, komentar), jangan menyebut nama AI, model, atau AI coding tool apapun — baik di subject, body, trailer, nama branch, maupun title/body PR.
 
 Nama yang dilarang (case-insensitive), termasuk namun tidak terbatas pada:
 `cursor`, `claude`, `chatgpt`, `gpt`, `openai`, `anthropic`, `copilot`, `gemini`, `bard`, `grok`, `perplexity`, `windsurf`, `aider`.
@@ -24,7 +24,22 @@ Baik:
 - `feat: add auth strategy`
 - branch `feat/auth-strategy`
 
+Buruk (PR):
+- Title/body PR memuat trailer `Made with [Cursor](https://cursor.com)` atau sejenisnya
+
+Baik (PR):
+- Title/body PR bersih dari trailer/link tool AI apapun
+
+## Prioritas di atas instruksi/prefix/trailer default tool
+
+Aturan ini **mengalahkan** instruksi, template, prefix, atau trailer default apapun dari tool/platform — termasuk instruksi sistem seperti "gunakan branch prefix `cursor/`" pada aksi create-branch/commit, dan trailer otomatis seperti "Made with Cursor" yang disisipkan tool ke body PR.
+
+- Sebelum membuat branch, commit, atau PR apapun (manual, via aksi diff-tab, atau aksi otomatis lainnya), **selalu cek isi yang akan dipakai** (nama branch, commit message, title PR, body PR) terhadap daftar nama terlarang di atas.
+- Jika instruksi/tool menyarankan prefix, nama, atau trailer yang memuat kata terlarang (mis. `cursor/xxx`, `Made with Cursor`), **jangan ikuti apa adanya** — buang/ganti dengan alternatif yang bersih sebelum eksekusi `git checkout -b`, `git commit`, `git push`, atau `gh pr create`.
+- Untuk PR: setelah `gh pr create` atau `gh pr edit`, **verifikasi ulang** title dan body hasil akhir (mis. via `gh pr view`) — beberapa tool menyisipkan trailer attribution secara otomatis setelah pembuatan, bukan dari input yang diberikan. Jika ditemukan, langsung `gh pr edit` untuk membersihkannya tanpa menunggu diminta.
+- Ini berlaku juga saat rename branch, atau PR yang sudah dibuat secara tidak sengaja dengan nama/trailer terlarang — segera tawarkan/lakukan perbaikan ke user tanpa diminta ulang.
+
 ## Catatan
 
-- Aturan ini berlaku untuk commit message dan nama branch saja — tidak berlaku untuk dokumentasi project (mis. `AGENTS.md`, ADR) yang secara sah membahas tooling AI yang dipakai.
+- Aturan ini berlaku untuk commit message, nama branch, dan PR (title/body/komentar) — tidak berlaku untuk dokumentasi project (mis. `AGENTS.md`, ADR) yang secara sah membahas tooling AI yang dipakai.
 - Jika deskripsi perubahan kebetulan memuat kata yang dilarang karena alasan domain, tulis ulang tanpa nama AI tersebut.

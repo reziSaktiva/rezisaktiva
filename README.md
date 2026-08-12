@@ -21,4 +21,4 @@ Lihat Snapshot di [`project-manager/PROJECT_STATE.md`](project-manager/PROJECT_S
 
 ## Catatan
 
-Belum ada implementasi kode website. Fokus saat ini adalah Product Discovery.
+App Next.js + pnpm sudah di-scaffold di root (Bootstrap). Status & fokus kerja: lihat Snapshot di [`project-manager/PROJECT_STATE.md`](project-manager/PROJECT_STATE.md).
