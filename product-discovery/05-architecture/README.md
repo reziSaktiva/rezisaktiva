@@ -71,7 +71,7 @@ Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
 
 # Decision Rules
 
-* Baseline Architecture terkunci — jangan memakai README ini sebagai penunjuk fase aktif; ikuti `PROJECT_STATE.md` (saat ini Repository & Bootstrap).
+* Baseline Architecture terkunci — jangan memakai README ini sebagai penunjuk fase aktif; ikuti `PROJECT_STATE.md`.
 * Perubahan material setelah baseline → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 

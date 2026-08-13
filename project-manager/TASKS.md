@@ -4,17 +4,17 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-009** selesai (T-009.1 ESLint+Prettier, T-009.2 superseded, T-009.3 Dependabot, T-009.4 migrasi styling ke Astryx — ADR-018).
-2. **T-010** selesai (T-010.1 App Router `/[locale]` untuk `id`/`en`, T-010.2 `proxy.ts` redirect `/`, T-010.3 stub switcher).
-3. **T-011** selesai (T-011.1 CI Actions, T-011.2 project Vercel terhubung + deploy berhasil, T-011.3 `.env.example`).
-4. Lanjut **T-012** (Exit Bootstrap → siap Development).
+1. **T-012** selesai; v0.2 Repository & Bootstrap ✅ Done.
+2. Backlog v0.3 Development R1 sudah disusun (`tasks/v03-development-r1.md`, T-013 … T-018).
+3. Lanjut **T-013** (Site chrome R1 — nav + switcher + footer).
 
 ## Indeks release
 
 | Release | File | Tasks | Status |
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
-| v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ⏳ Todo |
+| v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
+| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-018 | ⏳ Todo |
 
 ## Aturan
 
@@ -29,3 +29,4 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 * `PROJECT_STATE.md`
 * `tasks/v01-product-discovery.md`
 * `tasks/v02-bootstrap.md`
+* `tasks/v03-development-r1.md`

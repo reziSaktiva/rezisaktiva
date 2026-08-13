@@ -113,7 +113,7 @@ Status penyelesaian fase aktif ada di `PROJECT_STATE.md` (bukan di README ini).
 
 # Next Phase
 
-Setelah Exit Criteria terpenuhi: **Repository & Bootstrap** (inisialisasi stack sesuai Engineering Planning), lalu Development. Status fase aktif ada di `PROJECT_STATE.md`.
+Setelah Exit Criteria terpenuhi, urutan historis project: **Repository & Bootstrap**, lalu **Development**. Status fase aktif ada di `PROJECT_STATE.md` (bukan di README ini).
 
 ---
 

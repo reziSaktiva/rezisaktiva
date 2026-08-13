@@ -55,7 +55,7 @@ Topik berikut tidak dibahas di sini:
 
 Acuan fase: Next.js single-app + pnpm; Vercel; CI Actions lint/typecheck; ESLint/Prettier; Tailwind + CSS vars (light default, dark fondasi A+).
 
-Langkah berikutnya: **Repository & Bootstrap** (inisialisasi stack sesuai baseline ini). Status fase aktif ada di `PROJECT_STATE.md`.
+Langkah berikutnya (historis fase): **Repository & Bootstrap**, lalu Development. Status fase aktif ada di `PROJECT_STATE.md`.
 
 ---
 
@@ -71,7 +71,7 @@ Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
 
 # Decision Rules
 
-* Fase Engineering Planning selesai — lanjut **Repository & Bootstrap** sesuai baseline ini.
+* Fase Engineering Planning selesai — urutan historis: **Repository & Bootstrap**, lalu Development. Fase aktif ada di `PROJECT_STATE.md`.
 * Perubahan material setelah baseline → ADR baru + revisi dokumen terdampak.
 * Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
 
