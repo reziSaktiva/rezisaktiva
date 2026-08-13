@@ -14,6 +14,26 @@ Format entri:
 - ...
 ```
 
+## [2026-08-13]
+
+### Added
+
+- Rule `.cursor/rules/ui-ux-mockup-check.mdc` — AI wajib cek ketersediaan mockup (`design-mockups/`) dan tanya user sebelum eksekusi task UI/UX.
+- Dependency Astryx (`@astryxdesign/core`, `@stylexjs/stylex`, `@astryxdesign/theme-neutral`, `@astryxdesign/cli`) sebagai component library + sistem styling R1 (**T-009.4**, **ADR-018**).
+- `.cursor/rules/xds.mdc` — agent docs Astryx (konvensi wajib AI saat menulis komponen), `alwaysApply: true`.
+- Script `astryx` di `package.json` untuk invocation CLI reliable.
+- `app/layout.tsx` membungkus subtree dengan `<Theme theme={neutralTheme} mode="light">`; `app/page.tsx` migrasi ke komponen Astryx (`Heading`, `Text`, `VStack`).
+
+### Changed
+
+- `design-tokens.md`, `dependency-strategy.md` diperbarui: kontrak styling pindah dari Tailwind + CSS variables ke Astryx (ADR-018).
+- `app/globals.css` — import Astryx reset/theme CSS, hapus setup Tailwind (`@import "tailwindcss"` dst).
+- `v02-bootstrap.md` — T-009.2 ditandai superseded oleh T-009.4 baru (bukan didaur ulang, sesuai aturan ID subtask).
+
+### Fixed
+
+- (tidak ada)
+
 ---
 
 ## 2026-08-12

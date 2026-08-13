@@ -1,84 +1,10 @@
-@import "tailwindcss";
+@import "@astryxdesign/core/reset.css";
+@import "@astryxdesign/core/astryx.css";
+@import "@astryxdesign/theme-neutral/theme.css";
 
 /*
- * Dark mode via class strategy (bukan media-query default Tailwind v4),
- * agar toggle UI (Should/Later) bisa ditambah nanti tanpa ganti arsitektur.
- * Lihat product-discovery/06-engineering/design-tokens.md.
+ * Sumber token pindah ke Astryx (theme-neutral) — lihat
+ * product-discovery/06-engineering/design-tokens.md dan ADR-018.
+ * Kustomisasi brand/accent dilakukan lewat `astryx theme`, bukan override
+ * langsung --color-* di :root (lihat .cursor/rules/xds.mdc).
  */
-@custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  /* Typography — arah awal (placeholder), nilai final menyusul saat desain */
-  --font-display: ui-serif, Georgia, serif;
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, monospace;
-
-  /* Brand */
-  --color-brand: #0b1220;
-  --color-accent: #0f766e;
-  --color-accent-muted: #cceae6;
-
-  /* Neutral */
-  --color-bg: #fafaf9;
-  --color-bg-elevated: #f1f0ee;
-  --color-fg: #0b1220;
-  --color-fg-muted: #5b6472;
-  --color-border: #e4e1dd;
-
-  /* Feedback */
-  --color-focus: var(--color-accent);
-  --color-danger: #dc2626;
-  --color-success: #16a34a;
-}
-
-.dark {
-  --color-brand: #e7ecf3;
-  --color-accent: #2dd4bf;
-  --color-accent-muted: #123b38;
-
-  --color-bg: #0b1220;
-  --color-bg-elevated: #121b2b;
-  --color-fg: #f5f7fa;
-  --color-fg-muted: #9aa5b1;
-  --color-border: #253244;
-
-  --color-focus: var(--color-accent);
-  --color-danger: #f87171;
-  --color-success: #4ade80;
-}
-
-@theme inline {
-  --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-
-  --color-brand: var(--color-brand);
-  --color-accent: var(--color-accent);
-  --color-accent-muted: var(--color-accent-muted);
-
-  --color-bg: var(--color-bg);
-  --color-bg-elevated: var(--color-bg-elevated);
-  --color-fg: var(--color-fg);
-  --color-fg-muted: var(--color-fg-muted);
-  --color-border: var(--color-border);
-
-  --color-focus: var(--color-focus);
-  --color-danger: var(--color-danger);
-  --color-success: var(--color-success);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-  font-family: var(--font-sans);
-}

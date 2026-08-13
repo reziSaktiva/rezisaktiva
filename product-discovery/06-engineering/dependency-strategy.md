@@ -56,13 +56,15 @@ Satu `package.json` di **root** (bukan monorepo workspace).
 
 | Jenis | Contoh | Catatan |
 | ----- | ------ | ------- |
-| `dependencies` | `next`, `react`, `react-dom` | Runtime / bundle produksi |
-| `devDependencies` | `typescript`, `eslint`, `prettier`, Tailwind tooling, types | Build, lint, format |
+| `dependencies` | `next`, `react`, `react-dom`, `@astryxdesign/core`, `@stylexjs/stylex`, `@astryxdesign/theme-neutral` | Runtime / bundle produksi |
+| `devDependencies` | `typescript`, `eslint`, `prettier`, `@astryxdesign/cli`, types | Build, lint, format, docs |
 | Peer / optional rumit | Hindari kecuali library memaksa | Situs lean |
 
 Jangan menambah library “karena template” (auth, ORM, state global) — selaras N/A di auth/DB.
 
 Preferensi: dependency sedikit, intentional; prefer API platform (Next/Vercel) sebelum library baru.
+
+**Pengecualian intentional (ADR-018, 2026-08-13):** Astryx (`@astryxdesign/core` + `@stylexjs/stylex` + `@astryxdesign/theme-neutral` + `@astryxdesign/cli`) ditambahkan sebagai component library + sistem styling, **menggantikan** `tailwindcss` / `@tailwindcss/postcss` (di-uninstall). Ini bukan penambahan lapisan di atas Tailwind, melainkan pergantian satu sistem styling dengan sistem lain — selaras prinsip dependency sedikit (satu sistem styling aktif, bukan dua paralel).
 
 ---
 
@@ -92,6 +94,7 @@ Bun **bukan** bagian strategi update R1; reopen package manager memerlukan updat
 | Auto-update | **Dependabot** (Renovate alternatif) |
 | Exact pin default | Tidak |
 | Baseline Engineering | ADR-016 |
+| Styling/component library | **Astryx** (menggantikan Tailwind) — **ADR-018** |
 
 ---
 

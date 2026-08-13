@@ -4,7 +4,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-009** selesai (T-009.1 ESLint+Prettier, T-009.2 Tailwind+token, T-009.3 Dependabot).
+1. **T-009** selesai (T-009.1 ESLint+Prettier, T-009.2 superseded, T-009.3 Dependabot, T-009.4 migrasi styling ke Astryx — ADR-018).
 2. Lanjut **T-010** (Locale routing skeleton) sesuai `tasks/v02-bootstrap.md`
 
 ## Indeks release
