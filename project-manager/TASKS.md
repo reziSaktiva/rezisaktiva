@@ -4,17 +4,16 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-009** selesai (T-009.1 ESLint+Prettier, T-009.2 superseded, T-009.3 Dependabot, T-009.4 migrasi styling ke Astryx — ADR-018).
-2. **T-010** selesai (T-010.1 App Router `/[locale]` untuk `id`/`en`, T-010.2 `proxy.ts` redirect `/`, T-010.3 stub switcher).
-3. **T-011** selesai (T-011.1 CI Actions, T-011.2 project Vercel terhubung + deploy berhasil, T-011.3 `.env.example`).
-4. Lanjut **T-012** (Exit Bootstrap → siap Development).
+1. **T-012** selesai (T-012.1 verifikasi exit Bootstrap, T-012.2 fase Development, T-012.3 COMPLETE_TASK + Fokus).
+2. Release v0.2 Repository & Bootstrap **selesai** (T-008 … T-012).
+3. Berikutnya: susun backlog Development R1 (v0.3) — Must M1–M7 (Home / About / Contact + teaser + chrome + meta).
 
 ## Indeks release
 
 | Release | File | Tasks | Status |
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
-| v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ⏳ Todo |
+| v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
 
 ## Aturan
 

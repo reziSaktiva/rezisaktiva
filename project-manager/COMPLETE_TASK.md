@@ -14,6 +14,20 @@ Format entri:
 - ...
 ```
 
+## [2026-08-13] (5)
+
+### Fixed
+
+- README Static Reference tidak lagi menanam status fase hidup: `product-discovery/03-user/README.md`, `04-ux/README.md`, `05-architecture/README.md` (hapus “(saat ini Repository & Bootstrap)”); `06-engineering/README.md` + `product-discovery/README.md` memakai rumusan urutan historis + rujuk `PROJECT_STATE.md`.
+
+## [2026-08-13] (4)
+
+### Changed
+
+- **T-012.1** — Exit Bootstrap diverifikasi: `pnpm lint` + `typecheck` + `build` hijau lokal (route `/id`/`/en` SSG + Proxy); CI Actions hijau di PR #20 dan push `main`; Vercel Preview + Production success; struktur (`app/` `content/` `public/`), token Astryx (ADR-018), locale `/[locale]` + `proxy.ts` sesuai baseline.
+- **T-012.2** — `PROJECT_STATE.md` → fase **Development**; Active Mode fitur R1 (M1–M7); Top Next Task = susun backlog Development R1 (v0.3).
+- **T-012.3** — `tasks/v02-bootstrap.md` T-012 ✅ Done; `TASKS.md` Fokus + indeks v0.2 ✅ Done.
+
 ## [2026-08-13] (3)
 
 ### Changed

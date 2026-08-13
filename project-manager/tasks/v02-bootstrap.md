@@ -64,15 +64,15 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 
 ## T-012 — Exit Bootstrap → siap Development
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done
 * **Domain:** Documentation
 * **Baca dulu:** `PROJECT_STATE.md` Active Mode, exit kriteria Bootstrap (didefinisikan di file task ini)
 
 ### Subtasks
 
-- [ ] **T-012.1** — Verifikasi: build lokal + CI hijau + Preview Vercel + struktur/token/locale sesuai baseline
-- [ ] **T-012.2** — Update `PROJECT_STATE.md` → fase Development (Active Mode fitur R1)
-- [ ] **T-012.3** — Append `COMPLETE_TASK.md` + update Fokus di `TASKS.md`
+- [x] **T-012.1** — Verifikasi: build lokal + CI hijau + Preview Vercel + struktur/token/locale sesuai baseline
+- [x] **T-012.2** — Update `PROJECT_STATE.md` → fase Development (Active Mode fitur R1)
+- [x] **T-012.3** — Append `COMPLETE_TASK.md` + update Fokus di `TASKS.md`
 
 ---
 

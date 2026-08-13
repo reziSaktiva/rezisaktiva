@@ -2,11 +2,11 @@
 
 ## Snapshot
 
-* **Phase / Milestone:** Repository & Bootstrap · acuan Engineering Baseline (ADR-016)
-* **Active Mode:** Repository & Bootstrap — scaffold app sesuai baseline; belum Development fitur penuh
-* **Top Next Tasks:** Eksekusi **T-012** (Exit Bootstrap → siap Development) — lihat [`TASKS.md`](TASKS.md)
+* **Phase / Milestone:** Development · R1 MVP Clarity (Hybrid lean, M1–M7)
+* **Active Mode:** Development — implementasi fitur/konten R1; bukan scaffold Bootstrap
+* **Top Next Tasks:** Susun backlog Development R1 (v0.3) — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (T-008, T-009, T-010, T-011 ✅; T-012 ⏳ Todo)
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done, T-008…T-012)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -24,40 +24,39 @@
 ## Current Status
 
 | Item | Value |
-| ---- | ----- |
-| Current Phase | Repository & Bootstrap |
-| Current Milestone | Scaffold app sesuai Engineering Baseline |
-| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008, T-009, T-010, T-011 ✅; next T-012 |
-| Project Status | Discovery complete — bootstrap in progress (fokus T-012, Exit Bootstrap) |
+| ----- | ----- |
+| Current Phase | Development |
+| Current Milestone | R1 MVP Clarity (Must M1–M7) |
+| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; next: backlog Development R1 |
+| Project Status | Bootstrap complete — siap Development fitur R1 |
 
 ---
 
 ## Current Focus
 
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
-* Backlog Bootstrap **sudah disusun** (`tasks/v02-bootstrap.md`, T-008…T-012).
-* Acuan implementasi: `product-discovery/` + ADR-001 … ADR-016.
-* **T-008** selesai (scaffold Next + pnpm, struktur folder, scripts, build hijau).
-* **T-009** selesai — ESLint + Prettier (`eslint-config-prettier`), Dependabot (`npm` + `github-actions`, grouping patch/minor), styling/token migrasi dari Tailwind ke **Astryx** (`@astryxdesign/core` + StyleX + `theme-neutral`, light default via `Theme mode`) — **ADR-018** (T-009.4).
-* **T-010** selesai — App Router `/[locale]` (`id`/`en`) SSG via `generateStaticParams`, `proxy.ts` (Next.js 16 rename dari `middleware.ts`) redirect `/` ke locale (cookie preferensi → geo `x-vercel-ip-country` → `Accept-Language` → fallback `en`), stub switcher (`app/[locale]/_components/locale-switcher.tsx`) set cookie `NEXT_LOCALE`.
-* **T-011** selesai — CI GitHub Actions (`.github/workflows/ci.yml`: lint + typecheck di PR), `.env.example`, dan project Vercel sudah terhubung + deploy berhasil (dikerjakan manual oleh Boss Rezi di dashboard Vercel). Berikutnya: **T-012** — Exit Bootstrap → siap Development.
+* Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012) — exit kriteria terpenuhi (lihat T-012.1).
+* Acuan implementasi: `product-discovery/` + ADR-001 … ADR-018.
+* Fase aktif: **Development** — implementasi R1 (Home / About / Contact + work teaser + chrome + meta), bukan scaffold.
+* Berikutnya: susun backlog Development R1 (`tasks/v03-*.md`) sebelum implementasi halaman polished.
 
 ---
 
 ## Active Conversation Mode
 
-**Repository & Bootstrap**
+**Development**
 
 Diizinkan:
 
-* Scaffold aplikasi sesuai Engineering Baseline (ADR-016 / `06-engineering/`)
-* Setup tooling, CI, env, deploy sesuai dokumen planning
-* Diskusi, ADR untuk keputusan material bootstrap
+* Implementasi fitur/konten R1 Must (M1–M7: Home, About, Contact, work teaser, language, chrome, meta)
+* Polish Should R1 yang tidak menambah halaman baru (paritas ID/EN, a11y dasar, availability line)
+* Mockup → kode sesuai UX baseline (ADR-014) + Astryx (ADR-018)
+* Diskusi, ADR untuk keputusan material implementasi
 * Update TASKS / PROJECT_STATE / COMPLETE_TASK
 
 Tidak diizinkan (kecuali diminta eksplisit):
 
-* Implementasi fitur/konten produk penuh di luar skeleton Bootstrap
+* Scope R2/R3 (Work index / case penuh, magnet) sebelum exit R1
 * Mengubah baseline Product Discovery tanpa ADR baru
 
 ---
@@ -70,7 +69,7 @@ Tidak ada.
 
 ## Recent Decisions (Ringkasan)
 
-ADR terbaru: **ADR-017** (Motion sebagai identitas visual R1). Indeks lengkap ADR-001…ADR-017 (title, status, tanggal, ringkasan): lihat [`DECISIONS.md`](DECISIONS.md).
+ADR terbaru: **ADR-018** (Astryx menggantikan Tailwind sebagai styling/token R1). Indeks lengkap ADR-001…ADR-018 (title, status, tanggal, ringkasan): lihat [`DECISIONS.md`](DECISIONS.md).
 
 ---
 
