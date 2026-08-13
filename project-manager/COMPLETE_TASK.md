@@ -14,6 +14,16 @@ Format entri:
 - ...
 ```
 
+## [2026-08-13] (6)
+
+### Added
+
+- `project-manager/tasks/v03-development-r1.md` — backlog Development R1 (T-013 chrome, T-014 Home+teaser, T-015 About, T-016 Contact, T-017 meta, T-018 exit R1).
+
+### Changed
+
+- `project-manager/TASKS.md`, `project-manager/PROJECT_STATE.md` — indeks v0.3; Fokus/Top Next Task = **T-013**.
+
 ## [2026-08-13] (5)
 
 ### Fixed

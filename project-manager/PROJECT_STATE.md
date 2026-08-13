@@ -4,9 +4,9 @@
 
 * **Phase / Milestone:** Development · R1 MVP Clarity (Hybrid lean, M1–M7)
 * **Active Mode:** Development — implementasi fitur/konten R1; bukan scaffold Bootstrap
-* **Top Next Tasks:** Susun backlog Development R1 (v0.3) — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** Eksekusi **T-013** (Site chrome R1) — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done, T-008…T-012)
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ Todo, T-013…T-018)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -27,8 +27,8 @@
 | ----- | ----- |
 | Current Phase | Development |
 | Current Milestone | R1 MVP Clarity (Must M1–M7) |
-| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; next: backlog Development R1 |
-| Project Status | Bootstrap complete — siap Development fitur R1 |
+| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013…T-018 ⏳; next T-013 |
+| Project Status | Development in progress — fokus T-013 (Site chrome R1) |
 
 ---
 
@@ -38,7 +38,7 @@
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012) — exit kriteria terpenuhi (lihat T-012.1).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-018.
 * Fase aktif: **Development** — implementasi R1 (Home / About / Contact + work teaser + chrome + meta), bukan scaffold.
-* Berikutnya: susun backlog Development R1 (`tasks/v03-*.md`) sebelum implementasi halaman polished.
+* Backlog Development R1 **sudah disusun** (`tasks/v03-development-r1.md`, T-013…T-018). Berikutnya: **T-013** — Site chrome R1.
 
 ---
 
