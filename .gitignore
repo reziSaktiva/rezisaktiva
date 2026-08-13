@@ -15,7 +15,7 @@ Thumbs.db
 
 # Dependencies
 node_modules/
-.pnpm-store/
+.pnpm-store/*
 .bun/
 .pnp
 .pnp.*
