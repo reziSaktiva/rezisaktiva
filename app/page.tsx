@@ -2,6 +2,11 @@ import { Heading } from "@astryxdesign/core/Heading";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
 
+/**
+ * Stub root — secara normal tidak pernah diakses langsung karena
+ * `middleware.ts` selalu redirect `/` ke `/id` atau `/en` (T-010.2).
+ * Tetap harus ada agar App Router punya page untuk path `/`.
+ */
 export default function Home() {
   return (
     <VStack

@@ -14,7 +14,41 @@ Format entri:
 - ...
 ```
 
-## [2026-08-13]
+## [2026-08-13] (3)
+
+### Changed
+
+- **T-011.2** — Project Vercel dihubungkan (import repo GitHub, Production Branch, env var) oleh Boss Rezi secara manual di dashboard Vercel; deploy pertama berhasil. `tasks/v02-bootstrap.md` T-011 ditandai ✅ Done penuh (T-011.1/.2/.3 selesai).
+- `project-manager/TASKS.md`, `project-manager/PROJECT_STATE.md` — Fokus/Snapshot/Current Focus diupdate: T-011 selesai, Top Next Task berikutnya **T-012** (Exit Bootstrap → siap Development), Blocker dikosongkan.
+
+## [2026-08-13] (2)
+
+### Added
+
+- **T-010.1** — App Router locale skeleton: `lib/locale.ts` (`LOCALES`, `DEFAULT_LOCALE`, `isLocale`), `app/[locale]/page.tsx` (stub `id`/`en`, `generateStaticParams` untuk SSG, `notFound()` untuk locale lain sesuai ADR-015 static-first).
+- **T-010.2** — `proxy.ts` (root) redirect `/` → locale default; matcher hanya `/` (path ber-locale tidak pernah disentuh, sesuai ADR-014). File dibuat sebagai `middleware.ts` lalu di-rename ke `proxy.ts` (+ fungsi `proxy`) mengikuti konvensi Next.js 16.3 (menghindari warning deprecation).
+- **T-010.3** — `app/[locale]/layout.tsx` + `app/[locale]/_components/locale-switcher.tsx`: stub switcher tipis (Astryx `Link`) yang link ke sibling path locale dan set cookie `NEXT_LOCALE` saat diklik.
+- **T-011.1** — `.github/workflows/ci.yml`: GitHub Actions (`pull_request` + `push` ke `main`) — checkout, `pnpm/action-setup`, `actions/setup-node` (cache pnpm), `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`. Tanpa `next build` di Actions (build produksi tetap di Vercel, sesuai `cicd-pipeline.md`).
+- **T-011.3** — `.env.example` (`NEXT_PUBLIC_SITE_URL` + komentar tier Local/Preview/Production, referensi ke `environment-management.md`). `.gitignore` diverifikasi sudah meng-ignore `.env` / `.env.*` kecuali `.env.example`.
+
+### Changed
+
+- `app/page.tsx` — jadi stub root (komentar dijelaskan: tidak pernah diakses langsung karena `proxy.ts` selalu redirect `/`).
+- `project-manager/tasks/v02-bootstrap.md` — T-010 ditandai ✅ Done (semua subtask); T-011 subtask T-011.1/T-011.3 ✅, T-011.2 tetap ⏳ (butuh aksi manual Boss Rezi di dashboard Vercel — langkah manual didokumentasikan di file task).
+- `project-manager/TASKS.md`, `project-manager/PROJECT_STATE.md` — update Fokus/Snapshot/Current Focus mencerminkan T-010 selesai dan T-011 menunggu Vercel manual.
+
+### Fixed
+
+- (tidak ada)
+
+### Catatan keputusan implementasi (bukan ADR — untuk konfirmasi Boss Rezi bila perlu)
+
+- **Urutan resolusi locale di `proxy.ts`:** brief task menuliskan urutan "geo → Accept-Language → preferensi cookie → fallback". Diimplementasikan dengan urutan **cookie preferensi → geo (`x-vercel-ip-country`) → Accept-Language → fallback `en`**, karena preferensi hasil switch eksplisit user seharusnya menang di kunjungan berikutnya dibanding heuristik otomatis. ADR-014 sendiri tidak eksplisit menentukan urutan antara ketiganya. Jika Boss Rezi ingin urutan literal sesuai brief, tinggal pindah blok `resolveFromCookie` ke posisi sebelum fallback di `proxy.ts` (komentar sudah dicatat di file).
+- **`middleware.ts` → `proxy.ts`:** repo pakai Next.js 16.3 yang sudah men-deprecate konvensi `middleware.ts` (rename resmi jadi `proxy.ts` + fungsi `proxy`). Dokumen `deployment-infrastructure.md`/ADR-014 menyebut "Edge Middleware" secara konseptual; nama file diimplementasikan sesuai versi Next.js yang terpasang agar tidak ada warning deprecation saat build.
+
+---
+
+## [2026-08-13] (1)
 
 ### Added
 

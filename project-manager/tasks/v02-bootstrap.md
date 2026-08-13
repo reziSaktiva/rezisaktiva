@@ -36,29 +36,29 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 
 ## T-010 — Locale routing skeleton
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done
 * **Domain:** Engineering
 * **Baca dulu:** `product-discovery/06-engineering/deployment-infrastructure.md`, UX locale ADR-014, architecture SSG ADR-015
 
 ### Subtasks
 
-- [ ] **T-010.1** — App Router paths `/id` dan `/en` (stub halaman minimal)
-- [ ] **T-010.2** — Middleware / aturan redirect `/` → locale default (geo/default sesuai baseline)
-- [ ] **T-010.3** — Stub switcher locale tipis (tanpa polish konten)
+- [x] **T-010.1** — App Router paths `/id` dan `/en` (stub halaman minimal) — `app/[locale]/page.tsx` + `lib/locale.ts`, `generateStaticParams` untuk SSG, `notFound()` untuk locale lain
+- [x] **T-010.2** — Middleware / aturan redirect `/` → locale default (geo/default sesuai baseline) — `proxy.ts` (rename dari `middleware.ts` mengikuti konvensi Next.js 16); urutan sinyal: cookie preferensi → `x-vercel-ip-country` → `Accept-Language` → fallback `en` (lihat catatan keputusan implementasi di komentar file)
+- [x] **T-010.3** — Stub switcher locale tipis (tanpa polish konten) — `app/[locale]/_components/locale-switcher.tsx` (Astryx `Link`), set cookie `NEXT_LOCALE` on click, di `app/[locale]/layout.tsx`
 
 ---
 
 ## T-011 — CI + Vercel + env tipis
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done
 * **Domain:** Engineering
 * **Baca dulu:** `product-discovery/06-engineering/cicd-pipeline.md`, `deployment-infrastructure.md`, `environment-management.md`
 
 ### Subtasks
 
-- [ ] **T-011.1** — GitHub Actions: pnpm + lint + typecheck pada PR
-- [ ] **T-011.2** — Hubungkan project Vercel (Preview PR + Production dari branch utama)
-- [ ] **T-011.3** — Env tipis: `.env.example` + `.env.local` gitignored; dokumentasikan tier Local/Preview/Production (secret produk minimal/kosong)
+- [x] **T-011.1** — GitHub Actions: pnpm + lint + typecheck pada PR — `.github/workflows/ci.yml` (trigger `pull_request` + `push` ke `main`; checkout → `pnpm/action-setup` → `actions/setup-node` (cache pnpm) → `pnpm install --frozen-lockfile` → `pnpm lint` → `pnpm typecheck`; tanpa `next build`, tanpa secret)
+- [x] **T-011.2** — Hubungkan project Vercel (Preview PR + Production dari branch utama) — dikerjakan manual oleh Boss Rezi di dashboard Vercel; project sudah terhubung dan deploy berhasil
+- [x] **T-011.3** — Env tipis: `.env.example` + `.env.local` gitignored; dokumentasikan tier Local/Preview/Production (secret produk minimal/kosong) — `.env.example` (`NEXT_PUBLIC_SITE_URL` + komentar tier); `.gitignore` sudah meng-ignore `.env` / `.env.*` kecuali `.env.example` (diverifikasi, sudah ada sejak bootstrap awal)
 
 ---
 
