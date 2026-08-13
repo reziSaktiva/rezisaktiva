@@ -1,10 +1,18 @@
+import { Heading } from "@astryxdesign/core/Heading";
+import { Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+
 export default function Home() {
   return (
-    <main className="grid min-h-screen place-content-center gap-2 p-6 text-center">
-      <h1 className="font-display text-3xl font-semibold text-brand">
-        rezisaktiva
-      </h1>
-      <p className="text-fg-muted">Bootstrap stub — konten R1 menyusul.</p>
-    </main>
+    <VStack
+      gap={2}
+      align="center"
+      justify="center"
+      padding={6}
+      minHeight="100vh"
+    >
+      <Heading level={1}>rezisaktiva</Heading>
+      <Text color="secondary">Bootstrap stub — konten R1 menyusul.</Text>
+    </VStack>
   );
 }

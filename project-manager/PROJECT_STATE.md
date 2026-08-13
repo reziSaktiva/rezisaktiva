@@ -17,7 +17,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-08-12 |
+| Last Updated | 2026-08-13 |
 
 ---
 
@@ -38,7 +38,7 @@
 * Backlog Bootstrap **sudah disusun** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-016.
 * **T-008** selesai (scaffold Next + pnpm, struktur folder, scripts, build hijau).
-* **T-009** selesai — ESLint + Prettier (`eslint-config-prettier`), Tailwind v4 + CSS variables (light default, fondasi `dark:` class strategy), Dependabot (`npm` + `github-actions`, grouping patch/minor). Berikutnya: **T-010** — Locale routing skeleton.
+* **T-009** selesai — ESLint + Prettier (`eslint-config-prettier`), Dependabot (`npm` + `github-actions`, grouping patch/minor), styling/token migrasi dari Tailwind ke **Astryx** (`@astryxdesign/core` + StyleX + `theme-neutral`, light default via `Theme mode`) — **ADR-018** (T-009.4). Berikutnya: **T-010** — Locale routing skeleton.
 
 ---
 

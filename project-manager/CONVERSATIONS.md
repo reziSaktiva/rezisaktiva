@@ -14,6 +14,15 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-13] — Adopsi Astryx sebagai component library, replace Tailwind
+
+**Phase:** Repository & Bootstrap (T-009 selesai, menjelang T-010)
+**Summary:** Boss Rezi minta setup Astryx (`astryx.atmeta.com`) untuk component library R1. Setelah klarifikasi (integrasi replace penuh vs coexist Tailwind, pilihan theme, target agent docs), disepakati: Astryx **menggantikan** Tailwind + CSS variables sepenuhnya (bukan bridge), theme awal `@astryxdesign/theme-neutral`, agent docs Astryx digenerate ke project rule `.cursor/rules/xds.mdc` (bukan `AGENTS.md` yang jadi dokumen navigasi inti, bukan juga user rule global).
+**Key Decision/Insight:** Astryx dipilih karena AI-friendly by design (CLI docs terstruktur, agent context generation) — selaras pola kerja project yang banyak dieksekusi AI agent. Diformalkan sebagai **ADR-018**.
+**Impact:** `design-tokens.md`, `dependency-strategy.md` diperbarui; Tailwind di-uninstall; `app/globals.css`, `app/layout.tsx`, `app/page.tsx` migrasi ke Astryx; `v02-bootstrap.md` T-009.4 (baru) menggantikan T-009.2. Juga dibuat rule baru `.cursor/rules/ui-ux-mockup-check.mdc` (wajib cek mockup `design-mockups/` sebelum kerjakan task UI/UX) di sesi yang sama.
+
+---
+
 ## [2026-08-12] — Pendekatan visualisasi design & motion sebagai identitas
 
 **Phase:** Repository & Bootstrap (menjelang T-009.2 design tokens)

@@ -23,13 +23,14 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 
 * **Status:** ✅ Done
 * **Domain:** Engineering
-* **Baca dulu:** `product-discovery/06-engineering/dx-tooling.md`, `design-tokens.md`, `dependency-strategy.md`
+* **Baca dulu:** `product-discovery/06-engineering/dx-tooling.md`, `design-tokens.md`, `dependency-strategy.md`, ADR-018
 
 ### Subtasks
 
 - [x] **T-009.1** — ESLint (`eslint-config-next`) + Prettier + `eslint-config-prettier`; script `lint` / `format` / `format:check`
-- [x] **T-009.2** — Tailwind + CSS variables (light default; fondasi `dark:` tanpa toggle UI)
+- [x] **T-009.2** — ~~Tailwind + CSS variables~~ (light default; fondasi `dark:` tanpa toggle UI) — **superseded oleh T-009.4** (ADR-018)
 - [x] **T-009.3** — Dependabot (atau setara) untuk update dependency ringan
+- [x] **T-009.4** — Migrasi styling dari Tailwind ke **Astryx** (`@astryxdesign/core` + StyleX + `theme-neutral`); `Theme` di root layout (`mode="light"` default); agent docs di `.cursor/rules/xds.mdc`; Tailwind di-uninstall — **ADR-018**
 
 ---
 

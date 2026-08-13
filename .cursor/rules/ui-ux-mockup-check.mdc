@@ -1,0 +1,45 @@
+---
+description: Wajib cek ketersediaan mockup sebelum mengerjakan task UI/UX
+alwaysApply: true
+---
+
+# Cek Mockup Sebelum Kerjakan Task UI/UX
+
+Berlaku untuk task apapun yang:
+
+- Domain-nya UI/UX (atau sejenis: Design, Product/UX), **ATAU**
+- Scope-nya menyentuh implementasi/perubahan halaman, komponen visual, layout, atau styling — apapun nilai Domain-nya
+
+Lokasi acuan mockup: `design-mockups/` (HTML/Tailwind statis — `home.html`, `about.html`, `contact.html`, dst).
+
+## Langkah Wajib (sebelum eksekusi)
+
+1. **Cek ketersediaan mockup** untuk halaman/komponen yang jadi scope task ini di `design-mockups/`.
+2. **Jika mockup sudah ada:** jangan langsung pakai — tanya dulu ke user apakah mockup yang sekarang masih dipakai, atau perlu diperbarui sebelum lanjut.
+3. **Jika mockup belum ada:** informasikan ke user, lalu tanya apakah perlu dibuat mockup dulu sebelum masuk implementasi kode, atau lanjut langsung tanpa mockup.
+4. **Jangan lanjut eksekusi visual** (coding komponen/halaman) sebelum mendapat jawaban eksplisit dari poin 2 atau 3.
+
+## Format Pertanyaan
+
+Gunakan `AskQuestion` (bukan listing pilihan di teks biasa):
+
+```
+Sebelum lanjut implementasi [halaman/komponen X], saya cek dulu status mockup-nya:
+
+- Mockup tersedia di `design-mockups/[nama].html`
+
+Mau pakai mockup yang sekarang, atau ada bagian yang mau diperbarui dulu?
+```
+
+Atau bila belum ada mockup:
+
+```
+Belum ada mockup untuk [halaman/komponen X] di `design-mockups/`.
+
+Mau dibuat mockup HTML dulu sebelum masuk implementasi kode, atau langsung lanjut ke kode tanpa mockup?
+```
+
+## Pengecualian
+
+- Tidak berlaku untuk task murni Engineering/Documentation yang tidak menyentuh output visual (misal: setup CI, restrukturisasi docs).
+- Jika keputusan pakai/update mockup sudah tercatat eksplisit di `project-manager/CONVERSATIONS.md` untuk task yang sama, tidak perlu tanya ulang.
