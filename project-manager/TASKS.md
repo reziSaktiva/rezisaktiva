@@ -5,7 +5,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 ## Fokus sekarang
 
 1. **T-009** selesai (T-009.1 ESLint+Prettier, T-009.2 superseded, T-009.3 Dependabot, T-009.4 migrasi styling ke Astryx — ADR-018).
-2. Lanjut **T-010** (Locale routing skeleton) sesuai `tasks/v02-bootstrap.md`
+2. **T-010** selesai (T-010.1 App Router `/[locale]` untuk `id`/`en`, T-010.2 `proxy.ts` redirect `/`, T-010.3 stub switcher).
+3. **T-011** selesai (T-011.1 CI Actions, T-011.2 project Vercel terhubung + deploy berhasil, T-011.3 `.env.example`).
+4. Lanjut **T-012** (Exit Bootstrap → siap Development).
 
 ## Indeks release
 
