@@ -5,6 +5,7 @@ const COPY = {
     'title.home': 'rezisaktiva — Home',
     'title.about': 'rezisaktiva — Proses Kerja',
     'title.contact': 'rezisaktiva — Contact',
+    'nav.home': 'Home',
     'nav.process': 'Proses Kerja',
     'nav.work': 'Karya',
     'nav.contact': 'Contact',
@@ -84,8 +85,8 @@ const COPY = {
     'title.work': 'rezisaktiva — Karya',
     'page.work': 'Karya',
     'work.h1':
-      '<span class="word page-line">Seluruh</span>\n' +
-      '<span class="word page-line page-line-2">hasil kerja.</span>',
+      '<span class="word page-line-compact">Seluruh</span>\n' +
+      '<span class="word page-line-compact">hasil kerja.</span>',
     'work.lead':
       'Daftar karya yang sudah di-ship. Buka tile untuk cerita singkat prosesnya.',
     'work.preview': 'preview',
@@ -126,6 +127,7 @@ const COPY = {
     'title.home': 'rezisaktiva — Home',
     'title.about': 'rezisaktiva — My Process',
     'title.contact': 'rezisaktiva — Contact',
+    'nav.home': 'Home',
     'nav.process': 'My Process',
     'nav.work': 'Work',
     'nav.contact': 'Contact',
@@ -205,8 +207,8 @@ const COPY = {
     'title.work': 'rezisaktiva — Work',
     'page.work': 'Work',
     'work.h1':
-      '<span class="word page-line">All</span>\n' +
-      '<span class="word page-line page-line-2">shipped work.</span>',
+      '<span class="word page-line-compact">All</span>\n' +
+      '<span class="word page-line-compact">shipped work.</span>',
     'work.lead':
       'Everything shipped so far. Open a tile for a short process story.',
     'work.preview': 'preview',
@@ -448,8 +450,8 @@ function applyLocale(locale) {
 
   document.querySelectorAll('[data-locale]').forEach((btn) => {
     const active = btn.getAttribute('data-locale') === locale;
-    btn.classList.toggle('font-medium', active);
-    btn.classList.toggle('text-fg', active);
+    btn.classList.toggle('bg-brand', active);
+    btn.classList.toggle('text-on-brand', active);
     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
 
@@ -598,6 +600,76 @@ function mountQuickInfo() {
   });
 }
 
+function initPillGroups() {
+  const groups = document.querySelectorAll('[data-pill-group]');
+  const controllers = [];
+
+  groups.forEach((container) => {
+    const items = Array.from(container.querySelectorAll(':scope > a, :scope > button'));
+    if (!items.length) return;
+
+    container.classList.add('relative');
+
+    const pill = document.createElement('span');
+    pill.setAttribute('aria-hidden', 'true');
+    pill.className = 'pill-indicator rounded-lg sm:rounded-2xl bg-brand';
+    container.insertBefore(pill, container.firstChild);
+    items.forEach((item) => item.classList.add('relative', 'z-[1]'));
+
+    const getActiveItem = () => items.find((item) => item.classList.contains('bg-brand')) || null;
+
+    function place(item, animate) {
+      if (!item) {
+        pill.style.opacity = '0';
+        return;
+      }
+      if (!animate) pill.classList.add('pill-indicator--no-transition');
+      const cRect = container.getBoundingClientRect();
+      const iRect = item.getBoundingClientRect();
+      pill.style.opacity = '1';
+      pill.style.width = `${iRect.width}px`;
+      pill.style.height = `${iRect.height}px`;
+      pill.style.transform = `translate(${iRect.left - cRect.left}px, ${iRect.top - cRect.top}px)`;
+      if (!animate) {
+        requestAnimationFrame(() => pill.classList.remove('pill-indicator--no-transition'));
+      }
+    }
+
+    function syncTextColor(hovered) {
+      const active = getActiveItem();
+      items.forEach((item) => {
+        item.classList.toggle('text-on-brand', item === hovered || item === active);
+      });
+    }
+
+    place(getActiveItem(), false);
+    syncTextColor(null);
+
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        place(item, true);
+        syncTextColor(item);
+      });
+    });
+
+    container.addEventListener('mouseleave', () => {
+      place(getActiveItem(), true);
+      syncTextColor(null);
+    });
+
+    window.addEventListener('resize', () => place(getActiveItem(), false));
+
+    controllers.push({
+      refresh(animate) {
+        place(getActiveItem(), animate !== false);
+        syncTextColor(null);
+      },
+    });
+  });
+
+  return controllers;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   mountQuickInfo();
 
@@ -607,8 +679,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stored === 'en' || stored === 'id') locale = stored;
   } catch { }
   applyLocale(locale);
+
+  const pillGroups = initPillGroups();
+
   document.querySelectorAll('[data-locale]').forEach((btn) => {
-    btn.addEventListener('click', () => applyLocale(btn.getAttribute('data-locale')));
+    btn.addEventListener('click', () => {
+      applyLocale(btn.getAttribute('data-locale'));
+      pillGroups.forEach((group) => group.refresh(true));
+    });
   });
 
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
