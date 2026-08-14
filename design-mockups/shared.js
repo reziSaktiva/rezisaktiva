@@ -68,6 +68,23 @@ const COPY = {
       'Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok. Tidak ada form panjang — cukup mulai dari email.',
     'contact.email.note': 'Cara paling langsung menjangkau saya',
     'contact.availability': 'Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.',
+    'title.work': 'rezisaktiva — Karya',
+    'page.work': 'Karya',
+    'work.h1':
+      '<span class="word">Seluruh</span> <span class="word text-accent">hasil</span> <span class="word text-accent">kerja.</span>',
+    'work.lead':
+      'Daftar karya yang sudah di-ship. Buka kartu untuk cerita singkat prosesnya.',
+    'work.preview': 'preview',
+    'work.proof': 'Baca cerita →',
+    'work.cta.q': 'Ingin membahas salah satu karya ini?',
+    'work.cta.link': 'Ke halaman Contact',
+    'case.back': '← Semua karya',
+    'case.context': 'Konteks',
+    'case.approach': 'Pendekatan',
+    'case.result': 'Hasil',
+    'case.external': 'Bukti eksternal (placeholder)',
+    'case.prev': 'Sebelumnya',
+    'case.next': 'Berikutnya',
   },
   en: {
     'title.home': 'rezisaktiva — Home',
@@ -136,8 +153,179 @@ const COPY = {
       'Open to conversations about product, collaboration, or a partnership that fits. No long form — start with email.',
     'contact.email.note': 'The most direct way to reach me',
     'contact.availability': 'Open to selected projects in the coming months.',
+    'title.work': 'rezisaktiva — Work',
+    'page.work': 'Work',
+    'work.h1':
+      '<span class="word">All</span> <span class="word text-accent">shipped</span> <span class="word text-accent">work.</span>',
+    'work.lead':
+      'Everything shipped so far. Open a card for a short process story.',
+    'work.preview': 'preview',
+    'work.proof': 'Read story →',
+    'work.cta.q': 'Want to talk about one of these?',
+    'work.cta.link': 'Go to Contact',
+    'case.back': '← All work',
+    'case.context': 'Context',
+    'case.approach': 'Approach',
+    'case.result': 'Outcome',
+    'case.external': 'External proof (placeholder)',
+    'case.prev': 'Previous',
+    'case.next': 'Next',
   },
 };
+
+const CASES = {
+  id: [
+    {
+      id: '1',
+      name: 'Nama Project 01',
+      outcome: 'Peran / outcome singkat, satu kalimat.',
+      context: 'Masalah atau peluang yang jadi alasan project ini ada — placeholder sampai karya nyata diisi.',
+      approach: 'Keputusan produk dan teknis yang diambil, plus di mana AI dipakai sebagai akselerator.',
+      result: 'Apa yang live, siapa yang memakai, dan apa yang berubah.',
+    },
+    {
+      id: '2',
+      name: 'Nama Project 02',
+      outcome: 'Peran / outcome singkat, satu kalimat.',
+      context: 'Masalah atau peluang yang jadi alasan project ini ada — placeholder sampai karya nyata diisi.',
+      approach: 'Keputusan produk dan teknis yang diambil, plus di mana AI dipakai sebagai akselerator.',
+      result: 'Apa yang live, siapa yang memakai, dan apa yang berubah.',
+    },
+    {
+      id: '3',
+      name: 'Nama Project 03',
+      outcome: 'Peran / outcome singkat, satu kalimat.',
+      context: 'Masalah atau peluang yang jadi alasan project ini ada — placeholder sampai karya nyata diisi.',
+      approach: 'Keputusan produk dan teknis yang diambil, plus di mana AI dipakai sebagai akselerator.',
+      result: 'Apa yang live, siapa yang memakai, dan apa yang berubah.',
+    },
+    {
+      id: '4',
+      name: 'Nama Project 04',
+      outcome: 'Peran / outcome singkat, satu kalimat.',
+      context: 'Masalah atau peluang yang jadi alasan project ini ada — placeholder sampai karya nyata diisi.',
+      approach: 'Keputusan produk dan teknis yang diambil, plus di mana AI dipakai sebagai akselerator.',
+      result: 'Apa yang live, siapa yang memakai, dan apa yang berubah.',
+    },
+    {
+      id: '5',
+      name: 'Nama Project 05',
+      outcome: 'Peran / outcome singkat, satu kalimat.',
+      context: 'Masalah atau peluang yang jadi alasan project ini ada — placeholder sampai karya nyata diisi.',
+      approach: 'Keputusan produk dan teknis yang diambil, plus di mana AI dipakai sebagai akselerator.',
+      result: 'Apa yang live, siapa yang memakai, dan apa yang berubah.',
+    },
+    {
+      id: '6',
+      name: 'Nama Project 06',
+      outcome: 'Peran / outcome singkat, satu kalimat.',
+      context: 'Masalah atau peluang yang jadi alasan project ini ada — placeholder sampai karya nyata diisi.',
+      approach: 'Keputusan produk dan teknis yang diambil, plus di mana AI dipakai sebagai akselerator.',
+      result: 'Apa yang live, siapa yang memakai, dan apa yang berubah.',
+    },
+  ],
+  en: [
+    {
+      id: '1',
+      name: 'Project name 01',
+      outcome: 'Role / outcome in one sentence.',
+      context: 'The problem or opportunity that made this project exist — placeholder until real work is filled in.',
+      approach: 'Product and technical choices, and where AI was used as an accelerator.',
+      result: 'What shipped, who uses it, and what changed.',
+    },
+    {
+      id: '2',
+      name: 'Project name 02',
+      outcome: 'Role / outcome in one sentence.',
+      context: 'The problem or opportunity that made this project exist — placeholder until real work is filled in.',
+      approach: 'Product and technical choices, and where AI was used as an accelerator.',
+      result: 'What shipped, who uses it, and what changed.',
+    },
+    {
+      id: '3',
+      name: 'Project name 03',
+      outcome: 'Role / outcome in one sentence.',
+      context: 'The problem or opportunity that made this project exist — placeholder until real work is filled in.',
+      approach: 'Product and technical choices, and where AI was used as an accelerator.',
+      result: 'What shipped, who uses it, and what changed.',
+    },
+    {
+      id: '4',
+      name: 'Project name 04',
+      outcome: 'Role / outcome in one sentence.',
+      context: 'The problem or opportunity that made this project exist — placeholder until real work is filled in.',
+      approach: 'Product and technical choices, and where AI was used as an accelerator.',
+      result: 'What shipped, who uses it, and what changed.',
+    },
+    {
+      id: '5',
+      name: 'Project name 05',
+      outcome: 'Role / outcome in one sentence.',
+      context: 'The problem or opportunity that made this project exist — placeholder until real work is filled in.',
+      approach: 'Product and technical choices, and where AI was used as an accelerator.',
+      result: 'What shipped, who uses it, and what changed.',
+    },
+    {
+      id: '6',
+      name: 'Project name 06',
+      outcome: 'Role / outcome in one sentence.',
+      context: 'The problem or opportunity that made this project exist — placeholder until real work is filled in.',
+      approach: 'Product and technical choices, and where AI was used as an accelerator.',
+      result: 'What shipped, who uses it, and what changed.',
+    },
+  ],
+};
+
+function casesFor(locale) {
+  return CASES[locale] || CASES.id;
+}
+
+function applyWorkIndex(locale) {
+  if (document.documentElement.dataset.page !== 'work') return;
+  const list = casesFor(locale);
+  document.querySelectorAll('[data-work-card]').forEach((card) => {
+    const id = card.getAttribute('data-work-card');
+    const item = list.find((c) => c.id === id);
+    if (!item) return;
+    const name = card.querySelector('[data-work-field="name"]');
+    const outcome = card.querySelector('[data-work-field="outcome"]');
+    if (name) name.textContent = item.name;
+    if (outcome) outcome.textContent = item.outcome;
+  });
+}
+
+function applyCase(locale) {
+  if (document.documentElement.dataset.page !== 'case') return;
+  const list = casesFor(locale);
+  const id = new URLSearchParams(window.location.search).get('p') || '1';
+  const index = Math.max(0, list.findIndex((c) => c.id === id));
+  const item = list[index] || list[0];
+  document.querySelectorAll('[data-case]').forEach((el) => {
+    const key = el.getAttribute('data-case');
+    if (key && item[key] != null) el.textContent = item[key];
+  });
+  document.title = 'rezisaktiva — ' + item.name;
+  const prev = list[index - 1];
+  const next = list[index + 1];
+  const prevA = document.querySelector('[data-case-prev]');
+  const nextA = document.querySelector('[data-case-next]');
+  if (prevA) {
+    if (prev) {
+      prevA.href = 'work-case.html?p=' + prev.id;
+      prevA.hidden = false;
+    } else {
+      prevA.hidden = true;
+    }
+  }
+  if (nextA) {
+    if (next) {
+      nextA.href = 'work-case.html?p=' + next.id;
+      nextA.hidden = false;
+    } else {
+      nextA.hidden = true;
+    }
+  }
+}
 
 function runWordReveal() {
   document.querySelectorAll('[data-word-reveal]').forEach((headline) => {
@@ -183,6 +371,8 @@ function applyLocale(locale) {
     localStorage.setItem('rz-locale', locale);
   } catch (e) {}
 
+  applyWorkIndex(locale);
+  applyCase(locale);
   runWordReveal();
 }
 

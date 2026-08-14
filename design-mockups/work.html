@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id" data-page="work">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>rezisaktiva — Karya</title>
+
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('rz-theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link
+  href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500&display=swap"
+  rel="stylesheet"
+/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: "rgb(var(--c-bg) / <alpha-value>)",
+          "bg-elevated": "rgb(var(--c-bg-elevated) / <alpha-value>)",
+          fg: "rgb(var(--c-fg) / <alpha-value>)",
+          "fg-muted": "rgb(var(--c-fg-muted) / <alpha-value>)",
+          border: "rgb(var(--c-border) / <alpha-value>)",
+          brand: "rgb(var(--c-brand) / <alpha-value>)",
+          "on-brand": "rgb(var(--c-on-brand) / <alpha-value>)",
+          accent: "rgb(var(--c-accent) / <alpha-value>)",
+          "on-accent": "rgb(var(--c-on-accent) / <alpha-value>)",
+          "accent-muted": "rgb(var(--c-accent-muted) / <alpha-value>)",
+        },
+        fontFamily: { display: ["General Sans", "sans-serif"], sans: ["Satoshi", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+
+<body class="antialiased bg-bg text-fg">
+
+  <div class="cursor-glow"></div>
+  <div class="cursor-ring"></div>
+
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
+        <a href="about.html" class="hover:text-fg transition-colors" data-i18n="nav.process">Proses Kerja</a>
+        <a href="work.html" class="text-fg" data-i18n="nav.work">Karya</a>
+      </nav>
+      <div class="flex items-center gap-3 text-sm">
+        <div class="flex items-center gap-1 text-fg-muted">
+          <button type="button" data-locale="id" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
+          <span class="opacity-40">/</span>
+          <button type="button" data-locale="en" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
+        </div>
+
+        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        </button>
+
+        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors" data-i18n="nav.contact">
+          Contact
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative">
+
+    <section class="relative overflow-hidden noise-dot pt-32 pb-16">
+      <div class="ambient-blob w-[380px] h-[380px] bg-accent/20 -top-32 right-0"></div>
+      <div class="ambient-blob blob-2 w-[280px] h-[280px] bg-accent-muted/50 bottom-0 left-0"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase" data-i18n="page.work">Karya</p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight" data-word-reveal data-i18n-html="work.h1">
+          <span class="word">Seluruh</span> <span class="word text-accent">hasil</span> <span class="word text-accent">kerja.</span>
+        </h1>
+        <p class="reveal mt-7 text-lg text-fg-muted max-w-xl leading-relaxed" data-i18n="work.lead">
+          Daftar karya yang sudah di-ship — nama, peran, dan tautan bukti bila ada. Belum ada halaman cerita per project.
+        </p>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-20">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <article data-work-card="1" class="tilt-card reveal border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs" data-i18n="work.preview">preview</div>
+          <h2 class="font-display font-semibold mb-1" data-work-field="name">Nama Project 01</h2>
+          <p class="text-sm text-fg-muted mb-4" data-work-field="outcome">Peran / outcome singkat, satu kalimat.</p>
+          <a href="work-case.html?p=1" class="cta-underline text-sm text-fg-muted" data-i18n="work.proof">Baca cerita →</a>
+        </article>
+
+        <article data-work-card="2" class="tilt-card reveal border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs" data-i18n="work.preview">preview</div>
+          <h2 class="font-display font-semibold mb-1" data-work-field="name">Nama Project 02</h2>
+          <p class="text-sm text-fg-muted mb-4" data-work-field="outcome">Peran / outcome singkat, satu kalimat.</p>
+          <a href="work-case.html?p=2" class="cta-underline text-sm text-fg-muted" data-i18n="work.proof">Baca cerita →</a>
+        </article>
+
+        <article data-work-card="3" class="tilt-card reveal border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs" data-i18n="work.preview">preview</div>
+          <h2 class="font-display font-semibold mb-1" data-work-field="name">Nama Project 03</h2>
+          <p class="text-sm text-fg-muted mb-4" data-work-field="outcome">Peran / outcome singkat, satu kalimat.</p>
+          <a href="work-case.html?p=3" class="cta-underline text-sm text-fg-muted" data-i18n="work.proof">Baca cerita →</a>
+        </article>
+
+        <article data-work-card="4" class="tilt-card reveal border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs" data-i18n="work.preview">preview</div>
+          <h2 class="font-display font-semibold mb-1" data-work-field="name">Nama Project 04</h2>
+          <p class="text-sm text-fg-muted mb-4" data-work-field="outcome">Peran / outcome singkat, satu kalimat.</p>
+          <a href="work-case.html?p=4" class="cta-underline text-sm text-fg-muted" data-i18n="work.proof">Baca cerita →</a>
+        </article>
+
+        <article data-work-card="5" class="tilt-card reveal border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs" data-i18n="work.preview">preview</div>
+          <h2 class="font-display font-semibold mb-1" data-work-field="name">Nama Project 05</h2>
+          <p class="text-sm text-fg-muted mb-4" data-work-field="outcome">Peran / outcome singkat, satu kalimat.</p>
+          <a href="work-case.html?p=5" class="cta-underline text-sm text-fg-muted" data-i18n="work.proof">Baca cerita →</a>
+        </article>
+
+        <article data-work-card="6" class="tilt-card reveal border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
+          <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs" data-i18n="work.preview">preview</div>
+          <h2 class="font-display font-semibold mb-1" data-work-field="name">Nama Project 06</h2>
+          <p class="text-sm text-fg-muted mb-4" data-work-field="outcome">Peran / outcome singkat, satu kalimat.</p>
+          <a href="work-case.html?p=6" class="cta-underline text-sm text-fg-muted" data-i18n="work.proof">Baca cerita →</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-20 border-t border-border">
+      <div class="reveal">
+        <p class="text-fg-muted mb-4" data-i18n="work.cta.q">Ingin membahas salah satu karya ini?</p>
+        <a href="contact.html" class="magnetic inline-flex items-center gap-3 font-display text-2xl md:text-3xl font-semibold text-brand hover:text-accent transition-colors">
+          <span data-i18n="work.cta.link">Ke halaman Contact</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
+      <span>© 2026 rezisaktiva</span>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-fg transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js?v=7"></script>
+</body>
+</html>

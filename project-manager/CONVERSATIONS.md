@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-14] — Mockup halaman Karya (Work index)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta halaman yang menampilkan seluruh hasil kerja, terarah dari tautan See all di section work Home. Dibuat `design-mockups/work.html` (indeks) dan `work-case.html` (cerita singkat Konteks → Pendekatan → Hasil per project).
+**Key Decision/Insight:** Mockup M9+M10 dulu; belum menarik ke backlog kode R1 / belum ADR geser roadmap. Konten kartu masih placeholder.
+**Impact:** `design-mockups/work.html`; nav Karya + See all mengarah ke halaman itu.
+
 ## [2026-08-14] — Alur wajib cek/buat mockup sebelum UI/UX
 
 **Phase:** Development R1

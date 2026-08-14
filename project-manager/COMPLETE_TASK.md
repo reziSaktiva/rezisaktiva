@@ -16,12 +16,17 @@ Format entri:
 
 ## [2026-08-14]
 
+### Added
+
+- `design-mockups/work.html` — mockup indeks seluruh karya (dari See all / nav Karya).
+- `design-mockups/work-case.html` — mockup cerita singkat per project (dari Baca cerita).
+
 ### Changed
 
 - `.cursor/rules/ui-ux-mockup-check.mdc` — jika mockup ada: jelaskan lalu tanya pakai/perbarui; jika belum ada: wajib buat mockup HTML dulu (tidak boleh skip ke kode).
 - `project-manager/tasks/v03-development-r1.md` — catatan pra-eksekusi UI/UX diselaraskan.
 - `project-manager/CONVERSATIONS.md` — alur mockup wajib.
-- `design-mockups/` — switcher ID/EN berfungsi di Home, Proses Kerja, Contact (copy paritas + locale tersimpan).
+- `design-mockups/` — switcher ID/EN berfungsi di Home, Proses Kerja, Contact (copy paritas + locale tersimpan); See all + nav Karya → `work.html`.
 
 ## [2026-08-13] (6)
 

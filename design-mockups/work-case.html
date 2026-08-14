@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id" data-page="contact">
+<html lang="id" data-page="case">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>rezisaktiva — mockup Contact</title>
+<title>rezisaktiva — Karya</title>
 
 <script>
   (function () {
@@ -56,7 +56,7 @@
       <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
       <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
         <a href="about.html" class="hover:text-fg transition-colors" data-i18n="nav.process">Proses Kerja</a>
-        <a href="work.html" class="hover:text-fg transition-colors" data-i18n="nav.work">Karya</a>
+        <a href="work.html" class="text-fg" data-i18n="nav.work">Karya</a>
       </nav>
       <div class="flex items-center gap-3 text-sm">
         <div class="flex items-center gap-1 text-fg-muted">
@@ -77,47 +77,51 @@
     </div>
   </header>
 
-  <main class="relative min-h-screen flex items-center overflow-hidden noise-dot">
-    <div class="ambient-blob w-[440px] h-[440px] bg-accent/25 top-0 left-1/4"></div>
-    <div class="ambient-blob blob-2 w-[340px] h-[340px] bg-brand/10 bottom-0 right-0"></div>
-    <div class="ambient-blob blob-3 w-[280px] h-[280px] bg-accent-muted/50 bottom-1/4 left-0"></div>
+  <main class="relative">
 
-    <section class="relative z-10 max-w-3xl mx-auto px-6 py-20 w-full">
+    <section class="relative overflow-hidden noise-dot pt-32 pb-12">
+      <div class="ambient-blob w-[380px] h-[380px] bg-accent/20 -top-32 right-0"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6">
+        <a href="work.html" class="reveal inline-block text-sm text-fg-muted hover:text-fg mb-8" data-i18n="case.back">← Semua karya</a>
+        <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase" data-i18n="page.work">Karya</p>
+        <h1 class="reveal font-display text-4xl md:text-5xl font-semibold leading-[1.1] tracking-tight" data-case="name">Nama Project 01</h1>
+        <p class="reveal mt-6 text-lg text-fg-muted leading-relaxed" data-case="outcome">Peran / outcome singkat, satu kalimat.</p>
+      </div>
+    </section>
 
-      <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase">Contact</p>
+    <section class="max-w-3xl mx-auto px-6 pb-8">
+      <div class="reveal aspect-[16/9] rounded-2xl bg-brand/[0.06] border border-border flex items-center justify-center text-fg-muted text-sm" data-i18n="work.preview">preview</div>
+    </section>
 
-      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mb-6" data-word-reveal data-i18n-html="contact.h1">
-        <span class="word">Ada</span> <span class="word">ide,</span>
-        <span class="word">peluang,</span> <span class="word">atau</span>
-        <span class="word text-accent">sekadar</span> <span class="word text-accent">ingin</span>
-        <span class="word text-accent">ngobrol?</span>
-      </h1>
+    <section class="max-w-3xl mx-auto px-6 py-12 border-t border-border">
+      <h2 class="reveal font-display text-2xl font-semibold mb-4" data-i18n="case.context">Konteks</h2>
+      <p class="reveal text-fg-muted leading-relaxed" data-case="context">Masalah atau peluang yang jadi alasan project ini ada.</p>
+    </section>
 
-      <p class="reveal text-fg-muted leading-relaxed max-w-xl mb-12" data-i18n="contact.lead">
-        Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok.
-        Tidak ada form panjang — cukup mulai dari email.
-      </p>
+    <section class="max-w-3xl mx-auto px-6 py-12 border-t border-border">
+      <h2 class="reveal font-display text-2xl font-semibold mb-4" data-i18n="case.approach">Pendekatan</h2>
+      <p class="reveal text-fg-muted leading-relaxed" data-case="approach">Keputusan produk dan teknis yang diambil.</p>
+    </section>
 
-      <!-- Primer: Email -->
-      <div class="reveal mb-10">
-        <a
-          href="mailto:hello@rezisaktiva.com"
-          class="magnetic group inline-flex items-center gap-4 font-display text-3xl md:text-5xl font-semibold text-brand hover:text-accent transition-colors"
-        >
-          hello@rezisaktiva.com
-          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+    <section class="max-w-3xl mx-auto px-6 py-12 border-t border-border">
+      <h2 class="reveal font-display text-2xl font-semibold mb-4" data-i18n="case.result">Hasil</h2>
+      <p class="reveal text-fg-muted leading-relaxed mb-6" data-case="result">Apa yang live, siapa yang memakai, dan apa yang berubah.</p>
+      <a href="#" class="cta-underline text-sm text-fg-muted" data-i18n="case.external">Bukti eksternal (placeholder)</a>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 py-10 border-t border-border flex items-center justify-between gap-4 text-sm">
+      <a data-case-prev href="work-case.html?p=1" class="text-fg-muted hover:text-fg" data-i18n="case.prev">Sebelumnya</a>
+      <a data-case-next href="work-case.html?p=2" class="text-fg-muted hover:text-fg" data-i18n="case.next">Berikutnya</a>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 py-20 border-t border-border">
+      <div class="reveal">
+        <p class="text-fg-muted mb-4" data-i18n="work.cta.q">Ingin membahas salah satu karya ini?</p>
+        <a href="contact.html" class="magnetic inline-flex items-center gap-3 font-display text-2xl md:text-3xl font-semibold text-brand hover:text-accent transition-colors">
+          <span data-i18n="work.cta.link">Ke halaman Contact</span>
+          <span aria-hidden="true">→</span>
         </a>
-        <p class="text-xs text-fg-muted mt-3 uppercase tracking-wide" data-i18n="contact.email.note">Cara paling langsung menjangkau saya</p>
       </div>
-
-      <!-- Satelit -->
-      <div class="reveal flex items-center gap-8 text-sm text-fg-muted mb-6">
-        <a href="#" class="cta-underline hover:text-fg transition-colors">LinkedIn</a>
-        <a href="#" class="cta-underline hover:text-fg transition-colors">GitHub</a>
-      </div>
-
-      <!-- Availability -->
-      <p class="reveal text-sm text-fg-muted italic" data-i18n="contact.availability">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</p>
     </section>
   </main>
 
