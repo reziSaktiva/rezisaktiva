@@ -14,6 +14,17 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15]
+
+### Changed
+
+- Mockup navbar (`design-mockups/`, referensi untuk T-013.1 nav & T-013.2 locale switcher — belum implementasi kode): header dipecah jadi 3 grup — nav halaman (Home/Proses Kerja/Karya), locale switch (ID/EN), dan tema+Contact — masing-masing chip terpisah dengan `rounded-2xl`.
+- Ditambahkan link "Home" ke nav.
+- State selected pada nav & locale switch pakai pill indicator (`bg-brand`/`text-on-brand`) yang geser smooth (CSS transition + `shared.js` `initPillGroups`) saat hover/klik, teks tidak bold.
+- Tombol tema disamakan gaya dan animasi magnetic-nya dengan button Contact.
+- Spacing mobile dirapatkan agar header tidak overflow di viewport sempit.
+- Fix: rule `.chip-fixed-text` di `shared.css` sekarang mengecualikan elemen `.text-on-brand` agar teks tidak hilang saat pill aktif/hover.
+
 ## [2026-08-14]
 
 ### Changed
