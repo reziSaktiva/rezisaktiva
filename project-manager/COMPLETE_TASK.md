@@ -16,6 +16,13 @@ Format entri:
 
 ## [2026-08-14]
 
+### Changed
+
+- Mockup Home diarahkan ulang (Karolina type+cutout × Bartek quiet): hero dua kata oversized + foto cutout, chrome tenang, karya sebagai tile gambar.
+- Mockup About, Work, Contact, dan work-case diselaraskan ke arah yang sama.
+- Mockup About diubah mengikuti pola mazurbartek.com/about: sapaan + foto potret, bukan headline slogan.
+- Copy About disesuaikan ke gaya karolinahess.com/about: kalimat pendek, “yang bisa saya bantu”, approach, values.
+
 ### Added
 
 - `design-mockups/work.html` — mockup indeks seluruh karya (dari See all / nav Karya).

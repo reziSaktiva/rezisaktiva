@@ -43,94 +43,79 @@
     },
   };
 </script>
-<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="shared.css?v=12" />
 </head>
 
 <body class="antialiased bg-bg text-fg">
 
-  <div class="cursor-glow"></div>
   <div class="cursor-ring"></div>
 
-  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
+  <header class="header-quiet fixed top-0 inset-x-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="home.html" class="font-display font-semibold tracking-tight">rezisaktiva</a>
+      <nav class="hidden md:flex items-center gap-8 text-[13px] text-fg-muted">
         <a href="about.html" class="hover:text-fg transition-colors" data-i18n="nav.process">Proses Kerja</a>
         <a href="work.html" class="hover:text-fg transition-colors" data-i18n="nav.work">Karya</a>
       </nav>
-      <div class="flex items-center gap-3 text-sm">
+      <div class="flex items-center gap-3 text-[13px]">
         <div class="flex items-center gap-1 text-fg-muted">
           <button type="button" data-locale="id" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
           <span class="opacity-40">/</span>
           <button type="button" data-locale="en" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
         </div>
-
-        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         </button>
-
-        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors" data-i18n="nav.contact">
-          Contact
-        </a>
+        <a href="contact.html" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-4 py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors" data-i18n="nav.contact">Contact</a>
       </div>
     </div>
   </header>
 
-  <main class="relative min-h-screen flex items-center overflow-hidden noise-dot">
-    <div class="ambient-blob w-[440px] h-[440px] bg-accent/25 top-0 left-1/4"></div>
-    <div class="ambient-blob blob-2 w-[340px] h-[340px] bg-brand/10 bottom-0 right-0"></div>
-    <div class="ambient-blob blob-3 w-[280px] h-[280px] bg-accent-muted/50 bottom-1/4 left-0"></div>
+  <main class="min-h-screen flex flex-col">
+    <section class="max-w-[1400px] mx-auto px-6 md:px-10 pt-32 md:pt-40 w-full flex-1 flex flex-col justify-between pb-16">
+      <div>
+        <p class="reveal text-[11px] tracking-[0.2em] uppercase text-fg-muted mb-8">Contact</p>
+        <h1 class="font-display mb-10" data-word-reveal data-i18n-html="contact.h1">
+          <span class="word page-line">Mari</span>
+          <span class="word page-line page-line-2">mengobrol.</span>
+        </h1>
+        <p class="reveal text-fg-muted leading-relaxed max-w-md" data-i18n="contact.lead">
+          Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok. Tidak ada form panjang — cukup mulai dari email.
+        </p>
+      </div>
 
-    <section class="relative z-10 max-w-3xl mx-auto px-6 py-20 w-full">
-
-      <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase">Contact</p>
-
-      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mb-6" data-word-reveal data-i18n-html="contact.h1">
-        <span class="word">Ada</span> <span class="word">ide,</span>
-        <span class="word">peluang,</span> <span class="word">atau</span>
-        <span class="word text-accent">sekadar</span> <span class="word text-accent">ingin</span>
-        <span class="word text-accent">ngobrol?</span>
-      </h1>
-
-      <p class="reveal text-fg-muted leading-relaxed max-w-xl mb-12" data-i18n="contact.lead">
-        Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok.
-        Tidak ada form panjang — cukup mulai dari email.
-      </p>
-
-      <!-- Primer: Email -->
-      <div class="reveal mb-10">
+      <div class="mt-20 md:mt-28">
         <a
           href="mailto:hello@rezisaktiva.com"
-          class="magnetic group inline-flex items-center gap-4 font-display text-3xl md:text-5xl font-semibold text-brand hover:text-accent transition-colors"
+          class="magnetic reveal group inline-flex items-baseline gap-4 font-display text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-accent transition-colors"
         >
           hello@rezisaktiva.com
-          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+          <span aria-hidden="true" class="text-lg md:text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
         </a>
-        <p class="text-xs text-fg-muted mt-3 uppercase tracking-wide" data-i18n="contact.email.note">Cara paling langsung menjangkau saya</p>
-      </div>
+        <p class="reveal text-[11px] tracking-[0.2em] uppercase text-fg-muted mt-4" data-i18n="contact.email.note">Cara paling langsung menjangkau saya</p>
 
-      <!-- Satelit -->
-      <div class="reveal flex items-center gap-8 text-sm text-fg-muted mb-6">
-        <a href="#" class="cta-underline hover:text-fg transition-colors">LinkedIn</a>
-        <a href="#" class="cta-underline hover:text-fg transition-colors">GitHub</a>
-      </div>
+        <div class="reveal flex items-center gap-8 text-sm text-fg-muted mt-12">
+          <a href="#" class="cta-underline hover:text-fg transition-colors">LinkedIn</a>
+          <a href="#" class="cta-underline hover:text-fg transition-colors">GitHub</a>
+        </div>
 
-      <!-- Availability -->
-      <p class="reveal text-sm text-fg-muted italic" data-i18n="contact.availability">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</p>
+        <p class="reveal hidden sm:flex items-center gap-2 text-[13px] text-fg-muted mt-16">
+          <span class="avail-dot" aria-hidden="true"></span>
+          <span data-i18n="contact.availability">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</span>
+        </p>
+      </div>
     </section>
   </main>
 
-  <footer class="border-t border-border">
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
-      <span>© 2026 rezisaktiva</span>
-      <div class="flex items-center gap-5">
-        <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
-        <a href="#" class="hover:text-fg transition-colors">GitHub</a>
-      </div>
+  <footer class="max-w-[1400px] mx-auto px-6 md:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
+    <span>© 2026 rezisaktiva</span>
+    <div class="flex items-center gap-5">
+      <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
+      <a href="#" class="hover:text-fg transition-colors">GitHub</a>
     </div>
   </footer>
 
-  <script src="shared.js?v=7"></script>
+  <script src="shared.js?v=12"></script>
 </body>
 </html>

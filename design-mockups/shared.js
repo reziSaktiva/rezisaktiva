@@ -13,57 +13,70 @@ const COPY = {
     'rail.bukti': 'Bukti',
     'rail.karya': 'Karya',
     'rail.contact': 'Contact',
+    'home.kicker': 'Product builder',
     'home.h1':
-      '<span class="word">Membangun</span><br class="hidden lg:block" />\n' +
-      '<span class="word">produk,</span> <span class="word">dari</span>\n' +
-      '<span class="word text-accent">ide</span><br class="hidden lg:block" />\n' +
-      '<span class="word text-accent">hingga</span> <span class="word text-accent">live.</span>',
+      '<span class="word hero-line">Membangun</span>\n' +
+      '<span class="word hero-line hero-line-2">produk.</span>',
+    'home.sub': 'Dari ide hingga live.',
     'home.lead':
-      'Fullstack sebagai fondasi, AI sebagai edge yang jujur — bukan klaim kosong. Satu rumah untuk melihat cara saya berpikir dan berkarya.',
-    'home.available': 'Rezi — <span class="text-accent">available</span> for select projects',
+      'Fullstack sebagai fondasi, AI sebagai edge yang jujur — bukan klaim kosong.',
+    'home.available': 'available for select projects',
     'home.cta.talk': 'Mulai percakapan',
     'home.cta.work': 'Lihat karya',
-    'home.photo.note': 'Foto stand-in — ganti dengan foto pribadi (potret 4:5, treatment duotone otomatis)',
-    'home.bukti.label': '(02) Bukti',
+    'home.bukti.label': 'Bukti',
     'home.bukti.body':
       '<span class="text-fg">~6 tahun</span> membangun software fullstack — kini memakai AI sebagai cara kerja, bukan sekadar kata kunci.',
-    'home.work.label': '(03) Karya Terpilih',
+    'home.work.label': 'Karya terpilih',
     'home.work.title': 'Beberapa hal yang sudah dibangun',
     'home.work.all': 'Lihat semua →',
     'home.work.name': 'Nama Project',
     'home.work.outcome': 'Peran / outcome singkat, satu kalimat.',
-    'home.work.swipe': '← geser untuk lihat lebih banyak →',
-    'home.contact.label': '(04) Contact',
+    'home.contact.label': 'Contact',
     'home.contact.title': 'Mari mengobrol.',
     'home.contact.body':
       'Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.',
     'home.contact.link': 'Ke halaman Contact',
     'page.process': 'Proses Kerja',
     'about.h1':
-      '<span class="word">Saya</span> <span class="word">membangun</span> <span class="word">produk</span> <span class="word">dari</span> <span class="word text-accent">nol</span> <span class="word text-accent">hingga</span> <span class="word text-accent">live.</span>',
+      '<span class="word">Halo,</span> <span class="word">saya</span> <span class="word">Rezi.</span>',
     'about.lead1':
-      'Saya mulai dari ide kasar, lalu ikut memikirkan produknya, membangun sistemnya, dan mengantarnya sampai dipakai orang sungguhan.',
+      'Membangun produk dari ide sampai live — itu yang saya lakukan setiap hari.',
     'about.lead2':
-      'Bukan sekadar mengeksekusi spesifikasi — saya ikut duduk di pertanyaan "apakah ini yang seharusnya dibangun", lalu memastikan jawabannya jadi kode yang jalan.',
+      '~6 tahun di fullstack. Saya bantu founder dan PO membuat sesuatu yang benar-benar terpakai, bukan yang hanya terdengar bagus di slide.',
     'about.fullstack.h2': 'Fullstack sebagai fondasi',
     'about.fullstack.body':
-      'Sekitar enam tahun terakhir dihabiskan di seluruh lapisan produk digital — dari desain data, API, hingga interface yang dipakai pengguna akhir. Fondasi ini yang membuat saya nyaman bicara trade-off, bukan hanya "bisa coding".',
+      'Dari desain data, API, sampai interface yang dipakai orang. Satu fondasi supaya trade-off bisa dibicarakan, bukan hanya “bisa coding”.',
     'about.chip.shipping': 'Shipping ke Production',
     'about.ai.h2': 'AI sebagai edge, bukan klaim',
     'about.ai.body':
-      'AI sekarang bagian dari cara saya bekerja — mempercepat eksplorasi, menajamkan keputusan, membantu ship lebih rapi. Saya jujur soal batasannya: AI mempercepat proses, bukan pengganti fondasi engineering dan product thinking yang sudah dibangun.',
+      'AI mempercepat kerja. Tidak mengganti keputusan.',
+    'about.help.with': 'Yang bisa saya bantu',
+    'about.offer1.title': 'Product',
+    'about.offer1.body': 'Dari pertanyaan “apa yang seharusnya dibangun” sampai alur yang siap di-ship.',
+    'about.offer2.title': 'Fullstack',
+    'about.offer2.body': 'Data, API, interface. Satu orang yang bisa bicara trade-off di semua lapisan.',
+    'about.offer3.title': 'AI',
+    'about.offer3.body': 'Akselerator, bukan klaim. Mempercepat proses — fondasi engineering tetap di tangan.',
+    'about.approach.label': 'Approach',
+    'about.approach.body':
+      'Selalu penasaran, selalu belajar, menikmati setiap langkahnya. Termasuk yang berantakan di tengah.',
+    'about.values.label': 'Values',
+    'about.value1': 'Yang belum live, belum selesai.',
+    'about.value2': 'Desain yang baik adalah sistem keputusan — bukan slide yang cantik.',
+    'about.value3': 'Siklus pendek mengalahkan spekulasi.',
     'section.process': 'Proses Kerja',
     'about.process.h2': 'Bagaimana saya menggerakkan sebuah project',
-    'about.step1': 'Pahami masalah dan konteks nyata dulu — siapa yang pakai, kenapa penting — sebelum menyentuh kode.',
-    'about.step2': 'Susun alur produk dan keputusan teknis yang bisa dipertanggungjawabkan — bukan asal pilih stack yang lagi tren.',
-    'about.step3': 'Eksekusi cepat dan iteratif; AI dipakai sebagai akselerator, bukan pengganti keputusan.',
-    'about.step4': 'Rilis ke pemakaian nyata, lalu perbaiki berdasarkan yang benar-benar terjadi — bukan asumsi di atas kertas.',
+    'about.step1': 'Pahami masalah nyatanya dulu. Baru kode.',
+    'about.step2': 'Alur produk dan pilihan teknis yang bisa dibela — bukan stack yang lagi tren.',
+    'about.step3': 'Eksekusi cepat. AI mempercepat, tidak memutuskan.',
+    'about.step4': 'Rilis, lalu perbaiki dari yang benar-benar terjadi.',
     'about.process.note':
-      'Efektivitasnya sederhana: siklus pendek dari ide ke sesuatu yang bisa dicoba, supaya keputusan berikutnya dibuat berdasarkan bukti, bukan tebakan.',
+      'Dari ide ke sesuatu yang bisa dicoba. Keputusan berikutnya dari bukti, bukan tebakan.',
     'about.cta.q': 'Tertarik mengobrol lebih jauh?',
     'about.cta.link': 'Hubungi saya',
     'contact.h1':
-      '<span class="word">Ada</span> <span class="word">ide,</span> <span class="word">peluang,</span> <span class="word">atau</span> <span class="word text-accent">sekadar</span> <span class="word text-accent">ingin</span> <span class="word text-accent">ngobrol?</span>',
+      '<span class="word page-line">Mari</span>\n' +
+      '<span class="word page-line page-line-2">mengobrol.</span>',
     'contact.lead':
       'Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok. Tidak ada form panjang — cukup mulai dari email.',
     'contact.email.note': 'Cara paling langsung menjangkau saya',
@@ -71,9 +84,10 @@ const COPY = {
     'title.work': 'rezisaktiva — Karya',
     'page.work': 'Karya',
     'work.h1':
-      '<span class="word">Seluruh</span> <span class="word text-accent">hasil</span> <span class="word text-accent">kerja.</span>',
+      '<span class="word page-line">Seluruh</span>\n' +
+      '<span class="word page-line page-line-2">hasil kerja.</span>',
     'work.lead':
-      'Daftar karya yang sudah di-ship. Buka kartu untuk cerita singkat prosesnya.',
+      'Daftar karya yang sudah di-ship. Buka tile untuk cerita singkat prosesnya.',
     'work.preview': 'preview',
     'work.proof': 'Baca cerita →',
     'work.cta.q': 'Ingin membahas salah satu karya ini?',
@@ -98,57 +112,70 @@ const COPY = {
     'rail.bukti': 'Proof',
     'rail.karya': 'Work',
     'rail.contact': 'Contact',
+    'home.kicker': 'Product builder',
     'home.h1':
-      '<span class="word">Building</span><br class="hidden lg:block" />\n' +
-      '<span class="word">products,</span> <span class="word">from</span>\n' +
-      '<span class="word text-accent">idea</span><br class="hidden lg:block" />\n' +
-      '<span class="word text-accent">to</span> <span class="word text-accent">live.</span>',
+      '<span class="word hero-line">Building</span>\n' +
+      '<span class="word hero-line hero-line-2">products.</span>',
+    'home.sub': 'From idea to live.',
     'home.lead':
-      'Fullstack as the foundation, AI as an honest edge — not an empty claim. One home to see how I think and ship.',
-    'home.available': 'Rezi — <span class="text-accent">available</span> for select projects',
+      'Fullstack as the foundation, AI as an honest edge — not an empty claim.',
+    'home.available': 'available for select projects',
     'home.cta.talk': 'Start a conversation',
     'home.cta.work': 'See work',
-    'home.photo.note': 'Stand-in photo — replace with a personal portrait (4:5, automatic duotone)',
-    'home.bukti.label': '(02) Proof',
+    'home.bukti.label': 'Proof',
     'home.bukti.body':
       '<span class="text-fg">~6 years</span> building fullstack software — now using AI as a way of working, not just a keyword.',
-    'home.work.label': '(03) Selected work',
+    'home.work.label': 'Selected work',
     'home.work.title': 'A few things already shipped',
     'home.work.all': 'See all →',
     'home.work.name': 'Project name',
     'home.work.outcome': 'Role / outcome in one sentence.',
-    'home.work.swipe': '← swipe to see more →',
-    'home.contact.label': '(04) Contact',
+    'home.contact.label': 'Contact',
     'home.contact.title': "Let's talk.",
     'home.contact.body':
       'Open to conversations about product, collaboration, or a fit that makes sense.',
     'home.contact.link': 'Go to Contact',
     'page.process': 'My Process',
     'about.h1':
-      '<span class="word">I</span> <span class="word">build</span> <span class="word">products</span> <span class="word">from</span> <span class="word text-accent">zero</span> <span class="word text-accent">to</span> <span class="word text-accent">live.</span>',
+      '<span class="word">Hello,</span> <span class="word">I\'m</span> <span class="word">Rezi.</span>',
     'about.lead1':
-      'I start from a rough idea, then help shape the product, build the system, and take it all the way to real use.',
+      'Building products from idea to live — that is the work, every day.',
     'about.lead2':
-      'Not just executing a spec — I sit with the question "is this what should be built", then make the answer into working code.',
+      '~6 years in fullstack. I help founders and POs ship something people actually use, not something that only sounds good on a slide.',
     'about.fullstack.h2': 'Fullstack as the foundation',
     'about.fullstack.body':
-      'The last six years or so have been spent across the whole digital product stack — from data design and APIs to the interface people actually use. That foundation is why I can talk trade-offs, not only "I can code".',
+      'From data design and APIs to the interface people use. One foundation so trade-offs can be discussed, not only “I can code”.',
     'about.chip.shipping': 'Shipping to production',
     'about.ai.h2': 'AI as an edge, not a claim',
     'about.ai.body':
-      'AI is now part of how I work — faster exploration, sharper decisions, cleaner shipping. I am honest about the limit: AI speeds the process; it does not replace the engineering and product thinking already built.',
+      'AI speeds the work. It does not replace the decision.',
+    'about.help.with': 'I can help you with',
+    'about.offer1.title': 'Product',
+    'about.offer1.body': 'From the question “what should be built” to a flow that is ready to ship.',
+    'about.offer2.title': 'Fullstack',
+    'about.offer2.body': 'Data, API, interface. One person who can talk trade-offs across the stack.',
+    'about.offer3.title': 'AI',
+    'about.offer3.body': 'An accelerator, not a claim. Faster process — engineering still in human hands.',
+    'about.approach.label': 'Approach',
+    'about.approach.body':
+      'Always curious, always learning, enjoying every step. Even the messy middle.',
+    'about.values.label': 'Values',
+    'about.value1': 'If it is not live, it is not done.',
+    'about.value2': 'Good design is a system of decisions — not a pretty slide.',
+    'about.value3': 'A short cycle beats speculation.',
     'section.process': 'My Process',
     'about.process.h2': 'How I move a project forward',
-    'about.step1': 'Understand the real problem and context first — who uses it, why it matters — before touching code.',
-    'about.step2': 'Shape the product flow and technical choices that can be defended — not picking a stack because it is trendy.',
-    'about.step3': 'Execute fast and iteratively; AI is an accelerator, not a substitute for decisions.',
-    'about.step4': 'Release into real use, then improve from what actually happens — not assumptions on paper.',
+    'about.step1': 'Understand the real problem first. Then code.',
+    'about.step2': 'Product flow and technical choices that can be defended — not a trendy stack.',
+    'about.step3': 'Execute fast. AI accelerates; it does not decide.',
+    'about.step4': 'Ship, then improve from what actually happens.',
     'about.process.note':
-      'The effectiveness is simple: a short cycle from idea to something tryable, so the next decision is based on evidence, not guesswork.',
+      'From idea to something tryable. The next decision comes from evidence, not guesswork.',
     'about.cta.q': 'Want to talk further?',
     'about.cta.link': 'Get in touch',
     'contact.h1':
-      '<span class="word">An</span> <span class="word">idea,</span> <span class="word">an</span> <span class="word">opportunity,</span> <span class="word">or</span> <span class="word text-accent">just</span> <span class="word text-accent">want</span> <span class="word text-accent">to talk?</span>',
+      '<span class="word page-line">Let\'s</span>\n' +
+      '<span class="word page-line page-line-2">talk.</span>',
     'contact.lead':
       'Open to conversations about product, collaboration, or a partnership that fits. No long form — start with email.',
     'contact.email.note': 'The most direct way to reach me',
@@ -156,9 +183,10 @@ const COPY = {
     'title.work': 'rezisaktiva — Work',
     'page.work': 'Work',
     'work.h1':
-      '<span class="word">All</span> <span class="word text-accent">shipped</span> <span class="word text-accent">work.</span>',
+      '<span class="word page-line">All</span>\n' +
+      '<span class="word page-line page-line-2">shipped work.</span>',
     'work.lead':
-      'Everything shipped so far. Open a card for a short process story.',
+      'Everything shipped so far. Open a tile for a short process story.',
     'work.preview': 'preview',
     'work.proof': 'Read story →',
     'work.cta.q': 'Want to talk about one of these?',
@@ -280,6 +308,15 @@ function casesFor(locale) {
   return CASES[locale] || CASES.id;
 }
 
+const CASE_IMAGES = {
+  '1': 'https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=1600&auto=format&fit=crop',
+  '2': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+  '3': 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop',
+  '4': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop',
+  '5': 'https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1200&auto=format&fit=crop',
+  '6': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
+};
+
 function applyWorkIndex(locale) {
   if (document.documentElement.dataset.page !== 'work') return;
   const list = casesFor(locale);
@@ -289,8 +326,10 @@ function applyWorkIndex(locale) {
     if (!item) return;
     const name = card.querySelector('[data-work-field="name"]');
     const outcome = card.querySelector('[data-work-field="outcome"]');
+    const img = card.querySelector('[data-work-image]');
     if (name) name.textContent = item.name;
     if (outcome) outcome.textContent = item.outcome;
+    if (img && CASE_IMAGES[id]) img.src = CASE_IMAGES[id];
   });
 }
 
@@ -304,6 +343,8 @@ function applyCase(locale) {
     const key = el.getAttribute('data-case');
     if (key && item[key] != null) el.textContent = item[key];
   });
+  const caseImg = document.querySelector('[data-case-image]');
+  if (caseImg && CASE_IMAGES[item.id]) caseImg.src = CASE_IMAGES[item.id];
   document.title = 'rezisaktiva — ' + item.name;
   const prev = list[index - 1];
   const next = list[index + 1];

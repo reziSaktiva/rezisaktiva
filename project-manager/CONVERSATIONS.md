@@ -14,6 +14,34 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-14] — Copy About bergaya Karolina, layout tetap Bartek
+
+**Phase:** Development R1
+**Summary:** Layout About (sapaan + foto) dipertahankan. Isi penjelasan diganti ke ritme karolinahess.com/about: kalimat pendek, “yang bisa saya bantu” (Product / Fullstack / AI), approach, values.
+**Key Decision/Insight:** Visual = Bartek; value content = Karolina. Blok S2 tetap, tapi tidak lagi esai defensif.
+**Impact:** `design-mockups/about.html`, `shared.js`.
+
+## [2026-08-14] — About mockup mengikuti mazurbartek.com/about
+
+**Phase:** Development R1
+**Summary:** Boss Rezi kurang suka About versi slogan. Referensi: split sapaan + foto potret, bio singkat, ketenangan whitespace. FAQ/afterhours tidak ditiru (di luar S2).
+**Key Decision/Insight:** About = perkenalan orang, bukan landing kedua. Blok S2 tetap (narasi, fullstack, AI, proses, CTA).
+**Impact:** `design-mockups/about.html`, `shared.css`, `shared.js`.
+
+## [2026-08-14] — Paritas visual mockup About / Work / Contact
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta halaman About, Work, dan Contact diselaraskan ke arah seni Home (chrome tenang, type besar, ruang kosong, tanpa blob/kartu berbingkai). Work-case ikut diselaraskan supaya alur Karya tidak patah.
+**Key Decision/Insight:** Satu bahasa visual di seluruh mockup R1; isi blok UX S2/S3 tetap.
+**Impact:** `design-mockups/about.html`, `work.html`, `contact.html`, `work-case.html`, `shared.css`, `shared.js`.
+
+## [2026-08-14] — Arah seni mockup Home (Karolina × Bartek)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi menilai Home mockup masih biasa. Referensi mazurbartek.com (type + whitespace) dan karolinahess.com (type oversized menumpuk foto cutout). Dipilih hybrid: type + foto cutout, tenang, switcher ID/EN tetap.
+**Key Decision/Insight:** Seni = yang dibuang (blob, chip, marquee, kartu berbingkai, rail). Blok R1 tetap (klaim → bukti → teaser 1–3 → Contact). Belum ADR — ini arah visual mockup, bukan ubah baseline UX.
+**Impact:** `design-mockups/home.html`, `shared.css`, `shared.js`. Halaman lain belum diselaraskan.
+
 ## [2026-08-14] — Mockup halaman Karya (Work index)
 
 **Phase:** Development R1

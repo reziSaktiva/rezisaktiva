@@ -43,162 +43,168 @@
     },
   };
 </script>
-<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="shared.css?v=14" />
 </head>
 
 <body class="antialiased bg-bg text-fg">
 
-  <div class="cursor-glow"></div>
   <div class="cursor-ring"></div>
 
-  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
+  <header class="header-quiet fixed top-0 inset-x-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="home.html" class="font-display font-semibold tracking-tight">rezisaktiva</a>
+      <nav class="hidden md:flex items-center gap-8 text-[13px] text-fg-muted">
         <a href="about.html" class="text-fg" data-i18n="nav.process">Proses Kerja</a>
         <a href="work.html" class="hover:text-fg transition-colors" data-i18n="nav.work">Karya</a>
       </nav>
-      <div class="flex items-center gap-3 text-sm">
+      <div class="flex items-center gap-3 text-[13px]">
         <div class="flex items-center gap-1 text-fg-muted">
           <button type="button" data-locale="id" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
           <span class="opacity-40">/</span>
           <button type="button" data-locale="en" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
         </div>
-
-        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         </button>
-
-        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors" data-i18n="nav.contact">
-          Contact
-        </a>
+        <a href="contact.html" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-4 py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors" data-i18n="nav.contact">Contact</a>
       </div>
     </div>
   </header>
 
-  <main class="relative">
+  <main>
 
-    <!-- Hero About -->
-    <section class="relative overflow-hidden noise-dot pt-32 pb-24">
-      <div class="ambient-blob w-[380px] h-[380px] bg-accent/20 -top-32 right-0"></div>
-      <div class="ambient-blob blob-2 w-[280px] h-[280px] bg-accent-muted/50 bottom-0 left-0"></div>
-
-      <div class="relative z-10 max-w-3xl mx-auto px-6">
-        <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase" data-i18n="page.process">Proses Kerja</p>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight" data-word-reveal data-i18n-html="about.h1">
-          <span class="word">Saya</span> <span class="word">membangun</span>
-          <span class="word">produk</span> <span class="word">dari</span>
-          <span class="word text-accent">nol</span> <span class="word text-accent">hingga</span>
-          <span class="word text-accent">live.</span>
-        </h1>
-      </div>
-    </section>
-
-    <!-- Narasi product builder -->
-    <section class="max-w-3xl mx-auto px-6 py-14 border-b border-border">
-      <p class="reveal font-display text-xl md:text-2xl leading-snug text-fg mb-6" data-i18n="about.lead1">
-        Saya mulai dari ide kasar, lalu ikut memikirkan produknya, membangun sistemnya,
-        dan mengantarnya sampai dipakai orang sungguhan.
-      </p>
-      <p class="reveal text-fg-muted leading-relaxed" data-i18n="about.lead2">
-        Bukan sekadar mengeksekusi spesifikasi — saya ikut duduk di pertanyaan
-        "apakah ini yang seharusnya dibangun", lalu memastikan jawabannya jadi kode yang jalan.
-      </p>
-    </section>
-
-    <!-- Konteks fullstack -->
-    <section class="max-w-3xl mx-auto px-6 py-14 border-b border-border">
-      <h2 class="reveal font-display text-2xl font-semibold mb-4" data-i18n="about.fullstack.h2">Fullstack sebagai fondasi</h2>
-      <p class="reveal text-fg-muted leading-relaxed mb-6" data-i18n="about.fullstack.body">
-        Sekitar enam tahun terakhir dihabiskan di seluruh lapisan produk digital —
-        dari desain data, API, hingga interface yang dipakai pengguna akhir.
-        Fondasi ini yang membuat saya nyaman bicara trade-off, bukan hanya "bisa coding".
-      </p>
-      <div class="reveal flex flex-wrap gap-3">
-        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">Product Thinking</span>
-        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">Fullstack Engineering</span>
-        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted">System Design</span>
-        <span class="tilt-card px-4 py-2 rounded-full border border-border bg-bg-elevated text-sm text-fg-muted" data-i18n="about.chip.shipping">Shipping ke Production</span>
-      </div>
-    </section>
-
-    <!-- AI edge -->
-    <section class="max-w-3xl mx-auto px-6 py-14 border-b border-border">
-      <h2 class="reveal font-display text-2xl font-semibold mb-4" data-i18n="about.ai.h2">AI sebagai edge, bukan klaim</h2>
-      <p class="reveal text-fg-muted leading-relaxed" data-i18n="about.ai.body">
-        AI sekarang bagian dari cara saya bekerja — mempercepat eksplorasi, menajamkan keputusan,
-        membantu ship lebih rapi. Saya jujur soal batasannya: AI mempercepat proses,
-        bukan pengganti fondasi engineering dan product thinking yang sudah dibangun.
-      </p>
-    </section>
-
-    <!-- Cara Kerja — proses berpikir & bekerja -->
-    <section class="max-w-3xl mx-auto px-6 py-16">
-      <div class="reveal mb-10">
-        <p class="text-sm font-medium text-accent mb-2 tracking-wide uppercase" data-i18n="section.process">Proses Kerja</p>
-        <h2 class="font-display text-2xl md:text-3xl font-semibold" data-i18n="about.process.h2">Bagaimana saya menggerakkan sebuah project</h2>
-      </div>
-
+    <section class="max-w-[1400px] mx-auto px-6 md:px-10 pt-28 md:pt-32 min-h-[100svh] grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-20 items-center">
       <div>
-        <div class="step-row reveal py-6 flex items-start gap-6">
-          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">01</span>
-          <div>
-            <h3 class="font-display font-semibold mb-1">Discover</h3>
-            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step1">Pahami masalah dan konteks nyata dulu — siapa yang pakai, kenapa penting — sebelum menyentuh kode.</p>
-          </div>
+        <div class="reveal flex items-center gap-4 mb-8">
+          <p class="text-[11px] tracking-[0.2em] uppercase text-fg-muted" data-i18n="page.process">Proses Kerja</p>
+          <span class="about-rule" aria-hidden="true"></span>
         </div>
-        <div class="step-row reveal py-6 flex items-start gap-6">
-          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">02</span>
-          <div>
-            <h3 class="font-display font-semibold mb-1">Design</h3>
-            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step2">Susun alur produk dan keputusan teknis yang bisa dipertanggungjawabkan — bukan asal pilih stack yang lagi tren.</p>
-          </div>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-semibold tracking-tight leading-[1.1] mb-8" data-word-reveal data-i18n-html="about.h1">
+          <span class="word">Halo,</span> <span class="word">saya</span> <span class="word">Rezi.</span>
+        </h1>
+        <div class="space-y-5 text-[15px] md:text-base text-fg-muted leading-relaxed max-w-md">
+          <p class="reveal" data-i18n="about.lead1">
+            Membangun produk dari ide sampai live — itu yang saya lakukan setiap hari.
+          </p>
+          <p class="reveal" data-i18n="about.lead2">
+            ~6 tahun di fullstack. Saya bantu founder dan PO membuat sesuatu yang benar-benar terpakai, bukan yang hanya terdengar bagus di slide.
+          </p>
         </div>
-        <div class="step-row reveal py-6 flex items-start gap-6">
-          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">03</span>
-          <div>
-            <h3 class="font-display font-semibold mb-1">Build</h3>
-            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step3">Eksekusi cepat dan iteratif; AI dipakai sebagai akselerator, bukan pengganti keputusan.</p>
-          </div>
-        </div>
-        <div class="step-row reveal py-6 flex items-start gap-6 border-b border-border">
-          <span class="step-num font-display text-2xl text-fg-muted w-10 shrink-0">04</span>
-          <div>
-            <h3 class="font-display font-semibold mb-1">Ship & Iterate</h3>
-            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step4">Rilis ke pemakaian nyata, lalu perbaiki berdasarkan yang benar-benar terjadi — bukan asumsi di atas kertas.</p>
-          </div>
-        </div>
+        <p class="reveal hidden sm:flex items-center gap-2 text-[13px] text-fg-muted mt-10">
+          <span class="avail-dot" aria-hidden="true"></span>
+          <span data-i18n="contact.availability">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</span>
+        </p>
       </div>
 
-      <p class="reveal text-fg-muted leading-relaxed mt-8 text-sm" data-i18n="about.process.note">
-        Efektivitasnya sederhana: siklus pendek dari ide ke sesuatu yang bisa dicoba,
-        supaya keputusan berikutnya dibuat berdasarkan bukti, bukan tebakan.
-      </p>
+      <div class="reveal about-portrait aspect-[4/5] max-w-md lg:max-w-none mx-auto lg:mx-0 w-full">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop"
+          alt="Placeholder — ganti dengan foto pribadi Rezi"
+        />
+      </div>
     </section>
 
-    <!-- Soft CTA ke Contact -->
-    <section class="max-w-3xl mx-auto px-6 py-20 border-t border-border">
-      <div class="reveal">
-        <p class="text-fg-muted mb-4" data-i18n="about.cta.q">Tertarik mengobrol lebih jauh?</p>
-        <a href="contact.html" class="magnetic inline-flex items-center gap-3 font-display text-2xl md:text-3xl font-semibold text-brand hover:text-accent transition-colors">
-          <span data-i18n="about.cta.link">Hubungi saya</span>
-          <span aria-hidden="true">→</span>
-        </a>
+    <section class="max-w-[1400px] mx-auto px-6 md:px-10 py-24 md:py-36 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-start">
+      <div>
+        <h2 class="reveal font-display text-2xl md:text-3xl font-semibold tracking-tight" data-i18n="about.help.with">Yang bisa saya bantu</h2>
       </div>
+      <div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">01</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1" data-i18n="about.offer1.title">Product</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.offer1.body">Dari pertanyaan “apa yang seharusnya dibangun” sampai alur yang siap di-ship.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">02</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1" data-i18n="about.offer2.title">Fullstack</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.offer2.body">Data, API, interface. Satu orang yang bisa bicara trade-off di semua lapisan.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">03</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1" data-i18n="about.offer3.title">AI</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.offer3.body">Akselerator, bukan klaim. Mempercepat proses — fondasi engineering tetap di tangan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-[1400px] mx-auto px-6 md:px-10 py-24 md:py-36 grid lg:grid-cols-2 gap-12 lg:gap-24">
+      <div>
+        <p class="reveal text-[11px] tracking-[0.2em] uppercase text-fg-muted mb-4" data-i18n="about.approach.label">Approach</p>
+        <p class="reveal font-display text-xl md:text-2xl leading-snug tracking-tight" data-i18n="about.approach.body">
+          Selalu penasaran, selalu belajar, menikmati setiap langkahnya. Termasuk yang berantakan di tengah.
+        </p>
+      </div>
+      <div>
+        <p class="reveal text-[11px] tracking-[0.2em] uppercase text-fg-muted mb-6" data-i18n="about.values.label">Values</p>
+        <p class="reveal font-display text-xl md:text-2xl leading-snug tracking-tight mb-4" data-i18n="about.value1">Yang belum live, belum selesai.</p>
+        <p class="reveal font-display text-xl md:text-2xl leading-snug tracking-tight mb-4" data-i18n="about.value2">Desain yang baik adalah sistem keputusan — bukan slide yang cantik.</p>
+        <p class="reveal font-display text-xl md:text-2xl leading-snug tracking-tight" data-i18n="about.value3">Siklus pendek mengalahkan spekulasi.</p>
+      </div>
+    </section>
+
+    <section class="max-w-[1400px] mx-auto px-6 md:px-10 py-24 md:py-36 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-start">
+      <div>
+        <h2 class="reveal font-display text-2xl md:text-3xl font-semibold tracking-tight mb-4" data-i18n="about.process.h2">Bagaimana saya menggerakkan sebuah project</h2>
+        <p class="reveal text-fg-muted leading-relaxed" data-i18n="about.process.note">
+          Dari ide ke sesuatu yang bisa dicoba. Keputusan berikutnya dari bukti, bukan tebakan.
+        </p>
+      </div>
+      <div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">01</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1">Discover</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step1">Pahami masalah nyatanya dulu. Baru kode.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">02</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1">Design</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step2">Alur produk dan pilihan teknis yang bisa dibela — bukan stack yang lagi tren.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">03</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1">Build</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step3">Eksekusi cepat. AI mempercepat, tidak memutuskan.</p>
+          </div>
+        </div>
+        <div class="step-row reveal py-7 flex items-start gap-6">
+          <span class="step-num font-display text-sm text-fg-muted w-8 shrink-0 pt-1">04</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-1">Ship &amp; Iterate</h3>
+            <p class="text-sm text-fg-muted leading-relaxed" data-i18n="about.step4">Rilis, lalu perbaiki dari yang benar-benar terjadi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-[1400px] mx-auto px-6 md:px-10 py-28 md:py-40">
+      <p class="reveal text-fg-muted mb-6" data-i18n="about.cta.q">Tertarik mengobrol lebih jauh?</p>
+      <a href="contact.html" class="reveal magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors">
+        <span data-i18n="about.cta.link">Hubungi saya</span>
+        <span aria-hidden="true">→</span>
+      </a>
     </section>
   </main>
 
-  <footer class="border-t border-border">
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
-      <span>© 2026 rezisaktiva</span>
-      <div class="flex items-center gap-5">
-        <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
-        <a href="#" class="hover:text-fg transition-colors">GitHub</a>
-      </div>
+  <footer class="max-w-[1400px] mx-auto px-6 md:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fg-muted">
+    <span>© 2026 rezisaktiva</span>
+    <div class="flex items-center gap-5">
+      <a href="#" class="hover:text-fg transition-colors">LinkedIn</a>
+      <a href="#" class="hover:text-fg transition-colors">GitHub</a>
     </div>
   </footer>
 
-  <script src="shared.js?v=7"></script>
+  <script src="shared.js?v=14"></script>
 </body>
 </html>
