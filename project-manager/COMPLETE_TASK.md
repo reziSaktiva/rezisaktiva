@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-08-14]
+
+### Changed
+
+- `.cursor/rules/ui-ux-mockup-check.mdc` — jika mockup ada: jelaskan lalu tanya pakai/perbarui; jika belum ada: wajib buat mockup HTML dulu (tidak boleh skip ke kode).
+- `project-manager/tasks/v03-development-r1.md` — catatan pra-eksekusi UI/UX diselaraskan.
+- `project-manager/CONVERSATIONS.md` — alur mockup wajib.
+- `design-mockups/` — switcher ID/EN berfungsi di Home, Proses Kerja, Contact (copy paritas + locale tersimpan).
+
 ## [2026-08-13] (6)
 
 ### Added

@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-14] — Alur wajib cek/buat mockup sebelum UI/UX
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta setiap pekerjaan UI/UX selalu cek mockup HTML dulu. Jika mockup sudah ada: jelaskan isinya, lalu tanya apakah dipakai yang sekarang. Jika belum ada: wajib beri tahu dan wajib buat mockup di `design-mockups/` sebelum implementasi kode — tidak ada opsi skip.
+**Key Decision/Insight:** Mockup HTML adalah gerbang visual wajib; kode produksi tidak boleh dimulai tanpa mockup yang disetujui.
+**Impact:** `.cursor/rules/ui-ux-mockup-check.mdc` dikencangkan; catatan di `tasks/v03-development-r1.md` diselaraskan.
+
 ## [2026-08-13] — Adopsi Astryx sebagai component library, replace Tailwind
 
 **Phase:** Repository & Bootstrap (T-009 selesai, menjelang T-010)

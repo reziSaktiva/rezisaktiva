@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-page="home">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,23 +61,23 @@
       <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
 
       <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
-        <a href="about.html" class="hover:text-fg transition-colors">About</a>
-        <a href="#work" class="hover:text-fg transition-colors">Work</a>
+        <a href="about.html" class="hover:text-fg transition-colors" data-i18n="nav.process">Proses Kerja</a>
+        <a href="#work" class="hover:text-fg transition-colors" data-i18n="nav.work">Karya</a>
       </nav>
 
       <div class="flex items-center gap-3 text-sm">
-        <div class="hidden sm:flex items-center gap-1 text-fg-muted">
-          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
+        <div class="flex items-center gap-1 text-fg-muted">
+          <button type="button" data-locale="id" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
           <span class="opacity-40">/</span>
-          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
+          <button type="button" data-locale="en" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
         </div>
 
-        <button data-theme-toggle aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         </button>
 
-        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors">
+        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors" data-i18n="nav.contact">
           Contact
         </a>
       </div>
@@ -86,10 +86,10 @@
 
   <!-- Section index rail (desktop) -->
   <nav aria-label="Section index" class="hidden lg:flex flex-col gap-5 fixed right-6 top-1/2 -translate-y-1/2 z-40">
-    <a href="#hero" class="rail-dot is-active" data-rail="hero"><span class="rail-label">Home</span></a>
-    <a href="#credibility" class="rail-dot" data-rail="credibility"><span class="rail-label">Bukti</span></a>
-    <a href="#work" class="rail-dot" data-rail="work"><span class="rail-label">Karya</span></a>
-    <a href="#contact-cta" class="rail-dot" data-rail="contact-cta"><span class="rail-label">Contact</span></a>
+    <a href="#hero" class="rail-dot is-active" data-rail="hero"><span class="rail-label" data-i18n="rail.home">Home</span></a>
+    <a href="#credibility" class="rail-dot" data-rail="credibility"><span class="rail-label" data-i18n="rail.bukti">Bukti</span></a>
+    <a href="#work" class="rail-dot" data-rail="work"><span class="rail-label" data-i18n="rail.karya">Karya</span></a>
+    <a href="#contact-cta" class="rail-dot" data-rail="contact-cta"><span class="rail-label" data-i18n="rail.contact">Contact</span></a>
   </nav>
 
   <main class="relative">
@@ -104,14 +104,14 @@
         <div>
           <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase">Product Builder · Fullstack · AI Edge</p>
 
-          <h1 class="font-display text-[13vw] lg:text-[5.2vw] font-semibold leading-[0.98] tracking-tight" data-word-reveal>
+          <h1 class="font-display text-[13vw] lg:text-[5.2vw] font-semibold leading-[0.98] tracking-tight" data-word-reveal data-i18n-html="home.h1">
             <span class="word">Membangun</span><br class="hidden lg:block" />
             <span class="word">produk,</span> <span class="word">dari</span>
             <span class="word text-accent">ide</span><br class="hidden lg:block" />
             <span class="word text-accent">hingga</span> <span class="word text-accent">live.</span>
           </h1>
 
-          <p class="reveal mt-7 text-lg text-fg-muted max-w-md leading-relaxed">
+          <p class="reveal mt-7 text-lg text-fg-muted max-w-md leading-relaxed" data-i18n="home.lead">
             Fullstack sebagai fondasi, AI sebagai edge yang jujur — bukan klaim kosong.
             Satu rumah untuk melihat cara saya berpikir dan berkarya.
           </p>
@@ -124,15 +124,15 @@
                 alt="Placeholder — ganti dengan foto pribadi Rezi"
               />
             </div>
-            <p class="text-xs text-fg-muted leading-snug">Rezi — <span class="text-accent">available</span> for select projects</p>
+            <p class="text-xs text-fg-muted leading-snug" data-i18n-html="home.available">Rezi — <span class="text-accent">available</span> for select projects</p>
           </div>
 
           <div class="reveal mt-9 flex items-center gap-6">
             <a href="contact.html" class="magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors">
-              Mulai percakapan
+              <span data-i18n="home.cta.talk">Mulai percakapan</span>
               <span aria-hidden="true">→</span>
             </a>
-            <a href="#work" class="cta-underline text-fg-muted font-medium">Lihat karya</a>
+            <a href="#work" class="cta-underline text-fg-muted font-medium" data-i18n="home.cta.work">Lihat karya</a>
           </div>
         </div>
 
@@ -153,7 +153,7 @@
           <span class="floaty delay-1 absolute top-1/2 -left-6 px-3 py-1.5 rounded-full bg-bg border border-border text-xs font-medium text-fg-muted shadow-sm">Fullstack</span>
           <span class="floaty delay-2 absolute bottom-16 -right-6 px-3 py-1.5 rounded-full bg-bg border border-border text-xs font-medium text-fg-muted shadow-sm">AI Edge</span>
 
-          <p class="text-center text-[10px] text-fg-muted/70 mt-6 italic">
+          <p class="text-center text-[10px] text-fg-muted/70 mt-6 italic" data-i18n="home.photo.note">
             Foto stand-in — ganti dengan foto pribadi (potret 4:5, treatment duotone otomatis)
           </p>
         </div>
@@ -176,8 +176,8 @@
 
     <!-- Credibility line -->
     <section id="credibility" class="max-w-6xl mx-auto px-6 py-16">
-      <p class="reveal text-xs font-medium text-accent tracking-wide uppercase mb-4">(02) Bukti</p>
-      <p class="reveal font-display text-xl md:text-2xl text-fg-muted max-w-3xl leading-snug">
+      <p class="reveal text-xs font-medium text-accent tracking-wide uppercase mb-4" data-i18n="home.bukti.label">(02) Bukti</p>
+      <p class="reveal font-display text-xl md:text-2xl text-fg-muted max-w-3xl leading-snug" data-i18n-html="home.bukti.body">
         <span class="text-fg">~6 tahun</span> membangun software fullstack —
         kini memakai AI sebagai cara kerja, bukan sekadar kata kunci.
       </p>
@@ -188,10 +188,10 @@
       <div class="max-w-6xl mx-auto px-6">
         <div class="reveal flex items-baseline justify-between mb-10">
           <div>
-            <p class="text-xs font-medium text-accent tracking-wide uppercase mb-2">(03) Karya Terpilih</p>
-            <h2 class="font-display text-2xl md:text-3xl font-semibold">Beberapa hal yang sudah dibangun</h2>
+            <p class="text-xs font-medium text-accent tracking-wide uppercase mb-2" data-i18n="home.work.label">(03) Karya Terpilih</p>
+            <h2 class="font-display text-2xl md:text-3xl font-semibold" data-i18n="home.work.title">Beberapa hal yang sudah dibangun</h2>
           </div>
-          <a href="#" class="cta-underline text-sm text-fg-muted hidden sm:inline-block">Lihat semua →</a>
+          <a href="#" class="cta-underline text-sm text-fg-muted hidden sm:inline-block" data-i18n="home.work.all">Lihat semua →</a>
         </div>
       </div>
 
@@ -200,40 +200,40 @@
           <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs">
             preview
           </div>
-          <h3 class="font-display font-semibold mb-1">Nama Project</h3>
-          <p class="text-sm text-fg-muted">Peran / outcome singkat, satu kalimat.</p>
+          <h3 class="font-display font-semibold mb-1" data-i18n="home.work.name">Nama Project</h3>
+          <p class="text-sm text-fg-muted" data-i18n="home.work.outcome">Peran / outcome singkat, satu kalimat.</p>
         </article>
 
         <article class="tilt-card reveal shrink-0 w-[78vw] sm:w-80 border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
           <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs">
             preview
           </div>
-          <h3 class="font-display font-semibold mb-1">Nama Project</h3>
-          <p class="text-sm text-fg-muted">Peran / outcome singkat, satu kalimat.</p>
+          <h3 class="font-display font-semibold mb-1" data-i18n="home.work.name">Nama Project</h3>
+          <p class="text-sm text-fg-muted" data-i18n="home.work.outcome">Peran / outcome singkat, satu kalimat.</p>
         </article>
 
         <article class="tilt-card reveal shrink-0 w-[78vw] sm:w-80 border border-border rounded-2xl p-6 bg-bg-elevated hover:bg-accent-muted transition-colors">
           <div class="aspect-[4/3] rounded-xl bg-brand/[0.06] mb-5 flex items-center justify-center text-fg-muted text-xs">
             preview
           </div>
-          <h3 class="font-display font-semibold mb-1">Nama Project</h3>
-          <p class="text-sm text-fg-muted">Peran / outcome singkat, satu kalimat.</p>
+          <h3 class="font-display font-semibold mb-1" data-i18n="home.work.name">Nama Project</h3>
+          <p class="text-sm text-fg-muted" data-i18n="home.work.outcome">Peran / outcome singkat, satu kalimat.</p>
         </article>
       </div>
 
-      <p class="text-center text-xs text-fg-muted mt-2 sm:hidden">← geser untuk lihat lebih banyak →</p>
+      <p class="text-center text-xs text-fg-muted mt-2 sm:hidden" data-i18n="home.work.swipe">← geser untuk lihat lebih banyak →</p>
     </section>
 
     <!-- Contact soft -->
     <section id="contact-cta" class="max-w-6xl mx-auto px-6 py-24 border-t border-border">
-      <p class="reveal text-xs font-medium text-accent tracking-wide uppercase mb-4">(04) Contact</p>
+      <p class="reveal text-xs font-medium text-accent tracking-wide uppercase mb-4" data-i18n="home.contact.label">(04) Contact</p>
       <div class="reveal max-w-2xl">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4">Mari mengobrol.</h2>
-        <p class="text-fg-muted mb-8 leading-relaxed">
+        <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4" data-i18n="home.contact.title">Mari mengobrol.</h2>
+        <p class="text-fg-muted mb-8 leading-relaxed" data-i18n="home.contact.body">
           Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.
         </p>
         <a href="contact.html" class="magnetic inline-flex items-center gap-3 font-display text-2xl md:text-3xl font-semibold text-brand hover:text-accent transition-colors">
-          Ke halaman Contact
+          <span data-i18n="home.contact.link">Ke halaman Contact</span>
           <span aria-hidden="true">↗</span>
         </a>
       </div>
@@ -250,6 +250,6 @@
     </div>
   </footer>
 
-  <script src="shared.js"></script>
+  <script src="shared.js?v=5"></script>
 </body>
 </html>

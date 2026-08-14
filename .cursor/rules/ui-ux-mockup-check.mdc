@@ -1,5 +1,5 @@
 ---
-description: Wajib cek ketersediaan mockup sebelum mengerjakan task UI/UX
+description: Wajib cek mockup HTML sebelum task UI/UX; jika belum ada, wajib buat mockup dulu
 alwaysApply: true
 ---
 
@@ -15,28 +15,38 @@ Lokasi acuan mockup: `design-mockups/` (HTML/Tailwind statis — `home.html`, `a
 ## Langkah Wajib (sebelum eksekusi)
 
 1. **Cek ketersediaan mockup** untuk halaman/komponen yang jadi scope task ini di `design-mockups/`.
-2. **Jika mockup sudah ada:** jangan langsung pakai — tanya dulu ke user apakah mockup yang sekarang masih dipakai, atau perlu diperbarui sebelum lanjut.
-3. **Jika mockup belum ada:** informasikan ke user, lalu tanya apakah perlu dibuat mockup dulu sebelum masuk implementasi kode, atau lanjut langsung tanpa mockup.
-4. **Jangan lanjut eksekusi visual** (coding komponen/halaman) sebelum mendapat jawaban eksplisit dari poin 2 atau 3.
+2. **Jika mockup sudah ada:**
+   - Jelaskan dulu isi mockup itu (halaman mana, apa yang terlihat, beda dengan baseline bila ada).
+   - Tanya ke user apakah mau **pakai yang sekarang** atau **perbarui dulu**.
+   - Jangan langsung pakai tanpa jawaban.
+3. **Jika mockup belum ada:**
+   - Wajib beri tahu user bahwa mockup belum ada.
+   - **Wajib buat mockup HTML di `design-mockups/` dulu** — tidak boleh lanjut ke implementasi kode tanpa mockup.
+   - Setelah mockup dibuat, tunjukkan/jelaskan, lalu tanya apakah sudah dipakai atau perlu revisi.
+4. **Jangan lanjut eksekusi visual** (coding komponen/halaman produksi) sebelum:
+   - mockup untuk scope itu ada, **dan**
+   - user secara eksplisit setuju memakai mockup itu (poin 2 atau akhir poin 3).
 
 ## Format Pertanyaan
 
-Gunakan `AskQuestion` (bukan listing pilihan di teks biasa):
+Gunakan `AskQuestion` (bukan listing pilihan di teks biasa).
+
+Jika mockup sudah ada — jelaskan dulu di chat, lalu tanya:
 
 ```
 Sebelum lanjut implementasi [halaman/komponen X], saya cek dulu status mockup-nya:
 
 - Mockup tersedia di `design-mockups/[nama].html`
+- [ringkas 2–4 poin isi + beda dengan baseline bila ada]
 
 Mau pakai mockup yang sekarang, atau ada bagian yang mau diperbarui dulu?
 ```
 
-Atau bila belum ada mockup:
+Jika mockup belum ada — beri tahu, lalu buat mockup (jangan tawarkan opsi “langsung kode tanpa mockup”):
 
 ```
 Belum ada mockup untuk [halaman/komponen X] di `design-mockups/`.
-
-Mau dibuat mockup HTML dulu sebelum masuk implementasi kode, atau langsung lanjut ke kode tanpa mockup?
+Saya buatkan mockup HTML dulu sebelum masuk implementasi kode.
 ```
 
 ## Pengecualian

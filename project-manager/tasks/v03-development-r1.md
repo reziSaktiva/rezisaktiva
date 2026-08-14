@@ -4,7 +4,7 @@ Release untuk implementasi fitur/konten R1 Must (M1–M7): chrome, Home + work t
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
-Sebelum eksekusi task UI/UX: konfirmasi mockup di `design-mockups/` masih dipakai (rule `ui-ux-mockup-check`).
+Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup-check`). Jika sudah ada — jelaskan lalu tanya pakai/perbarui. Jika belum ada — wajib buat mockup HTML dulu; tidak boleh langsung ke kode.
 
 ---
 

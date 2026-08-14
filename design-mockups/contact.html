@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-page="contact">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,22 +55,22 @@
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="home.html" class="font-display font-semibold text-lg tracking-tight">rezisaktiva</a>
       <nav class="hidden md:flex items-center gap-8 text-sm text-fg-muted">
-        <a href="about.html" class="hover:text-fg transition-colors">About</a>
-        <a href="home.html#work" class="hover:text-fg transition-colors">Work</a>
+        <a href="about.html" class="hover:text-fg transition-colors" data-i18n="nav.process">Proses Kerja</a>
+        <a href="home.html#work" class="hover:text-fg transition-colors" data-i18n="nav.work">Karya</a>
       </nav>
       <div class="flex items-center gap-3 text-sm">
-        <div class="hidden sm:flex items-center gap-1 text-fg-muted">
-          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
+        <div class="flex items-center gap-1 text-fg-muted">
+          <button type="button" data-locale="id" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors font-medium text-fg">ID</button>
           <span class="opacity-40">/</span>
-          <button class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
+          <button type="button" data-locale="en" class="px-1.5 py-0.5 rounded hover:bg-bg-elevated transition-colors">EN</button>
         </div>
 
-        <button data-theme-toggle aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
+        <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-bg-elevated transition-colors shrink-0">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         </button>
 
-        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors">
+        <a href="contact.html" class="inline-flex items-center gap-1.5 border border-fg/70 hover:bg-fg hover:text-bg text-fg px-4 py-1.5 rounded-full font-medium transition-colors" data-i18n="nav.contact">
           Contact
         </a>
       </div>
@@ -86,14 +86,14 @@
 
       <p class="reveal text-sm font-medium text-accent mb-5 tracking-wide uppercase">Contact</p>
 
-      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mb-6" data-word-reveal>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mb-6" data-word-reveal data-i18n-html="contact.h1">
         <span class="word">Ada</span> <span class="word">ide,</span>
         <span class="word">peluang,</span> <span class="word">atau</span>
         <span class="word text-accent">sekadar</span> <span class="word text-accent">ingin</span>
         <span class="word text-accent">ngobrol?</span>
       </h1>
 
-      <p class="reveal text-fg-muted leading-relaxed max-w-xl mb-12">
+      <p class="reveal text-fg-muted leading-relaxed max-w-xl mb-12" data-i18n="contact.lead">
         Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok.
         Tidak ada form panjang — cukup mulai dari email.
       </p>
@@ -107,7 +107,7 @@
           hello@rezisaktiva.com
           <span aria-hidden="true" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
         </a>
-        <p class="text-xs text-fg-muted mt-3 uppercase tracking-wide">Cara paling langsung menjangkau saya</p>
+        <p class="text-xs text-fg-muted mt-3 uppercase tracking-wide" data-i18n="contact.email.note">Cara paling langsung menjangkau saya</p>
       </div>
 
       <!-- Satelit -->
@@ -117,7 +117,7 @@
       </div>
 
       <!-- Availability -->
-      <p class="reveal text-sm text-fg-muted italic">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</p>
+      <p class="reveal text-sm text-fg-muted italic" data-i18n="contact.availability">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</p>
     </section>
   </main>
 
@@ -131,6 +131,6 @@
     </div>
   </footer>
 
-  <script src="shared.js"></script>
+  <script src="shared.js?v=5"></script>
 </body>
 </html>
