@@ -362,7 +362,8 @@ const CASE_IMAGES = {
 };
 
 function applyWorkIndex(locale) {
-  if (document.documentElement.dataset.page !== 'work') return;
+  const page = document.documentElement.dataset.page;
+  if (page !== 'work' && page !== 'home') return;
   const list = casesFor(locale);
   document.querySelectorAll('[data-work-card]').forEach((card) => {
     const id = card.getAttribute('data-work-card');
@@ -454,7 +455,7 @@ function applyLocale(locale) {
 
   try {
     localStorage.setItem('rz-locale', locale);
-  } catch (e) { }
+  } catch { }
 
   applyWorkIndex(locale);
   applyCase(locale);
@@ -474,17 +475,53 @@ function fillQuickInfoIndex(locale) {
     .join('');
 }
 
+let qiLastFocus = null;
+
 function setQuickInfoOpen(open) {
   const wrap = document.querySelector('.qi-wrap');
   const scrim = document.querySelector('.qi-scrim');
   const tab = document.querySelector('.qi-tab');
   if (!wrap || !scrim) return;
+  const wasOpen = wrap.classList.contains('is-open');
+  if (open === wasOpen) return;
+
   wrap.classList.toggle('is-open', open);
   scrim.classList.toggle('is-open', open);
   document.documentElement.classList.toggle('qi-lock', open);
   if (tab) {
     tab.setAttribute('aria-expanded', open ? 'true' : 'false');
-    tab.setAttribute('aria-hidden', open ? 'true' : 'false');
+    tab.setAttribute('tabindex', open ? '-1' : '0');
+  }
+
+  if (open) {
+    qiLastFocus = document.activeElement;
+    const close = wrap.querySelector('[data-qi-close]');
+    if (close) close.focus();
+  } else {
+    const target = qiLastFocus && qiLastFocus.isConnected ? qiLastFocus : tab;
+    if (target) target.focus();
+    qiLastFocus = null;
+  }
+}
+
+function trapQuickInfoFocus(e) {
+  if (e.key !== 'Tab') return;
+  const wrap = document.querySelector('.qi-wrap');
+  if (!wrap || !wrap.classList.contains('is-open')) return;
+  const panel = wrap.querySelector('.qi-panel');
+  if (!panel) return;
+  const focusable = panel.querySelectorAll(
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  );
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
   }
 }
 
@@ -557,6 +594,7 @@ function mountQuickInfo() {
   scrim.addEventListener('click', () => setQuickInfoOpen(false));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setQuickInfoOpen(false);
+    trapQuickInfoFocus(e);
   });
 }
 
@@ -567,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     const stored = localStorage.getItem('rz-locale');
     if (stored === 'en' || stored === 'id') locale = stored;
-  } catch (e) { }
+  } catch { }
   applyLocale(locale);
   document.querySelectorAll('[data-locale]').forEach((btn) => {
     btn.addEventListener('click', () => applyLocale(btn.getAttribute('data-locale')));
@@ -579,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.classList.toggle('dark', next === 'dark');
       try {
         localStorage.setItem('rz-theme', next);
-      } catch (e) { }
+      } catch { }
     });
   });
 
