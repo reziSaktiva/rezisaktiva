@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-14] — Quick info drawer di mockup (kecuali work-case)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta komponen Quick info sama seperti karolinahess.com di setiap halaman mockup kecuali work-case. Tab vertikal di tepi kanan membuka panel (bio, services, tools, works index, email, links).
+**Key Decision/Insight:** Pola interaksi Karolina; warna tetap token mockup. Copy di dalam panel masih placeholder.
+**Impact:** `design-mockups/shared.js`, `shared.css`; Home / About / Work / Contact.
+
+## [2026-08-14] — Copy mockup masih placeholder
+
+**Phase:** Development R1
+**Summary:** Boss Rezi menegaskan seluruh teks di `design-mockups/` belum copy final — masih contoh untuk menampilkan layout, ritme, dan arah seni.
+**Key Decision/Insight:** Jangan anggap copy mockup sebagai konten produksi. Saat implementasi R1 (T-013…T-016) atau revisi mockup berikutnya, copy harus dikonfirmasi dulu; layout/visual boleh lanjut terpisah dari teks.
+**Impact:** Catatan sesi ini; baseline copy di `product-discovery/` tetap acuan isi resmi sampai Boss Rezi menulis/menyetujui teks mockup.
+
 ## [2026-08-14] — Copy About bergaya Karolina, layout tetap Bartek
 
 **Phase:** Development R1

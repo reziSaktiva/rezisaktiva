@@ -16,6 +16,18 @@ Format entri:
 
 ## [2026-08-14]
 
+### Added
+
+- Mockup Quick info (pola karolinahess.com): tab kanan + drawer di Home, Proses Kerja, Karya, Contact — tidak di work-case.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Catatan: seluruh copy di `design-mockups/` masih contoh/placeholder — bukan teks yang diinginkan untuk produksi (`CONVERSATIONS.md`).
+
+## [2026-08-14] (3)
+
 ### Changed
 
 - Mockup Home diarahkan ulang (Karolina type+cutout × Bartek quiet): hero dua kata oversized + foto cutout, chrome tenang, karya sebagai tile gambar.

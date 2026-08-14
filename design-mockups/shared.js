@@ -99,6 +99,28 @@ const COPY = {
     'case.external': 'Bukti eksternal (placeholder)',
     'case.prev': 'Sebelumnya',
     'case.next': 'Berikutnya',
+    'qi.tab': 'Quick info',
+    'qi.title': 'Quick info',
+    'qi.bio':
+      'Saya merancang pengalaman digital yang bersih. Berbasis di Indonesia. Bekerja worldwide. (contoh)',
+    'qi.services': 'Services',
+    'qi.tools': 'Tools',
+    'qi.svc1': 'Product',
+    'qi.svc2': 'Fullstack',
+    'qi.svc3': 'AI',
+    'qi.svc4': 'Interaction design',
+    'qi.svc5': 'Strategy',
+    'qi.svc6': 'Research',
+    'qi.tool1': 'Next.js',
+    'qi.tool2': 'TypeScript',
+    'qi.tool3': 'Astryx',
+    'qi.tool4': 'Figma',
+    'qi.tool5': 'Postgres',
+    'qi.tool6': 'Vercel',
+    'qi.works': 'Works index',
+    'qi.email': 'Email',
+    'qi.links': 'Links',
+    'qi.close': 'Tutup quick info',
   },
   en: {
     'title.home': 'rezisaktiva — Home',
@@ -198,6 +220,28 @@ const COPY = {
     'case.external': 'External proof (placeholder)',
     'case.prev': 'Previous',
     'case.next': 'Next',
+    'qi.tab': 'Quick info',
+    'qi.title': 'Quick info',
+    'qi.bio':
+      'I craft clean digital experiences. Based in Indonesia. Working worldwide. (sample copy)',
+    'qi.services': 'Services',
+    'qi.tools': 'Tools',
+    'qi.svc1': 'Product',
+    'qi.svc2': 'Fullstack',
+    'qi.svc3': 'AI',
+    'qi.svc4': 'Interaction design',
+    'qi.svc5': 'Strategy',
+    'qi.svc6': 'Research',
+    'qi.tool1': 'Next.js',
+    'qi.tool2': 'TypeScript',
+    'qi.tool3': 'Astryx',
+    'qi.tool4': 'Figma',
+    'qi.tool5': 'Postgres',
+    'qi.tool6': 'Vercel',
+    'qi.works': 'Works index',
+    'qi.email': 'Email',
+    'qi.links': 'Links',
+    'qi.close': 'Close quick info',
   },
 };
 
@@ -414,10 +458,99 @@ function applyLocale(locale) {
 
   applyWorkIndex(locale);
   applyCase(locale);
+  fillQuickInfoIndex(locale);
   runWordReveal();
 }
 
+function fillQuickInfoIndex(locale) {
+  const listEl = document.querySelector('[data-qi-index]');
+  if (!listEl) return;
+  const list = casesFor(locale);
+  listEl.innerHTML = list
+    .map(
+      (item) =>
+        `<a href="work-case.html?p=${item.id}"><span>${item.name}</span><span class="qi-year">[2024]</span></a>`
+    )
+    .join('');
+}
+
+function setQuickInfoOpen(open) {
+  const wrap = document.querySelector('.qi-wrap');
+  const scrim = document.querySelector('.qi-scrim');
+  const tab = document.querySelector('.qi-tab');
+  if (!wrap || !scrim) return;
+  wrap.classList.toggle('is-open', open);
+  scrim.classList.toggle('is-open', open);
+  document.documentElement.classList.toggle('qi-lock', open);
+  if (tab) tab.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function mountQuickInfo() {
+  const page = document.documentElement.dataset.page;
+  if (!page || page === 'case') return;
+  if (document.querySelector('.qi-wrap')) return;
+
+  const scrim = document.createElement('div');
+  scrim.className = 'qi-scrim';
+  scrim.setAttribute('data-qi-close', '');
+
+  const wrap = document.createElement('div');
+  wrap.className = 'qi-wrap';
+  wrap.innerHTML = `
+    <button type="button" class="qi-tab" aria-expanded="false" aria-controls="qi-panel" data-i18n="qi.tab">Quick info</button>
+    <aside id="qi-panel" class="qi-panel" role="dialog" aria-modal="true" aria-labelledby="qi-title">
+      <h2 id="qi-title" class="qi-title" data-i18n="qi.title">Quick info</h2>
+      <p class="qi-bio" data-i18n="qi.bio"></p>
+      <div class="qi-cols">
+        <div>
+          <p class="qi-label" data-i18n="qi.services">Services</p>
+          <ul>
+            <li data-i18n="qi.svc1">Product</li>
+            <li data-i18n="qi.svc2">Fullstack</li>
+            <li data-i18n="qi.svc3">AI</li>
+            <li data-i18n="qi.svc4">Interaction design</li>
+            <li data-i18n="qi.svc5">Strategy</li>
+            <li data-i18n="qi.svc6">Research</li>
+          </ul>
+        </div>
+        <div>
+          <p class="qi-label" data-i18n="qi.tools">Tools</p>
+          <ul>
+            <li data-i18n="qi.tool1">Next.js</li>
+            <li data-i18n="qi.tool2">TypeScript</li>
+            <li data-i18n="qi.tool3">Astryx</li>
+            <li data-i18n="qi.tool4">Figma</li>
+            <li data-i18n="qi.tool5">Postgres</li>
+            <li data-i18n="qi.tool6">Vercel</li>
+          </ul>
+        </div>
+      </div>
+      <p class="qi-label" data-i18n="qi.works">Works index</p>
+      <div class="qi-index" data-qi-index></div>
+      <p class="qi-label" data-i18n="qi.email">Email</p>
+      <a class="qi-email cta-underline" href="mailto:hello@rezisaktiva.com">hello@rezisaktiva.com</a>
+      <p class="qi-label" data-i18n="qi.links">Links</p>
+      <div class="qi-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+      </div>
+    </aside>
+  `;
+
+  document.body.append(scrim, wrap);
+
+  wrap.querySelector('.qi-tab').addEventListener('click', () => {
+    setQuickInfoOpen(!wrap.classList.contains('is-open'));
+  });
+  scrim.addEventListener('click', () => setQuickInfoOpen(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setQuickInfoOpen(false);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  mountQuickInfo();
+
   let locale = 'id';
   try {
     const stored = localStorage.getItem('rz-locale');
