@@ -14,16 +14,9 @@ const COPY = {
     'rail.bukti': 'Bukti',
     'rail.karya': 'Karya',
     'rail.contact': 'Contact',
-    'home.kicker': 'Product builder',
     'home.h1':
       '<span class="word hero-line">Membangun</span>\n' +
       '<span class="word hero-line hero-line-2">produk.</span>',
-    'home.sub': 'Dari ide hingga live.',
-    'home.lead':
-      'Fullstack sebagai fondasi, AI sebagai edge yang jujur — bukan klaim kosong.',
-    'home.available': 'available for select projects',
-    'home.cta.talk': 'Mulai percakapan',
-    'home.cta.work': 'Lihat karya',
     'home.bukti.label': 'Bukti',
     'home.bukti.body':
       '<span class="text-fg">~6 tahun</span> membangun software fullstack — kini memakai AI sebagai cara kerja, bukan sekadar kata kunci.',
@@ -37,7 +30,6 @@ const COPY = {
     'home.contact.body':
       'Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.',
     'home.contact.link': 'Ke halaman Contact',
-    'page.process': 'Proses Kerja',
     'about.h1':
       '<span class="word">Halo,</span> <span class="word">saya</span> <span class="word">Rezi.</span>',
     'about.lead1':
@@ -136,16 +128,9 @@ const COPY = {
     'rail.bukti': 'Proof',
     'rail.karya': 'Work',
     'rail.contact': 'Contact',
-    'home.kicker': 'Product builder',
     'home.h1':
       '<span class="word hero-line">Building</span>\n' +
       '<span class="word hero-line hero-line-2">products.</span>',
-    'home.sub': 'From idea to live.',
-    'home.lead':
-      'Fullstack as the foundation, AI as an honest edge — not an empty claim.',
-    'home.available': 'available for select projects',
-    'home.cta.talk': 'Start a conversation',
-    'home.cta.work': 'See work',
     'home.bukti.label': 'Proof',
     'home.bukti.body':
       '<span class="text-fg">~6 years</span> building fullstack software — now using AI as a way of working, not just a keyword.',
@@ -159,7 +144,6 @@ const COPY = {
     'home.contact.body':
       'Open to conversations about product, collaboration, or a fit that makes sense.',
     'home.contact.link': 'Go to Contact',
-    'page.process': 'My Process',
     'about.h1':
       '<span class="word">Hello,</span> <span class="word">I\'m</span> <span class="word">Rezi.</span>',
     'about.lead1':
@@ -452,6 +436,7 @@ function applyLocale(locale) {
     const active = btn.getAttribute('data-locale') === locale;
     btn.classList.toggle('bg-brand', active);
     btn.classList.toggle('text-on-brand', active);
+    btn.toggleAttribute('data-active', active);
     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
 
@@ -605,6 +590,9 @@ function initPillGroups() {
   const controllers = [];
 
   groups.forEach((container) => {
+    if (container.dataset.pillGroupReady) return;
+    container.dataset.pillGroupReady = 'true';
+
     const items = Array.from(container.querySelectorAll(':scope > a, :scope > button'));
     if (!items.length) return;
 
@@ -616,7 +604,10 @@ function initPillGroups() {
     container.insertBefore(pill, container.firstChild);
     items.forEach((item) => item.classList.add('relative', 'z-[1]'));
 
-    const getActiveItem = () => items.find((item) => item.classList.contains('bg-brand')) || null;
+    // `data-active` is the source of truth for which item is highlighted; `bg-brand`/
+    // `text-on-brand` stay in sync for no-JS graceful degradation, but must not be reused
+    // as the active-state signal (a future style tweak on bg-brand could silently break it).
+    const getActiveItem = () => items.find((item) => item.hasAttribute('data-active')) || null;
 
     function place(item, animate) {
       if (!item) {
@@ -650,9 +641,19 @@ function initPillGroups() {
         place(item, true);
         syncTextColor(item);
       });
+      // Keyboard users tabbing through items get the same preview mouse users get on hover.
+      item.addEventListener('focus', () => {
+        place(item, true);
+        syncTextColor(item);
+      });
+      item.addEventListener('blur', () => {
+        place(getActiveItem(), true);
+        syncTextColor(null);
+      });
     });
 
     container.addEventListener('mouseleave', () => {
+      if (container.contains(document.activeElement) && document.activeElement !== container) return;
       place(getActiveItem(), true);
       syncTextColor(null);
     });

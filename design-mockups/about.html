@@ -51,25 +51,25 @@
   <div class="cursor-ring"></div>
 
   <header class="header-quiet fixed top-0 inset-x-0 z-50">
-    <div class="max-w-[1400px] mx-auto px-3 sm:px-6 md:px-10 h-20 flex items-center justify-between gap-1.5 sm:gap-2">
-      <a href="home.html" class="font-display font-semibold tracking-tight text-[12px] sm:text-base whitespace-nowrap shrink-0">rezisaktiva</a>
-      <nav data-pill-group class="flex items-center gap-0.5 sm:gap-1.5 md:gap-2 text-[10px] sm:text-[12px] md:text-[13px] text-fg-muted shrink-0 bg-yellow-300 rounded-xl sm:rounded-2xl px-1 sm:px-2 py-1 sm:py-2 chip-fixed-text">
-        <a href="home.html" class="rounded-lg sm:rounded-2xl px-1.5 sm:px-3 py-1 sm:py-1.5 transition-colors whitespace-nowrap" data-i18n="nav.home">Home</a>
-        <a href="about.html" class="rounded-lg sm:rounded-2xl px-1.5 sm:px-3 py-1 sm:py-1.5 bg-brand text-on-brand transition-colors whitespace-nowrap" data-i18n="nav.process">Proses Kerja</a>
-        <a href="work.html" class="rounded-lg sm:rounded-2xl px-1.5 sm:px-3 py-1 sm:py-1.5 transition-colors whitespace-nowrap" data-i18n="nav.work">Karya</a>
+    <div class="max-w-[1400px] mx-auto px-2 sm:px-6 md:px-10 min-h-20 py-3 sm:py-0 flex flex-wrap sm:flex-nowrap items-center justify-between gap-1.5 sm:gap-2">
+      <a href="home.html" class="font-display font-semibold tracking-tight text-[11px] sm:text-base whitespace-nowrap shrink-0">rezisaktiva</a>
+      <nav data-pill-group class="flex items-center gap-0.5 sm:gap-1.5 md:gap-2 text-[10px] sm:text-[12px] md:text-[13px] text-fg-muted shrink-0 bg-yellow-300 rounded-xl sm:rounded-2xl px-0.5 sm:px-2 py-0.5 sm:py-2 chip-fixed-text">
+        <a href="home.html" class="rounded-lg sm:rounded-2xl px-1 sm:px-3 py-0.5 sm:py-1.5 transition-colors whitespace-nowrap" data-i18n="nav.home">Home</a>
+        <a href="about.html" class="rounded-lg sm:rounded-2xl px-1 sm:px-3 py-0.5 sm:py-1.5 bg-brand text-on-brand transition-colors whitespace-nowrap" data-i18n="nav.process" data-active aria-current="page">Proses Kerja</a>
+        <a href="work.html" class="rounded-lg sm:rounded-2xl px-1 sm:px-3 py-0.5 sm:py-1.5 transition-colors whitespace-nowrap" data-i18n="nav.work">Karya</a>
       </nav>
-      <div class="flex items-center gap-1 sm:gap-2 md:gap-3 shrink-0">
-        <div data-pill-group class="flex items-center gap-0.5 sm:gap-1 text-fg-muted chip-fixed-text bg-yellow-300 rounded-xl sm:rounded-2xl px-1.5 sm:px-3 py-0.5 sm:py-1.5">
-          <button type="button" data-locale="id" class="px-1.5 sm:px-2 py-0.5 rounded-lg sm:rounded-2xl transition-colors bg-brand text-on-brand">ID</button>
-          <span class="opacity-40">/</span>
-          <button type="button" data-locale="en" class="px-1.5 sm:px-2 py-0.5 rounded-lg sm:rounded-2xl transition-colors">EN</button>
+      <div class="flex items-center gap-0.5 sm:gap-2 md:gap-3 shrink-0">
+        <div data-pill-group class="flex items-center gap-0.5 sm:gap-1 text-fg-muted chip-fixed-text bg-yellow-300 rounded-xl sm:rounded-2xl px-1 sm:px-3 py-0.5 sm:py-1.5">
+          <button type="button" data-locale="id" class="px-1 sm:px-2 py-0.5 rounded-lg sm:rounded-2xl transition-colors bg-brand text-on-brand" data-active>ID</button>
+          <span class="opacity-40 hidden sm:inline">/</span>
+          <button type="button" data-locale="en" class="px-1 sm:px-2 py-0.5 rounded-lg sm:rounded-2xl transition-colors">EN</button>
         </div>
-        <div class="flex items-center gap-1 sm:gap-1.5 md:gap-2 shrink-0">
+        <div class="flex items-center gap-0.5 sm:gap-1.5 md:gap-2 shrink-0">
           <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle magnetic w-6 h-6 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-brand text-on-brand hover:bg-accent hover:text-on-accent transition-colors shrink-0">
             <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
             <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
           </button>
-          <a href="contact.html" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-2 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact">Contact</a>
+          <a href="contact.html" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-1.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </div>

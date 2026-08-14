@@ -14,6 +14,16 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (2)
+
+### Fixed
+
+- Mockup navbar (`design-mockups/`) — hasil code review PR redesign pill:
+  - **Overflow header mobile**: tombol tema & Contact ter-clip/tidak bisa diklik di viewport ≤~405px (mencakup hampir semua ponsel — iPhone SE/12/13, Pixel, Galaxy S). Dirapatkan padding/gap chip di tier mobile + ditambahkan `flex-wrap` sebagai fallback (header pecah jadi 2 baris tanpa clipping) untuk perangkat ultra-sempit (≤~340px). Terverifikasi tidak overflow di 320px & 375px, dan tampilan desktop/tablet tidak berubah.
+  - **Aksesibilitas keyboard**: pill preview di nav & locale switch sekarang juga muncul saat item di-fokus lewat Tab (`focus`/`blur`), sebelumnya hanya lewat mouse hover. Ditambahkan `aria-current="page"` pada link nav yang aktif.
+  - **Deteksi item aktif diperkuat**: `initPillGroups` (`shared.js`) sebelumnya mendeteksi item aktif lewat class presentasi `bg-brand` (rapuh — bisa rusak diam-diam kalau class itu dipakai untuk keperluan styling lain). Sekarang pakai atribut `data-active` sebagai sumber kebenaran, `bg-brand`/`text-on-brand` tetap disinkronkan untuk graceful degradation tanpa JS. Ditambahkan guard idempotency (`data-pill-group-ready`).
+  - Dihapus dead code: key i18n yatim (`home.kicker`, `home.sub`, `home.lead`, `home.available`, `home.cta.talk`, `home.cta.work`, `page.process`) dan CSS `.about-rule` yang tidak lagi dipakai sejak konten terkait dihapus di iterasi sebelumnya.
+
 ## [2026-08-15]
 
 ### Changed

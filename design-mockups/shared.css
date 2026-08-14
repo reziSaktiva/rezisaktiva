@@ -375,21 +375,6 @@ html.dark .hero-cutout img {
   object-position: center 20%;
   filter: grayscale(1) contrast(1.06);
 }
-.about-rule {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: rgb(var(--c-fg));
-}
-.about-rule::before,
-.about-rule::after {
-  content: "";
-  height: 1px;
-  background: currentColor;
-}
-.about-rule::before { width: 10px; }
-.about-rule::after { width: 36px; }
-
 @media (max-width: 767px) {
   .hero-cutout {
     width: min(70vw, 280px);
