@@ -379,53 +379,114 @@ html.dark .hero-cutout img {
   opacity: 1;
   pointer-events: auto;
 }
-.qi-wrap {
+.qi-wrap { display: contents; }
+.qi-tab {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 82;
+  transform: translateY(-50%);
+  background: rgb(250 250 250);
+  color: rgb(20 24 31);
+  border: 0;
+  border-radius: 0.75rem 0 0 0.75rem;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 18px 14px;
+  white-space: nowrap;
+  box-shadow: none;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.qi-tab-label {
+  display: block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.qi-tab:hover {
+  background: rgb(18 60 47);
+  color: rgb(237 234 225);
+}
+.qi-wrap.is-open .qi-tab {
+  opacity: 0;
+  transform: translateY(-50%) translateX(1.25rem);
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+.qi-panel {
   position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   z-index: 80;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  transform: translateX(calc(100% - 40px));
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.qi-wrap.is-open { transform: translateX(0); }
-.qi-tab {
-  flex: 0 0 40px;
-  width: 40px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  background: rgb(10 15 26);
-  color: rgb(127 179 170);
-  border: 0;
-  border-radius: 10px 0 0 10px;
-  font-family: 'Satoshi', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  padding: 1.15rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.qi-panel {
-  width: min(38rem, calc(100vw - 40px));
+  width: 100%;
   height: 100%;
   overflow: auto;
   background: rgb(237 234 225);
   color: rgb(20 24 31);
-  padding: 1.75rem 2rem 3rem;
+  border-radius: 0.75rem 0 0 0.75rem;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
+@media (min-width: 768px) {
+  .qi-panel { width: min(38rem, calc(100vw - 2.5rem)); }
+}
+.qi-wrap.is-open .qi-panel {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.qi-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.15rem 1.25rem 1rem;
+  background: rgb(237 234 225);
+  border-bottom: 1px solid rgb(218 213 199);
+}
+.qi-close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: rgb(20 24 31);
+  color: rgb(237 234 225);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.qi-close:hover { background: rgb(18 60 47); }
+.qi-close svg { display: block; }
 .qi-title {
   font-family: 'General Sans', sans-serif;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+}
+.qi-body {
+  padding: 1.5rem 1.75rem 3rem;
 }
 .qi-bio {
   font-size: 0.95rem;
@@ -493,7 +554,7 @@ html.qi-lock { overflow: hidden; }
 
 @media (max-width: 639px) {
   .qi-cols { grid-template-columns: 1fr; }
-  .qi-panel { padding: 1.5rem 1.25rem 2.5rem; }
+  .qi-body { padding: 1.25rem 1.25rem 2.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -501,5 +562,6 @@ html.qi-lock { overflow: hidden; }
     transition: none !important; animation: none !important;
     opacity: 1 !important; transform: none !important; filter: none !important;
   }
-  .qi-wrap, .qi-scrim { transition: none !important; }
+  .qi-panel, .qi-scrim, .qi-tab { transition: none !important; }
+  .qi-wrap.is-open .qi-tab { transform: translateY(-50%) !important; }
 }

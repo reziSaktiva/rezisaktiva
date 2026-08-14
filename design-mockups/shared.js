@@ -454,7 +454,7 @@ function applyLocale(locale) {
 
   try {
     localStorage.setItem('rz-locale', locale);
-  } catch (e) {}
+  } catch (e) { }
 
   applyWorkIndex(locale);
   applyCase(locale);
@@ -482,7 +482,10 @@ function setQuickInfoOpen(open) {
   wrap.classList.toggle('is-open', open);
   scrim.classList.toggle('is-open', open);
   document.documentElement.classList.toggle('qi-lock', open);
-  if (tab) tab.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (tab) {
+    tab.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tab.setAttribute('aria-hidden', open ? 'true' : 'false');
+  }
 }
 
 function mountQuickInfo() {
@@ -497,9 +500,18 @@ function mountQuickInfo() {
   const wrap = document.createElement('div');
   wrap.className = 'qi-wrap';
   wrap.innerHTML = `
-    <button type="button" class="qi-tab" aria-expanded="false" aria-controls="qi-panel" data-i18n="qi.tab">Quick info</button>
+    <button type="button" class="qi-tab" aria-expanded="false" aria-controls="qi-panel">
+      <span class="qi-tab-label" data-i18n="qi.tab">Quick info</span>
+    </button>
     <aside id="qi-panel" class="qi-panel" role="dialog" aria-modal="true" aria-labelledby="qi-title">
-      <h2 id="qi-title" class="qi-title" data-i18n="qi.title">Quick info</h2>
+      <div class="qi-header">
+        <button type="button" class="qi-close" data-qi-close data-i18n-aria="qi.close" aria-label="Tutup quick info">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <h2 id="qi-title" class="qi-title" data-i18n="qi.title">Quick info</h2>
+        <span></span>
+      </div>
+      <div class="qi-body">
       <p class="qi-bio" data-i18n="qi.bio"></p>
       <div class="qi-cols">
         <div>
@@ -534,14 +546,14 @@ function mountQuickInfo() {
         <a href="#">LinkedIn</a>
         <a href="#">GitHub</a>
       </div>
+      </div>
     </aside>
   `;
 
   document.body.append(scrim, wrap);
 
-  wrap.querySelector('.qi-tab').addEventListener('click', () => {
-    setQuickInfoOpen(!wrap.classList.contains('is-open'));
-  });
+  wrap.querySelector('.qi-tab').addEventListener('click', () => setQuickInfoOpen(true));
+  wrap.querySelector('[data-qi-close]').addEventListener('click', () => setQuickInfoOpen(false));
   scrim.addEventListener('click', () => setQuickInfoOpen(false));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setQuickInfoOpen(false);
@@ -555,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     const stored = localStorage.getItem('rz-locale');
     if (stored === 'en' || stored === 'id') locale = stored;
-  } catch (e) {}
+  } catch (e) { }
   applyLocale(locale);
   document.querySelectorAll('[data-locale]').forEach((btn) => {
     btn.addEventListener('click', () => applyLocale(btn.getAttribute('data-locale')));
@@ -567,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.classList.toggle('dark', next === 'dark');
       try {
         localStorage.setItem('rz-theme', next);
-      } catch (e) {}
+      } catch (e) { }
     });
   });
 

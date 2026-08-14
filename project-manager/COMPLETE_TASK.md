@@ -16,17 +16,47 @@ Format entri:
 
 ## [2026-08-14]
 
-### Added
+### Changed
 
-- Mockup Quick info (pola karolinahess.com): tab kanan + drawer di Home, Proses Kerja, Karya, Contact — tidak di work-case.
+- Laporan sesi mockup Quick info: tab kompak di tepi kanan (rounded kiri), hilang halus saat dibuka; drawer geser dari kanan dengan close kotak di header; full lebar di bawah md, ~38rem di atas md. Stack tetap Astryx (ADR-018), bukan shadcn.
 
 ## [2026-08-14] (2)
 
 ### Changed
 
-- Catatan: seluruh copy di `design-mockups/` masih contoh/placeholder — bukan teks yang diinginkan untuk produksi (`CONVERSATIONS.md`).
+- Mockup Quick info: tab rounded kiri (bukan atas); drawer full lebar di bawah md, di atas md lebar ~38rem.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab fade+geser halus saat drawer buka; radius atas 0.75rem (setara rounded-xl drawer, karena tab diputar).
+
+## [2026-08-14] (2)
+
+### Fixed
+
+- Mockup Quick info: tab tetap pill kompak (bukan tinggi penuh) dan menempel panel sehingga ikut geser saat drawer dibuka.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab kanan jadi pill kompak putih (bukan strip gelap penuh), hover hijau gelap, panel buka terpisah dari tab.
+
+## [2026-08-14] (2)
+
+### Added
+
+- Mockup Quick info (pola karolinahess.com): tab kanan + drawer di Home, Proses Kerja, Karya, Contact — tidak di work-case.
 
 ## [2026-08-14] (3)
+
+### Changed
+
+- Catatan: seluruh copy di `design-mockups/` masih contoh/placeholder — bukan teks yang diinginkan untuk produksi (`CONVERSATIONS.md`).
+
+## [2026-08-14] (4)
 
 ### Changed
 

@@ -14,6 +14,27 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-14] — Quick info: tab hilang, drawer full screen + close
+
+**Phase:** Development R1
+**Summary:** Boss Rezi koreksi interaksi Karolina: klik tab Quick info → tab menghilang; panel full screen geser dari kanan; rounded-xl di kiri atas & kiri bawah; tombol close kotak di pojok kiri header.
+**Key Decision/Insight:** Tetap overlay custom di mockup (bukan pindah shadcn). Pola = Drawer full screen, bukan tab yang menempel panel.
+**Impact:** `design-mockups/shared.css`, `shared.js`.
+
+## [2026-08-14] — Tetap Astryx; Quick info bukan alasan pindah shadcn
+
+**Phase:** Development R1
+**Summary:** Boss Rezi lihat shadcn Drawer dan tidak menemukan padanan di Astryx. Diputuskan tidak pindah stack. Masalah visual hanya tinggi tab (jangan full) dan tab harus ikut geser saat panel terbuka.
+**Key Decision/Insight:** ADR-018 tetap. Astryx tidak punya Drawer generik (paling dekat MobileNav/Dialog). Quick info = overlay custom di mockup. shadcn Drawer juga tidak memberi tab vertikal tepi kanan secara gratis.
+**Impact:** `design-mockups/shared.css` — tab kompak menempel panel, geser bersama.
+
+## [2026-08-14] — Tab Quick info diselaraskan ke Karolina
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta tombol Quick info di mockup lebih mirip karolinahess.com. Iterasi pertama: pill kompak putih, hover hijau gelap, panel terpisah. Iterasi kedua: tab tetap kompak tapi menempel panel dan ikut geser saat dibuka.
+**Key Decision/Insight:** Bentuk tombol = Karolina (putih, kompak, hover hijau gelap). Bukan strip penuh. Tab mengikuti drawer.
+**Impact:** `design-mockups/shared.css` (+ cache bust HTML).
+
 ## [2026-08-14] — Quick info drawer di mockup (kecuali work-case)
 
 **Phase:** Development R1
