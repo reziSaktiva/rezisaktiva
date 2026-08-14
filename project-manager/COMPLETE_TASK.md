@@ -14,6 +14,69 @@ Format entri:
 - ...
 ```
 
+## [2026-08-14]
+
+### Changed
+
+- Laporan sesi mockup Quick info: tab kompak di tepi kanan (rounded kiri), hilang halus saat dibuka; drawer geser dari kanan dengan close kotak di header; full lebar di bawah md, ~38rem di atas md. Stack tetap Astryx (ADR-018), bukan shadcn.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab rounded kiri (bukan atas); drawer full lebar di bawah md, di atas md lebar ~38rem.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab fade+geser halus saat drawer buka; radius atas 0.75rem (setara rounded-xl drawer, karena tab diputar).
+
+## [2026-08-14] (2)
+
+### Fixed
+
+- Mockup Quick info: tab tetap pill kompak (bukan tinggi penuh) dan menempel panel sehingga ikut geser saat drawer dibuka.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab kanan jadi pill kompak putih (bukan strip gelap penuh), hover hijau gelap, panel buka terpisah dari tab.
+
+## [2026-08-14] (2)
+
+### Added
+
+- Mockup Quick info (pola karolinahess.com): tab kanan + drawer di Home, Proses Kerja, Karya, Contact — tidak di work-case.
+
+## [2026-08-14] (3)
+
+### Changed
+
+- Catatan: seluruh copy di `design-mockups/` masih contoh/placeholder — bukan teks yang diinginkan untuk produksi (`CONVERSATIONS.md`).
+
+## [2026-08-14] (4)
+
+### Changed
+
+- Mockup Home diarahkan ulang (Karolina type+cutout × Bartek quiet): hero dua kata oversized + foto cutout, chrome tenang, karya sebagai tile gambar.
+- Mockup About, Work, Contact, dan work-case diselaraskan ke arah yang sama.
+- Mockup About diubah mengikuti pola mazurbartek.com/about: sapaan + foto potret, bukan headline slogan.
+- Copy About disesuaikan ke gaya karolinahess.com/about: kalimat pendek, “yang bisa saya bantu”, approach, values.
+
+### Added
+
+- `design-mockups/work.html` — mockup indeks seluruh karya (dari See all / nav Karya).
+- `design-mockups/work-case.html` — mockup cerita singkat per project (dari Baca cerita).
+
+### Changed
+
+- `.cursor/rules/ui-ux-mockup-check.mdc` — jika mockup ada: jelaskan lalu tanya pakai/perbarui; jika belum ada: wajib buat mockup HTML dulu (tidak boleh skip ke kode).
+- `project-manager/tasks/v03-development-r1.md` — catatan pra-eksekusi UI/UX diselaraskan.
+- `project-manager/CONVERSATIONS.md` — alur mockup wajib.
+- `design-mockups/` — switcher ID/EN berfungsi di Home, Proses Kerja, Contact (copy paritas + locale tersimpan); See all + nav Karya → `work.html`.
+
 ## [2026-08-13] (6)
 
 ### Added

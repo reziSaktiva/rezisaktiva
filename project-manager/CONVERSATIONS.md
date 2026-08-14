@@ -14,6 +14,83 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-14] — Quick info: tab hilang, drawer full screen + close
+
+**Phase:** Development R1
+**Summary:** Boss Rezi koreksi interaksi Karolina: klik tab Quick info → tab menghilang; panel full screen geser dari kanan; rounded-xl di kiri atas & kiri bawah; tombol close kotak di pojok kiri header.
+**Key Decision/Insight:** Tetap overlay custom di mockup (bukan pindah shadcn). Pola = Drawer full screen, bukan tab yang menempel panel.
+**Impact:** `design-mockups/shared.css`, `shared.js`.
+
+## [2026-08-14] — Tetap Astryx; Quick info bukan alasan pindah shadcn
+
+**Phase:** Development R1
+**Summary:** Boss Rezi lihat shadcn Drawer dan tidak menemukan padanan di Astryx. Diputuskan tidak pindah stack. Masalah visual hanya tinggi tab (jangan full) dan tab harus ikut geser saat panel terbuka.
+**Key Decision/Insight:** ADR-018 tetap. Astryx tidak punya Drawer generik (paling dekat MobileNav/Dialog). Quick info = overlay custom di mockup. shadcn Drawer juga tidak memberi tab vertikal tepi kanan secara gratis.
+**Impact:** `design-mockups/shared.css` — tab kompak menempel panel, geser bersama.
+
+## [2026-08-14] — Tab Quick info diselaraskan ke Karolina
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta tombol Quick info di mockup lebih mirip karolinahess.com. Iterasi pertama: pill kompak putih, hover hijau gelap, panel terpisah. Iterasi kedua: tab tetap kompak tapi menempel panel dan ikut geser saat dibuka.
+**Key Decision/Insight:** Bentuk tombol = Karolina (putih, kompak, hover hijau gelap). Bukan strip penuh. Tab mengikuti drawer.
+**Impact:** `design-mockups/shared.css` (+ cache bust HTML).
+
+## [2026-08-14] — Quick info drawer di mockup (kecuali work-case)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta komponen Quick info sama seperti karolinahess.com di setiap halaman mockup kecuali work-case. Tab vertikal di tepi kanan membuka panel (bio, services, tools, works index, email, links).
+**Key Decision/Insight:** Pola interaksi Karolina; warna tetap token mockup. Copy di dalam panel masih placeholder.
+**Impact:** `design-mockups/shared.js`, `shared.css`; Home / About / Work / Contact.
+
+## [2026-08-14] — Copy mockup masih placeholder
+
+**Phase:** Development R1
+**Summary:** Boss Rezi menegaskan seluruh teks di `design-mockups/` belum copy final — masih contoh untuk menampilkan layout, ritme, dan arah seni.
+**Key Decision/Insight:** Jangan anggap copy mockup sebagai konten produksi. Saat implementasi R1 (T-013…T-016) atau revisi mockup berikutnya, copy harus dikonfirmasi dulu; layout/visual boleh lanjut terpisah dari teks.
+**Impact:** Catatan sesi ini; baseline copy di `product-discovery/` tetap acuan isi resmi sampai Boss Rezi menulis/menyetujui teks mockup.
+
+## [2026-08-14] — Copy About bergaya Karolina, layout tetap Bartek
+
+**Phase:** Development R1
+**Summary:** Layout About (sapaan + foto) dipertahankan. Isi penjelasan diganti ke ritme karolinahess.com/about: kalimat pendek, “yang bisa saya bantu” (Product / Fullstack / AI), approach, values.
+**Key Decision/Insight:** Visual = Bartek; value content = Karolina. Blok S2 tetap, tapi tidak lagi esai defensif.
+**Impact:** `design-mockups/about.html`, `shared.js`.
+
+## [2026-08-14] — About mockup mengikuti mazurbartek.com/about
+
+**Phase:** Development R1
+**Summary:** Boss Rezi kurang suka About versi slogan. Referensi: split sapaan + foto potret, bio singkat, ketenangan whitespace. FAQ/afterhours tidak ditiru (di luar S2).
+**Key Decision/Insight:** About = perkenalan orang, bukan landing kedua. Blok S2 tetap (narasi, fullstack, AI, proses, CTA).
+**Impact:** `design-mockups/about.html`, `shared.css`, `shared.js`.
+
+## [2026-08-14] — Paritas visual mockup About / Work / Contact
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta halaman About, Work, dan Contact diselaraskan ke arah seni Home (chrome tenang, type besar, ruang kosong, tanpa blob/kartu berbingkai). Work-case ikut diselaraskan supaya alur Karya tidak patah.
+**Key Decision/Insight:** Satu bahasa visual di seluruh mockup R1; isi blok UX S2/S3 tetap.
+**Impact:** `design-mockups/about.html`, `work.html`, `contact.html`, `work-case.html`, `shared.css`, `shared.js`.
+
+## [2026-08-14] — Arah seni mockup Home (Karolina × Bartek)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi menilai Home mockup masih biasa. Referensi mazurbartek.com (type + whitespace) dan karolinahess.com (type oversized menumpuk foto cutout). Dipilih hybrid: type + foto cutout, tenang, switcher ID/EN tetap.
+**Key Decision/Insight:** Seni = yang dibuang (blob, chip, marquee, kartu berbingkai, rail). Blok R1 tetap (klaim → bukti → teaser 1–3 → Contact). Belum ADR — ini arah visual mockup, bukan ubah baseline UX.
+**Impact:** `design-mockups/home.html`, `shared.css`, `shared.js`. Halaman lain belum diselaraskan.
+
+## [2026-08-14] — Mockup halaman Karya (Work index)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta halaman yang menampilkan seluruh hasil kerja, terarah dari tautan See all di section work Home. Dibuat `design-mockups/work.html` (indeks) dan `work-case.html` (cerita singkat Konteks → Pendekatan → Hasil per project).
+**Key Decision/Insight:** Mockup M9+M10 dulu; belum menarik ke backlog kode R1 / belum ADR geser roadmap. Konten kartu masih placeholder.
+**Impact:** `design-mockups/work.html`; nav Karya + See all mengarah ke halaman itu.
+
+## [2026-08-14] — Alur wajib cek/buat mockup sebelum UI/UX
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta setiap pekerjaan UI/UX selalu cek mockup HTML dulu. Jika mockup sudah ada: jelaskan isinya, lalu tanya apakah dipakai yang sekarang. Jika belum ada: wajib beri tahu dan wajib buat mockup di `design-mockups/` sebelum implementasi kode — tidak ada opsi skip.
+**Key Decision/Insight:** Mockup HTML adalah gerbang visual wajib; kode produksi tidak boleh dimulai tanpa mockup yang disetujui.
+**Impact:** `.cursor/rules/ui-ux-mockup-check.mdc` dikencangkan; catatan di `tasks/v03-development-r1.md` diselaraskan.
+
 ## [2026-08-13] — Adopsi Astryx sebagai component library, replace Tailwind
 
 **Phase:** Repository & Bootstrap (T-009 selesai, menjelang T-010)
