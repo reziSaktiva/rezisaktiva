@@ -8,7 +8,9 @@ Dokumen ini menetapkan struktur informasi & halaman website portofolio **rezisak
 
 # Overview
 
-IA R1 = **tiga halaman inti** + **section teaser di Home** + **locale path prefix** `/id` dan `/en`. Tidak ada `/work` di MVP. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
+IA R1 = **tiga halaman inti** + **section teaser di Home** + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
+
+> **Update (2026-08-15, ADR-020):** `/[id/en]/work` (Work index, M9) naik jadi Must R1 — bukan lagi "tidak ada di MVP". Halaman detail case (M10) tetap Later/R2.
 
 ---
 
@@ -29,12 +31,13 @@ Locale sebagai **path param** `[id/en]` — nilai ∈ `{ id, en }` (bukan query 
 └── /[id/en]/
     ├── /[id/en]/         → Home
     ├── /[id/en]/about    → About
-    └── /[id/en]/contact  → Contact
+    ├── /[id/en]/contact  → Contact (status route vs modal-only belum final, lihat T-016)
+    └── /[id/en]/work     → Work index (M9, Must R1 — ADR-020)
 ```
 
-Contoh konkret: `/id/`, `/id/about`, `/en/contact`.
+Contoh konkret: `/id/`, `/id/about`, `/en/work`.
 
-**Bukan R1 (Later / R2):** `/[id/en]/work`, detail case, blog, auth area.
+**Bukan R1 (Later / R2):** detail case per karya (M10), blog, auth area.
 
 ---
 
@@ -43,9 +46,10 @@ Contoh konkret: `/id/`, `/id/about`, `/en/contact`.
 ### Lintas halaman (chrome)
 
 1. Identitas brand (nama / mark)
-2. Primary nav: Home · About · Contact
+2. Primary nav: Home · About · Karya (M9, override ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
 3. Language switcher (`ID` ↔ `EN`) → URL path sibling
 4. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
+5. Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button tetap selalu terlihat (override ADR-020 atas `navigation-patterns.md`)
 
 ### Home (urutan konten)
 
@@ -85,7 +89,8 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | `/[id/en]/about` | About | M2 | Must |
 | `/[id/en]/contact` | Contact | M3 | Must |
 | Chrome global | Nav + switcher + footer | M5, M6 | Must |
-| `/[id/en]/work` (+ detail) | Work / case | M9/M10 | Later R2 |
+| `/[id/en]/work` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
+| `/[id/en]/work/[slug]` (detail case) | Work case detail | M10 | Later R2 |
 
 ---
 
@@ -151,7 +156,7 @@ Sebelum R1 dianggap siap live:
 
 * Menambah rute konten R1 baru → ADR + update Product bila perlu
 * Mengubah skema locale (hapus path prefix) → ADR baru
-* Memasukkan Work ke inventory Must → bertentangan ADR-010
+* Memasukkan Work index ke inventory Must → sudah terjadi via ADR-020 (2026-08-15), override sebagian ADR-010; Work case detail (M10) masih butuh keputusan terpisah
 
 ---
 

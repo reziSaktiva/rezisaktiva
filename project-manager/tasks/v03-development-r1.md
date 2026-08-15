@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7): chrome, Home + work teaser, About, Contact, meta — sesuai Product/UX baseline (ADR-010, ADR-014) dan Astryx (ADR-018). Bukan magnet R2 (Work index / case penuh).
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020): chrome, Home + work teaser, About, Contact, Work index, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10).
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -10,16 +10,17 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 ## T-013 — Site chrome R1 (M6 + polish M5)
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done (2026-08-15)
 * **Domain:** UI/UX
-* **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `key-screen-patterns.md` (S0), ADR-014, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama)
-* **Catatan mockup (2026-08-15):** chrome di `design-mockups/` memakai hamburger di viewport <1024px (nav halaman + ID/EN di dalam menu; Contact + tema tetap di luar). Ini menyimpang dari T-013.1 / `navigation-patterns.md` (nav selalu terlihat, tanpa hamburger). Jangan porting ke kode sebelum keputusan: ikut mockup (perlu ADR) atau tetap baseline always-visible.
+* **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `navigation-patterns.md` (override ADR-020), `key-screen-patterns.md` (S0), ADR-014, ADR-019, ADR-020, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama)
+* **Keputusan (2026-08-15, ADR-020):** ikut mockup penuh — nav Home · About · Karya (M9) sebagai link, Contact sebagai tombol pembuka modal (bukan link), hamburger aktif <1024px (nav halaman + switcher masuk menu; Contact-button + tema tetap di luar).
+* **Implementasi:** `app/[locale]/_components/site-header.tsx` (TopNav + MobileNav via `AppShell`, breakpoint `lg`/1024px lewat `useAppShellMobile`), `app/[locale]/_components/site-footer.tsx`, `app/[locale]/_components/locale-switcher.tsx` (SegmentedControl ID/EN), `lib/nav.ts`, `app/[locale]/layout.tsx`. Stub `about/`, `work/` ditambah agar link nav tidak 404 selama T-015/T-019 belum digarap. Contact button belum wired ke modal (menyusul T-016).
 
 ### Subtasks
 
-- [ ] **T-013.1** — Nav lean Home · About · Contact selalu terlihat (desktop & mobile R1; tanpa hamburger); Contact reachable ≤1 ketukan
-- [ ] **T-013.2** — Locale switcher selalu terlihat (polish stub T-010.3); cookie `NEXT_LOCALE` tetap hanya untuk redirect `/`
-- [ ] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG)
+- [x] **T-013.1** — Nav Home · About · Karya (M9) sebagai link; Contact = tombol (belum wired ke modal — menyusul T-016); ≥1024px semua selalu terlihat, <1024px nav+switcher di balik hamburger (Contact-button tetap di luar, ≤1 ketukan)
+- [x] **T-013.2** — Locale switcher selalu terlihat di desktop; masuk hamburger di mobile bersama nav (polish stub T-010.3 — sekarang `SegmentedControl` ID/EN); cookie `NEXT_LOCALE` tetap hanya untuk redirect `/`
+- [x] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG); URL satelit masih placeholder `#` sampai konten T-015.1/T-016.1 tersedia
 
 ---
 
@@ -90,9 +91,23 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 ---
 
+## T-019 — Work index R1 (M9, override ADR-020)
+
+* **Status:** ⏳ Todo
+* **Domain:** UI/UX
+* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M9), ADR-020, `design-mockups/work.html`
+* **Catatan:** M9 naik jadi Must R1 lewat ADR-020 (2026-08-15); nav "Karya" (T-013.1) butuh destination nyata. Halaman detail per karya (M10/`work-case.html`) **tetap R2** — jangan bangun detail case di sini, cukup index/katalog yang link keluar (repo/live) atau ke placeholder detail sampai M10 digarap.
+
+### Subtasks
+
+- [ ] **T-019.1** — Konten Work index di `content/` (daftar karya kurasi — boleh reuse item work teaser Home + tambahan bila ada)
+- [ ] **T-019.2** — Halaman `/[locale]/work` sesuai mockup; Astryx; konsisten dengan chrome T-013
+
+---
+
 ## Yang tidak masuk backlog Development R1
 
-- Work index / case penuh (M9/M10 — R2)
+- Work case / detail per karya (M10 — R2); Work index (M9) sudah masuk R1 via ADR-020 (T-019)
 - Dark mode toggle UI (Should/Later)
 - Form, calendar, WA, Instagram, pricing (ADR-008 / ADR-014)
 - Blog / CMS / auth / DB (N/A — ADR-011/015)

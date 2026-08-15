@@ -14,6 +14,23 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (2)
+### Added
+- **T-013 — Site chrome R1 selesai** (T-013.1, T-013.2, T-013.3): `app/[locale]/_components/site-header.tsx` (TopNav desktop + MobileNav drawer via `AppShell`, breakpoint lg/1024px), `site-footer.tsx`, `locale-switcher.tsx` (di-upgrade ke `SegmentedControl` ID/EN), `lib/nav.ts`. Stub `app/[locale]/about/page.tsx` dan `app/[locale]/work/page.tsx` ditambah agar nav tidak 404 sebelum T-015/T-019 digarap.
+### Changed
+- Nav mengikuti ADR-020: Home · About · Karya sebagai link; Contact jadi tombol (belum wired ke modal, menyusul T-016); <1024px nav+switcher masuk hamburger, Contact-button tetap di luar.
+### Fixed
+- Tidak memakai kelas Tailwind (`hidden lg:flex`) untuk responsive show/hide karena Tailwind sudah digantikan penuh oleh Astryx (ADR-018) dan tidak terpasang di project — diganti dengan hook `useAppShellMobile()` (Astryx-native) untuk conditional render.
+
+## [2026-08-15]
+### Added
+- ADR-020: Work index (M9) naik jadi Must R1 + nav mobile pakai hamburger — override sebagian ADR-010/ADR-012 dan `navigation-patterns.md`. Keputusan diambil Boss Rezi lewat proactive clarification saat memulai T-013.
+- Task baru **T-019 — Work index R1 (M9)** di `tasks/v03-development-r1.md` (T-019.1 konten, T-019.2 halaman `/[locale]/work`).
+### Changed
+- `feature-modules.md`, `feature-priority.md`, `mvp-definition.md`, `release-roadmap.md`: M9 dipindah dari Post-MVP/Won't ke Must R1 (M10 tetap Post-MVP/R2).
+- `information-architecture.md`, `navigation-patterns.md`: site map + primary nav tambah "Karya" (M9) sebagai link; Contact jadi tombol modal (bukan link nav); mobile <1024px pakai hamburger untuk nav+switcher (Contact-button tetap di luar hamburger).
+- `T-013.1`/`T-013.2` di `tasks/v03-development-r1.md` direvisi mengikuti ADR-020 (catatan konflik mockup sebelumnya sudah resolved).
+
 ## [2026-08-15] (6)
 
 ### Fixed

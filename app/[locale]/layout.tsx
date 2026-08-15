@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { HStack } from "@astryxdesign/core/HStack";
+import { AppShell } from "@astryxdesign/core/AppShell";
 import { LOCALES, isLocale } from "@/lib/locale";
-import { LocaleSwitcher } from "./_components/locale-switcher";
+import { SiteFooter } from "./_components/site-footer";
+import { SiteMobileNav, SiteTopNav } from "./_components/site-header";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -19,10 +20,19 @@ export default async function LocaleLayout({
 
   return (
     <>
-      <HStack justify="end" padding={4}>
-        <LocaleSwitcher locale={locale} />
-      </HStack>
-      {children}
+      <AppShell
+        variant="surface"
+        height="auto"
+        contentPadding={0}
+        topNav={<SiteTopNav locale={locale} />}
+        mobileNav={{
+          breakpoint: "lg",
+          content: <SiteMobileNav locale={locale} />,
+        }}
+      >
+        {children}
+      </AppShell>
+      <SiteFooter locale={locale} />
     </>
   );
 }

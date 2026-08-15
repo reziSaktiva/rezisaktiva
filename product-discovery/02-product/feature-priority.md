@@ -45,6 +45,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | M5 | Language (bilingual geo-aware + switcher) | ADR-002; relevan SEA + pintu terbuka |
 | M6 | Site chrome & satellites | Nav lean + footer + tautan satelit |
 | M7 | Destination meta (title/description/OG dasar) | URL layak jadi “link utama” |
+| M9 | Work index (katalog karya) | **Naik dari Won't → Must** (override ADR-020, 2026-08-15); nav "Karya" perlu destination nyata |
 
 ---
 
@@ -77,8 +78,7 @@ Untuk **rilis MVP** (kerangka clarity), sengaja **tidak** termasuk:
 
 | ID / item | Keterangan | Kapan dipertimbangkan |
 | --------- | ---------- | --------------------- |
-| M9 | Work index (katalog) | Post-MVP / magnet phase |
-| M10 | Case / process detail | Post-MVP (magnet ringan ADR-007) |
+| M10 | Case / process detail | Post-MVP (magnet ringan ADR-007) — M9 sudah naik ke Must R1 (ADR-020), M10 tetap di sini |
 | M11 | Writing / notes hub | Future — bukan inti visi MVP |
 | M12 | Experiments / playground sebagai panggung | Future satelit craft |
 | — | Pricing, paket, checkout | Ditolak arah produk (ADR-008) |
@@ -112,7 +112,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 
 1. **Clarity sebelum craft** — jangan tunda Home/About/Contact demi animasi atau case sempurna.
 2. **Brand primer** — item yang mendorong hard sell / harga = Won't (arah produk).
-3. **Magnet bertahap** — M9/M10 berharga, tetapi Won't untuk rilis MVP kecuali keputusan eksplisit geser ke opsi D.
+3. **Magnet bertahap** — M10 berharga, tetapi Won't untuk rilis MVP kecuali keputusan eksplisit geser ke opsi D. M9 sudah naik ke Must R1 (ADR-020, 2026-08-15) sebagai pengecualian eksplisit.
 4. **Should ≠ Must** — ship Must lengkap lebih penting daripada poles sempurna.
 5. **Could tidak mencuri kapasitas** — form/motion/case awal hanya jika Must+Should sudah aman.
 6. **Selaras dual north star** — prioritas yang tidak membantu recall atau soft inbound path dipertanyakan.
@@ -133,7 +133,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 Prioritas dianggap cukup jika:
 
 1. Setiap Must Have di `mvp-definition.md` terpetakan ke baris Must di sini
-2. M9/M10 tetap Won't untuk rilis MVP (selaras ADR-010) kecuali keputusan baru
+2. M10 tetap Won't untuk rilis MVP (selaras ADR-010); M9 sudah naik Must R1 per keputusan baru (ADR-020)
 3. Urutan pengerjaan bisa dipakai langsung oleh `release-roadmap.md`
 4. Tidak ada item Must yang bertentangan dengan no-pricing / soft CTA
 
