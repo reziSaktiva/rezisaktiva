@@ -27,6 +27,9 @@ export default async function LocaleLayout({
         topNav={<SiteTopNav locale={locale} />}
         mobileNav={{
           breakpoint: "lg",
+          // Toggle ditaruh manual di SiteTopNav (sebelum tombol Contact),
+          // jadi auto-toggle bawaan AppShell dimatikan agar tidak dobel.
+          hasToggle: false,
           content: <SiteMobileNav locale={locale} />,
         }}
       >
