@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-15] — karolinahess.com & mazurbartek.com diformalkan sebagai referensi
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta referensi karolinahess.com dan mazurbartek.com yang selama ini disebut di sesi mockup (Quick info, layout About, arah seni Home) didokumentasikan resmi, bukan hanya di catatan sesi.
+**Key Decision/Insight:** Ditambahkan sebagai referensi #6 dan #7 di `competitor-analysis.md` (Karolina = tier craft/tipografi-interaksi; Bartek = tier presence/tipografi-whitespace), memakai jalur yang sudah diizinkan dokumen itu sendiri untuk menambah named reference tanpa mengubah kerangka clarity → presence → craft. Dicatat sebagai **Update pada ADR-006** (bukan ADR baru).
+**Impact:** `product-discovery/01-business/competitor-analysis.md`, `project-manager/decisions/ADR-006-...md` (+Update), `DECISIONS.md` (ringkasan ADR-006 diperbarui).
+
 ## [2026-08-15] — Contact jadi Dialog/Modal global + form (ADR-019)
 
 **Phase:** Development R1

@@ -14,6 +14,12 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (5)
+
+### Added
+
+- Referensi bernama **karolinahess.com** dan **mazurbartek.com** diformalkan di `product-discovery/01-business/competitor-analysis.md` (baris #6, #7) — sebelumnya hanya disebut di `CONVERSATIONS.md`/sesi mockup. Dicatat sebagai Update pada ADR-006 (bukan ADR baru); ringkasan di `DECISIONS.md` diperbarui.
+
 ## [2026-08-15] (4)
 
 ### Added
