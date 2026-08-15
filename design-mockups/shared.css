@@ -235,6 +235,109 @@ html.dark .theme-toggle .icon-moon { display: block; }
   border-bottom: none;
   backdrop-filter: none;
 }
+
+.site-header {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.header-brand { justify-self: start; }
+.header-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 0;
+  margin: 0;
+  justify-self: center;
+}
+.header-tools { justify-self: end; }
+
+.nav-toggle {
+  display: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  align-items: center;
+  justify-content: center;
+  background: rgb(250 204 21);
+  color: rgb(var(--c-fg));
+  flex-shrink: 0;
+}
+.nav-toggle .nav-icon-close { display: none; }
+.header-quiet.is-nav-open .nav-toggle .nav-icon-open { display: none; }
+.header-quiet.is-nav-open .nav-toggle .nav-icon-close { display: block; }
+
+.locale-switch--menu { display: none !important; }
+
+/* Phone + tablet: hamburger. Page nav + ID/EN live in the dropdown.
+   Desktop (1024px+) keeps centered nav and visible locale. */
+@media (max-width: 1023px) {
+  .site-header {
+    display: flex !important;
+    flex-wrap: nowrap;
+    position: relative;
+    min-height: 0;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .header-brand {
+    font-size: 0.9375rem;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .locale-switch--bar { display: none !important; }
+  .header-panel {
+    display: none;
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: calc(100% - 0.15rem);
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgb(var(--c-bg));
+    border: 1px solid rgb(var(--c-border));
+    border-radius: 1rem;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.12);
+    z-index: 60;
+    justify-self: auto;
+  }
+  .header-quiet.is-nav-open .header-panel {
+    display: flex;
+  }
+  .header-quiet.is-nav-open .locale-switch--menu {
+    display: flex !important;
+  }
+  .header-nav {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.25rem;
+  }
+  .header-nav > a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.875rem;
+    padding: 0.6rem 0.9rem;
+  }
+  .locale-switch--menu {
+    width: 100%;
+    justify-content: center;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+  .header-tools .theme-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
 .avail-dot {
   width: 7px; height: 7px;
   border-radius: 50%;

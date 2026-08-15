@@ -14,6 +14,12 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (3)
+
+### Changed
+
+- Mockup navbar mobile/tablet (`design-mockups/`): hamburger di viewport <1024px — menu berisi Home / Proses Kerja / Karya + ID/EN; Contact dan tombol tema tetap visible. Desktop (≥1024px) tetap 3 grup, chip nav di tengah. Menyimpang dari T-013.1 / `navigation-patterns.md` (tanpa hamburger); catatan di `tasks/v03-development-r1.md`.
+
 ## [2026-08-15] (2)
 
 ### Fixed

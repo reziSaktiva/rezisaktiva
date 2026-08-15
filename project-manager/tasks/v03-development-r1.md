@@ -13,6 +13,7 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 * **Status:** ⏳ Todo
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `key-screen-patterns.md` (S0), ADR-014, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama)
+* **Catatan mockup (2026-08-15):** chrome di `design-mockups/` memakai hamburger di viewport <1024px (nav halaman + ID/EN di dalam menu; Contact + tema tetap di luar). Ini menyimpang dari T-013.1 / `navigation-patterns.md` (nav selalu terlihat, tanpa hamburger). Jangan porting ke kode sebelum keputusan: ikut mockup (perlu ADR) atau tetap baseline always-visible.
 
 ### Subtasks
 

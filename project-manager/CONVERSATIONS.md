@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-15] — Navbar mobile/tablet: hamburger (menyimpang baseline)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta desain navbar mobile karena versi desktop yang diperkecil tidak memadai. Dua baris ditolak; dipilih hamburger untuk nav halaman (Home / Proses Kerja / Karya) + switcher ID/EN. Contact dan tombol tema tetap di luar menu. Hamburger tampil di viewport <1024px (HP + tablet); desktop (≥1024px) tetap 3 grup dengan nav di tengah.
+**Key Decision/Insight:** Mockup chrome sekarang hamburger di bawah `lg`. Ini menyimpang dari `navigation-patterns.md` + T-013.1 (nav + switcher selalu terlihat, tanpa hamburger, ≤1 ketukan). Belum ADR — keputusan mockup dulu; sebelum T-013 perlu pilih: ikut mockup (ADR) atau kembali ke baseline always-visible.
+**Impact:** `design-mockups/` (semua halaman); catatan di `tasks/v03-development-r1.md` T-013.
+
 ## [2026-08-14] — Quick info: tab hilang, drawer full screen + close
 
 **Phase:** Development R1

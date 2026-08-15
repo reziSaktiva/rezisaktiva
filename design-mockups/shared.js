@@ -9,6 +9,8 @@ const COPY = {
     'nav.process': 'Proses Kerja',
     'nav.work': 'Karya',
     'nav.contact': 'Contact',
+    'nav.menu': 'Buka menu',
+    'nav.menuClose': 'Tutup menu',
     'theme.aria': 'Ganti tema terang/gelap',
     'rail.home': 'Home',
     'rail.bukti': 'Bukti',
@@ -123,6 +125,8 @@ const COPY = {
     'nav.process': 'My Process',
     'nav.work': 'Work',
     'nav.contact': 'Contact',
+    'nav.menu': 'Open menu',
+    'nav.menuClose': 'Close menu',
     'theme.aria': 'Toggle light/dark theme',
     'rail.home': 'Home',
     'rail.bukti': 'Proof',
@@ -671,6 +675,41 @@ function initPillGroups() {
   return controllers;
 }
 
+function initMobileNav() {
+  const header = document.querySelector('header.header-quiet');
+  const toggle = document.querySelector('[data-nav-toggle]');
+  if (!header || !toggle) return;
+
+  const labelFor = (open) => {
+    const locale = document.documentElement.lang === 'en' ? 'en' : 'id';
+    const dict = COPY[locale] || COPY.id;
+    return open ? dict['nav.menuClose'] : dict['nav.menu'];
+  };
+
+  const setOpen = (open) => {
+    header.classList.toggle('is-nav-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', labelFor(open));
+  };
+
+  toggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+    setOpen(!header.classList.contains('is-nav-open'));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+    if (event.matches) setOpen(false);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   mountQuickInfo();
 
@@ -682,6 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLocale(locale);
 
   const pillGroups = initPillGroups();
+  initMobileNav();
 
   document.querySelectorAll('[data-locale]').forEach((btn) => {
     btn.addEventListener('click', () => {
