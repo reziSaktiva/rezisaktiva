@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-15] — Contact jadi Dialog/Modal global + form (ADR-019)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta Contact diubah dari halaman jadi Dialog/Modal (referensi screenshot: form email+message, detail kontak, sosial), warna disesuaikan tema project (ink gelap + kuning, bukan hijau/lime referensi), dan cursor-ring berubah jadi X saat kursor di scrim (luar dialog). `contact.html` dihapus.
+**Key Decision/Insight:** Baseline S3 (`key-screen-patterns.md`, ADR-014) melarang form di Contact dan menganggap deretan ikon sosial setara Email sebagai anti-pattern. Boss Rezi diberi tahu konflik ini secara eksplisit dan memilih tetap pakai form — diformalkan sebagai **ADR-019** (override sebagian ADR-014; Email tetap tampil sebelum blok Socials untuk menjaga sebagian hierarki; calendar/WA/IG/pricing tetap dilarang).
+**Impact:** `design-mockups/shared.css`, `shared.js`, `home.html`, `about.html`, `work.html`, `work-case.html` (tombol Contact/CTA jadi trigger modal, bukan link ke halaman); `design-mockups/contact.html` dihapus; `ADR-019`; `key-screen-patterns.md` (S3 catatan override); `tasks/v03-development-r1.md` T-016 (catatan: route vs modal-only belum diputuskan untuk kode produksi).
+
 ## [2026-08-15] — Navbar mobile/tablet: hamburger (menyimpang baseline)
 
 **Phase:** Development R1

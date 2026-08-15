@@ -14,6 +14,25 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (4)
+
+### Added
+
+- Mockup Contact sebagai Dialog/Modal global (`design-mockups/shared.js`, `shared.css`): form email + message, blok "Detail kontak" (email + tombol copy), blok "Sosial" (LinkedIn/GitHub), availability line. Warna theme-independent (ink gelap + kuning, pola sama seperti `.qi-tab`). Cursor-ring berubah jadi ikon X saat kursor di scrim (luar kartu dialog) selama modal terbuka.
+- ADR-019 (override sebagian ADR-014 — form diizinkan di Contact).
+
+### Changed
+
+- Semua tombol/link "Contact" (nav) dan CTA "Hubungi saya"/"Ke halaman Contact" di `home.html`, `about.html`, `work.html`, `work-case.html` diubah dari `<a href="contact.html">` menjadi `<button data-contact-open>` yang membuka modal. Copy `home.contact.link` / `work.cta.link` diperbarui ("Hubungi saya" / "Get in touch") karena teks lama ("Ke halaman Contact") tidak lagi akurat. Copy `contact.lead` dirapikan (hapus klaim "tidak ada form" yang sudah tidak berlaku).
+
+### Removed
+
+- `design-mockups/contact.html` dihapus — Contact tidak lagi halaman terpisah di mockup.
+
+### Fixed
+
+- `applyLocale()` di `shared.js` sekarang juga menerjemahkan atribut `placeholder` lewat `data-i18n-placeholder` (dibutuhkan form Contact baru).
+
 ## [2026-08-15] (3)
 
 ### Changed

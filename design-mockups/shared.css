@@ -161,6 +161,23 @@ body {
   border-color: rgb(var(--c-accent));
   background: rgb(var(--c-accent) / 0.08);
 }
+/* Contact modal open + cursor over the scrim (outside the dialog card) = "click to close" */
+.cursor-ring.is-close {
+  width: 56px; height: 56px;
+  border-color: transparent;
+  background: #fde047;
+}
+.cursor-ring.is-close::before,
+.cursor-ring.is-close::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 18px; height: 2px;
+  background: #14181f;
+  border-radius: 2px;
+}
+.cursor-ring.is-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.cursor-ring.is-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 
 /* Section index rail (dot nav samping) */
 .rail-dot {
@@ -680,6 +697,219 @@ html.qi-lock { overflow: hidden; }
   .qi-body { padding: 1.25rem 1.25rem 2.5rem; }
 }
 
+/* ---------- Contact modal (ADR-019 — dialog, not a standalone page) ----------
+   Fixed dark-ink surface + yellow accent regardless of light/dark theme,
+   same convention as .qi-tab (deliberately theme-independent overlay). */
+.ct-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(10, 15, 26, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.ct-scrim.is-open { opacity: 1; pointer-events: auto; }
+
+.ct-wrap { display: contents; }
+
+.ct-panel {
+  position: fixed;
+  top: 50%; left: 50%;
+  z-index: 92;
+  width: min(880px, calc(100vw - 2rem));
+  max-height: calc(100vh - 3rem);
+  overflow: auto;
+  border-radius: 1.5rem;
+  background: #0a0f1a;
+  color: #ede9e1;
+  padding: 2.25rem;
+  box-shadow: 0 40px 90px -24px rgba(0, 0, 0, 0.55);
+  transform: translate(-50%, -50%) scale(0.96);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.4s linear;
+}
+.ct-wrap.is-open .ct-panel {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.ct-close {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  width: 2.25rem; height: 2.25rem;
+  border-radius: 9999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ede9e1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.ct-close:hover { background: #fde047; color: #14181f; }
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+.ct-title {
+  font-family: 'General Sans', sans-serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1.75rem;
+  padding-right: 2rem;
+}
+.ct-title .ct-accent { color: #fde047; }
+
+.ct-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #ede9e1;
+}
+.ct-input,
+.ct-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.9rem;
+  padding: 0.85rem 1rem;
+  color: #ede9e1;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.ct-input::placeholder,
+.ct-textarea::placeholder { color: rgba(237, 234, 225, 0.4); }
+.ct-input:focus,
+.ct-textarea:focus {
+  outline: none;
+  border-color: #fde047;
+  background: rgba(255, 255, 255, 0.09);
+}
+.ct-textarea { min-height: 8.5rem; resize: vertical; }
+
+.ct-submit {
+  width: 100%;
+  background: #fde047;
+  color: #14181f;
+  border: 0;
+  border-radius: 9999px;
+  padding: 1rem 1.5rem;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: background-color 0.25s ease;
+}
+.ct-submit:hover { background: #eab90c; }
+.ct-submit-icon {
+  width: 1.65rem; height: 1.65rem;
+  border-radius: 9999px;
+  background: #14181f;
+  color: #fde047;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.ct-label-caps {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(237, 234, 225, 0.55);
+  margin-bottom: 0.6rem;
+}
+.ct-email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.ct-email-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #ede9e1;
+  word-break: break-all;
+  text-decoration: none;
+}
+.ct-email-link:hover { color: #fde047; }
+.ct-copy {
+  width: 1.85rem; height: 1.85rem;
+  border-radius: 0.55rem;
+  border: 0;
+  background: #fde047;
+  color: #14181f;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.ct-copy:hover { transform: scale(1.08); }
+.ct-copy.is-copied { background: #7fb3aa; }
+
+.ct-socials {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.ct-socials a {
+  width: 2rem; height: 2rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ede9e1;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.ct-socials a:hover { background: #fde047; color: #14181f; }
+
+.ct-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: rgba(237, 234, 225, 0.7);
+}
+.ct-availability .avail-dot {
+  background: #fde047;
+  box-shadow: 0 0 0 0 rgba(253, 224, 71, 0.55);
+}
+
+html.ct-lock { overflow: hidden; }
+
+@media (max-width: 767px) {
+  .ct-panel { padding: 1.75rem 1.5rem; width: calc(100vw - 1.5rem); }
+  .ct-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .ct-title { padding-right: 1.5rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .word, .ambient-blob, .marquee-track, .magnetic, .avail-dot, .work-tile img {
     transition: none !important; animation: none !important;
@@ -689,4 +919,7 @@ html.qi-lock { overflow: hidden; }
   .qi-wrap.is-open .qi-tab { transform: translateY(-50%) !important; }
   .qi-panel { visibility: hidden; }
   .qi-wrap.is-open .qi-panel { visibility: visible; }
+  .ct-panel, .ct-scrim { transition: none !important; }
+  .ct-panel { visibility: hidden; }
+  .ct-wrap.is-open .ct-panel { visibility: visible; }
 }

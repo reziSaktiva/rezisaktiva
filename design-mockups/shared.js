@@ -31,7 +31,7 @@ const COPY = {
     'home.contact.title': 'Mari mengobrol.',
     'home.contact.body':
       'Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.',
-    'home.contact.link': 'Ke halaman Contact',
+    'home.contact.link': 'Hubungi saya',
     'about.h1':
       '<span class="word">Halo,</span> <span class="word">saya</span> <span class="word">Rezi.</span>',
     'about.lead1':
@@ -72,10 +72,22 @@ const COPY = {
     'contact.h1':
       '<span class="word page-line">Mari</span>\n' +
       '<span class="word page-line page-line-2">mengobrol.</span>',
+    'contact.modal.h1': '<span>Mari</span> <span class="ct-accent">mengobrol.</span>',
     'contact.lead':
-      'Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok. Tidak ada form panjang — cukup mulai dari email.',
+      'Terbuka untuk percakapan soal produk, kolaborasi, atau peluang kerja sama yang cocok.',
     'contact.email.note': 'Cara paling langsung menjangkau saya',
     'contact.availability': 'Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.',
+    'contact.close': 'Tutup',
+    'contact.form.emailLabel': 'Email kamu',
+    'contact.form.emailPlaceholder': 'mail@mail.com',
+    'contact.form.messageLabel': 'Pesan',
+    'contact.form.messagePlaceholder': 'Ceritakan sedikit soal project kamu',
+    'contact.form.submit': 'Kirim',
+    'contact.form.sent': 'Terkirim',
+    'contact.details.label': 'Detail kontak',
+    'contact.copy.label': 'Salin email',
+    'contact.copy.copied': 'Tersalin',
+    'contact.socials.label': 'Sosial',
     'title.work': 'rezisaktiva — Karya',
     'page.work': 'Karya',
     'work.h1':
@@ -86,7 +98,7 @@ const COPY = {
     'work.preview': 'preview',
     'work.proof': 'Baca cerita →',
     'work.cta.q': 'Ingin membahas salah satu karya ini?',
-    'work.cta.link': 'Ke halaman Contact',
+    'work.cta.link': 'Hubungi saya',
     'case.back': '← Semua karya',
     'case.context': 'Konteks',
     'case.approach': 'Pendekatan',
@@ -147,7 +159,7 @@ const COPY = {
     'home.contact.title': "Let's talk.",
     'home.contact.body':
       'Open to conversations about product, collaboration, or a fit that makes sense.',
-    'home.contact.link': 'Go to Contact',
+    'home.contact.link': 'Get in touch',
     'about.h1':
       '<span class="word">Hello,</span> <span class="word">I\'m</span> <span class="word">Rezi.</span>',
     'about.lead1':
@@ -188,10 +200,22 @@ const COPY = {
     'contact.h1':
       '<span class="word page-line">Let\'s</span>\n' +
       '<span class="word page-line page-line-2">talk.</span>',
+    'contact.modal.h1': '<span>Let\'s</span> <span class="ct-accent">talk.</span>',
     'contact.lead':
-      'Open to conversations about product, collaboration, or a partnership that fits. No long form — start with email.',
+      'Open to conversations about product, collaboration, or a partnership that fits.',
     'contact.email.note': 'The most direct way to reach me',
     'contact.availability': 'Open to selected projects in the coming months.',
+    'contact.close': 'Close',
+    'contact.form.emailLabel': 'Your email',
+    'contact.form.emailPlaceholder': 'mail@mail.com',
+    'contact.form.messageLabel': 'Message',
+    'contact.form.messagePlaceholder': 'Tell me more about your project',
+    'contact.form.submit': 'Submit',
+    'contact.form.sent': 'Sent',
+    'contact.details.label': 'Contact details',
+    'contact.copy.label': 'Copy email',
+    'contact.copy.copied': 'Copied',
+    'contact.socials.label': 'Socials',
     'title.work': 'rezisaktiva — Work',
     'page.work': 'Work',
     'work.h1':
@@ -202,7 +226,7 @@ const COPY = {
     'work.preview': 'preview',
     'work.proof': 'Read story →',
     'work.cta.q': 'Want to talk about one of these?',
-    'work.cta.link': 'Go to Contact',
+    'work.cta.link': 'Get in touch',
     'case.back': '← All work',
     'case.context': 'Context',
     'case.approach': 'Approach',
@@ -432,6 +456,11 @@ function applyLocale(locale) {
     if (key && dict[key] != null) el.setAttribute('aria-label', dict[key]);
   });
 
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (key && dict[key] != null) el.setAttribute('placeholder', dict[key]);
+  });
+
   const page = document.documentElement.dataset.page;
   const titleKey = page ? 'title.' + page : null;
   if (titleKey && dict[titleKey]) document.title = dict[titleKey];
@@ -589,6 +618,168 @@ function mountQuickInfo() {
   });
 }
 
+let ctLastFocus = null;
+let ctCopyResetTimer = null;
+let ctSubmitResetTimer = null;
+
+function setContactOpen(open) {
+  const wrap = document.querySelector('.ct-wrap');
+  const scrim = document.querySelector('.ct-scrim');
+  if (!wrap || !scrim) return;
+  const wasOpen = wrap.classList.contains('is-open');
+  if (open === wasOpen) return;
+
+  wrap.classList.toggle('is-open', open);
+  scrim.classList.toggle('is-open', open);
+  document.documentElement.classList.toggle('ct-lock', open);
+
+  const ring = document.querySelector('.cursor-ring');
+  if (!open && ring) ring.classList.remove('is-close');
+
+  if (open) {
+    ctLastFocus = document.activeElement;
+    const panel = wrap.querySelector('.ct-panel');
+    const firstField = panel && panel.querySelector('#ct-email');
+    if (firstField) firstField.focus();
+  } else {
+    const target = ctLastFocus && ctLastFocus.isConnected ? ctLastFocus : null;
+    if (target) target.focus();
+    ctLastFocus = null;
+  }
+}
+
+function trapContactFocus(e) {
+  if (e.key !== 'Tab') return;
+  const wrap = document.querySelector('.ct-wrap');
+  if (!wrap || !wrap.classList.contains('is-open')) return;
+  const panel = wrap.querySelector('.ct-panel');
+  if (!panel) return;
+  const focusable = panel.querySelectorAll(
+    'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function mountContactModal() {
+  if (document.querySelector('.ct-wrap')) return;
+
+  const scrim = document.createElement('div');
+  scrim.className = 'ct-scrim';
+  scrim.setAttribute('data-ct-close', '');
+
+  const wrap = document.createElement('div');
+  wrap.className = 'ct-wrap';
+  wrap.innerHTML = `
+    <div id="ct-panel" class="ct-panel" role="dialog" aria-modal="true" aria-labelledby="ct-title">
+      <button type="button" class="ct-close" data-ct-close data-i18n-aria="contact.close" aria-label="Tutup">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="ct-grid">
+        <div>
+          <h2 id="ct-title" class="ct-title" data-i18n-html="contact.modal.h1">
+            <span>Mari</span> <span class="ct-accent">mengobrol.</span>
+          </h2>
+          <form class="ct-form" data-ct-form novalidate>
+            <label class="ct-label" for="ct-email" data-i18n="contact.form.emailLabel">Email kamu</label>
+            <input id="ct-email" name="email" type="email" class="ct-input" data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="mail@mail.com" required />
+            <label class="ct-label" for="ct-message" data-i18n="contact.form.messageLabel">Pesan</label>
+            <textarea id="ct-message" name="message" class="ct-textarea" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Ceritakan sedikit soal project kamu" required></textarea>
+            <button type="submit" class="ct-submit magnetic">
+              <span data-ct-submit-label data-i18n="contact.form.submit">Kirim</span>
+              <span class="ct-submit-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
+            </button>
+          </form>
+        </div>
+        <div>
+          <p class="ct-label-caps" data-i18n="contact.details.label">Detail kontak</p>
+          <div class="ct-email-row">
+            <a class="ct-email-link" href="mailto:hello@rezisaktiva.com">hello@rezisaktiva.com</a>
+            <button type="button" class="ct-copy" data-ct-copy data-i18n-aria="contact.copy.label" aria-label="Salin email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            </button>
+          </div>
+          <p class="ct-label-caps" data-i18n="contact.socials.label">Sosial</p>
+          <div class="ct-socials">
+            <a href="#" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.61-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.34-1.1.62-1.36-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            </a>
+          </div>
+          <p class="ct-availability">
+            <span class="avail-dot" aria-hidden="true"></span>
+            <span data-i18n="contact.availability">Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.append(scrim, wrap);
+
+  wrap.querySelector('[data-ct-close]').addEventListener('click', () => setContactOpen(false));
+  scrim.addEventListener('click', () => setContactOpen(false));
+
+  const ring = document.querySelector('.cursor-ring');
+  if (ring) {
+    scrim.addEventListener('mouseenter', () => ring.classList.add('is-close'));
+    scrim.addEventListener('mouseleave', () => ring.classList.remove('is-close'));
+  }
+
+  const copyBtn = wrap.querySelector('[data-ct-copy]');
+  copyBtn.addEventListener('click', async () => {
+    const email = wrap.querySelector('.ct-email-link').textContent.trim();
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      /* clipboard unavailable in this context — mockup only, ignore */
+    }
+    copyBtn.classList.add('is-copied');
+    clearTimeout(ctCopyResetTimer);
+    ctCopyResetTimer = setTimeout(() => copyBtn.classList.remove('is-copied'), 1600);
+  });
+
+  const form = wrap.querySelector('[data-ct-form]');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const label = form.querySelector('[data-ct-submit-label]');
+    if (!label) return;
+    const locale = document.documentElement.lang === 'en' ? 'en' : 'id';
+    const dict = COPY[locale] || COPY.id;
+    const original = dict['contact.form.submit'];
+    label.textContent = dict['contact.form.sent'];
+    clearTimeout(ctSubmitResetTimer);
+    ctSubmitResetTimer = setTimeout(() => {
+      label.textContent = original;
+    }, 2200);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setContactOpen(false);
+    trapContactFocus(e);
+  });
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-contact-open]');
+    if (trigger) {
+      e.preventDefault();
+      setContactOpen(true);
+    }
+  });
+}
+
 function initPillGroups() {
   const groups = document.querySelectorAll('[data-pill-group]');
   const controllers = [];
@@ -712,6 +903,7 @@ function initMobileNav() {
 
 document.addEventListener('DOMContentLoaded', () => {
   mountQuickInfo();
+  mountContactModal();
 
   let locale = 'id';
   try {

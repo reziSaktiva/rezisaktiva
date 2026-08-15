@@ -43,7 +43,7 @@
     },
   };
 </script>
-<link rel="stylesheet" href="shared.css?v=27" />
+<link rel="stylesheet" href="shared.css?v=28" />
 </head>
 
 <body class="antialiased bg-bg text-fg">
@@ -80,7 +80,7 @@
             <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
             <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
           </button>
-          <a href="contact.html" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-1.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact">Contact</a>
+          <button type="button" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-1.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact" data-contact-open>Contact</button>
         </div>
       </div>
     </div>
@@ -200,10 +200,10 @@
 
     <section class="max-w-[1400px] mx-auto px-6 md:px-10 py-28 md:py-40">
       <p class="reveal text-fg-muted mb-6" data-i18n="about.cta.q">Tertarik mengobrol lebih jauh?</p>
-      <a href="contact.html" class="reveal magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors">
+      <button type="button" class="reveal magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors" data-contact-open>
         <span data-i18n="about.cta.link">Hubungi saya</span>
         <span aria-hidden="true">→</span>
-      </a>
+      </button>
     </section>
   </main>
 
@@ -215,6 +215,6 @@
     </div>
   </footer>
 
-  <script src="shared.js?v=20"></script>
+  <script src="shared.js?v=21"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
     },
   };
 </script>
-<link rel="stylesheet" href="shared.css?v=27" />
+<link rel="stylesheet" href="shared.css?v=28" />
 </head>
 
 <body class="antialiased bg-bg text-fg">
@@ -87,9 +87,9 @@
             <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
           </button>
 
-          <a href="contact.html" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-1.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact">
+          <button type="button" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-1.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact" data-contact-open>
             Contact
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -161,10 +161,10 @@
       <p class="reveal text-fg-muted max-w-md mb-10 leading-relaxed" data-i18n="home.contact.body">
         Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.
       </p>
-      <a href="contact.html" class="reveal magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors">
-        <span data-i18n="home.contact.link">Ke halaman Contact</span>
+      <button type="button" class="reveal magnetic inline-flex items-center gap-2 bg-brand text-on-brand px-6 py-3 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors" data-contact-open>
+        <span data-i18n="home.contact.link">Hubungi saya</span>
         <span aria-hidden="true">↗</span>
-      </a>
+      </button>
     </section>
   </main>
 
@@ -176,6 +176,6 @@
     </div>
   </footer>
 
-  <script src="shared.js?v=20"></script>
+  <script src="shared.js?v=21"></script>
 </body>
 </html>

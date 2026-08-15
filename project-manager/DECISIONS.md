@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-019 | Contact sebagai Dialog/Modal global + form email/message (override sebagian ADR-014) | Accepted | 2026-08-15 | Modal global ganti halaman Contact; form diizinkan; Email tetap tampil sebelum Socials | [ADR-019](decisions/ADR-019-contact-modal-with-form-override.md) |
 | ADR-018 | Astryx (component library + StyleX + theme CSS) menggantikan Tailwind sebagai styling/token R1 | Accepted | 2026-08-13 | Replace penuh Tailwind; theme-neutral; agent docs di `.cursor/rules/xds.mdc` | [ADR-018](decisions/ADR-018-astryx-replaces-tailwind-r1.md) |
 | ADR-017 | Motion sebagai bagian identitas visual R1 (bukan sekadar Could minimal) | Accepted | 2026-08-12 | Motion naik peran, clarity tetap prioritas; p5aholic hanya utk teknik gerak | [ADR-017](decisions/ADR-017-motion-as-identity-r1.md) |
 | ADR-016 | Engineering Baseline v1.0: kunci `06-engineering/` (Next + Vercel + ESLint/Prettier + Tailwind) | Accepted | 2026-08-11 | Kunci 06-engineering; single-app pnpm; CI Actions + Vercel; tokens A+ | [ADR-016](decisions/ADR-016-engineering-baseline-v1.md) |
