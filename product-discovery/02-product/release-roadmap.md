@@ -51,9 +51,9 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact, M4 Work teaser, M5 Language, M6 Chrome, M7 Meta |
+| Must | M1 Home, M2 About, M3 Contact, M4 Work teaser, M5 Language, M6 Chrome, M7 Meta, **M9 Work index** (override ADR-020, 2026-08-15) |
 | Should | Availability line, paritas ID/EN, teaser actionable, a11y dasar |
-| Bukan | M9/M10, blog, CMS, pricing, craft sebagai blocker |
+| Bukan | M10 (case/process detail), blog, CMS, pricing, craft sebagai blocker |
 
 **Exit R1:**
 
@@ -72,7 +72,7 @@ Selaras **Phase 1 — Validation** di `success-metrics.md`.
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Inti | M10 ≥1 case/proses singkat; M9 Work index (bila ≥2 karya atau butuh daftar) |
+| Inti | M10 ≥1 case/proses singkat (M9 Work index sudah live sejak R1 — ADR-020) |
 | Opsional | Early case yang sempat Could di R1 dipindah/ dirapikan ke pola M9/M10 |
 | Bukan | Blog volume, newsletter machine, distribusi sosial wajib |
 
@@ -116,7 +116,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 # Roadmap Review
 
-* Baseline v1.0 dikunci (ADR-012); geser M9/M10 ke R1 = perubahan material (opsi D) → ADR + update MVP/priority.
+* Baseline v1.0 dikunci (ADR-012); geser M9/M10 ke R1 = perubahan material (opsi D) → ADR + update MVP/priority. M9 sudah digeser (ADR-020, 2026-08-15); M10 masih menunggu keputusan terpisah bila diperlukan.
 * Setelah live, review exit R1 sebelum memulai build R2 secara serius.
 * Tanggal/estimasi minggu boleh ditambah di Engineering planning — bukan syarat dokumen ini.
 
