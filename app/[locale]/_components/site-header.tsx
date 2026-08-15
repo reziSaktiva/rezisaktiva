@@ -36,7 +36,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
     <TopNav
       label="Main navigation"
       heading={<TopNavHeading heading="rezisaktiva" headingHref={`/${locale}`} />}
-      startContent={
+      centerContent={
         !isMobile && (
           <HStack gap={1} align="center">
             {NAV_ITEMS.map((item) => (
