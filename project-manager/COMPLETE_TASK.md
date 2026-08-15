@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (6)
+
+### Fixed
+
+- Temuan code review PR #24 (`design-mockups/shared.js`):
+  - Form Contact tidak lagi menampilkan status "Terkirim" saat field kosong — `novalidate` sekarang dikombinasikan dengan `form.checkValidity()`/`reportValidity()` manual di handler submit sebelum menganggap submit berhasil.
+  - Pill indikator nav & locale switch di dalam dropdown hamburger sekarang direfresh (`pillGroups[].refresh()`) saat menu dibuka — sebelumnya posisinya dihitung sekali saat elemen masih `display:none`, jadi kemungkinan tidak terlihat sampai user hover/resize.
+  - Tombol "Salin email" tidak lagi menampilkan status sukses (`is-copied`) jika `navigator.clipboard.writeText` gagal — sebelumnya class itu ditambahkan tanpa syarat di luar try/catch.
+
 ## [2026-08-15] (5)
 
 ### Added

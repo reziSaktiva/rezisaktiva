@@ -744,7 +744,9 @@ function mountContactModal() {
     try {
       await navigator.clipboard.writeText(email);
     } catch {
-      /* clipboard unavailable in this context — mockup only, ignore */
+      /* Clipboard write failed (insecure context, permission denied, etc.) —
+         don't show a false "copied" success state; just leave the button as-is. */
+      return;
     }
     copyBtn.classList.add('is-copied');
     clearTimeout(ctCopyResetTimer);
@@ -754,6 +756,12 @@ function mountContactModal() {
   const form = wrap.querySelector('[data-ct-form]');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    // `novalidate` disables the browser's native validation UI so we control the styling,
+    // but we still need to enforce it ourselves before pretending the submit succeeded.
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const label = form.querySelector('[data-ct-submit-label]');
     if (!label) return;
     const locale = document.documentElement.lang === 'en' ? 'en' : 'id';
@@ -866,7 +874,7 @@ function initPillGroups() {
   return controllers;
 }
 
-function initMobileNav() {
+function initMobileNav(pillGroups) {
   const header = document.querySelector('header.header-quiet');
   const toggle = document.querySelector('[data-nav-toggle]');
   if (!header || !toggle) return;
@@ -881,6 +889,12 @@ function initMobileNav() {
     header.classList.toggle('is-nav-open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', labelFor(open));
+    // The nav/locale pill groups live inside `.header-panel`, which is `display:none`
+    // while the dropdown is closed — their indicator position was computed against a
+    // zero-size rect at mount time. Recompute now that the panel is actually visible.
+    if (open && pillGroups) {
+      pillGroups.forEach((group) => group.refresh(false));
+    }
   };
 
   toggle.addEventListener('click', (event) => {
@@ -913,7 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLocale(locale);
 
   const pillGroups = initPillGroups();
-  initMobileNav();
+  initMobileNav(pillGroups);
 
   document.querySelectorAll('[data-locale]').forEach((btn) => {
     btn.addEventListener('click', () => {
