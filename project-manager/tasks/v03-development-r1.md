@@ -13,6 +13,7 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 * **Status:** ⏳ Todo
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `key-screen-patterns.md` (S0), ADR-014, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama)
+* **Catatan mockup (2026-08-15):** chrome di `design-mockups/` memakai hamburger di viewport <1024px (nav halaman + ID/EN di dalam menu; Contact + tema tetap di luar). Ini menyimpang dari T-013.1 / `navigation-patterns.md` (nav selalu terlihat, tanpa hamburger). Jangan porting ke kode sebelum keputusan: ikut mockup (perlu ADR) atau tetap baseline always-visible.
 
 ### Subtasks
 
@@ -53,12 +54,13 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 * **Status:** ⏳ Todo
 * **Domain:** UI/UX
-* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3), ADR-014, `design-mockups/contact.html`
+* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3 + override 2026-08-15), ADR-014, ADR-019, `design-mockups/shared.js` (komponen modal Contact — `contact.html` sudah dihapus)
+* **Catatan mockup (2026-08-15):** Contact di mockup sekarang Dialog/Modal global (bukan halaman `/[locale]/contact`), dibuka dari nav/CTA di semua halaman; termasuk form email + message (ADR-019 override ADR-014 poin "tanpa form"). **Belum diputuskan** sebelum eksekusi T-016.2: apakah `/[locale]/contact` tetap ada sebagai route (fallback/SEO) di samping modal, atau modal-only. Tanyakan ke Boss Rezi sebelum implementasi kode.
 
 ### Subtasks
 
-- [ ] **T-016.1** — Konten Contact di `content/` (ajakan soft + konteks; Email primer; LinkedIn/GitHub satelit; availability bila belum di Home)
-- [ ] **T-016.2** — Halaman `/[locale]/contact` sesuai pola S3 + mockup; `mailto:` primer; tanpa form / calendar / WA / IG / pricing
+- [ ] **T-016.1** — Konten Contact di `content/` (ajakan soft + konteks; Email primer; LinkedIn/GitHub satelit; availability bila belum di Home; copy form bila dipertahankan)
+- [ ] **T-016.2** — Komponen Contact sesuai pola S3 (override ADR-019) + mockup; `mailto:` tetap primer; form email+message diizinkan; tanpa calendar / WA / IG / pricing; klarifikasi route vs modal-only dulu (lihat catatan di atas)
 
 ---
 

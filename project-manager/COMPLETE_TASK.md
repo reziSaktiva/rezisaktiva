@@ -14,6 +14,37 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (5)
+
+### Added
+
+- Referensi bernama **karolinahess.com** dan **mazurbartek.com** diformalkan di `product-discovery/01-business/competitor-analysis.md` (baris #6, #7) — sebelumnya hanya disebut di `CONVERSATIONS.md`/sesi mockup. Dicatat sebagai Update pada ADR-006 (bukan ADR baru); ringkasan di `DECISIONS.md` diperbarui.
+
+## [2026-08-15] (4)
+
+### Added
+
+- Mockup Contact sebagai Dialog/Modal global (`design-mockups/shared.js`, `shared.css`): form email + message, blok "Detail kontak" (email + tombol copy), blok "Sosial" (LinkedIn/GitHub), availability line. Warna theme-independent (ink gelap + kuning, pola sama seperti `.qi-tab`). Cursor-ring berubah jadi ikon X saat kursor di scrim (luar kartu dialog) selama modal terbuka.
+- ADR-019 (override sebagian ADR-014 — form diizinkan di Contact).
+
+### Changed
+
+- Semua tombol/link "Contact" (nav) dan CTA "Hubungi saya"/"Ke halaman Contact" di `home.html`, `about.html`, `work.html`, `work-case.html` diubah dari `<a href="contact.html">` menjadi `<button data-contact-open>` yang membuka modal. Copy `home.contact.link` / `work.cta.link` diperbarui ("Hubungi saya" / "Get in touch") karena teks lama ("Ke halaman Contact") tidak lagi akurat. Copy `contact.lead` dirapikan (hapus klaim "tidak ada form" yang sudah tidak berlaku).
+
+### Removed
+
+- `design-mockups/contact.html` dihapus — Contact tidak lagi halaman terpisah di mockup.
+
+### Fixed
+
+- `applyLocale()` di `shared.js` sekarang juga menerjemahkan atribut `placeholder` lewat `data-i18n-placeholder` (dibutuhkan form Contact baru).
+
+## [2026-08-15] (3)
+
+### Changed
+
+- Mockup navbar mobile/tablet (`design-mockups/`): hamburger di viewport <1024px — menu berisi Home / Proses Kerja / Karya + ID/EN; Contact dan tombol tema tetap visible. Desktop (≥1024px) tetap 3 grup, chip nav di tengah. Menyimpang dari T-013.1 / `navigation-patterns.md` (tanpa hamburger); catatan di `tasks/v03-development-r1.md`.
+
 ## [2026-08-15] (2)
 
 ### Fixed

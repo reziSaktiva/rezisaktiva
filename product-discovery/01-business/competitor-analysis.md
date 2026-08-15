@@ -31,14 +31,16 @@ Tujuan: memperkuat diferensiasi **product builder + fullstack + AI edge** (ADR-0
 | 3 | [lauren-waller.com](https://lauren-waller.com/) | IA bersih + satu klaim kredibel + bukti | Clarity: Work / About / Contact; bukti konkret di permukaan | Identitas product designer / Framer shop sebagai inti |
 | 4 | [p5aholic.me](https://p5aholic.me/) | Eksperimen web sebagai signature | Kurasi karya; playground sebagai satelit (bukan panggung utama) | Pure creative-dev tanpa outcome untuk founder/PO |
 | 5 | [cristianoronaldo.com](https://www.cristianoronaldo.com/) | Satu URL resmi = “dunia” identitas | Career/highlight sebagai narasi; rumah brand tunggal | Monetisasi line produk; skala selebritas |
+| 6 | [karolinahess.com](https://karolinahess.com/) | Craft tipografi + interaksi (tab/drawer info, type oversized menumpuk foto) | Pola Quick info (tab tepi kanan → drawer); ritme copy About singkat “yang bisa saya bantu” | Densitas dekorasi berlebih; playground murni tanpa outcome |
+| 7 | [mazurbartek.com](https://mazurbartek.com/) | Presence tenang lewat tipografi besar + whitespace | Layout About (sapaan + foto potret); ketenangan komposisi Home (type + whitespace) | Minim bukti/karya sebagai satu-satunya kesan; terlalu personal-blog |
 
 **Urutan prioritas pelajaran (D):**
 
 1. **Clarity** (Lauren) — founder/PO paham dalam hitungan menit
-2. **Presence** (Patrick + Ronaldo-lite) — terasa rumah brand, bukan CV tersebar
-3. **Craft** (Dunks + p5aholic) — edge yang memperkuat, bukan menggantikan cerita
+2. **Presence** (Patrick + Ronaldo-lite + Bartek) — terasa rumah brand, bukan CV tersebar
+3. **Craft** (Dunks + p5aholic + Karolina) — edge yang memperkuat, bukan menggantikan cerita
 
-Di MVP: clarity + soft presence dulu; craft naik bertahap.
+Di MVP: clarity + soft presence dulu; craft naik bertahap. Karolina & Bartek ditambahkan 2026-08-14/15 sebagai referensi arah seni mockup (tipografi, layout, interaksi) — melengkapi pasangan presence/craft yang sudah ada, bukan mengubah urutan D (lihat Update di ADR-006).
 
 ## B. Category competitors (alternatif perhatian)
 
@@ -92,7 +94,7 @@ Belum ada named rival. Yang bersaing untuk slot evaluasi:
 
 | Risiko | Dampak | Mitigasi |
 | ------ | ------ | -------- |
-| Terlalu mengejar craft (Dunks/p5aholic) | Salah baca sebagai creative-dev | Kunci urutan D; craft sebagai lapisan ketiga |
+| Terlalu mengejar craft (Dunks/p5aholic/Karolina) | Salah baca sebagai creative-dev/desainer murni | Kunci urutan D; craft sebagai lapisan ketiga; copy tetap product builder |
 | Terlalu “Lauren-clean” tanpa presence | Brand tidak memorable; visibility tetap lemah | Case + persona + highlight karier/product |
 | Terlalu “Patrick/agency” | Framing hire-designer, bukan product builder | Pesan permukaan tetap ADR-002 |
 | Hanya mengandalkan GitHub | Narrative developer menang | Situs = panggung utama; GitHub satelit |

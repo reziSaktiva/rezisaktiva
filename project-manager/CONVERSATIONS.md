@@ -14,6 +14,27 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-15] — karolinahess.com & mazurbartek.com diformalkan sebagai referensi
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta referensi karolinahess.com dan mazurbartek.com yang selama ini disebut di sesi mockup (Quick info, layout About, arah seni Home) didokumentasikan resmi, bukan hanya di catatan sesi.
+**Key Decision/Insight:** Ditambahkan sebagai referensi #6 dan #7 di `competitor-analysis.md` (Karolina = tier craft/tipografi-interaksi; Bartek = tier presence/tipografi-whitespace), memakai jalur yang sudah diizinkan dokumen itu sendiri untuk menambah named reference tanpa mengubah kerangka clarity → presence → craft. Dicatat sebagai **Update pada ADR-006** (bukan ADR baru).
+**Impact:** `product-discovery/01-business/competitor-analysis.md`, `project-manager/decisions/ADR-006-...md` (+Update), `DECISIONS.md` (ringkasan ADR-006 diperbarui).
+
+## [2026-08-15] — Contact jadi Dialog/Modal global + form (ADR-019)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta Contact diubah dari halaman jadi Dialog/Modal (referensi screenshot: form email+message, detail kontak, sosial), warna disesuaikan tema project (ink gelap + kuning, bukan hijau/lime referensi), dan cursor-ring berubah jadi X saat kursor di scrim (luar dialog). `contact.html` dihapus.
+**Key Decision/Insight:** Baseline S3 (`key-screen-patterns.md`, ADR-014) melarang form di Contact dan menganggap deretan ikon sosial setara Email sebagai anti-pattern. Boss Rezi diberi tahu konflik ini secara eksplisit dan memilih tetap pakai form — diformalkan sebagai **ADR-019** (override sebagian ADR-014; Email tetap tampil sebelum blok Socials untuk menjaga sebagian hierarki; calendar/WA/IG/pricing tetap dilarang).
+**Impact:** `design-mockups/shared.css`, `shared.js`, `home.html`, `about.html`, `work.html`, `work-case.html` (tombol Contact/CTA jadi trigger modal, bukan link ke halaman); `design-mockups/contact.html` dihapus; `ADR-019`; `key-screen-patterns.md` (S3 catatan override); `tasks/v03-development-r1.md` T-016 (catatan: route vs modal-only belum diputuskan untuk kode produksi).
+
+## [2026-08-15] — Navbar mobile/tablet: hamburger (menyimpang baseline)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta desain navbar mobile karena versi desktop yang diperkecil tidak memadai. Dua baris ditolak; dipilih hamburger untuk nav halaman (Home / Proses Kerja / Karya) + switcher ID/EN. Contact dan tombol tema tetap di luar menu. Hamburger tampil di viewport <1024px (HP + tablet); desktop (≥1024px) tetap 3 grup dengan nav di tengah.
+**Key Decision/Insight:** Mockup chrome sekarang hamburger di bawah `lg`. Ini menyimpang dari `navigation-patterns.md` + T-013.1 (nav + switcher selalu terlihat, tanpa hamburger, ≤1 ketukan). Belum ADR — keputusan mockup dulu; sebelum T-013 perlu pilih: ikut mockup (ADR) atau kembali ke baseline always-visible.
+**Impact:** `design-mockups/` (semua halaman); catatan di `tasks/v03-development-r1.md` T-013.
+
 ## [2026-08-14] — Quick info: tab hilang, drawer full screen + close
 
 **Phase:** Development R1

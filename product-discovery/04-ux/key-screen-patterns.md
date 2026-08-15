@@ -78,13 +78,15 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 
 ### S3 — Contact
 
+> **Override sebagian (2026-08-15, ADR-019):** form email + message diizinkan di dalam Contact (mockup: Dialog/Modal global, bukan halaman terpisah). Sisanya di bawah ini tetap berlaku.
+
 **Blok berurutan:**
 
 1. Judul + salinan soft (kapan relevan menghubungi; ekspektasi diskusi)
-2. **Primer — Email** (visual & urutan pertama; mailto atau alamat + copy)
+2. **Primer — Email** (visual & urutan pertama; mailto atau alamat + copy) — *boleh disertai form singkat (email + message) per ADR-019, tetap tampil sebelum blok Socials*
 3. **Satelit** — LinkedIn, GitHub (setingkat satu sama lain, di bawah Email)
 4. Availability line bila belum di Home
-5. Tanpa form, calendar, harga, WA, Instagram
+5. Tanpa calendar, harga, WA, Instagram (form dikecualikan dari larangan ini per ADR-019)
 
 **Anti-pattern:** deretan ikon sosial setara Email; Contact hanya footer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi.
 
