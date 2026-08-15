@@ -5,6 +5,7 @@ const COPY = {
     'title.home': 'rezisaktiva — Home',
     'title.about': 'rezisaktiva — Proses Kerja',
     'title.contact': 'rezisaktiva — Contact',
+    'nav.home': 'Home',
     'nav.process': 'Proses Kerja',
     'nav.work': 'Karya',
     'nav.contact': 'Contact',
@@ -13,16 +14,9 @@ const COPY = {
     'rail.bukti': 'Bukti',
     'rail.karya': 'Karya',
     'rail.contact': 'Contact',
-    'home.kicker': 'Product builder',
     'home.h1':
       '<span class="word hero-line">Membangun</span>\n' +
       '<span class="word hero-line hero-line-2">produk.</span>',
-    'home.sub': 'Dari ide hingga live.',
-    'home.lead':
-      'Fullstack sebagai fondasi, AI sebagai edge yang jujur — bukan klaim kosong.',
-    'home.available': 'available for select projects',
-    'home.cta.talk': 'Mulai percakapan',
-    'home.cta.work': 'Lihat karya',
     'home.bukti.label': 'Bukti',
     'home.bukti.body':
       '<span class="text-fg">~6 tahun</span> membangun software fullstack — kini memakai AI sebagai cara kerja, bukan sekadar kata kunci.',
@@ -36,7 +30,6 @@ const COPY = {
     'home.contact.body':
       'Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.',
     'home.contact.link': 'Ke halaman Contact',
-    'page.process': 'Proses Kerja',
     'about.h1':
       '<span class="word">Halo,</span> <span class="word">saya</span> <span class="word">Rezi.</span>',
     'about.lead1':
@@ -84,8 +77,8 @@ const COPY = {
     'title.work': 'rezisaktiva — Karya',
     'page.work': 'Karya',
     'work.h1':
-      '<span class="word page-line">Seluruh</span>\n' +
-      '<span class="word page-line page-line-2">hasil kerja.</span>',
+      '<span class="word page-line-compact">Seluruh</span>\n' +
+      '<span class="word page-line-compact">hasil kerja.</span>',
     'work.lead':
       'Daftar karya yang sudah di-ship. Buka tile untuk cerita singkat prosesnya.',
     'work.preview': 'preview',
@@ -126,6 +119,7 @@ const COPY = {
     'title.home': 'rezisaktiva — Home',
     'title.about': 'rezisaktiva — My Process',
     'title.contact': 'rezisaktiva — Contact',
+    'nav.home': 'Home',
     'nav.process': 'My Process',
     'nav.work': 'Work',
     'nav.contact': 'Contact',
@@ -134,16 +128,9 @@ const COPY = {
     'rail.bukti': 'Proof',
     'rail.karya': 'Work',
     'rail.contact': 'Contact',
-    'home.kicker': 'Product builder',
     'home.h1':
       '<span class="word hero-line">Building</span>\n' +
       '<span class="word hero-line hero-line-2">products.</span>',
-    'home.sub': 'From idea to live.',
-    'home.lead':
-      'Fullstack as the foundation, AI as an honest edge — not an empty claim.',
-    'home.available': 'available for select projects',
-    'home.cta.talk': 'Start a conversation',
-    'home.cta.work': 'See work',
     'home.bukti.label': 'Proof',
     'home.bukti.body':
       '<span class="text-fg">~6 years</span> building fullstack software — now using AI as a way of working, not just a keyword.',
@@ -157,7 +144,6 @@ const COPY = {
     'home.contact.body':
       'Open to conversations about product, collaboration, or a fit that makes sense.',
     'home.contact.link': 'Go to Contact',
-    'page.process': 'My Process',
     'about.h1':
       '<span class="word">Hello,</span> <span class="word">I\'m</span> <span class="word">Rezi.</span>',
     'about.lead1':
@@ -205,8 +191,8 @@ const COPY = {
     'title.work': 'rezisaktiva — Work',
     'page.work': 'Work',
     'work.h1':
-      '<span class="word page-line">All</span>\n' +
-      '<span class="word page-line page-line-2">shipped work.</span>',
+      '<span class="word page-line-compact">All</span>\n' +
+      '<span class="word page-line-compact">shipped work.</span>',
     'work.lead':
       'Everything shipped so far. Open a tile for a short process story.',
     'work.preview': 'preview',
@@ -448,8 +434,9 @@ function applyLocale(locale) {
 
   document.querySelectorAll('[data-locale]').forEach((btn) => {
     const active = btn.getAttribute('data-locale') === locale;
-    btn.classList.toggle('font-medium', active);
-    btn.classList.toggle('text-fg', active);
+    btn.classList.toggle('bg-brand', active);
+    btn.classList.toggle('text-on-brand', active);
+    btn.toggleAttribute('data-active', active);
     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
 
@@ -598,6 +585,92 @@ function mountQuickInfo() {
   });
 }
 
+function initPillGroups() {
+  const groups = document.querySelectorAll('[data-pill-group]');
+  const controllers = [];
+
+  groups.forEach((container) => {
+    if (container.dataset.pillGroupReady) return;
+    container.dataset.pillGroupReady = 'true';
+
+    const items = Array.from(container.querySelectorAll(':scope > a, :scope > button'));
+    if (!items.length) return;
+
+    container.classList.add('relative');
+
+    const pill = document.createElement('span');
+    pill.setAttribute('aria-hidden', 'true');
+    pill.className = 'pill-indicator rounded-lg sm:rounded-2xl bg-brand';
+    container.insertBefore(pill, container.firstChild);
+    items.forEach((item) => item.classList.add('relative', 'z-[1]'));
+
+    // `data-active` is the source of truth for which item is highlighted; `bg-brand`/
+    // `text-on-brand` stay in sync for no-JS graceful degradation, but must not be reused
+    // as the active-state signal (a future style tweak on bg-brand could silently break it).
+    const getActiveItem = () => items.find((item) => item.hasAttribute('data-active')) || null;
+
+    function place(item, animate) {
+      if (!item) {
+        pill.style.opacity = '0';
+        return;
+      }
+      if (!animate) pill.classList.add('pill-indicator--no-transition');
+      const cRect = container.getBoundingClientRect();
+      const iRect = item.getBoundingClientRect();
+      pill.style.opacity = '1';
+      pill.style.width = `${iRect.width}px`;
+      pill.style.height = `${iRect.height}px`;
+      pill.style.transform = `translate(${iRect.left - cRect.left}px, ${iRect.top - cRect.top}px)`;
+      if (!animate) {
+        requestAnimationFrame(() => pill.classList.remove('pill-indicator--no-transition'));
+      }
+    }
+
+    function syncTextColor(hovered) {
+      const active = getActiveItem();
+      items.forEach((item) => {
+        item.classList.toggle('text-on-brand', item === hovered || item === active);
+      });
+    }
+
+    place(getActiveItem(), false);
+    syncTextColor(null);
+
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        place(item, true);
+        syncTextColor(item);
+      });
+      // Keyboard users tabbing through items get the same preview mouse users get on hover.
+      item.addEventListener('focus', () => {
+        place(item, true);
+        syncTextColor(item);
+      });
+      item.addEventListener('blur', () => {
+        place(getActiveItem(), true);
+        syncTextColor(null);
+      });
+    });
+
+    container.addEventListener('mouseleave', () => {
+      if (container.contains(document.activeElement) && document.activeElement !== container) return;
+      place(getActiveItem(), true);
+      syncTextColor(null);
+    });
+
+    window.addEventListener('resize', () => place(getActiveItem(), false));
+
+    controllers.push({
+      refresh(animate) {
+        place(getActiveItem(), animate !== false);
+        syncTextColor(null);
+      },
+    });
+  });
+
+  return controllers;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   mountQuickInfo();
 
@@ -607,8 +680,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stored === 'en' || stored === 'id') locale = stored;
   } catch { }
   applyLocale(locale);
+
+  const pillGroups = initPillGroups();
+
   document.querySelectorAll('[data-locale]').forEach((btn) => {
-    btn.addEventListener('click', () => applyLocale(btn.getAttribute('data-locale')));
+    btn.addEventListener('click', () => {
+      applyLocale(btn.getAttribute('data-locale'));
+      pillGroups.forEach((group) => group.refresh(true));
+    });
   });
 
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {

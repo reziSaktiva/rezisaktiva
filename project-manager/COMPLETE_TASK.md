@@ -14,6 +14,27 @@ Format entri:
 - ...
 ```
 
+## [2026-08-15] (2)
+
+### Fixed
+
+- Mockup navbar (`design-mockups/`) — hasil code review PR redesign pill:
+  - **Overflow header mobile**: tombol tema & Contact ter-clip/tidak bisa diklik di viewport ≤~405px (mencakup hampir semua ponsel — iPhone SE/12/13, Pixel, Galaxy S). Dirapatkan padding/gap chip di tier mobile + ditambahkan `flex-wrap` sebagai fallback (header pecah jadi 2 baris tanpa clipping) untuk perangkat ultra-sempit (≤~340px). Terverifikasi tidak overflow di 320px & 375px, dan tampilan desktop/tablet tidak berubah.
+  - **Aksesibilitas keyboard**: pill preview di nav & locale switch sekarang juga muncul saat item di-fokus lewat Tab (`focus`/`blur`), sebelumnya hanya lewat mouse hover. Ditambahkan `aria-current="page"` pada link nav yang aktif.
+  - **Deteksi item aktif diperkuat**: `initPillGroups` (`shared.js`) sebelumnya mendeteksi item aktif lewat class presentasi `bg-brand` (rapuh — bisa rusak diam-diam kalau class itu dipakai untuk keperluan styling lain). Sekarang pakai atribut `data-active` sebagai sumber kebenaran, `bg-brand`/`text-on-brand` tetap disinkronkan untuk graceful degradation tanpa JS. Ditambahkan guard idempotency (`data-pill-group-ready`).
+  - Dihapus dead code: key i18n yatim (`home.kicker`, `home.sub`, `home.lead`, `home.available`, `home.cta.talk`, `home.cta.work`, `page.process`) dan CSS `.about-rule` yang tidak lagi dipakai sejak konten terkait dihapus di iterasi sebelumnya.
+
+## [2026-08-15]
+
+### Changed
+
+- Mockup navbar (`design-mockups/`, referensi untuk T-013.1 nav & T-013.2 locale switcher — belum implementasi kode): header dipecah jadi 3 grup — nav halaman (Home/Proses Kerja/Karya), locale switch (ID/EN), dan tema+Contact — masing-masing chip terpisah dengan `rounded-2xl`.
+- Ditambahkan link "Home" ke nav.
+- State selected pada nav & locale switch pakai pill indicator (`bg-brand`/`text-on-brand`) yang geser smooth (CSS transition + `shared.js` `initPillGroups`) saat hover/klik, teks tidak bold.
+- Tombol tema disamakan gaya dan animasi magnetic-nya dengan button Contact.
+- Spacing mobile dirapatkan agar header tidak overflow di viewport sempit.
+- Fix: rule `.chip-fixed-text` di `shared.css` sekarang mengecualikan elemen `.text-on-brand` agar teks tidak hilang saat pill aktif/hover.
+
 ## [2026-08-14]
 
 ### Changed

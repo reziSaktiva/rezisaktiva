@@ -300,6 +300,41 @@ html.dark .hero-cutout img {
 .word.page-line { display: block; filter: none; }
 .page-line-2 { text-align: right; }
 
+.page-line-compact {
+  display: block;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: rgb(var(--c-fg));
+  -webkit-text-fill-color: rgb(var(--c-fg));
+}
+.word.page-line-compact { display: block; filter: none; }
+
+/* Yellow chip nav/controls/quick-info: fixed dark text so contrast stays the same in dark mode too */
+.chip-fixed-text,
+.chip-fixed-text *:not(.bg-brand):not(.text-on-brand) {
+  color: #14181f !important;
+}
+
+.pill-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    width 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms ease;
+}
+
+.pill-indicator--no-transition {
+  transition: none !important;
+}
+
 .work-tile {
   position: relative;
   display: block;
@@ -340,21 +375,6 @@ html.dark .hero-cutout img {
   object-position: center 20%;
   filter: grayscale(1) contrast(1.06);
 }
-.about-rule {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: rgb(var(--c-fg));
-}
-.about-rule::before,
-.about-rule::after {
-  content: "";
-  height: 1px;
-  background: currentColor;
-}
-.about-rule::before { width: 10px; }
-.about-rule::after { width: 36px; }
-
 @media (max-width: 767px) {
   .hero-cutout {
     width: min(70vw, 280px);
@@ -386,8 +406,8 @@ html.dark .hero-cutout img {
   right: 0;
   z-index: 82;
   transform: translateY(-50%);
-  background: rgb(var(--c-bg-elevated));
-  color: rgb(var(--c-fg));
+  background: #fde047;
+  color: #14181f;
   border: 0;
   border-radius: 0.75rem 0 0 0.75rem;
   font-family: 'Satoshi', sans-serif;
@@ -411,10 +431,6 @@ html.dark .hero-cutout img {
   display: block;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-}
-.qi-tab:hover {
-  background: rgb(var(--c-accent));
-  color: rgb(var(--c-on-accent));
 }
 .qi-wrap.is-open .qi-tab {
   opacity: 0;
