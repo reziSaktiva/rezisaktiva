@@ -9,6 +9,7 @@ import { VStack } from "@astryxdesign/core/Layout";
 import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
+import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import type { Locale } from "@/lib/locale";
 import {
   CONTACT_LABEL,
@@ -36,6 +37,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   // Breakpoint sinkron dengan mobileNav={{ breakpoint: 'lg' }} pada AppShell
   // (lg = 1024px) — sumber kebenaran tunggal untuk kapan hamburger aktif.
   const { isMobile } = useAppShellMobile();
+  const chipColorVars = useChipColorVars();
 
   const handleContactClick = () => {
     // TODO(T-016): buka modal Contact (ADR-019). Placeholder chrome-only.
@@ -57,7 +59,13 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
         // saat mobile — TopNav mengecek `centerContent != null` untuk
         // memilih mode layout grid, dan `false != null` bernilai true.
         !isMobile ? (
-          <HStack gap={2} padding={2} align="center" className="site-nav-chip">
+          <HStack
+            gap={2}
+            padding={2}
+            align="center"
+            className="site-nav-chip"
+            style={chipColorVars}
+          >
             {NAV_ITEMS.map((item) => (
               <TopNavItem
                 key={item.key}
@@ -91,10 +99,11 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
 
 export function SiteMobileNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
+  const chipColorVars = useChipColorVars();
 
   return (
     <MobileNav header={MENU_LABEL[locale]}>
-      <VStack gap={0.5} className="site-mobile-nav-chip">
+      <VStack gap={0.5} className="site-mobile-nav-chip" style={chipColorVars}>
         {NAV_ITEMS.map((item) => (
           <SideNavItem
             key={item.key}
