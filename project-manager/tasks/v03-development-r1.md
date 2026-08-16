@@ -10,19 +10,20 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 ## T-013 — Site chrome R1 (M6 + polish M5)
 
-* **Status:** ⏳ Todo (T-013.1–T-013.3 ✅ 2026-08-15; T-013.4 terbuka — ADR-021)
+* **Status:** ✅ Done (T-013.1–T-013.4, 2026-08-16)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `navigation-patterns.md` (override ADR-020 / ADR-021), `key-screen-patterns.md` (S0), `06-engineering/design-tokens.md` (tema — ADR-021), ADR-014, ADR-019, ADR-020, ADR-021, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama), `app/[locale]/_components/site-header.tsx`
 * **Keputusan (2026-08-15, ADR-020):** ikut mockup penuh — nav Home · About · Karya (M9) sebagai link, Contact sebagai tombol pembuka modal (bukan link), hamburger aktif <1024px (nav halaman + switcher masuk menu; Contact-button + tema tetap di luar).
-* **Keputusan (2026-08-16, ADR-021):** toggle dark/light di chrome naik jadi Must R1; default ship tetap light; preferensi user disimpan. Komponen toggle belum ada di `site-header.tsx` — itu T-013.4.
-* **Implementasi:** `app/[locale]/_components/site-header.tsx` (TopNav + MobileNav via `AppShell`, breakpoint `lg`/1024px lewat `useAppShellMobile`), `app/[locale]/_components/site-footer.tsx`, `app/[locale]/_components/locale-switcher.tsx` (SegmentedControl ID/EN), `lib/nav.ts`, `app/[locale]/layout.tsx`. Stub `about/`, `work/` ditambah agar link nav tidak 404 selama T-015/T-019 belum digarap. Contact button belum wired ke modal (menyusul T-016). Theme toggle belum di kode (T-013.4).
+* **Keputusan (2026-08-16, ADR-021):** toggle dark/light di chrome naik jadi Must R1; default ship tetap light; preferensi user disimpan.
+* **Keputusan (2026-08-16, style navbar):** chip kuning pill (nav link, locale switch, mobile drawer) diimplementasi persis mockup — ditambahkan sebagai custom theme (`lib/theme.ts`, `defineTheme` `components` override), bukan `--color-*` manual di `:root`. **Catatan penting:** `xstyle`/`stylex.create()` (jalur yang direkomendasikan `xds.mdc`) ternyata **belum bisa dipakai** di project ini — compiler StyleX (`@stylexjs/babel-plugin` + postcss plugin) belum wired ke build Turbopack, build langsung gagal saat dicoba. Styling chip di atas jadi 100% lewat mekanisme `defineTheme` (di-generate & di-inject Astryx sendiri, tidak butuh compiler tambahan). Setup compiler StyleX (trade-off Turbopack vs webpack) masih terbuka sebagai keputusan/task terpisah — lihat COMPLETE_TASK.md.
+* **Implementasi:** `app/[locale]/_components/site-header.tsx` (TopNav + MobileNav via `AppShell`, breakpoint `lg`/1024px lewat `useAppShellMobile`), `app/[locale]/_components/site-footer.tsx`, `app/[locale]/_components/locale-switcher.tsx` (SegmentedControl ID/EN), `app/[locale]/_components/theme-toggle.tsx` + `theme-toggle-icons.tsx`, `app/_components/theme-mode-provider.tsx` (state via `useSyncExternalStore`, `lib/theme-mode.ts`), `lib/theme.ts` (custom theme + chip/pill override), `lib/nav.ts`, `app/layout.tsx`, `app/[locale]/layout.tsx`. Stub `about/`, `work/` ditambah agar link nav tidak 404 selama T-015/T-019 belum digarap. Contact button belum wired ke modal (menyusul T-016).
 
 ### Subtasks
 
 - [x] **T-013.1** — Nav Home · About · Karya (M9) sebagai link; Contact = tombol (belum wired ke modal — menyusul T-016); ≥1024px semua selalu terlihat, <1024px nav+switcher di balik hamburger (Contact-button tetap di luar, ≤1 ketukan)
 - [x] **T-013.2** — Locale switcher selalu terlihat di desktop; masuk hamburger di mobile bersama nav (polish stub T-010.3 — sekarang `SegmentedControl` ID/EN); cookie `NEXT_LOCALE` tetap hanya untuk redirect `/`
 - [x] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG); URL satelit masih placeholder `#` sampai konten T-015.1/T-016.1 tersedia
-- [ ] **T-013.4** — Komponen theme toggle di chrome (`site-header.tsx`) sesuai mockup + ADR-021: selalu terlihat di luar hamburger (bersama Contact-button); default light; persist preferensi; Astryx `Theme` `mode` `'light' | 'dark'` (bukan `system` sebagai Must)
+- [x] **T-013.4** — Komponen theme toggle di chrome (`site-header.tsx`) sesuai mockup + ADR-021: selalu terlihat di luar hamburger (bersama Contact-button); default light; persist preferensi (localStorage `rz-theme`); Astryx `Theme` `mode` `'light' | 'dark'` (bukan `system` sebagai Must)
 
 ---
 

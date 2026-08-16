@@ -14,6 +14,87 @@ Format entri:
 - ...
 ```
 
+## [2026-08-16] (10)
+
+### Added
+
+- **`.cursor/rules/ask-before-assuming.mdc`** (baru, `alwaysApply: true`) — atas permintaan Boss Rezi: wajib tanya (via `AskQuestion`) kalau AI menemukan **gap** (bagian tidak lengkap/tidak konsisten), **hal belum terdokumentasi** (butuh konteks yang belum ada di baseline manapun), atau **tidak diketahui/tidak yakin** (AI sendiri tidak tahu jawaban yang benar) — berlaku untuk semua jenis pekerjaan, bukan cuma UI/UX. Melarang eksplisit: berasumsi lalu jalan terus, mengarang jawaban, diam-diam memilih opsi, melaporkan "selesai" padahal ada bagian yang belum yakin/dicek.
+
+### Changed
+
+- `.cursor/skills/proactive-clarification/SKILL.md` — prinsip dasar diperluas: bukan cuma "fork keputusan" (pilihan valid setara), tapi juga gap/belum terdokumentasi/tidak tahu, dengan pointer ke rule baru.
+- `AGENTS.md`, `PROJECT_RULES.md` — pointer ke `ask-before-assuming.mdc` ditambahkan di daftar rule dan Aturan Keras / AI Collaboration Rules.
+
+### Catatan
+
+Ditaruh sebagai rule terpisah (bukan digabung ke `ui-ux-mockup-check.mdc`) karena cakupannya umum, bukan spesifik UI/UX — mengikuti pola pemisahan satu rule per topik yang sudah ada (`xds.mdc`, `no-ai-attribution-git.mdc`, `ui-ux-mockup-check.mdc`). Alasan pakai rule `alwaysApply: true` (bukan cuma skill) sama seperti entri (9): rule di-inject otomatis tiap turn, skill butuh AI memilih untuk membaca.
+
+## [2026-08-16] (9)
+
+### Changed
+
+Atas permintaan Boss Rezi (setelah beberapa kali koreksi ketidaksesuaian navbar vs mockup): **`.cursor/rules/ui-ux-mockup-check.mdc` diperkuat jadi aturan keras** —
+
+1. Mockup HTML (`design-mockups/`) = **desain resmi/source of truth**, bukan sekadar referensi.
+2. Wajib benar-benar mempelajari mockup (layout, warna, komponen, ukuran, state) sebelum eksekusi kode UI/UX — bukan cuma cek file-nya ada.
+3. Konflik mockup vs dokumentasi (`design-tokens.md`, `product-discovery/`, ADR) → **mockup menang**, tapi dokumen tidak boleh diubah diam-diam — wajib persetujuan eksplisit Boss Rezi dulu.
+4. Hasil kode UI/UX wajib **100% akurat** ke mockup (ukuran, padding, gap, radius, font, state) — ditambah kewajiban verifikasi (screenshot/computed-style) sebelum melaporkan task selesai.
+
+Ditaruh di rule `alwaysApply: true` (bukan skill/AGENTS.md saja) karena rule jenis ini di-inject otomatis ke setiap turn percakapan AI — mekanisme paling tidak mungkin "terlewat" dibanding skill (butuh trigger) atau AGENTS.md (dibaca sekali di awal sesi). `AGENTS.md` dan `PROJECT_RULES.md` diupdate jadi pointer singkat ke rule ini (governance tetap satu sumber kebenaran, `ui-ux-mockup-check.mdc`).
+
+## [2026-08-16] (8)
+
+### Fixed
+
+Separator "/" antara ID dan EN di locale switch (`locale-switcher.tsx`) — hilang dibanding mockup (`.locale-switch span.opacity-40`). Ditambahkan `<span aria-hidden>` di antara `SegmentedControlItem` + class `.locale-switch-separator` (`app/globals.css`, opacity 0.4, warna ink sama seperti teks chip).
+
+## [2026-08-16] (7)
+
+### Fixed
+
+Follow-up kedua Boss Rezi: bagian `header-tools` (locale switch ID/EN, theme toggle, tombol Kontak) masih belum sama ukurannya — dikoreksi dengan computed-style diff yang sama (`lib/theme.ts`):
+
+- Locale switch (`segmented-control`): height 28px → **40px**, padding 6px/12px, gap 4px (dulu default Astryx, sekarang persis mockup `.locale-switch--bar`).
+- Item locale (`segmented-control-item`): padding dikoreksi jadi 2px/8px.
+- Tombol Kontak (`button` `variant:primary+size:sm`): height 28px → **32px**, padding 6px/16px (radius pill sudah dibenarkan di entri sebelumnya).
+- Theme toggle (`toggle-button`): 28px → **36px** persegi/lingkaran.
+- Gap antar elemen di `header-tools` (`site-header.tsx` endContent `HStack`): 8px → **12px** (`md:gap-3` mockup).
+
+Hasil sudah diverifikasi lewat computed-style browser — seluruh nilai (height/padding/gap/radius) sekarang cocok dengan mockup.
+
+## [2026-08-16] (6)
+
+### Fixed
+
+Follow-up review Boss Rezi (bandingkan langsung DOM mockup vs Next.js): tinggi & bentuk navbar belum sesuai mockup — diperbaiki dengan computed-style diff presisi (`design-mockups/home.html` vs implementasi):
+
+- Tinggi header 48px → **80px**, padding-inline 8px → **40px** (`lib/theme.ts`, override component `top-nav`).
+- Nav pill tadinya 3 chip kuning terpisah (tiap link py sendiri, radius penuh) → jadi **satu bar kuning menyatu** (`app/globals.css` class `.site-nav-chip`, dipasang di `HStack` centerContent `site-header.tsx`) — item aktif ("Home") tampil sebagai pill ink di dalam bar tsb, item lain transparan di atas kuning. Radius dikoreksi dari pill penuh (9999px) ke **16px** (`rounded-2xl` mockup, dikonfirmasi lewat computed style, bukan pill).
+- Tombol Contact & theme toggle: radius dikoreksi jadi pill penuh (`--radius-full`) — sebelumnya ikut radius default Button/ToggleButton Astryx (10px, kotak membulat).
+- Brand heading "rezisaktiva": font-weight 400 → 600 (`top-nav-heading` override) sesuai mockup.
+
+### Catatan
+
+Wrapper `.site-nav-chip` pakai `className` + CSS plain di `app/globals.css` (bukan `xstyle`) karena compiler StyleX masih belum wired — konsisten dengan catatan gap di entri (5) di bawah.
+
+## [2026-08-16] (5)
+
+### Added
+
+- **T-013.4** — komponen theme toggle di chrome (ADR-021): `app/[locale]/_components/theme-toggle.tsx` + `theme-toggle-icons.tsx` (ikon sun/moon, path sama dengan mockup), `app/_components/theme-mode-provider.tsx` (mode `light`/`dark` via `useSyncExternalStore` — bukan `useState`+`useEffect`, supaya tidak ada hydration mismatch atau lint `set-state-in-effect`), `lib/theme-mode.ts` (persist localStorage `rz-theme`, pola mockup). Default ship tetap light; toggle selalu terlihat di luar hamburger bersama tombol Contact.
+- **Style navbar disamakan mockup** (chip kuning theme-independent + pill aktif ink, keputusan Boss Rezi via pertanyaan terstruktur — pilih fidelity penuh): `lib/theme.ts` — custom Astryx theme (`defineTheme`, `extends: neutralTheme`) dengan override `components` untuk `top-nav-item`, `segmented-control` + `segmented-control-item`, `side-nav-item` (base = chip kuning `#FDE047` + teks ink fixed; state `selected` = pill ink/brand `light-dark()`, mengikuti arah brand `design-tokens.md`).
+
+### Changed
+
+- `app/layout.tsx` — `<Theme mode="light">` statis diganti `<ThemeModeProvider>` (client) supaya mode bisa berubah lewat toggle.
+- `app/[locale]/_components/site-header.tsx` — tambah `<ThemeToggle>` di `endContent` (antara hamburger dan tombol Contact).
+- `project-manager/tasks/v03-development-r1.md` — T-013 (T-013.1–T-013.4) ditandai selesai penuh.
+- `PROJECT_STATE.md` — fokus lanjut ke T-014; T-013.4 dihapus dari daftar backlog terbuka.
+
+### Catatan (gap engineering ditemukan, belum ada ADR)
+
+Saat implementasi ini, `xstyle`/`stylex.create()` (jalur styling custom yang direkomendasikan `.cursor/rules/xds.mdc`) dicoba untuk chip nav pill — **build langsung gagal** ("Unexpected 'stylex.create' call at runtime. Styles must be compiled by '@stylexjs/babel-plugin'."). Investigasi menunjukkan compiler StyleX (`@stylexjs/babel-plugin` + `@stylexjs/postcss-plugin`, lihat contoh resmi `apps/example-nextjs-stylex` Astryx) **belum pernah di-wire** ke build project ini (Turbopack, bukan Babel/webpack) — sejak ADR-018 mengunci Astryx+StyleX, belum ada komponen yang benar-benar memakai `xstyle` custom sampai task ini. Semua styling chip di atas akhirnya memakai `defineTheme` `components` (di-generate & di-inject Astryx sendiri, tidak butuh compiler tambahan) sebagai jalan keluar — bukan pelanggaran `xds.mdc` (masih "token Astryx langsung", bukan raw hex di komponen), tapi `xstyle` sendiri tetap non-fungsional untuk kebutuhan lain ke depan. Perlu keputusan Boss Rezi: setup compiler StyleX (berarti pindah dari Turbopack ke Babel/webpack untuk build, trade-off dev experience) — belum dieksekusi, belum ada ADR.
+
 ## [2026-08-16] (4)
 
 ### Fixed

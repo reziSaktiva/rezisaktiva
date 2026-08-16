@@ -1,0 +1,34 @@
+---
+description: Wajib tanya Boss Rezi kalau ada gap, hal belum terdokumentasi, atau sesuatu yang tidak diketahui/tidak yakin — jangan berasumsi atau lanjut diam-diam
+alwaysApply: true
+---
+
+# Tanya Dulu — Jangan Berasumsi, Jangan Diam-Diam Melanjutkan
+
+Berlaku untuk **semua** jenis pekerjaan di project ini: dokumentasi, kode/implementasi, arsitektur, konfigurasi/infrastruktur, keputusan desain UI/UX, maupun interaksi lain dengan Boss Rezi.
+
+## Aturan Keras
+
+Sebelum melanjutkan atau menyatakan sesuatu "selesai"/"benar"/"sesuai", AI wajib **berhenti dan bertanya ke Boss Rezi** (pakai `AskQuestion`, bukan menyisipkan pertanyaan di tengah teks biasa) kalau menemukan salah satu dari ini:
+
+1. **Gap** — ada bagian yang tidak lengkap, tidak konsisten, atau bolong antara satu dokumen/kode/keputusan dengan yang lain (contoh: mockup berubah tapi dokumen terkait belum diupdate; komponen A sudah dikerjakan tapi komponen B yang bergantung padanya belum ada).
+2. **Belum terdokumentasi** — keputusan, aturan, atau konteks yang dibutuhkan untuk mengerjakan task ini **belum ada** di baseline manapun (ADR, `PROJECT_RULES.md`, `product-discovery/`, `design-mockups/`, dst).
+3. **Tidak diketahui / tidak yakin** — AI sendiri tidak tahu atau tidak yakin jawaban/pendekatan yang benar. Termasuk: keterbatasan tooling yang baru ditemukan, ambiguitas requirement, hasil investigasi yang tidak konklusif, atau ada lebih dari satu interpretasi yang sama-sama valid.
+
+## Yang Dilarang
+
+- **Berasumsi lalu jalan terus** tanpa konfirmasi, walau asumsinya "kelihatannya masuk akal".
+- **Mengarang jawaban** yang terdengar meyakinkan tapi sebenarnya belum diverifikasi (lihat juga `.cursor/rules/ui-ux-mockup-check.mdc` § Wajib Verifikasi untuk kasus UI/UX).
+- **Diam-diam memilih salah satu opsi** di antara beberapa kemungkinan tanpa mengonfirmasi ke Boss Rezi dulu.
+- **Melaporkan "selesai"/"sesuai"/"aman"** padahal ada bagian yang agent sendiri sadar tidak yakin, belum dicek, atau punya gap yang belum disebutkan.
+- Menunggu Boss Rezi menemukan sendiri masalah yang sebenarnya sudah/bisa disadari oleh agent lebih dulu.
+
+## Cara Bertanya
+
+Gunakan `AskQuestion` dengan pilihan konkret dan konteks singkat — ikuti format & kualitas pilihan di `.cursor/skills/proactive-clarification/SKILL.md` (opsi terbaik di kelasnya, maksimal 4–5 pilihan, satu topik per pertanyaan). Kalau situasinya murni "saya tidak tahu jawabannya" (bukan pilihan antar opsi), jelaskan gap-nya secara eksplisit di chat dan minta arahan — jangan tetap menebak.
+
+## Relasi dengan Dokumen/Skill Lain
+
+- `.cursor/skills/proactive-clarification/SKILL.md` — panduan detail cara menyusun pertanyaan yang baik. Rule ini menaikkan prinsip skill tersebut jadi **wajib & always-applied**, karena skill saja butuh AI memilih untuk membacanya (bisa terlewat di sesi panjang), sementara rule ini otomatis ter-inject ke setiap turn percakapan.
+- `.cursor/rules/ui-ux-mockup-check.mdc` — penerapan spesifik untuk UI/UX (konflik mockup vs dokumentasi, verifikasi wajib sebelum lapor selesai). Rule ini adalah versi umum yang berlaku di luar UI/UX juga.
+- `AGENTS.md` § Aturan keras — "Jangan berasumsi pada fork keputusan — tanya dulu" adalah versi ringkas dari rule ini.
