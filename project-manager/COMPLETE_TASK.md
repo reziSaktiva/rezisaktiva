@@ -14,6 +14,18 @@ Format entri:
 - ...
 ```
 
+## [2026-08-16]
+### Added
+- **ADR-021** — dark mode toggle UI naik Must R1 (default ship tetap light; persist preferensi). Subtask baru **T-013.4** di `tasks/v03-development-r1.md`.
+- **ADR-022** — modul baru **M13 Quick Info panel** (overlay global, bukan route; exclude Work case). Task baru **T-020** (T-020.1 konten, T-020.2 overlay).
+- Propagasi label lokal About = "Proses Kerja"/"Process" (ADR-020 poin 3) ke `04-ux/` + `02-product/` — tanpa ADR baru.
+### Changed
+- `product-discovery/04-ux/` (navigation, IA, key screens, UX principles), `02-product/` (modules, MVP, priority, roadmap), `06-engineering/design-tokens.md`: theme toggle + M13 masuk Must R1.
+- `TASKS.md` + Snapshot: indeks T-013…T-020; fokus halaman berikutnya tetap **T-014**; T-013.4 / T-020 masuk backlog.
+- T-013 status dibuka kembali untuk T-013.4; "Dark mode toggle UI (Should/Later)" dihapus dari daftar yang tidak masuk backlog R1.
+### Fixed
+- Audit mockup vs docs: tiga gap (label nav About, toggle yang sudah hidup di mockup tapi Should/Later di docs, Quick Info yang belum pernah masuk baseline) ditutup di dokumentasi + backlog.
+
 ## [2026-08-15] (2)
 ### Added
 - **T-013 — Site chrome R1 selesai** (T-013.1, T-013.2, T-013.3): `app/[locale]/_components/site-header.tsx` (TopNav desktop + MobileNav drawer via `AppShell`, breakpoint lg/1024px), `site-footer.tsx`, `locale-switcher.tsx` (di-upgrade ke `SegmentedControl` ID/EN), `lib/nav.ts`. Stub `app/[locale]/about/page.tsx` dan `app/[locale]/work/page.tsx` ditambah agar nav tidak 404 sebelum T-015/T-019 digarap.

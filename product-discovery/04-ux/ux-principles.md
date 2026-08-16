@@ -26,7 +26,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 | -- | ------- | --------- |
 | **UX1** | **Clarity first** | First viewport menjawab “siapa & untuk siapa”; tidak menunda positioning ke bawah fold |
 | **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About/teaser, bukan mode Home terpisah |
-| **UX3** | **Lean surface** | Hanya Home / About / Contact (+ teaser di Home); jangan menambah halaman untuk “melayani” hiring |
+| **UX3** | **Lean surface** | Hanya Home / About / Contact / Work index sebagai *halaman*; jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal, Quick info) **bukan** halaman baru — **ADR-022** |
 | **UX4** | **Presence tanpa katalog** | Teaser 1–3 item cukup untuk trust R1; case detail = Later R2 |
 | **UX5** | **Soft path** | Contact first-class; Email primer; LinkedIn & GitHub satelit; tanpa harga, form wajib, WA/IG di R1 |
 | **UX6** | **Bahasa adalah journey** | Geo-default + path prefix `/id` & `/en` + switcher selalu ada; makna ID/EN setara |
@@ -47,12 +47,13 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 # Interaction Principles
 
-1. **Navigasi + switcher selalu terlihat** di desktop dan mobile R1 (jangan hamburger); Contact tidak dikubur.
+1. **Navigasi + switcher selalu terlihat di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Contact tidak dikubur. **Toggle tema** selalu di chrome (Must R1, ADR-021) dan **tidak mengubah default light-ship**.
 2. **Switcher bahasa** mengganti locale dengan URL path yang shareable; preferensi user (setelah switch) hanya memengaruhi redirect `/` / URL tanpa locale — tidak menulis ulang path `/id/...` atau `/en/...` yang dibuka langsung.
 3. **Primary CTA di Contact** = mulai email; satelit tidak bersaing visual dengan Email.
 4. **Tidak ada dead end:** dari Home selalu ada jalur jelas ke About dan Contact.
 5. **Share hygiene:** meta & URL locale stabil agar SC6 (share ke tim) berhasil.
 6. **Gerakan (Could):** hanya jika memperkuat hierarchy; jangan mengorbankan clarity.
+7. **Quick info (M13)** adalah overlay glanceable — bukan destinasi/route. Tidak menggantikan Contact inbound (ADR-019) dan tidak dihitung sebagai halaman baru (selaras UX3, ADR-022).
 
 ---
 
@@ -80,7 +81,9 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 
 # Decision Rules
 
-* Menambah halaman Work/case ke R1 → bertentangan ADR-010; butuh ADR baru.
+* Menambah halaman Work/case ke R1 → Work index (M9) sudah masuk via ADR-020; case detail (M10) tetap butuh ADR baru.
+* Overlay Quick info **bukan** “halaman baru” (UX3) — formalisasi M13 via **ADR-022**; jangan jadikan route `/info`.
+* Toggle tema Must R1 via **ADR-021**; default tetap light — mengubah default ship ke dark butuh ADR terpisah.
 * Mengangkat form/calendar/WA/IG ke Must Contact → keputusan Boss Rezi + ADR bila material.
 * Mengubah skema bahasa dari path prefix → ADR baru.
 * Perubahan material prinsip setelah Baseline UX → ADR baru.
@@ -105,5 +108,7 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 * `key-screen-patterns.md`
 * `../03-user/insights.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

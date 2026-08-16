@@ -1,6 +1,6 @@
 # Design Tokens
 
-> Status: **Baseline v1.1** — ditetapkan bersama Boss Rezi (2026-08-11; diperbarui 2026-08-13 via **ADR-018**). Nilai visual **boleh diiterasi** saat desain/bootstrap; kontrak token saat ini = **Astryx (component library + StyleX + theme CSS)**, light default, dark fondasi via prop `mode`. Perubahan material struktur/tema memerlukan ADR baru.
+> Status: **Baseline v1.1** — ditetapkan bersama Boss Rezi (2026-08-11; diperbarui 2026-08-13 via **ADR-018**; toggle UI Must R1 via **ADR-021**, 2026-08-16). Nilai visual **boleh diiterasi** saat desain/bootstrap; kontrak token saat ini = **Astryx (component library + StyleX + theme CSS)**, light default, dark fondasi via prop `mode`. Perubahan material struktur/tema memerlukan ADR baru.
 
 Dokumen ini mendefinisikan sistem token & mapping implementasi untuk website portofolio **rezisaktiva**.
 
@@ -13,7 +13,7 @@ R1 memakai **Astryx** (ADR-018, menggantikan Tailwind + CSS variables murni yang
 * **`@astryxdesign/core`** (komponen) + **`@stylexjs/stylex`** (styling engine) + **`@astryxdesign/theme-neutral`** (theme CSS) sebagai sumber token
 * **Light** = tema default yang di-ship (`<Theme mode="light">`)
 * Dark tersedia via prop `mode` (`'light' | 'dark' | 'system'`) pada komponen `Theme` — fondasi sudah ada dari awal
-* **Toggle dark mode di UI = Should / Later** — bukan Must R1 (tidak berubah)
+* **Toggle dark mode di UI = Must R1** (**ADR-021**) — default ship tetap light; preferensi user disimpan setelah pilih
 * Kustomisasi warna brand/accent lewat `astryx theme` / `astryx theme add`, bukan override manual `--color-*` di `:root`
 
 Selaras UX: clarity first, lean surface, motion hanya jika memperkuat hierarchy (UX1, UX3, Interaction §6).
@@ -112,10 +112,10 @@ Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebi
 | Default ship | **Light** |
 | Token dark | **Ya** — resolved lewat prop `mode` di komponen `Theme` (`@astryxdesign/core/theme`), bukan class `.dark` manual |
 | Strategi | Astryx `Theme` + `neutralTheme`; ganti `mode="dark"` (atau `"system"`) untuk aktifkan dark tanpa ganti arsitektur |
-| Toggle di chrome | **Should / Later** — bukan blocker exit R1 |
+| Toggle di chrome | **Must R1** (**ADR-021**) — kontrol UI wajib di chrome; default ship tetap light |
 | `prefers-color-scheme` | Boleh sebagai Could setelah token dark stabil; jangan mengganti default light tanpa keputusan Boss Rezi |
 
-Menjadikan dark **Must** (toggle + QA kontras penuh) = perlu keputusan eksplisit + **ADR baru**.
+Toggle UI sudah Must (ADR-021). Menjadikan **dark sebagai default ship** atau **QA kontras dual-theme penuh** sebagai syarat exit tetap perlu keputusan/ADR terpisah — fondasi token `mode` tidak berubah.
 
 ---
 
@@ -166,7 +166,7 @@ Nilai hex/font di section Typography/Color di atas = **arah/riwayat keputusan br
 | Styling | **Astryx (`@astryxdesign/core` + StyleX) + theme CSS** — menggantikan Tailwind + CSS variables (ADR-018) |
 | Theme awal | `@astryxdesign/theme-neutral` |
 | Tema default | **Light** |
-| Dark | Fondasi via prop `mode` di `Theme`; toggle UI = Should/Later |
+| Dark | Fondasi via prop `mode` di `Theme`; toggle UI = **Must R1 (ADR-021)**; default tetap light |
 | Nilai visual | Arah awal; iteratif saat desain/bootstrap; kustomisasi ke theme Astryx menyusul |
 | Motion | Bagian identitas visual (ADR-017), hierarchy-first |
 | Baseline Engineering | ADR-016; superseded sebagian oleh **ADR-018** (styling/token) |
@@ -191,6 +191,7 @@ Nilai hex/font di section Typography/Color di atas = **arah/riwayat keputusan br
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-016-engineering-baseline-v1.md`
 * `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md`
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `.cursor/rules/xds.mdc` — konvensi AI saat menulis komponen Astryx
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

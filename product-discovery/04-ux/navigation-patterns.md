@@ -10,7 +10,7 @@ Dokumen ini menetapkan pola navigasi website portofolio **rezisaktiva**.
 
 Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa berbasis path. Tidak ada mega-menu, tidak ada nav terpisah untuk hiring.
 
-> **Override (2026-08-15, ADR-020):** dokumen ini di-override sebagian. Nav sekarang termasuk "Karya" (Work index, M9); Contact bukan lagi link nav melainkan tombol pembuka modal (ADR-019); pola mobile <1024px memakai hamburger (bukan selalu-terlihat penuh seperti semula). Bagian "Primary Navigation" dan "Mobile Considerations" di bawah dibaca dengan override ini.
+> **Override (2026-08-15, ADR-020; 2026-08-16, ADR-021 / ADR-022):** dokumen ini di-override sebagian. Nav sekarang termasuk "Karya" (Work index, M9); Contact bukan lagi link nav melainkan tombol pembuka modal (ADR-019); pola mobile <1024px memakai hamburger (bukan selalu-terlihat penuh seperti semula). Toggle tema di chrome = Must R1 (ADR-021). Quick info panel = overlay sekunder global (ADR-022, M13) — bukan item primary nav dan bukan route baru. Bagian "Primary Navigation", "Secondary Navigation", dan "Mobile Considerations" di bawah dibaca dengan override ini.
 
 ---
 
@@ -28,7 +28,7 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 | ---- | ------ | ------- |
 | Brand / nama | `/[id/en]/` (Home) | Selalu kembali ke Home locale aktif |
 | Home | `/[id/en]/` | Boleh disembunyikan sebagai label jika brand = Home; tetap satu destinasi |
-| About | `/[id/en]/about` | |
+| About | `/[id/en]/about` | Label lokal di chrome: **ID "Proses Kerja"** / **EN "Process"** (ADR-020 poin 3). Route & nama modul tetap About (M2). |
 | Karya (Work index, M9) | `/[id/en]/work` | Ditambahkan via ADR-020 (2026-08-15); override ADR-010 |
 | Contact | Tombol pembuka modal (ADR-019) | **Bukan link nav** (override ADR-020); selalu terlihat di luar hamburger, ≤1 ketukan dari halaman manapun |
 | Language switcher | Sibling path locale | Label jelas `ID` / `EN` (atau setara); selalu terlihat; satu ketukan |
@@ -46,7 +46,8 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 | **In-page (Home)** | Tautan teks/section ke About & Contact | Memperkuat arah soft tanpa menambah item nav |
 | **Footer** | Brand singkat · ulang About/Contact opsional · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer |
 | **Teaser cards** | Tautan eksternal bukti (repo/live) | Keluar situs; buka tab baru bila perlu |
-| **Tidak ada** | Nav Work, Blog, Services, Pricing, WA, Instagram | Out of scope R1 |
+| **Quick info panel (M13)** | Tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links | Overlay global (bukan route). Tampil di semua halaman R1 **kecuali** Work case detail. Tidak menggantikan Contact modal (ADR-019) atau footer satelit — **ADR-022** |
+| **Tidak ada** | Nav Work terpisah dari Karya, Blog, Services sebagai halaman, Pricing, WA, Instagram | Out of scope R1 |
 
 Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
@@ -67,8 +68,8 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 > **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
 
 * Breakpoint **<1024px**: nav halaman (Home/About/Karya) + language switcher masuk **hamburger menu** (drawer/panel).
-* **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019) + toggle tema. Ini menjaga acceptance "Contact ≤ 1 ketukan" meski nav halaman lain di balik menu.
-* ≥1024px (desktop): nav halaman, switcher, dan tombol Contact semua selalu terlihat di header — tidak ada hamburger.
+* **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019) + **toggle tema (Must R1, ADR-021)**. Ini menjaga acceptance "Contact ≤ 1 ketukan" meski nav halaman lain di balik menu. Toggle tidak mengubah default ship light.
+* ≥1024px (desktop): nav halaman, switcher, tombol Contact, dan toggle tema (ADR-021) semua selalu terlihat di header — tidak ada hamburger.
 * Footer satelit tetap ada sebagai pelengkap, bukan pengganti Contact.
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
 
@@ -95,7 +96,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 | Item | Status |
 | ---- | ------ |
-| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15) |
+| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15); toggle tema ADR-021; Quick info ADR-022 |
 
 ---
 
@@ -108,5 +109,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * `key-screen-patterns.md`
 * `../02-product/feature-modules.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
