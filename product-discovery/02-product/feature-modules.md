@@ -10,6 +10,8 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 Modul disusun mengikuti Hybrid lean: **tiga halaman inti** + **teaser karya di Home** + **lintas-halaman** (bahasa, chrome). Modul magnet (Work/case) dicatat sebagai supporting/future agar hubungan ke roadmap jelas tanpa memasukkannya ke Must Have MVP.
 
+> **Catatan override (2026-08-15, ADR-020):** M9 (Work index) naik jadi Must R1 — nav chrome menyertakan link "Karya" ke `/[locale]/work`. M10 (case/process detail) tetap Post-MVP/R2.
+
 ---
 
 # Core Product Modules
@@ -92,9 +94,10 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman inti** + **teaser karya di H
 
 **Isi inti:**
 
-* Nav: Home, About, Contact + switcher
+* Nav: Home, About, Karya (M9, override ADR-020) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link
 * Footer: identitas singkat, satelit, legal ringan bila perlu
 * Konsistensi soft availability di chrome (opsional)
+* Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button tetap selalu terlihat (override ADR-020 atas `navigation-patterns.md`)
 
 ---
 
@@ -104,7 +107,7 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman inti** + **teaser karya di H
 | ----- | ----- | ----- |
 | **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
 | **M8 — Contact form / booking** | Alternatif jalur kontak | Could — bukan syarat MVP |
-| **M9 — Work index** | Halaman daftar karya | Post-MVP (magnet phase) |
+| **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
 | **M10 — Case / process detail** | Cerita singkat per karya (magnet ringan) | Post-MVP; boleh dipercepat jika konten siap |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |

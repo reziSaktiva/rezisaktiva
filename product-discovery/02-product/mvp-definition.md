@@ -34,7 +34,8 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur |
 | **Contact** | Soft CTA — email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work teaser (di Home)** | 1–3 highlight karya/outcome singkat (bukan halaman detail) |
-| **Navigasi lean** | Home / About / Contact (+ switcher bahasa) |
+| **Work index (M9)** | Halaman katalog karya `/[locale]/work` — naik dari Post-MVP (override ADR-020, 2026-08-15); bukan halaman detail case (M10 tetap Post-MVP) |
+| **Navigasi** | Home / About / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
 | **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks) |
 | **Destination hygiene** | URL stabil, meta dasar, situs layak dibagikan sebagai link utama |
@@ -65,7 +66,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 # Out of Scope
 
-* Halaman Work katalog + detail case study (post-MVP / magnet phase)
+* Halaman detail case study / process per karya (M10, post-MVP / magnet phase) — halaman index Work (M9) sudah masuk Must R1 (ADR-020)
 * Blog / writing hub / newsletter sebagai fitur inti
 * CMS, auth, dashboard, area private di situs
 * Pricing, paket jasa, checkout
@@ -82,14 +83,14 @@ MVP dianggap cukup jika:
 1. Reviewer ICP/peer bisa merangkum positioning setelah kunjungan singkat (NS-1)
 2. Soft path kontak jelas dan terasa natural (NS-2 path siap)
 3. Tidak ada ketergantungan pada halaman case untuk “mengerti siapa Rezi”
-4. Scope Hybrid lean (ADR-010) tidak melebar ke katalog Work atau blog
+4. Scope Hybrid lean (ADR-010) tidak melebar ke blog; katalog Work index (M9) sudah masuk lewat pengecualian eksplisit ADR-020
 5. Siap jadi “link utama” dari CV, chat, dan GitHub
 
 ---
 
 # Decision Rules
 
-* Menambah **halaman Work/detail case** ke definisi Must Have MVP → butuh keputusan eksplisit (geser ke opsi D atau release berikutnya).
+* Menambah **halaman Work/detail case** ke definisi Must Have MVP → butuh keputusan eksplisit (geser ke opsi D atau release berikutnya). Work index (M9) sudah dinaikkan lewat ADR-020 (2026-08-15); detail case (M10) tetap butuh keputusan terpisah.
 * Menambah **harga / hard CTA** → bertentangan ADR-002 / ADR-008; ditolak kecuali ADR baru.
 * Form/calendar masuk Must Have hanya jika Boss Rezi mengunci kebutuhan itu.
 * Perubahan material MVP setelah Product Baseline → ADR baru.

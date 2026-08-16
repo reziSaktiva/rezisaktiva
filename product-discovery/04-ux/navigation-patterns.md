@@ -8,7 +8,9 @@ Dokumen ini menetapkan pola navigasi website portofolio **rezisaktiva**.
 
 # Overview
 
-Navigasi R1 **lean dan selalu tersedia**: tiga destinasi konten + switcher bahasa berbasis path. Tidak ada mega-menu, tidak ada nav terpisah untuk hiring.
+Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa berbasis path. Tidak ada mega-menu, tidak ada nav terpisah untuk hiring.
+
+> **Override (2026-08-15, ADR-020):** dokumen ini di-override sebagian. Nav sekarang termasuk "Karya" (Work index, M9); Contact bukan lagi link nav melainkan tombol pembuka modal (ADR-019); pola mobile <1024px memakai hamburger (bukan selalu-terlihat penuh seperti semula). Bagian "Primary Navigation" dan "Mobile Considerations" di bawah dibaca dengan override ini.
 
 ---
 
@@ -27,7 +29,8 @@ Navigasi R1 **lean dan selalu tersedia**: tiga destinasi konten + switcher bahas
 | Brand / nama | `/[id/en]/` (Home) | Selalu kembali ke Home locale aktif |
 | Home | `/[id/en]/` | Boleh disembunyikan sebagai label jika brand = Home; tetap satu destinasi |
 | About | `/[id/en]/about` | |
-| Contact | `/[id/en]/contact` | Jangan dikubur hanya di footer |
+| Karya (Work index, M9) | `/[id/en]/work` | Ditambahkan via ADR-020 (2026-08-15); override ADR-010 |
+| Contact | Tombol pembuka modal (ADR-019) | **Bukan link nav** (override ADR-020); selalu terlihat di luar hamburger, ≤1 ketukan dari halaman manapun |
 | Language switcher | Sibling path locale | Label jelas `ID` / `EN` (atau setara); selalu terlihat; satu ketukan |
 
 **Penempatan:** header/sticky top pada desktop; pola yang sama di mobile (lihat bawah).
@@ -61,26 +64,30 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 # Mobile Considerations
 
-* R1 (hanya 3 destinasi + switcher): **primary nav dan switcher selalu terlihat** — sama dengan desktop; jangan taruh di balik hamburger/kontrol ringkas.
-* Alasan: item sedikit; hamburger menambah ketukan dan bertentangan dengan acceptance “≤ satu ketukan” serta “switcher selalu visible” di `key-screen-patterns.md`.
-* Footer satelit tetap ada; Email primer tetap di halaman Contact, bukan hanya ikon kecil di footer.
+> **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
+
+* Breakpoint **<1024px**: nav halaman (Home/About/Karya) + language switcher masuk **hamburger menu** (drawer/panel).
+* **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019) + toggle tema. Ini menjaga acceptance "Contact ≤ 1 ketukan" meski nav halaman lain di balik menu.
+* ≥1024px (desktop): nav halaman, switcher, dan tombol Contact semua selalu terlihat di header — tidak ada hamburger.
+* Footer satelit tetap ada sebagai pelengkap, bukan pengganti Contact.
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
 
 ---
 
 # Success Criteria
 
-* Dari halaman mana pun (desktop & mobile), user mencapai Home / About / Contact **≤ satu ketukan** nav (tanpa buka menu dulu)
-* Switcher **selalu terlihat** di chrome dan memindahkan ke sibling path dalam satu ketukan
+* Contact bisa dicapai **≤ satu ketukan** dari halaman mana pun (desktop & mobile) — tombol selalu di luar hamburger
+* Home / About / Karya ≤1 ketukan di desktop; di mobile (<1024px) boleh lewat hamburger (1 ketukan buka menu + 1 ketukan item — override ADR-020)
+* Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020)
 * Footer tidak menggantikan peran Contact
-* Tidak ada item nav untuk permukaan non-R1
+* Tidak ada item nav untuk permukaan non-R1 di luar Karya (M9, sudah masuk R1 via ADR-020)
 
 ---
 
 # Decision Rules
 
-* Menambah item primary nav → tinjau Product scope + ADR bila material
-* Memindahkan Email hanya ke footer tanpa halaman Contact → ditolak (I4, ADR-010)
+* Menambah item primary nav → tinjau Product scope + ADR bila material (Karya sudah ditambah via ADR-020)
+* Memindahkan Email hanya ke footer tanpa halaman/modal Contact → ditolak (I4, ADR-010)
 
 ---
 
@@ -88,7 +95,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 | Item | Status |
 | ---- | ------ |
-| Navigation Patterns | **Baseline v1.0** (dokumen ini) |
+| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15) |
 
 ---
 
