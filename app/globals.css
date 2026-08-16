@@ -8,3 +8,26 @@
  * Kustomisasi brand/accent dilakukan lewat `astryx theme`, bukan override
  * langsung --color-* di :root (lihat .cursor/rules/xds.mdc).
  */
+
+/*
+ * Wrapper chip kuning nav pill (`site-header.tsx`) — idealnya pakai
+ * `xstyle`/StyleX (`.cursor/rules/xds.mdc`), tapi compiler StyleX belum
+ * wired ke build Turbopack project ini (lihat COMPLETE_TASK.md, catatan
+ * T-013.4). Nilai warna sengaja disamakan dengan `CHIP_BG` di `lib/theme.ts`
+ * — kalau salah satu diganti, ganti juga yang satunya.
+ */
+.site-nav-chip {
+  background-color: #fde047;
+  border-radius: 16px;
+}
+
+/*
+ * Separator "/" antara ID/EN di locale switch (`locale-switcher.tsx`) —
+ * sesuai mockup `.locale-switch span.opacity-40`. Warna disamakan dengan
+ * `CHIP_FG` di `lib/theme.ts` (teks chip kuning selalu ink gelap).
+ */
+.locale-switch-separator {
+  color: #14181f;
+  opacity: 0.4;
+  font-size: 0.8em;
+}

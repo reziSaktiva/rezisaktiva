@@ -18,6 +18,7 @@ import {
   isNavItemActive,
 } from "@/lib/nav";
 import { LocaleSwitcher } from "./locale-switcher";
+import { ThemeToggle } from "./theme-toggle";
 
 /**
  * Site chrome — T-013 (ADR-020): nav Home/About/Karya sebagai link,
@@ -48,7 +49,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
         // saat mobile — TopNav mengecek `centerContent != null` untuk
         // memilih mode layout grid, dan `false != null` bernilai true.
         !isMobile ? (
-          <HStack gap={1} align="center">
+          <HStack gap={2} padding={2} align="center" className="site-nav-chip">
             {NAV_ITEMS.map((item) => (
               <TopNavItem
                 key={item.key}
@@ -62,9 +63,10 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
         ) : undefined
       }
       endContent={
-        <HStack gap={2} align="center">
+        <HStack gap={3} align="center">
           {!isMobile && <LocaleSwitcher locale={locale} />}
           <MobileNavToggle label={MENU_LABEL[locale]} />
+          <ThemeToggle locale={locale} />
           <Button
             label={CONTACT_LABEL[locale]}
             variant="primary"
