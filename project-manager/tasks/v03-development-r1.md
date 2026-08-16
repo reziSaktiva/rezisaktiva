@@ -57,7 +57,7 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 * **Status:** ⏳ Todo
 * **Domain:** UI/UX
-* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3 + override 2026-08-15), ADR-014, ADR-019, `design-mockups/shared.js` (komponen modal Contact — `contact.html` sudah dihapus)
+* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3 — final modal-only, ADR-019), ADR-014, ADR-019, `design-mockups/shared.js` (komponen modal Contact — `contact.html` sudah dihapus)
 * **Keputusan (2026-08-16):** Contact **modal-only** — final, selaras ADR-019. Dialog/Modal global (bukan halaman `/[locale]/contact`), dibuka dari nav/CTA di semua halaman; termasuk form email + message (ADR-019 override ADR-014 poin "tanpa form"). **Tidak ada** route `/[locale]/contact` — jangan dibuat sebagai fallback/SEO tanpa ADR baru.
 
 ### Subtasks

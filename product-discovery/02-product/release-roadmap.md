@@ -92,7 +92,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 | Termasuk (pilih sesuai kapasitas) | Modul / item |
 | --------------------------------- | ------------ |
-| Could terkurasi | Motion/craft ringan; M8 form/booking jika soft path kurang |
+| Could terkurasi | Motion/craft **lanjutan** (di atas baseline identitas R1, ADR-017 — bukan mengulang klaim R1); M8 form/booking jika soft path kurang |
 | Poles | IA/UX refine, performa, a11y lanjut, konsistensi visual |
 | Bukan wajib | M11 writing hub, M12 playground sebagai panggung utama, social automation |
 

@@ -14,6 +14,12 @@ Format entri:
 - ...
 ```
 
+## [2026-08-16] (4)
+
+### Fixed
+
+Follow-up dari code review PR audit dokumentasi (#27): perjelas wording R3 motion di `release-roadmap.md` (bukan mengulang klaim identitas R1); samakan terminologi "final" (bukan "override") untuk Contact modal di `v03-development-r1.md` T-016; lengkapi daftar dokumen terdampak di catatan Update ADR-019 (tambah `integration-layer.md`, `ux-principles.md`, `user-flows.md`, `user-journey.md`).
+
 ## [2026-08-16] (3)
 
 ### Fixed
