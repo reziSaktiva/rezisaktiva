@@ -124,8 +124,6 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 ## Yang tidak masuk backlog Development R1
 
 - Work case / detail per karya (M10 — R2); Work index (M9) sudah masuk R1 via ADR-020 (T-019)
-- Quick Info panel (M13) sudah masuk R1 via ADR-022 (T-020) — bukan dekorasi chrome semata
-- Theme toggle UI sudah masuk R1 via ADR-021 (T-013.4) — bukan lagi Should/Later
 - Form, calendar, WA, Instagram, pricing (ADR-008 / ADR-014) — form Contact tetap di T-016, bukan di Quick Info
 - Blog / CMS / auth / DB (N/A — ADR-011/015)
 - Husky / test runner wajib (ditunda per `dx-tooling.md`)

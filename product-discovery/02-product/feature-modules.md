@@ -104,21 +104,7 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman inti** + **teaser karya di H
 * Konsistensi soft availability di chrome (opsional)
 * Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)
 
-Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022).
-
----
-
-## M13 — Quick Info panel
-
-**Tujuan:** Glanceable identity/context tanpa menambah halaman (selaras UX3).
-
-**Isi inti:**
-
-* Overlay global: tab vertikal tepi kanan → drawer
-* Bio, Services, Tools, Works index, Email, Links (tautan/rujukan cepat — bukan form inbound)
-* Tampil di semua halaman R1 **kecuali** Work case detail (M10)
-
-**Bukan:** route baru; pengganti Contact modal (ADR-019); pengganti footer satelit (M6). **ADR-022.**
+Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), didefinisikan di Supporting Modules di bawah (pola sama seperti M9 — Must R1 tapi bukan Core Module M1–M6).
 
 ---
 
@@ -132,7 +118,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022).
 | **M10 — Case / process detail** | Cerita singkat per karya (magnet ringan) | Post-MVP; boleh dipercepat jika konten siap |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
-| **M13 — Quick Info panel** | Overlay global (bukan route) | **Must R1** (ADR-022); exclude Work case |
+| **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 kecuali Work case detail (M10); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022) |
 
 ---
 
@@ -148,7 +134,7 @@ M5 Language ─── wraps ───► M1 Home, M2 About, M3 Contact, M6 Chrom
 M6 Chrome ── includes ► Theme toggle (ADR-021)
 M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 kecuali M10
 
-Post-MVP: M9 Work index ──► M10 Case detail
+M9 Work index (Must R1, ADR-020) ──► Post-MVP: M10 Case detail
 ```
 
 * M1 adalah pintu destination; M2 memperdalam trust; M3 menutup soft path.
