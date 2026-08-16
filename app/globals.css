@@ -26,11 +26,22 @@
  * sumber kebenaran warna chip kuning ini (dulu terduplikasi antara
  * `lib/theme.ts` dan file ini; sekarang cuma di sini).
  */
+/*
+ * `--chrome-pill-bg`/`--chrome-pill-fg` di bawah adalah fallback statis
+ * default light (ADR-021 poin 2). Nilai sebenarnya SELALU disuntikkan
+ * sebagai inline style oleh `useChipColorVars()`
+ * (`app/_components/theme-mode-provider.tsx`) di elemen wrapper
+ * `.site-nav-chip`/`.site-locale-switch`/`.site-mobile-nav-chip`. Sengaja
+ * BUKAN CSS `light-dark()` lagi (bug flash 2026-08-16, lihat
+ * COMPLETE_TASK.md) — browser sempat resolve `light-dark()` di sini pakai
+ * skema warna yang salah sesaat sebelum settle, dan `transition` bawaan
+ * Astryx pada chip bikin koreksi itu terlihat sebagai animasi warna.
+ */
 :root {
   --chip-bg: #fde047;
   --chip-fg: #14181f;
-  --chrome-pill-bg: light-dark(#0a0f1a, #ede9e1);
-  --chrome-pill-fg: light-dark(#ede9e1, #0a0f1a);
+  --chrome-pill-bg: #0a0f1a;
+  --chrome-pill-fg: #ede9e1;
 }
 
 /* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */

@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
+import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { LOCALE_COOKIE, LOCALES, type Locale } from "@/lib/locale";
 
 const LABELS: Record<Locale, string> = {
@@ -25,6 +26,7 @@ function hrefForLocale(pathname: string, target: Locale): string {
 export function LocaleSwitcher({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const router = useRouter();
+  const chipColorVars = useChipColorVars();
 
   const handleChange = (value: string) => {
     if (!LOCALES.includes(value as Locale) || value === locale) {
@@ -42,6 +44,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
       label="Bahasa / Language"
       size="sm"
       className="site-locale-switch"
+      style={chipColorVars}
     >
       {LOCALES.flatMap((value, index) => [
         index > 0 && (

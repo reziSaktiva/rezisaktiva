@@ -23,7 +23,7 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 - [x] **T-013.1** — Nav Home · About · Karya (M9) sebagai link; Contact = tombol (belum wired ke modal — menyusul T-016); ≥1024px semua selalu terlihat, <1024px nav+switcher di balik hamburger (Contact-button tetap di luar, ≤1 ketukan)
 - [x] **T-013.2** — Locale switcher selalu terlihat di desktop; masuk hamburger di mobile bersama nav (polish stub T-010.3 — sekarang `SegmentedControl` ID/EN); cookie `NEXT_LOCALE` tetap hanya untuk redirect `/`
 - [x] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG); URL satelit masih placeholder `#` sampai konten T-015.1/T-016.1 tersedia
-- [x] **T-013.4** — Komponen theme toggle di chrome (`site-header.tsx`) sesuai mockup + ADR-021: selalu terlihat di luar hamburger (bersama Contact-button); default light; persist preferensi (localStorage `rz-theme`); Astryx `Theme` `mode` `'light' | 'dark'` (bukan `system` sebagai Must)
+- [x] **T-013.4** — Komponen theme toggle di chrome (`site-header.tsx`) sesuai mockup + ADR-021: selalu terlihat di luar hamburger (bersama Contact-button); default light; persist preferensi (localStorage `rz-theme` + cookie `rz-theme` untuk SSR anti-flash, lihat COMPLETE_TASK.md 2026-08-16); Astryx `Theme` `mode` `'light' | 'dark'` (bukan `system` sebagai Must)
 
 ---
 
