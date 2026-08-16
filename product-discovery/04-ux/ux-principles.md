@@ -26,9 +26,9 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 | -- | ------- | --------- |
 | **UX1** | **Clarity first** | First viewport menjawab “siapa & untuk siapa”; tidak menunda positioning ke bawah fold |
 | **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About/teaser, bukan mode Home terpisah |
-| **UX3** | **Lean surface** | Hanya Home / About / Contact / Work index sebagai *halaman*; jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal, Quick info) **bukan** halaman baru — **ADR-022** |
+| **UX3** | **Lean surface** | Hanya Home / About / Work index sebagai *halaman*; jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal ADR-019, Quick info ADR-022) **bukan** halaman baru |
 | **UX4** | **Presence tanpa katalog** | Teaser 1–3 item cukup untuk trust R1; case detail = Later R2 |
-| **UX5** | **Soft path** | Contact first-class; Email primer; LinkedIn & GitHub satelit; tanpa harga, form wajib, WA/IG di R1 |
+| **UX5** | **Soft path** | Contact first-class (modal, ADR-019); Email primer; LinkedIn & GitHub satelit; tanpa harga, WA/IG di R1; form singkat opsional (bukan syarat wajib) |
 | **UX6** | **Bahasa adalah journey** | Geo-default + path prefix `/id` & `/en` + switcher selalu ada; makna ID/EN setara |
 | **UX7** | **Kurasi > kelengkapan** | Lebih baik sedikit bukti tajam daripada meniru layout GitHub |
 

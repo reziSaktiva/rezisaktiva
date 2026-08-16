@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
 # Overview
 
-MVP = **kerangka clarity yang layak dijadikan destination**: tiga halaman inti (Home, About, Contact), teaser karya di Home, soft CTA, dan bilingual geo-aware.
+MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, dan Work index (`/work`, override ADR-020); teaser karya di Home; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
 
 Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial. Magnet ringan (case/proses singkat) **direncanakan segera setelah** kerangka ini hidup — bukan blocker ship pertama.
 
@@ -32,7 +32,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | ---- | ---------- |
 | **Home** | Positioning jelas; bukti ringkas; teaser karya; arah ke About/Contact |
 | **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur. Label chrome: Proses Kerja / Process (ADR-020) |
-| **Contact** | Soft CTA — email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
+| **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work teaser (di Home)** | 1–3 highlight karya/outcome singkat (bukan halaman detail) |
 | **Work index (M9)** | Halaman katalog karya `/[locale]/work` — naik dari Post-MVP (override ADR-020, 2026-08-15); bukan halaman detail case (M10 tetap Post-MVP) |
 | **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
@@ -52,6 +52,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **Konsistensi pesan** | Salinan ID/EN setara makna (bukan machine-dump) |
 | **Teaser yang actionable** | Highlight mengarah ke bukti (repo/live) tanpa halaman case dulu |
 | **Aksesibilitas dasar** | Hierarki heading, kontras wajar, fokus keyboard — detail di UX |
+| **Motion sebagai identitas visual** | Scroll-triggered reveal, micro-interaction halus, easing hero — bagian identitas R1 dengan batas clarity-first (**ADR-017**), bukan sekadar Could minimal |
 
 ---
 
@@ -61,7 +62,6 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | ---- | ---------- |
 | **Form kontak sederhana** | Jika email/tautan terasa kurang; bukan syarat MVP |
 | **Calendar booking** | Hanya jika Rezi ingin; tetap soft, bukan sales funnel |
-| **Motion/craft ringan** | Presence edge tanpa menggeser clarity |
 | **1 case/proses singkat** | Boleh dimasukkan lebih awal jika konten sudah siap — idealnya release berikutnya |
 
 ---
@@ -104,10 +104,14 @@ MVP dianggap cukup jika:
 
 | Item | Status |
 | ---- | ------ |
-| Arah permukaan | **Hybrid lean (C)** — ADR-010 |
+| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/ADR-020/ADR-021/ADR-022 |
 | MVP definition | **Baseline v1.0** (dokumen ini) |
 | Product Baseline | **v1.0** — ADR-012 |
-| Case detail di MVP | Tidak (magnet bertahap) |
+| Work index (M9) di MVP | Ya — Must R1 (override ADR-020) |
+| Case detail (M10) di MVP | Tidak (magnet bertahap) |
+| Contact | Modal global, bukan halaman (ADR-019) |
+| Quick Info (M13) | Ya — Must R1 (ADR-022) |
+| Theme toggle | Ya — Must R1 (ADR-021), default ship light |
 
 ---
 
@@ -119,6 +123,9 @@ MVP dianggap cukup jika:
 * `../01-business/success-metrics.md` — dual north star
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-manager/decisions/ADR-017-motion-as-identity-r1.md` — motion sebagai identitas visual
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`

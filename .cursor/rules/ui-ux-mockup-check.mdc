@@ -10,7 +10,7 @@ Berlaku untuk task apapun yang:
 - Domain-nya UI/UX (atau sejenis: Design, Product/UX), **ATAU**
 - Scope-nya menyentuh implementasi/perubahan halaman, komponen visual, layout, atau styling — apapun nilai Domain-nya
 
-Lokasi acuan mockup: `design-mockups/` (HTML/Tailwind statis — `home.html`, `about.html`, `contact.html`, dst).
+Lokasi acuan mockup: `design-mockups/` (HTML statis dengan Tailwind CDN untuk prototyping cepat — `home.html`, `about.html`, `work.html`, `work-case.html`, dst). Catatan: mockup memakai Tailwind CDN hanya untuk prototyping visual; implementasi produksi tetap wajib pakai Astryx (`.cursor/rules/xds.mdc`, ADR-018) — Tailwind di mockup **tidak** dibawa ke kode produksi.
 
 ## Langkah Wajib (sebelum eksekusi)
 

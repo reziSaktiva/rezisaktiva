@@ -8,7 +8,9 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 
 # Overview
 
-**Keputusan scope journey:** R1 primer (Home → About/teaser → Contact) sebagai poros; hiring manager & calon klien mendapat jalur sekunder tipis pada permukaan yang sama. Journey R2 magnet (case) dicatat sebagai later, bukan Must peta ini.
+**Keputusan scope journey:** R1 primer (Home → About/teaser/Work index → Contact) sebagai poros; hiring manager & calon klien mendapat jalur sekunder tipis pada permukaan yang sama. Journey R2 magnet (case detail) dicatat sebagai later, bukan Must peta ini.
+
+> **Update (2026-08-15/16, ADR-019/ADR-020/ADR-021/ADR-022):** Work index (M9) naik Must R1 — masuk surface set. Contact final sebagai modal global (ADR-019), bukan halaman. Theme toggle (ADR-021) dan Quick Info overlay (ADR-022) melengkapi chrome di semua stage.
 
 ---
 
@@ -44,7 +46,7 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 | **Primary actor** | P1 & P2 (setara) |
 | **Secondary actor** | P3, P4 (tipis) |
 | **Horizon** | Satu kunjungan singkat → soft next step |
-| **Surface set** | Home, About, Contact, work teaser di Home, language switcher |
+| **Surface set** | Home, About, Work index, Contact modal, work teaser di Home, language switcher, theme toggle, Quick Info overlay |
 | **North stars** | Clarity (NS-1) + inbound berkualitas (NS-2) |
 
 ---
@@ -76,7 +78,7 @@ Tanpa situs milik sendiri (hari ini):
 | **Deepen** (opsional) | Narasi & cara kerja | About | J4, E4 |
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |
-| **Act** | Soft CTA (email / tautan) | Contact | J3 |
+| **Act** | Soft CTA (email / tautan) via Contact modal | Contact (overlay, ADR-019) | J3 |
 | **Share** (opsional) | URL layak dikirim ke tim | Meta + clarity | SJ1 |
 
 ### Cabang sekunder tipis

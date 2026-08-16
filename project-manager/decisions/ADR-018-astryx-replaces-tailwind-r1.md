@@ -1,4 +1,4 @@
-## Decision ADR-018
+# Decision ADR-018
 
 ### Title
 

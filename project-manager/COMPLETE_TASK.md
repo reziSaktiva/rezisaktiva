@@ -14,6 +14,24 @@ Format entri:
 - ...
 ```
 
+## [2026-08-16] (3)
+
+### Fixed
+
+Audit konsistensi dokumentasi menyeluruh (`project-manager/`, `product-discovery/`, `.cursor/skills/`, `.cursor/rules/`, `AGENTS.md`) atas permintaan Boss Rezi — 85 temuan mentah dari 3 audit paralel, dikonsolidasi & diperbaiki:
+
+- **Static Reference project-manager stale** (masih ber-frame Product Discovery padahal Active Mode = Development): `PROJECT_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `ARCHITECTURE_OVERVIEW.md` diisi ulang; `PROJECT_RULES.md` diperbaiki (klaim "arsitektur belum dikunci", larangan kode pre-discovery usang, referensi `SKILL.md` salah path).
+- **Kontradiksi governance** `TASKS.md` vs `PROJECT_RULES.md` soal lokasi status — diselaraskan (checklist detail di `tasks/vXX-*.md`, ringkasan di `PROJECT_STATE.md`).
+- **Keputusan Contact = modal-only final** (T-016 selesai, sesuai ADR-019): route `/contact` dihapus dari `information-architecture.md`, `key-screen-patterns.md`, `application-layer.md`, `domain-model.md`; ADR-019 ditambah Update note.
+- **Sinkronisasi ADR-020/021/022 ke baseline produk**: `product-scope.md`, `feature-modules.md` (kontradiksi internal M9), `mvp-definition.md`, `roles-permissions.md`, `03-user/user-journey.md`, `03-user/insights.md`, `04-ux/user-flows.md`, `04-ux/ux-principles.md`, `05-architecture/*` diperbarui agar konsisten dengan Work index Must R1, Contact modal, theme toggle, Quick Info panel.
+- **Motion priority** (keputusan Boss Rezi: ADR-017 menang) — `mvp-definition.md` & `feature-priority.md` naikkan motion dari Could Have ke Should Have/identitas R1.
+- **`xds.mdc` stale** (masih rujuk Tailwind/`main.tsx` padahal ADR-018 replace penuh) — ditambah Project Override section.
+- **`AGENTS.md` navigasi**: path `TASKS.md`/`tasks/` diberi prefix `project-manager/`; `.cursor/rules/` dan `design-mockups/` diindeks; `ui-ux-mockup-check.mdc` contoh `contact.html` usang diperbaiki.
+- **06-engineering** (`README.md`, `dependency-strategy.md`, `design-tokens.md`) — sisa referensi Tailwind diganti Astryx (ADR-018).
+- **Misc**: `DECISIONS.md` ADR-016 diberi catatan superseded; `competitor-analysis.md` "lima acuan" diperbaiki jadi 7 (5 awal + 2 referensi desain); heading ADR-017/018 diseragamkan ke `# Decision ADR-XXX`; `v02-bootstrap.md` catatan dark mode ditandai superseded; ADR-021/ADR-022 ditambah Update note task ID (T-013.4, T-020); `success-metrics.md` "Phase aktif metrik" direformulasi agar tidak duplikasi `PROJECT_STATE.md`.
+
+Tidak ada ADR baru dibuat — seluruh perbaikan menyelaraskan dokumen ke ADR yang sudah *Accepted* (bukan keputusan baru), kecuali resolusi Contact modal-only dan motion priority yang sudah eksplisit dikonfirmasi Boss Rezi pada sesi ini.
+
 ## [2026-08-16]
 ### Added
 - **ADR-021** — dark mode toggle UI naik Must R1 (default ship tetap light; persist preferensi). Subtask baru **T-013.4** di `tasks/v03-development-r1.md`.

@@ -98,8 +98,8 @@ Jika ditemukan: **jangan diamkan**. Sebutkan ke user, lalu tawarkan perbaikan (b
 2. Cek `Active Conversation Mode`.
 3. Baca baseline relevan sebelum menulis.
 4. Setelah selesai, update:
-   - `tasks/vXX-*.md` — centang subtask ber-ID (`T-XXX.N`) + status parent
-   - `TASKS.md` — indeks + Fokus sekarang (sebut kode subtask bila relevan)
+   - `project-manager/tasks/vXX-*.md` — centang subtask ber-ID (`T-XXX.N`) + status parent
+   - `project-manager/TASKS.md` — indeks + Fokus sekarang (sebut kode subtask bila relevan)
    - `PROJECT_STATE.md` — hanya jika phase/milestone/KI/fokus berubah (jangan salin detail task)
    - `COMPLETE_TASK.md` — append entri baru di atas (jangan baca riwayat lama); sebut `T-XXX.N`
 
@@ -181,8 +181,11 @@ rezisaktiva/
 │   ├── CONVERSATIONS.md
 │   └── BRAINSTORM.md
 ├── product-discovery/       → SoT produk 01–06
+├── design-mockups/          → Mockup HTML acuan visual (gate wajib untuk task UI/UX)
+├── app/                     → Kode Next.js (App Router)
 ├── AGENTS.md
-└── .cursor/skills/          → Process skills Cursor
+├── .cursor/skills/          → Process skills Cursor
+└── .cursor/rules/           → Rule aktif (Astryx, mockup gate, no-AI-attribution)
 ```
 
 ---

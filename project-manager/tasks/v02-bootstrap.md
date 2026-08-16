@@ -81,4 +81,4 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 - Implementasi konten/fitur R1 (Home/About/Contact polished, work teaser final)
 - Auth / DB / ORM (N/A — ADR-011/015)
 - Husky / test runner wajib (ditunda per `dx-tooling.md`)
-- Dark mode toggle UI (Should/Later)
+- Dark mode toggle UI (Should/Later saat bootstrap ditulis; **superseded** — naik jadi Must R1 via ADR-021, dikerjakan sebagai T-013.4 di `v03-development-r1.md`)

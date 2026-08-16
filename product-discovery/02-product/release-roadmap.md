@@ -10,7 +10,7 @@ Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** —
 
 Strategi rilis: **bertahap menurut clarity → presence → craft** (ADR-006), dengan growth **destination + magnet ringan** (ADR-007).
 
-* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Contact + teaser + bilingual + meta + Work index (M9) + theme toggle + Quick Info (M13)
+* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Work index (M9) + teaser + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
 * **R2 — Magnet ringan** = case/proses singkat (M10); Work index (M9) sudah live sejak R1 (ADR-020)
 * **R3 — Presence & craft** = poles pengalaman, Could terpilih (motion, form bila perlu)
 
@@ -51,7 +51,7 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact, M4 Work teaser, M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020), **M13 Quick Info** (ADR-022) |
+| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M4 Work teaser, M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020), **M13 Quick Info** (ADR-022) |
 | Should | Availability line, paritas ID/EN, teaser actionable, a11y dasar |
 | Bukan | M10 (case/process detail), blog, CMS, pricing, craft sebagai blocker |
 
@@ -152,6 +152,8 @@ Roadmap rilis dianggap cukup jika:
 * `../01-business/success-metrics.md` — Validation / Traction / Growth
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`

@@ -47,3 +47,7 @@ Accepted
 - `product-discovery/04-ux/key-screen-patterns.md` — S0 Chrome: blok Quick info panel.
 - `product-discovery/04-ux/ux-principles.md` — catatan: overlay tidak dianggap halaman baru (selaras UX3).
 - `project-manager/tasks/v03-development-r1.md` — task implementasi M13 (konten placeholder → copy nyata + komponen overlay, exclude Work case).
+
+### Update — 2026-08-16
+
+Task ID resmi untuk implementasi: **T-020** (`v03-development-r1.md`), subtask T-020.1 (konten) + T-020.2 (komponen overlay).

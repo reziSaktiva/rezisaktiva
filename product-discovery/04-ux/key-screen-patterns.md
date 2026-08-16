@@ -27,7 +27,7 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 | S0 Chrome | Global | J7, navigasi F1–F6 |
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
 | S2 About | `/[id/en]/about` | J4, E4 |
-| S3 Contact | `/[id/en]/contact` | J3 |
+| S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
 
 ---
 
@@ -84,7 +84,7 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 ### S3 — Contact
 
-> **Override sebagian (2026-08-15, ADR-019):** form email + message diizinkan di dalam Contact (mockup: Dialog/Modal global, bukan halaman terpisah). Sisanya di bawah ini tetap berlaku.
+> **Final (2026-08-15, ADR-019):** Contact = Dialog/Modal global, **bukan** halaman/route terpisah — keputusan T-016 sudah selesai. Form email + message diizinkan di dalam modal. Sisanya di bawah ini tetap berlaku.
 
 **Blok berurutan:**
 

@@ -145,7 +145,7 @@ Portofolio **belum** dianggap sukses hanya karena traffic tinggi, craft spektaku
 | Angka keras / kuota | Belum — tunggu live + baseline Traction |
 | Analytics tool | Belum dipilih (Engineering) |
 | Baseline Business v1.0 | **Ditetapkan** (2026-08-07) — ADR-009 |
-| Phase aktif metrik | Pre-Validation (situs belum live) |
+| Ekspektasi pengukuran | Pre-Validation sampai situs live — bukan status project; lihat `PROJECT_STATE.md` untuk phase aktif |
 
 ---
 

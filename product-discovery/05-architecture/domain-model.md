@@ -43,13 +43,14 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 
 | Konsep | Arti di R1 | Catatan |
 | ------ | ---------- | ------- |
-| **Page** | Home, About, Contact (per locale) | Surface IA ADR-014 |
+| **Page** | Home, About, Work index (per locale) | Surface IA; Work index Must R1 via override ADR-020 |
 | **Locale** | `id` \| `en` | Path prefix; makna salinan setara |
 | **Identity claim** | Positioning product builder (+ fullstack + AI edge) | First viewport Home |
 | **Credibility line** | Satu klaim non-kartu | Bukan daftar project |
 | **Work teaser item** | 1–3 kartu: nama · outcome · tautan bukti opsional | Bukan case detail |
-| **Contact channel** | Email primer; LinkedIn/GitHub satelit | Tanpa form/WA/IG R1 |
-| **Site chrome** | Nav, switcher, footer | Global |
+| **Contact channel** | Modal global (ADR-019), bukan Page; Email primer + form ringan opsional; LinkedIn/GitHub satelit | Tanpa backend form/WA/IG R1 |
+| **Site chrome** | Nav, switcher, footer, theme toggle (ADR-021) | Global |
+| **Quick Info overlay** | Drawer glanceable (bio, Services, Tools, Works, Email, Links) | Bukan Page — M13, ADR-022 |
 
 Tidak ada “Customer”, “Order”, “Session user”, atau “Workspace”.
 
@@ -65,11 +66,13 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 | ----- | ------------------ |
 | M1 Home | Identity claim, credibility line, teaser, arah soft |
 | M2 About | Narrative |
-| M3 Contact | Contact channel |
+| M3 Contact | Contact channel (modal overlay) |
 | M4 Work teaser | Work teaser item |
 | M5 Language | Locale |
-| M6 Chrome | Site chrome |
+| M6 Chrome | Site chrome (termasuk theme toggle, ADR-021) |
 | M7 Meta | Share/meta per Page×Locale |
+| M9 Work index | Page katalog karya (Must R1, override ADR-020) |
+| M13 Quick Info | Quick Info overlay (Must R1, ADR-022) |
 
 ---
 
@@ -83,7 +86,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 
 1. **Publik read-only** — pengunjung tidak menulis state ke domain situs.
 2. **Authoring di luar produk** — Rezi mengedit konten di repo / alat deploy; itu proses engineering, bukan domain in-app.
-3. **Case detail / Work katalog** = Later R2 — jangan naikkan ke model R1 diam-diam.
+3. **Case detail per karya (M10)** = Later R2 — jangan naikkan ke model R1 diam-diam. Work index (M9) sendiri sudah Page R1 (override ADR-020).
 4. **Materi sensitif** → `private/` atau di luar repo (ADR-003), bukan entitas produk.
 5. Menambah aggregate transaksi / user account → ADR + revisi Product scope.
 
@@ -115,5 +118,9 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 * `../02-product/feature-modules.md`
 * `../04-ux/information-architecture.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

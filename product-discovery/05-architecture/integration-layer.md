@@ -30,7 +30,8 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 | **Geo / locale redirect** | Edge atau hosting | Must fondasi | Aturan UX ADR-014; vendor di Eng |
 | **Teaser bukti (repo/live)** | Tautan keluar | Should | Dari kartu teaser |
 | **Analytics ringan** | Pihak ketiga opsional | Could | Privacy-aware; bukan SoT persona |
-| Form backend / calendar | — | Out R1 | Could produk; butuh ADR bila Must |
+| Form modal client-side | Client-side (email + message) | Must (dalam Contact modal, ADR-019) | Tanpa backend wajib; bisa mailto atau submit ringan |
+| Form backend berat / calendar | — | Out R1 | Could produk; butuh ADR bila Must |
 | CMS / headless | — | Out | Opsi C ditolak |
 | WA / Instagram API | — | Out R1 | ADR-014 |
 | Auth provider | — | Out | ADR-011 |
@@ -60,8 +61,8 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 
 | Keputusan | Pilihan |
 | --------- | ------- |
-| Integrasi R1 | Mailto + satelit + locale redirect (+ analytics opsional) |
-| Backend form | Tidak di R1 |
+| Integrasi R1 | Mailto + form modal client-side (ADR-019) + satelit + locale redirect (+ analytics opsional) |
+| Backend form / calendar | Tidak di R1 |
 | CMS | Tidak |
 
 ---
@@ -83,5 +84,6 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 * `../03-user/insights.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

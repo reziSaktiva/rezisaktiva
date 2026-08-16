@@ -8,9 +8,9 @@ Dokumen ini menetapkan struktur informasi & halaman website portofolio **rezisak
 
 # Overview
 
-IA R1 = **tiga halaman inti** + **section teaser di Home** + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
+IA R1 = **tiga halaman konten** (Home, About, Work index) + **section teaser di Home** + **Contact & Quick Info sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
 
-> **Update (2026-08-15, ADR-020):** `/[id/en]/work` (Work index, M9) naik jadi Must R1 — bukan lagi "tidak ada di MVP". Halaman detail case (M10) tetap Later/R2.
+> **Update (2026-08-15/16, ADR-019/ADR-020/ADR-021/ADR-022):** `/[id/en]/work` (Work index, M9) naik jadi Must R1. Contact **final sebagai modal global** (ADR-019) — route `/contact` terpisah **dihapus** dari IA (keputusan T-016 selesai, bukan lagi "belum final"). Theme toggle (ADR-021) dan Quick Info panel (ADR-022) melengkapi chrome. Halaman detail case (M10) tetap Later/R2.
 
 ---
 
@@ -31,11 +31,14 @@ Locale sebagai **path param** `[id/en]` — nilai ∈ `{ id, en }` (bukan query 
 └── /[id/en]/
     ├── /[id/en]/         → Home
     ├── /[id/en]/about    → About
-    ├── /[id/en]/contact  → Contact (status route vs modal-only belum final, lihat T-016)
     └── /[id/en]/work     → Work index (M9, Must R1 — ADR-020)
+
+Overlay global (bukan route, tampil di atas halaman manapun):
+    • Contact modal      → dibuka dari tombol Contact di chrome (ADR-019)
+    • Quick Info drawer  → dibuka dari tab tepi kanan (M13, ADR-022)
 ```
 
-Contoh konkret: `/id/`, `/id/about`, `/en/work`.
+Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019).
 
 **Bukan R1 (Later / R2):** detail case per karya (M10), blog, auth area.
 
@@ -73,13 +76,13 @@ Label chrome: **Proses Kerja** (`id`) / **Process** (`en`) — ADR-020; route te
 4. Cara kerja / apa yang dicari (tingkat tinggi)
 5. Soft arah ke Contact / kembali ke teaser Home
 
-### Contact
+### Contact (modal global, ADR-019 — bukan halaman/route)
 
 1. Ajakan soft + konteks kapan relevan
-2. **Primer:** Email (mailto atau alamat jelas)
+2. **Primer:** Email (mailto atau alamat jelas); form singkat (email + message) diizinkan di dalam modal per ADR-019
 3. **Satelit:** LinkedIn, GitHub
 4. Availability line (bila tidak di Home)
-5. **Tidak di R1:** form, calendar, WA, Instagram, pricing
+5. **Tidak di R1:** calendar, WA, Instagram, pricing
 
 ---
 
@@ -91,10 +94,10 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | ------------ | ---- | ----- | -- |
 | `/[id/en]/` | Home | M1 + M4 | Must |
 | `/[id/en]/about` | About (label chrome: Proses Kerja / Process) | M2 | Must |
-| `/[id/en]/contact` | Contact | M3 | Must |
-| Chrome global | Nav + switcher + footer + theme toggle | M5, M6 | Must (toggle: ADR-021) |
-| Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022); exclude Work case |
 | `/[id/en]/work` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
+| Chrome global | Nav + switcher + footer + theme toggle | M5, M6 | Must (toggle: ADR-021) |
+| Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
+| Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022); exclude Work case |
 | `/[id/en]/work/[slug]` (detail case) | Work case detail | M10 | Later R2 |
 
 ---
@@ -104,7 +107,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | Entry | Perilaku yang diharapkan |
 | ----- | ------------------------ |
 | URL bare domain `/` | Redirect ke `/id/...` atau `/en/...` sesuai aturan default di bawah |
-| Link langsung ber-locale (mis. `/id/about`, `/en/contact`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
+| Link langsung ber-locale (mis. `/id/about`, `/en/work`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
 | Switcher | Pindah ke path sibling locale yang sama (Home↔Home, About↔About, dst.) |
 | Share URL | Prefer URL ber-locale agar penerima melihat bahasa yang sama (SC6) |
 | Satelit GitHub/LinkedIn (keluar) | Boleh; Contact & Home tetap destination utama |
@@ -125,7 +128,7 @@ Berlaku untuk memilih locale saat **masuk tanpa locale di URL** (terutama redire
 
 Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Engineering:
 
-1. Setiap halaman R1 (`Home`, `About`, `Contact`) punya **title** dan **meta description** unik per locale (`id` / `en`), makna setara
+1. Setiap halaman R1 (`Home`, `About`, `Work index`) punya **title** dan **meta description** unik per locale (`id` / `en`), makna setara
 2. **Open Graph** dasar (title, description, url kanonis ber-locale) agar URL layak dishare ke chat/tim
 3. URL yang dishare **ber-locale** (contoh `/id/about`); bare `/` hanya entry redirect — bukan URL share yang dianjurkan
 4. Canonical per locale; jangan mengandalkan cookie untuk menentukan bahasa halaman yang dibuka via link langsung
@@ -147,7 +150,7 @@ Sebelum R1 dianggap siap live:
 
 # Success Criteria
 
-* Site map hanya tiga destinasi konten R1 + locale mirror
+* Site map hanya tiga destinasi konten R1 (Home, About, Work index) + locale mirror; Contact & Quick Info overlay global (bukan destinasi konten baru)
 * Hierarki Home memenangkan clarity di first viewport; credibility line ≠ work teaser
 * Contact Email = primer; LinkedIn/GitHub satelit; tanpa WA/IG
 * Path prefix shareable dan konsisten untuk kedua bahasa
@@ -162,6 +165,7 @@ Sebelum R1 dianggap siap live:
 * Menambah rute konten R1 baru → ADR + update Product bila perlu
 * Mengubah skema locale (hapus path prefix) → ADR baru
 * Memasukkan Work index ke inventory Must → sudah terjadi via ADR-020 (2026-08-15), override sebagian ADR-010; Work case detail (M10) masih butuh keputusan terpisah
+* Contact sebagai modal (bukan route) → final via ADR-019; T-016 selesai, jangan tambah route `/contact` tanpa ADR baru
 
 ---
 
@@ -185,6 +189,8 @@ Sebelum R1 dianggap siap live:
 * `navigation-patterns.md`
 * `../02-product/mvp-definition.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`

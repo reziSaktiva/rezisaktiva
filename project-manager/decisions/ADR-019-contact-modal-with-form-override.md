@@ -35,5 +35,8 @@ Accepted
 ### Impact / Follow-up
 
 - `product-discovery/04-ux/key-screen-patterns.md` (S3) perlu ditandai sebagai **override sebagian** oleh ADR ini (form diizinkan; sisanya S3 tetap berlaku).
-- `project-manager/tasks/v03-development-r1.md` T-016 perlu disesuaikan sebelum implementasi kode: apakah `/[locale]/contact` sebagai route tetap ada (fallback/SEO) atau benar-benar hanya modal — **belum diputuskan**, perlu klarifikasi lanjutan sebelum T-016 dieksekusi sebagai kode produksi.
 - Copy form (label, placeholder, pesan sukses) masih placeholder mockup, sama seperti catatan copy lain di `design-mockups/`.
+
+### Update — 2026-08-16
+
+**Modal-only dikonfirmasi final** — tidak ada route `/[locale]/contact` sebagai fallback/SEO. Dokumen terdampak (`information-architecture.md`, `key-screen-patterns.md`, `application-layer.md`, `domain-model.md`, `v03-development-r1.md` T-016) diselaraskan ke keputusan ini.

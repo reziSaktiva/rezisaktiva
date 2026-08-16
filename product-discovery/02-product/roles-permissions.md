@@ -8,7 +8,7 @@ Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat (bukan dokumen
 
 # Overview
 
-Situs **rezisaktiva** adalah portofolio publik Hybrid lean (Home / About / Contact). Tidak ada autentikasi pengunjung, area member, peran admin di dalam produk, atau matriks hak akses antar user.
+Situs **rezisaktiva** adalah portofolio publik Hybrid lean (Home / About / Work index / Contact modal). Tidak ada autentikasi pengunjung, area member, peran admin di dalam produk, atau matriks hak akses antar user.
 
 Oleh karena itu **tidak ada model roles & permissions** untuk produk situs pada arah v0.1 / R1–R3 inti.
 
