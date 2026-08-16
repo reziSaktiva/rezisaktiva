@@ -104,10 +104,11 @@ Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah — **kec
 # AI Collaboration Rules
 
 * Ikuti `.cursor/skills/project-os-navigator/SKILL.md` di awal sesi yang membutuhkan konteks project.
-* Ikuti `.cursor/skills/proactive-clarification/SKILL.md` sebelum asumsi pada fork keputusan.
+* **Wajib tanya Boss Rezi** (bukan berasumsi/mengarang/lanjut diam-diam) kalau ada fork keputusan, gap, hal belum terdokumentasi, atau sesuatu yang AI sendiri tidak tahu/tidak yakin — `.cursor/rules/ask-before-assuming.mdc` (aturan keras, always-applied) + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya).
 * Setelah pekerjaan selesai, laporkan dengan `.cursor/skills/work-report-simple/SKILL.md`.
 * Implementasi kode mengikuti `Active Conversation Mode` di `PROJECT_STATE.md` (misal: kode R1 diizinkan saat Active Mode = Development), kecuali Boss Rezi meminta eksplisit di luar mode itu.
 * Jangan memperbaiki inkonsistensi dokumen secara diam-diam — sebutkan ke user dulu.
+* **Task UI/UX wajib ikuti `.cursor/rules/ui-ux-mockup-check.mdc`** — mockup di `design-mockups/` adalah desain resmi (source of truth), hasil kode wajib 100% akurat terhadapnya, dan wajib diverifikasi (screenshot/computed-style) sebelum melaporkan task selesai. Konflik mockup vs dokumentasi (`design-tokens.md`, `product-discovery/`, ADR) butuh persetujuan eksplisit Boss Rezi sebelum dokumen diubah.
 
 ---
 

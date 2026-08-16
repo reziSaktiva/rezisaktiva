@@ -25,6 +25,8 @@ Sebelum mengerjakan tugas apapun, AI harus mengidentifikasi apakah ada keputusan
 - Konfigurasi environment atau infrastruktur
 - Keputusan desain UX/UI
 
+Ini juga berlaku bukan cuma untuk "fork keputusan" (pilihan valid setara) — lihat `.cursor/rules/ask-before-assuming.mdc` (aturan keras, always-applied) untuk cakupan lebih luas: **gap** (bagian tidak lengkap/tidak konsisten), **belum terdokumentasi** (butuh konteks yang belum ada di baseline manapun), dan **tidak diketahui/tidak yakin** (AI sendiri tidak tahu jawaban yang benar). Di semua kasus itu: berhenti dan tanya, jangan menebak atau diam-diam melanjutkan.
+
 **Pengecualian:** Jika keputusan sudah terdokumentasi di baseline project (ADR, `DECISIONS.md`, atau dokumen baseline yang relevan), gunakan keputusan tersebut — jangan tanya ulang.
 
 ---

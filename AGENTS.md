@@ -17,16 +17,16 @@ Dokumen ini **bukan** Source of Truth produk. Ia mengarahkan agent ke dokumen ya
 | Produk & engineering | `product-discovery/` |
 | Orientasi arsitektur (ringkas) | `project-manager/ARCHITECTURE_OVERVIEW.md` |
 | Alur kerja developer | `project-manager/DEVELOPER_WORKFLOW.md` |
-| Mockup UI/UX | `design-mockups/` (gate wajib — lihat `.cursor/rules/ui-ux-mockup-check.mdc`) |
+| Mockup UI/UX | `design-mockups/` — **desain resmi/source of truth**, bukan sekadar referensi (gate wajib — lihat `.cursor/rules/ui-ux-mockup-check.mdc`) |
 
 ## Wajib di awal sesi
 
 1. Baca **Snapshot** di `project-manager/PROJECT_STATE.md`.
 2. Kalau akan mengerjakan task: buka `project-manager/TASKS.md`, lalu **hanya** file `project-manager/tasks/vXX-*.md` yang memuat task/subtask itu (`T-XXX` / `T-XXX.N`). Ikuti field **Baca dulu**.
 3. Ikuti skill: `.cursor/skills/project-os-navigator/SKILL.md`.
-4. Untuk keputusan yang belum ada di baseline: `.cursor/skills/proactive-clarification/SKILL.md`.
+4. Untuk keputusan yang belum ada di baseline, gap, atau hal yang tidak diketahui: `.cursor/rules/ask-before-assuming.mdc` (wajib tanya) + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya).
 5. Setelah pekerjaan selesai: `.cursor/skills/work-report-simple/SKILL.md`.
-6. Untuk task yang menyentuh UI/UX: `.cursor/rules/ui-ux-mockup-check.mdc` (cek/buat mockup dulu) dan `.cursor/rules/xds.mdc` (konvensi Astryx saat coding).
+6. Untuk task yang menyentuh UI/UX: `.cursor/rules/ui-ux-mockup-check.mdc` (pelajari mockup dulu, hasil wajib 100% akurat, verifikasi sebelum lapor selesai) dan `.cursor/rules/xds.mdc` (konvensi Astryx saat coding).
 
 ## Skills (`.cursor/skills/`)
 
@@ -49,7 +49,13 @@ Rule aktif (`alwaysApply: true`), semua berlaku sejak Development:
 .cursor/rules/
 ├── no-ai-attribution-git.mdc   → tanpa atribusi AI di commit/branch/PR
 ├── xds.mdc                     → konvensi wajib Astryx design system
-└── ui-ux-mockup-check.mdc      → wajib cek/buat mockup di design-mockups/ sebelum kode UI
+├── ui-ux-mockup-check.mdc      → mockup di design-mockups/ = desain resmi (source of truth);
+│                                  wajib dipelajari sebelum kode UI, hasil wajib 100% akurat
+│                                  ke mockup (verifikasi wajib sebelum lapor selesai), konflik
+│                                  mockup vs dokumentasi butuh persetujuan Boss Rezi dulu
+└── ask-before-assuming.mdc     → wajib tanya Boss Rezi kalau ada gap, hal belum terdokumentasi,
+                                   atau sesuatu yang AI sendiri tidak tahu/tidak yakin — jangan
+                                   berasumsi atau lanjut diam-diam
 ```
 
 ## Stack & layout (saat ini)
@@ -64,7 +70,7 @@ Next.js (App Router) + TypeScript + pnpm di root — single-app (ADR-016). Styli
 * Status/progress hanya di `PROJECT_STATE.md` / `TASKS.md` — bukan di README Static Reference. ID: parent `T-XXX`, subtask `T-XXX.N`.
 * `COMPLETE_TASK.md`: append saja; jangan dibaca penuh kecuali diperintah (rewrite sejarah hanya jika Boss Rezi memerintahkan eksplisit).
 * Saat selesai checklist: sebut kode subtask `T-XXX.N` di COMPLETE_TASK / Fokus.
-* Jangan berasumsi pada fork keputusan — tanya dulu.
+* Jangan berasumsi pada fork keputusan, gap, atau hal yang tidak diketahui — tanya dulu (`.cursor/rules/ask-before-assuming.mdc`).
 * Proteksi secret: `.cursorignore`.
 
 ## Setelah mengubah sesuatu
