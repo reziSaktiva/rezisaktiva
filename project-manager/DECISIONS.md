@@ -4,6 +4,8 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-022 | Modul baru M13 — Quick Info panel (overlay global, Must R1) | Accepted | 2026-08-16 | Tab tepi kanan → drawer bio/Services/Tools/Works/Email/Links; bukan route; exclude Work case; tidak ganti Contact/footer | [ADR-022](decisions/ADR-022-quick-info-panel-module.md) |
+| ADR-021 | Dark mode toggle UI naik jadi Must R1 (override design-tokens.md + baseline Product) | Accepted | 2026-08-16 | Toggle chrome Must R1; default ship tetap light; tutup inkonsistensi vs navigation-patterns.md (ADR-020) | [ADR-021](decisions/ADR-021-dark-mode-toggle-must-r1.md) |
 | ADR-020 | Work index (M9) naik jadi Must R1 + nav mobile pakai hamburger (override ADR-010/ADR-012 & navigation-patterns.md) | Accepted | 2026-08-15 | `/[locale]/work` masuk R1; M10 tetap R2; nav Home/About/Karya + Contact-button; hamburger <1024px | [ADR-020](decisions/ADR-020-work-index-must-r1-nav-mobile-override.md) |
 | ADR-019 | Contact sebagai Dialog/Modal global + form email/message (override sebagian ADR-014) | Accepted | 2026-08-15 | Modal global ganti halaman Contact; form diizinkan; Email tetap tampil sebelum Socials | [ADR-019](decisions/ADR-019-contact-modal-with-form-override.md) |
 | ADR-018 | Astryx (component library + StyleX + theme CSS) menggantikan Tailwind sebagai styling/token R1 | Accepted | 2026-08-13 | Replace penuh Tailwind; theme-neutral; agent docs di `.cursor/rules/xds.mdc` | [ADR-018](decisions/ADR-018-astryx-replaces-tailwind-r1.md) |

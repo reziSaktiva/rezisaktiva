@@ -15,7 +15,7 @@ Prioritas mengikuti urutan investasi **clarity → presence → craft** (ADR-006
 * **Could** = nilai tambah jika kapasitas/konten memungkinkan
 * **Won't (current release)** = magnet penuh, media, sales, atau sistem berat — dijadwalkan belakangan atau ditolak untuk arah produk
 
-ID modul merujuk `feature-modules.md` (M1–M12).
+ID modul merujuk `feature-modules.md` (M1–M13).
 
 ---
 
@@ -43,9 +43,10 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | M3 | Contact (soft path) | Jalur inbound tanpa hard sell / harga |
 | M4 | Work teaser (section di Home) | Presence bukti tanpa arsitektur case |
 | M5 | Language (bilingual geo-aware + switcher) | ADR-002; relevan SEA + pintu terbuka |
-| M6 | Site chrome & satellites | Nav lean + footer + tautan satelit |
+| M6 | Site chrome & satellites | Nav lean + footer + tautan satelit + **toggle tema (ADR-021)** |
 | M7 | Destination meta (title/description/OG dasar) | URL layak jadi “link utama” |
 | M9 | Work index (katalog karya) | **Naik dari Won't → Must** (override ADR-020, 2026-08-15); nav "Karya" perlu destination nyata |
+| M13 | Quick Info panel | Overlay global glanceable — **Must R1 (ADR-022)**; bukan route; exclude Work case |
 
 ---
 
@@ -99,7 +100,7 @@ Urutan pengerjaan disarankan (konten + surface), tetap dalam satu rilis MVP:
 | 2 | Soft path | M3 Contact |
 | 3 | Narrative | M2 About |
 | 4 | Presence bukti lean | M4 Work teaser |
-| 5 | Lintas halaman | M5 Language + M6 Chrome |
+| 5 | Lintas halaman | M5 Language + M6 Chrome (termasuk toggle tema, ADR-021) + M13 Quick Info (ADR-022) |
 | 6 | Destination hygiene | M7 Meta |
 | 7 | Poles Should | Availability, paritas ID/EN, a11y dasar |
 | 8 | Could (opsional) | M8 / motion / early case |
@@ -116,7 +117,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 4. **Should ≠ Must** — ship Must lengkap lebih penting daripada poles sempurna.
 5. **Could tidak mencuri kapasitas** — form/motion/case awal hanya jika Must+Should sudah aman.
 6. **Selaras dual north star** — prioritas yang tidak membantu recall atau soft inbound path dipertanyakan.
-7. **Satu sumber modul** — ID M1–M12 dari `feature-modules.md`; jangan invent modul paralel di sini.
+7. **Satu sumber modul** — ID M1–M13 dari `feature-modules.md`; jangan invent modul paralel di sini.
 
 ---
 
@@ -133,7 +134,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 Prioritas dianggap cukup jika:
 
 1. Setiap Must Have di `mvp-definition.md` terpetakan ke baris Must di sini
-2. M10 tetap Won't untuk rilis MVP (selaras ADR-010); M9 sudah naik Must R1 per keputusan baru (ADR-020)
+2. M10 tetap Won't untuk rilis MVP (selaras ADR-010); M9 sudah naik Must R1 (ADR-020); M13 Must R1 (ADR-022); toggle tema Must di M6 (ADR-021)
 3. Urutan pengerjaan bisa dipakai langsung oleh `release-roadmap.md`
 4. Tidak ada item Must yang bertentangan dengan no-pricing / soft CTA
 
@@ -144,9 +145,11 @@ Prioritas dianggap cukup jika:
 * `README.md` — dokumentasi fase ini
 * `product-scope.md` — batas produk
 * `mvp-definition.md` — definisi MVP
-* `feature-modules.md` — katalog modul M1–M12
+* `feature-modules.md` — katalog modul M1–M13
 * `release-roadmap.md` — jadwal rilis (berikutnya)
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

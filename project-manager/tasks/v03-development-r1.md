@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020): chrome, Home + work teaser, About, Contact, Work index, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10).
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10).
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -10,17 +10,19 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 ## T-013 — Site chrome R1 (M6 + polish M5)
 
-* **Status:** ✅ Done (2026-08-15)
+* **Status:** ⏳ Todo (T-013.1–T-013.3 ✅ 2026-08-15; T-013.4 terbuka — ADR-021)
 * **Domain:** UI/UX
-* **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `navigation-patterns.md` (override ADR-020), `key-screen-patterns.md` (S0), ADR-014, ADR-019, ADR-020, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama)
+* **Baca dulu:** `product-discovery/04-ux/information-architecture.md`, `navigation-patterns.md` (override ADR-020 / ADR-021), `key-screen-patterns.md` (S0), `06-engineering/design-tokens.md` (tema — ADR-021), ADR-014, ADR-019, ADR-020, ADR-021, `.cursor/rules/xds.mdc`, `design-mockups/home.html` (chrome bersama), `app/[locale]/_components/site-header.tsx`
 * **Keputusan (2026-08-15, ADR-020):** ikut mockup penuh — nav Home · About · Karya (M9) sebagai link, Contact sebagai tombol pembuka modal (bukan link), hamburger aktif <1024px (nav halaman + switcher masuk menu; Contact-button + tema tetap di luar).
-* **Implementasi:** `app/[locale]/_components/site-header.tsx` (TopNav + MobileNav via `AppShell`, breakpoint `lg`/1024px lewat `useAppShellMobile`), `app/[locale]/_components/site-footer.tsx`, `app/[locale]/_components/locale-switcher.tsx` (SegmentedControl ID/EN), `lib/nav.ts`, `app/[locale]/layout.tsx`. Stub `about/`, `work/` ditambah agar link nav tidak 404 selama T-015/T-019 belum digarap. Contact button belum wired ke modal (menyusul T-016).
+* **Keputusan (2026-08-16, ADR-021):** toggle dark/light di chrome naik jadi Must R1; default ship tetap light; preferensi user disimpan. Komponen toggle belum ada di `site-header.tsx` — itu T-013.4.
+* **Implementasi:** `app/[locale]/_components/site-header.tsx` (TopNav + MobileNav via `AppShell`, breakpoint `lg`/1024px lewat `useAppShellMobile`), `app/[locale]/_components/site-footer.tsx`, `app/[locale]/_components/locale-switcher.tsx` (SegmentedControl ID/EN), `lib/nav.ts`, `app/[locale]/layout.tsx`. Stub `about/`, `work/` ditambah agar link nav tidak 404 selama T-015/T-019 belum digarap. Contact button belum wired ke modal (menyusul T-016). Theme toggle belum di kode (T-013.4).
 
 ### Subtasks
 
 - [x] **T-013.1** — Nav Home · About · Karya (M9) sebagai link; Contact = tombol (belum wired ke modal — menyusul T-016); ≥1024px semua selalu terlihat, <1024px nav+switcher di balik hamburger (Contact-button tetap di luar, ≤1 ketukan)
 - [x] **T-013.2** — Locale switcher selalu terlihat di desktop; masuk hamburger di mobile bersama nav (polish stub T-010.3 — sekarang `SegmentedControl` ID/EN); cookie `NEXT_LOCALE` tetap hanya untuk redirect `/`
 - [x] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG); URL satelit masih placeholder `#` sampai konten T-015.1/T-016.1 tersedia
+- [ ] **T-013.4** — Komponen theme toggle di chrome (`site-header.tsx`) sesuai mockup + ADR-021: selalu terlihat di luar hamburger (bersama Contact-button); default light; persist preferensi; Astryx `Theme` `mode` `'light' | 'dark'` (bukan `system` sebagai Must)
 
 ---
 
@@ -105,10 +107,23 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 ---
 
+## T-020 — Quick Info panel (M13, ADR-022)
+
+* **Status:** ⏳ Todo
+* **Domain:** UI/UX
+* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M13), `04-ux/navigation-patterns.md` (Secondary — Quick info), `key-screen-patterns.md` (S0), `ux-principles.md` (overlay ≠ halaman baru, UX3), ADR-019, ADR-022, `design-mockups/shared.js` (`mountQuickInfo()`), `design-mockups/home.html`
+* **Catatan:** M13 naik jadi Must R1 lewat ADR-022 (2026-08-16). Overlay global (tab tepi kanan → drawer), **bukan route baru**. Tampil di semua halaman R1 kecuali Work case detail (M10). Jangan duplikasi Contact modal (ADR-019) atau footer satelit (M6): Email/Links di panel = tautan/rujukan, bukan form inbound.
+
+### Subtasks
+
+- [ ] **T-020.1** — Konten Quick Info di `content/` (bio, Services, Tools, Works index, Email, Links) — dari placeholder mockup ke copy nyata; paritas makna ID/EN
+- [ ] **T-020.2** — Komponen overlay (tab tepi kanan → drawer, focus trap, Astryx + overlay custom per ADR-018/ADR-022); mount di chrome global; **exclude** di Work case detail; jangan wire form Contact ke dalam drawer
+
+---
+
 ## Yang tidak masuk backlog Development R1
 
 - Work case / detail per karya (M10 — R2); Work index (M9) sudah masuk R1 via ADR-020 (T-019)
-- Dark mode toggle UI (Should/Later)
-- Form, calendar, WA, Instagram, pricing (ADR-008 / ADR-014)
+- Form, calendar, WA, Instagram, pricing (ADR-008 / ADR-014) — form Contact tetap di T-016, bukan di Quick Info
 - Blog / CMS / auth / DB (N/A — ADR-011/015)
 - Husky / test runner wajib (ditunda per `dx-tooling.md`)

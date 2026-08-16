@@ -31,13 +31,15 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | Item | Keterangan |
 | ---- | ---------- |
 | **Home** | Positioning jelas; bukti ringkas; teaser karya; arah ke About/Contact |
-| **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur |
+| **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur. Label chrome: Proses Kerja / Process (ADR-020) |
 | **Contact** | Soft CTA — email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work teaser (di Home)** | 1–3 highlight karya/outcome singkat (bukan halaman detail) |
 | **Work index (M9)** | Halaman katalog karya `/[locale]/work` — naik dari Post-MVP (override ADR-020, 2026-08-15); bukan halaman detail case (M10 tetap Post-MVP) |
-| **Navigasi** | Home / About / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
+| **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
+| **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**); default ship tetap light |
+| **Quick Info panel (M13)** | Overlay global (tab kanan → drawer bio/Services/Tools/Works/Email/Links); semua halaman R1 kecuali Work case — **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
-| **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks) |
+| **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
 | **Destination hygiene** | URL stabil, meta dasar, situs layak dibagikan sebagai link utama |
 
 ---
@@ -117,5 +119,7 @@ MVP dianggap cukup jika:
 * `../01-business/success-metrics.md` — dual north star
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

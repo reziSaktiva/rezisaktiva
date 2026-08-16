@@ -46,10 +46,12 @@ Contoh konkret: `/id/`, `/id/about`, `/en/work`.
 ### Lintas halaman (chrome)
 
 1. Identitas brand (nama / mark)
-2. Primary nav: Home · About · Karya (M9, override ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
+2. Primary nav: Home · About (label lokal **ID "Proses Kerja"** / **EN "Process"**, ADR-020) · Karya (M9, override ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
 3. Language switcher (`ID` ↔ `EN`) → URL path sibling
-4. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
-5. Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button tetap selalu terlihat (override ADR-020 atas `navigation-patterns.md`)
+4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship tetap light
+5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru. Tampil di semua halaman R1 kecuali Work case detail (**ADR-022**)
+6. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
+7. Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)
 
 ### Home (urutan konten)
 
@@ -62,6 +64,8 @@ Contoh konkret: `/id/`, `/id/about`, `/en/work`.
 **Aturan beda blok:** credibility line = sinyal kredibel 1 baris; work teaser = bukti karya terkurasi. Anti-pattern: dua blok yang sama-sama menumpuk tech stack / highlight identik.
 
 ### About
+
+Label chrome: **Proses Kerja** (`id`) / **Process** (`en`) — ADR-020; route tetap `/[id/en]/about`.
 
 1. Narasi product builder (ide → live)
 2. Fondasi fullstack (konteks pengalaman)
@@ -86,9 +90,10 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | Route (pola) | Nama | Modul | R1 |
 | ------------ | ---- | ----- | -- |
 | `/[id/en]/` | Home | M1 + M4 | Must |
-| `/[id/en]/about` | About | M2 | Must |
+| `/[id/en]/about` | About (label chrome: Proses Kerja / Process) | M2 | Must |
 | `/[id/en]/contact` | Contact | M3 | Must |
-| Chrome global | Nav + switcher + footer | M5, M6 | Must |
+| Chrome global | Nav + switcher + footer + theme toggle | M5, M6 | Must (toggle: ADR-021) |
+| Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022); exclude Work case |
 | `/[id/en]/work` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
 | `/[id/en]/work/[slug]` (detail case) | Work case detail | M10 | Later R2 |
 
@@ -180,5 +185,7 @@ Sebelum R1 dianggap siap live:
 * `navigation-patterns.md`
 * `../02-product/mvp-definition.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

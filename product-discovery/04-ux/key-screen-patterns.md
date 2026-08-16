@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan pola layar kunci (blok konten & hierarki) untuk R1 �
 
 # Overview
 
-Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + switcher + footer) yang konsisten. Pola mendukung F1–F6 dan prinsip UX1–UX7.
+Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process), **Contact**, plus **Chrome** (nav + switcher + footer + theme toggle + Quick info overlay) yang konsisten. Pola mendukung F1–F6 dan prinsip UX1–UX7.
 
 ---
 
@@ -35,9 +35,13 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 
 ### S0 — Chrome
 
-**Blok:** brand · primary nav · language switcher · (opsional) availability tipis di header/footer.
+**Blok:** brand · primary nav (About = label lokal **Proses Kerja** / **Process**, ADR-020) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
 
-**Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible** di desktop dan mobile R1 (bukan di balik menu); footer memuat LinkedIn & GitHub sebagai satelit, bukan WA/IG.
+**Theme toggle (ADR-021):** kontrol dark/light di chrome; Must R1. Default ship tetap light — toggle tidak mengubah default. Di mobile (<1024px) tetap terlihat di luar hamburger (bersama Contact).
+
+**Quick info panel (ADR-022):** overlay global (tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links). Bukan route baru. Tampil di semua halaman R1 kecuali Work case detail. Bukan pengganti Contact modal atau footer satelit.
+
+**Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Footer memuat LinkedIn & GitHub sebagai satelit, bukan WA/IG.
 
 ---
 
@@ -63,6 +67,8 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 ---
 
 ### S2 — About
+
+**Label chrome:** ID **"Proses Kerja"** / EN **"Process"** (ADR-020). Route tetap `/[id/en]/about`; nama modul tetap M2 About.
 
 **Blok berurutan:**
 
@@ -138,5 +144,7 @@ Empat “layar” R1: **Home**, **About**, **Contact**, plus **Chrome** (nav + s
 * `navigation-patterns.md`
 * `../03-user/insights.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
