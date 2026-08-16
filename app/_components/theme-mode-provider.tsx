@@ -115,6 +115,13 @@ export function useThemeMode(): ThemeModeContextValue {
  * masing (`site-header.tsx`, `locale-switcher.tsx`). Tidak ada CSS
  * `color-scheme`/`light-dark()` yang perlu di-resolve sama sekali untuk 2
  * token ini lagi, jadi tidak ada lagi kemungkinan koreksi 2-pass.
+ *
+ * PENTING — jaga sinkron manual (code review 2026-08-16): nilai hex di
+ * bawah adalah SATU-SATUNYA sumber yang benar-benar dipakai saat runtime.
+ * `app/globals.css` `:root { --chrome-pill-bg/--chrome-pill-fg }` cuma
+ * fallback statis (tidak pernah kepakai selama `useChipColorVars()`
+ * ter-render) — kalau ubah warna di sini, update juga fallback di
+ * `globals.css` (komentar di sana menunjuk balik ke sini).
  */
 const CHIP_COLOR_BY_MODE: Record<ThemeMode, { bg: string; fg: string }> = {
   light: { bg: "#0a0f1a", fg: "#ede9e1" },
@@ -123,18 +130,18 @@ const CHIP_COLOR_BY_MODE: Record<ThemeMode, { bg: string; fg: string }> = {
 
 /**
  * `CSSProperties` bawaan React belum punya index signature untuk custom
- * property (`--*`) — cast lewat tipe perantara ini di satu tempat saja,
- * supaya pemanggil (`site-header.tsx`, `locale-switcher.tsx`) tetap terima
- * `CSSProperties` biasa untuk prop `style` tanpa perlu `as` berulang.
+ * property (`--*`) — intersection type ini (bukan `as` cast, code review
+ * 2026-08-16) tetap menahan compiler mengecek 2 key wajibnya, karena semua
+ * properti `CSSProperties` opsional sehingga object literal yang cuma
+ * berisi 2 custom property ini tetap valid secara struktural.
  */
-interface ChipColorVars {
+type ChipColorVars = CSSProperties & {
   "--chrome-pill-bg": string;
   "--chrome-pill-fg": string;
-}
+};
 
-export function useChipColorVars(): CSSProperties {
+export function useChipColorVars(): ChipColorVars {
   const { mode } = useThemeMode();
   const { bg, fg } = CHIP_COLOR_BY_MODE[mode];
-  const vars: ChipColorVars = { "--chrome-pill-bg": bg, "--chrome-pill-fg": fg };
-  return vars as CSSProperties;
+  return { "--chrome-pill-bg": bg, "--chrome-pill-fg": fg };
 }

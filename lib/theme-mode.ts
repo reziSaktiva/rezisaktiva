@@ -26,6 +26,18 @@
  * `cachedMode` di bawah cuma pernah dibaca/ditulis oleh kode client (browser
  * tab punya module instance sendiri), sehingga tetap aman dipakai sebagai
  * cache in-memory untuk sinkron antar-tab.
+ *
+ * Cookie = satu-satunya sumber kebenaran untuk snapshot React (code review
+ * 2026-08-16, lihat COMPLETE_TASK.md): `getThemeModeSnapshot` DULU membaca
+ * localStorage untuk priming cache, yang bisa berbeda dari cookie (mis. user
+ * bersihkan cookie tapi tidak localStorage, atau sebaliknya) — begitu
+ * berbeda, `useSyncExternalStore` mendeteksi mismatch client vs server lagi
+ * dan bug flash yang sama muncul kembali. `getThemeModeSnapshot` sekarang
+ * SELALU prime dari `fallback` (`initialMode`, dari cookie) tanpa membaca
+ * localStorage sama sekali — localStorage hanya jadi target tulis
+ * (`writeStoredThemeMode`, dipakai `themeInitScript` di `app/layout.tsx`
+ * sebagai fallback pra-hydrasi kalau cookie belum pernah ada sama sekali —
+ * kasus migrasi 1x, self-healing karena script itu langsung menulis cookie).
  */
 export const THEME_MODE_STORAGE_KEY = "rz-theme";
 
@@ -46,14 +58,16 @@ function isThemeMode(value: string | null | undefined): value is ThemeMode {
   return value === "dark" || value === "light";
 }
 
-function readStoredThemeMode(): ThemeMode | null {
-  try {
-    const stored = window.localStorage.getItem(THEME_MODE_STORAGE_KEY);
-    return isThemeMode(stored) ? stored : null;
-  } catch {
-    // Storage tidak tersedia (private mode, dsb.) — treat seperti tidak ada preferensi.
-    return null;
-  }
+/**
+ * Suffix atribut cookie bersama (dipakai `writeStoredThemeMode` di sini).
+ * `secure` cuma disertakan di HTTPS — kalau selalu disertakan, cookie diam-
+ * diam gagal ter-set di `next dev` (http://localhost), karena browser
+ * menolak cookie `Secure` di origin non-HTTPS.
+ */
+function cookieAttributes(): string {
+  const secure =
+    typeof location !== "undefined" && location.protocol === "https:" ? "; secure" : "";
+  return `path=/; max-age=${THEME_MODE_COOKIE_MAX_AGE_SECONDS}; samesite=lax${secure}`;
 }
 
 function writeStoredThemeMode(mode: ThemeMode): void {
@@ -63,7 +77,7 @@ function writeStoredThemeMode(mode: ThemeMode): void {
     // Abaikan kegagalan storage — toggle tetap bekerja untuk sesi berjalan.
   }
   try {
-    document.cookie = `${THEME_MODE_COOKIE_KEY}=${mode}; path=/; max-age=${THEME_MODE_COOKIE_MAX_AGE_SECONDS}; samesite=lax`;
+    document.cookie = `${THEME_MODE_COOKIE_KEY}=${mode}; ${cookieAttributes()}`;
   } catch {
     // Abaikan kegagalan cookie — hanya memengaruhi anti-flash SSR, bukan fungsi toggle.
   }
@@ -86,12 +100,14 @@ export function subscribeThemeMode(listener: Listener): () => void {
 /**
  * Snapshot client — dipanggil `useSyncExternalStore` setelah hydration.
  * `fallback` adalah `initialMode` yang dialirkan lewat prop dari server
- * (lihat `ThemeModeProvider`) — dipakai kalau localStorage kosong/gagal
- * dibaca, supaya konsisten dengan apa yang sudah di-render server.
+ * (lihat `ThemeModeProvider`, nilainya dari cookie). SENGAJA tidak membaca
+ * localStorage di sini (lihat komentar besar di atas) — priming cache HARUS
+ * sama dengan apa yang sudah di-render server, supaya tidak ada mismatch
+ * `useSyncExternalStore` sama sekali, terlepas dari isi localStorage.
  */
 export function getThemeModeSnapshot(fallback: ThemeMode): ThemeMode {
   if (cachedMode === null) {
-    cachedMode = readStoredThemeMode() ?? fallback;
+    cachedMode = fallback;
   }
   return cachedMode;
 }

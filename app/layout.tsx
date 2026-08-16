@@ -11,17 +11,29 @@ export const metadata: Metadata = {
 };
 
 /**
- * Lapis pertahanan tambahan (bukan lagi sumber utama anti-flash — lihat
- * `initialMode` di bawah): kalau untuk suatu alasan cookie tidak terkirim
- * ke server (mis. di-strip proxy/CDN) tapi localStorage masih ada, script
- * blocking ini tetap set `data-theme` di `<html>` SEBELUM React hydrate,
- * sebelum layout effect `Theme` Astryx sempat jalan. Pola ini resmi
- * direkomendasikan Astryx sendiri (lihat komentar `Theme` component di
- * `@astryxdesign/core`: "For RSC/SSR, set data-theme on <html> ... to avoid
- * a flash of wrong theme before hydration"). Tidak menyebabkan hydration
- * mismatch karena `<html>` di JSX di bawah tidak mendeklarasikan `data-theme`
- * sama sekali — React tidak mengelola atribut yang bukan bagian dari render
- * output-nya sendiri.
+ * Lapis pertahanan HANYA untuk kasus migrasi 1x (bukan lagi sumber utama
+ * anti-flash — lihat `initialMode` di bawah, sumber kebenaran sekarang
+ * cookie): kalau cookie belum PERNAH ada sama sekali (user lama dari
+ * sebelum fix cookie ini ship, localStorage sudah punya preferensi tapi
+ * belum pernah toggle sejak itu) tapi localStorage sudah punya preferensi,
+ * script blocking ini set `data-theme`/`color-scheme` di `<html>` SEBELUM
+ * React hydrate — pola resmi yang direkomendasikan Astryx sendiri (lihat
+ * komentar `Theme` component di `@astryxdesign/core`: "For RSC/SSR, set
+ * data-theme on <html> ... to avoid a flash of wrong theme before
+ * hydration"). Tidak menyebabkan hydration mismatch karena `<html>` di JSX
+ * di bawah tidak mendeklarasikan `data-theme` sama sekali — React tidak
+ * mengelola atribut yang bukan bagian dari render output-nya sendiri.
+ *
+ * SENGAJA cek cookie dulu dan no-op kalau sudah ada (code review
+ * 2026-08-16, lihat COMPLETE_TASK.md): kalau script ini tetap jalan
+ * berdasarkan localStorage TANPA peduli cookie, dan keduanya kebetulan
+ * berbeda (mis. user bersihkan cookie tapi tidak localStorage), script ini
+ * akan memaksa `<html>` ke nilai localStorage padahal SSR (dan React yang
+ * akan hydrate) sudah commit ke nilai cookie yang berbeda — flash yang
+ * coba dihilangkan malah muncul lagi lewat jalur ini. Dengan hanya jalan
+ * saat cookie benar-benar belum ada, lalu langsung MENULIS cookie itu juga
+ * (self-healing), konflik ini cuma bisa terjadi maksimal 1x per browser
+ * (kunjungan pertama setelah fix ini ship) — bukan risiko berulang.
  *
  * Key harus sama dengan `THEME_MODE_STORAGE_KEY` (`lib/theme-mode.ts`) —
  * di-inline langsung karena script ini harus plain JS (tidak bisa import
@@ -30,10 +42,16 @@ export const metadata: Metadata = {
 const themeInitScript = `
 (function () {
   try {
-    var stored = window.localStorage.getItem(${JSON.stringify(THEME_MODE_STORAGE_KEY)});
+    var key = ${JSON.stringify(THEME_MODE_STORAGE_KEY)};
+    if (document.cookie.indexOf(key + "=") !== -1) {
+      return;
+    }
+    var stored = window.localStorage.getItem(key);
     if (stored === "dark" || stored === "light") {
       document.documentElement.setAttribute("data-theme", stored);
       document.documentElement.style.colorScheme = stored;
+      var secure = location.protocol === "https:" ? "; secure" : "";
+      document.cookie = key + "=" + stored + "; path=/; max-age=31536000; samesite=lax" + secure;
     }
   } catch (e) {}
 })();
@@ -47,6 +65,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
    * `useSyncExternalStore` yang bikin flash. `cookies()` di Next.js
    * request-scoped/aman untuk concurrent request (bukan module state).
    * Default "light" kalau cookie belum ada (ADR-021 poin 2, tidak berubah).
+   *
+   * Trade-off yang perlu diketahui: memanggil `cookies()` di root layout
+   * membuat SELURUH app keluar dari static rendering (semua route jadi
+   * render dinamis per-request, tidak bisa di-cache statis/ISR) — ini
+   * konsekuensi inheren cookie-based SSR-theme, bukan sesuatu yang bisa
+   * dihindari selagi tema harus diketahui server sebelum render pertama.
    */
   const cookieStore = await cookies();
   const initialMode =
