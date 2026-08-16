@@ -14,6 +14,21 @@ Format entri:
 - ...
 ```
 
+## [2026-08-16] (11)
+
+### Fixed
+
+Temuan code review PR #28 (`/code-review`) + warning dev console diperbaiki:
+
+- **Blast radius theme override (High)** — `lib/theme.ts` (custom `defineTheme` `components` override) dihapus total. Styling chip/pill chrome (nav pill, locale switch, mobile drawer, tombol Contact, theme toggle) dipindah ke `app/globals.css` sebagai CSS biasa yang di-scope lewat class wrapper (`.site-nav-chip`, `.site-locale-switch`, `.site-mobile-nav-chip`, `.site-contact-button`, `.site-theme-toggle`) + selector `[data-selected]` — bukan lagi override global yang berpotensi bocor ke `TopNavItem`/`SegmentedControl`/`SideNavItem`/`Button` lain di halaman masa depan (T-014 dst).
+- **Duplikasi warna hex (Medium)** — `CHIP_BG`/`CHIP_FG` yang dulu ada di dua tempat (`lib/theme.ts` + `app/globals.css`) sekarang cuma satu sumber: `:root { --chip-bg; --chip-fg; }` di `app/globals.css`.
+- **Warning console "Theme ... using runtime style injection"** — hilang otomatis karena tidak lagi pakai `defineTheme` custom (kembali ke `neutralTheme` bawaan, yang sudah pre-built).
+- **Flash tema untuk user dark mode (Medium)** — `app/layout.tsx` ditambah blocking script (`next/script` `beforeInteractive`) yang set `data-theme` di `<html>` dari localStorage sebelum React hydrate, sesuai pola yang direkomendasikan Astryx sendiri untuk SSR.
+
+### Catatan
+
+Sempat dicoba pendekatan `astryx theme build` (built theme, bukan runtime injection) sebagai fix warning — berhasil dan valid, tapi ditinggalkan karena solusi CSS-scoped di atas sekaligus menyelesaikan temuan blast-radius (High) juga, jadi satu perubahan untuk dua temuan.
+
 ## [2026-08-16] (10)
 
 ### Added
