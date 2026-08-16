@@ -9,7 +9,14 @@ import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
 import type { Locale } from "@/lib/locale";
-import { CONTACT_LABEL, NAV_ITEMS, NAV_LABELS, isNavItemActive } from "@/lib/nav";
+import {
+  CONTACT_LABEL,
+  CONTACT_TOOLTIP,
+  MENU_LABEL,
+  NAV_ITEMS,
+  NAV_LABELS,
+  isNavItemActive,
+} from "@/lib/nav";
 import { LocaleSwitcher } from "./locale-switcher";
 
 /**
@@ -37,7 +44,10 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
       label="Main navigation"
       heading={<TopNavHeading heading="rezisaktiva" headingHref={`/${locale}`} />}
       centerContent={
-        !isMobile && (
+        // Ternary (bukan `&&`) supaya hasilnya `undefined`, bukan `false`,
+        // saat mobile — TopNav mengecek `centerContent != null` untuk
+        // memilih mode layout grid, dan `false != null` bernilai true.
+        !isMobile ? (
           <HStack gap={1} align="center">
             {NAV_ITEMS.map((item) => (
               <TopNavItem
@@ -49,17 +59,18 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
               />
             ))}
           </HStack>
-        )
+        ) : undefined
       }
       endContent={
         <HStack gap={2} align="center">
           {!isMobile && <LocaleSwitcher locale={locale} />}
-          <MobileNavToggle label="Menu" />
+          <MobileNavToggle label={MENU_LABEL[locale]} />
           <Button
             label={CONTACT_LABEL[locale]}
             variant="primary"
             size="sm"
             onClick={handleContactClick}
+            tooltip={CONTACT_TOOLTIP[locale]}
           />
         </HStack>
       }
@@ -71,7 +82,7 @@ export function SiteMobileNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
 
   return (
-    <MobileNav header="Menu">
+    <MobileNav header={MENU_LABEL[locale]}>
       {NAV_ITEMS.map((item) => (
         <SideNavItem
           key={item.key}

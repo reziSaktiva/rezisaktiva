@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
-import { Heading } from "@astryxdesign/core/Heading";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
 import { LOCALES, isLocale } from "@/lib/locale";
+import { StubPage } from "../_components/stub-page";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -28,10 +26,5 @@ export default async function WorkPage({ params }: PageProps<"/[locale]/work">) 
 
   const copy = COPY[locale];
 
-  return (
-    <VStack gap={2} align="center" justify="center" padding={6} minHeight="60vh">
-      <Heading level={1}>{copy.heading}</Heading>
-      <Text color="secondary">{copy.text}</Text>
-    </VStack>
-  );
+  return <StubPage heading={copy.heading} text={copy.text} />;
 }

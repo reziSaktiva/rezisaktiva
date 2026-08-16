@@ -37,6 +37,21 @@ export const CONTACT_LABEL: Record<Locale, string> = {
 };
 
 /**
+ * Placeholder tooltip untuk tombol Contact — modal belum wired (T-016,
+ * ADR-019). Dihapus begitu T-016 selesai dan `onClick` benar-benar membuka
+ * modal.
+ */
+export const CONTACT_TOOLTIP: Record<Locale, string> = {
+  id: "Segera hadir — form kontak menyusul",
+  en: "Coming soon — contact form in progress",
+};
+
+export const MENU_LABEL: Record<Locale, string> = {
+  id: "Menu",
+  en: "Menu",
+};
+
+/**
  * Cocokkan pathname aktif ke item nav untuk state `isSelected`.
  * Home hanya aktif tepat di root locale; item lain aktif dengan prefix match
  * (mis. `/id/work` dan turunannya bila ada rute anak di masa depan).
