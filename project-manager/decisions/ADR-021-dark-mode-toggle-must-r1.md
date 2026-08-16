@@ -40,3 +40,7 @@ Accepted
 - `product-discovery/04-ux/navigation-patterns.md` — Mobile Considerations: "toggle tema" direferensikan ke ADR-021 (bukan lagi asumsi tanpa prioritas).
 - `product-discovery/04-ux/ux-principles.md` / `key-screen-patterns.md` — catatan singkat: toggle tidak mengubah default light-ship.
 - `project-manager/tasks/v03-development-r1.md` — subtask implementasi komponen toggle di chrome (site-header); hapus "Dark mode toggle UI (Should/Later)" dari daftar yang tidak masuk backlog R1.
+
+### Update — 2026-08-16
+
+Task ID resmi untuk implementasi: **T-013.4** (`v03-development-r1.md`, di bawah parent T-013 Site chrome R1).

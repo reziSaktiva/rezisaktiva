@@ -58,6 +58,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | Paritas makna ID/EN | Salinan setara, bukan dump mesin | Bilingual yang kredibel |
 | Teaser actionable | Highlight → bukti eksternal (repo/live) bila ada | Bukti tanpa halaman case |
 | Aksesibilitas dasar | Heading, kontras, fokus keyboard | Clarity juga berarti bisa dipakai |
+| Motion sebagai identitas visual | Scroll-triggered reveal, micro-interaction halus, easing hero (**ADR-017**) | Naik dari Could minimal; tetap tunduk batas clarity-first, bukan modul halaman baru |
 
 Should = kualitas Must, bukan modul halaman baru.
 
@@ -68,7 +69,6 @@ Should = kualitas Must, bukan modul halaman baru.
 | ID / item | Keterangan | Catatan |
 | --------- | ---------- | ------- |
 | M8 | Form kontak / booking ringan | Hanya jika email/tautan terasa kurang |
-| Motion / craft ringan | Presence edge | Jangan menggeser clarity |
 | Early magnet | 1 case/proses singkat lebih awal | Idealnya release berikutnya; boleh jika konten siap (bukan blocker) |
 
 ---
@@ -103,7 +103,7 @@ Urutan pengerjaan disarankan (konten + surface), tetap dalam satu rilis MVP:
 | 5 | Lintas halaman | M5 Language + M6 Chrome (termasuk toggle tema, ADR-021) + M13 Quick Info (ADR-022) |
 | 6 | Destination hygiene | M7 Meta |
 | 7 | Poles Should | Availability, paritas ID/EN, a11y dasar |
-| 8 | Could (opsional) | M8 / motion / early case |
+| 8 | Could (opsional) | M8 / early case |
 
 Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 
@@ -115,7 +115,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 2. **Brand primer** — item yang mendorong hard sell / harga = Won't (arah produk).
 3. **Magnet bertahap** — M10 berharga, tetapi Won't untuk rilis MVP kecuali keputusan eksplisit geser ke opsi D. M9 sudah naik ke Must R1 (ADR-020, 2026-08-15) sebagai pengecualian eksplisit.
 4. **Should ≠ Must** — ship Must lengkap lebih penting daripada poles sempurna.
-5. **Could tidak mencuri kapasitas** — form/motion/case awal hanya jika Must+Should sudah aman.
+5. **Could tidak mencuri kapasitas** — form/case awal hanya jika Must+Should (termasuk motion identitas, ADR-017) sudah aman.
 6. **Selaras dual north star** — prioritas yang tidak membantu recall atau soft inbound path dipertanyakan.
 7. **Satu sumber modul** — ID M1–M13 dari `feature-modules.md`; jangan invent modul paralel di sini.
 
@@ -149,6 +149,7 @@ Prioritas dianggap cukup jika:
 * `release-roadmap.md` — jadwal rilis (berikutnya)
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-manager/decisions/ADR-017-motion-as-identity-r1.md` — motion sebagai identitas visual
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/PROJECT_STATE.md`

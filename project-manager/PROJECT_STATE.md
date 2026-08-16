@@ -37,7 +37,7 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012) — exit kriteria terpenuhi (lihat T-012.1).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-022.
-* Fase aktif: **Development** — implementasi R1 (Home / About / Contact + work teaser + chrome + Quick Info + meta), bukan scaffold.
+* Fase aktif: **Development** — implementasi R1 (Home / About / Work index + Contact modal + work teaser + chrome + Quick Info + meta), bukan scaffold.
 * Backlog Development R1 **sudah disusun** (`tasks/v03-development-r1.md`, T-013…T-020, termasuk T-019 Work index M9, T-013.4 theme toggle, T-020 Quick Info M13). **T-013.1–T-013.3 selesai** — Site chrome R1 (nav Home/About/Karya + hamburger mobile + Contact-button, per ADR-020). Berikutnya: **T-014** — Home + work teaser. **T-013.4** dan **T-020** masuk backlog (bukan mengganti fokus T-014).
 
 ---
@@ -48,7 +48,7 @@
 
 Diizinkan:
 
-* Implementasi fitur/konten R1 Must (M1–M7 + M9 + M13 + theme toggle: Home, About, Contact, work teaser, language, chrome, meta, Work index, Quick Info — ADR-020, ADR-021, ADR-022)
+* Implementasi fitur/konten R1 Must (M1–M7 + M9 + M13 + theme toggle: Home, About, Work index, Contact modal, work teaser, language, chrome, meta, Quick Info — ADR-019, ADR-020, ADR-021, ADR-022)
 * Polish Should R1 yang tidak menambah halaman baru (paritas ID/EN, a11y dasar, availability line)
 * Mockup → kode sesuai UX baseline (ADR-014) + Astryx (ADR-018)
 * Diskusi, ADR untuk keputusan material implementasi

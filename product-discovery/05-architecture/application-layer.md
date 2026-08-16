@@ -12,6 +12,8 @@ R1 memakai **Static-first (SSG)**: halaman digenerate saat build dari konten di 
 
 Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sini hanya kontrak perilaku.
 
+> **Update (2026-08-15/16, ADR-019/ADR-020):** Route halaman R1 = Home, About, Work index (`/work`, M9); Contact **bukan** route — modal global yang dibuka dari chrome (ADR-019), termasuk form client-side singkat (email + message) tanpa backend wajib.
+
 ---
 
 # Purpose
@@ -40,11 +42,13 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 
 | Entry | Perilaku |
 | ----- | -------- |
-| `/[id\|en]/`, `/[id\|en]/about`, `/[id\|en]/contact` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/about`, `/en/contact`) |
+| `/[id\|en]/`, `/[id\|en]/about`, `/[id\|en]/work` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/about`, `/en/work`) |
 | `/` atau URL tanpa locale | Redirect ke locale default (geo → browser → preferensi setelah switcher) per ADR-014 |
+| Contact modal (tombol di chrome) | Overlay client-side; bukan route/page baru (ADR-019) |
+| Quick Info drawer (tab tepi kanan) | Overlay client-side; bukan route/page baru (ADR-022) |
 | Switcher | Navigasi ke sibling path locale; set preferensi untuk kunjungan `/` berikutnya saja |
 | Link satelit | Keluar situs (GitHub/LinkedIn) |
-| `mailto:` | Dibuka klien email pengguna — bukan submit ke server kita |
+| `mailto:` / form modal | Dibuka klien email pengguna, atau submit ringan dari form modal (ADR-019) — bukan API domain produk |
 
 ---
 
@@ -57,7 +61,7 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 | Render halaman | Build time (SSG) |
 | Locale routing | Framework + hosting rules |
 | Meta/OG | Generate saat build per Page×Locale |
-| Contact | Mailto / tautan — bukan service kontak |
+| Contact | Modal client-side (ADR-019); mailto / form ringan — bukan service kontak backend |
 
 Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastruktur, bukan domain API.
 
@@ -111,5 +115,7 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 * `../04-ux/information-architecture.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

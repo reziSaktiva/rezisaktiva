@@ -76,7 +76,9 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 
 # Product Implications
 
-* **Tidak ada perubahan Must** terhadap ADR-010–012 dari temuan User.
+> **Catatan (2026-08-15/16):** Statement di bawah adalah kondisi saat Baseline User v1.0 dikunci (2026-08-07). Sejak itu, ADR-019/020/021/022 (fase Development) menambah Must baru (Contact modal, Work index, theme toggle, Quick Info) — perubahan tersebut berasal dari keputusan UX/produk lanjutan, bukan temuan fase User, sehingga tidak mengubah kesimpulan I1–I7 di atas.
+
+* **Tidak ada perubahan Must** terhadap ADR-010–012 dari temuan User (per baseline 2026-08-07).
 * Perkuat penekanan: Home clarity, teaser berkualitas, About risk-reducer, Contact soft.
 * Could Have (form/calendar) hanya jika A3 terbukti lemah setelah live.
 * R2 magnet tetap jawaban untuk J6 — jangan naikkan ke Must diam-diam.

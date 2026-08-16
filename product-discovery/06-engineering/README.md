@@ -53,7 +53,7 @@ Topik berikut tidak dibahas di sini:
 
 **Engineering Baseline v1.0 sudah ditetapkan** (ADR-016, 2026-08-11). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `auth-strategy.md` / `database-orm.md` sebagai N/A).
 
-Acuan fase: Next.js single-app + pnpm; Vercel; CI Actions lint/typecheck; ESLint/Prettier; Tailwind + CSS vars (light default, dark fondasi A+).
+Acuan fase: Next.js single-app + pnpm; Vercel; CI Actions lint/typecheck; ESLint/Prettier; Astryx + StyleX + theme CSS (light default, dark fondasi via prop `mode` — menggantikan Tailwind + CSS vars, ADR-018).
 
 Langkah berikutnya (historis fase): **Repository & Bootstrap**, lalu Development. Status fase aktif ada di `PROJECT_STATE.md`.
 

@@ -57,13 +57,13 @@ Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup
 
 * **Status:** ⏳ Todo
 * **Domain:** UI/UX
-* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3 + override 2026-08-15), ADR-014, ADR-019, `design-mockups/shared.js` (komponen modal Contact — `contact.html` sudah dihapus)
-* **Catatan mockup (2026-08-15):** Contact di mockup sekarang Dialog/Modal global (bukan halaman `/[locale]/contact`), dibuka dari nav/CTA di semua halaman; termasuk form email + message (ADR-019 override ADR-014 poin "tanpa form"). **Belum diputuskan** sebelum eksekusi T-016.2: apakah `/[locale]/contact` tetap ada sebagai route (fallback/SEO) di samping modal, atau modal-only. Tanyakan ke Boss Rezi sebelum implementasi kode.
+* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3 — final modal-only, ADR-019), ADR-014, ADR-019, `design-mockups/shared.js` (komponen modal Contact — `contact.html` sudah dihapus)
+* **Keputusan (2026-08-16):** Contact **modal-only** — final, selaras ADR-019. Dialog/Modal global (bukan halaman `/[locale]/contact`), dibuka dari nav/CTA di semua halaman; termasuk form email + message (ADR-019 override ADR-014 poin "tanpa form"). **Tidak ada** route `/[locale]/contact` — jangan dibuat sebagai fallback/SEO tanpa ADR baru.
 
 ### Subtasks
 
-- [ ] **T-016.1** — Konten Contact di `content/` (ajakan soft + konteks; Email primer; LinkedIn/GitHub satelit; availability bila belum di Home; copy form bila dipertahankan)
-- [ ] **T-016.2** — Komponen Contact sesuai pola S3 (override ADR-019) + mockup; `mailto:` tetap primer; form email+message diizinkan; tanpa calendar / WA / IG / pricing; klarifikasi route vs modal-only dulu (lihat catatan di atas)
+- [ ] **T-016.1** — Konten Contact di `content/` (ajakan soft + konteks; Email primer; LinkedIn/GitHub satelit; availability bila belum di Home; copy form)
+- [ ] **T-016.2** — Komponen Contact modal sesuai pola S3 (ADR-019) + mockup; `mailto:` tetap primer; form email+message diizinkan; tanpa calendar / WA / IG / pricing; tidak membuat route `/contact` terpisah
 
 ---
 

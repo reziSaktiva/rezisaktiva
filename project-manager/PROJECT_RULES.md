@@ -6,7 +6,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-08-07 |
+| Last Updated | 2026-08-16 |
 
 ---
 
@@ -43,7 +43,7 @@ Dokumen ini **tidak** mengatur:
 * Simplicity over Premature Optimization
 * Maintainability over Complexity
 
-Aturan arsitektur spesifik (DDD, Modular Monolith, dll.) **belum** dikunci — akan ditetapkan saat Architecture / Engineering baseline.
+Aturan arsitektur spesifik sudah dikunci di `../product-discovery/05-architecture/` + ADR-015 (Architecture Baseline v1.0) dan ADR-016 (Engineering Baseline v1.0, single-app). Perubahan material memerlukan ADR baru.
 
 ---
 
@@ -71,7 +71,8 @@ Termasuk:
 * `ARCHITECTURE_OVERVIEW.md`
 * `PROJECT_RULES.md`
 * `DEVELOPER_WORKFLOW.md`
-* `SKILL.md`
+* `.cursor/skills/*/SKILL.md`
+* `.cursor/rules/*.mdc`
 * Dokumen baseline di `product-discovery/` (setelah ditetapkan)
 
 **Living Document**
@@ -105,7 +106,7 @@ Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah — **kec
 * Ikuti `.cursor/skills/project-os-navigator/SKILL.md` di awal sesi yang membutuhkan konteks project.
 * Ikuti `.cursor/skills/proactive-clarification/SKILL.md` sebelum asumsi pada fork keputusan.
 * Setelah pekerjaan selesai, laporkan dengan `.cursor/skills/work-report-simple/SKILL.md`.
-* Jangan mengimplementasikan kode sebelum Product Discovery selesai (kecuali Boss Rezi meminta eksplisit).
+* Implementasi kode mengikuti `Active Conversation Mode` di `PROJECT_STATE.md` (misal: kode R1 diizinkan saat Active Mode = Development), kecuali Boss Rezi meminta eksplisit di luar mode itu.
 * Jangan memperbaiki inkonsistensi dokumen secara diam-diam — sebutkan ke user dulu.
 
 ---

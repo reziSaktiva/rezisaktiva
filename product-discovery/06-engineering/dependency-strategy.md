@@ -34,7 +34,7 @@ R1 = **single-app** + **pnpm** (sudah dikunci di `monorepo-setup.md`).
 | `engines` | Node LTS yang didukung Next saat bootstrap (opsional di `package.json`) |
 | Package manager | **pnpm** — deklarasikan via `packageManager` field bila memakai Corepack |
 
-Major upgrade framework (Next, React, Tailwind) = PR terpisah + cek Preview Vercel.
+Major upgrade framework (Next, React, Astryx) = PR terpisah + cek Preview Vercel.
 
 ---
 
@@ -76,7 +76,7 @@ Preferensi: dependency sedikit, intentional; prefer API platform (Next/Vercel) s
 | Frekuensi | Mingguan atau grup patch/minor; major = review manual |
 | Security advisories | Prioritaskan PR keamanan |
 | Renovate | Alternatif setara jika lebih disukai nanti — jangan jalankan keduanya bersamaan |
-| Update manual | Tetap boleh untuk Next/React/Tailwind besar |
+| Update manual | Tetap boleh untuk Next/React/Astryx besar |
 
 Setelah merge update: pastikan CI hijau + Preview Vercel OK.
 

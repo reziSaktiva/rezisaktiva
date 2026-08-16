@@ -10,6 +10,8 @@ Dokumen ini mendefinisikan alur pengguna website portofolio **rezisaktiva** untu
 
 Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi singkat → soft next step. Bukan flow CMS, auth, atau case detail.
 
+> **Update (2026-08-15/16, ADR-019/ADR-020):** Work index (`/work`, M9) naik Must R1 — boleh dikunjungi di F1/F2. Contact final sebagai modal global (ADR-019), bukan navigasi ke halaman baru.
+
 ---
 
 # Purpose
@@ -41,8 +43,8 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 1. Masuk via URL (locale default atau link ber-locale)
 2. **Home** — baca first viewport (positioning)
 3. Skim **credibility line** (1 klaim non-kartu) + **work teaser** (1–3 kartu karya)
-4. Opsional: buka **About** bila butuh narasi
-5. Buka **Contact** → kirim Email **atau** simpan URL / lanjut satelit bila perlu
+4. Opsional: buka **About** atau **Work index** (`/work`, M9) bila butuh detail lebih
+5. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
 6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
 
 **Failure modes:** Home = daftar stack; Contact tersembunyi; tidak ada Email jelas.
@@ -53,8 +55,8 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. Masuk Home (clarity)
 2. Ke **About** — cara berpikir / kolaborasi / AI edge jujur
-3. Kembali atau lanjut cek **teaser** outcome di Home
-4. **Contact** — Email primer
+3. Kembali atau lanjut cek **teaser** outcome di Home / **Work index**
+4. **Contact modal** — Email primer (ADR-019)
 5. Sukses: cukup sinyal profesional + product thinking untuk outreach soft
 
 **Failure modes:** About tidak menambah trust; tone terlalu kosong atau terlalu “dev for hire”.
@@ -93,7 +95,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 ### F5 — Klien soft (SC5)
 
-1. Home / teaser → Contact
+1. Home / teaser → Contact modal
 2. Email (tanpa mencari harga)
 3. Sukses: outreach terkirim; ekspektasi diskusi
 4. Failure diterima: mencari pricing — salinan Contact mengarahkan ke percakapan (ADR-008)
@@ -102,8 +104,8 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 # Out of Scope Flows (R1)
 
-* F7 case detail / katalog Work
-* Form submit / calendar booking
+* F7 case detail per karya (M10) — katalog Work index (M9) sendiri sudah Must R1 (ADR-020), bukan lagi out of scope
+* Calendar booking
 * Chat WA / DM Instagram sebagai jalur Contact
 * Login, CMS, personalisasi akun
 
@@ -136,5 +138,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 * `../03-user/user-scenarios.md`
 * `../03-user/user-journey.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

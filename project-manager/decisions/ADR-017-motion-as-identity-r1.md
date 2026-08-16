@@ -1,4 +1,4 @@
-## Decision ADR-017
+# Decision ADR-017
 
 ### Title
 Motion sebagai bagian identitas visual R1 (bukan sekadar Could minimal)

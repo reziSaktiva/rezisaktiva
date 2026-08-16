@@ -8,7 +8,7 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **tiga halaman inti** + **teaser karya di Home** + **lintas-halaman** (bahasa, chrome). Modul magnet (Work/case) dicatat sebagai supporting/future agar hubungan ke roadmap jelas tanpa memasukkannya ke Must Have MVP.
+Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman inti + **teaser karya di Home** + **Contact & Quick Info sebagai overlay global** + **lintas-halaman** (bahasa, chrome, tema). Modul magnet detail (Work case, M10) dicatat sebagai supporting/future agar hubungan ke roadmap jelas tanpa memasukkannya ke Must Have MVP.
 
 > **Catatan override (2026-08-15, ADR-020):** M9 (Work index) naik jadi Must R1 — nav chrome menyertakan link "Karya" ke `/[locale]/work`. M10 (case/process detail) tetap Post-MVP/R2.
 >
@@ -74,7 +74,7 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman inti** + **teaser karya di H
 * Kartu singkat: nama, peran/outcome, tautan eksternal bila ada
 * Kurasi ketat (kualitas > jumlah)
 
-**Catatan:** Ini modul konten di dalam M1, dipisah agar prioritas & roadmap jelas. Bukan halaman `/work` di MVP.
+**Catatan:** Ini modul konten di dalam M1, dipisah agar prioritas & roadmap jelas. Halaman katalog terpisah ada di M9 Work index (Must R1, override ADR-020) — M4 tetap section teaser di Home, bukan pengganti M9.
 
 ---
 
@@ -150,7 +150,7 @@ M9 Work index (Must R1, ADR-020) ──► Post-MVP: M10 Case detail
 2. **Kurasi ketat** — teaser sedikit yang kuat > daftar panjang.
 3. **Soft by default** — Contact tidak berubah jadi sales page.
 4. **Bahasa sebagai lapisan** — bukan afterthought; konten inti dual.
-5. **Magnet tidak mencemari MVP** — M9/M10 eksplisit post-kerangka.
+5. **Magnet detail tidak mencemari MVP** — M10 (case/process detail) eksplisit post-kerangka; M9 (Work index) sendiri sudah naik Must R1 (override ADR-020).
 6. **Satelit tetap satelit** — GitHub/LinkedIn mendukung, tidak menggantikan M1–M3.
 7. **Detail interaksi di UX** — dokumen ini tidak mengunci wireframe atau komponen UI.
 

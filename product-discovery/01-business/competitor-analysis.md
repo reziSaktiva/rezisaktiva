@@ -12,7 +12,7 @@ Portofolio pribadi jarang punya “kompetitor langsung” bernama. Yang bersaing
 
 Kerangka analisis:
 
-* **Referensi** — lima situs acuan craft & positioning (bernama)
+* **Referensi** — tujuh situs acuan bernama: 5 acuan craft & positioning awal + 2 referensi desain tambahan (karolinahess.com, mazurbartek.com — arah seni mockup, ditambahkan 2026-08-14/15)
 * **Pesaing** — kategori alternatif (LinkedIn/GitHub, portofolio developer, designer/agency, freelance productized) — belum named
 * **Prioritas pelajaran (terkunci):** clarity → presence → craft (opsi D / ADR-006)
 

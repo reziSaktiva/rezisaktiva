@@ -96,7 +96,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 
 | Domain | Keputusan R1 |
 | ------ | ------------ |
-| Spacing | Skala Tailwind default (4px base) cukup; konsisten ritme section |
+| Spacing | Skala token Astryx berbasis 4px cukup; konsisten ritme section |
 | Radius | Sedang untuk teaser/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
 | Elevation | Minimal shadow; hierarchy lewat tipe & spasi, bukan multi-layer glow |
 | Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens |

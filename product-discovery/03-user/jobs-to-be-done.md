@@ -82,7 +82,7 @@ Setiap job punya: ID, persona utama, prioritas R1 (Must / Should / Later).
 
 | Prioritas | Jobs | Surface utama |
 | --------- | ---- | ------------- |
-| **Must R1** | J1, J2, J3, J4, J7 + E1–E4 pendukung | Home, About, Contact, teaser, i18n |
+| **Must R1** | J1, J2, J3, J4, J7 + E1–E4 pendukung | Home, About, Work index, Contact modal, teaser, i18n |
 | **Should tipis** | J5 | About + tautan satelit |
 | **Later R2** | J6 | Case/proses singkat (magnet) |
 | **Out** | Banding harga, login app, feed sosial sebagai job inti | — |
