@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { Theme } from "@astryxdesign/core/theme";
-import { siteTheme } from "@/lib/theme";
+import { neutralTheme } from "@astryxdesign/theme-neutral/built";
 import {
   getThemeModeServerSnapshot,
   getThemeModeSnapshot,
@@ -47,7 +47,7 @@ export function ThemeModeProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeModeContext value={value}>
-      <Theme theme={siteTheme} mode={mode}>
+      <Theme theme={neutralTheme} mode={mode}>
         {children}
       </Theme>
     </ThemeModeContext>

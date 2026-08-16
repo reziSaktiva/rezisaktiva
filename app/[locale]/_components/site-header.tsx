@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useAppShellMobile } from "@astryxdesign/core/AppShell";
 import { Button } from "@astryxdesign/core/Button";
 import { HStack } from "@astryxdesign/core/HStack";
+import { VStack } from "@astryxdesign/core/Layout";
 import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
@@ -43,7 +44,14 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   return (
     <TopNav
       label="Main navigation"
-      heading={<TopNavHeading heading="rezisaktiva" headingHref={`/${locale}`} />}
+      className="site-top-nav"
+      heading={
+        <TopNavHeading
+          heading="rezisaktiva"
+          headingHref={`/${locale}`}
+          className="site-brand-heading"
+        />
+      }
       centerContent={
         // Ternary (bukan `&&`) supaya hasilnya `undefined`, bukan `false`,
         // saat mobile — TopNav mengecek `centerContent != null` untuk
@@ -73,6 +81,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
             size="sm"
             onClick={handleContactClick}
             tooltip={CONTACT_TOOLTIP[locale]}
+            className="site-contact-button"
           />
         </HStack>
       }
@@ -85,15 +94,17 @@ export function SiteMobileNav({ locale }: { locale: Locale }) {
 
   return (
     <MobileNav header={MENU_LABEL[locale]}>
-      {NAV_ITEMS.map((item) => (
-        <SideNavItem
-          key={item.key}
-          as={NextLink}
-          href={item.href(locale)}
-          label={NAV_LABELS[locale][item.key]}
-          isSelected={isNavItemActive(pathname, locale, item)}
-        />
-      ))}
+      <VStack gap={0.5} className="site-mobile-nav-chip">
+        {NAV_ITEMS.map((item) => (
+          <SideNavItem
+            key={item.key}
+            as={NextLink}
+            href={item.href(locale)}
+            label={NAV_LABELS[locale][item.key]}
+            isSelected={isNavItemActive(pathname, locale, item)}
+          />
+        ))}
+      </VStack>
       <LocaleSwitcher locale={locale} />
     </MobileNav>
   );

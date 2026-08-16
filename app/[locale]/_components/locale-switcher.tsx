@@ -36,7 +36,13 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
   };
 
   return (
-    <SegmentedControl value={locale} onChange={handleChange} label="Bahasa / Language" size="sm">
+    <SegmentedControl
+      value={locale}
+      onChange={handleChange}
+      label="Bahasa / Language"
+      size="sm"
+      className="site-locale-switch"
+    >
       {LOCALES.flatMap((value, index) => [
         index > 0 && (
           <span key={`sep-${value}`} aria-hidden="true" className="locale-switch-separator">

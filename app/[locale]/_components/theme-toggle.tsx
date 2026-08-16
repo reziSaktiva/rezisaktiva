@@ -29,6 +29,7 @@ export function ThemeToggle({ locale }: { locale: Locale }) {
       onPressedChange={toggle}
       icon={<Icon icon={SunIcon} />}
       pressedIcon={<Icon icon={MoonIcon} />}
+      className="site-theme-toggle"
     />
   );
 }

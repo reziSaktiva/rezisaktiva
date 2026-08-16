@@ -10,24 +10,106 @@
  */
 
 /*
- * Wrapper chip kuning nav pill (`site-header.tsx`) — idealnya pakai
- * `xstyle`/StyleX (`.cursor/rules/xds.mdc`), tapi compiler StyleX belum
- * wired ke build Turbopack project ini (lihat COMPLETE_TASK.md, catatan
- * T-013.4). Nilai warna sengaja disamakan dengan `CHIP_BG` di `lib/theme.ts`
- * — kalau salah satu diganti, ganti juga yang satunya.
+ * Chrome chip/pill (`site-header.tsx`, `locale-switcher.tsx`) — idealnya
+ * pakai `xstyle`/StyleX (`.cursor/rules/xds.mdc`), tapi compiler StyleX
+ * belum wired ke build Turbopack project ini (lihat COMPLETE_TASK.md,
+ * catatan T-013.4). Sebagai gantinya dipakai class scoped + token Astryx
+ * langsung (`var(--spacing-*)`, `var(--radius-full)`, dst) — bukan
+ * `defineTheme` `components` override, supaya styling ini TIDAK bocor
+ * secara global ke komponen lain yang kebetulan pakai TopNavItem/
+ * SegmentedControl/SideNavItem/Button di tempat lain nanti (lihat code
+ * review PR #28 — blast radius). Setiap rule di bawah discope lewat class
+ * wrapper (`.site-*`) + selector turunan, bukan menimpa class Astryx
+ * (`.astryx-*`) secara global.
+ *
+ * `--chip-bg`/`--chip-fg` BUKAN token Astryx (`--color-*`) — satu-satunya
+ * sumber kebenaran warna chip kuning ini (dulu terduplikasi antara
+ * `lib/theme.ts` dan file ini; sekarang cuma di sini).
  */
+:root {
+  --chip-bg: #fde047;
+  --chip-fg: #14181f;
+  --chrome-pill-bg: light-dark(#0a0f1a, #ede9e1);
+  --chrome-pill-fg: light-dark(#ede9e1, #0a0f1a);
+}
+
+/* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */
+.site-top-nav {
+  min-height: 80px;
+  padding-inline: var(--spacing-10);
+}
+
+.site-brand-heading {
+  font-weight: 600;
+}
+
+/* Nav pill wrapper (desktop) — chip kuning menyatu di belakang nav link. */
 .site-nav-chip {
-  background-color: #fde047;
+  background-color: var(--chip-bg);
   border-radius: 16px;
+}
+.site-nav-chip .astryx-top-nav-item {
+  background-color: transparent;
+  color: var(--chip-fg);
+  border-radius: 16px;
+}
+.site-nav-chip .astryx-top-nav-item[data-selected] {
+  background-color: var(--chrome-pill-bg);
+  color: var(--chrome-pill-fg);
+}
+
+/* Nav chip wrapper (mobile drawer) — sama seperti desktop tapi untuk SideNavItem. */
+.site-mobile-nav-chip .astryx-side-nav-item {
+  background-color: var(--chip-bg);
+  color: var(--chip-fg);
+  border-radius: 16px;
+}
+.site-mobile-nav-chip .astryx-side-nav-item[data-selected] {
+  background-color: var(--chrome-pill-bg);
+  color: var(--chrome-pill-fg);
+}
+
+/* Locale switch (dipakai ulang desktop + mobile via komponen yang sama). */
+.site-locale-switch {
+  background-color: var(--chip-bg);
+  border-radius: 16px;
+  height: 40px;
+  padding-block: var(--spacing-1-5);
+  padding-inline: var(--spacing-3);
+  gap: var(--spacing-1);
+}
+.site-locale-switch .astryx-segmented-control-item {
+  color: var(--chip-fg);
+  border-radius: 16px;
+  padding-block: var(--spacing-0-5);
+  padding-inline: var(--spacing-2);
+}
+.site-locale-switch .astryx-segmented-control-item[data-selected] {
+  background-color: var(--chrome-pill-bg);
+  color: var(--chrome-pill-fg);
 }
 
 /*
- * Separator "/" antara ID/EN di locale switch (`locale-switcher.tsx`) —
- * sesuai mockup `.locale-switch span.opacity-40`. Warna disamakan dengan
- * `CHIP_FG` di `lib/theme.ts` (teks chip kuning selalu ink gelap).
+ * Separator "/" antara ID/EN di locale switch — sesuai mockup
+ * `.locale-switch span.opacity-40`.
  */
 .locale-switch-separator {
-  color: #14181f;
+  color: var(--chip-fg);
   opacity: 0.4;
   font-size: 0.8em;
+}
+
+/* Tombol Contact — pill penuh + ukuran mockup, scoped ke instance ini saja. */
+.site-contact-button {
+  border-radius: var(--radius-full);
+  height: var(--size-element-md);
+  padding-block: var(--spacing-1-5);
+  padding-inline: var(--spacing-4);
+}
+
+/* Theme toggle — lingkaran penuh sesuai `.theme-toggle` mockup. */
+.site-theme-toggle {
+  border-radius: var(--radius-full);
+  width: var(--size-element-lg);
+  height: var(--size-element-lg);
 }
