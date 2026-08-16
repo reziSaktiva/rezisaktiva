@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Theme } from "@astryxdesign/core/theme";
-import { neutralTheme } from "@astryxdesign/theme-neutral/built";
+import { ThemeModeProvider } from "./_components/theme-mode-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,9 +11,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
       <body>
-        <Theme theme={neutralTheme} mode="light">
-          {children}
-        </Theme>
+        <ThemeModeProvider>{children}</ThemeModeProvider>
       </body>
     </html>
   );
