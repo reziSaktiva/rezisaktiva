@@ -18,6 +18,22 @@ Format entri:
 
 ### Changed
 
+- File copy R1 dipindah dari `tasks/v03-page-copy.md` ke **`tasks/v10-page-copy.md`**. v01–v06 tetap urutan rilis yang direncanakan; copy tidak memakai slot v03/v04–v06. ID task tetap **T-021**.
+
+## [2026-08-18]
+
+### Added
+
+- **T-021** — backlog copy semua teks R1 (`tasks/v03-page-copy.md`): chrome, Home, About, Contact modal, Work index, Quick Info, meta. Dikerjakan sambil diskusi dengan Boss Rezi; output ke `content/`. Subtask `T-014.1` … `T-020.1` + `T-017.1` menunjuk ke T-021.N.
+
+### Changed
+
+- `TASKS.md`, `PROJECT_STATE.md` (fokus T-021.2 + T-014), `v03-development-r1.md`, `content/README.md`.
+
+## [2026-08-18]
+
+### Changed
+
 - Kebijakan kolaborasi AI: **cek dulu, tanya hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana). Tanya ritual dihapus — termasuk “mau pakai mockup yang sekarang atau perbarui dulu?” jika mockup sudah ada dan selaras.
 - `.cursor/rules/ask-before-assuming.mdc` — kewajiban cek kelengkapan task/mockup/dokumen; tanya hanya kondisi urgent; “tidak yakin” yang bisa diselesaikan dengan membaca bukan alasan tanya.
 - `.cursor/rules/ui-ux-mockup-check.mdc` — mockup yang ada dipakai langsung; tanya hanya jika mockup hilang, konflik, atau unplanned.

@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-18] — Copy R1 memakai v10, bukan v03
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta file copy tidak jadi v03. Urutan v01–v06 tetap sesuai rencana rilis. File dipindah ke `tasks/v10-page-copy.md` (bukan v20 — v10 cukup menyisakan v04–v09).
+**Key Decision/Insight:** T-021 tetap. Indeks TASKS: v0.1 / v0.2 / v0.3 utuh; v10 = page copy.
+**Impact:** `tasks/v10-page-copy.md` (baru), `v03-page-copy.md` dihapus, `TASKS.md`, `PROJECT_STATE.md`, `v03-development-r1.md`, `content/README.md`.
+
+## [2026-08-18] — Backlog copy semua teks (T-021), dikerjakan sambil diskusi
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta file task untuk mengisi seluruh teks tiap halaman (judul Home, body, label, form, meta, dst.), dikerjakan sambil berdiskusi — bukan AI mengarang copy sendiri.
+**Key Decision/Insight:** Satu parent **T-021** di `tasks/v03-page-copy.md`. Placeholder mockup bukan copy final. Work case (M10) di luar. UI tetap T-014…T-020; subtask konten `*.1` memakai hasil T-021.
+**Impact:** `tasks/v03-page-copy.md`, `v03-development-r1.md`, `TASKS.md`, `PROJECT_STATE.md`, `content/README.md`.
+
 ## [2026-08-18] — Tanya Boss Rezi hanya jika urgent
 
 **Phase:** Development R1

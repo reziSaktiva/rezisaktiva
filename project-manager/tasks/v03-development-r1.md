@@ -4,6 +4,8 @@ Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + th
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
+**Teks / copy** semua permukaan R1 dikunci lewat **T-021** ([`v10-page-copy.md`](v10-page-copy.md)) — diskusi dengan Boss Rezi, bukan AI mengarang. Subtask `*.1` di bawah memakai hasil itu.
+
 Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mockups/` (rule `ui-ux-mockup-check`). Jika mockup sudah ada dan selaras task/ADR — pelajari lalu pakai (jangan tanya ritual pakai/perbarui). Jika mockup belum ada, konflik, atau di luar rencana — berhenti dan tanya Boss Rezi; tidak boleh langsung ke kode.
 
 ---
@@ -35,7 +37,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-014.1** — Konten Home di `content/` (hero positioning, credibility line 1 klaim, arah soft, availability opsional)
+- [ ] **T-014.1** — Konten Home di `content/` — **sumber copy: T-021.2** (diskusi, jangan mengarang); hero, credibility, arah soft, availability opsional
 - [ ] **T-014.2** — Halaman `/[locale]` (bukan stub): first viewport product builder + fullstack + AI edge; Astryx; motion memperkuat hierarchy (ADR-017) tanpa mengalahkan clarity
 - [ ] **T-014.3** — Work teaser 1–3 item (nama · peran/outcome · tautan bukti opsional); satu-satunya blok karya di Home
 
@@ -49,7 +51,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-015.1** — Konten About di `content/` (narasi product builder, fondasi fullstack, AI edge jujur, cara kerja tingkat tinggi)
+- [ ] **T-015.1** — Konten About di `content/` — **sumber copy: T-021.3** (diskusi, jangan mengarang)
 - [ ] **T-015.2** — Halaman `/[locale]/about` sesuai pola S2 + mockup; Astryx; soft arah ke Contact / teaser Home
 
 ---
@@ -63,7 +65,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-016.1** — Konten Contact di `content/` (ajakan soft + konteks; Email primer; LinkedIn/GitHub satelit; availability bila belum di Home; copy form)
+- [ ] **T-016.1** — Konten Contact di `content/` — **sumber copy: T-021.4** (diskusi, jangan mengarang)
 - [ ] **T-016.2** — Komponen Contact modal sesuai pola S3 (ADR-019) + mockup; `mailto:` tetap primer; form email+message diizinkan; tanpa calendar / WA / IG / pricing; tidak membuat route `/contact` terpisah
 
 ---
@@ -76,7 +78,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-017.1** — `title` + `description` per halaman, per locale (`id`/`en`)
+- [ ] **T-017.1** — `title` + `description` per halaman, per locale (`id`/`en`) — **sumber copy: T-021.7**
 - [ ] **T-017.2** — OG dasar + canonical dari `NEXT_PUBLIC_SITE_URL`
 
 ---
@@ -103,7 +105,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-019.1** — Konten Work index di `content/` (daftar karya kurasi — boleh reuse item work teaser Home + tambahan bila ada)
+- [ ] **T-019.1** — Konten Work index di `content/` — **sumber copy: T-021.5** (daftar karya; selaras teaser Home T-021.2)
 - [ ] **T-019.2** — Halaman `/[locale]/work` sesuai mockup; Astryx; konsisten dengan chrome T-013
 
 ---
@@ -117,7 +119,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-020.1** — Konten Quick Info di `content/` (bio, Services, Tools, Works index, Email, Links) — dari placeholder mockup ke copy nyata; paritas makna ID/EN
+- [ ] **T-020.1** — Konten Quick Info di `content/` — **sumber copy: T-021.6** (diskusi, jangan mengarang dari placeholder mockup)
 - [ ] **T-020.2** — Komponen overlay (tab tepi kanan → drawer, focus trap, Astryx + overlay custom per ADR-018/ADR-022); mount di chrome global; **exclude** di Work case detail; jangan wire form Contact ke dalam drawer
 
 ---
