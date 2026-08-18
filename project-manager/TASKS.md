@@ -6,7 +6,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 1. **T-012** selesai; v0.2 Repository & Bootstrap ✅ Done.
 2. Backlog v0.3 Development R1 (`tasks/v03-development-r1.md`, T-013 … T-020). Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — bukan slot v04–v06.
-3. **T-013 selesai** (T-013.1–T-013.4). Lanjut **T-014** (Home + work teaser). Copy semua teks halaman dikerjakan di **T-021** sambil diskusi (mulai **T-021.2** Home). **T-020** masuk backlog UI, bukan mengganti fokus itu.
+3. **T-013 selesai** (T-013.1–T-013.4). Layout **T-014** boleh paralel; string Home dikunci dulu di **T-021.2** (T-014.3 = T-021.2/T-021.5, jangan mengarang). T-014 tidak Done sebelum copy terpasang. **T-020** masuk backlog UI.
 
 ## Indeks release
 

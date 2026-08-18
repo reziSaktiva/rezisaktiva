@@ -4,7 +4,7 @@ File task **tersendiri** (bukan v0.3). Nomor v01–v06 tetap untuk urutan rilis 
 
 Isi: **semua teks** yang dibaca user di R1: judul, body, label tombol, form, footer, Quick Info, meta — ID dan EN.
 
-Bukan task layout/Astryx. Implementasi halaman tetap di [`v03-development-r1.md`](v03-development-r1.md) (T-014 … T-020). Copy yang dikunci di sini dipakai subtask konten di sana (`T-014.1`, `T-015.1`, …) dan meta `T-017.1`.
+Bukan task layout/Astryx. Implementasi halaman tetap di [`v03-development-r1.md`](v03-development-r1.md) (T-014 … T-020). Copy yang dikunci di sini dipakai subtask konten di sana (`T-014.1`, `T-014.3`, `T-015.1`, …) dan meta `T-017.1`.
 
 Placeholder di mockup (`design-mockups/shared.js` `COPY`) **bukan** copy final. Boleh jadi titik awal diskusi.
 
@@ -18,7 +18,7 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
 2. AI menyiapkan slot teks (dari mockup + task) dan pertanyaan yang membantu memutuskan kata. Boss Rezi yang mengunci wording, klaim, dan nada.
 3. Mockup / baseline product dipakai sebagai **acuan pesan** (product builder, fullstack, AI edge jujur, CTA soft). Kalimat final hanya yang sudah disetujui di diskusi.
 4. Paritas **makna** ID/EN, bukan terjemahan kaku kata-per-kata.
-5. Setelah dikunci: tulis ke `content/` (kontrak folder: `content/README.md`). Baru boleh dianggap input untuk task UI.
+5. Setelah dikunci: tulis ke `content/`. **Layout UI boleh paralel** (mockup untuk struktur/spacing; teks di layar sementara dari mockup). Parent UI tidak ✅ Done sampai copy T-021 terpasang. **T-021.1 termasuk menerapkan** label/URL ke `lib/nav.ts` + footer (T-013 tidak dibuka lagi).
 6. Jangan mengisi teks Work case / detail (M10, `work-case.html`) — itu R2.
 
 **Baca dulu (semua subtask):** `product-discovery/02-product/feature-modules.md`, `01-business/product-vision.md` (klaim yang boleh/tidak), ADR-002, ADR-010, ADR-019, ADR-020, ADR-022, `design-mockups/` halaman terkait + `shared.js` `COPY`.
@@ -34,7 +34,7 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
 
 ### Subtasks
 
-- [ ] **T-021.1** — Chrome bersama: brand `rezisaktiva`; nav Home / Proses Kerja / Karya (atau revisi); tombol Contact; ID/EN; aria menu & tema; footer identitas + label LinkedIn/GitHub; URL satelit. Slot mockup: `nav.*`, `theme.aria`, footer. Dipakai chrome T-013 (sebagian sudah di `lib/nav.ts` — boleh dikunci ulang di sini).
+- [ ] **T-021.1** — Chrome bersama: brand `rezisaktiva`; nav Home / Proses Kerja / Karya (atau revisi); tombol Contact; ID/EN; aria menu & tema; footer identitas + label LinkedIn/GitHub; URL satelit. Slot mockup: `nav.*`, `theme.aria`, footer. **Selesai = terkunci di `content/` dan terpasang** di `lib/nav.ts` + `site-footer` (T-013 tetap Done; jangan daur ulang ID T-013).
 - [ ] **T-021.2** — Home: `h1` (judul), bukti/credibility, blok karya terpilih (label, judul seksi, CTA “lihat semua”), 1–3 item teaser (nama · peran/outcome), seksi contact (label, judul, body, CTA). Slot: `home.*`. Item teaser selaras daftar T-021.5.
 - [ ] **T-021.3** — About / Proses Kerja: `h1`, lead, fullstack, AI, chip, “yang bisa saya bantu”, approach, values, langkah proses, note, CTA. Slot: `about.*`, `section.process`.
 - [ ] **T-021.4** — Contact modal: judul, lead, email + note, availability, label form (email/pesan/placeholder/submit/sent), detail kontak, salin email, sosial, tutup. Slot: `contact.*` (bukan route `/contact`). Email nyata + URL LinkedIn/GitHub. Dipakai T-016.1.

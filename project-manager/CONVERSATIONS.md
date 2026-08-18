@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-18] — Perbaiki kontrak copy ↔ UI (review PR #30)
+
+**Phase:** Development R1
+**Summary:** Temuan review: T-014.3 bisa mengarang teaser; T-014 vs T-021 paralel tanpa aturan Done; T-021.1 mengubah chrome tanpa pasang ke kode; T-018 tidak menunggu T-021.
+**Key Decision/Insight:** Layout boleh paralel + teks mockup sementara. Parent UI Done hanya setelah copy T-021 terpasang. T-021.1 = kunci + apply ke nav/footer. Exit R1 menunggu T-021.1–T-021.7.
+**Impact:** `v03-development-r1.md`, `v10-page-copy.md`, `TASKS.md`, `PROJECT_STATE.md`.
+
 ## [2026-08-18] — Copy R1 memakai v10, bukan v03
 
 **Phase:** Development R1

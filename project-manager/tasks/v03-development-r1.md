@@ -4,7 +4,14 @@ Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + th
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
-**Teks / copy** semua permukaan R1 dikunci lewat **T-021** ([`v10-page-copy.md`](v10-page-copy.md)) — diskusi dengan Boss Rezi, bukan AI mengarang. Subtask `*.1` di bawah memakai hasil itu.
+**Teks / copy** dikunci lewat **T-021** ([`v10-page-copy.md`](v10-page-copy.md)) — diskusi, bukan AI mengarang.
+
+**Kontrak copy ↔ UI:**
+- Layout/komponen (`T-014.2`, `T-015.2`, `T-016.2`, `T-019.2`, `T-020.2`) **boleh paralel** dengan diskusi T-021: pakai mockup untuk struktur, spacing, dan teks **sementara**.
+- Jangan mengarang string user-facing di task UI. Item karya / teaser memakai **T-021.2 + T-021.5** (lihat T-014.3, T-019.1).
+- Parent halaman **tidak** ✅ Done sampai `*.1` (dan T-014.3) memasang copy terkunci dari T-021 ke `content/` + UI.
+- Chrome T-013 tetap Done (struktur). Label/URL yang dikunci di **T-021.1** wajib diterapkan ke `lib/nav.ts` + footer **di subtask itu juga** (bukan task T-013 baru).
+- **T-018.1** baru boleh dijalankan setelah **T-021.1–T-021.7** ✅.
 
 Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mockups/` (rule `ui-ux-mockup-check`). Jika mockup sudah ada dan selaras task/ADR — pelajari lalu pakai (jangan tanya ritual pakai/perbarui). Jika mockup belum ada, konflik, atau di luar rencana — berhenti dan tanya Boss Rezi; tidak boleh langsung ke kode.
 
@@ -24,7 +31,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 - [x] **T-013.1** — Nav Home · About · Karya (M9) sebagai link; Contact = tombol (belum wired ke modal — menyusul T-016); ≥1024px semua selalu terlihat, <1024px nav+switcher di balik hamburger (Contact-button tetap di luar, ≤1 ketukan)
 - [x] **T-013.2** — Locale switcher selalu terlihat di desktop; masuk hamburger di mobile bersama nav (polish stub T-010.3 — sekarang `SegmentedControl` ID/EN); cookie `NEXT_LOCALE` tetap hanya untuk redirect `/`
-- [x] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG); URL satelit masih placeholder `#` sampai konten T-015.1/T-016.1 tersedia
+- [x] **T-013.3** — Footer: identitas singkat + satelit LinkedIn/GitHub (bukan pengganti Contact; tanpa WA/IG); URL satelit masih placeholder `#` sampai **T-021.1** / **T-021.4** dikunci dan dipasang ke footer
 - [x] **T-013.4** — Komponen theme toggle di chrome (`site-header.tsx`) sesuai mockup + ADR-021: selalu terlihat di luar hamburger (bersama Contact-button); default light; persist preferensi (localStorage `rz-theme` + cookie `rz-theme` untuk SSR anti-flash, lihat COMPLETE_TASK.md 2026-08-16); Astryx `Theme` `mode` `'light' | 'dark'` (bukan `system` sebagai Must)
 
 ---
@@ -33,13 +40,13 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 * **Status:** ⏳ Todo
 * **Domain:** UI/UX
-* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M1, M4), `04-ux/key-screen-patterns.md` (S1), ADR-010, ADR-017, `design-mockups/home.html`
+* **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M1, M4), `04-ux/key-screen-patterns.md` (S1), ADR-010, ADR-017, `design-mockups/home.html`, `tasks/v10-page-copy.md` (T-021.2 / T-021.5)
 
 ### Subtasks
 
 - [ ] **T-014.1** — Konten Home di `content/` — **sumber copy: T-021.2** (diskusi, jangan mengarang); hero, credibility, arah soft, availability opsional
-- [ ] **T-014.2** — Halaman `/[locale]` (bukan stub): first viewport product builder + fullstack + AI edge; Astryx; motion memperkuat hierarchy (ADR-017) tanpa mengalahkan clarity
-- [ ] **T-014.3** — Work teaser 1–3 item (nama · peran/outcome · tautan bukti opsional); satu-satunya blok karya di Home
+- [ ] **T-014.2** — Halaman `/[locale]` (bukan stub): layout + Astryx + motion (ADR-017); teks sementara dari mockup boleh sampai T-021.2 terkunci; **jangan tandai T-014 Done** sebelum T-014.1 + T-014.3 memakai copy T-021
+- [ ] **T-014.3** — Work teaser 1–3 item (nama · peran/outcome · tautan bukti opsional) — **sumber copy: T-021.2 + T-021.5** (jangan mengarang); satu-satunya blok karya di Home
 
 ---
 
@@ -87,11 +94,11 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 * **Status:** ⏳ Todo
 * **Domain:** Documentation
-* **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `success-metrics.md` (Phase 1 — Validation)
+* **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `success-metrics.md` (Phase 1 — Validation), `tasks/v10-page-copy.md` (**prasyarat T-021.1–T-021.7 ✅**)
 
 ### Subtasks
 
-- [ ] **T-018.1** — Verifikasi exit R1: reviewer bisa merangkum product builder + fullstack + AI edge; Contact soft path jelas; paritas makna ID/EN; a11y dasar (heading, kontras, fokus keyboard)
+- [ ] **T-018.1** — Verifikasi exit R1: **T-021.1–T-021.7 selesai** (copy terkunci, bukan placeholder mockup sebagai teks ship); reviewer bisa merangkum product builder + fullstack + AI edge; Contact soft path jelas; paritas makna ID/EN; a11y dasar (heading, kontras, fokus keyboard)
 - [ ] **T-018.2** — Update `PROJECT_STATE.md` (R1 exit / Validation) + append `COMPLETE_TASK.md` + update Fokus di `TASKS.md`
 
 ---
@@ -106,7 +113,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 ### Subtasks
 
 - [ ] **T-019.1** — Konten Work index di `content/` — **sumber copy: T-021.5** (daftar karya; selaras teaser Home T-021.2)
-- [ ] **T-019.2** — Halaman `/[locale]/work` sesuai mockup; Astryx; konsisten dengan chrome T-013
+- [ ] **T-019.2** — Halaman `/[locale]/work` sesuai mockup; Astryx; string dari **T-021.5**; parent tidak Done sebelum T-019.1
 
 ---
 

@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-08-18]
 
+### Fixed
+
+- Temuan review PR #30: kontrak copy ↔ UI — T-014.3 sumber T-021.2/T-021.5 (jangan mengarang); layout boleh paralel, parent tidak Done sebelum copy terpasang; T-021.1 wajib pasang chrome ke `lib/nav.ts` + footer; T-018.1 prasyarat T-021.1–T-021.7.
+
+## [2026-08-18]
+
 ### Changed
 
 - File copy R1 dipindah dari `tasks/v03-page-copy.md` ke **`tasks/v10-page-copy.md`**. v01–v06 tetap urutan rilis yang direncanakan; copy tidak memakai slot v03/v04–v06. ID task tetap **T-021**.
