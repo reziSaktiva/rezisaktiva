@@ -1,5 +1,5 @@
 ---
-description: Mockup HTML adalah desain resmi (source of truth) — wajib dipelajari sebelum kerja UI/UX, wajib 100% akurat, konflik dokumentasi butuh persetujuan Boss Rezi
+description: Mockup HTML adalah desain resmi — pelajari sebelum kerja UI/UX, wajib 100% akurat; pakai mockup yang ada tanpa tanya ritual; tanya Boss Rezi hanya jika mockup hilang, konflik, atau unplanned
 alwaysApply: true
 ---
 
@@ -16,7 +16,7 @@ Berlaku untuk task apapun yang:
 
 1. **Mockup HTML di `design-mockups/` adalah desain resmi project ini.** Bukan sekadar referensi/inspirasi — ini kontrak visual yang mengikat. Semua agent AI wajib berkaca ke mockup untuk setiap keputusan desain (layout, warna, komponen, spacing, tipografi, motion), bukan berimprovisasi atau menebak dari deskripsi/dokumentasi saja.
 2. **Wajib pelajari mockup dulu sebelum eksekusi apapun yang menyentuh UI/UX.** Ini bukan sekadar cek "apakah filenya ada" — agent wajib benar-benar membaca HTML/CSS mockup yang relevan (layout, warna, komponen, ukuran, state) sebelum menulis satu baris kode produksi. Jangan mulai dari asumsi/default komponen library lalu "kira-kira mirip".
-3. **Kalau ada perubahan pada mockup yang bertentangan dengan `design-tokens.md`, dokumen `product-discovery/` lain, atau baseline/ADR yang sudah ada** — mockup yang dianggap benar (karena mockup = keputusan desain terbaru), **BUKAN** dokumentasi. Tapi agent **tidak boleh mengubah dokumentasi sendiri secara diam-diam**: laporkan konflik ke Boss Rezi dulu, minta persetujuan eksplisit, baru update dokumen (dan catat sebagai ADR bila material — lihat `PROJECT_RULES.md` § Decision Recording).
+3. **Kalau ada perubahan pada mockup yang bertentangan dengan `design-tokens.md`, dokumen `product-discovery/` lain, atau baseline/ADR yang sudah ada** — mockup yang dianggap benar (karena mockup = keputusan desain terbaru), **BUKAN** dokumentasi. Tapi agent **tidak boleh mengubah dokumentasi sendiri secara diam-diam**: ini **urgent** — laporkan konflik ke Boss Rezi dulu, minta persetujuan eksplisit, baru update dokumen (dan catat sebagai ADR bila material — lihat `PROJECT_RULES.md` § Decision Recording).
 4. **Hasil akhir implementasi kode WAJIB 100% akurat secara visual terhadap mockup** — bukan "cukup mirip" atau "kira-kira sama". Ini termasuk (bukan cuma warna/komponen): ukuran (height/width), padding/margin, gap, border-radius, font-size/weight, posisi, dan state (hover/active/selected). Approksimasi hanya boleh untuk hal yang memang tidak bisa direplikasi persis karena keterbatasan tooling (jelaskan gap-nya ke user secara eksplisit, jangan diam-diam dianggap "cukup dekat").
 
 ## Wajib Verifikasi Sebelum Menyatakan Selesai
@@ -29,44 +29,27 @@ Setelah implementasi, agent **wajib memverifikasi kecocokan visual** sebelum mel
 
 ## Langkah Wajib (sebelum eksekusi)
 
-1. **Cek ketersediaan mockup** untuk halaman/komponen yang jadi scope task ini di `design-mockups/`.
-2. **Jika mockup sudah ada:**
+1. **Cek kelengkapan bersama:** task (subtask, Baca dulu, scope) **dan** mockup di `design-mockups/` untuk halaman/komponen yang jadi scope. Jangan mulai kode kalau salah satunya bolong atau saling bentrok — itu urgent, tanya dulu (`.cursor/rules/ask-before-assuming.mdc`).
+2. **Jika mockup sudah ada dan selaras task/ADR:**
    - Pelajari isinya secara menyeluruh (lihat § "ATURAN KERAS" poin 2) — bukan cuma judul/nama file.
-   - Jelaskan dulu isi mockup itu (halaman mana, apa yang terlihat, beda dengan baseline bila ada).
-   - Tanya ke user apakah mau **pakai yang sekarang** atau **perbarui dulu**.
-   - Jangan langsung pakai tanpa jawaban.
-3. **Jika mockup belum ada:**
-   - Wajib beri tahu user bahwa mockup belum ada.
-   - **Wajib buat mockup HTML di `design-mockups/` dulu** — tidak boleh lanjut ke implementasi kode tanpa mockup.
-   - Setelah mockup dibuat, tunjukkan/jelaskan, lalu tanya apakah sudah dipakai atau perlu revisi.
-4. **Jangan lanjut eksekusi visual** (coding komponen/halaman produksi) sebelum:
-   - mockup untuk scope itu ada, **dan**
-   - user secara eksplisit setuju memakai mockup itu (poin 2 atau akhir poin 3).
-5. **Setelah eksekusi**, jalankan langkah "Wajib Verifikasi Sebelum Menyatakan Selesai" di atas.
+   - **Pakai mockup itu.** Jangan tanya “mau pakai yang sekarang atau perbarui dulu?”.
+   - Boleh menyebut singkat di laporan kerja mockup mana yang dipakai — itu bukan gerbang konfirmasi.
+3. **Jika mockup belum ada, konflik dengan dokumen, atau di luar rencana:** **urgent** — berhenti, beri tahu Boss Rezi, pakai `AskQuestion`. Jangan lanjut ke kode produksi. Jangan diam-diam mengarang mockup atau mengabaikan task.
+4. **Setelah eksekusi**, jalankan langkah "Wajib Verifikasi Sebelum Menyatakan Selesai" di atas.
 
-## Format Pertanyaan
+## Format Pertanyaan (hanya saat urgent)
 
 Gunakan `AskQuestion` (bukan listing pilihan di teks biasa).
 
-Jika mockup sudah ada — jelaskan dulu di chat, lalu tanya:
+Jika mockup **belum ada** (gap):
 
 ```
-Sebelum lanjut implementasi [halaman/komponen X], saya cek dulu status mockup-nya:
+Belum ada mockup untuk [halaman/komponen X] di `design-mockups/`, padahal task [T-XXX] mengharuskannya.
 
-- Mockup tersedia di `design-mockups/[nama].html`
-- [ringkas 2–4 poin isi + beda dengan baseline bila ada]
-
-Mau pakai mockup yang sekarang, atau ada bagian yang mau diperbarui dulu?
+Mau dibuatkan mockup HTML dulu, atau task/scope-nya yang perlu diperbaiki?
 ```
 
-Jika mockup belum ada — beri tahu, lalu buat mockup (jangan tawarkan opsi “langsung kode tanpa mockup”):
-
-```
-Belum ada mockup untuk [halaman/komponen X] di `design-mockups/`.
-Saya buatkan mockup HTML dulu sebelum masuk implementasi kode.
-```
-
-Jika ditemukan konflik mockup vs dokumentasi (§ ATURAN KERAS poin 3):
+Jika ditemukan **konflik** mockup vs dokumentasi (§ ATURAN KERAS poin 3):
 
 ```
 Saya menemukan mockup [nama file] tidak sinkron dengan [dokumen/ADR terkait]:
@@ -77,7 +60,9 @@ Saya menemukan mockup [nama file] tidak sinkron dengan [dokumen/ADR terkait]:
 Mockup saya anggap sebagai keputusan terbaru. Boleh saya update [dokumen terkait] supaya sinkron dengan mockup ini?
 ```
 
+Jangan pakai template “mau pakai mockup yang sekarang atau perbarui dulu?” — itu tanya ritual, dilarang.
+
 ## Pengecualian
 
 - Tidak berlaku untuk task murni Engineering/Documentation yang tidak menyentuh output visual (misal: setup CI, restrukturisasi docs).
-- Jika keputusan pakai/update mockup sudah tercatat eksplisit di `project-manager/CONVERSATIONS.md` untuk task yang sama, tidak perlu tanya ulang (poin 2 langkah wajib) — tapi verifikasi akurasi (§ Wajib Verifikasi) tetap berlaku.
+- Verifikasi akurasi (§ Wajib Verifikasi) tetap wajib setelah implementasi UI, terlepas dari apakah ada pertanyaan ke Boss Rezi atau tidak.

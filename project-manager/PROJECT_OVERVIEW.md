@@ -8,7 +8,7 @@
 | Type | Personal portfolio website |
 | Owner | Boss Rezi (Rezi Saktiva) |
 | Status | Active |
-| Last Updated | 2026-08-16 |
+| Last Updated | 2026-08-18 |
 
 > Dokumen ini Static Reference — tidak memuat fase/progress aktif. Lihat `PROJECT_STATE.md` untuk status terkini.
 
@@ -48,7 +48,7 @@ Detail lengkap: `../product-discovery/01-business/product-vision.md` § Out of S
 * Project dikerjakan di **Cursor**.
 * Skills project berada di `.cursor/skills/`.
 * Bahasa dokumentasi: **Indonesia**.
-* Preferensi: Documentation First; tanya dulu sebelum asumsi (lihat skill `proactive-clarification`).
+* Preferensi: Documentation First; cek kelengkapan task + mockup dulu; tanya Boss Rezi hanya jika gap, salah dokumen, atau hal di luar rencana (lihat `.cursor/rules/ask-before-assuming.mdc`).
 
 Tambahkan preferensi baru yang ditemukan ke section ini.
 
