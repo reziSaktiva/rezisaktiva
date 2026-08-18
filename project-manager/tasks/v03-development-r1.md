@@ -4,7 +4,7 @@ Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + th
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
-Sebelum eksekusi task UI/UX: cek mockup di `design-mockups/` (rule `ui-ux-mockup-check`). Jika sudah ada — jelaskan lalu tanya pakai/perbarui. Jika belum ada — wajib buat mockup HTML dulu; tidak boleh langsung ke kode.
+Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mockups/` (rule `ui-ux-mockup-check`). Jika mockup sudah ada dan selaras task/ADR — pelajari lalu pakai (jangan tanya ritual pakai/perbarui). Jika mockup belum ada, konflik, atau di luar rencana — berhenti dan tanya Boss Rezi; tidak boleh langsung ke kode.
 
 ---
 

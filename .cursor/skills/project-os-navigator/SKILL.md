@@ -47,7 +47,7 @@ Jika diskusi menyentuh domain spesifik, baca dokumen relevan dari:
 
 Setiap kali membaca dokumen **Static Reference** (README, OVERVIEW, RULES, SKILL.md, baseline), periksa apakah memuat info yang seharusnya hanya di **Living Document** (`PROJECT_STATE.md`) — status ✅/🟡/⏳, progress %, phase aktif.
 
-Jika ditemukan: **jangan diamkan**. Sebutkan ke user, lalu tawarkan perbaikan (behavior Bug / Inkonsistensi).
+Jika ditemukan: **jangan diamkan** — itu kondisi urgent (salah/gap di dokumen). Tanya Boss Rezi, jangan perbaiki diam-diam.
 
 ---
 
@@ -162,7 +162,8 @@ YYYY-MM-DD
 - Jangan menyarankan implementasi kode jika belum di phase Development (kecuali diminta eksplisit).
 - Jangan mengubah baseline tanpa ADR.
 - Jangan membuat dokumen di luar scope phase aktif.
-- Jangan perbaiki inkonsistensi diam-diam.
+- Jangan perbaiki inkonsistensi diam-diam (itu urgent — tanya Boss Rezi).
+- Jangan tanya ritual jika task + mockup/dokumen sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`).
 - Jangan salin detail task ke `PROJECT_STATE.md`.
 - Jangan daur ulang ID task/subtask (`T-XXX` / `T-XXX.N`); deferred = `⏸️` + alasan.
 - Skills resmi project hanya di `.cursor/skills/`.

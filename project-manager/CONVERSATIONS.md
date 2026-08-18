@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-18] — Tanya Boss Rezi hanya jika urgent
+
+**Phase:** Development R1
+**Summary:** Diskusi subagent berujung ke proses AI: jangan tanya ritual. AI wajib cek sendiri kelengkapan task dan mockup HTML. Tanya Boss Rezi hanya jika ada gap, salah tulis dokumen, atau hal di luar rencana.
+**Key Decision/Insight:** Mockup yang sudah ada dan selaras task/ADR dipakai langsung (tanpa “pakai sekarang atau perbarui dulu?”). Ketidakyakinan yang bisa diselesaikan dengan membaca dokumen/kode/CLI bukan alasan tanya. Tidak memakai subagent kustom untuk project ini pada skala sekarang.
+**Impact:** `.cursor/rules/ask-before-assuming.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`, `.cursor/skills/proactive-clarification/SKILL.md`, `.cursor/skills/project-os-navigator/SKILL.md`, `AGENTS.md`, `PROJECT_RULES.md`, `PROJECT_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `tasks/v03-development-r1.md`.
+
 ## [2026-08-15] — karolinahess.com & mazurbartek.com diformalkan sebagai referensi
 
 **Phase:** Development R1

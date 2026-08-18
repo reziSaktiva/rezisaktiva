@@ -6,7 +6,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-08-16 |
+| Last Updated | 2026-08-18 |
 
 ---
 
@@ -104,11 +104,11 @@ Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah — **kec
 # AI Collaboration Rules
 
 * Ikuti `.cursor/skills/project-os-navigator/SKILL.md` di awal sesi yang membutuhkan konteks project.
-* **Wajib tanya Boss Rezi** (bukan berasumsi/mengarang/lanjut diam-diam) kalau ada fork keputusan, gap, hal belum terdokumentasi, atau sesuatu yang AI sendiri tidak tahu/tidak yakin — `.cursor/rules/ask-before-assuming.mdc` (aturan keras, always-applied) + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya).
+* Cek kelengkapan task + mockup/dokumen acuan dulu. **Tanya Boss Rezi hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana) — bukan tanya ritual, bukan “tidak yakin” yang bisa diselesaikan dengan membaca. Jangan berasumsi/mengarang/lanjut diam-diam pada yang unplanned. `.cursor/rules/ask-before-assuming.mdc` + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya saat memang wajib).
 * Setelah pekerjaan selesai, laporkan dengan `.cursor/skills/work-report-simple/SKILL.md`.
 * Implementasi kode mengikuti `Active Conversation Mode` di `PROJECT_STATE.md` (misal: kode R1 diizinkan saat Active Mode = Development), kecuali Boss Rezi meminta eksplisit di luar mode itu.
 * Jangan memperbaiki inkonsistensi dokumen secara diam-diam — sebutkan ke user dulu.
-* **Task UI/UX wajib ikuti `.cursor/rules/ui-ux-mockup-check.mdc`** — mockup di `design-mockups/` adalah desain resmi (source of truth), hasil kode wajib 100% akurat terhadapnya, dan wajib diverifikasi (screenshot/computed-style) sebelum melaporkan task selesai. Konflik mockup vs dokumentasi (`design-tokens.md`, `product-discovery/`, ADR) butuh persetujuan eksplisit Boss Rezi sebelum dokumen diubah.
+* **Task UI/UX wajib ikuti `.cursor/rules/ui-ux-mockup-check.mdc`** — mockup di `design-mockups/` adalah desain resmi (source of truth); yang sudah ada dan selaras task/ADR **dipakai langsung** (tanpa tanya “pakai atau perbarui?”). Hasil kode wajib 100% akurat dan wajib diverifikasi (screenshot/computed-style) sebelum melaporkan task selesai. Mockup hilang, konflik vs dokumentasi, atau di luar rencana = urgent, tanya Boss Rezi dulu.
 
 ---
 

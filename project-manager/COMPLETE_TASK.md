@@ -14,6 +14,16 @@ Format entri:
 - ...
 ```
 
+## [2026-08-18]
+
+### Changed
+
+- Kebijakan kolaborasi AI: **cek dulu, tanya hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana). Tanya ritual dihapus — termasuk “mau pakai mockup yang sekarang atau perbarui dulu?” jika mockup sudah ada dan selaras.
+- `.cursor/rules/ask-before-assuming.mdc` — kewajiban cek kelengkapan task/mockup/dokumen; tanya hanya kondisi urgent; “tidak yakin” yang bisa diselesaikan dengan membaca bukan alasan tanya.
+- `.cursor/rules/ui-ux-mockup-check.mdc` — mockup yang ada dipakai langsung; tanya hanya jika mockup hilang, konflik, atau unplanned.
+- Skill `proactive-clarification` + `project-os-navigator`; `AGENTS.md`; `PROJECT_RULES.md`; `PROJECT_OVERVIEW.md`; `DEVELOPER_WORKFLOW.md`; catatan gate di `tasks/v03-development-r1.md`.
+- Dicatat di `CONVERSATIONS.md` (2026-08-18).
+
 ## [2026-08-16]
 
 ### Fixed
