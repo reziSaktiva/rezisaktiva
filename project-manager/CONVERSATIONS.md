@@ -14,6 +14,22 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-19] — KI visual vs mockup sebelum merge PR #32
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta dua gap visual dicatat sebagai Known Issue sebelum merge: (1) warna tombol light/dark belum match mockup, (2) background halaman light mode belum match mockup.
+**Key Decision/Insight:** Tidak diperbaiki di PR #32. **KI-001** + **KI-002** di `PROJECT_STATE.md`.
+**Impact:** `PROJECT_STATE.md` (Known Issues), `TASKS.md` Fokus, `COMPLETE_TASK.md`.
+
+## [2026-08-19] — T-018 ditunda sampai copy T-021
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta T-015–T-020. T-018 (exit R1) bentrok kontrak v10: baru boleh setelah T-021.1–T-021.7. Dipilih tunda T-018; UI About/Contact/Work/Quick Info/meta dikerjakan dulu.
+**Key Decision/Insight:** Exit R1 / pindah Validation tidak ditandai sekarang. Copy tetap T-021 (diskusi, bukan AI mengarang).
+**Impact:** `tasks/v03-development-r1.md` T-018 tetap ⏳; Snapshot/Fokus mengarah ke T-021 lalu T-018.
+
+---
+
 ## [2026-08-18] — Subtask copy ditarik dari v03
 
 **Phase:** Development R1

@@ -86,6 +86,62 @@ export function Reveal({
 }
 
 /**
+ * Word reveal — mockup `runWordReveal()` (120ms + i * 80ms).
+ * `inline` = About h1; `compact` = Work h1 (page-line-compact).
+ */
+export function WordReveal({
+  words,
+  variant = "inline",
+}: {
+  words: readonly string[];
+  variant?: "inline" | "compact";
+}) {
+  const [visibleCount, setVisibleCount] = useState(0);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    const timers = words.map((_, index) =>
+      window.setTimeout(
+        () => {
+          setVisibleCount((count) => Math.max(count, index + 1));
+        },
+        120 + index * 80,
+      ),
+    );
+    return () => {
+      for (const timer of timers) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [words]);
+
+  return (
+    <>
+      {words.map((word, index) => (
+        <Text
+          key={`${word}-${index}`}
+          display={variant === "compact" ? "block" : "inline"}
+          className={[
+            variant === "compact"
+              ? "page-word page-word--compact"
+              : "page-word",
+            index < visibleCount ? "is-visible" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          {word}
+          {variant === "inline" && index < words.length - 1 ? " " : ""}
+        </Text>
+      ))}
+    </>
+  );
+}
+
+/**
  * Word reveal hero — mockup `runWordReveal()` (120ms + i * 80ms).
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
@@ -193,18 +249,44 @@ export function CursorRing() {
       target.current = { x: event.clientX, y: event.clientY };
       ring.classList.add("is-active");
     };
-    const onLeave = () => ring.classList.remove("is-active");
+    const onLeave = () => {
+      ring.classList.remove("is-active", "is-hover", "is-close");
+    };
     const onEnterInteractive = () => ring.classList.add("is-hover");
     const onLeaveInteractive = () => ring.classList.remove("is-hover");
+    const onEnterClose = () => ring.classList.add("is-close");
+    const onLeaveClose = () => ring.classList.remove("is-close");
 
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
 
-    const interactives = document.querySelectorAll("a, button");
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterInteractive);
-      el.addEventListener("mouseleave", onLeaveInteractive);
-    });
+    const isInside = (node: EventTarget | null, selector: string) =>
+      node instanceof Element && Boolean(node.closest(selector));
+
+    const onPointerOver = (event: MouseEvent) => {
+      if (isInside(event.target, "[data-ct-scrim]")) {
+        onEnterClose();
+      }
+      if (isInside(event.target, "a, button")) {
+        onEnterInteractive();
+      }
+    };
+    const onPointerOut = (event: MouseEvent) => {
+      if (
+        isInside(event.target, "[data-ct-scrim]") &&
+        !isInside(event.relatedTarget, "[data-ct-scrim]")
+      ) {
+        onLeaveClose();
+      }
+      if (
+        isInside(event.target, "a, button") &&
+        !isInside(event.relatedTarget, "a, button")
+      ) {
+        onLeaveInteractive();
+      }
+    };
+    document.addEventListener("mouseover", onPointerOver);
+    document.addEventListener("mouseout", onPointerOut);
 
     let frame = 0;
     const tick = () => {
@@ -219,10 +301,8 @@ export function CursorRing() {
     return () => {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterInteractive);
-        el.removeEventListener("mouseleave", onLeaveInteractive);
-      });
+      document.removeEventListener("mouseover", onPointerOver);
+      document.removeEventListener("mouseout", onPointerOut);
       cancelAnimationFrame(frame);
     };
   }, []);

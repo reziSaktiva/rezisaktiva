@@ -6,11 +6,15 @@ import {
   parseThemeModeCookieValue,
   THEME_MODE_STORAGE_KEY,
 } from "@/lib/theme-mode";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "rezisaktiva",
-  description: "Portfolio site — bootstrap stub",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: "rezisaktiva",
+    template: "%s",
+  },
 };
 
 /**

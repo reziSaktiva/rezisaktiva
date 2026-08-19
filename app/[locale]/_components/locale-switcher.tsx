@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { LOCALE_COOKIE, LOCALES, type Locale } from "@/lib/locale";
+import { SlidingPillGroup } from "./sliding-pill-group";
 
 const LABELS: Record<Locale, string> = {
   id: "ID",
@@ -38,22 +39,28 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
   };
 
   return (
-    <SegmentedControl
-      value={locale}
-      onChange={handleChange}
-      label="Bahasa / Language"
-      size="sm"
-      className="site-locale-switch"
+    <SlidingPillGroup
+      className="site-locale-switch-host"
       style={chipColorVars}
+      itemSelector=".astryx-segmented-control-item"
+      layoutKey={locale}
     >
-      {LOCALES.flatMap((value, index) => [
-        index > 0 && (
-          <span key={`sep-${value}`} aria-hidden="true" className="locale-switch-separator">
-            /
-          </span>
-        ),
-        <SegmentedControlItem key={value} value={value} label={LABELS[value]} />,
-      ])}
-    </SegmentedControl>
+      <SegmentedControl
+        value={locale}
+        onChange={handleChange}
+        label="Bahasa / Language"
+        size="sm"
+        className="site-locale-switch"
+      >
+        {LOCALES.flatMap((value, index) => [
+          index > 0 && (
+            <span key={`sep-${value}`} aria-hidden="true" className="locale-switch-separator">
+              /
+            </span>
+          ),
+          <SegmentedControlItem key={value} value={value} label={LABELS[value]} />,
+        ])}
+      </SegmentedControl>
+    </SlidingPillGroup>
   );
 }

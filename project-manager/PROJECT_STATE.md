@@ -4,9 +4,10 @@
 
 * **Phase / Milestone:** Development · R1 MVP Clarity (Hybrid lean, M1–M7 + M9 + M13 + theme toggle)
 * **Active Mode:** Development — implementasi fitur/konten R1; bukan scaffold Bootstrap
-* **Top Next Tasks:** kunci copy **T-021.2** (Home, v10); UI berikutnya **T-015.2** / **T-016.2** — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** kunci copy **T-021.2** (Home, v10); exit R1 **T-018** setelah T-021.1–T-021.7 — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ Todo, T-013…T-020) + `tasks/v10-page-copy.md` (⏳ Todo, T-021)
+* **Known Issues:** **KI-001** (warna theme toggle), **KI-002** (background light mode) vs mockup — tidak menghalangi merge PR #32
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ In Progress, T-013…T-017 ✅, T-019 ✅, T-020 ✅, T-018 ⏳) + `tasks/v10-page-copy.md` (⏳ Todo, T-021)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -17,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-08-18 |
+| Last Updated | 2026-08-19 |
 
 ---
 
@@ -27,8 +28,8 @@
 | ----- | ----- |
 | Current Phase | Development |
 | Current Milestone | R1 MVP Clarity (Must M1–M7 + M9 + M13 + theme toggle) |
-| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013 ✅, T-014 ✅, T-015…T-020 ⏳, T-021 copy ⏳; next T-021.2 |
-| Project Status | Development in progress — T-014 Home UI ✅; copy R1 lewat T-021 (diskusi); T-020 masuk backlog UI |
+| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013…T-017 ✅, T-019 ✅, T-020 ✅, T-018 ⏳ (menunggu copy), T-021 copy ⏳; next T-021.2 |
+| Project Status | Development in progress — UI R1 (Home/About/Work/Contact/Quick Info/meta) ✅; copy R1 lewat T-021 (diskusi); T-018 exit menunggu copy |
 
 ---
 
@@ -38,7 +39,7 @@
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012) — exit kriteria terpenuhi (lihat T-012.1).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-022.
 * Fase aktif: **Development** — implementasi R1 (Home / About / Work index + Contact modal + work teaser + chrome + Quick Info + meta), bukan scaffold.
-* Backlog Development R1 **sudah disusun** (`tasks/v03-development-r1.md`, T-013…T-020) — fitur/UI saja (tanpa subtask copy). **Copy semua teks R1** hanya di `tasks/v10-page-copy.md` (**T-021**): kunci + tulis ke `content/`. **T-014** layout Home + motion ✅ (teks sementara mockup). Berikutnya copy: **T-021.2**. UI berikutnya: T-015.2 / T-016.2 / T-019.2 / T-020.2.
+* Backlog Development R1 **sudah disusun** (`tasks/v03-development-r1.md`, T-013…T-020) — fitur/UI saja (tanpa subtask copy). **Copy semua teks R1** hanya di `tasks/v10-page-copy.md` (**T-021**): kunci + tulis ke `content/`. **T-014…T-017, T-019, T-020** UI ✅ (teks sementara mockup). Berikutnya copy: **T-021.2**. **T-018** menunggu T-021.1–T-021.7.
 * **Catatan engineering terbuka:** compiler StyleX (`xstyle`/`stylex.create()`, jalur yang direkomendasikan `.cursor/rules/xds.mdc`) belum wired ke build Turbopack project ini — ditemukan saat T-013.4 (build gagal saat dicoba). Styling chrome saat ini memakai `defineTheme` `components` override sebagai gantinya (tidak butuh compiler tambahan). Perlu keputusan terpisah bila ada task berikutnya yang benar-benar butuh `xstyle` (trade-off Turbopack vs webpack) — lihat `COMPLETE_TASK.md`.
 
 ---
@@ -65,7 +66,12 @@ Tidak diizinkan (kecuali diminta eksplisit):
 
 ## Known Issues
 
-Tidak ada.
+Tercatat sebelum merge PR #32 (About/Work/Contact/Quick Info/meta). Visual vs mockup `design-mockups/` — **belum** diperbaiki di PR ini.
+
+| ID | Issue | Acuan mockup | Catatan |
+| -- | ----- | ------------ | ------- |
+| **KI-001** | Warna tombol switch light/dark mode masih berbeda dari mockup | `design-mockups/home.html` (`.theme-toggle`: `bg-brand` / `text-on-brand`, hover `bg-accent`) | Default dan state hover/pressed belum selaras token chrome mockup |
+| **KI-002** | Warna background halaman light mode masih berbeda dari mockup | `design-mockups/shared.css` (`--c-bg` light) vs permukaan Astryx | Page canvas light belum match ground mockup |
 
 ---
 

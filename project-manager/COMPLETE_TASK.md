@@ -14,6 +14,38 @@ Format entri:
 - ...
 ```
 
+## [2026-08-19]
+### Added
+- **KI-001** — warna tombol light/dark mode berbeda dari mockup.
+- **KI-002** — background halaman light mode berbeda dari mockup.
+### Changed
+- `PROJECT_STATE.md` Known Issues; Snapshot + `TASKS.md` Fokus merujuk KI (tidak blocker merge PR #32).
+
+## [2026-08-19]
+### Fixed
+- Hover navbar mengikuti mockup: sliding pill (`initPillGroups`) di chip Home/About/Karya + ID/EN; magnetic + hover kuning pada Contact dan theme toggle.
+
+## [2026-08-19]
+### Fixed
+- Code review PR #32: cursor ring pakai delegasi `mouseover`/`mouseout` supaya tautan/tombol baru setelah client navigation tetap dapat `is-hover`.
+- `getSiteUrl()` menolak `NEXT_PUBLIC_SITE_URL` kosong / bukan http(s) — fallback localhost, `metadataBase` tidak throw.
+- Timer Salin/Kirim di modal Contact di-`clearTimeout` (klik beruntun + unmount/tutup).
+
+## [2026-08-19]
+### Added
+- **T-015.2** — halaman `/[locale]/about` sesuai `design-mockups/about.html` (hero, offers, approach/values, proses, CTA Contact).
+- **T-016.2** — modal Contact global (ADR-019): form email+message, mailto primer, tanpa route `/contact`; wired ke nav + CTA Home/About/Work.
+- **T-017.2** — title/description/OG + canonical/hreflang dari `NEXT_PUBLIC_SITE_URL` (`lib/page-metadata.ts`).
+- **T-019.2** — halaman `/[locale]/work` sesuai `design-mockups/work.html` (6 tile); tidak ada route Work case (M10/R2).
+- **T-020.2** — Quick Info overlay (ADR-022): tab tepi kanan → drawer, focus trap, bukan form Contact.
+### Changed
+- Branch kerja: `feat/r1-about-work-contact-meta`.
+- **T-018** ditunda (keputusan Boss Rezi 2026-08-19): exit R1 menunggu copy T-021.1–T-021.7 terkunci (kontrak v10).
+### Fixed
+- Tombol Contact chrome tidak lagi tooltip “segera hadir” — modal T-016 sudah hidup.
+
+---
+
 ## [2026-08-18]
 
 ### Changed

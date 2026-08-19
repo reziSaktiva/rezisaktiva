@@ -4,9 +4,10 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-012** selesai; v0.2 Repository & Bootstrap ✅ Done.
-2. Backlog v0.3 Development R1 (`tasks/v03-development-r1.md`, T-013 … T-020). Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — bukan slot v04–v06.
-3. **T-013** dan **T-014** selesai (UI Home). Copy hanya di v10: berikutnya **T-021.2**. UI berikutnya di v03: **T-015.2** / **T-016.2** / **T-019.2** / **T-020.2**.
+1. **T-015.2 / T-016.2 / T-017.2 / T-019.2 / T-020.2** selesai di branch `feat/r1-about-work-contact-meta`.
+2. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — berikutnya **T-021.2** (Home).
+3. **T-018** (exit R1) **ditunda** sampai T-021.1–T-021.7 terkunci (kontrak v10).
+4. **KI-001 / KI-002** (warna theme toggle + background light mode vs mockup) — tercatat, belum diperbaiki.
 
 ## Indeks release
 
@@ -14,7 +15,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
 | v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
-| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020 | ⏳ In Progress (T-013 ✅, T-014 ✅) |
+| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020 | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅; T-018 ⏳ menunggu T-021) |
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021 | ⏳ Todo |
 
 ## Aturan

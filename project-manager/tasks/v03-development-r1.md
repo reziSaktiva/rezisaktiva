@@ -44,44 +44,47 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ## T-015 — About (M2)
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done (T-015.2, 2026-08-19)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M2), `04-ux/key-screen-patterns.md` (S2), ADR-002, `design-mockups/about.html`
+* **Implementasi:** `app/[locale]/about/page.tsx` + `about-page.tsx`; copy sementara `content/about.ts` (final: T-021.3). CTA membuka modal Contact (T-016).
 
 ### Subtasks
 
-- [ ] **T-015.2** — Halaman `/[locale]/about` sesuai pola S2 + mockup; Astryx; soft arah ke Contact / teaser Home
+- [x] **T-015.2** — Halaman `/[locale]/about` sesuai pola S2 + mockup; Astryx; soft arah ke Contact / teaser Home
 
 ---
 
 ## T-016 — Contact (M3)
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done (T-016.2, 2026-08-19)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M3), `04-ux/key-screen-patterns.md` (S3 — final modal-only, ADR-019), ADR-014, ADR-019, `design-mockups/shared.js` (komponen modal Contact — `contact.html` sudah dihapus)
 * **Keputusan (2026-08-16):** Contact **modal-only** — final, selaras ADR-019. Dialog/Modal global (bukan halaman `/[locale]/contact`), dibuka dari nav/CTA di semua halaman; termasuk form email + message (ADR-019 override ADR-014 poin "tanpa form"). **Tidak ada** route `/[locale]/contact` — jangan dibuat sebagai fallback/SEO tanpa ADR baru.
+* **Implementasi:** `app/[locale]/_components/contact-modal.tsx` + `app/_components/contact-modal-provider.tsx`; copy `content/contact.ts` (final: T-021.4). Overlay custom (bukan Astryx Dialog) supaya kartu dark-ink mockup tema-independen. Form = validasi client + state “Terkirim”; mailto tetap primer.
 
 ### Subtasks
 
-- [ ] **T-016.2** — Komponen Contact modal sesuai pola S3 (ADR-019) + mockup; `mailto:` tetap primer; form email+message diizinkan; tanpa calendar / WA / IG / pricing; tidak membuat route `/contact` terpisah
+- [x] **T-016.2** — Komponen Contact modal sesuai pola S3 (ADR-019) + mockup; `mailto:` tetap primer; form email+message diizinkan; tanpa calendar / WA / IG / pricing; tidak membuat route `/contact` terpisah
 
 ---
 
 ## T-017 — Destination meta (M7)
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done (T-017.2, 2026-08-19)
 * **Domain:** Engineering
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M7), `06-engineering/environment-management.md`, ADR-015
+* **Implementasi:** `lib/page-metadata.ts` + `generateMetadata` di Home/About/Work; `metadataBase` di `app/layout.tsx`. Set `NEXT_PUBLIC_SITE_URL` di `.env.local` (lokal) dan Vercel (Preview/Production), contoh production: `https://rezisaktiva.vercel.app`.
 
 ### Subtasks
 
-- [ ] **T-017.2** — OG dasar + canonical dari `NEXT_PUBLIC_SITE_URL`
+- [x] **T-017.2** — OG dasar + canonical dari `NEXT_PUBLIC_SITE_URL`
 
 ---
 
 ## T-018 — Exit R1 → destination layak evaluasi
 
-* **Status:** ⏳ Todo
+* **Status:** ⏳ Todo — ditunda sampai T-021.1–T-021.7 (keputusan Boss Rezi 2026-08-19)
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `success-metrics.md` (Phase 1 — Validation)
 
@@ -94,27 +97,29 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ## T-019 — Work index R1 (M9, override ADR-020)
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done (T-019.2, 2026-08-19)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M9), ADR-020, `design-mockups/work.html`
 * **Catatan:** M9 naik jadi Must R1 lewat ADR-020 (2026-08-15); nav "Karya" (T-013.1) butuh destination nyata. Halaman detail per karya (M10/`work-case.html`) **tetap R2** — jangan bangun detail case di sini, cukup index/katalog yang link keluar (repo/live) atau ke placeholder detail sampai M10 digarap.
+* **Implementasi:** `app/[locale]/work/page.tsx` + `work-page.tsx` + `work-tile.tsx`; katalog `content/work.ts` (final: T-021.5). Tile R1 visual-only (bukan link ke M10).
 
 ### Subtasks
 
-- [ ] **T-019.2** — Halaman `/[locale]/work` sesuai mockup; Astryx
+- [x] **T-019.2** — Halaman `/[locale]/work` sesuai mockup; Astryx
 
 ---
 
 ## T-020 — Quick Info panel (M13, ADR-022)
 
-* **Status:** ⏳ Todo
+* **Status:** ✅ Done (T-020.2, 2026-08-19)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M13), `04-ux/navigation-patterns.md` (Secondary — Quick info), `key-screen-patterns.md` (S0), `ux-principles.md` (overlay ≠ halaman baru, UX3), ADR-019, ADR-022, `design-mockups/shared.js` (`mountQuickInfo()`), `design-mockups/home.html`
 * **Catatan:** M13 naik jadi Must R1 lewat ADR-022 (2026-08-16). Overlay global (tab tepi kanan → drawer), **bukan route baru**. Tampil di semua halaman R1 kecuali Work case detail (M10). Jangan duplikasi Contact modal (ADR-019) atau footer satelit (M6): Email/Links di panel = tautan/rujukan, bukan form inbound.
+* **Implementasi:** `app/[locale]/_components/quick-info.tsx` di locale layout; copy `content/quick-info.ts` (final: T-021.6). Exclude Work case belum relevan (M10 belum ada).
 
 ### Subtasks
 
-- [ ] **T-020.2** — Komponen overlay (tab tepi kanan → drawer, focus trap, Astryx + overlay custom per ADR-018/ADR-022); mount di chrome global; **exclude** di Work case detail; jangan wire form Contact ke dalam drawer
+- [x] **T-020.2** — Komponen overlay (tab tepi kanan → drawer, focus trap, Astryx + overlay custom per ADR-018/ADR-022); mount di chrome global; **exclude** di Work case detail; jangan wire form Contact ke dalam drawer
 
 ---
 
