@@ -15,6 +15,13 @@ Format entri:
 ```
 
 ## [2026-08-19]
+### Changed
+- CI menjalankan `pnpm theme:check` supaya `theme/` tidak drift dari `lib/astryx-theme.ts`.
+### Fixed
+- CTA halaman (`.home-contact-cta`) memakai brand + hover aksen seperti mockup, bukan `variant="primary"` teal.
+- Kanvas `html`/`body` memakai `light-dark()` dari `color-scheme` SSR supaya first paint dark tidak cream.
+
+## [2026-08-19]
 ### Added
 - Tema built `rezisaktiva` (`lib/astryx-theme.ts` → `theme/astryx-theme.css` + `theme/rezisaktiva.js`), extends theme-neutral, nilai `--c-*` dari `design-mockups/shared.css`.
 ### Changed

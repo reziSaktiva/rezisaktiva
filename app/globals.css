@@ -53,9 +53,20 @@
  * Kanvas halaman di luar @scope tema Astryx (`[data-astryx-theme]` hanya
  * membungkus subtree React). Nilai = `--c-bg` / `--c-fg` mockup
  * (`design-mockups/shared.css`) — KI-002.
+ *
+ * `light-dark()` mengikuti `color-scheme` inline di `<html>` (SSR dari
+ * cookie, `app/layout.tsx`) supaya first paint dark tidak cream. Selector
+ * `[data-theme]` tetap ada untuk setelah hydrate (Astryx menulis atribut itu
+ * di layout effect, bukan di markup SSR).
  */
 html,
 body {
+  background-color: light-dark(#edeae1, #0a0f1a);
+  color: light-dark(#14181f, #edeae1);
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body {
   background-color: #edeae1;
   color: #14181f;
 }
@@ -183,6 +194,7 @@ html[data-theme="dark"] body {
  * berganti, bukan warna isi) — KI-001.
  */
 .site-contact-button,
+.home-contact-cta,
 .site-theme-toggle .astryx-toggle-button,
 .site-theme-toggle .astryx-toggle-button[data-is-pressed="true"],
 .site-theme-toggle .astryx-toggle-button[aria-pressed="true"] {
@@ -209,6 +221,7 @@ html[data-theme="dark"] body {
   flex-shrink: 0;
 }
 .site-contact-button:hover,
+.home-contact-cta:hover,
 .site-theme-toggle .astryx-toggle-button:hover,
 .site-theme-toggle .astryx-toggle-button[data-is-pressed="true"]:hover,
 .site-theme-toggle .astryx-toggle-button[aria-pressed="true"]:hover {
