@@ -55,8 +55,13 @@ export function ContactModal({ locale }: { locale: Locale }) {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
+  const copyResetTimer = useRef<number>(0);
+  const sentResetTimer = useRef<number>(0);
 
   const handleClose = useCallback(() => {
+    window.clearTimeout(copyResetTimer.current);
+    window.clearTimeout(sentResetTimer.current);
+    setCopied(false);
     setSent(false);
     close();
   }, [close]);
@@ -99,6 +104,13 @@ export function ContactModal({ locale }: { locale: Locale }) {
     lastFocus.current = null;
   }, [isOpen]);
 
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(copyResetTimer.current);
+      window.clearTimeout(sentResetTimer.current);
+    };
+  }, []);
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(CONTACT_EMAIL);
@@ -106,7 +118,8 @@ export function ContactModal({ locale }: { locale: Locale }) {
       return;
     }
     setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
+    window.clearTimeout(copyResetTimer.current);
+    copyResetTimer.current = window.setTimeout(() => setCopied(false), 1600);
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -117,7 +130,8 @@ export function ContactModal({ locale }: { locale: Locale }) {
       return;
     }
     setSent(true);
-    window.setTimeout(() => setSent(false), 2200);
+    window.clearTimeout(sentResetTimer.current);
+    sentResetTimer.current = window.setTimeout(() => setSent(false), 2200);
   };
 
   return (

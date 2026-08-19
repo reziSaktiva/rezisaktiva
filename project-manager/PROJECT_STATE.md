@@ -6,6 +6,7 @@
 * **Active Mode:** Development — implementasi fitur/konten R1; bukan scaffold Bootstrap
 * **Top Next Tasks:** kunci copy **T-021.2** (Home, v10); exit R1 **T-018** setelah T-021.1–T-021.7 — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
+* **Known Issues:** **KI-001** (warna theme toggle), **KI-002** (background light mode) vs mockup — tidak menghalangi merge PR #32
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ In Progress, T-013…T-017 ✅, T-019 ✅, T-020 ✅, T-018 ⏳) + `tasks/v10-page-copy.md` (⏳ Todo, T-021)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
@@ -65,7 +66,12 @@ Tidak diizinkan (kecuali diminta eksplisit):
 
 ## Known Issues
 
-Tidak ada.
+Tercatat sebelum merge PR #32 (About/Work/Contact/Quick Info/meta). Visual vs mockup `design-mockups/` — **belum** diperbaiki di PR ini.
+
+| ID | Issue | Acuan mockup | Catatan |
+| -- | ----- | ------------ | ------- |
+| **KI-001** | Warna tombol switch light/dark mode masih berbeda dari mockup | `design-mockups/home.html` (`.theme-toggle`: `bg-brand` / `text-on-brand`, hover `bg-accent`) | Default dan state hover/pressed belum selaras token chrome mockup |
+| **KI-002** | Warna background halaman light mode masih berbeda dari mockup | `design-mockups/shared.css` (`--c-bg` light) vs permukaan Astryx | Page canvas light belum match ground mockup |
 
 ---
 

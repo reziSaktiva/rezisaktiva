@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useAppShellMobile } from "@astryxdesign/core/AppShell";
 import { Button } from "@astryxdesign/core/Button";
 import { HStack } from "@astryxdesign/core/HStack";
-import { VStack } from "@astryxdesign/core/Layout";
 import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
@@ -19,7 +18,9 @@ import {
   NAV_LABELS,
   isNavItemActive,
 } from "@/lib/nav";
+import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
+import { SlidingPillGroup } from "./sliding-pill-group";
 import { ThemeToggle } from "./theme-toggle";
 
 /**
@@ -56,12 +57,14 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
         // saat mobile — TopNav mengecek `centerContent != null` untuk
         // memilih mode layout grid, dan `false != null` bernilai true.
         !isMobile ? (
-          <HStack
+          <SlidingPillGroup
             gap={2}
             padding={2}
             align="center"
             className="site-nav-chip"
             style={chipColorVars}
+            itemSelector=".astryx-top-nav-item"
+            layoutKey={pathname}
           >
             {NAV_ITEMS.map((item) => (
               <TopNavItem
@@ -72,21 +75,25 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 isSelected={isNavItemActive(pathname, locale, item)}
               />
             ))}
-          </HStack>
+          </SlidingPillGroup>
         ) : undefined
       }
       endContent={
         <HStack gap={3} align="center">
           {!isMobile && <LocaleSwitcher locale={locale} />}
           <MobileNavToggle label={MENU_LABEL[locale]} />
-          <ThemeToggle locale={locale} />
-          <Button
-            label={CONTACT_LABEL[locale]}
-            variant="primary"
-            size="sm"
-            onClick={open}
-            className="site-contact-button"
-          />
+          <Magnetic>
+            <ThemeToggle locale={locale} />
+          </Magnetic>
+          <Magnetic>
+            <Button
+              label={CONTACT_LABEL[locale]}
+              variant="primary"
+              size="sm"
+              onClick={open}
+              className="site-contact-button"
+            />
+          </Magnetic>
         </HStack>
       }
     />
@@ -99,7 +106,15 @@ export function SiteMobileNav({ locale }: { locale: Locale }) {
 
   return (
     <MobileNav header={MENU_LABEL[locale]}>
-      <VStack gap={0.5} className="site-mobile-nav-chip" style={chipColorVars}>
+      <SlidingPillGroup
+        orientation="vertical"
+        gap={0.5}
+        padding={1}
+        className="site-mobile-nav-chip"
+        style={chipColorVars}
+        itemSelector=".astryx-side-nav-item"
+        layoutKey={pathname}
+      >
         {NAV_ITEMS.map((item) => (
           <SideNavItem
             key={item.key}
@@ -109,7 +124,7 @@ export function SiteMobileNav({ locale }: { locale: Locale }) {
             isSelected={isNavItemActive(pathname, locale, item)}
           />
         ))}
-      </VStack>
+      </SlidingPillGroup>
       <LocaleSwitcher locale={locale} />
     </MobileNav>
   );

@@ -60,33 +60,72 @@
   font-weight: 600;
 }
 
+/* Sliding pill — mockup `.pill-indicator` + `initPillGroups()`. */
+.site-pill-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  background-color: var(--chrome-pill-bg);
+  transition:
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    width 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms ease;
+}
+.site-pill-indicator--no-transition {
+  transition: none !important;
+}
+
 /* Nav pill wrapper (desktop) — chip kuning menyatu di belakang nav link. */
 .site-nav-chip {
+  position: relative;
   background-color: var(--chip-bg);
   border-radius: 16px;
 }
 .site-nav-chip .astryx-top-nav-item {
+  position: relative;
+  z-index: 1;
   background-color: transparent;
   color: var(--chip-fg);
   border-radius: 16px;
+  transition: color 200ms ease;
 }
-.site-nav-chip .astryx-top-nav-item[data-selected] {
-  background-color: var(--chrome-pill-bg);
+.site-nav-chip .astryx-top-nav-item[data-selected],
+.site-nav-chip .astryx-top-nav-item.is-pill-on {
+  background-color: transparent;
   color: var(--chrome-pill-fg);
 }
 
 /* Nav chip wrapper (mobile drawer) — sama seperti desktop tapi untuk SideNavItem. */
-.site-mobile-nav-chip .astryx-side-nav-item {
+.site-mobile-nav-chip {
+  position: relative;
   background-color: var(--chip-bg);
-  color: var(--chip-fg);
   border-radius: 16px;
 }
-.site-mobile-nav-chip .astryx-side-nav-item[data-selected] {
-  background-color: var(--chrome-pill-bg);
+.site-mobile-nav-chip .astryx-side-nav-item {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  color: var(--chip-fg);
+  border-radius: 16px;
+  transition: color 200ms ease;
+}
+.site-mobile-nav-chip .astryx-side-nav-item[data-selected],
+.site-mobile-nav-chip .astryx-side-nav-item.is-pill-on {
+  background-color: transparent;
   color: var(--chrome-pill-fg);
 }
 
 /* Locale switch (dipakai ulang desktop + mobile via komponen yang sama). */
+.site-locale-switch-host {
+  position: relative;
+}
 .site-locale-switch {
   background-color: var(--chip-bg);
   border-radius: 16px;
@@ -96,13 +135,18 @@
   gap: var(--spacing-1);
 }
 .site-locale-switch .astryx-segmented-control-item {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
   color: var(--chip-fg);
   border-radius: 16px;
   padding-block: var(--spacing-0-5);
   padding-inline: var(--spacing-2);
+  transition: color 200ms ease;
 }
-.site-locale-switch .astryx-segmented-control-item[data-selected] {
-  background-color: var(--chrome-pill-bg);
+.site-locale-switch .astryx-segmented-control-item[data-selected],
+.site-locale-switch .astryx-segmented-control-item.is-pill-on {
+  background-color: transparent;
   color: var(--chrome-pill-fg);
 }
 
@@ -122,6 +166,13 @@
   height: var(--size-element-md);
   padding-block: var(--spacing-1-5);
   padding-inline: var(--spacing-4);
+  transition:
+    background-color var(--duration-medium-min) var(--ease-standard),
+    color var(--duration-medium-min) var(--ease-standard);
+}
+.site-contact-button:hover {
+  background-color: var(--chip-bg);
+  color: var(--chip-fg);
 }
 
 /* Theme toggle — lingkaran penuh sesuai `.theme-toggle` mockup. */
@@ -129,6 +180,13 @@
   border-radius: var(--radius-full);
   width: var(--size-element-lg);
   height: var(--size-element-lg);
+  transition:
+    background-color var(--duration-medium-min) var(--ease-standard),
+    color var(--duration-medium-min) var(--ease-standard);
+}
+.site-theme-toggle:hover {
+  background-color: var(--chip-bg);
+  color: var(--chip-fg);
 }
 
 /*
@@ -547,6 +605,7 @@
   .home-reveal,
   .home-hero-line,
   .home-magnetic,
+  .site-pill-indicator,
   .home-work-tile img,
   .home-cta-underline::after,
   .page-word,

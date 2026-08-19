@@ -7,6 +7,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 1. **T-015.2 / T-016.2 / T-017.2 / T-019.2 / T-020.2** selesai di branch `feat/r1-about-work-contact-meta`.
 2. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — berikutnya **T-021.2** (Home).
 3. **T-018** (exit R1) **ditunda** sampai T-021.1–T-021.7 terkunci (kontrak v10).
+4. **KI-001 / KI-002** (warna theme toggle + background light mode vs mockup) — tercatat, belum diperbaiki.
 
 ## Indeks release
 

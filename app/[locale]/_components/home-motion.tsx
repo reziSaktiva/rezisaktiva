@@ -249,7 +249,9 @@ export function CursorRing() {
       target.current = { x: event.clientX, y: event.clientY };
       ring.classList.add("is-active");
     };
-    const onLeave = () => ring.classList.remove("is-active");
+    const onLeave = () => {
+      ring.classList.remove("is-active", "is-hover", "is-close");
+    };
     const onEnterInteractive = () => ring.classList.add("is-hover");
     const onLeaveInteractive = () => ring.classList.remove("is-hover");
     const onEnterClose = () => ring.classList.add("is-close");
@@ -258,16 +260,33 @@ export function CursorRing() {
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
 
-    const interactives = document.querySelectorAll("a, button");
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterInteractive);
-      el.addEventListener("mouseleave", onLeaveInteractive);
-    });
-    const closeTargets = document.querySelectorAll("[data-ct-scrim]");
-    closeTargets.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterClose);
-      el.addEventListener("mouseleave", onLeaveClose);
-    });
+    const isInside = (node: EventTarget | null, selector: string) =>
+      node instanceof Element && Boolean(node.closest(selector));
+
+    const onPointerOver = (event: MouseEvent) => {
+      if (isInside(event.target, "[data-ct-scrim]")) {
+        onEnterClose();
+      }
+      if (isInside(event.target, "a, button")) {
+        onEnterInteractive();
+      }
+    };
+    const onPointerOut = (event: MouseEvent) => {
+      if (
+        isInside(event.target, "[data-ct-scrim]") &&
+        !isInside(event.relatedTarget, "[data-ct-scrim]")
+      ) {
+        onLeaveClose();
+      }
+      if (
+        isInside(event.target, "a, button") &&
+        !isInside(event.relatedTarget, "a, button")
+      ) {
+        onLeaveInteractive();
+      }
+    };
+    document.addEventListener("mouseover", onPointerOver);
+    document.addEventListener("mouseout", onPointerOut);
 
     let frame = 0;
     const tick = () => {
@@ -282,14 +301,8 @@ export function CursorRing() {
     return () => {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterInteractive);
-        el.removeEventListener("mouseleave", onLeaveInteractive);
-      });
-      closeTargets.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterClose);
-        el.removeEventListener("mouseleave", onLeaveClose);
-      });
+      document.removeEventListener("mouseover", onPointerOver);
+      document.removeEventListener("mouseout", onPointerOut);
       cancelAnimationFrame(frame);
     };
   }, []);

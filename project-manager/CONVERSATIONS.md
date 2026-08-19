@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-19] — KI visual vs mockup sebelum merge PR #32
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta dua gap visual dicatat sebagai Known Issue sebelum merge: (1) warna tombol light/dark belum match mockup, (2) background halaman light mode belum match mockup.
+**Key Decision/Insight:** Tidak diperbaiki di PR #32. **KI-001** + **KI-002** di `PROJECT_STATE.md`.
+**Impact:** `PROJECT_STATE.md` (Known Issues), `TASKS.md` Fokus, `COMPLETE_TASK.md`.
+
 ## [2026-08-19] — T-018 ditunda sampai copy T-021
 
 **Phase:** Development R1
