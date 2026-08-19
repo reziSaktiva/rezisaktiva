@@ -7,8 +7,7 @@ import type { Locale } from "@/lib/locale";
 /**
  * Footer chrome R1 (T-013.3, M6): identitas singkat + satelit
  * LinkedIn/GitHub. Bukan pengganti Contact; tanpa WA/IG (ADR-014).
- * URL satelit masih placeholder `#` — diisi saat konten Contact (T-016.1)
- * atau About (T-015.1) tersedia.
+ * URL satelit masih placeholder `#` — diisi saat copy T-021.1 / T-021.4.
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   void locale; // copy footer sama di kedua locale untuk R1; disiapkan untuk paritas nanti
@@ -33,7 +32,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
          * satu sesi, jadi tidak ada dampak visual — cuma hilangkan warning.
          */}
         <Text color="secondary" size="sm">
-          © <span suppressHydrationWarning>{new Date().getFullYear()}</span> rezisaktiva
+          © <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
+          rezisaktiva
         </Text>
         <HStack gap={4} align="center">
           <Link href="#" color="secondary" size="sm">

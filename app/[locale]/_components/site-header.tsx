@@ -10,10 +10,10 @@ import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
+import { useContactModal } from "@/app/_components/contact-modal-provider";
 import type { Locale } from "@/lib/locale";
 import {
   CONTACT_LABEL,
-  CONTACT_TOOLTIP,
   MENU_LABEL,
   NAV_ITEMS,
   NAV_LABELS,
@@ -24,7 +24,7 @@ import { ThemeToggle } from "./theme-toggle";
 
 /**
  * Site chrome — T-013 (ADR-020): nav Home/About/Karya sebagai link,
- * Contact sebagai tombol (belum wired ke modal — menyusul T-016).
+ * Contact sebagai tombol pembuka modal (T-016, ADR-019).
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
@@ -38,10 +38,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   // (lg = 1024px) — sumber kebenaran tunggal untuk kapan hamburger aktif.
   const { isMobile } = useAppShellMobile();
   const chipColorVars = useChipColorVars();
-
-  const handleContactClick = () => {
-    // TODO(T-016): buka modal Contact (ADR-019). Placeholder chrome-only.
-  };
+  const { open } = useContactModal();
 
   return (
     <TopNav
@@ -87,8 +84,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
             label={CONTACT_LABEL[locale]}
             variant="primary"
             size="sm"
-            onClick={handleContactClick}
-            tooltip={CONTACT_TOOLTIP[locale]}
+            onClick={open}
             className="site-contact-button"
           />
         </HStack>

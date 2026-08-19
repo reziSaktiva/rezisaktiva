@@ -86,6 +86,62 @@ export function Reveal({
 }
 
 /**
+ * Word reveal — mockup `runWordReveal()` (120ms + i * 80ms).
+ * `inline` = About h1; `compact` = Work h1 (page-line-compact).
+ */
+export function WordReveal({
+  words,
+  variant = "inline",
+}: {
+  words: readonly string[];
+  variant?: "inline" | "compact";
+}) {
+  const [visibleCount, setVisibleCount] = useState(0);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    const timers = words.map((_, index) =>
+      window.setTimeout(
+        () => {
+          setVisibleCount((count) => Math.max(count, index + 1));
+        },
+        120 + index * 80,
+      ),
+    );
+    return () => {
+      for (const timer of timers) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [words]);
+
+  return (
+    <>
+      {words.map((word, index) => (
+        <Text
+          key={`${word}-${index}`}
+          display={variant === "compact" ? "block" : "inline"}
+          className={[
+            variant === "compact"
+              ? "page-word page-word--compact"
+              : "page-word",
+            index < visibleCount ? "is-visible" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          {word}
+          {variant === "inline" && index < words.length - 1 ? " " : ""}
+        </Text>
+      ))}
+    </>
+  );
+}
+
+/**
  * Word reveal hero — mockup `runWordReveal()` (120ms + i * 80ms).
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
@@ -196,6 +252,8 @@ export function CursorRing() {
     const onLeave = () => ring.classList.remove("is-active");
     const onEnterInteractive = () => ring.classList.add("is-hover");
     const onLeaveInteractive = () => ring.classList.remove("is-hover");
+    const onEnterClose = () => ring.classList.add("is-close");
+    const onLeaveClose = () => ring.classList.remove("is-close");
 
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
@@ -204,6 +262,11 @@ export function CursorRing() {
     interactives.forEach((el) => {
       el.addEventListener("mouseenter", onEnterInteractive);
       el.addEventListener("mouseleave", onLeaveInteractive);
+    });
+    const closeTargets = document.querySelectorAll("[data-ct-scrim]");
+    closeTargets.forEach((el) => {
+      el.addEventListener("mouseenter", onEnterClose);
+      el.addEventListener("mouseleave", onLeaveClose);
     });
 
     let frame = 0;
@@ -222,6 +285,10 @@ export function CursorRing() {
       interactives.forEach((el) => {
         el.removeEventListener("mouseenter", onEnterInteractive);
         el.removeEventListener("mouseleave", onLeaveInteractive);
+      });
+      closeTargets.forEach((el) => {
+        el.removeEventListener("mouseenter", onEnterClose);
+        el.removeEventListener("mouseleave", onLeaveClose);
       });
       cancelAnimationFrame(frame);
     };

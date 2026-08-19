@@ -11,60 +11,20 @@ import { Link } from "@astryxdesign/core/Link";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
-import {
-  HERO_PORTRAIT_SRC,
-  HOME_COPY,
-  type HomeTeaserItem,
-} from "@/content/home";
-import { CONTACT_TOOLTIP } from "@/lib/nav";
+import { useContactModal } from "@/app/_components/contact-modal-provider";
+import { HERO_PORTRAIT_SRC, HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
-import { CursorRing, HeroWords, Magnetic, Reveal } from "./home-motion";
-
-function handleContactClick() {
-  // TODO(T-016): buka modal Contact (ADR-019). Sama dengan chrome T-013.
-}
-
-function WorkTile({
-  item,
-  href,
-  featured = false,
-}: {
-  item: HomeTeaserItem;
-  href: string;
-  featured?: boolean;
-}) {
-  return (
-    <Link
-      as={NextLink}
-      href={href}
-      className={
-        featured ? "home-work-tile home-work-tile--featured" : "home-work-tile"
-      }
-    >
-      <Center className="home-work-tile-media">
-        <NextImage
-          src={item.imageSrc}
-          alt=""
-          fill
-          sizes={featured ? "100vw" : "50vw"}
-        />
-      </Center>
-      <VStack gap={1} className="home-work-tile-meta">
-        <Heading level={3}>{item.name}</Heading>
-        <Text size="sm">{item.outcome}</Text>
-      </VStack>
-    </Link>
-  );
-}
+import { HeroWords, Magnetic, Reveal } from "./home-motion";
+import { ArrowRightIcon } from "./overlay-icons";
+import { WorkTile } from "./work-tile";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
   const workHref = `/${locale}/work`;
+  const { open } = useContactModal();
 
   return (
     <VStack className="home-page">
-      <CursorRing />
-
       <Section
         variant="transparent"
         padding={0}
@@ -193,9 +153,8 @@ export function HomePage({ locale }: { locale: Locale }) {
                 label={copy.contactCta}
                 variant="primary"
                 size="lg"
-                onClick={handleContactClick}
-                tooltip={CONTACT_TOOLTIP[locale]}
-                endContent={<Icon icon="externalLink" />}
+                onClick={open}
+                endContent={<Icon icon={ArrowRightIcon} />}
                 className="home-contact-cta"
               />
             </Magnetic>
