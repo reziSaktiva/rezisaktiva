@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
     // ~/package-lock.json and warns that it is outside the Git root.
     root: projectRoot,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

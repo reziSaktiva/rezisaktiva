@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { cookies } from "next/headers";
 import { ThemeModeProvider } from "./_components/theme-mode-provider";
-import { parseThemeModeCookieValue, THEME_MODE_STORAGE_KEY } from "@/lib/theme-mode";
+import {
+  parseThemeModeCookieValue,
+  THEME_MODE_STORAGE_KEY,
+} from "@/lib/theme-mode";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -74,11 +77,21 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
    */
   const cookieStore = await cookies();
   const initialMode =
-    parseThemeModeCookieValue(cookieStore.get(THEME_MODE_STORAGE_KEY)?.value) ?? "light";
+    parseThemeModeCookieValue(cookieStore.get(THEME_MODE_STORAGE_KEY)?.value) ??
+    "light";
 
   return (
-    <html lang="en" suppressHydrationWarning style={{ colorScheme: initialMode }}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      style={{ colorScheme: initialMode }}
+    >
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500&display=swap"
+          rel="stylesheet"
+        />
         {/*
          * Deklarasi `color-scheme` di 2 tempat sejak byte pertama HTML (tanpa
          * JS/CSS sama sekali): meta tag ini + inline `style` di <html> di
@@ -97,7 +110,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         </Script>
       </head>
       <body>
-        <ThemeModeProvider initialMode={initialMode}>{children}</ThemeModeProvider>
+        <ThemeModeProvider initialMode={initialMode}>
+          {children}
+        </ThemeModeProvider>
       </body>
     </html>
   );

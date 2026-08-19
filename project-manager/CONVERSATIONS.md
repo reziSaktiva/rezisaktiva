@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-18] — Subtask copy ditarik dari v03
+
+**Phase:** Development R1
+**Summary:** Boss Rezi: T-014.1 / T-014.3 (dan subtask “konten di content/” sejenis) tidak boleh ada di v03. Urusan copy hanya T-021 di v10.
+**Key Decision/Insight:** v03 = layout/komponen. Parent UI Done tanpa menunggu copy. T-021 = kunci teks + tulis ke `content/` + pasang ke UI yang sudah ada. ID yang ditarik tidak didaur ulang.
+**Impact:** `v03-development-r1.md` (T-014 ✅), `v10-page-copy.md`, `TASKS.md`, `PROJECT_STATE.md`.
+
+## [2026-08-18] — v03 jangan campur catatan page-copy
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta dokumentasi v03 tidak mencampur urusan page-copy. Copy (kunci teks, sumber T-021, kontrak ke UI) hanya dicatat di v10.
+**Key Decision/Insight:** v03 = fitur/UI. v10 = semua teks + kontrak kapan copy terpasang ke UI. Satu tautan dari v03 ke v10 cukup; jangan ulangi T-021.N di checklist v03.
+**Impact:** `tasks/v03-development-r1.md`, `tasks/v10-page-copy.md`.
+
 ## [2026-08-18] — Perbaiki kontrak copy ↔ UI (review PR #30)
 
 **Phase:** Development R1
