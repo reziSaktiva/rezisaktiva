@@ -10,7 +10,9 @@
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "astryx": "node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs"
+    "astryx": "node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs",
+    "theme:build": "astryx theme build lib/astryx-theme.ts -o theme/astryx-theme.css",
+    "theme:check": "astryx theme build lib/astryx-theme.ts -o theme/astryx-theme.css --check"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.3.0",

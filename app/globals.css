@@ -1,12 +1,11 @@
 @import "@astryxdesign/core/reset.css";
 @import "@astryxdesign/core/astryx.css";
-@import "@astryxdesign/theme-neutral/theme.css";
+@import "../theme/astryx-theme.css";
 
 /*
- * Sumber token pindah ke Astryx (theme-neutral) — lihat
- * product-discovery/06-engineering/design-tokens.md dan ADR-018.
- * Kustomisasi brand/accent dilakukan lewat `astryx theme`, bukan override
- * langsung --color-* di :root (lihat .cursor/rules/xds.mdc).
+ * Sumber token: tema built `theme/astryx-theme.css` (extends theme-neutral,
+ * nilai `--c-*` mockup) — lihat design-tokens.md dan ADR-018.
+ * Jangan override `--color-*` di :root (lihat .cursor/rules/xds.mdc).
  */
 
 /*
@@ -47,7 +46,35 @@
   --chip-bg: #fde047;
   --chip-fg: #14181f;
   --chrome-pill-bg: #0a0f1a;
-  --chrome-pill-fg: #ede9e1;
+  --chrome-pill-fg: #edeae1;
+}
+
+/*
+ * Kanvas halaman di luar @scope tema Astryx (`[data-astryx-theme]` hanya
+ * membungkus subtree React). Nilai = `--c-bg` / `--c-fg` mockup
+ * (`design-mockups/shared.css`) — KI-002.
+ *
+ * `light-dark()` mengikuti `color-scheme` inline di `<html>` (SSR dari
+ * cookie, `app/layout.tsx`) supaya first paint dark tidak cream. Selector
+ * `[data-theme]` tetap ada untuk setelah hydrate (Astryx menulis atribut itu
+ * di layout effect, bukan di markup SSR).
+ */
+html,
+body {
+  background-color: light-dark(#edeae1, #0a0f1a);
+  color: light-dark(#14181f, #edeae1);
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background-color: #edeae1;
+  color: #14181f;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: #0a0f1a;
+  color: #edeae1;
 }
 
 /* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */
@@ -160,33 +187,47 @@
   font-size: 0.8em;
 }
 
-/* Tombol Contact — pill penuh + ukuran mockup, scoped ke instance ini saja. */
-.site-contact-button {
+/*
+ * Tombol Contact + theme toggle — mockup `bg-brand text-on-brand`
+ * `hover:bg-accent hover:text-on-accent` (`home.html`). Brand = inverted
+ * canvas; aksen = teal mockup. Default & pressed toggle sama (ikon yang
+ * berganti, bukan warna isi) — KI-001.
+ */
+.site-contact-button,
+.home-contact-cta,
+.site-theme-toggle .astryx-toggle-button,
+.site-theme-toggle .astryx-toggle-button[data-is-pressed="true"],
+.site-theme-toggle .astryx-toggle-button[aria-pressed="true"] {
+  background-image: none !important;
+  background-color: var(--color-background-inverted) !important;
+  color: var(--color-background-surface) !important;
   border-radius: var(--radius-full);
+  transition:
+    background-color var(--duration-medium-min) var(--ease-standard),
+    color var(--duration-medium-min) var(--ease-standard);
+}
+.site-contact-button {
   height: var(--size-element-md);
   padding-block: var(--spacing-1-5);
   padding-inline: var(--spacing-4);
-  transition:
-    background-color var(--duration-medium-min) var(--ease-standard),
-    color var(--duration-medium-min) var(--ease-standard);
 }
-.site-contact-button:hover {
-  background-color: var(--chip-bg);
-  color: var(--chip-fg);
-}
-
-/* Theme toggle — lingkaran penuh sesuai `.theme-toggle` mockup. */
-.site-theme-toggle {
-  border-radius: var(--radius-full);
+.site-theme-toggle,
+.site-theme-toggle .astryx-toggle-button {
   width: var(--size-element-lg);
   height: var(--size-element-lg);
-  transition:
-    background-color var(--duration-medium-min) var(--ease-standard),
-    color var(--duration-medium-min) var(--ease-standard);
 }
-.site-theme-toggle:hover {
-  background-color: var(--chip-bg);
-  color: var(--chip-fg);
+.site-theme-toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.site-contact-button:hover,
+.home-contact-cta:hover,
+.site-theme-toggle .astryx-toggle-button:hover,
+.site-theme-toggle .astryx-toggle-button[data-is-pressed="true"]:hover,
+.site-theme-toggle .astryx-toggle-button[aria-pressed="true"]:hover {
+  background-image: none !important;
+  background-color: var(--color-accent) !important;
+  color: var(--color-on-accent) !important;
 }
 
 /*
