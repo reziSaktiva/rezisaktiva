@@ -111,7 +111,7 @@ Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebi
 | ----- | --- |
 | Default ship | **Light** |
 | Token dark | **Ya** — resolved lewat prop `mode` di komponen `Theme` (`@astryxdesign/core/theme`), bukan class `.dark` manual |
-| Strategi | Astryx `Theme` + `neutralTheme`; ganti `mode="dark"` (atau `"system"`) untuk aktifkan dark tanpa ganti arsitektur |
+| Strategi | Astryx `Theme` + tema built `rezisaktiva` (`lib/astryx-theme.ts`, extends `neutralTheme`); `mode="dark"` (atau `"system"`) tanpa ganti arsitektur |
 | Toggle di chrome | **Must R1** (**ADR-021**) — kontrol UI wajib di chrome; default ship tetap light |
 | `prefers-color-scheme` | Boleh sebagai Could setelah token dark stabil; jangan mengganti default light tanpa keputusan Boss Rezi |
 
@@ -136,9 +136,11 @@ Hormati `prefers-reduced-motion`.
 # Mapping implementasi
 
 ```text
-Astryx theme CSS (@astryxdesign/theme-neutral/theme.css)
+lib/astryx-theme.ts (defineTheme, extends theme-neutral)
         ↓
-Theme component (mode: light/dark/system) — app/layout.tsx
+astryx theme build → theme/astryx-theme.css + theme/rezisaktiva.js
+        ↓
+Theme component (mode: light/dark) — ThemeModeProvider
         ↓
 Komponen @astryxdesign/core (props semantik: color, type, level, dst)
         ↓
@@ -147,15 +149,15 @@ xstyle (StyleX) untuk override spesifik-komponen bila perlu
 
 | Lapisan | Isi |
 | ------- | --- |
-| Sumber kebenaran token | Theme CSS Astryx (`theme-neutral`) + built theme object (`neutralTheme`) |
+| Sumber kebenaran token | Tema built `rezisaktiva` (`theme/astryx-theme.css` + `theme/rezisaktiva.js`); kanvas/aksen = `design-mockups/shared.css` `--c-*` |
 | Komponen | `@astryxdesign/core/*` — props semantik, bukan hardcode hex/px |
 | Override lokal | `xstyle` (StyleX `stylex.create()`); dilarang `style={{}}` inline atau hex/px acak |
 | Konten MD/MDX | Tidak menyimpan hex brand; styling lewat komponen |
-| Kustomisasi brand | `astryx theme` / `astryx theme add <slug>` — bukan override `--color-*` manual |
+| Kustomisasi brand | `pnpm theme:build` dari `lib/astryx-theme.ts` — bukan override `--color-*` manual di `:root` |
 | Agent docs | `.cursor/rules/xds.mdc` (konvensi wajib AI saat menulis komponen) |
 | Figma / design file | Opsional Later — docs ini cukup untuk bootstrap R1 |
 
-Nilai hex/font di section Typography/Color di atas = **arah/riwayat keputusan brand**, dipetakan ulang ke Astryx via `astryx theme add` saat kustomisasi dilakukan (belum dieksekusi per 2026-08-13 — R1 masih start dari `theme-neutral` bawaan).
+Nilai hex kanvas/aksen R1 mengikuti mockup `shared.css` (KI-001 / KI-002). Rebuild: `pnpm theme:build`.
 
 ---
 
@@ -164,10 +166,10 @@ Nilai hex/font di section Typography/Color di atas = **arah/riwayat keputusan br
 | Keputusan | Pilihan |
 | --------- | ------- |
 | Styling | **Astryx (`@astryxdesign/core` + StyleX) + theme CSS** — menggantikan Tailwind + CSS variables (ADR-018) |
-| Theme awal | `@astryxdesign/theme-neutral` |
+| Theme awal | `@astryxdesign/theme-neutral`, di-extend jadi tema built `rezisaktiva` (nilai mockup) |
 | Tema default | **Light** |
 | Dark | Fondasi via prop `mode` di `Theme`; toggle UI = **Must R1 (ADR-021)**; default tetap light |
-| Nilai visual | Arah awal; iteratif saat desain/bootstrap; kustomisasi ke theme Astryx menyusul |
+| Nilai visual | Kanvas + aksen mockup `shared.css`, dikunci ke tema built `rezisaktiva` |
 | Motion | Bagian identitas visual (ADR-017), hierarchy-first |
 | Baseline Engineering | ADR-016; superseded sebagian oleh **ADR-018** (styling/token) |
 

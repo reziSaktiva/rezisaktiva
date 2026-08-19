@@ -21,15 +21,16 @@ export function ThemeToggle({ locale }: { locale: Locale }) {
   const { mode, toggle } = useThemeMode();
 
   return (
-    <ToggleButton
-      label={THEME_TOGGLE_LABEL[locale]}
-      isIconOnly
-      size="sm"
-      isPressed={mode === "dark"}
-      onPressedChange={toggle}
-      icon={<Icon icon={SunIcon} />}
-      pressedIcon={<Icon icon={MoonIcon} />}
-      className="site-theme-toggle"
-    />
+    <span className="site-theme-toggle">
+      <ToggleButton
+        label={THEME_TOGGLE_LABEL[locale]}
+        isIconOnly
+        size="sm"
+        isPressed={mode === "dark"}
+        onPressedChange={toggle}
+        icon={<Icon icon={SunIcon} />}
+        pressedIcon={<Icon icon={MoonIcon} />}
+      />
+    </span>
   );
 }

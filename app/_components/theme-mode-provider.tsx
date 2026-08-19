@@ -11,7 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { Theme } from "@astryxdesign/core/theme";
-import { neutralTheme } from "@astryxdesign/theme-neutral/built";
+import { rezisaktivaTheme } from "@/theme/rezisaktiva";
 import {
   getThemeModeSnapshot,
   setThemeMode,
@@ -79,7 +79,7 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
 
   return (
     <ThemeModeContext value={value}>
-      <Theme theme={neutralTheme} mode={mode}>
+      <Theme theme={rezisaktivaTheme} mode={mode}>
         {children}
       </Theme>
     </ThemeModeContext>
@@ -124,8 +124,8 @@ export function useThemeMode(): ThemeModeContextValue {
  * `globals.css` (komentar di sana menunjuk balik ke sini).
  */
 const CHIP_COLOR_BY_MODE: Record<ThemeMode, { bg: string; fg: string }> = {
-  light: { bg: "#0a0f1a", fg: "#ede9e1" },
-  dark: { bg: "#ede9e1", fg: "#0a0f1a" },
+  light: { bg: "#0a0f1a", fg: "#edeae1" },
+  dark: { bg: "#edeae1", fg: "#0a0f1a" },
 };
 
 /**

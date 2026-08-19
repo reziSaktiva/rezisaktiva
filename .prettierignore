@@ -6,6 +6,10 @@ coverage/
 node_modules/
 pnpm-lock.yaml
 next-env.d.ts
+theme/astryx-theme.css
+theme/rezisaktiva.js
+theme/rezisaktiva.d.ts
+theme/rezisaktiva.variants.d.ts
 *.tsbuildinfo
 
 # Dokumentasi & konten non-app-code — bukan scope format DX tooling (dx-tooling.md)
