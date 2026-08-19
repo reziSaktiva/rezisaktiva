@@ -4,11 +4,16 @@ import {
   useCallback,
   useEffect,
   useRef,
+  type ComponentProps,
   type CSSProperties,
   type ReactNode,
 } from "react";
 import { HStack } from "@astryxdesign/core/HStack";
 import { VStack } from "@astryxdesign/core/VStack";
+
+type StackGap = ComponentProps<typeof HStack>["gap"];
+type StackPadding = ComponentProps<typeof HStack>["padding"];
+type StackAlign = NonNullable<ComponentProps<typeof HStack>["align"]>;
 
 /**
  * Sliding pill — mockup `initPillGroups()` (`design-mockups/shared.js`).
@@ -31,9 +36,9 @@ export function SlidingPillGroup({
   itemSelector: string;
   layoutKey: string;
   orientation?: "horizontal" | "vertical";
-  gap?: number;
-  padding?: number;
-  align?: "center" | "start";
+  gap?: StackGap;
+  padding?: StackPadding;
+  align?: StackAlign;
 }) {
   const containerRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLElement>(null);
