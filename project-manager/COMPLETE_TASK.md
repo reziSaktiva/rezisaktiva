@@ -16,6 +16,38 @@ Format entri:
 
 ## [2026-08-18]
 
+### Changed
+
+- Subtask copy ditarik dari v03 (tidak didaur ulang): T-014.1, T-014.3, T-015.1, T-016.1, T-017.1, T-019.1, T-020.1. Kunci + tulis teks hanya **T-021** di v10. **T-014** ✅ Done (T-014.2). Parent UI v03 tidak menunggu copy.
+
+---
+
+## [2026-08-18]
+
+### Changed
+
+- Dokumentasi v03 dipisah dari page-copy: checklist/kontrak T-021 tidak lagi di `v03-development-r1.md`. Kontrak copy ↔ UI pindah utuh ke `v10-page-copy.md`. v03 hanya tautan satu baris ke v10.
+
+---
+
+## [2026-08-18]
+
+### Added
+
+- **T-014.2** — halaman Home `/[locale]` (bukan stub): hero cutout + word reveal, credibility line, work teaser 3 tile (1 featured + 2 kolom), contact CTA; motion ADR-017 (reveal, cursor ring, magnetic); teks sementara dari mockup di `content/home.ts`.
+
+### Changed
+
+- Header AppShell transparan + z-index di atas hero supaya first viewport overlay seperti `design-mockups/home.html`. Tile teaser link ke Work index (`/[locale]/work`), bukan work-case M10.
+
+### Fixed
+
+- (none)
+
+---
+
+## [2026-08-18]
+
 ### Fixed
 
 - Temuan review PR #30: kontrak copy ↔ UI — T-014.3 sumber T-021.2/T-021.5 (jangan mengarang); layout boleh paralel, parent tidak Done sebelum copy terpasang; T-021.1 wajib pasang chrome ke `lib/nav.ts` + footer; T-018.1 prasyarat T-021.1–T-021.7.
