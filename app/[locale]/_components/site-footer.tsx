@@ -40,8 +40,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <HStack gap={4} align="center">
           <Link
             href={CONTACT_SOCIALS.linkedin.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            isExternalLink
             color="secondary"
             size="sm"
           >
@@ -49,8 +48,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </Link>
           <Link
             href={CONTACT_SOCIALS.github.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            isExternalLink
             color="secondary"
             size="sm"
           >

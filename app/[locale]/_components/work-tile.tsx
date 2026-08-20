@@ -59,6 +59,11 @@ export function WorkTile({
   }
 
   if (item.href) {
+    // `isExternalLink` sengaja tidak dipakai di sini — ikon + label
+    // tersembunyi bawaannya dirender sebagai sibling di dalam tile media
+    // (`.home-work-tile`), bisa nyangkut di atas gambar. `target="_blank"`
+    // sudah cukup aman: `Link` Astryx otomatis menambah `rel="noopener
+    // noreferrer"` untuk target apa pun yang bernilai `_blank`.
     return (
       <Link href={item.href} target="_blank" className={className}>
         {inner}

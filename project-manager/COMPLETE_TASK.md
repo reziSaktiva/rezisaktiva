@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-08-20]
+### Fixed
+- Temuan code review PR #40: title meta About EN ikut nav baru ("How I Work", bukan "My Process" lama); `content/site-meta.ts` description About sekarang string dedicated pendek (bukan reuse `ABOUT_COPY.lead1` yang sudah jadi paragraf panjang T-021.3, supaya tidak terpotong di hasil pencarian); footer LinkedIn/GitHub sekarang pakai prop `isExternalLink` Astryx (ikon + label a11y "opens in new tab") — `work-tile.tsx` tetap pakai `target`/`rel` manual (sengaja, `isExternalLink` akan render ikon nyangkut di atas gambar tile).
+
+## [2026-08-20]
 ### Added
 - **T-021.3** — copy About / Proses Kerja ditulis ulang total (bukan salinan mockup) ke `content/about.ts`, dikunci lewat diskusi (Boss Rezi menulis sendiri revisinya): h1 tetap "Halo, saya Rezi.", lead + 3 offer (Product/Fullstack/**AI & Orchestration**) + Approach + 3 Values + note proses + 4 langkah (Discover/Design/Build/Ship & Iterate) + CTA "Penasaran gimana detailnya?" — semua menonjolkan orkestrasi tim AI subagent, pipeline discovery→arsitektur→build→ship, dan keputusan terdokumentasi via ADR. EN ditulis sebagai adaptasi makna, bukan terjemahan literal.
 ### Verified
