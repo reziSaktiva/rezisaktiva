@@ -2,12 +2,14 @@ import { HStack } from "@astryxdesign/core/HStack";
 import { Link } from "@astryxdesign/core/Link";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
+import { CONTACT_SOCIALS } from "@/content/contact";
 import type { Locale } from "@/lib/locale";
 
 /**
  * Footer chrome R1 (T-013.3, M6): identitas singkat + satelit
  * LinkedIn/GitHub. Bukan pengganti Contact; tanpa WA/IG (ADR-014).
- * URL satelit masih placeholder `#` — diisi saat copy T-021.1 / T-021.4.
+ * URL satelit dikunci T-021.1 (2026-08-20), dipakai bersama Contact modal
+ * (`content/contact.ts`) supaya satu sumber kebenaran.
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   void locale; // copy footer sama di kedua locale untuk R1; disiapkan untuk paritas nanti
@@ -36,11 +38,23 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           rezisaktiva
         </Text>
         <HStack gap={4} align="center">
-          <Link href="#" color="secondary" size="sm">
-            LinkedIn
+          <Link
+            href={CONTACT_SOCIALS.linkedin.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            color="secondary"
+            size="sm"
+          >
+            {CONTACT_SOCIALS.linkedin.label}
           </Link>
-          <Link href="#" color="secondary" size="sm">
-            GitHub
+          <Link
+            href={CONTACT_SOCIALS.github.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            color="secondary"
+            size="sm"
+          >
+            {CONTACT_SOCIALS.github.label}
           </Link>
         </HStack>
       </HStack>

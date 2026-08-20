@@ -17,6 +17,7 @@ import type { Locale } from "@/lib/locale";
 import {
   CONTACT_LABEL,
   MENU_LABEL,
+  MENU_TOGGLE_LABEL,
   NAV_ITEMS,
   NAV_LABELS,
   isNavItemActive,
@@ -86,7 +87,11 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
         <HStack gap={3} align="center" className="site-header-tools">
           {!isMobile && <LocaleSwitcher locale={locale} />}
           <MobileNavToggle
-            label={MENU_LABEL[locale]}
+            label={
+              isMobileNavOpen
+                ? MENU_TOGGLE_LABEL[locale].close
+                : MENU_TOGGLE_LABEL[locale].open
+            }
             className="site-nav-toggle"
           >
             <Icon icon={isMobileNavOpen ? CloseIcon : MenuIcon} />

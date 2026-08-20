@@ -26,7 +26,7 @@ export const NAV_LABELS: Record<Locale, Record<NavKey, string>> = {
   },
   en: {
     home: "Home",
-    about: "Process",
+    about: "How I Work",
     work: "Work",
   },
 };
@@ -39,6 +39,15 @@ export const CONTACT_LABEL: Record<Locale, string> = {
 export const MENU_LABEL: Record<Locale, string> = {
   id: "Menu",
   en: "Menu",
+};
+
+/**
+ * Aria-label tombol hamburger, berbeda saat terbuka/tertutup — selaras
+ * `nav.menu` / `nav.menuClose` di mockup (`design-mockups/shared.js`).
+ */
+export const MENU_TOGGLE_LABEL: Record<Locale, { open: string; close: string }> = {
+  id: { open: "Buka menu", close: "Tutup menu" },
+  en: { open: "Open menu", close: "Close menu" },
 };
 
 /**

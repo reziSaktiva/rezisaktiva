@@ -15,6 +15,23 @@ Format entri:
 ```
 
 ## [2026-08-20]
+### Added
+- **T-021.3** — copy About / Proses Kerja ditulis ulang total (bukan salinan mockup) ke `content/about.ts`, dikunci lewat diskusi (Boss Rezi menulis sendiri revisinya): h1 tetap "Halo, saya Rezi.", lead + 3 offer (Product/Fullstack/**AI & Orchestration**) + Approach + 3 Values + note proses + 4 langkah (Discover/Design/Build/Ship & Iterate) + CTA "Penasaran gimana detailnya?" — semua menonjolkan orkestrasi tim AI subagent, pipeline discovery→arsitektur→build→ship, dan keputusan terdokumentasi via ADR. EN ditulis sebagai adaptasi makna, bukan terjemahan literal.
+### Verified
+- Render HTML `/id/about` dan `/en/about` dicek langsung (curl dev server) — teks kunci (lead, judul offer "AI & Orchestration", CTA) tampil persis.
+
+## [2026-08-20]
+### Added
+- **T-021.1** — copy chrome bersama terkunci: nav EN About → "How I Work" (`lib/nav.ts`, ganti dari "Process"); tombol Contact "Kontak" (ID) / "Contact" (EN); URL LinkedIn nyata (`https://www.linkedin.com/in/rezi-saktiva-bb89a12a1/`) dipasang ke `content/contact.ts` + `site-footer.tsx` (sebelumnya placeholder `#`).
+- `MENU_TOGGLE_LABEL` baru di `lib/nav.ts` — aria-label hamburger toggle sesuai state buka/tutup ("Buka menu"/"Tutup menu", "Open menu"/"Close menu"), dipasang ke `MobileNavToggle` di `site-header.tsx` (sebelumnya statis "Menu", tidak sesuai mockup).
+- **T-021.5** — copy Work index terkunci: `h1` (ID "Proyek / saya." — EN "My / Projects", mixed-language dikunci eksplisit oleh Boss Rezi, bukan terjemahan literal), `lead`, dan CTA (`ctaQuestion`/`ctaLink`) ditulis ke `content/work.ts` menggantikan draf sementara.
+### Changed
+- `site-footer.tsx` sekarang membaca `CONTACT_SOCIALS` dari `content/contact.ts` (satu sumber kebenaran URL sosial untuk footer + Contact modal), bukan hardcode `#` terpisah.
+- `v10-page-copy.md`, `TASKS.md`, `PROJECT_STATE.md` diselaraskan: T-021.1 dan T-021.5 Done.
+### Verified
+- Render HTML `/id/work` dan `/en/work` dicek langsung (curl dev server) — h1, lead, CTA, label nav, dan href LinkedIn/GitHub tampil persis sesuai yang dikunci.
+
+## [2026-08-20]
 ### Fixed
 - Panel hamburger mobile tidak bisa ditutup: `display: flex` dari Astryx Stack mengalahkan atribut HTML `hidden`, jadi lembar menu tetap terlihat meski state sudah tertutup. `.site-mobile-nav[hidden]` sekarang `display: none !important`.
 
