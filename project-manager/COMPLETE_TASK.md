@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-08-20]
 ### Fixed
+- ESLint `react-hooks/refs`: jangan assign `closeMobileNavRef.current` saat render di `site-header.tsx` (CI / lint-typecheck PR #39).
+
+## [2026-08-20]
+### Fixed
 - Panel hamburger mobile bukan lagi `<dialog>` modal Astryx — chrome Contact/tema/brand tetap bisa di-tap saat menu terbuka (PR #39 review). Tutup via hamburger, Escape, atau tap di luar panel.
 
 ## [2026-08-20]

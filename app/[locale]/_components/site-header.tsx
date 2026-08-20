@@ -114,7 +114,10 @@ export function SiteMobileNav({ locale }: { locale: Locale }) {
   const chipColorVars = useChipColorVars();
   const { closeMobileNav, isMobileNavOpen, mobileNavId } = useAppShellMobile();
   const closeMobileNavRef = useRef(closeMobileNav);
-  closeMobileNavRef.current = closeMobileNav;
+
+  useEffect(() => {
+    closeMobileNavRef.current = closeMobileNav;
+  }, [closeMobileNav]);
 
   useEffect(() => {
     closeMobileNavRef.current();
