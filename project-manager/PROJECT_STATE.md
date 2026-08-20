@@ -4,10 +4,10 @@
 
 * **Phase / Milestone:** Development · R1 MVP Clarity (Hybrid lean, M1–M7 + M9 + M13 + theme toggle)
 * **Active Mode:** Development — implementasi fitur/konten R1; bukan scaffold Bootstrap
-* **Top Next Tasks:** kunci copy **T-021.2** (Home, v10); exit R1 **T-018** setelah T-021.1–T-021.7 — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** lanjut copy **T-021.5** (kunci h1/lead/CTA Work index) → T-021.1/T-021.3/T-021.4/T-021.6/T-021.7; exit R1 **T-018** setelah T-021.1–T-021.7 — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ In Progress, T-013…T-017 ✅, T-019 ✅, T-020 ✅, T-018 ⏳, **T-022** ✅) + `tasks/v10-page-copy.md` (⏳ Todo, T-021)
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ In Progress, T-013…T-017 ✅, T-019 ✅, T-020 ✅, T-018 ⏳, **T-022** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — T-021.2 hampir selesai (teaser menunggu daftar karya), daftar karya T-021.5 terkunci dari resume 8 item)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -28,8 +28,8 @@
 | ----- | ----- |
 | Current Phase | Development |
 | Current Milestone | R1 MVP Clarity (Must M1–M7 + M9 + M13 + theme toggle) |
-| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, T-018 ⏳ (menunggu copy); T-021 copy ⏳; next copy T-021.2 |
-| Project Status | Development in progress — UI R1 (Home/About/Work/Contact/Quick Info/meta) ✅; copy R1 lewat T-021 (diskusi); T-018 exit menunggu copy |
+| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, T-018 ⏳ (menunggu copy); T-021 copy ⏳ — h1/Bukti/seksi karya/Contact Home terkunci, daftar karya kurasi (T-021.5) terkunci; next: kunci h1/lead/CTA Work index lalu T-021.1/T-021.3/T-021.4/T-021.6/T-021.7 |
+| Project Status | Development in progress — UI R1 (Home/About/Work/Contact/Quick Info/meta) ✅; copy R1 lewat T-021 (diskusi, sedang berjalan); T-018 exit menunggu copy |
 
 ---
 
@@ -39,7 +39,8 @@
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012) — exit kriteria terpenuhi (lihat T-012.1).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-022.
 * Fase aktif: **Development** — implementasi R1 (Home / About / Work index + Contact modal + work teaser + chrome + Quick Info + meta), bukan scaffold.
-* Backlog Development R1 **sudah disusun** (`tasks/v03-development-r1.md`, T-013…T-020, **T-022**). Fitur/UI tanpa copy. **Copy** hanya di `tasks/v10-page-copy.md` (**T-021**). **T-014…T-017, T-019, T-020** UI ✅ (teks sementara mockup). **T-022** paritas mobile ✅ (T-022.1–T-022.4). Berikutnya copy: **T-021.2**. **T-018** menunggu T-021.1–T-021.7.
+* Backlog Development R1 **sudah disusun** (`tasks/v03-development-r1.md`, T-013…T-020, **T-022**). Fitur/UI tanpa copy. **Copy** hanya di `tasks/v10-page-copy.md` (**T-021**). **T-014…T-017, T-019, T-020** UI ✅ (teks sementara mockup, kecuali Home sudah copy final). **T-022** paritas mobile ✅ (T-022.1–T-022.4). **T-018** menunggu T-021.1–T-021.7.
+* **Copy R1 sedang berjalan (2026-08-20):** T-021.2 (Home) — h1, Bukti, seksi karya, Contact ✅ terkunci; teaser mengikuti daftar T-021.5. T-021.5 (Work index) — daftar 8 karya kurasi ✅ terkunci dari `private/Resume_rezi_updated_agustus_2026.md` (bukan dikarang); `h1`/lead/CTA Work index masih draf, belum dikonfirmasi. Sisa T-021.1 (footer/URL satelit), T-021.3 (About), T-021.4 (Contact modal), T-021.6 (Quick Info), T-021.7 (meta) belum digarap.
 * **Catatan engineering terbuka:** compiler StyleX (`xstyle`/`stylex.create()`, jalur yang direkomendasikan `.cursor/rules/xds.mdc`) belum wired ke build Turbopack project ini — ditemukan saat T-013.4 (build gagal saat dicoba). Styling chrome saat ini memakai `defineTheme` `components` override sebagai gantinya (tidak butuh compiler tambahan). Perlu keputusan terpisah bila ada task berikutnya yang benar-benar butuh `xstyle` (trade-off Turbopack vs webpack) — lihat `COMPLETE_TASK.md`.
 
 ---

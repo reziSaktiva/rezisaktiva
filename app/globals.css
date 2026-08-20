@@ -172,6 +172,15 @@ html[data-theme="dark"] body {
   box-shadow: 0 18px 40px rgb(0 0 0 / 0.14);
 }
 
+/*
+ * Stack Astryx memasang `display: flex` di stylesheet author, yang mengalahkan
+ * UA rule `[hidden] { display: none }`. Tanpa ini panel hamburger tetap terlihat
+ * setelah state React sudah tertutup (toggle/Escape/klik luar).
+ */
+.site-mobile-nav[hidden] {
+  display: none !important;
+}
+
 .site-mobile-nav-chip {
   position: relative;
   width: 100%;

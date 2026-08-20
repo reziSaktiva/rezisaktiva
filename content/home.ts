@@ -2,9 +2,9 @@ import type { Locale } from "@/lib/locale";
 import { WORK_ITEMS, type WorkItem } from "./work";
 
 /**
- * Copy Home sementara dari mockup (`design-mockups/home.html` + `shared.js`).
- * Bukan copy final — kunci + ganti teks di T-021.2 (v10).
- * Item teaser = 3 karya pertama dari katalog Work (T-019 / T-021.5).
+ * Copy Home. h1 dikunci T-021.2 (2026-08-20). Slot lain masih mockup
+ * sampai dikunci di putaran diskusi berikutnya. Teaser = 3 karya pertama
+ * katalog Work (final nama/outcome: T-021.5).
  */
 
 export type HomeTeaserItem = WorkItem;
@@ -29,35 +29,34 @@ export const HERO_PORTRAIT_SRC =
 
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
-    h1: ["Membangun", "produk."],
+    h1: ["Ceritamu", "lewat produk."],
     buktiLabel: "Bukti",
-    buktiEmphasis: "~6 tahun",
+    buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
     buktiRest:
-      " membangun software fullstack — kini memakai AI sebagai cara kerja, bukan sekadar kata kunci.",
+      " AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.",
     workLabel: "Karya terpilih",
-    workTitle: "Beberapa hal yang sudah dibangun",
-    workAll: "Lihat semua →",
+    workTitle: "Beberapa yang udah dipakai orang.",
+    workAll: "Semua karya →",
     teasers: WORK_ITEMS.id.slice(0, 3),
     contactLabel: "Contact",
-    contactTitle: "Mari mengobrol.",
+    contactTitle: "Ada project?",
     contactBody:
-      "Terbuka untuk percakapan soal produk, peluang kerja sama, atau sekadar bertukar ide.",
+      "Cerita bentar aja soal apa yang mau dibangun. Kalau cocok, kita lanjut.",
     contactCta: "Hubungi saya",
   },
   en: {
-    h1: ["Building", "products."],
+    h1: ["Your story,", "in the product."],
     buktiLabel: "Proof",
-    buktiEmphasis: "~6 years",
+    buktiEmphasis: "AI didn't take my job.",
     buktiRest:
-      " building fullstack software — now using AI as a way of working, not just a keyword.",
+      " It leveled me up — from developer to engineer of my own AI ecosystem.",
     workLabel: "Selected work",
-    workTitle: "A few things already shipped",
-    workAll: "See all →",
+    workTitle: "A few things people actually use.",
+    workAll: "All work →",
     teasers: WORK_ITEMS.en.slice(0, 3),
     contactLabel: "Contact",
-    contactTitle: "Let's talk.",
-    contactBody:
-      "Open to conversations about product, collaboration, or a fit that makes sense.",
+    contactTitle: "Got a project?",
+    contactBody: "Tell me what you're building. If it's a fit, we go from there.",
     contactCta: "Get in touch",
   },
 };

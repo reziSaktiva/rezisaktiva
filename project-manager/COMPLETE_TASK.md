@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-08-20]
 ### Fixed
+- Panel hamburger mobile tidak bisa ditutup: `display: flex` dari Astryx Stack mengalahkan atribut HTML `hidden`, jadi lembar menu tetap terlihat meski state sudah tertutup. `.site-mobile-nav[hidden]` sekarang `display: none !important`.
+
+## [2026-08-20]
+### Fixed
 - ESLint `react-hooks/refs`: jangan assign `closeMobileNavRef.current` saat render di `site-header.tsx` (CI / lint-typecheck PR #39).
 
 ## [2026-08-20]

@@ -7,11 +7,11 @@ import type { Locale } from "@/lib/locale";
  * Email & URL satelit masih placeholder mockup sampai T-021.4.
  */
 
-export const CONTACT_EMAIL = "hello@rezisaktiva.com";
+export const CONTACT_EMAIL = "rezisaktiva08@gmail.com";
 
 export const CONTACT_SOCIALS = {
   linkedin: { href: "#", label: "LinkedIn" },
-  github: { href: "#", label: "GitHub" },
+  github: { href: "https://github.com/reziSaktiva", label: "GitHub" },
 } as const;
 
 export interface ContactCopy {
