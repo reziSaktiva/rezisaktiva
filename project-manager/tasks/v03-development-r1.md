@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ada di file ini, status Todo — jangan dikerjakan sampai diminta.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ada di file ini, status ✅ Done.
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -125,7 +125,7 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ## T-022 — Penyesuaian desain mobile (paritas mockup)
 
-* **Status:** ⏳ Todo — **jangan dikerjakan** sampai Boss Rezi minta (antrian; bukan kerja sekarang)
+* **Status:** ✅ Done
 * **Domain:** UI/UX
 * **Baca dulu:** `design-mockups/home.html`, `about.html`, `work.html`, `shared.css`, `shared.js`; `product-discovery/04-ux/navigation-patterns.md` (Mobile Considerations), `key-screen-patterns.md` (Responsive), `ux-principles.md`; ADR-018, ADR-020, ADR-021, ADR-022; `.cursor/rules/xds.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`; `app/[locale]/_components/site-header.tsx`, `home-page.tsx`, `about-page.tsx`, `work-page.tsx`, `contact-modal.tsx`, `quick-info.tsx`
 * **Keputusan (2026-08-20):** mockup HTML di `design-mockups/` sudah dirapikan untuk ponsel sempit (iPhone SE 320/375 + hamburger <1024px). Kode Next.js T-013…T-020 masih mengikuti mockup lama. Task ini **hanya** menyelaraskan UI produksi ke mockup baru. Bukan halaman baru, bukan copy (T-021), bukan M10/Work case.
@@ -134,10 +134,10 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 
 ### Subtasks
 
-- [ ] **T-022.1** — Chrome mobile <1024px: header satu baris (brand · hamburger · tema · Contact); panel menu kuning; item nav **full-width** termasuk state aktif; switcher ID/EN **compact** (bukan stretch); cek 320px dan 375px
-- [ ] **T-022.2** — Home mobile: hero dua baris muat tanpa clip/overflow-x; blok teaser judul + “lihat semua” boleh stack; tile featured lebih tinggi (bukan strip 16:8); CTA Contact
-- [ ] **T-022.3** — About, Work index, Contact modal, Quick info: paritas mockup di 320px dan 375px (modal muat viewport; tab Quick info tidak menabrak judul hero)
-- [ ] **T-022.4** — Verifikasi visual vs mockup (320, 375, satu lebar tablet <1024) + regresi desktop ≥1024; catat gap yang tidak bisa 1:1 karena Astryx
+- [x] **T-022.1** — Chrome mobile <1024px: header satu baris (brand · hamburger · tema · Contact); panel menu kuning; item nav **full-width** termasuk state aktif; switcher ID/EN **compact** (bukan stretch); cek 320px dan 375px
+- [x] **T-022.2** — Home mobile: hero dua baris muat tanpa clip/overflow-x; blok teaser judul + “lihat semua” boleh stack; tile featured lebih tinggi (bukan strip 16:8); CTA Contact
+- [x] **T-022.3** — About, Work index, Contact modal, Quick info: paritas mockup di 320px dan 375px (modal muat viewport; tab Quick info tidak menabrak judul hero)
+- [x] **T-022.4** — Verifikasi visual vs mockup (320, 375, satu lebar tablet <1024) + regresi desktop ≥1024; catat gap yang tidak bisa 1:1 karena Astryx
 
 ---
 
