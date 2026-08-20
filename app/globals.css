@@ -154,51 +154,22 @@ html[data-theme="dark"] body {
 
 /*
  * Panel hamburger <1024px — mockup `.header-panel` (lembar kuning di bawah
- * header, bukan drawer samping Astryx). Drawer native `<dialog>` di-restyle
- * lewat class scoped; header/close bawaan MobileNav disembunyikan karena
- * hamburger di chrome sudah jadi toggle buka/tutup.
+ * header). Bukan `<dialog>` modal Astryx: `showModal()` membuat chrome di luar
+ * dialog inert, jadi Contact/tema tidak bisa di-tap. Panel ini disclosure
+ * biasa; tutup via hamburger, Escape, atau pointer di luar panel.
  */
 .site-mobile-nav {
-  align-items: flex-start;
-}
-
-.site-mobile-nav::backdrop {
-  background-color: transparent;
-  backdrop-filter: none;
-  opacity: 1;
-}
-
-.site-mobile-nav > div {
-  top: calc(var(--appshell-header-height, 3.75rem) + 0.2rem) !important;
-  right: max(0.75rem, env(safe-area-inset-right, 0px)) !important;
-  bottom: auto !important;
-  left: max(0.75rem, env(safe-area-inset-left, 0px)) !important;
-  inset-inline: max(0.75rem, env(safe-area-inset-left, 0px))
-    max(0.75rem, env(safe-area-inset-right, 0px)) !important;
-  width: auto !important;
-  max-width: none !important;
-  height: auto !important;
-  transform: none !important;
-  background-color: var(--chip-bg);
-  border: 0 !important;
-  border-radius: 1.15rem;
-  box-shadow: 0 18px 40px rgb(0 0 0 / 0.14);
-  overflow: visible;
-}
-
-.site-mobile-nav > div > div:first-child {
-  display: none;
-}
-
-.site-mobile-nav > div > div:last-child {
+  position: fixed;
+  z-index: 55;
+  top: calc(var(--appshell-header-height, 3.75rem) + 0.2rem);
+  right: max(0.75rem, env(safe-area-inset-right, 0px));
+  left: max(0.75rem, env(safe-area-inset-left, 0px));
+  width: auto;
   padding: 0.4rem;
   overflow: visible;
-  touch-action: auto;
-}
-
-.site-mobile-nav-inner {
-  width: 100%;
-  align-items: stretch;
+  background-color: var(--chip-bg);
+  border-radius: 1.15rem;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.14);
 }
 
 .site-mobile-nav-chip {

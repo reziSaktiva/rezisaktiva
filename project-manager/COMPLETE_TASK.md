@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-08-20]
+### Fixed
+- Panel hamburger mobile bukan lagi `<dialog>` modal Astryx — chrome Contact/tema/brand tetap bisa di-tap saat menu terbuka (PR #39 review). Tutup via hamburger, Escape, atau tap di luar panel.
+
+## [2026-08-20]
 ### Added
 - **T-022.1–T-022.4** — paritas desain mobile mockup → kode Next.js (chrome hamburger, Home/About/Work, Contact modal, Quick info).
 ### Changed

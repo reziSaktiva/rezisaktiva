@@ -7,7 +7,7 @@ import { useAppShellMobile } from "@astryxdesign/core/AppShell";
 import { Button } from "@astryxdesign/core/Button";
 import { HStack } from "@astryxdesign/core/HStack";
 import { Icon } from "@astryxdesign/core/Icon";
-import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
+import { MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
 import { VStack } from "@astryxdesign/core/VStack";
@@ -112,7 +112,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
 export function SiteMobileNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const chipColorVars = useChipColorVars();
-  const { closeMobileNav } = useAppShellMobile();
+  const { closeMobileNav, isMobileNavOpen, mobileNavId } = useAppShellMobile();
   const closeMobileNavRef = useRef(closeMobileNav);
   closeMobileNavRef.current = closeMobileNav;
 
@@ -120,35 +120,66 @@ export function SiteMobileNav({ locale }: { locale: Locale }) {
     closeMobileNavRef.current();
   }, [pathname]);
 
+  useEffect(() => {
+    if (!isMobileNavOpen) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMobileNavRef.current();
+      }
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      if (target.closest(".site-mobile-nav, .site-nav-toggle")) {
+        return;
+      }
+      closeMobileNavRef.current();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [isMobileNavOpen]);
+
   return (
-    <MobileNav
+    <VStack
+      id={mobileNavId}
+      gap={2}
       className="site-mobile-nav"
-      width={720}
-      label={MENU_LABEL[locale]}
+      hidden={!isMobileNavOpen}
+      role="navigation"
+      aria-label={MENU_LABEL[locale]}
     >
-      <VStack gap={2} className="site-mobile-nav-inner">
-        <SlidingPillGroup
-          orientation="vertical"
-          gap={0.5}
-          padding={1}
-          className="site-mobile-nav-chip"
-          style={chipColorVars}
-          itemSelector=".astryx-side-nav-item"
-          layoutKey={pathname}
-        >
-          {NAV_ITEMS.map((item) => (
-            <SideNavItem
-              key={item.key}
-              as={NextLink}
-              href={item.href(locale)}
-              label={NAV_LABELS[locale][item.key]}
-              isSelected={isNavItemActive(pathname, locale, item)}
-              onClick={closeMobileNav}
-            />
-          ))}
-        </SlidingPillGroup>
-        <LocaleSwitcher locale={locale} variant="menu" />
-      </VStack>
-    </MobileNav>
+      <SlidingPillGroup
+        orientation="vertical"
+        gap={0.5}
+        padding={1}
+        className="site-mobile-nav-chip"
+        style={chipColorVars}
+        itemSelector=".astryx-side-nav-item"
+        layoutKey={pathname}
+      >
+        {NAV_ITEMS.map((item) => (
+          <SideNavItem
+            key={item.key}
+            as={NextLink}
+            href={item.href(locale)}
+            label={NAV_LABELS[locale][item.key]}
+            isSelected={isNavItemActive(pathname, locale, item)}
+            onClick={closeMobileNav}
+          />
+        ))}
+      </SlidingPillGroup>
+      <LocaleSwitcher locale={locale} variant="menu" />
+    </VStack>
   );
 }
