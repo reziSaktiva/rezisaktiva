@@ -61,7 +61,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 1. Hierarki heading logis per halaman.
 2. Kontras teks/latar wajar; fokus keyboard terlihat pada nav, switcher, tautan Contact.
-3. Target sentuh memadai di mobile (nav & switcher).
+3. Target sentuh memadai di mobile (nav di dalam hamburger, switcher, Contact, toggle tema). Chrome luar hamburger (tema + Contact) harus tetap mudah diketuk di lebar 320px.
 4. Teks tautan deskriptif (hindari “klik di sini”); Email/mailto dapat diakses keyboard.
 5. Bahasa dokumen (`lang`) mengikuti locale aktif (`id` / `en`).
 

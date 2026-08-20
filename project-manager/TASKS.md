@@ -4,9 +4,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-015.2 / T-016.2 / T-017.2 / T-019.2 / T-020.2** selesai di branch `feat/r1-about-work-contact-meta`.
-2. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — berikutnya **T-021.2** (Home).
-3. **T-018** (exit R1) **ditunda** sampai T-021.1–T-021.7 terkunci (kontrak v10).
+1. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — berikutnya **T-021.2** (Home).
+2. **T-018** (exit R1) **ditunda** sampai T-021.1–T-021.7 terkunci (kontrak v10).
+3. **T-022** — penyesuaian desain mobile (paritas mockup → kode) **antrian**; jangan dikerjakan sampai Boss Rezi minta. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 4. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
 
 ## Indeks release
@@ -15,7 +15,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
 | v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
-| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020 | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅; T-018 ⏳ menunggu T-021) |
+| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020, T-022 | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅; T-018 ⏳ menunggu T-021; **T-022** ⏳ Todo — antrian mobile) |
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021 | ⏳ Todo |
 
 ## Aturan

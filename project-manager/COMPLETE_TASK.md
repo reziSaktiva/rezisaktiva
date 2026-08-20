@@ -14,6 +14,16 @@ Format entri:
 - ...
 ```
 
+## [2026-08-20]
+### Added
+- **T-022** — penyesuaian desain mobile (paritas mockup → kode Next.js); subtask T-022.1–T-022.4; status Todo antrian, jangan dikerjakan sampai Boss Rezi minta.
+### Changed
+- Dokumentasi desain diselaraskan mockup mobile 2026-08-20: `navigation-patterns.md` (komposisi hamburger, lantai 320px), `key-screen-patterns.md` (responsive SE/hero/teaser/modal/QI), `ux-principles.md` (target sentuh chrome), `information-architecture.md` (chrome mobile), `design-tokens.md` (layout lantai 320px).
+- Mockup menu mobile: item halaman (termasuk state aktif) `width: 100%`; switcher ID/EN compact, tidak meregang penuh.
+- Mockup HTML: layout mobile (terutama iPhone SE 320/375) dirapikan di `design-mockups/` — chrome, hero, menu hamburger, kartu karya, modal Contact, tab Quick info. Bukan task backlog bernomor; permintaan langsung Boss Rezi. App Next.js belum diubah (masih mengikuti mockup sebelumnya sampai ada task follow-up).
+### Fixed
+- Hero Home “Membangun” tidak lagi terpotong di lebar 320–375px; header Contact/tema/hamburger disejajarkan (target sentuh 36px); menu mobile satu lembar kuning; tile karya featured lebih tinggi di ponsel; modal Contact muat di viewport SE.
+
 ## [2026-08-19]
 ### Changed
 - CI menjalankan `pnpm theme:check` supaya `theme/` tidak drift dari `lib/astryx-theme.ts`.

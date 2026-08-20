@@ -67,11 +67,14 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 > **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
 
-* Breakpoint **<1024px**: nav halaman (Home/About/Karya) + language switcher masuk **hamburger menu** (drawer/panel).
+* Breakpoint **<1024px**: nav halaman (Home/About/Karya) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
 * **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019) + **toggle tema (Must R1, ADR-021)**. Ini menjaga acceptance "Contact ≤ 1 ketukan" meski nav halaman lain di balik menu. Toggle tidak mengubah default ship light.
 * ≥1024px (desktop): nav halaman, switcher, tombol Contact, dan toggle tema (ADR-021) semua selalu terlihat di header — tidak ada hamburger.
 * Footer satelit tetap ada sebagai pelengkap, bukan pengganti Contact.
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
+* **Komposisi panel hamburger** (kontrak visual mockup, 2026-08-20): satu lembar aksen kuning; **item nav halaman selebar panel** (state aktif = bar penuh, bukan pill selebar teks); **switcher ID/EN compact** (chip, tidak meregang penuh).
+* **Chrome satu baris** di ponsel: brand kiri; hamburger + tema + Contact kanan. Tidak wrap jadi dua baris. Lantai lebar **320px** (iPhone SE 1) wajib rapi; **375px** (SE 2/3) acuan ponsel utama.
+* Acuan visual: `design-mockups/` (`home.html` chrome bersama + `shared.css`). Pixel/spacing mengikuti mockup, bukan tebakan dari dokumen ini.
 
 ---
 
@@ -79,7 +82,8 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 * Contact bisa dicapai **≤ satu ketukan** dari halaman mana pun (desktop & mobile) — tombol selalu di luar hamburger
 * Home / About / Karya ≤1 ketukan di desktop; di mobile (<1024px) boleh lewat hamburger (1 ketukan buka menu + 1 ketukan item — override ADR-020)
-* Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020)
+* Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020) sebagai chip compact, bukan full-width
+* Panel hamburger: item halaman full-width; halaman aktif tertandai sebagai bar penuh
 * Footer tidak menggantikan peran Contact
 * Tidak ada item nav untuk permukaan non-R1 di luar Karya (M9, sudah masuk R1 via ADR-020)
 
@@ -96,7 +100,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 | Item | Status |
 | ---- | ------ |
-| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15); toggle tema ADR-021; Quick info ADR-022 |
+| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15); toggle tema ADR-021; Quick info ADR-022; komposisi panel hamburger + lantai 320px diselaraskan mockup 2026-08-20 |
 
 ---
 
