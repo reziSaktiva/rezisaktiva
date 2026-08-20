@@ -75,7 +75,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         id="work"
       >
         <VStack className="home-container" gap={8}>
-          <Reveal axis="horizontal">
+          <Reveal axis="horizontal" className="home-work-head">
             <VStack gap={3}>
               <Text type="label" color="secondary" className="home-kicker">
                 {copy.workLabel}

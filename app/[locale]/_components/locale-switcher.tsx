@@ -1,7 +1,10 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
+import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from "@astryxdesign/core/SegmentedControl";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { LOCALE_COOKIE, LOCALES, type Locale } from "@/lib/locale";
 import { SlidingPillGroup } from "./sliding-pill-group";
@@ -24,10 +27,18 @@ function hrefForLocale(pathname: string, target: Locale): string {
  * Path tetap dievaluasi di sibling locale (Home↔Home, About↔About, dst.)
  * per `navigation-patterns.md`.
  */
-export function LocaleSwitcher({ locale }: { locale: Locale }) {
+export function LocaleSwitcher({
+  locale,
+  variant = "bar",
+}: {
+  locale: Locale;
+  /** `menu` = chip compact di panel hamburger (mockup `.locale-switch--menu`). */
+  variant?: "bar" | "menu";
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const chipColorVars = useChipColorVars();
+  const isMenu = variant === "menu";
 
   const handleChange = (value: string) => {
     if (!LOCALES.includes(value as Locale) || value === locale) {
@@ -40,7 +51,11 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
 
   return (
     <SlidingPillGroup
-      className="site-locale-switch-host"
+      className={
+        isMenu
+          ? "site-locale-switch-host site-locale-switch-host--menu"
+          : "site-locale-switch-host"
+      }
       style={chipColorVars}
       itemSelector=".astryx-segmented-control-item"
       layoutKey={locale}
@@ -50,15 +65,27 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
         onChange={handleChange}
         label="Bahasa / Language"
         size="sm"
-        className="site-locale-switch"
+        className={
+          isMenu
+            ? "site-locale-switch site-locale-switch--menu"
+            : "site-locale-switch"
+        }
       >
         {LOCALES.flatMap((value, index) => [
           index > 0 && (
-            <span key={`sep-${value}`} aria-hidden="true" className="locale-switch-separator">
+            <span
+              key={`sep-${value}`}
+              aria-hidden="true"
+              className="locale-switch-separator"
+            >
               /
             </span>
           ),
-          <SegmentedControlItem key={value} value={value} label={LABELS[value]} />,
+          <SegmentedControlItem
+            key={value}
+            value={value}
+            label={LABELS[value]}
+          />,
         ])}
       </SegmentedControl>
     </SlidingPillGroup>

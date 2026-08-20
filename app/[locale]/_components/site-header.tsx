@@ -1,13 +1,16 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { useAppShellMobile } from "@astryxdesign/core/AppShell";
 import { Button } from "@astryxdesign/core/Button";
 import { HStack } from "@astryxdesign/core/HStack";
+import { Icon } from "@astryxdesign/core/Icon";
 import { MobileNav, MobileNavToggle } from "@astryxdesign/core/MobileNav";
 import { SideNavItem } from "@astryxdesign/core/SideNav";
 import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
+import { VStack } from "@astryxdesign/core/VStack";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import type { Locale } from "@/lib/locale";
@@ -20,6 +23,7 @@ import {
 } from "@/lib/nav";
 import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
+import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -37,7 +41,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   // Breakpoint sinkron dengan mobileNav={{ breakpoint: 'lg' }} pada AppShell
   // (lg = 1024px) — sumber kebenaran tunggal untuk kapan hamburger aktif.
-  const { isMobile } = useAppShellMobile();
+  const { isMobile, isMobileNavOpen } = useAppShellMobile();
   const chipColorVars = useChipColorVars();
   const { open } = useContactModal();
 
@@ -79,9 +83,14 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
         ) : undefined
       }
       endContent={
-        <HStack gap={3} align="center">
+        <HStack gap={3} align="center" className="site-header-tools">
           {!isMobile && <LocaleSwitcher locale={locale} />}
-          <MobileNavToggle label={MENU_LABEL[locale]} />
+          <MobileNavToggle
+            label={MENU_LABEL[locale]}
+            className="site-nav-toggle"
+          >
+            <Icon icon={isMobileNavOpen ? CloseIcon : MenuIcon} />
+          </MobileNavToggle>
           <Magnetic>
             <ThemeToggle locale={locale} />
           </Magnetic>
@@ -103,29 +112,43 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
 export function SiteMobileNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const chipColorVars = useChipColorVars();
+  const { closeMobileNav } = useAppShellMobile();
+  const closeMobileNavRef = useRef(closeMobileNav);
+  closeMobileNavRef.current = closeMobileNav;
+
+  useEffect(() => {
+    closeMobileNavRef.current();
+  }, [pathname]);
 
   return (
-    <MobileNav header={MENU_LABEL[locale]}>
-      <SlidingPillGroup
-        orientation="vertical"
-        gap={0.5}
-        padding={1}
-        className="site-mobile-nav-chip"
-        style={chipColorVars}
-        itemSelector=".astryx-side-nav-item"
-        layoutKey={pathname}
-      >
-        {NAV_ITEMS.map((item) => (
-          <SideNavItem
-            key={item.key}
-            as={NextLink}
-            href={item.href(locale)}
-            label={NAV_LABELS[locale][item.key]}
-            isSelected={isNavItemActive(pathname, locale, item)}
-          />
-        ))}
-      </SlidingPillGroup>
-      <LocaleSwitcher locale={locale} />
+    <MobileNav
+      className="site-mobile-nav"
+      width={720}
+      label={MENU_LABEL[locale]}
+    >
+      <VStack gap={2} className="site-mobile-nav-inner">
+        <SlidingPillGroup
+          orientation="vertical"
+          gap={0.5}
+          padding={1}
+          className="site-mobile-nav-chip"
+          style={chipColorVars}
+          itemSelector=".astryx-side-nav-item"
+          layoutKey={pathname}
+        >
+          {NAV_ITEMS.map((item) => (
+            <SideNavItem
+              key={item.key}
+              as={NextLink}
+              href={item.href(locale)}
+              label={NAV_LABELS[locale][item.key]}
+              isSelected={isNavItemActive(pathname, locale, item)}
+              onClick={closeMobileNav}
+            />
+          ))}
+        </SlidingPillGroup>
+        <LocaleSwitcher locale={locale} variant="menu" />
+      </VStack>
     </MobileNav>
   );
 }

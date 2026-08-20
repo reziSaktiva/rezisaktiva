@@ -16,6 +16,18 @@ Format entri:
 
 ## [2026-08-20]
 ### Added
+- **T-022.1–T-022.4** — paritas desain mobile mockup → kode Next.js (chrome hamburger, Home/About/Work, Contact modal, Quick info).
+### Changed
+- Chrome <1024px: header satu baris; panel menu kuning (MobileNav Astryx di-restyle jadi dropdown, bukan drawer samping); item nav full-width termasuk state aktif; switcher ID/EN compact.
+- Home: hero clamp mengikuti mockup (tidak overflow-x); teaser judul + “lihat semua” stack di <640px; tile featured `4/3` di ponsel sempit (bukan strip 16:8).
+- About/Work/Contact/Quick info: ukuran 320/375 (modal muat viewport; tab Quick info lebih kecil agar tidak menabrak judul).
+### Fixed
+- Header mobile tidak wrap; hero “Membangun / produk.” muat di 320–375px.
+
+**Gap Astryx (tidak 1:1, T-022.4):** panel hamburger tetap `<dialog>` native (focus trap / Escape / klik di luar) dengan backdrop transparan — mockup panel `position: absolute` tanpa scrim. Compiler StyleX belum wired; override scoped CSS seperti T-013.
+
+## [2026-08-20]
+### Added
 - **T-022** — penyesuaian desain mobile (paritas mockup → kode Next.js); subtask T-022.1–T-022.4; status Todo antrian, jangan dikerjakan sampai Boss Rezi minta.
 ### Changed
 - Dokumentasi desain diselaraskan mockup mobile 2026-08-20: `navigation-patterns.md` (komposisi hamburger, lantai 320px), `key-screen-patterns.md` (responsive SE/hero/teaser/modal/QI), `ux-principles.md` (target sentuh chrome), `information-architecture.md` (chrome mobile), `design-tokens.md` (layout lantai 320px).
