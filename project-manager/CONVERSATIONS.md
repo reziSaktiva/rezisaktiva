@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-20] — Mockup mobile dikunci + T-022 antrian
+
+**Phase:** Development R1
+**Summary:** Mockup HTML dirapikan untuk iPhone SE (320/375) dan menu hamburger (item nav full-width, ID/EN compact). Dokumentasi UX diselaraskan. Task **T-022** ditambah untuk paritas kode Next.js — **jangan dikerjakan sekarang**; Boss Rezi ingin mengerjakannya nanti.
+**Key Decision/Insight:** Mockup = SoT visual. Bukan ADR baru (tetap ADR-020 hamburger <1024). T-021 copy tetap jalur copy; T-022 independen dan boleh paralel nanti.
+**Impact:** `navigation-patterns.md`, `key-screen-patterns.md`, `ux-principles.md`, `information-architecture.md`, `design-tokens.md`; `tasks/v03-development-r1.md` T-022; `TASKS.md`; `PROJECT_STATE.md`.
+
 ## [2026-08-19] — KI visual vs mockup sebelum merge PR #32
 
 **Phase:** Development R1

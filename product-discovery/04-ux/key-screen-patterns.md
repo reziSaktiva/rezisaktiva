@@ -100,10 +100,12 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 # Responsive Considerations
 
-* **Desktop:** hierarki vertikal jelas; nav horizontal; teaser 1–3 dalam satu baris atau stack rapi.
-* **Mobile:** first viewport tetap memuat klaim inti tanpa mengandalkan hover; teaser stack vertikal; Contact Email tetap paling menonjol.
+* **Desktop (≥1024px):** hierarki vertikal jelas; nav horizontal; teaser 1–3 dalam satu baris atau stack rapi.
+* **Mobile (<1024px):** first viewport tetap memuat klaim inti tanpa mengandalkan hover; teaser stack vertikal; Contact Email tetap paling menonjol di modal.
+* **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris (mis. “Membangun” / “produk.”) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work teaser: judul + tautan “lihat semua” boleh **stack** (bukan dipaksa satu baris); tile featured **lebih tinggi** daripada strip 16:8. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
 * **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
 * Panjang salinan ID/EN boleh beda, **makna setara**.
+* Acuan visual: `design-mockups/` — mockup = keputusan desain terbaru (bukan tebakan dari paragraf ini).
 
 ---
 

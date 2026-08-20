@@ -54,7 +54,7 @@ Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` 
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship tetap light
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru. Tampil di semua halaman R1 kecuali Work case detail (**ADR-022**)
 6. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
-7. Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)
+7. Mobile (<1024px): nav halaman + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual `design-mockups/`
 
 ### Home (urutan konten)
 

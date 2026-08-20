@@ -99,7 +99,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 | Spacing | Skala token Astryx berbasis 4px cukup; konsisten ritme section |
 | Radius | Sedang untuk teaser/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
 | Elevation | Minimal shadow; hierarchy lewat tipe & spasi, bukan multi-layer glow |
-| Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens |
+| Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = `design-mockups/` + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
 Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebihan.
 

@@ -43,7 +43,7 @@
     },
   };
 </script>
-<link rel="stylesheet" href="shared.css?v=28" />
+<link rel="stylesheet" href="shared.css?v=31" />
 </head>
 
 <body class="antialiased bg-bg text-fg">
@@ -51,8 +51,8 @@
   <div class="cursor-ring"></div>
 
   <header class="header-quiet fixed top-0 inset-x-0 z-50">
-    <div class="site-header max-w-[1400px] mx-auto px-2 sm:px-6 md:px-10 min-h-20 py-3 sm:py-0 flex flex-wrap sm:flex-nowrap items-center justify-between gap-1.5 sm:gap-2">
-      <a href="home.html" class="header-brand font-display font-semibold tracking-tight text-[11px] sm:text-base whitespace-nowrap shrink-0">rezisaktiva</a>
+    <div class="site-header max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 min-h-16 sm:min-h-20 py-3 sm:py-0 flex flex-nowrap items-center justify-between gap-2">
+      <a href="home.html" class="header-brand font-display font-semibold tracking-tight text-base whitespace-nowrap shrink-0">rezisaktiva</a>
       <div class="header-panel" id="header-nav-panel">
       <nav data-pill-group class="header-nav flex items-center gap-0.5 sm:gap-1.5 md:gap-2 text-[10px] sm:text-[12px] md:text-[13px] text-fg-muted shrink-0 bg-yellow-300 rounded-xl sm:rounded-2xl px-0.5 sm:px-2 py-0.5 sm:py-2 chip-fixed-text">
         <a href="home.html" class="rounded-lg sm:rounded-2xl px-1 sm:px-3 py-0.5 sm:py-1.5 transition-colors whitespace-nowrap" data-i18n="nav.home">Home</a>
@@ -65,7 +65,7 @@
           <button type="button" data-locale="en" class="px-1 sm:px-2 py-0.5 rounded-lg sm:rounded-2xl transition-colors">EN</button>
         </div>
       </div>
-      <div class="header-tools flex items-center gap-0.5 sm:gap-2 md:gap-3 shrink-0">
+      <div class="header-tools flex items-center gap-2 md:gap-3 shrink-0">
         <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="header-nav-panel" data-i18n-aria="nav.menu" aria-label="Buka menu">
           <svg class="nav-icon-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           <svg class="nav-icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -75,12 +75,12 @@
           <span class="opacity-40">/</span>
           <button type="button" data-locale="en" class="px-1 sm:px-2 py-0.5 rounded-lg sm:rounded-2xl transition-colors">EN</button>
         </div>
-        <div class="flex items-center gap-0.5 sm:gap-1.5 md:gap-2 shrink-0">
-          <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle magnetic w-6 h-6 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-brand text-on-brand hover:bg-accent hover:text-on-accent transition-colors shrink-0">
+        <div class="flex items-center gap-1.5 md:gap-2 shrink-0">
+          <button data-theme-toggle data-i18n-aria="theme.aria" aria-label="Ganti tema terang/gelap" class="theme-toggle magnetic w-9 h-9 rounded-full flex items-center justify-center bg-brand text-on-brand hover:bg-accent hover:text-on-accent transition-colors shrink-0">
             <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
             <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
           </button>
-          <button type="button" class="magnetic inline-flex items-center gap-1.5 bg-brand text-on-brand px-1.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap text-[10px] sm:text-[13px]" data-i18n="nav.contact" data-contact-open>Contact</button>
+          <button type="button" class="header-contact magnetic bg-brand text-on-brand rounded-full font-medium hover:bg-accent hover:text-on-accent transition-colors whitespace-nowrap" data-i18n="nav.contact" data-contact-open>Contact</button>
         </div>
       </div>
     </div>
@@ -88,15 +88,15 @@
 
   <main>
 
-    <section class="max-w-[1400px] mx-auto px-6 md:px-10 pt-32 md:pt-40 pb-10">
+    <section class="max-w-[1400px] mx-auto px-5 sm:px-6 md:px-10 pt-28 md:pt-40 pb-10">
       <a href="work.html" class="reveal inline-block text-sm text-fg-muted hover:text-fg mb-10" data-i18n="case.back">← Semua karya</a>
       <p class="reveal text-[11px] tracking-[0.2em] uppercase text-fg-muted mb-6" data-i18n="page.work">Karya</p>
-      <h1 class="reveal font-display text-4xl md:text-6xl font-semibold tracking-tight leading-[0.95]" data-case="name">Nama Project 01</h1>
+      <h1 class="reveal font-display text-[2rem] sm:text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]" data-case="name">Nama Project 01</h1>
       <p class="reveal mt-6 text-fg-muted max-w-xl leading-relaxed" data-case="outcome">Peran / outcome singkat, satu kalimat.</p>
     </section>
 
     <section class="max-w-[1400px] mx-auto px-6 md:px-10 pb-16">
-      <div class="work-tile aspect-[16/8] md:aspect-[21/9]">
+      <div class="work-tile aspect-[4/3] sm:aspect-[16/8] md:aspect-[21/9]">
         <img data-case-image src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=1600&auto=format&fit=crop" alt="" />
       </div>
     </section>
