@@ -1,8 +1,11 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy About / Proses Kerja sementara dari mockup (`design-mockups/about.html`).
- * Bukan copy final — kunci + ganti teks di T-021.3 (v10).
+ * Copy About / Proses Kerja. Dikunci T-021.3 (2026-08-20) lewat diskusi —
+ * menonjolkan cara kerja spesifik Rezi: orkestrasi tim AI subagent dengan
+ * pipeline discovery → arsitektur → build → ship, keputusan terdokumentasi
+ * via ADR. ID = teks final dari Boss Rezi; EN = adaptasi makna, bukan
+ * terjemahan kata-per-kata.
  */
 
 export interface AboutOffer {
@@ -43,9 +46,9 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
   id: {
     h1: ["Halo,", "saya", "Rezi."],
     lead1:
-      "Membangun produk dari ide sampai live — itu yang saya lakukan setiap hari.",
+      "Saya tidak menghabiskan waktu untuk sekadar mengetik baris kode. Fokus utama saya adalah arsitektur sistem dan efisiensi eksekusi—memanfaatkan alat modern untuk merakit ide Anda menjadi produk live secepat mungkin, tanpa mengorbankan kualitas.",
     lead2:
-      "~6 tahun di fullstack. Saya bantu founder dan PO membuat sesuatu yang benar-benar terpakai, bukan yang hanya terdengar bagus di slide.",
+      "Berbekal 6+ tahun pengalaman fullstack, kini saya mengorkestrasi pipeline AI subagent dari discovery hingga deployment. Lensa komersial yang saya miliki memastikan saya tidak cuma tahu cara build, tapi paham kelayakan dan nilai strategis di balik setiap fitur.",
     availability:
       "Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.",
     portraitAlt: "Placeholder — ganti dengan foto pribadi Rezi",
@@ -54,61 +57,62 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
       {
         num: "01",
         title: "Product",
-        body: "Dari pertanyaan “apa yang seharusnya dibangun” sampai alur yang siap di-ship.",
+        body: "Saya tidak menunggu brief sempurna. Saya membantu membedah masalah untuk menentukan apa yang benar-benar perlu dibangun—lalu merancang alurnya hingga siap meluncur ke pasar.",
       },
       {
         num: "02",
         title: "Fullstack",
-        body: "Data, API, interface. Satu orang yang bisa bicara trade-off di semua lapisan.",
+        body: "6+ tahun menangani data, API, hingga interface memberi saya intuisi atas setiap trade-off teknis. Setiap keputusan arsitektur lahir dari kebutuhan riil, bukan sekadar mengikuti tren.",
       },
       {
         num: "03",
-        title: "AI",
-        body: "Akselerator, bukan klaim. Mempercepat proses — fondasi engineering tetap di tangan.",
+        title: "AI & Orchestration",
+        body: "Saya mengorkestrasi ekosistem AI subagent untuk mempercepat eksekusi. Namun arah produk dan arsitektur tetap berada di tangan saya—terdokumentasi rapi via ADR, bukan tenggelam di chat history.",
       },
     ],
     approachLabel: "Approach",
     approachBody:
-      "Selalu penasaran, selalu belajar, menikmati setiap langkahnya. Termasuk yang berantakan di tengah.",
+      "Saya telah beralih dari menulis kode manual ke mengorkestrasi sistem. Peran saya adalah membedah masalah, merancang arsitektur, dan memecah tasks—yang kemudian dieksekusi oleh tim AI subagent. Saya juga melibatkan AI sejak tahap ideasi untuk menguji dan mempertajam logika, tetapi arah serta keputusan akhir tetap sepenuhnya di tangan saya.",
     valuesLabel: "Values",
     values: [
-      "Yang belum live, belum selesai.",
-      "Desain yang baik adalah sistem keputusan — bukan slide yang cantik.",
-      "Siklus pendek mengalahkan spekulasi.",
+      "\u201cBelum live, belum selesai.\u201d Fokus saya adalah hasil akhir yang berfungsi di lingkungan produksi dan memberi nilai nyata.",
+      "\u201cKeputusan didokumentasikan, bukan diingat.\u201d Setiap pilihan arsitektur dicatat secara terstruktur (ADR) demi keberlanjutan sistem.",
+      "\u201cAI mempercepat, saya bertanggung jawab.\u201d AI adalah pendorong efisiensi, tetapi kualitas dan integritas produk tetap 100% kepemilikan saya.",
     ],
     processTitle: "Bagaimana saya menggerakkan sebuah project",
     processNote:
-      "Dari ide ke sesuatu yang bisa dicoba. Keputusan berikutnya dari bukti, bukan tebakan.",
+      "Menerjemahkan ide mentah menjadi produk yang siap digunakan, dieksekusi melalui orkestrasi tim AI subagent. Setiap keputusan arsitektur penting terdokumentasi dengan jelas—memastikan proses berjalan terstruktur dan tanpa kompromi pada kualitas.",
     steps: [
       {
         num: "01",
         title: "Discover",
-        body: "Pahami masalah nyatanya dulu. Baru kode.",
+        body: "Saya menggali akar masalah bersama stakeholder untuk merumuskan konsep awal. Sebelum dieksekusi, ide tersebut saya uji dan validasi bersama AI—memastikan solusinya kuat secara logika, bukan sekadar asumsi di atas kertas.",
       },
       {
         num: "02",
         title: "Design",
-        body: "Alur produk dan pilihan teknis yang bisa dibela — bukan stack yang lagi tren.",
+        body: "Saya merancang arsitektur sistem dan alur produk secara mandiri. Untuk detail visual, saya mengekstraksi referensi tren desain terbaik dibantu AI, lalu membreakdown seluruh rancangan menjadi tasks siap eksekusi bagi AI subagent.",
       },
       {
         num: "03",
         title: "Build",
-        body: "Eksekusi cepat. AI mempercepat, tidak memutuskan.",
+        body: "Tim AI subagent—mulai dari backend, UI, hingga QA—bekerja secara paralel. Saya bertindak sebagai lead reviewer untuk setiap output. Tidak ada kode yang masuk ke produksi tanpa kendali mutu langsung dari saya.",
       },
       {
         num: "04",
         title: "Ship & Iterate",
-        body: "Rilis, lalu perbaiki dari yang benar-benar terjadi.",
+        body: "Produk dirilis ke lingkungan live, lalu performanya dipantau berbasis data nyata. Setiap iterasi berikutnya didasarkan pada perilaku pengguna aktual, bukan sekadar tebakan.",
       },
     ],
-    ctaQuestion: "Tertarik mengobrol lebih jauh?",
+    ctaQuestion: "Penasaran gimana detailnya?",
     ctaLink: "Hubungi saya",
   },
   en: {
     h1: ["Hello,", "I'm", "Rezi."],
-    lead1: "Building products from idea to live — that is the work, every day.",
+    lead1:
+      "I don't spend my time just typing lines of code. My focus is system architecture and execution efficiency—using modern tools to turn your idea into a live product as fast as possible, without compromising quality.",
     lead2:
-      "~6 years in fullstack. I help founders and POs ship something people actually use, not something that only sounds good on a slide.",
+      "With 6+ years of fullstack experience, I now orchestrate an AI subagent pipeline from discovery to deployment. My commercial lens means I don't just know how to build—I understand the feasibility and strategic value behind every feature.",
     availability: "Open to selected projects in the coming months.",
     portraitAlt: "Placeholder — replace with Rezi’s photo",
     helpTitle: "I can help you with",
@@ -116,54 +120,54 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
       {
         num: "01",
         title: "Product",
-        body: "From the question “what should be built” to a flow that is ready to ship.",
+        body: "I don't wait for a perfect brief. I help dissect the problem to figure out what actually needs to be built—then design the flow all the way to market-ready.",
       },
       {
         num: "02",
         title: "Fullstack",
-        body: "Data, API, interface. One person who can talk trade-offs across the stack.",
+        body: "6+ years working across data, APIs, and interfaces gives me intuition for every technical trade-off. Every architecture decision comes from a real need, not just chasing trends.",
       },
       {
         num: "03",
-        title: "AI",
-        body: "An accelerator, not a claim. Faster process — engineering still in human hands.",
+        title: "AI & Orchestration",
+        body: "I orchestrate an AI subagent ecosystem to accelerate execution. But product direction and architecture stay in my hands—documented properly via ADRs, not buried in chat history.",
       },
     ],
     approachLabel: "Approach",
     approachBody:
-      "Always curious, always learning, enjoying every step. Even the messy middle.",
+      "I've moved from writing code by hand to orchestrating systems. My role is to dissect the problem, design the architecture, and break it into tasks—then an AI subagent team executes them. I also bring AI in from the ideation stage to stress-test the logic, but the direction and final calls stay entirely mine.",
     valuesLabel: "Values",
     values: [
-      "If it is not live, it is not done.",
-      "Good design is a system of decisions — not a pretty slide.",
-      "A short cycle beats speculation.",
+      "\u201cNot live, not done.\u201d My focus is the end result that actually works in production and delivers real value.",
+      "\u201cDecisions are documented, not just remembered.\u201d Every architecture choice is logged in a structured way (ADR) for the system's long-term health.",
+      "\u201cAI accelerates, I'm accountable.\u201d AI drives efficiency, but the product's quality and integrity are 100% my ownership.",
     ],
     processTitle: "How I move a project forward",
     processNote:
-      "From idea to something tryable. The next decision comes from evidence, not guesswork.",
+      "Turning a raw idea into something ready to use, executed through an orchestrated AI subagent team. Every key architecture decision is documented clearly—keeping the process structured with no compromise on quality.",
     steps: [
       {
         num: "01",
         title: "Discover",
-        body: "Understand the real problem first. Then code.",
+        body: "I dig into the real problem with stakeholders to shape the initial concept. Before execution, I stress-test and validate the idea with AI—making sure the solution holds up logically, not just on paper.",
       },
       {
         num: "02",
         title: "Design",
-        body: "Product flow and technical choices that can be defended — not a trendy stack.",
+        body: "I design the system architecture and product flow myself. For visual details, I pull the best design trend references with AI's help, then break the whole plan into tasks ready for the AI subagent team to execute.",
       },
       {
         num: "03",
         title: "Build",
-        body: "Execute fast. AI accelerates; it does not decide.",
+        body: "The AI subagent team—backend, UI, QA—works in parallel. I act as lead reviewer for every output. Nothing ships to production without direct quality control from me.",
       },
       {
         num: "04",
         title: "Ship & Iterate",
-        body: "Ship, then improve from what actually happens.",
+        body: "The product ships to live, then its performance gets tracked from real data. Every next iteration is based on actual user behavior, not guesswork.",
       },
     ],
-    ctaQuestion: "Want to talk further?",
+    ctaQuestion: "Curious how it actually works?",
     ctaLink: "Get in touch",
   },
 };

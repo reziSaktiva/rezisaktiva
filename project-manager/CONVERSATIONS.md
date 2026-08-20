@@ -14,6 +14,34 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-20] — T-021.5 daftar karya kurasi dikunci (8 item)
+
+**Phase:** Development R1
+**Summary:** Daftar karya Work index ditarik dari resume Boss Rezi, bukan dikarang. 8 item: Social Media Management Platform, Cook It Real Good, Minerank — Blog, SMC Auction, Personal Portfolio (rezisaktiva), Gamestalgia, Curious, SMC Migration. Curious ditulis jujur sebagai project yang dihentikan product owner (bukan gagal teknis), sesuai keputusan Boss Rezi. SMC Migration tanpa tautan (tidak ada URL publik di resume).
+**Key Decision/Insight:** `WorkItem` sekarang punya `href` eksternal (repo/live) — dipakai Work index untuk tile yang benar-benar bisa diklik (sebelumnya tidak ada tautan sama sekali di Work index). Home teaser tetap link ke `/work` (T-019.2), tidak berubah. `h1`/`lead`/CTA Work index masih **draf**, belum dikonfirmasi eksplisit seperti h1 Home.
+**Impact:** `content/work.ts` (rewrite), `work-tile.tsx`, `work-page.tsx`. `content/home.ts` teaser otomatis ikut daftar baru (3 item pertama). `tasks/v10-page-copy.md` T-021.5 progres.
+
+## [2026-08-20] — T-021.2 seksi karya + Contact Home dikunci
+
+**Phase:** Development R1
+**Summary:** Sisa slot Home (judul+CTA seksi karya, blok Contact) dikunci lewat diskusi. Nada tetap akrab/pede, konsisten dengan h1 dan Bukti yang sudah terkunci sebelumnya. Email/GitHub nyata juga dipasang ke `content/contact.ts` (dicontek dari resume): `rezisaktiva08@gmail.com`, `github.com/reziSaktiva`. LinkedIn masih placeholder.
+**Key Decision/Insight:** ID `Beberapa yang udah dipakai orang.` / `Semua karya →`; Contact `Ada project?` / `Cerita bentar aja soal apa yang mau dibangun. Kalau cocok, kita lanjut.` / `Hubungi saya`. EN paralel makna, bukan terjemahan literal. T-021.2 tersisa hanya teaser (menunggu T-021.5).
+**Impact:** `content/home.ts`, `content/contact.ts` (email/GitHub). `tasks/v10-page-copy.md` T-021.2 progres.
+
+## [2026-08-20] — T-021.2 Bukti Home dikunci
+
+**Phase:** Development R1
+**Summary:** Copy blok Bukti Home dikunci. Argumen: AI bukan ancaman ke pekerjaan, AI menaikkan level kerja (developer → engineer ekosistem AI pribadi) — konsisten dengan skill "AI Ecosystem Building" di resume Boss Rezi.
+**Key Decision/Insight:** ID `AI tidak menghilangkan pekerjaan saya. AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.` · EN `AI didn't take my job. It leveled me up — from developer to engineer of my own AI ecosystem.` (angka "~6 tahun" dilepas dari blok ini, tidak dipakai di klaim final).
+**Impact:** `content/home.ts` (buktiEmphasis/buktiRest). T-021.2 masih terbuka — seksi karya + CTA contact.
+
+## [2026-08-20] — T-021.2 h1 Home dikunci
+
+**Phase:** Development R1
+**Summary:** Copy h1 Home dikunci lewat diskusi (nada akrab, bukan tagline baku). Bukan klaim “website” atau “tanpa kode” di judul.
+**Key Decision/Insight:** ID `Ceritamu` / `lewat produk.` · EN `Your story,` / `in the product.`
+**Impact:** `content/home.ts` (h1). T-021.2 belum Done — Bukti, seksi karya, CTA contact, teaser masih terbuka.
+
 ## [2026-08-20] — Mockup mobile dikunci + T-022 antrian
 
 **Phase:** Development R1
