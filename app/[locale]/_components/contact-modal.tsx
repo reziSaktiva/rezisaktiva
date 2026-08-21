@@ -164,7 +164,9 @@ export function ContactModal({ locale }: { locale: Locale }) {
           <Grid columns={2} gap={8} className="ct-grid" align="start">
             <VStack>
               <Heading level={2} id={titleId} className="ct-title">
-                <Text display="inline">{copy.titleLead}</Text>{" "}
+                <Text display="inline" className="ct-title-lead">
+                  {copy.titleLead}
+                </Text>{" "}
                 <Text display="inline" className="ct-accent">
                   {copy.titleAccent}
                 </Text>
@@ -258,7 +260,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
               </HStack>
               <HStack gap={2} align="center" className="ct-availability">
                 <VStack className="avail-dot" aria-hidden="true" />
-                <Text>{copy.availability}</Text>
+                <Text className="ct-availability-text">{copy.availability}</Text>
               </HStack>
             </VStack>
           </Grid>
