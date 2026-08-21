@@ -13,8 +13,6 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 > **Catatan override (2026-08-15, ADR-020):** M9 (Work index) naik jadi Must R1 — nav chrome menyertakan link "Karya" ke `/[locale]/work`. M10 (case/process detail) tetap Post-MVP/R2.
 >
 > **Update (2026-08-16):** M6 menyertakan toggle tema Must R1 (**ADR-021**). Modul baru **M13 — Quick Info panel** (**ADR-022**) — overlay global, bukan halaman.
->
-> **Update (2026-08-21):** M3 (Contact) menambah tautan unduh CV/Portofolio di dalam modal yang sudah ada (**ADR-023**) — bukan route baru, bukan pengganti email.
 
 ---
 
@@ -62,7 +60,6 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 * Jalur primer: email dan/atau tautan langsung
 * Tautan satelit (LinkedIn, GitHub, dll.)
 * Opsional: availability line
-* Tautan unduh CV/Portofolio (PDF) — ditambahkan 2026-08-21 (ADR-023, T-021.4), di luar draf mockup awal
 
 **Bukan (MVP):** form berbackend, CRM, calendar wajib, rate card.
 
@@ -180,6 +177,5 @@ Modul dianggap cukup terdefinisi jika:
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/decisions/ADR-023-cv-download-contact-modal.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

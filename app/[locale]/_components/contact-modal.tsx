@@ -13,7 +13,6 @@ import {
   CONTACT_COPY,
   CONTACT_EMAIL,
   CONTACT_SOCIALS,
-  CV_FILE_HREF,
 } from "@/content/contact";
 import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
@@ -30,7 +29,6 @@ import {
   ArrowRightIcon,
   CloseIcon,
   CopyIcon,
-  DownloadIcon,
   GitHubIcon,
   LinkedInIcon,
 } from "./overlay-icons";
@@ -258,15 +256,6 @@ export function ContactModal({ locale }: { locale: Locale }) {
                   aria-label={CONTACT_SOCIALS.github.label}
                 >
                   <Icon icon={GitHubIcon} />
-                </Link>
-              </HStack>
-              <Text display="block" className="ct-label-caps">
-                {copy.cvLabel}
-              </Text>
-              <HStack gap={2} align="center" className="ct-cv-row">
-                <Icon icon={DownloadIcon} />
-                <Link href={CV_FILE_HREF} target="_blank" className="ct-cv-link">
-                  {copy.cvDownload}
                 </Link>
               </HStack>
               <HStack gap={2} align="center" className="ct-availability">

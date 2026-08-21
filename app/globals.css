@@ -1442,27 +1442,6 @@ html[data-theme="dark"] body {
   height: 15px;
 }
 
-.ct-cv-row {
-  margin-block-end: 2rem;
-}
-
-.ct-cv-row svg {
-  width: 14px;
-  height: 14px;
-  color: #ede9e1 !important;
-}
-
-.ct-cv-link {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: #ede9e1 !important;
-}
-
-.ct-cv-row:hover svg,
-.ct-cv-link:hover {
-  color: #fde047 !important;
-}
-
 .ct-availability {
   font-size: 0.78rem;
 }
