@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-023 | Tambahan M3 Contact — tautan unduh CV/Portofolio (PDF) | Accepted | 2026-08-21 | Contact modal tambah link unduh CV nyata; bukan route baru; bukan pengganti email; ditemukan+fix bug kontras light mode di modal yang sama | [ADR-023](decisions/ADR-023-cv-download-contact-modal.md) |
 | ADR-022 | Modul baru M13 — Quick Info panel (overlay global, Must R1) | Accepted | 2026-08-16 | Tab tepi kanan → drawer bio/Services/Tools/Works/Email/Links; bukan route; exclude Work case; tidak ganti Contact/footer | [ADR-022](decisions/ADR-022-quick-info-panel-module.md) |
 | ADR-021 | Dark mode toggle UI naik jadi Must R1 (override design-tokens.md + baseline Product) | Accepted | 2026-08-16 | Toggle chrome Must R1; default ship tetap light; tutup inkonsistensi vs navigation-patterns.md (ADR-020) | [ADR-021](decisions/ADR-021-dark-mode-toggle-must-r1.md) |
 | ADR-020 | Work index (M9) naik jadi Must R1 + nav mobile pakai hamburger (override ADR-010/ADR-012 & navigation-patterns.md) | Accepted | 2026-08-15 | `/[locale]/work` masuk R1; M10 tetap R2; nav Home/About/Karya + Contact-button; hamburger <1024px | [ADR-020](decisions/ADR-020-work-index-must-r1-nav-mobile-override.md) |

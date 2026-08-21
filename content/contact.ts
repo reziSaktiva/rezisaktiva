@@ -1,11 +1,11 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy Contact modal sementara dari mockup (`design-mockups/shared.js`).
- * Bukan copy final — kunci + ganti teks di T-021.4 (v10).
- *
- * Email & URL satelit (LinkedIn/GitHub) sudah nyata; sisa label/body form
- * masih placeholder mockup sampai T-021.4.
+ * Copy Contact modal — terkunci T-021.4 (v10). Label/body form dikonfirmasi
+ * apa adanya dari draf mockup (`design-mockups/shared.js`); email & URL
+ * satelit (LinkedIn/GitHub) nyata. `cvLabel`/`cvDownload` + `CV_FILE_HREF`
+ * adalah tambahan di luar mockup (diskusi 2026-08-21) — link unduh CV/
+ * Portofolio (PDF di `public/`).
  */
 
 export const CONTACT_EMAIL = "rezisaktiva08@gmail.com";
@@ -17,6 +17,8 @@ export const CONTACT_SOCIALS = {
   },
   github: { href: "https://github.com/reziSaktiva", label: "GitHub" },
 } as const;
+
+export const CV_FILE_HREF = "/Resume_rezi_updated_agustus_2026.pdf";
 
 export interface ContactCopy {
   titleLead: string;
@@ -33,6 +35,8 @@ export interface ContactCopy {
   copied: string;
   socialsLabel: string;
   availability: string;
+  cvLabel: string;
+  cvDownload: string;
 }
 
 export const CONTACT_COPY: Record<Locale, ContactCopy> = {
@@ -52,6 +56,8 @@ export const CONTACT_COPY: Record<Locale, ContactCopy> = {
     socialsLabel: "Sosial",
     availability:
       "Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.",
+    cvLabel: "CV / Portofolio",
+    cvDownload: "Unduh CV",
   },
   en: {
     titleLead: "Let's",
@@ -68,5 +74,7 @@ export const CONTACT_COPY: Record<Locale, ContactCopy> = {
     copied: "Copied",
     socialsLabel: "Socials",
     availability: "Open to selected projects in the coming months.",
+    cvLabel: "CV / Portfolio",
+    cvDownload: "Download CV",
   },
 };
