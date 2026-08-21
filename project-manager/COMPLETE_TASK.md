@@ -14,6 +14,20 @@ Format entri:
 - ...
 ```
 
+## [2026-08-21]
+### Changed
+- **Fitur unduh CV/Portofolio dipisah jadi task baru T-023 (⏸️ Deferred).** Saat code review PR T-021.4 ditemukan gap: CV yang tersedia sepenuhnya berbahasa Indonesia, tapi link yang sama akan tampil juga di locale EN — berpotensi melanggar paritas ID/EN. Boss Rezi memutuskan tunda sampai CV Inggris siap. Kode implementasi (`content/contact.ts` field CV, blok UI di `contact-modal.tsx`, `DownloadIcon`, style `.ct-cv-*`, file PDF, `ADR-023` sebagai file) **di-revert** dari branch `feat/contact-modal-cv-download` (commit revert eksplisit, bukan force-push). `ADR-023` ditulis ulang: status "Accepted (implementasi ditunda)" — keputusan penempatan (Contact modal, bukan Quick Info/route baru) tetap berlaku, hanya eksekusi yang ditunda ke T-023. `feature-modules.md` M3, `TASKS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, dan `v10-page-copy.md` (T-021.4 completion note + section T-023 baru) disesuaikan agar tidak menyatakan fitur ini "selesai".
+- Fix kontras light mode Contact modal (lihat entri Fixed di bawah) **tidak di-revert** — tetap dipakai karena independen dari fitur CV.
+
+## [2026-08-21]
+### Added
+- **T-021.4** (Contact modal copy) selesai — semua label/body form Contact modal dikonfirmasi apa adanya dari draf mockup dan dikunci di `content/contact.ts` (`titleLead`/`titleAccent`, email/pesan, submit/sent, close, detailsLabel/copyLabel/copied, socialsLabel, availability).
+- **Fitur baru (ADR-023):** tautan unduh CV/Portofolio (PDF nyata `public/Resume_rezi_updated_agustus_2026.pdf`) di Contact modal — `CV_FILE_HREF` + `cvLabel`/`cvDownload` (ID/EN) di `content/contact.ts`; blok baru (label-caps + `HStack` ikon+link) di `contact-modal.tsx` setelah Sosial, sebelum availability; `DownloadIcon` baru di `overlay-icons.tsx`. Di luar draf mockup awal, dikunci lewat diskusi + ADR terpisah karena menyentuh baseline `feature-modules.md` (M3).
+### Changed
+- `product-discovery/02-product/feature-modules.md` M3 Contact — tambah baris tautan unduh CV/Portofolio (cite ADR-023).
+### Fixed
+- **Bug kontras Contact modal di light mode**: teks "Mari", availability line, "Detail Kontak", "Sosial" tak terbaca (dark-on-dark) karena komponen `Text`/`Heading` Astryx menimpa warna lewat token tema (`--color-text-primary`) dengan CSS specificity yang dinaikkan sengaja (`:not(#\#)` x3 di `astryx.css`), padahal panel modal ini theme-independent (selalu dark-ink, lihat komentar `.ct-panel`). Fix: `className` dedicated baru (`ct-title-lead`, `ct-availability-text`) + `!important` pada rule warna `.ct-title`, `.ct-title .ct-accent`, `.ct-label`, `.ct-label-caps`, `.ct-email-link`, `.ct-socials a` di `app/globals.css`. Diverifikasi via screenshot browser di light & dark mode, ID & EN.
+
 ## [2026-08-20]
 ### Fixed
 - Temuan code review PR #40: title meta About EN ikut nav baru ("How I Work", bukan "My Process" lama); `content/site-meta.ts` description About sekarang string dedicated pendek (bukan reuse `ABOUT_COPY.lead1` yang sudah jadi paragraf panjang T-021.3, supaya tidak terpotong di hasil pencarian); footer LinkedIn/GitHub sekarang pakai prop `isExternalLink` Astryx (ikon + label a11y "opens in new tab") — `work-tile.tsx` tetap pakai `target`/`rel` manual (sengaja, `isExternalLink` akan render ikon nyangkut di atas gambar tile).

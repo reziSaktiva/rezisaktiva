@@ -1276,11 +1276,23 @@ html[data-theme="dark"] body {
   line-height: 1.15;
   margin-block-end: 1.75rem;
   padding-inline-end: 2rem;
-  color: #ede9e1;
+}
+
+/*
+ * `!important` di bawah wajib: `Text`/`Heading` Astryx menyuntik warna token
+ * tema (`--color-text-primary`, dll.) langsung ke elemen lewat class dengan
+ * specificity yang dinaikkan sengaja (lihat astryx.css `:not(#\#)` x3), jadi
+ * warna itu menang ketimbang `color` yang diwariskan dari `.ct-title`/
+ * `.ct-availability`. Panel ini theme-independent (selalu dark-ink, lihat
+ * komentar `.ct-panel` di atas) sehingga token tema (gelap di light mode)
+ * membuat teks tak terbaca di atas panel gelap — bug kontras T-021.4.
+ */
+.ct-title-lead {
+  color: #ede9e1 !important;
 }
 
 .ct-title .ct-accent {
-  color: #fde047;
+  color: #fde047 !important;
 }
 
 .ct-label {
@@ -1288,7 +1300,7 @@ html[data-theme="dark"] body {
   font-size: 0.8rem;
   font-weight: 500;
   margin-block-end: 0.5rem;
-  color: #ede9e1;
+  color: #ede9e1 !important;
 }
 
 .ct-input,
@@ -1370,7 +1382,7 @@ html[data-theme="dark"] body {
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(237, 234, 225, 0.55);
+  color: rgba(237, 234, 225, 0.55) !important;
   margin-block-end: 0.6rem;
 }
 
@@ -1381,7 +1393,7 @@ html[data-theme="dark"] body {
 .ct-email-link {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #ede9e1;
+  color: #ede9e1 !important;
   word-break: break-all;
 }
 
@@ -1415,7 +1427,7 @@ html[data-theme="dark"] body {
   height: 2rem;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.08);
-  color: #ede9e1;
+  color: #ede9e1 !important;
   display: grid;
   place-items: center;
 }
@@ -1432,7 +1444,10 @@ html[data-theme="dark"] body {
 
 .ct-availability {
   font-size: 0.78rem;
-  color: rgba(237, 234, 225, 0.7);
+}
+
+.ct-availability-text {
+  color: rgba(237, 234, 225, 0.7) !important;
 }
 
 .ct-availability .avail-dot {
