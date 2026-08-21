@@ -66,8 +66,8 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
 * **Keputusan penempatan:** [ADR-023](../decisions/ADR-023-cv-download-contact-modal.md) — Contact modal (bukan Quick Info, bukan route baru), setelah blok Sosial, sebelum availability line. Keputusan ini **tetap berlaku**; hanya eksekusi yang ditunda.
 * **Alasan ditunda (2026-08-21):** File CV yang tersedia (`private/Resume_rezi_updated_agustus_2026.md` / PDF turunannya) sepenuhnya berbahasa Indonesia. Link unduh yang sama akan tampil juga di locale EN — berpotensi tidak sejalan dengan prinsip paritas makna ID/EN (§ Cara mengerjakan poin 4). Ditemukan saat code review PR T-021.4.
 * **Prasyarat sebelum implementasi:**
-  1. CV/Portofolio versi Inggris siap (sumber: Boss Rezi siapkan sendiri, atau draf terjemahan dari `private/Resume_rezi_updated_agustus_2026.md` untuk direview) — **belum diputuskan**.
-  2. Setelah CV EN siap: kunci ulang apakah satu tombol dengan file berbeda per locale, atau dua tombol terpisah — **belum diputuskan**.
+  1. CV/Portofolio versi Inggris — **Boss Rezi menyiapkan sendiri** (dikonfirmasi 2026-08-21), bukan draf terjemahan AI. Belum ada filenya.
+  2. Setelah CV EN siap: dua file per locale (`CV_FILE_HREF` jadi `Record<Locale, string>`, bukan satu string), tombol tetap satu di kolom kanan modal — mengikuti file sesuai locale aktif.
 * **Referensi implementasi yang sempat dibuat (di-revert dari PR T-021.4, boleh dipakai ulang sebagai starting point):** `content/contact.ts` (`CV_FILE_HREF`, `cvLabel`/`cvDownload`), `contact-modal.tsx` (blok label-caps + `HStack` ikon+link setelah Sosial), `overlay-icons.tsx` (`DownloadIcon`), `app/globals.css` (`.ct-cv-row`/`.ct-cv-link`). Lihat commit revert di riwayat git branch `feat/contact-modal-cv-download` untuk kode aslinya.
 * **Temuan review lain yang perlu diperhatikan saat implementasi ulang:** atribut `download` pada `<Link>` (supaya "Unduh"/"Download" benar-benar memicu unduhan, bukan cuma buka tab baru), `isExternalLink`/anotasi a11y untuk tab baru, dan pertimbangkan Icon jadi children `<Link>` (bukan sibling) supaya hover/focus menyatu.
 
