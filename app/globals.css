@@ -593,6 +593,10 @@ html[data-theme="dark"] body {
   width: 100%;
 }
 
+.home-work-grid > * {
+  min-width: 0;
+}
+
 .home-work-tile {
   position: relative !important;
   display: block !important;

@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-08-23]
+### Fixed
+- Grid Karya: tile setengah lebar yang sendirian (sebelum featured atau di akhir daftar) tidak lagi meninggalkan sel kosong di kanan; tile itu merentang penuh dengan rasio featured.
+
+## [2026-08-23]
 ### Changed
 - **About hero (lanjutan T-024):** judul & paragraf diperbesar (kata H1 sempat tertahan di ukuran body Astryx; sekarang ikut skala heading). Padding atas diperketat — `min-height: 100svh` dan 6–8rem dihapus, ganti token spasi yang lebih rapat.
 
