@@ -815,7 +815,7 @@ html[data-theme="dark"] body {
   .home-work-tile img,
   .home-cta-underline::after,
   .page-word,
-  .about-step-row,
+  .about-offer-card,
   .avail-dot,
   .ct-panel,
   .ct-scrim,
@@ -961,19 +961,14 @@ html[data-theme="dark"] body {
 }
 
 .about-hero {
-  padding-block-start: 6rem;
-  min-height: 100svh;
-}
-
-@media (min-width: 640px) {
-  .about-hero {
-    padding-block-start: 7rem;
-  }
+  padding-block-start: var(--spacing-10);
+  padding-block-end: var(--spacing-10);
 }
 
 @media (min-width: 768px) {
   .about-hero {
-    padding-block-start: 8rem;
+    padding-block-start: var(--spacing-8);
+    padding-block-end: var(--spacing-10);
   }
 }
 
@@ -1003,63 +998,45 @@ html[data-theme="dark"] body {
 
 .about-h1 {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: 2rem;
+  font-size: clamp(var(--font-size-4xl), 6.5vw, 4.5rem) !important;
   font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
-  line-height: 1.12;
-  margin-block-end: var(--spacing-6);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
-@media (min-width: 768px) {
-  .about-h1 {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .about-h1 {
-    font-size: 3.5rem;
-  }
+.about-h1 .page-word {
+  font-family: inherit;
+  font-size: inherit !important;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
 }
 
 .about-lead {
-  max-width: 28rem;
-  font-size: 0.9375rem;
-  line-height: 1.625;
+  max-width: 38rem;
+  font-size: var(--font-size-xl);
+  line-height: 1.55;
+}
+
+.about-lead .astryx-text {
+  font-size: inherit !important;
+  line-height: inherit;
 }
 
 @media (min-width: 768px) {
   .about-lead {
-    font-size: 1rem;
-  }
-}
-
-.about-avail {
-  display: none !important;
-  margin-block-start: 2.5rem;
-}
-
-@media (min-width: 640px) {
-  .about-avail {
-    display: flex !important;
+    font-size: var(--font-size-2xl);
+    line-height: 1.5;
   }
 }
 
 .about-portrait {
-  position: relative;
-  overflow: hidden;
   width: 100%;
   max-width: 28rem;
-  max-height: 52vh;
   margin-inline: auto;
-  aspect-ratio: 4 / 5;
-  border-radius: 1.75rem;
-}
-
-@media (min-width: 640px) {
-  .about-portrait {
-    max-height: none;
-  }
+  overflow: hidden;
+  border-radius: var(--radius-page);
+  box-shadow: var(--shadow-low);
 }
 
 @media (min-width: 1024px) {
@@ -1070,7 +1047,6 @@ html[data-theme="dark"] body {
 }
 
 .about-portrait img {
-  object-fit: cover;
   object-position: center 20%;
   filter: grayscale(1) contrast(1.06);
 }
@@ -1098,55 +1074,104 @@ html[data-theme="dark"] body {
   }
 }
 
-.about-pull {
+.about-offer-grid,
+.about-values-grid,
+.about-process-grid {
+  width: 100%;
+  grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 768px) {
+  .about-offer-grid,
+  .about-values-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .about-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+.about-offer-card {
+  height: 100%;
+  transition:
+    transform var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-offer-card:hover {
+    transform: translateY(calc(var(--spacing-1) * -1));
+    box-shadow: var(--shadow-low);
+  }
+}
+
+.about-card-title {
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.about-values-band {
+  width: 100%;
+  background-color: var(--color-background-muted);
+}
+
+.about-approach {
   font-family: "General Sans", var(--font-family-heading);
   font-size: 1.25rem;
   line-height: 1.35;
   letter-spacing: -0.02em;
+  max-width: 42rem;
 }
 
 @media (min-width: 768px) {
-  .about-pull {
+  .about-approach {
     font-size: 1.5rem;
   }
 }
 
-.about-step-row {
-  width: 100%;
-  border-block-start: 1px solid var(--color-border-default);
-  padding-block: 1.75rem;
-  transition:
-    background-color var(--duration-medium) var(--ease-standard),
-    padding-inline-start var(--duration-medium) var(--ease-standard);
-}
-
-.about-step-row:hover {
-  padding-inline-start: 0.75rem;
-  background-color: color-mix(in srgb, var(--color-accent) 6%, transparent);
-}
-
-.about-step-num {
+.about-value-title {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  width: 2rem;
-  flex-shrink: 0;
-  padding-block-start: 0.25rem;
-  font-variant-numeric: tabular-nums;
-  transition:
-    color var(--duration-medium) var(--ease-standard),
-    transform var(--duration-medium) var(--ease-standard);
-}
-
-.about-step-row:hover .about-step-num {
-  color: var(--color-accent);
-  transform: translateX(2px);
-}
-
-.about-step-title {
-  font-family: "General Sans", var(--font-family-heading);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .about-value-title {
+    font-size: 1.5rem;
+  }
+}
+
+.about-process-note {
+  max-width: 40rem;
+}
+
+.about-process-card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.about-process-mark {
+  position: absolute;
+  inset-inline-end: var(--spacing-4);
+  inset-block-end: calc(var(--spacing-2) * -1);
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: clamp(4.5rem, 14vw, 8rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-process-copy {
+  position: relative;
 }
 
 .about-cta {
@@ -1159,8 +1184,28 @@ html[data-theme="dark"] body {
   }
 }
 
+.about-cta--page {
+  padding-block: 8rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about-cta--page {
+    padding-block: 11rem;
+  }
+}
+
 .about-cta-q {
   margin-block-end: var(--spacing-6);
+}
+
+.about-cta-heading {
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  max-width: 22rem;
 }
 
 .work-hero {

@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-23] — Redesain visual About di kode produksi
+
+**Phase:** Development R1
+**Summary:** Setelah ADR-024, Boss Rezi memberi arahan layout About: hero 2 kolom, 3 Card offering, values bento, proses 2×2 dengan angka watermark, CTA terpusat. Dieksekusi di Next.js/Astryx (bukan Tailwind, bukan update mockup HTML). Copy T-021.3 tetap; badge availability memakai label pendek bilingual.
+**Key Decision/Insight:** Iterasi visual pertama di bawah ADR-024. Token Astryx + CSS scoped; Grid Astryx di-override mobile-first ke 1 kolom.
+**Impact:** `about-page.tsx`, `globals.css`, `content/about.ts`, `overlay-icons.tsx`, T-024 di `v03-development-r1.md`.
+
+## [2026-08-21] — Mockup HTML di-deprecate sebagai acuan desain
+
+**Phase:** Development R1
+**Summary:** Boss Rezi ingin memperbaiki desain About. Karena seluruh desain mockup sudah di-port ke kode, HTML di `design-mockups/` tidak lagi jadi acuan utama. Dipilih deprecate **global**: SoT visual = kode produksi (Astryx) + arahan di chat; mockup jadi arsip. About adalah pekerjaan pertama dengan aturan baru.
+**Key Decision/Insight:** ADR-024. Jangan update mockup HTML agar ikut desain baru. Jangan Figma-first. Bukan About-only.
+**Impact:** `ADR-024`; `.cursor/rules/ui-ux-mockup-check.mdc` (isi dibalik); `ask-before-assuming.mdc`; skills navigator/clarification; `AGENTS.md`; `PROJECT_RULES.md`; `DEVELOPER_WORKFLOW.md`; `PROJECT_OVERVIEW.md`; `04-ux/` + `design-tokens.md`; `design-mockups/README.md`; `v03-development-r1.md` (catatan historis).
+
 ## [2026-08-20] — T-021.5 daftar karya kurasi dikunci (8 item)
 
 **Phase:** Development R1

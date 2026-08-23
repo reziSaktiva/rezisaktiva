@@ -48,7 +48,7 @@ Detail lengkap: `../product-discovery/01-business/product-vision.md` § Out of S
 * Project dikerjakan di **Cursor**.
 * Skills project berada di `.cursor/skills/`.
 * Bahasa dokumentasi: **Indonesia**.
-* Preferensi: Documentation First; cek kelengkapan task + mockup dulu; tanya Boss Rezi hanya jika gap, salah dokumen, atau hal di luar rencana (lihat `.cursor/rules/ask-before-assuming.mdc`).
+* Preferensi: Documentation First; cek kelengkapan task + dokumen (+ kode produksi untuk UI, ADR-024) dulu; tanya Boss Rezi hanya jika gap, salah dokumen, atau hal di luar rencana (lihat `.cursor/rules/ask-before-assuming.mdc`).
 
 Tambahkan preferensi baru yang ditemukan ke section ini.
 

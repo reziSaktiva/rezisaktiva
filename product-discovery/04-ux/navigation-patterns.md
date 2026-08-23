@@ -74,7 +74,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
 * **Komposisi panel hamburger** (kontrak visual mockup, 2026-08-20): satu lembar aksen kuning; **item nav halaman selebar panel** (state aktif = bar penuh, bukan pill selebar teks); **switcher ID/EN compact** (chip, tidak meregang penuh).
 * **Chrome satu baris** di ponsel: brand kiri; hamburger + tema + Contact kanan. Tidak wrap jadi dua baris. Lantai lebar **320px** (iPhone SE 1) wajib rapi; **375px** (SE 2/3) acuan ponsel utama.
-* Acuan visual: `design-mockups/` (`home.html` chrome bersama + `shared.css`). Pixel/spacing mengikuti mockup, bukan tebakan dari dokumen ini.
+* Acuan visual: **kode produksi** (chrome di `app/[locale]/_components/`, tema built) — **ADR-024**. `design-mockups/` arsip; pixel/spacing tidak lagi mengikuti HTML mockup.
 
 ---
 
@@ -100,7 +100,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 | Item | Status |
 | ---- | ------ |
-| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15); toggle tema ADR-021; Quick info ADR-022; komposisi panel hamburger + lantai 320px diselaraskan mockup 2026-08-20 |
+| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (2026-08-15); toggle tema ADR-021; Quick info ADR-022; komposisi panel hamburger + lantai 320px dari port R1 (mockup 2026-08-20, lalu kode); acuan visual hidup = kode (ADR-024) |
 
 ---
 

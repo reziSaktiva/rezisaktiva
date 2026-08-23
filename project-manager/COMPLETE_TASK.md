@@ -14,6 +14,23 @@ Format entri:
 - ...
 ```
 
+## [2026-08-23]
+### Changed
+- **About hero (lanjutan T-024):** judul & paragraf diperbesar (kata H1 sempat tertahan di ukuran body Astryx; sekarang ikut skala heading). Padding atas diperketat — `min-height: 100svh` dan 6–8rem dihapus, ganti token spasi yang lebih rapat.
+
+## [2026-08-23]
+### Added
+- **T-024** — redesain visual About di kode produksi (ADR-024). Hero 2 kolom: Badge hijau availability + H1 + dua lead | foto rounded + shadow. Tiga Card offering (ikon, H3, body, hover halus). Values di pita latar muted (3 Card, judul tebal dari kutipan T-021.3). Proses grid 2×2 dengan angka watermark. CTA terpusat + Button primary besar. Mobile-first: grid 1 kolom <768px. Copy body T-021.3 tidak diubah; hanya label badge pendek bilingual.
+### Changed
+- `app/[locale]/_components/about-page.tsx`, `app/globals.css` (About), `content/about.ts` (`availabilityBadge`), ikon offering di `overlay-icons.tsx`. Task dicatat di `v03-development-r1.md`.
+
+## [2026-08-21]
+### Added
+- **ADR-024** — kode produksi (Astryx) menggantikan mockup HTML sebagai sumber kebenaran visual. `design-mockups/` jadi arsip; `design-mockups/README.md` menjelaskan itu. Pekerjaan desain pertama dengan aturan baru: halaman About (belum ada task backlog sampai dikunci).
+### Changed
+- Rule `.cursor/rules/ui-ux-mockup-check.mdc` dibalik isinya (nama file tetap): pelajari `app/`, bukan HTML mockup; verifikasi vs kode + arahan Boss Rezi.
+- Pointer di `AGENTS.md`, `PROJECT_RULES.md`, `ask-before-assuming.mdc`, skills `project-os-navigator` / `proactive-clarification`, `DEVELOPER_WORKFLOW.md`, `PROJECT_OVERVIEW.md`, `04-ux/` (IA, key screens, nav), `design-tokens.md`, catatan historis di `v03-development-r1.md`, Snapshot `PROJECT_STATE.md`.
+
 ## [2026-08-21]
 ### Changed
 - **Fitur unduh CV/Portofolio dipisah jadi task baru T-023 (⏸️ Deferred).** Saat code review PR T-021.4 ditemukan gap: CV yang tersedia sepenuhnya berbahasa Indonesia, tapi link yang sama akan tampil juga di locale EN — berpotensi melanggar paritas ID/EN. Boss Rezi memutuskan tunda sampai CV Inggris siap. Kode implementasi (`content/contact.ts` field CV, blok UI di `contact-modal.tsx`, `DownloadIcon`, style `.ct-cv-*`, file PDF, `ADR-023` sebagai file) **di-revert** dari branch `feat/contact-modal-cv-download` (commit revert eksplisit, bukan force-push). `ADR-023` ditulis ulang: status "Accepted (implementasi ditunda)" — keputusan penempatan (Contact modal, bukan Quick Info/route baru) tetap berlaku, hanya eksekusi yang ditunda ke T-023. `feature-modules.md` M3, `TASKS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, dan `v10-page-copy.md` (T-021.4 completion note + section T-023 baru) disesuaikan agar tidak menyatakan fitur ini "selesai".

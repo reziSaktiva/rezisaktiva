@@ -8,7 +8,7 @@ description: >-
 
 # Proactive Clarification
 
-Cek dulu kelengkapan task, mockup (jika UI), dan dokumen acuan. Jika lengkap dan selaras rencana: **kerja**, jangan tanya.
+Cek dulu kelengkapan task, kode produksi (jika UI), dan dokumen acuan. Jika lengkap dan selaras rencana: **kerja**, jangan tanya.
 
 Tanya hanya jika **urgent** — lihat `.cursor/rules/ask-before-assuming.mdc`. Skill ini mengatur **cara** bertanya, bukan kewajiban tanya di setiap tugas.
 
@@ -26,7 +26,7 @@ Urgent:
 
 Bukan urgent (jangan tanya):
 
-- Keputusan sudah ada di ADR / `DECISIONS.md` / Baca dulu / mockup yang ada dan selaras
+- Keputusan sudah ada di ADR / `DECISIONS.md` / Baca dulu / kode produksi yang ada (ADR-024)
 - Detail eksekusi yang tidak mengubah rencana
 - Ketidakyakinan yang bisa diselesaikan dengan membaca dokumen, kode, atau CLI
 
@@ -38,9 +38,9 @@ Jangan berasumsi pada yang urgent lalu jalan terus. Jangan mengarang. Jangan dia
 
 Hanya jika kondisi urgent di atas. Fork keputusan yang **sudah** dikunci di baseline: pakai baseline, jangan tanya ulang.
 
-Contoh yang **bukan** tanya (rencana sudah ada): framework Next.js (ADR), mockup Home sudah ada untuk T-014, locale ID/EN sudah dikunci.
+Contoh yang **bukan** tanya (rencana sudah ada): framework Next.js (ADR), halaman Home sudah ada di `app/` untuk iterasi visual, locale ID/EN sudah dikunci.
 
-Contoh yang **wajib** tanya: task merujuk mockup yang tidak ada; mockup bentrok dengan ADR dan dokumen harus diubah; scope di luar R1 yang belum ada tasknya.
+Contoh yang **wajib** tanya: task merujuk file kode yang tidak ada; arahan desain bentrok dengan ADR dan dokumen harus diubah; scope di luar R1 yang belum ada tasknya.
 
 ---
 

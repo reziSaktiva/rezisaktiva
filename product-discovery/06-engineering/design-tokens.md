@@ -99,7 +99,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 | Spacing | Skala token Astryx berbasis 4px cukup; konsisten ritme section |
 | Radius | Sedang untuk teaser/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
 | Elevation | Minimal shadow; hierarchy lewat tipe & spasi, bukan multi-layer glow |
-| Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = `design-mockups/` + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
+| Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = kode produksi (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
 Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebihan.
 
@@ -149,7 +149,7 @@ xstyle (StyleX) untuk override spesifik-komponen bila perlu
 
 | Lapisan | Isi |
 | ------- | --- |
-| Sumber kebenaran token | Tema built `rezisaktiva` (`theme/astryx-theme.css` + `theme/rezisaktiva.js`); kanvas/aksen = `design-mockups/shared.css` `--c-*` |
+| Sumber kebenaran token | Tema built `rezisaktiva` (`theme/astryx-theme.css` + `theme/rezisaktiva.js`) — **ADR-024**; nilai kanvas/aksen R1 *berasal* dari arsip `design-mockups/shared.css` `--c-*` |
 | Komponen | `@astryxdesign/core/*` — props semantik, bukan hardcode hex/px |
 | Override lokal | `xstyle` (StyleX `stylex.create()`); dilarang `style={{}}` inline atau hex/px acak |
 | Konten MD/MDX | Tidak menyimpan hex brand; styling lewat komponen |
@@ -157,7 +157,7 @@ xstyle (StyleX) untuk override spesifik-komponen bila perlu
 | Agent docs | `.cursor/rules/xds.mdc` (konvensi wajib AI saat menulis komponen) |
 | Figma / design file | Opsional Later — docs ini cukup untuk bootstrap R1 |
 
-Nilai hex kanvas/aksen R1 mengikuti mockup `shared.css` (KI-001 / KI-002). Rebuild: `pnpm theme:build`.
+Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.css`, KI-001 / KI-002). Perubahan token berikutnya di `lib/astryx-theme.ts`, bukan di mockup. Rebuild: `pnpm theme:build`.
 
 ---
 
@@ -169,7 +169,7 @@ Nilai hex kanvas/aksen R1 mengikuti mockup `shared.css` (KI-001 / KI-002). Rebui
 | Theme awal | `@astryxdesign/theme-neutral`, di-extend jadi tema built `rezisaktiva` (nilai mockup) |
 | Tema default | **Light** |
 | Dark | Fondasi via prop `mode` di `Theme`; toggle UI = **Must R1 (ADR-021)**; default tetap light |
-| Nilai visual | Kanvas + aksen mockup `shared.css`, dikunci ke tema built `rezisaktiva` |
+| Nilai visual | Kanvas + aksen di tema built `rezisaktiva` (asal R1: arsip `shared.css`; SoT hidup = kode tema, ADR-024) |
 | Motion | Bagian identitas visual (ADR-017), hierarchy-first |
 | Baseline Engineering | ADR-016; superseded sebagian oleh **ADR-018** (styling/token) |
 
