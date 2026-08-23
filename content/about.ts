@@ -25,6 +25,7 @@ export interface AboutCopy {
   lead1: string;
   lead2: string;
   availability: string;
+  availabilityBadge: string;
   portraitAlt: string;
   helpTitle: string;
   offers: readonly AboutOffer[];
@@ -51,6 +52,7 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
       "Berbekal 6+ tahun pengalaman fullstack, kini saya mengorkestrasi pipeline AI subagent dari discovery hingga deployment. Lensa komersial yang saya miliki memastikan saya tidak cuma tahu cara build, tapi paham kelayakan dan nilai strategis di balik setiap fitur.",
     availability:
       "Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.",
+    availabilityBadge: "Terbuka untuk proyek baru",
     portraitAlt: "Placeholder — ganti dengan foto pribadi Rezi",
     helpTitle: "Yang bisa saya bantu",
     offers: [
@@ -114,6 +116,7 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     lead2:
       "With 6+ years of fullstack experience, I now orchestrate an AI subagent pipeline from discovery to deployment. My commercial lens means I don't just know how to build—I understand the feasibility and strategic value behind every feature.",
     availability: "Open to selected projects in the coming months.",
+    availabilityBadge: "Available for new projects",
     portraitAlt: "Placeholder — replace with Rezi’s photo",
     helpTitle: "I can help you with",
     offers: [

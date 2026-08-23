@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-024 | Kode produksi menggantikan mockup HTML sebagai SoT visual | Accepted | 2026-08-21 | `design-mockups/` arsip; acuan desain = `app/` + Astryx + arahan chat; pekerjaan pertama = About | [ADR-024](decisions/ADR-024-production-code-visual-sot.md) |
 | ADR-023 | Tambahan M3 Contact — tautan unduh CV/Portofolio (PDF) | Accepted (implementasi ditunda) | 2026-08-21 | Keputusan penempatan (Contact modal, bukan route/Quick Info) tetap berlaku; implementasi ditunda ke **T-023** menunggu CV versi Inggris; fix bug kontras light mode di modal yang sama tetap dipakai | [ADR-023](decisions/ADR-023-cv-download-contact-modal.md) |
 | ADR-022 | Modul baru M13 — Quick Info panel (overlay global, Must R1) | Accepted | 2026-08-16 | Tab tepi kanan → drawer bio/Services/Tools/Works/Email/Links; bukan route; exclude Work case; tidak ganti Contact/footer | [ADR-022](decisions/ADR-022-quick-info-panel-module.md) |
 | ADR-021 | Dark mode toggle UI naik jadi Must R1 (override design-tokens.md + baseline Product) | Accepted | 2026-08-16 | Toggle chrome Must R1; default ship tetap light; tutup inkonsistensi vs navigation-patterns.md (ADR-020) | [ADR-021](decisions/ADR-021-dark-mode-toggle-must-r1.md) |

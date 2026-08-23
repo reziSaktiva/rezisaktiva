@@ -1,12 +1,14 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ada di file ini, status ✅ Done.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ✅ Done. **T-024** (redesain visual About, ADR-024) ✅ Done.
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
 Teks yang dibaca user (kunci copy, ID/EN, kontrak ke UI) **bukan** scope file ini — lihat [`v10-page-copy.md`](v10-page-copy.md).
 
-Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mockups/` (rule `ui-ux-mockup-check`). Jika mockup sudah ada dan selaras task/ADR — pelajari lalu pakai (jangan tanya ritual pakai/perbarui). Jika mockup belum ada, konflik, atau di luar rencana — berhenti dan tanya Boss Rezi; tidak boleh langsung ke kode.
+**ADR-024 (2026-08-21):** task UI/UX **baru** berangkat dari kode produksi, bukan mockup HTML. Paragraf “cek mockup dulu” di bawah berlaku historis untuk T-013…T-022 (sudah Done). Jangan memakai `design-mockups/` sebagai target visual untuk pekerjaan berikutnya.
+
+Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan** mockup di `design-mockups/` (rule `ui-ux-mockup-check` versi lama). Jika mockup sudah ada dan selaras task/ADR — pelajari lalu pakai (jangan tanya ritual pakai/perbarui). Jika mockup belum ada, konflik, atau di luar rencana — berhenti dan tanya Boss Rezi; tidak boleh langsung ke kode.
 
 ---
 
@@ -138,6 +140,21 @@ Sebelum eksekusi task UI/UX: cek kelengkapan task **dan** mockup di `design-mock
 - [x] **T-022.2** — Home mobile: hero dua baris muat tanpa clip/overflow-x; blok teaser judul + “lihat semua” boleh stack; tile featured lebih tinggi (bukan strip 16:8); CTA Contact
 - [x] **T-022.3** — About, Work index, Contact modal, Quick info: paritas mockup di 320px dan 375px (modal muat viewport; tab Quick info tidak menabrak judul hero)
 - [x] **T-022.4** — Verifikasi visual vs mockup (320, 375, satu lebar tablet <1024) + regresi desktop ≥1024; catat gap yang tidak bisa 1:1 karena Astryx
+
+---
+
+## T-024 — Redesain visual About di kode produksi (ADR-024)
+
+* **Status:** ✅ Done (2026-08-23)
+* **Domain:** UI/UX
+* **Baca dulu:** ADR-024, `content/about.ts` (copy T-021.3 dikunci), `app/[locale]/_components/about-page.tsx`, `.cursor/rules/xds.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`
+* **Keputusan:** iterasi visual langsung di Next.js/Astryx. Mockup HTML tidak di-update. Copy T-021.3 dipakai ulang; badge availability punya label pendek bilingual (bukan copy baru untuk body).
+* **Implementasi:** hero 2 kolom (Badge hijau + H1 + dua lead | foto rounded + shadow); 3 Card offering (ikon, H3, body, hover halus); values di pita latar muted (3 Card, judul dari kutipan); proses grid 2×2 dengan angka watermark; CTA terpusat + Button primary besar. Mobile-first: grid jadi 1 kolom <768px.
+
+### Subtasks
+
+- [x] **T-024.1** — Susun ulang About sesuai arahan visual (hero, offerings, values, process, CTA) memakai komponen Astryx
+- [x] **T-024.2** — Token + responsive: tanpa Tailwind; verifikasi `/id/about` compile & HTML memuat blok baru
 
 ---
 

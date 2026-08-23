@@ -105,7 +105,7 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 * **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris (mis. “Membangun” / “produk.”) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work teaser: judul + tautan “lihat semua” boleh **stack** (bukan dipaksa satu baris); tile featured **lebih tinggi** daripada strip 16:8. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
 * **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
 * Panjang salinan ID/EN boleh beda, **makna setara**.
-* Acuan visual: `design-mockups/` — mockup = keputusan desain terbaru (bukan tebakan dari paragraf ini).
+* Acuan visual: **kode produksi** (`app/`, tema `rezisaktiva`) — **ADR-024**. `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
 
 ---
 

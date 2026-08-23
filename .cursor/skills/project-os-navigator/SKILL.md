@@ -163,7 +163,7 @@ YYYY-MM-DD
 - Jangan mengubah baseline tanpa ADR.
 - Jangan membuat dokumen di luar scope phase aktif.
 - Jangan perbaiki inkonsistensi diam-diam (itu urgent — tanya Boss Rezi).
-- Jangan tanya ritual jika task + mockup/dokumen sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`).
+- Jangan tanya ritual jika task + dokumen + (untuk UI) kode produksi sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`, ADR-024).
 - Jangan salin detail task ke `PROJECT_STATE.md`.
 - Jangan daur ulang ID task/subtask (`T-XXX` / `T-XXX.N`); deferred = `⏸️` + alasan.
 - Skills resmi project hanya di `.cursor/skills/`.
@@ -182,7 +182,7 @@ rezisaktiva/
 │   ├── CONVERSATIONS.md
 │   └── BRAINSTORM.md
 ├── product-discovery/       → SoT produk 01–06
-├── design-mockups/          → Mockup HTML acuan visual (gate wajib untuk task UI/UX)
+├── design-mockups/          → Arsip HTML R1 (bukan SoT visual — ADR-024)
 ├── app/                     → Kode Next.js (App Router)
 ├── AGENTS.md
 ├── .cursor/skills/          → Process skills Cursor

@@ -24,14 +24,18 @@ export function WorkTile({
   item,
   href,
   featured = false,
+  wide = false,
 }: {
   item: WorkItem;
   href?: string;
   featured?: boolean;
+  /** Full-row leftover tile (not featured copy) — same aspect as featured so it is not a tall 4/5 banner. */
+  wide?: boolean;
 }) {
-  const className = featured
-    ? "home-work-tile home-work-tile--featured"
-    : "home-work-tile";
+  const className =
+    featured || wide
+      ? "home-work-tile home-work-tile--featured"
+      : "home-work-tile";
 
   const inner = (
     <>
@@ -40,7 +44,7 @@ export function WorkTile({
           src={item.imageSrc}
           alt=""
           fill
-          sizes={featured ? "100vw" : "50vw"}
+          sizes={featured || wide ? "100vw" : "50vw"}
         />
       </Center>
       <VStack gap={1} className="home-work-tile-meta">

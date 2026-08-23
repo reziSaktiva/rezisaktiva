@@ -14,9 +14,52 @@ import { Magnetic, Reveal, WordReveal } from "./home-motion";
 import { ArrowRightIcon } from "./overlay-icons";
 import { WorkTile } from "./work-tile";
 
+type WorkGridItem = { id: string; featured: boolean };
+
+/**
+ * Featured tiles always take a full row. A half-width tile that would sit
+ * alone (next item is featured, or end of list) also spans full so the grid
+ * never leaves an empty cell. Order of `items` is preserved.
+ */
+function workTileLayout(
+  items: readonly WorkGridItem[],
+): { id: string; spanFull: boolean }[] {
+  const layout: { id: string; spanFull: boolean }[] = [];
+  let pending: WorkGridItem | null = null;
+
+  const flushPending = (spanFull: boolean) => {
+    if (!pending) {
+      return;
+    }
+    layout.push({ id: pending.id, spanFull });
+    pending = null;
+  };
+
+  for (const item of items) {
+    if (item.featured) {
+      flushPending(true);
+      layout.push({ id: item.id, spanFull: true });
+      continue;
+    }
+    if (pending) {
+      layout.push({ id: pending.id, spanFull: false });
+      layout.push({ id: item.id, spanFull: false });
+      pending = null;
+    } else {
+      pending = item;
+    }
+  }
+  flushPending(true);
+
+  return layout;
+}
+
 export function WorkPage({ locale }: { locale: Locale }) {
   const copy = WORK_PAGE_COPY[locale];
   const items = WORK_ITEMS[locale];
+  const spanFullById = new Map(
+    workTileLayout(items).map((slot) => [slot.id, slot.spanFull]),
+  );
   const { open } = useContactModal();
 
   return (
@@ -42,12 +85,14 @@ export function WorkPage({ locale }: { locale: Locale }) {
             className="home-work-grid"
           >
             {items.map((item) => {
+              const spanFull = spanFullById.get(item.id) === true;
+              const wide = spanFull && !item.featured;
               const tile = (
                 <Reveal key={item.id} className="home-work-reveal">
-                  <WorkTile item={item} featured={item.featured} />
+                  <WorkTile item={item} featured={item.featured} wide={wide} />
                 </Reveal>
               );
-              return item.featured ? (
+              return spanFull ? (
                 <GridSpan key={item.id} columns="full">
                   {tile}
                 </GridSpan>

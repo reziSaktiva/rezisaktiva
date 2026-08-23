@@ -1,5 +1,5 @@
 ---
-description: Cek dulu kelengkapan task/mockup/dokumen; tanya Boss Rezi hanya jika urgent (gap, salah tulis dokumen, atau hal di luar rencana) — jangan berasumsi atau lanjut diam-diam pada yang unplanned
+description: Cek dulu kelengkapan task/kode/dokumen; tanya Boss Rezi hanya jika urgent (gap, salah tulis dokumen, atau hal di luar rencana) — jangan berasumsi atau lanjut diam-diam pada yang unplanned
 alwaysApply: true
 ---
 
@@ -12,7 +12,7 @@ Berlaku untuk **semua** jenis pekerjaan di project ini: dokumentasi, kode/implem
 AI wajib **memastikan sendiri** tidak ada gap pada:
 
 - **Task** — subtask, field Baca dulu, scope, ketergantungan
-- **Mockup HTML** (jika menyentuh UI/UX) — file di `design-mockups/` ada dan selaras task/ADR
+- **UI/UX** — implementasi di `app/` (bukan mockup HTML arsip; ADR-024) + arahan yang dikunci
 - **Dokumen acuan** yang disebut task — tidak bolong, tidak saling bentrok untuk pekerjaan ini
 
 Kalau semuanya lengkap dan selaras dengan rencana (task, ADR, baseline): **lanjut kerja**. Jangan tanya konfirmasi ritual.
@@ -21,15 +21,15 @@ Kalau semuanya lengkap dan selaras dengan rencana (task, ADR, baseline): **lanju
 
 Berhenti dan tanya Boss Rezi (pakai `AskQuestion`, bukan menyisipkan pertanyaan di tengah teks biasa) **hanya** jika salah satu ini benar:
 
-1. **Gap** — bagian tidak lengkap, tidak konsisten, atau bolong antara task, mockup, kode, atau keputusan (contoh: mockup berubah tapi dokumen terkait belum diupdate; task merujuk file yang tidak ada).
+1. **Gap** — bagian tidak lengkap, tidak konsisten, atau bolong antara task, kode, atau keputusan (contoh: task merujuk file yang tidak ada; arahan desain menabrak ADR UX).
 2. **Salah tulis / salah dokumen** — kesalahan di dokumen yang bisa mengarahkan kerja ke rencana yang salah.
-3. **Tidak direncanakan** — keputusan, fitur, halaman, atau perilaku yang dibutuhkan untuk lanjut **tidak ada** di rencana (task, ADR, `PROJECT_RULES.md`, `product-discovery/`, `design-mockups/`). Termasuk dua interpretasi yang sama-sama valid dan **belum** dikunci di baseline.
+3. **Tidak direncanakan** — keputusan, fitur, halaman, atau perilaku yang dibutuhkan untuk lanjut **tidak ada** di rencana (task, ADR, `PROJECT_RULES.md`, `product-discovery/`). Termasuk dua interpretasi yang sama-sama valid dan **belum** dikunci di baseline.
 
 Itu satu-satunya alasan tanya. Ketidakyakinan yang bisa diselesaikan dengan membaca dokumen/CLI/kode **bukan** alasan tanya — baca dulu.
 
 ## Yang Dilarang
 
-- **Tanya ritual** — contoh: mockup sudah ada dan selaras, lalu tanya “pakai yang sekarang atau perbarui dulu?”; fork yang sudah ada di ADR; detail eksekusi yang tidak mengubah rencana.
+- **Tanya ritual** — contoh: tanya “pakai mockup HTML dulu atau kode?” (mockup sudah arsip, ADR-024); fork yang sudah ada di ADR; detail eksekusi yang tidak mengubah rencana.
 - **Berasumsi lalu jalan terus** pada gap / salah dokumen / hal unplanned, walau asumsinya “kelihatannya masuk akal”.
 - **Mengarang jawaban** yang terdengar meyakinkan tapi sebenarnya belum diverifikasi (lihat juga `.cursor/rules/ui-ux-mockup-check.mdc` § Wajib Verifikasi untuk kasus UI/UX).
 - **Diam-diam memilih salah satu opsi** di antara beberapa kemungkinan **unplanned** tanpa konfirmasi.
@@ -43,5 +43,5 @@ Gunakan `AskQuestion` dengan pilihan konkret dan konteks singkat — ikuti forma
 ## Relasi dengan Dokumen/Skill Lain
 
 - `.cursor/skills/proactive-clarification/SKILL.md` — cara menyusun pertanyaan yang baik **saat** tanya memang wajib (urgent).
-- `.cursor/rules/ui-ux-mockup-check.mdc` — cek mockup + task sebelum UI; pakai mockup yang ada tanpa tanya ritual; tanya hanya jika mockup hilang, konflik, atau unplanned.
+- `.cursor/rules/ui-ux-mockup-check.mdc` — acuan visual = kode produksi + arahan (ADR-024); `design-mockups/` arsip; tanya hanya jika desain menabrak baseline atau belum dikunci.
 - `AGENTS.md` § Aturan keras — versi ringkas dari rule ini.
