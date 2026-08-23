@@ -14,12 +14,11 @@
  * belum wired ke build Turbopack project ini (lihat COMPLETE_TASK.md,
  * catatan T-013.4). Sebagai gantinya dipakai class scoped + token Astryx
  * langsung (`var(--spacing-*)`, `var(--radius-full)`, dst) — bukan
- * `defineTheme` `components` override, supaya styling ini TIDAK bocor
- * secara global ke komponen lain yang kebetulan pakai TopNavItem/
- * SegmentedControl/SideNavItem/Button di tempat lain nanti (lihat code
- * review PR #28 — blast radius). Setiap rule di bawah discope lewat class
- * wrapper (`.site-*`) + selector turunan, bukan menimpa class Astryx
- * (`.astryx-*`) secara global.
+ * `defineTheme` `components` override. Warna/layout chrome tetap discope
+ * lewat class wrapper (`.site-*`) — jangan menimpa class Astryx secara
+ * global untuk hal itu (blast radius PR #28). Pengecualian sadar: elevasi
+ * timbul 3D (`--elev-3d`) dipasang ke seluruh `.astryx-button` karena
+ * itu style tombol yang diminta untuk semua instance Button.
  *
  * `--chip-bg`/`--chip-fg` BUKAN token Astryx (`--color-*`) — satu-satunya
  * sumber kebenaran warna chip kuning ini (dulu terduplikasi antara
@@ -47,6 +46,46 @@
   --chip-fg: #14181f;
   --chrome-pill-bg: #0a0f1a;
   --chrome-pill-fg: #edeae1;
+  /*
+   * Elevasi timbul 3D untuk chrome chip + seluruh `.astryx-button`.
+   * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
+   * bibir tebal di bawah, lalu drop shadow.
+   * Sengaja BUKAN `light-dark()` — pola itu pernah flash di chip
+   * (2026-08-16). Nilai dark di-set lewat `html[data-theme="dark"]`.
+   */
+  --elev-3d:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    inset 0 -1.5px 2px rgb(20 24 31 / 0.14),
+    0 1px 0 rgb(20 24 31 / 0.16),
+    0 6px 14px rgb(20 24 31 / 0.12);
+  --elev-3d-hover:
+    inset 0 1px 0 rgb(255 255 255 / 0.62),
+    inset 0 -1.5px 2px rgb(20 24 31 / 0.12),
+    0 2px 0 rgb(20 24 31 / 0.14),
+    0 10px 20px rgb(20 24 31 / 0.14);
+  --elev-3d-pressed:
+    inset 0 2px 5px rgb(20 24 31 / 0.22),
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    0 1px 2px rgb(20 24 31 / 0.1);
+}
+
+html[data-theme="dark"],
+html[style*="color-scheme: dark"],
+html[style*="color-scheme:dark"] {
+  --elev-3d:
+    inset 0 1px 0 rgb(255 255 255 / 0.22),
+    inset 0 -1.5px 2px rgb(0 0 0 / 0.42),
+    0 1px 0 rgb(0 0 0 / 0.55),
+    0 8px 18px rgb(0 0 0 / 0.45);
+  --elev-3d-hover:
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    inset 0 -1.5px 2px rgb(0 0 0 / 0.38),
+    0 2px 0 rgb(0 0 0 / 0.5),
+    0 12px 24px rgb(0 0 0 / 0.5);
+  --elev-3d-pressed:
+    inset 0 2px 5px rgb(0 0 0 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 1px 2px rgb(0 0 0 / 0.35);
 }
 
 /*
@@ -278,6 +317,28 @@ html[data-theme="dark"] body {
 }
 
 /*
+ * Timbul 3D (arahan Boss Rezi): chip chrome + seluruh Button Astryx.
+ * `!important` pada `.astryx-button` mengalahkan StyleX runtime (elevation
+ * default `none`) — sama pola override chrome yang sudah ada.
+ */
+.site-nav-chip,
+.site-locale-switch {
+  box-shadow: var(--elev-3d);
+}
+
+.astryx-button {
+  box-shadow: var(--elev-3d) !important;
+}
+
+.astryx-button:hover {
+  box-shadow: var(--elev-3d-hover) !important;
+}
+
+.astryx-button:active {
+  box-shadow: var(--elev-3d-pressed) !important;
+}
+
+/*
  * Tombol Contact + theme toggle — mockup `bg-brand text-on-brand`
  * `hover:bg-accent hover:text-on-accent` (`home.html`). Brand = inverted
  * canvas; aksen = teal mockup. Default & pressed toggle sama (ikon yang
@@ -294,7 +355,8 @@ html[data-theme="dark"] body {
   border-radius: var(--radius-full);
   transition:
     background-color var(--duration-medium-min) var(--ease-standard),
-    color var(--duration-medium-min) var(--ease-standard);
+    color var(--duration-medium-min) var(--ease-standard),
+    box-shadow var(--duration-medium-min) var(--ease-standard);
 }
 .site-contact-button {
   height: 2.25rem;
@@ -380,6 +442,7 @@ html[data-theme="dark"] body {
  */
 .astryx-app-shell-header {
   z-index: 50;
+  overflow: visible;
   background-color: transparent;
 }
 
@@ -1405,10 +1468,19 @@ html[data-theme="dark"] body {
   justify-content: center;
   gap: 0.6rem;
   cursor: pointer;
+  box-shadow: var(--elev-3d);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .ct-submit:hover {
   background: #eab90c;
+  box-shadow: var(--elev-3d-hover);
+}
+
+.ct-submit:active {
+  box-shadow: var(--elev-3d-pressed);
 }
 
 .ct-submit-icon {
@@ -1589,10 +1661,10 @@ html.qi-lock {
   padding: 18px 14px !important;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  box-shadow: none !important;
   transition:
     background-color 0.25s ease,
     color 0.25s ease,
+    box-shadow 0.25s ease,
     opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }

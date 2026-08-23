@@ -98,7 +98,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 | ------ | ------------ |
 | Spacing | Skala token Astryx berbasis 4px cukup; konsisten ritme section |
 | Radius | Sedang untuk teaser/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
-| Elevation | Minimal shadow; hierarchy lewat tipe & spasi, bukan multi-layer glow |
+| Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Kontrol chrome + seluruh Button:** timbul 3D (`--elev-3d` di `app/globals.css`) — bevel highlight + bibir + drop shadow |
 | Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = kode produksi (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
 Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebihan.

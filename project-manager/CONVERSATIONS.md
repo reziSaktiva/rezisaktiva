@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-23] — Elevasi timbul 3D pada chrome + seluruh Button
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta kontrol chrome (nav chip, locale switch, theme toggle, Contact, tab Quick Info) terlihat timbul 3D lewat shadow/bevel — dan untuk Button, style itu berlaku ke seluruh instance, bukan hanya yang di header.
+**Key Decision/Insight:** Token `--elev-3d` (highlight atas + bibir bawah + drop shadow). Chip scoped; `.astryx-button` global sadar (override blast-radius PR #28 khusus elevation).
+**Impact:** `app/globals.css`, `product-discovery/06-engineering/design-tokens.md`.
+
 ## [2026-08-23] — Redesain visual About di kode produksi
 
 **Phase:** Development R1

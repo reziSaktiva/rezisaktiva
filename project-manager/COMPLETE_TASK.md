@@ -15,6 +15,12 @@ Format entri:
 ```
 
 ## [2026-08-23]
+### Added
+- Elevasi timbul 3D pada chip chrome (nav, locale) dan seluruh `.astryx-button` (Contact, theme toggle, hamburger, Quick Info, CTA, close/copy modal). Token `--elev-3d` / hover / pressed di `app/globals.css`; tab Quick Info tidak lagi `box-shadow: none`.
+### Changed
+- `product-discovery/06-engineering/design-tokens.md` — elevation halaman tetap minimal; kontrol + Button memakai timbul 3D.
+
+## [2026-08-23]
 ### Fixed
 - Grid Karya: tile setengah lebar yang sendirian (sebelum featured atau di akhir daftar) tidak lagi meninggalkan sel kosong di kanan; tile itu merentang penuh dengan rasio featured.
 
