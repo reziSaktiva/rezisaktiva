@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-08-23]
+### Fixed
+- Review PR #42 (P2): StatusDot badge About tidak lagi mengekspos teks `availability` panjang ke screen reader (`aria-hidden` + label = badge). Close/copy Contact dan close Quick Info dikecualikan dari elevasi 3D; `.astryx-button:focus-visible` memakai outline agar cincin fokus tidak kalah `box-shadow`.
+
+## [2026-08-23]
 ### Added
 - Elevasi timbul 3D pada chip chrome (nav, locale) dan seluruh `.astryx-button` (Contact, theme toggle, hamburger, Quick Info, CTA, close/copy modal). Token `--elev-3d` / hover / pressed di `app/globals.css`; tab Quick Info tidak lagi `box-shadow: none`.
 ### Changed

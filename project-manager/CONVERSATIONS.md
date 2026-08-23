@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-23] — Perbaikan P2 review PR #42 (a11y badge + elevasi overlay)
+
+**Phase:** Development R1
+**Summary:** Setelah code review PR #42, dua P2 dikerjakan: StatusDot di badge About disembunyikan dari AT; tombol close/copy overlay tidak memakai timbul 3D; focus-visible Button pakai outline.
+**Key Decision/Insight:** Timbul 3D tetap default Button berisi; overlay icon-only tetap datar.
+**Impact:** `about-page.tsx`, `globals.css`.
+
 ## [2026-08-23] — Elevasi timbul 3D pada chrome + seluruh Button
 
 **Phase:** Development R1

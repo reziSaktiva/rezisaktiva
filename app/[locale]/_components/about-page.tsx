@@ -55,8 +55,9 @@ export function AboutPage({ locale }: { locale: Locale }) {
                 icon={
                   <StatusDot
                     variant="success"
-                    label={copy.availability}
+                    label={copy.availabilityBadge}
                     isPulsing
+                    aria-hidden
                   />
                 }
               />

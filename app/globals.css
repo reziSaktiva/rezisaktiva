@@ -317,25 +317,32 @@ html[data-theme="dark"] body {
 }
 
 /*
- * Timbul 3D (arahan Boss Rezi): chip chrome + seluruh Button Astryx.
+ * Timbul 3D (arahan Boss Rezi): chip chrome + Button Astryx yang berisi.
  * `!important` pada `.astryx-button` mengalahkan StyleX runtime (elevation
- * default `none`) — sama pola override chrome yang sudah ada.
+ * default `none`). Overlay icon-only (close/copy modal) dikecualikan —
+ * shadow timbul di ghost transparan terlihat kotor, dan `box-shadow`
+ * `!important` tidak boleh menelan cincin fokus.
  */
 .site-nav-chip,
 .site-locale-switch {
   box-shadow: var(--elev-3d);
 }
 
-.astryx-button {
+.astryx-button:not(.ct-close):not(.ct-copy):not(.qi-close) {
   box-shadow: var(--elev-3d) !important;
 }
 
-.astryx-button:hover {
+.astryx-button:not(.ct-close):not(.ct-copy):not(.qi-close):hover {
   box-shadow: var(--elev-3d-hover) !important;
 }
 
-.astryx-button:active {
+.astryx-button:not(.ct-close):not(.ct-copy):not(.qi-close):active {
   box-shadow: var(--elev-3d-pressed) !important;
+}
+
+.astryx-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /*
@@ -1359,6 +1366,7 @@ html[data-theme="dark"] body {
   border-radius: var(--radius-full) !important;
   background: rgba(255, 255, 255, 0.08) !important;
   color: #ede9e1 !important;
+  box-shadow: none !important;
 }
 
 .ct-close:hover {
@@ -1529,6 +1537,7 @@ html[data-theme="dark"] body {
   border-radius: 0.55rem !important;
   background: #fde047 !important;
   color: #14181f !important;
+  box-shadow: none !important;
 }
 
 .ct-copy:hover {
@@ -1737,6 +1746,7 @@ html.qi-lock {
   border-radius: 0.5rem !important;
   background: var(--color-text-primary) !important;
   color: var(--color-background-surface) !important;
+  box-shadow: none !important;
 }
 
 .qi-close:hover {
