@@ -138,11 +138,15 @@ export function ContactModal({ locale }: { locale: Locale }) {
     <>
       <VStack
         data-ct-scrim=""
+        data-lenis-prevent=""
         className={isOpen ? "ct-scrim is-open" : "ct-scrim"}
         onClick={handleClose}
         aria-hidden={!isOpen}
       />
-      <VStack className={isOpen ? "ct-wrap is-open" : "ct-wrap"}>
+      <VStack
+        data-lenis-prevent=""
+        className={isOpen ? "ct-wrap is-open" : "ct-wrap"}
+      >
         <VStack
           ref={panelRef}
           id="ct-panel"
