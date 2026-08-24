@@ -158,9 +158,11 @@ html[data-theme="dark"] body {
   width: 0;
   height: 0;
   opacity: 0;
+  overflow: visible;
   pointer-events: none;
   border-radius: 16px;
   background-color: var(--chrome-pill-bg);
+  box-shadow: var(--elev-3d);
   transition:
     transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
     width 320ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -174,6 +176,7 @@ html[data-theme="dark"] body {
 /* Nav pill wrapper (desktop) — chip kuning menyatu di belakang nav link. */
 .site-nav-chip {
   position: relative;
+  overflow: visible;
   background-color: var(--chip-bg);
   border-radius: 16px;
 }
@@ -281,6 +284,7 @@ html[data-theme="dark"] body {
 /* Locale switch (dipakai ulang desktop + mobile via komponen yang sama). */
 .site-locale-switch-host {
   position: relative;
+  overflow: visible;
 }
 .site-locale-switch {
   background-color: var(--chip-bg);
@@ -300,9 +304,27 @@ html[data-theme="dark"] body {
   padding-inline: var(--spacing-2);
   transition: color 200ms ease;
 }
+/*
+ * SegmentedControl Astryx punya fill + shadow sendiri untuk selected, dan
+ * overlay hover untuk item non-selected. Itu muncul bersamaan dengan
+ * `.site-pill-indicator` — residual di bahasa yang terpilih saat hover
+ * bahasa lain. Nav TopNav tidak punya fill itu setelah di-override; di
+ * sini StyleX selected/hover harus dilawan eksplisit (termasuk :hover).
+ * Jangan sentuh `.site-nav-chip`.
+ */
+.site-locale-switch .astryx-segmented-control-item,
+.site-locale-switch .astryx-segmented-control-item:hover,
+.site-locale-switch .astryx-segmented-control-item:focus,
+.site-locale-switch .astryx-segmented-control-item:focus-visible,
+.site-locale-switch .astryx-segmented-control-item[data-selected],
+.site-locale-switch .astryx-segmented-control-item[data-selected]:hover,
+.site-locale-switch .astryx-segmented-control-item.selected {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
 .site-locale-switch .astryx-segmented-control-item[data-selected],
 .site-locale-switch .astryx-segmented-control-item.is-pill-on {
-  background-color: transparent;
   color: var(--chrome-pill-fg);
 }
 
@@ -317,11 +339,11 @@ html[data-theme="dark"] body {
 }
 
 /*
- * Timbul 3D (arahan Boss Rezi): chip chrome + Button Astryx yang berisi.
- * `!important` pada `.astryx-button` mengalahkan StyleX runtime (elevation
- * default `none`). Overlay icon-only (close/copy modal) dikecualikan —
- * shadow timbul di ghost transparan terlihat kotor, dan `box-shadow`
- * `!important` tidak boleh menelan cincin fokus.
+ * Timbul 3D (arahan Boss Rezi): chip chrome + pill aktif di dalamnya +
+ * Button Astryx yang berisi. `!important` pada `.astryx-button` mengalahkan
+ * StyleX runtime (elevation default `none`). Overlay icon-only (close/copy
+ * modal) dikecualikan — shadow timbul di ghost transparan terlihat kotor,
+ * dan `box-shadow` `!important` tidak boleh menelan cincin fokus.
  */
 .site-nav-chip,
 .site-locale-switch {

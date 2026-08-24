@@ -14,6 +14,12 @@ Format entri:
 - ...
 ```
 
+## [2026-08-24]
+### Fixed
+- Locale switch: fill/shadow selected + overlay hover bawaan SegmentedControl Astryx dinonaktifkan, supaya hanya satu pill yang geser (seperti nav). Nav tidak diubah.
+### Changed
+- Pill aktif chrome (Home/About/Karya + ID/EN) memakai token `--elev-3d` yang sama dengan chip locale, supaya item terpilih timbul 3D bukan hanya track kuningnya.
+
 ## [2026-08-23]
 ### Fixed
 - Review PR #42 (P2): StatusDot badge About tidak lagi mengekspos teks `availability` panjang ke screen reader (`aria-hidden` + label = badge). Close/copy Contact dan close Quick Info dikecualikan dari elevasi 3D; `.astryx-button:focus-visible` memakai outline agar cincin fokus tidak kalah `box-shadow`.

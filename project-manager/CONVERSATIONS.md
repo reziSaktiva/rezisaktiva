@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-24] — Locale switch: residual selected saat hover
+
+**Phase:** Development R1
+**Summary:** Saat hover bahasa non-selected, fill selected Astryx tertinggal di ID/EN yang aktif sementara pill custom sudah pindah. Override CSS hanya di `.site-locale-switch`; nav tidak disentuh.
+**Key Decision/Insight:** Satu indikator saja — `.site-pill-indicator` — sama seperti nav.
+**Impact:** `app/globals.css`; COMPLETE_TASK.
+
+## [2026-08-24] — Elevasi 3D pada pill nav terpilih
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta item nav terpilih (Home) memakai effect 3D yang sama dengan segmen locale terpilih (ID). Token `--elev-3d` dipasang ke `.site-pill-indicator` agar mengikuti hover/aktif.
+**Key Decision/Insight:** 3D di track kuning saja tidak cukup — pill gelap di dalam chip juga harus timbul.
+**Impact:** `app/globals.css`; COMPLETE_TASK.
+
 ## [2026-08-23] — Perbaikan P2 review PR #42 (a11y badge + elevasi overlay)
 
 **Phase:** Development R1
