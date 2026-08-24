@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Center } from "@astryxdesign/core/Center";
 import { prefersReducedMotion } from "./smooth-scroll";
@@ -25,29 +25,34 @@ function readDurationMs(token: string, fallback: number): number {
  */
 export function PageTransition() {
   const pathname = usePathname();
-  const skipFirst = useRef(true);
-  const [isActive, setIsActive] = useState(false);
+  const [wipe, setWipe] = useState({ path: pathname, isActive: false });
+
+  if (wipe.path !== pathname) {
+    setWipe({
+      path: pathname,
+      isActive: !prefersReducedMotion(),
+    });
+  }
 
   useEffect(() => {
-    if (skipFirst.current) {
-      skipFirst.current = false;
-      return;
-    }
-    if (prefersReducedMotion()) {
+    if (!wipe.isActive) {
       return;
     }
 
-    setIsActive(true);
     const duration = readDurationMs("--duration-medium", 300);
     const timer = window.setTimeout(() => {
-      setIsActive(false);
+      setWipe((current) =>
+        current.path === wipe.path
+          ? { ...current, isActive: false }
+          : current,
+      );
     }, duration);
     return () => window.clearTimeout(timer);
-  }, [pathname]);
+  }, [wipe.isActive, wipe.path]);
 
   return (
     <Center
-      className={isActive ? "page-wipe is-active" : "page-wipe"}
+      className={wipe.isActive ? "page-wipe is-active" : "page-wipe"}
       aria-hidden="true"
     >
       {null}
