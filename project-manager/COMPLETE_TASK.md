@@ -15,6 +15,14 @@ Format entri:
 ```
 
 ## [2026-08-24]
+### Added
+- **T-025.8** (open) — handoff chat baru: scrollbar track tetap terlihat selama transisi halaman, acuan karolinahess.com. Branch `feat/page-transition-hess-rhythm`.
+### Changed
+- Snapshot / TASKS / v03: T-025 bukan fully Done sampai T-025.8.
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
 ### Fixed
 - Kedip transisi halaman: halaman baru sempat tampil penuh sebelum enter; clone ikut kena CSS karena ID kembar; clone dihapus sebelum exit selesai. Live page diparkir `translateY(100vh)` sampai enter; clone tanpa ID; clone dibiarkan sampai 1s.
 ### Added
