@@ -1,12 +1,13 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   SegmentedControl,
   SegmentedControlItem,
 } from "@astryxdesign/core/SegmentedControl";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { LOCALE_COOKIE, LOCALES, type Locale } from "@/lib/locale";
+import { useTransitionNavigate } from "./page-transition";
 import { SlidingPillGroup } from "./sliding-pill-group";
 
 const LABELS: Record<Locale, string> = {
@@ -36,7 +37,7 @@ export function LocaleSwitcher({
   variant?: "bar" | "menu";
 }) {
   const pathname = usePathname();
-  const router = useRouter();
+  const navigate = useTransitionNavigate();
   const chipColorVars = useChipColorVars();
   const isMenu = variant === "menu";
 
@@ -46,7 +47,7 @@ export function LocaleSwitcher({
     }
     const target = value as Locale;
     document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=31536000`;
-    router.push(hrefForLocale(pathname, target));
+    navigate(hrefForLocale(pathname, target));
   };
 
   return (

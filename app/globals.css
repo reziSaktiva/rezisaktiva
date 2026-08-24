@@ -47,6 +47,11 @@
   --chip-fg: #14181f;
   --chrome-pill-bg: #0a0f1a;
   --chrome-pill-fg: #edeae1;
+  /* Ritme transisi halaman karolinahess.com — bukan --duration-medium. */
+  --duration-page-exit: 1s;
+  --duration-page-enter: 0.4s;
+  --delay-page-enter: 0.4s;
+  --ease-page-transition: cubic-bezier(0.65, 0, 0.43, 1);
   /*
    * Elevasi timbul 3D untuk chrome chip + seluruh `.astryx-button`.
    * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
@@ -1666,41 +1671,70 @@ html.qi-lock {
 }
 
 /*
- * Overlay wipe antar halaman (ADR-025). Token durasi/easing Astryx.
- * Idle selalu pointer-events: none — jangan blok klik setelah selesai.
+ * Transisi halaman = snapshot CSS (ritme karolinahess.com).
+ * Live page diparkir di bawah viewport sampai enter — tampil lebih dulu
+ * = kedip. Selector live tidak boleh mengenai clone.
  */
-.page-wipe {
-  position: fixed !important;
+html.page-vt-lock,
+html.page-vt-lock body {
+  background-color: var(--color-background-body);
+}
+
+.page-vt-clone {
+  position: fixed;
   inset: 0;
-  z-index: 65;
+  z-index: 40;
+  overflow: hidden;
   pointer-events: none;
   background-color: var(--color-background-body);
-  clip-path: inset(100% 0 0 0);
-  visibility: hidden;
+  backface-visibility: hidden;
 }
 
-.page-wipe.is-active {
-  visibility: visible;
-  animation: page-wipe-clip var(--duration-medium) var(--ease-standard) both;
+.page-vt-clone.is-exiting {
+  animation: page-vt-exit var(--duration-page-exit) var(--ease-page-transition)
+    both;
 }
 
-@keyframes page-wipe-clip {
-  0% {
-    clip-path: inset(100% 0 0 0);
+.page-vt-clone .astryx-app-shell-header,
+.page-vt-clone .home-cursor-ring,
+.page-vt-clone .site-mobile-nav {
+  visibility: hidden !important;
+}
+
+@keyframes page-vt-exit {
+  to {
+    transform: translateY(-100vh) scale(0.5);
   }
-  45% {
-    clip-path: inset(0 0 0 0);
+}
+
+@keyframes page-vt-enter {
+  from {
+    transform: translateY(100vh);
   }
-  100% {
-    clip-path: inset(0 0 100% 0);
-  }
+}
+
+html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
+html.page-vt-lock:not(.page-vt-entering) .site-footer {
+  transform: translateY(100vh);
+  pointer-events: none;
+}
+
+html.page-vt-entering #astryx-app-shell-main,
+html.page-vt-entering .site-footer {
+  animation: page-vt-enter var(--duration-page-enter) var(--ease-page-transition)
+    both;
+  backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-wipe,
-  .page-wipe.is-active {
-    display: none;
-    animation: none;
+  .page-vt-clone,
+  .page-vt-clone.is-exiting,
+  html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
+  html.page-vt-lock:not(.page-vt-entering) .site-footer,
+  html.page-vt-entering #astryx-app-shell-main,
+  html.page-vt-entering .site-footer {
+    animation: none !important;
+    transform: none !important;
   }
 }
 

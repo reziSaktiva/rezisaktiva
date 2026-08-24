@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-24] — Handoff: transisi Hess, sisa scrollbar track
+
+**Phase:** Development R1
+**Summary:** Ritme transisi halaman (T-025.7) sudah hampir pas vs karolinahess.com (snapshot CSS, bukan View Transitions). Boss Rezi mengunci sisa: **selama animasi pindah halaman, scrollbar track tidak boleh hilang** — di Hess track tetap kelihatan. Dikerjakan di chat baru, bukan di sesi ini.
+**Key Decision/Insight:** Branch kerja `feat/page-transition-hess-rhythm` (commit ritme + anti-kedip). Jangan mulai dari `main`. Jangan ubah palet; hanya perilaku scrollbar selama transisi.
+**Impact:** T-025.8 (open) di v03; Snapshot PROJECT_STATE; lanjut dari `app/[locale]/_components/page-transition.tsx` + `app/globals.css` (kelas `page-vt-*`).
+
+## [2026-08-24] — Transisi halaman = ritme Hess, bukan wipe cepat
+
+**Phase:** Development R1
+**Summary:** Wipe clip 300ms terasa kasar karena bukan transisi Hess. Bundle karolinahess.com: exit 1s `y:-100%` + `scale:.5`, enter 0.4s dari `y:100%` delay 0.4s, ease `[.65,0,.43,1]`. Warna celah tetap tema.
+**Key Decision/Insight:** Token `--duration-page-*`; chrome tidak ikut scale. View Transitions API dibatalkan (timeout DOM update Next) → snapshot CSS.
+**Impact:** `page-transition.tsx`, `globals.css`, ADR-025, design-tokens §Motion; T-025.7.
+
 ## [2026-08-24] — T-025.5 / T-025.6 Home-Work craft + QA
 
 **Phase:** Development R1

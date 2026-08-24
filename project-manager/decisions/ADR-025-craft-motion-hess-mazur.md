@@ -19,10 +19,10 @@ Accepted
 3. **Warna, tema `rezisaktiva`, elevasi 3D chrome, Contact modal, dan Quick Info dipertahankan.** Chrome 3D (`--elev-3d`, pill nav, tombol) tidak diubah di pass ini kecuali regresi.
 4. **Fondasi gerak situs (sekali, semua halaman):**
    - Smooth-scroll inertia (Lenis, window scroll; AppShell `height="auto"`). **Pause** saat Contact modal atau Quick Info terbuka. **Off** jika `prefers-reduced-motion`. Bukan `scroll-behavior: smooth` native. Tanpa parallax berat (batas ADR-017 tetap).
-   - Transisi halaman overlay wipe/clip di locale layout, keyed pathname, durasi token `--duration-medium`. Reduced-motion = ganti halaman instan. Overlay **tidak** memblok klik setelah selesai.
+   - Transisi halaman mengikuti ritme karolinahess.com (snapshot CSS, bukan View Transitions API — Next App Router sering timeout DOM update): halaman lama naik + scale 0.5 selama 1s; halaman baru masuk dari bawah 0.4s setelah delay 0.4s; easing `cubic-bezier(0.65, 0, 0.43, 1)`. Warna celah = `--color-background-body` tema, bukan palet Hess. Reduced-motion = ganti halaman instan. Chrome tetap (nav tidak ikut scale).
 5. **Contact menyatu footer** di semua rute: pita terakhir (heading dari copy yang sudah dikunci + tombol 3D yang membuka **modal Contact yang ada**) + baris legal/satelit. Section `#contact-cta` terpisah di tengah/akhir halaman dihapus. Tombol Kontak di header tetap (ADR-019).
 6. **Home & Work tetap menaruh bukti di depan.** Urutan Home J1/J2 + teaser tidak digeser oleh 4 langkah proses penuh. Hover tile/CTA diperkuat; h1/section title ditarik ke ritme display yang lebih besar (token/`clamp`, bukan hex).
-7. Astryx tidak punya Lenis atau page wipe — lapisan custom diizinkan, diikat ke token `--duration-*` / `--ease-standard`. Scroll-reveal yang sudah ada (`home-motion.tsx`) tetap; easing diseragamkan ke token.
+7. Astryx tidak punya Lenis atau transisi halaman — lapisan custom diizinkan. Transisi halaman memakai token `--duration-page-*` / `--ease-page-transition` (bukan `--duration-medium`). Scroll-reveal yang sudah ada (`home-motion.tsx`) tetap.
 
 Ini **perluasan material vs ADR-017** (kadar craft + dua teknik baru: inertia scroll dan page overlay), bukan selip ke T-021/T-024.
 

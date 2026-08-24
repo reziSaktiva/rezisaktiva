@@ -20,6 +20,54 @@ Format entri:
 ### Changed
 - (tidak ada)
 ### Fixed
+- **PR #44 review (3–6)** — Back/Forward ikut transisi (Navigation API snapshot; fallback enter-only). Live main/footer `inert` + `aria-hidden` saat diparkir. Clone hanya main+footer, input/media dibersihkan. rAF di-cancel saat unmount idle (in-flight dibiarkan karena Strict Mode / ganti locale). T-025.8 belum disentuh.
+
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **PR #44 review** — transisi halaman: `isBusy` tidak lagi macet jika `router.push` gagal/redirect (timeout pengaman + enter saat pathname sudah meninggalkan halaman asal); klik selama transisi diantrikan (klik terakhir) bukan dibuang. Branch `feat/page-transition-hess-rhythm`. T-025.8 belum disentuh.
+
+## [2026-08-24]
+### Added
+- **T-025.8** (open) — handoff chat baru: scrollbar track tetap terlihat selama transisi halaman, acuan karolinahess.com. Branch `feat/page-transition-hess-rhythm`.
+### Changed
+- Snapshot / TASKS / v03: T-025 bukan fully Done sampai T-025.8.
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Kedip transisi halaman: halaman baru sempat tampil penuh sebelum enter; clone ikut kena CSS karena ID kembar; clone dihapus sebelum exit selesai. Live page diparkir `translateY(100vh)` sampai enter; clone tanpa ID; clone dibiarkan sampai 1s.
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Transisi halaman: View Transitions API di-drop — `TimeoutError: Transition was aborted because of timeout in DOM update` saat Next belum selesai ganti DOM. Diganti snapshot CSS (clone exit + enter `100vh`).
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.7** — Transisi halaman memakai ritme karolinahess.com (exit 1s naik+scale 0.5, enter 0.4s dari bawah, delay 0.4s, easing `.65,0,.43,1`).
+### Changed
+- ADR-025 + `design-tokens.md` §Motion: overlay wipe `--duration-medium` diganti token `--duration-page-*` / `--ease-page-transition`. Warna celah tetap `--color-background-body`.
+### Fixed
+- Transisi pindah halaman yang terasa terlalu cepat/kasar (wipe 300ms setelah rute sudah berganti).
+
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
 - **T-025.4 follow-up (PR #43 review)** — About rest/active: desktop keyboard bisa Tab ke lead/kartu lalu body muncul via `:focus-within`; sentuh membuka dari seluruh kartu (watermark/padding), bukan hanya judul.
 
 ## [2026-08-24]

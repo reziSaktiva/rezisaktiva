@@ -9,7 +9,11 @@ function prefersReducedMotion(): boolean {
 
 function isOverlayLocked(): boolean {
   const root = document.documentElement;
-  return root.classList.contains("ct-lock") || root.classList.contains("qi-lock");
+  return (
+    root.classList.contains("ct-lock") ||
+    root.classList.contains("qi-lock") ||
+    root.classList.contains("page-vt-lock")
+  );
 }
 
 /**

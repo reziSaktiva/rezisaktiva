@@ -1,9 +1,71 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { Center } from "@astryxdesign/core/Center";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  type ReactNode,
+} from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { prefersReducedMotion } from "./smooth-scroll";
+
+type NavigateFn = (href: string) => void;
+
+const PageTransitionContext = createContext<NavigateFn | null>(null);
+
+export function useTransitionNavigate(): NavigateFn {
+  const router = useRouter();
+  const fromContext = useContext(PageTransitionContext);
+  return fromContext ?? ((href) => router.push(href));
+}
+
+function normalizePath(path: string): string {
+  const pathname = path.split("?")[0]?.split("#")[0] ?? path;
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+function isModifiedClick(event: MouseEvent): boolean {
+  return (
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  );
+}
+
+function resolveInternalHref(anchor: HTMLAnchorElement): string | null {
+  if (anchor.target && anchor.target !== "_self") {
+    return null;
+  }
+  if (anchor.hasAttribute("download")) {
+    return null;
+  }
+  const href = anchor.getAttribute("href");
+  if (
+    !href ||
+    href.startsWith("#") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:")
+  ) {
+    return null;
+  }
+
+  let url: URL;
+  try {
+    url = new URL(anchor.href);
+  } catch {
+    return null;
+  }
+  if (url.origin !== window.location.origin) {
+    return null;
+  }
+
+  return `${url.pathname}${url.search}`;
+}
 
 function readDurationMs(token: string, fallback: number): number {
   const raw = getComputedStyle(document.documentElement)
@@ -19,43 +81,441 @@ function readDurationMs(token: string, fallback: number): number {
   return value;
 }
 
-/**
- * Overlay wipe antar rute (ADR-025). Keyed pathname; instan jika reduced-motion.
- * Idle: `pointer-events: none` — motion tidak menghalangi aksi.
- */
-export function PageTransition() {
-  const pathname = usePathname();
-  const [wipe, setWipe] = useState({ path: pathname, isActive: false });
+function sanitizeClone(root: ParentNode): void {
+  root.querySelectorAll("script, iframe").forEach((node) => node.remove());
+  root.querySelectorAll("input, textarea, select").forEach((node) => {
+    if (node instanceof HTMLInputElement) {
+      if (
+        node.type === "checkbox" ||
+        node.type === "radio" ||
+        node.type === "range" ||
+        node.type === "color"
+      ) {
+        return;
+      }
+      node.value = "";
+      node.defaultValue = "";
+    }
+    if (node instanceof HTMLTextAreaElement) {
+      node.value = "";
+      node.defaultValue = "";
+    }
+    if (node instanceof HTMLSelectElement) {
+      node.selectedIndex = -1;
+    }
+  });
+  root.querySelectorAll("video, audio").forEach((node) => {
+    if (!(node instanceof HTMLMediaElement)) {
+      return;
+    }
+    node.pause();
+    node.removeAttribute("autoplay");
+    node.removeAttribute("src");
+    node.querySelectorAll("source").forEach((source) => source.remove());
+    node.load();
+  });
+}
 
-  if (wipe.path !== pathname) {
-    setWipe({
-      path: pathname,
-      isActive: !prefersReducedMotion(),
-    });
+function captureOutgoing(): HTMLElement {
+  const layer = document.createElement("div");
+  layer.className = "page-vt-clone";
+  layer.setAttribute("aria-hidden", "true");
+  layer.inert = true;
+
+  const shifter = document.createElement("div");
+  shifter.className = "page-vt-clone-shift";
+  const htmlTransform = getComputedStyle(document.documentElement).transform;
+  const shiftY =
+    htmlTransform && htmlTransform !== "none" ? 0 : -window.scrollY;
+  shifter.style.transform = `translateY(${shiftY}px)`;
+
+  const main = document.getElementById("astryx-app-shell-main");
+  const footer = document.querySelector(".site-footer");
+  if (main) {
+    shifter.appendChild(main.cloneNode(true));
+  }
+  if (footer) {
+    shifter.appendChild(footer.cloneNode(true));
+  }
+  sanitizeClone(shifter);
+  layer.appendChild(shifter);
+  layer.querySelectorAll("[id]").forEach((node) => {
+    node.removeAttribute("id");
+  });
+  document.body.appendChild(layer);
+  return layer;
+}
+
+function clearClones(): void {
+  document.querySelectorAll(".page-vt-clone").forEach((node) => node.remove());
+}
+
+function setLiveParked(parked: boolean): void {
+  const main = document.getElementById("astryx-app-shell-main");
+  const footer = document.querySelector(".site-footer");
+  for (const node of [main, footer]) {
+    if (!(node instanceof HTMLElement)) {
+      continue;
+    }
+    node.inert = parked;
+    if (parked) {
+      node.setAttribute("aria-hidden", "true");
+    } else {
+      node.removeAttribute("aria-hidden");
+    }
+  }
+}
+
+function applyDocumentLock(lock: boolean): void {
+  const root = document.documentElement;
+  if (lock) {
+    root.classList.add("page-vt-lock");
+    root.classList.remove("page-vt-entering");
+    setLiveParked(true);
+    return;
+  }
+  root.classList.remove("page-vt-lock", "page-vt-entering");
+  setLiveParked(false);
+}
+
+type PendingNav = {
+  epoch: number;
+  from: string;
+  target: string;
+  startedAt: number;
+  clone: HTMLElement | null;
+};
+
+let pendingNav: PendingNav | null = null;
+let isBusy = false;
+let navEpoch = 0;
+let queuedHref: string | null = null;
+let startQueuedNav: NavigateFn | null = null;
+let rafId = 0;
+let safetyTimer = 0;
+const runningTimers: number[] = [];
+
+const SAFETY_BUFFER_MS = 750;
+const REPLACED_FROM = "__replaced__";
+
+function clearRunningTimers(): void {
+  for (const id of runningTimers) {
+    window.clearTimeout(id);
+  }
+  runningTimers.length = 0;
+}
+
+function cancelRaf(): void {
+  if (rafId) {
+    window.cancelAnimationFrame(rafId);
+    rafId = 0;
+  }
+}
+
+function clearSafetyTimer(): void {
+  if (safetyTimer) {
+    window.clearTimeout(safetyTimer);
+    safetyTimer = 0;
+  }
+}
+
+function flushQueuedNav(): void {
+  const next = queuedHref;
+  queuedHref = null;
+  if (!next || !startQueuedNav) {
+    return;
+  }
+  queueMicrotask(() => {
+    startQueuedNav?.(next);
+  });
+}
+
+function releaseLock(): void {
+  clearSafetyTimer();
+  cancelRaf();
+  applyDocumentLock(false);
+  pendingNav = null;
+  isBusy = false;
+}
+
+function finishEnter(): void {
+  releaseLock();
+  flushQueuedNav();
+}
+
+function failSafeUnlock(): void {
+  clearRunningTimers();
+  clearClones();
+  releaseLock();
+  flushQueuedNav();
+}
+
+function safetyTimeoutMs(): number {
+  return (
+    readDurationMs("--duration-page-exit", 1000) +
+    readDurationMs("--delay-page-enter", 400) +
+    readDurationMs("--duration-page-enter", 400) +
+    SAFETY_BUFFER_MS
+  );
+}
+
+function armSafety(epoch: number): void {
+  clearSafetyTimer();
+  safetyTimer = window.setTimeout(() => {
+    safetyTimer = 0;
+    if (pendingNav?.epoch !== epoch) {
+      return;
+    }
+    failSafeUnlock();
+  }, safetyTimeoutMs());
+}
+
+function armTransition(options: {
+  from: string;
+  target: string;
+  clone: HTMLElement | null;
+  pushHref?: string;
+  push?: (href: string) => void;
+}): number {
+  isBusy = true;
+  queuedHref = null;
+  clearSafetyTimer();
+  clearRunningTimers();
+  cancelRaf();
+  if (!options.clone) {
+    clearClones();
   }
 
+  applyDocumentLock(true);
+
+  navEpoch += 1;
+  const epoch = navEpoch;
+  pendingNav = {
+    epoch,
+    from: options.from,
+    target: options.target,
+    startedAt: performance.now(),
+    clone: options.clone,
+  };
+
+  const clone = options.clone;
+  if (clone) {
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      if (pendingNav?.epoch !== epoch) {
+        return;
+      }
+      clone.classList.add("is-exiting");
+      if (options.push && options.pushHref) {
+        options.push(options.pushHref);
+      }
+    });
+    const exitMs = readDurationMs("--duration-page-exit", 1000);
+    runningTimers.push(
+      window.setTimeout(() => {
+        clone.remove();
+      }, exitMs),
+    );
+  }
+
+  armSafety(epoch);
+  return epoch;
+}
+
+function retargetBusyNav(target: string): void {
+  navEpoch += 1;
+  if (!pendingNav) {
+    return;
+  }
+  pendingNav.epoch = navEpoch;
+  pendingNav.from = REPLACED_FROM;
+  pendingNav.target = target;
+  pendingNav.startedAt = performance.now();
+  pendingNav.clone = null;
+  clearClones();
+  applyDocumentLock(true);
+  armSafety(navEpoch);
+}
+
+/**
+ * Transisi halaman mengikuti ritme karolinahess.com tanpa View Transitions
+ * API. State di luar React supaya remount Strict Mode tidak mematikan clone.
+ */
+export function PageTransitionProvider({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const isFirstPath = useRef(true);
+
+  const navigate = useCallback(
+    (href: string) => {
+      const target = normalizePath(href);
+      const from = normalizePath(window.location.pathname);
+      if (target === from) {
+        return;
+      }
+
+      if (prefersReducedMotion()) {
+        router.push(href, { scroll: false });
+        return;
+      }
+
+      if (isBusy) {
+        if (pendingNav && target === pendingNav.target) {
+          return;
+        }
+        queuedHref = href;
+        return;
+      }
+
+      clearClones();
+      const clone = captureOutgoing();
+      armTransition({
+        from,
+        target,
+        clone,
+        pushHref: href,
+        push: (next) => router.push(next, { scroll: false }),
+      });
+    },
+    [router],
+  );
+
   useEffect(() => {
-    if (!wipe.isActive) {
+    startQueuedNav = navigate;
+  }, [navigate]);
+
+  useEffect(() => {
+    return () => {
+      if (!isBusy) {
+        cancelRaf();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const navigation = window.navigation;
+    if (!navigation) {
       return;
     }
 
-    const duration = readDurationMs("--duration-medium", 300);
-    const timer = window.setTimeout(() => {
-      setWipe((current) =>
-        current.path === wipe.path
-          ? { ...current, isActive: false }
-          : current,
-      );
-    }, duration);
-    return () => window.clearTimeout(timer);
-  }, [wipe.isActive, wipe.path]);
+    const onNavigate = (event: NavigateEvent) => {
+      if (event.hashChange || event.downloadRequest) {
+        return;
+      }
+      if (event.navigationType !== "traverse") {
+        return;
+      }
+      if (prefersReducedMotion()) {
+        return;
+      }
+
+      let target: string;
+      try {
+        target = normalizePath(new URL(event.destination.url).pathname);
+      } catch {
+        return;
+      }
+      const from = normalizePath(window.location.pathname);
+      if (target === from) {
+        return;
+      }
+
+      if (isBusy) {
+        retargetBusyNav(target);
+        return;
+      }
+
+      clearClones();
+      const clone = captureOutgoing();
+      armTransition({ from, target, clone });
+    };
+
+    navigation.addEventListener("navigate", onNavigate);
+    return () => navigation.removeEventListener("navigate", onNavigate);
+  }, []);
+
+  useLayoutEffect(() => {
+    const path = normalizePath(pathname);
+
+    if (isFirstPath.current) {
+      isFirstPath.current = false;
+      if (!pendingNav) {
+        return;
+      }
+    } else if (!pendingNav) {
+      if (prefersReducedMotion()) {
+        return;
+      }
+      armTransition({ from: "", target: path, clone: null });
+    }
+
+    if (!pendingNav) {
+      return;
+    }
+    if (pendingNav.from !== "" && path === pendingNav.from) {
+      return;
+    }
+
+    const epoch = pendingNav.epoch;
+    const enterDelay = readDurationMs("--delay-page-enter", 400);
+    const enterMs = readDurationMs("--duration-page-enter", 400);
+    const wait = Math.max(
+      0,
+      enterDelay - (performance.now() - pendingNav.startedAt),
+    );
+
+    const enterTimer = window.setTimeout(() => {
+      if (pendingNav?.epoch !== epoch) {
+        return;
+      }
+      window.scrollTo(0, 0);
+      document.documentElement.classList.add("page-vt-entering");
+      setLiveParked(false);
+    }, wait);
+    const doneTimer = window.setTimeout(() => {
+      if (pendingNav?.epoch !== epoch) {
+        return;
+      }
+      finishEnter();
+    }, wait + enterMs);
+
+    return () => {
+      window.clearTimeout(enterTimer);
+      window.clearTimeout(doneTimer);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || isModifiedClick(event)) {
+        return;
+      }
+      const eventTarget = event.target;
+      if (!(eventTarget instanceof Element)) {
+        return;
+      }
+      const anchor = eventTarget.closest("a");
+      if (!(anchor instanceof HTMLAnchorElement)) {
+        return;
+      }
+      const href = resolveInternalHref(anchor);
+      if (!href) {
+        return;
+      }
+      if (normalizePath(href) === normalizePath(pathname)) {
+        return;
+      }
+      event.preventDefault();
+      navigate(href);
+    };
+
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, [navigate, pathname]);
 
   return (
-    <Center
-      className={wipe.isActive ? "page-wipe is-active" : "page-wipe"}
-      aria-hidden="true"
-    >
-      {null}
-    </Center>
+    <PageTransitionContext.Provider value={navigate}>
+      {children}
+    </PageTransitionContext.Provider>
   );
 }
