@@ -1,6 +1,7 @@
 @import "@astryxdesign/core/reset.css";
 @import "@astryxdesign/core/astryx.css";
 @import "../theme/astryx-theme.css";
+@import "lenis/dist/lenis.css";
 
 /*
  * Sumber token: tema built `theme/astryx-theme.css` (extends theme-neutral,
@@ -610,10 +611,6 @@ html[data-theme="dark"] body {
   padding-block: 7rem;
 }
 
-.home-section--contact {
-  padding-block: 7rem;
-}
-
 .home-section--work {
   padding-block-end: var(--spacing-8);
 }
@@ -622,36 +619,22 @@ html[data-theme="dark"] body {
   .home-section--proof {
     padding-block: 9rem;
   }
-  .home-section--contact {
-    padding-block: 10rem;
-  }
 }
 
 .home-proof-body {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: 1.875rem;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
   max-width: 56rem;
-}
-
-@media (min-width: 768px) {
-  .home-proof-body {
-    font-size: 3rem;
-  }
 }
 
 .home-work-title {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1.75rem, 4.2vw, 3.25rem);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
-}
-
-@media (min-width: 768px) {
-  .home-work-title {
-    font-size: 2.25rem;
-  }
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .home-cta-underline {
@@ -724,43 +707,54 @@ html[data-theme="dark"] body {
 
 .home-work-tile img {
   object-fit: cover;
-  filter: grayscale(0.35) contrast(1.04);
-  transform: scale(1.02);
+  filter: grayscale(0.4) contrast(1.05);
+  transform: scale(1.01);
   transition:
     transform var(--duration-slow-max) var(--ease-standard),
     filter var(--duration-slow-min) var(--ease-standard);
 }
 
-.home-work-tile:hover img {
-  transform: scale(1.07);
+.home-work-tile:hover img,
+.home-work-tile:focus-within img {
+  transform: scale(1.09);
   filter: grayscale(0) contrast(1.02);
+}
+
+.home-work-tile-scrim {
+  position: absolute !important;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-text-primary) 78%, transparent) 0%,
+    color-mix(in srgb, var(--color-text-primary) 28%, transparent) 42%,
+    transparent 72%
+  );
 }
 
 .home-work-tile-meta {
   position: absolute;
   inset: auto 0 0 0;
+  z-index: 2;
   padding: var(--spacing-6) var(--spacing-5);
-  background: linear-gradient(
-    to top,
-    color-mix(in srgb, var(--color-text-primary) 72%, transparent),
-    transparent
-  );
   color: var(--color-background-surface);
-  transform: translateY(8px);
-  opacity: 0.92;
-  transition:
-    transform var(--duration-medium) var(--ease-standard),
-    opacity var(--duration-medium) var(--ease-standard);
+  pointer-events: none;
 }
 
 .home-work-tile-meta .astryx-heading,
-.home-work-tile-meta .astryx-text {
+.home-work-tile-meta .astryx-text,
+.home-work-tile-title,
+.home-work-tile-outcome {
   color: inherit;
 }
 
-.home-work-tile:hover .home-work-tile-meta {
-  transform: translateY(0);
-  opacity: 1;
+.home-work-tile-title {
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: clamp(var(--font-size-lg), 2.2vw, 1.75rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .home-contact-title {
@@ -894,12 +888,10 @@ html[data-theme="dark"] body {
   }
   .home-work-tile-meta {
     padding: 1rem 1rem 0.9rem;
-    transform: none;
-    opacity: 1;
   }
   .page-word--compact {
-    font-size: clamp(1.85rem, 9.5vw, 2.75rem);
-    line-height: 1.05;
+    font-size: clamp(2.35rem, 11vw, 3.5rem);
+    line-height: 1.02;
   }
 }
 
@@ -909,6 +901,8 @@ html[data-theme="dark"] body {
   .home-magnetic,
   .site-pill-indicator,
   .home-work-tile img,
+  .home-work-tile-scrim,
+  .home-work-tile-meta,
   .home-cta-underline::after,
   .page-word,
   .about-offer-card,
@@ -975,9 +969,9 @@ html[data-theme="dark"] body {
 
 .page-word--compact {
   display: block;
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
   font-weight: var(--font-weight-semibold);
   filter: none;
 }
@@ -1037,7 +1031,6 @@ html[data-theme="dark"] body {
 
 .about-hero,
 .about-section,
-.about-cta,
 .work-hero,
 .work-grid-section {
   width: 100%;
@@ -1049,7 +1042,6 @@ html[data-theme="dark"] body {
 @media (min-width: 768px) {
   .about-hero,
   .about-section,
-  .about-cta,
   .work-hero,
   .work-grid-section {
     padding-inline: var(--spacing-10);
@@ -1094,10 +1086,10 @@ html[data-theme="dark"] body {
 
 .about-h1 {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: clamp(var(--font-size-4xl), 6.5vw, 4.5rem) !important;
+  font-size: clamp(3.25rem, 9vw, 6.5rem) !important;
   font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .about-h1 .page-word {
@@ -1123,6 +1115,53 @@ html[data-theme="dark"] body {
   .about-lead {
     font-size: var(--font-size-2xl);
     line-height: 1.5;
+  }
+}
+
+/* Rest/active (T-025.4): body hidden until hover/focus or click. */
+.about-rest-active-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-rest-active:hover .about-rest-active-panel,
+  .about-rest-active:focus-within .about-rest-active-panel,
+  .about-offer-card:has(.about-rest-active):hover .about-rest-active-panel,
+  .about-offer-card:has(.about-rest-active):focus-within
+    .about-rest-active-panel,
+  .about-value-card:has(.about-rest-active):hover .about-rest-active-panel,
+  .about-value-card:has(.about-rest-active):focus-within
+    .about-rest-active-panel {
+    max-height: 24rem;
+    opacity: 1;
+  }
+}
+
+.about-rest-active.is-active .about-rest-active-panel {
+  max-height: 24rem;
+  opacity: 1;
+}
+
+.about-rest-active[role="button"] {
+  cursor: pointer;
+}
+
+.about-rest-active[role="button"]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-rest-active-panel {
+    max-height: none;
+    opacity: 1;
+    transition: none;
   }
 }
 
@@ -1159,20 +1198,14 @@ html[data-theme="dark"] body {
 
 .about-section-title {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
-}
-
-@media (min-width: 768px) {
-  .about-section-title {
-    font-size: 1.875rem;
-  }
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .about-offer-grid,
-.about-values-grid,
-.about-process-grid {
+.about-values-grid {
   width: 100%;
   grid-template-columns: 1fr !important;
 }
@@ -1182,21 +1215,39 @@ html[data-theme="dark"] body {
   .about-values-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
-
-  .about-process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
 }
 
-.about-offer-card {
+.about-offer-card,
+.about-value-card {
+  position: relative;
+  overflow: hidden;
   height: 100%;
   transition:
     transform var(--duration-medium) var(--ease-standard),
     box-shadow var(--duration-medium) var(--ease-standard);
 }
 
+.about-offer-mark {
+  position: absolute;
+  inset-inline-end: var(--spacing-3);
+  inset-block-start: var(--spacing-2);
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-offer-copy {
+  position: relative;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .about-offer-card:hover {
+  .about-offer-card:hover,
+  .about-value-card:hover {
     transform: translateY(calc(var(--spacing-1) * -1));
     box-shadow: var(--shadow-low);
   }
@@ -1204,7 +1255,7 @@ html[data-theme="dark"] body {
 
 .about-card-title {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: var(--font-size-lg);
+  font-size: clamp(var(--font-size-xl), 2.4vw, 1.75rem);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.02em;
 }
@@ -1216,48 +1267,50 @@ html[data-theme="dark"] body {
 
 .about-approach {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: 1.25rem;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  max-width: 42rem;
-}
-
-@media (min-width: 768px) {
-  .about-approach {
-    font-size: 1.5rem;
-  }
+  font-size: clamp(1.35rem, 3.2vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  max-width: 46rem;
 }
 
 .about-value-title {
   font-family: "General Sans", var(--font-family-heading);
-  font-size: 1.25rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.03em;
   line-height: 1.2;
-}
-
-@media (min-width: 768px) {
-  .about-value-title {
-    font-size: 1.5rem;
-  }
 }
 
 .about-process-note {
   max-width: 40rem;
 }
 
-.about-process-card {
+.about-process-trigger {
+  width: 100%;
+}
+
+.about-process-num {
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  min-width: 1.75rem;
+}
+
+.about-process-panel {
   position: relative;
   overflow: hidden;
-  height: 100%;
+  padding-block-end: var(--spacing-4);
+  padding-inline-end: var(--spacing-10);
 }
 
 .about-process-mark {
   position: absolute;
-  inset-inline-end: var(--spacing-4);
+  inset-inline-end: var(--spacing-2);
   inset-block-end: calc(var(--spacing-2) * -1);
   font-family: "General Sans", var(--font-family-heading);
-  font-size: clamp(4.5rem, 14vw, 8rem);
+  font-size: clamp(5rem, 16vw, 9rem);
   font-weight: var(--font-weight-semibold);
   line-height: 0.8;
   letter-spacing: -0.06em;
@@ -1268,40 +1321,35 @@ html[data-theme="dark"] body {
 
 .about-process-copy {
   position: relative;
+  max-width: 40rem;
 }
 
-.about-cta {
-  padding-block: 7rem;
-}
-
-@media (min-width: 768px) {
-  .about-cta {
-    padding-block: 10rem;
-  }
-}
-
-.about-cta--page {
-  padding-block: 8rem;
-  text-align: center;
+.site-footer {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--spacing-6);
+  padding-block-start: 5rem;
+  padding-block-end: var(--spacing-8);
 }
 
 @media (min-width: 768px) {
-  .about-cta--page {
-    padding-block: 11rem;
+  .site-footer {
+    padding-inline: var(--spacing-10);
+    padding-block-start: 7rem;
+    padding-block-end: var(--spacing-10);
   }
 }
 
-.about-cta-q {
-  margin-block-end: var(--spacing-6);
+.site-footer-inner,
+.site-footer-band {
+  width: 100%;
 }
 
-.about-cta-heading {
-  font-family: "General Sans", var(--font-family-heading);
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  max-width: 22rem;
+.site-footer-legal {
+  padding-block-start: var(--spacing-6);
+  border-block-start: 1px solid
+    color-mix(in srgb, var(--color-border-default) 55%, transparent);
 }
 
 .work-hero {
@@ -1317,11 +1365,17 @@ html[data-theme="dark"] body {
 
 .work-h1 {
   font-family: "General Sans", var(--font-family-heading);
+  max-width: 18ch;
+}
+
+.work-h1 .page-word--compact {
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
 }
 
 .work-lead {
-  max-width: 28rem;
-  line-height: 1.625;
+  max-width: 32rem;
+  font-size: clamp(var(--font-size-md), 1.6vw, 1.25rem);
+  line-height: 1.55;
 }
 
 .work-grid-section {
@@ -1610,6 +1664,45 @@ html[data-theme="dark"] body {
 html.ct-lock,
 html.qi-lock {
   overflow: hidden;
+}
+
+/*
+ * Overlay wipe antar halaman (ADR-025). Token durasi/easing Astryx.
+ * Idle selalu pointer-events: none — jangan blok klik setelah selesai.
+ */
+.page-wipe {
+  position: fixed !important;
+  inset: 0;
+  z-index: 65;
+  pointer-events: none;
+  background-color: var(--color-background-body);
+  clip-path: inset(100% 0 0 0);
+  visibility: hidden;
+}
+
+.page-wipe.is-active {
+  visibility: visible;
+  animation: page-wipe-clip var(--duration-medium) var(--ease-standard) both;
+}
+
+@keyframes page-wipe-clip {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  45% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-wipe,
+  .page-wipe.is-active {
+    display: none;
+    animation: none;
+  }
 }
 
 @media (max-width: 767px) {
