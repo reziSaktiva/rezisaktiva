@@ -160,7 +160,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-025 — Craft pass Hess/Mazur (ADR-025)
 
-* **Status:** ✅ Done (T-025.1–T-025.6)
+* **Status:** ✅ Done (T-025.1–T-025.7)
 * **Domain:** UI/UX
 * **Baca dulu:** ADR-025, ADR-017, ADR-006, ADR-019, ADR-024; `product-discovery/06-engineering/design-tokens.md` §Motion; `04-ux/key-screen-patterns.md` (S0 footer, S1, S2 rest/active); `01-business/competitor-analysis.md` (Hess/Mazur); `content/about.ts` + `content/home.ts` (copy dikunci — jangan tulis ulang); `app/[locale]/layout.tsx`, `about-page.tsx`, `home-page.tsx`, `work-page.tsx`, `site-footer.tsx`, `home-motion.tsx`; `.cursor/rules/xds.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`
 * **Keputusan:** About tetap M2; copy T-021 tidak diubah; palet/chrome 3D/Contact modal/Quick Info tetap; yang ditiru = ritme, tipe, interaksi, gerak. Lenis + page overlay di locale layout. Footer = pita Contact (buka modal yang ada). Jangan sentuh `design-mockups/`.
@@ -174,6 +174,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 - [x] **T-025.4** — About rest/active (hero lead, offers, approach/values, proses); CTA halaman pindah ke footer
 - [x] **T-025.5** — Home/Work: tipe display lebih besar + hover tile/CTA; bukti/teaser tetap di depan
 - [x] **T-025.6** — QA: Home/About/Work; Quick Info + Contact selama Lenis; hamburger + pill 3D; light/dark; reduced-motion; sentuh (expand klik)
+- [x] **T-025.7** — Transisi halaman diselaraskan ke ritme karolinahess.com (snapshot CSS: 1s exit scale+naik, 0.4s enter dari bawah, delay 0.4s); warna tetap token tema
 
 ---
 

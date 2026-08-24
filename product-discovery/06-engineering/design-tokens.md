@@ -123,12 +123,12 @@ Toggle UI sudah Must (ADR-021). Menjadikan **dark sebagai default ship** atau **
 
 > Diperbarui **ADR-017** (2026-08-12): motion naik peran menjadi **bagian identitas visual R1**, bukan sekadar Could minimal — dengan clarity tetap prioritas tertinggi.
 >
-> Diperbarui **ADR-025** (2026-08-24): kadar craft naik (Hess/Mazur: ritme + gerak, bukan palet). Lenis + overlay transisi halaman diizinkan sebagai lapisan custom; tetap diikat ke token `--duration-*` / `--ease-standard`.
+> Diperbarui **ADR-025** (2026-08-24): kadar craft naik (Hess/Mazur: ritme + gerak, bukan palet). Lenis + transisi halaman diizinkan sebagai lapisan custom. Ritme transisi halaman memakai token khusus (`--duration-page-exit` / `--duration-page-enter` / `--delay-page-enter` / `--ease-page-transition`) — bukan `--duration-medium` (terlalu pendek untuk efek Hess).
 
 | Tingkat | R1 |
 | ------- | --- |
 | Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
-| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/teaser, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); overlay wipe/clip antar halaman (durasi `--duration-medium`); pola rest = judul, active = body |
+| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/teaser, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman Hess (exit 1s scale+naik, enter 0.4s dari bawah setelah 0.4s, easing `.65,0,.43,1`); pola rest = judul, active = body |
 | Pause | Lenis **berhenti** saat Contact modal (`html.ct-lock`) atau Quick Info (`html.qi-lock`) terbuka, supaya overlay tidak bergeser bersama inersia |
 | Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; transisi halaman instan (tanpa overlay); playable yang sudah ada tetap hormati media query yang sama |
 | Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya; overlay transisi yang tetap `pointer-events: auto` setelah selesai |

@@ -15,6 +15,30 @@ Format entri:
 ```
 
 ## [2026-08-24]
+### Fixed
+- Kedip transisi halaman: halaman baru sempat tampil penuh sebelum enter; clone ikut kena CSS karena ID kembar; clone dihapus sebelum exit selesai. Live page diparkir `translateY(100vh)` sampai enter; clone tanpa ID; clone dibiarkan sampai 1s.
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Transisi halaman: View Transitions API di-drop — `TimeoutError: Transition was aborted because of timeout in DOM update` saat Next belum selesai ganti DOM. Diganti snapshot CSS (clone exit + enter `100vh`).
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.7** — Transisi halaman memakai ritme karolinahess.com (exit 1s naik+scale 0.5, enter 0.4s dari bawah, delay 0.4s, easing `.65,0,.43,1`).
+### Changed
+- ADR-025 + `design-tokens.md` §Motion: overlay wipe `--duration-medium` diganti token `--duration-page-*` / `--ease-page-transition`. Warna celah tetap `--color-background-body`.
+### Fixed
+- Transisi pindah halaman yang terasa terlalu cepat/kasar (wipe 300ms setelah rute sudah berganti).
+
+## [2026-08-24]
 ### Added
 - (tidak ada)
 ### Changed

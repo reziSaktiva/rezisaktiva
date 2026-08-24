@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-24] — Transisi halaman = ritme Hess, bukan wipe cepat
+
+**Phase:** Development R1
+**Summary:** Wipe clip 300ms terasa kasar karena bukan transisi Hess. Bundle karolinahess.com: exit 1s `y:-100%` + `scale:.5`, enter 0.4s dari `y:100%` delay 0.4s, ease `[.65,0,.43,1]`. Warna celah tetap tema.
+**Key Decision/Insight:** Token `--duration-page-*`; chrome tidak ikut scale. View Transitions API dibatalkan (timeout DOM update Next) → snapshot CSS.
+**Impact:** `page-transition.tsx`, `globals.css`, ADR-025, design-tokens §Motion; T-025.7.
+
 ## [2026-08-24] — T-025.5 / T-025.6 Home-Work craft + QA
 
 **Phase:** Development R1

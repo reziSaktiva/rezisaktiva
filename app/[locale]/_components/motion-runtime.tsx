@@ -1,19 +1,18 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { PageTransition } from "./page-transition";
+import { PageTransitionProvider } from "./page-transition";
 import { SmoothScroll } from "./smooth-scroll";
 
 /**
- * Fondasi gerak locale (ADR-025): Lenis + overlay transisi.
- * Sibling, bukan wrapper layout — hindari `<div>` tambahan.
+ * Fondasi gerak locale (ADR-025): Lenis + transisi halaman Hess.
+ * Provider membungkus children (bukan `<div>` layout).
  */
 export function MotionRuntime({ children }: { children: ReactNode }) {
   return (
-    <>
+    <PageTransitionProvider>
       {children}
       <SmoothScroll />
-      <PageTransition />
-    </>
+    </PageTransitionProvider>
   );
 }
