@@ -20,6 +20,14 @@ Format entri:
 ### Changed
 - (tidak ada)
 ### Fixed
+- **PR #44 review (3–6)** — Back/Forward ikut transisi (Navigation API snapshot; fallback enter-only). Live main/footer `inert` + `aria-hidden` saat diparkir. Clone hanya main+footer, input/media dibersihkan. rAF di-cancel saat unmount idle (in-flight dibiarkan karena Strict Mode / ganti locale). T-025.8 belum disentuh.
+
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
 - **PR #44 review** — transisi halaman: `isBusy` tidak lagi macet jika `router.push` gagal/redirect (timeout pengaman + enter saat pathname sudah meninggalkan halaman asal); klik selama transisi diantrikan (klik terakhir) bukan dibuang. Branch `feat/page-transition-hess-rhythm`. T-025.8 belum disentuh.
 
 ## [2026-08-24]

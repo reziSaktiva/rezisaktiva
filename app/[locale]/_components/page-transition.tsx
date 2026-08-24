@@ -5,6 +5,8 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
+  useRef,
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -79,10 +81,46 @@ function readDurationMs(token: string, fallback: number): number {
   return value;
 }
 
+function sanitizeClone(root: ParentNode): void {
+  root.querySelectorAll("script, iframe").forEach((node) => node.remove());
+  root.querySelectorAll("input, textarea, select").forEach((node) => {
+    if (node instanceof HTMLInputElement) {
+      if (
+        node.type === "checkbox" ||
+        node.type === "radio" ||
+        node.type === "range" ||
+        node.type === "color"
+      ) {
+        return;
+      }
+      node.value = "";
+      node.defaultValue = "";
+    }
+    if (node instanceof HTMLTextAreaElement) {
+      node.value = "";
+      node.defaultValue = "";
+    }
+    if (node instanceof HTMLSelectElement) {
+      node.selectedIndex = -1;
+    }
+  });
+  root.querySelectorAll("video, audio").forEach((node) => {
+    if (!(node instanceof HTMLMediaElement)) {
+      return;
+    }
+    node.pause();
+    node.removeAttribute("autoplay");
+    node.removeAttribute("src");
+    node.querySelectorAll("source").forEach((source) => source.remove());
+    node.load();
+  });
+}
+
 function captureOutgoing(): HTMLElement {
   const layer = document.createElement("div");
   layer.className = "page-vt-clone";
   layer.setAttribute("aria-hidden", "true");
+  layer.inert = true;
 
   const shifter = document.createElement("div");
   shifter.className = "page-vt-clone-shift";
@@ -91,14 +129,15 @@ function captureOutgoing(): HTMLElement {
     htmlTransform && htmlTransform !== "none" ? 0 : -window.scrollY;
   shifter.style.transform = `translateY(${shiftY}px)`;
 
-  const shell = document.querySelector(".astryx-app-shell");
+  const main = document.getElementById("astryx-app-shell-main");
   const footer = document.querySelector(".site-footer");
-  if (shell) {
-    shifter.appendChild(shell.cloneNode(true));
+  if (main) {
+    shifter.appendChild(main.cloneNode(true));
   }
   if (footer) {
     shifter.appendChild(footer.cloneNode(true));
   }
+  sanitizeClone(shifter);
   layer.appendChild(shifter);
   layer.querySelectorAll("[id]").forEach((node) => {
     node.removeAttribute("id");
@@ -111,12 +150,40 @@ function clearClones(): void {
   document.querySelectorAll(".page-vt-clone").forEach((node) => node.remove());
 }
 
+function setLiveParked(parked: boolean): void {
+  const main = document.getElementById("astryx-app-shell-main");
+  const footer = document.querySelector(".site-footer");
+  for (const node of [main, footer]) {
+    if (!(node instanceof HTMLElement)) {
+      continue;
+    }
+    node.inert = parked;
+    if (parked) {
+      node.setAttribute("aria-hidden", "true");
+    } else {
+      node.removeAttribute("aria-hidden");
+    }
+  }
+}
+
+function applyDocumentLock(lock: boolean): void {
+  const root = document.documentElement;
+  if (lock) {
+    root.classList.add("page-vt-lock");
+    root.classList.remove("page-vt-entering");
+    setLiveParked(true);
+    return;
+  }
+  root.classList.remove("page-vt-lock", "page-vt-entering");
+  setLiveParked(false);
+}
+
 type PendingNav = {
   epoch: number;
   from: string;
   target: string;
   startedAt: number;
-  clone: HTMLElement;
+  clone: HTMLElement | null;
 };
 
 let pendingNav: PendingNav | null = null;
@@ -129,6 +196,7 @@ let safetyTimer = 0;
 const runningTimers: number[] = [];
 
 const SAFETY_BUFFER_MS = 750;
+const REPLACED_FROM = "__replaced__";
 
 function clearRunningTimers(): void {
   for (const id of runningTimers) {
@@ -165,7 +233,7 @@ function flushQueuedNav(): void {
 function releaseLock(): void {
   clearSafetyTimer();
   cancelRaf();
-  document.documentElement.classList.remove("page-vt-lock", "page-vt-entering");
+  applyDocumentLock(false);
   pendingNav = null;
   isBusy = false;
 }
@@ -191,6 +259,84 @@ function safetyTimeoutMs(): number {
   );
 }
 
+function armSafety(epoch: number): void {
+  clearSafetyTimer();
+  safetyTimer = window.setTimeout(() => {
+    safetyTimer = 0;
+    if (pendingNav?.epoch !== epoch) {
+      return;
+    }
+    failSafeUnlock();
+  }, safetyTimeoutMs());
+}
+
+function armTransition(options: {
+  from: string;
+  target: string;
+  clone: HTMLElement | null;
+  pushHref?: string;
+  push?: (href: string) => void;
+}): number {
+  isBusy = true;
+  queuedHref = null;
+  clearSafetyTimer();
+  clearRunningTimers();
+  cancelRaf();
+  if (!options.clone) {
+    clearClones();
+  }
+
+  applyDocumentLock(true);
+
+  navEpoch += 1;
+  const epoch = navEpoch;
+  pendingNav = {
+    epoch,
+    from: options.from,
+    target: options.target,
+    startedAt: performance.now(),
+    clone: options.clone,
+  };
+
+  const clone = options.clone;
+  if (clone) {
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      if (pendingNav?.epoch !== epoch) {
+        return;
+      }
+      clone.classList.add("is-exiting");
+      if (options.push && options.pushHref) {
+        options.push(options.pushHref);
+      }
+    });
+    const exitMs = readDurationMs("--duration-page-exit", 1000);
+    runningTimers.push(
+      window.setTimeout(() => {
+        clone.remove();
+      }, exitMs),
+    );
+  }
+
+  armSafety(epoch);
+  return epoch;
+}
+
+function retargetBusyNav(target: string): void {
+  navEpoch += 1;
+  if (!pendingNav) {
+    return;
+  }
+  pendingNav.epoch = navEpoch;
+  pendingNav.from = REPLACED_FROM;
+  pendingNav.target = target;
+  pendingNav.startedAt = performance.now();
+  pendingNav.clone = null;
+  clearClones();
+  applyDocumentLock(true);
+  armSafety(navEpoch);
+}
+
 /**
  * Transisi halaman mengikuti ritme karolinahess.com tanpa View Transitions
  * API. State di luar React supaya remount Strict Mode tidak mematikan clone.
@@ -198,6 +344,7 @@ function safetyTimeoutMs(): number {
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
+  const isFirstPath = useRef(true);
 
   const navigate = useCallback(
     (href: string) => {
@@ -220,51 +367,15 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      isBusy = true;
-      queuedHref = null;
-      clearSafetyTimer();
-      clearRunningTimers();
-      cancelRaf();
       clearClones();
-
       const clone = captureOutgoing();
-      const root = document.documentElement;
-      root.classList.add("page-vt-lock");
-      root.classList.remove("page-vt-entering");
-
-      navEpoch += 1;
-      const epoch = navEpoch;
-      pendingNav = {
-        epoch,
+      armTransition({
         from,
         target,
-        startedAt: performance.now(),
         clone,
-      };
-
-      rafId = window.requestAnimationFrame(() => {
-        rafId = 0;
-        if (pendingNav?.epoch !== epoch) {
-          return;
-        }
-        clone.classList.add("is-exiting");
-        router.push(href, { scroll: false });
+        pushHref: href,
+        push: (next) => router.push(next, { scroll: false }),
       });
-
-      const exitMs = readDurationMs("--duration-page-exit", 1000);
-      runningTimers.push(
-        window.setTimeout(() => {
-          clone.remove();
-        }, exitMs),
-      );
-
-      safetyTimer = window.setTimeout(() => {
-        safetyTimer = 0;
-        if (pendingNav?.epoch !== epoch) {
-          return;
-        }
-        failSafeUnlock();
-      }, safetyTimeoutMs());
     },
     [router],
   );
@@ -274,10 +385,74 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
   }, [navigate]);
 
   useEffect(() => {
+    return () => {
+      if (!isBusy) {
+        cancelRaf();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const navigation = window.navigation;
+    if (!navigation) {
+      return;
+    }
+
+    const onNavigate = (event: NavigateEvent) => {
+      if (event.hashChange || event.downloadRequest) {
+        return;
+      }
+      if (event.navigationType !== "traverse") {
+        return;
+      }
+      if (prefersReducedMotion()) {
+        return;
+      }
+
+      let target: string;
+      try {
+        target = normalizePath(new URL(event.destination.url).pathname);
+      } catch {
+        return;
+      }
+      const from = normalizePath(window.location.pathname);
+      if (target === from) {
+        return;
+      }
+
+      if (isBusy) {
+        retargetBusyNav(target);
+        return;
+      }
+
+      clearClones();
+      const clone = captureOutgoing();
+      armTransition({ from, target, clone });
+    };
+
+    navigation.addEventListener("navigate", onNavigate);
+    return () => navigation.removeEventListener("navigate", onNavigate);
+  }, []);
+
+  useLayoutEffect(() => {
+    const path = normalizePath(pathname);
+
+    if (isFirstPath.current) {
+      isFirstPath.current = false;
+      if (!pendingNav) {
+        return;
+      }
+    } else if (!pendingNav) {
+      if (prefersReducedMotion()) {
+        return;
+      }
+      armTransition({ from: "", target: path, clone: null });
+    }
+
     if (!pendingNav) {
       return;
     }
-    if (normalizePath(pathname) === pendingNav.from) {
+    if (pendingNav.from !== "" && path === pendingNav.from) {
       return;
     }
 
@@ -295,6 +470,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       }
       window.scrollTo(0, 0);
       document.documentElement.classList.add("page-vt-entering");
+      setLiveParked(false);
     }, wait);
     const doneTimer = window.setTimeout(() => {
       if (pendingNav?.epoch !== epoch) {
