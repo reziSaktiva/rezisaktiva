@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-24]
 ### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **PR #44 review** — transisi halaman: `isBusy` tidak lagi macet jika `router.push` gagal/redirect (timeout pengaman + enter saat pathname sudah meninggalkan halaman asal); klik selama transisi diantrikan (klik terakhir) bukan dibuang. Branch `feat/page-transition-hess-rhythm`. T-025.8 belum disentuh.
+
+## [2026-08-24]
+### Added
 - **T-025.8** (open) — handoff chat baru: scrollbar track tetap terlihat selama transisi halaman, acuan karolinahess.com. Branch `feat/page-transition-hess-rhythm`.
 ### Changed
 - Snapshot / TASKS / v03: T-025 bukan fully Done sampai T-025.8.

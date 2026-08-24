@@ -112,6 +112,8 @@ function clearClones(): void {
 }
 
 type PendingNav = {
+  epoch: number;
+  from: string;
   target: string;
   startedAt: number;
   clone: HTMLElement;
@@ -119,7 +121,14 @@ type PendingNav = {
 
 let pendingNav: PendingNav | null = null;
 let isBusy = false;
+let navEpoch = 0;
+let queuedHref: string | null = null;
+let startQueuedNav: NavigateFn | null = null;
+let rafId = 0;
+let safetyTimer = 0;
 const runningTimers: number[] = [];
+
+const SAFETY_BUFFER_MS = 750;
 
 function clearRunningTimers(): void {
   for (const id of runningTimers) {
@@ -128,10 +137,58 @@ function clearRunningTimers(): void {
   runningTimers.length = 0;
 }
 
-function finishEnter(): void {
+function cancelRaf(): void {
+  if (rafId) {
+    window.cancelAnimationFrame(rafId);
+    rafId = 0;
+  }
+}
+
+function clearSafetyTimer(): void {
+  if (safetyTimer) {
+    window.clearTimeout(safetyTimer);
+    safetyTimer = 0;
+  }
+}
+
+function flushQueuedNav(): void {
+  const next = queuedHref;
+  queuedHref = null;
+  if (!next || !startQueuedNav) {
+    return;
+  }
+  queueMicrotask(() => {
+    startQueuedNav?.(next);
+  });
+}
+
+function releaseLock(): void {
+  clearSafetyTimer();
+  cancelRaf();
   document.documentElement.classList.remove("page-vt-lock", "page-vt-entering");
   pendingNav = null;
   isBusy = false;
+}
+
+function finishEnter(): void {
+  releaseLock();
+  flushQueuedNav();
+}
+
+function failSafeUnlock(): void {
+  clearRunningTimers();
+  clearClones();
+  releaseLock();
+  flushQueuedNav();
+}
+
+function safetyTimeoutMs(): number {
+  return (
+    readDurationMs("--duration-page-exit", 1000) +
+    readDurationMs("--delay-page-enter", 400) +
+    readDurationMs("--duration-page-enter", 400) +
+    SAFETY_BUFFER_MS
+  );
 }
 
 /**
@@ -145,7 +202,8 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const navigate = useCallback(
     (href: string) => {
       const target = normalizePath(href);
-      if (target === normalizePath(pathname)) {
+      const from = normalizePath(window.location.pathname);
+      if (target === from) {
         return;
       }
 
@@ -155,11 +213,18 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       }
 
       if (isBusy) {
+        if (pendingNav && target === pendingNav.target) {
+          return;
+        }
+        queuedHref = href;
         return;
       }
 
       isBusy = true;
+      queuedHref = null;
+      clearSafetyTimer();
       clearRunningTimers();
+      cancelRaf();
       clearClones();
 
       const clone = captureOutgoing();
@@ -167,13 +232,21 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       root.classList.add("page-vt-lock");
       root.classList.remove("page-vt-entering");
 
+      navEpoch += 1;
+      const epoch = navEpoch;
       pendingNav = {
+        epoch,
+        from,
         target,
         startedAt: performance.now(),
         clone,
       };
 
-      requestAnimationFrame(() => {
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        if (pendingNav?.epoch !== epoch) {
+          return;
+        }
         clone.classList.add("is-exiting");
         router.push(href, { scroll: false });
       });
@@ -184,18 +257,31 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
           clone.remove();
         }, exitMs),
       );
+
+      safetyTimer = window.setTimeout(() => {
+        safetyTimer = 0;
+        if (pendingNav?.epoch !== epoch) {
+          return;
+        }
+        failSafeUnlock();
+      }, safetyTimeoutMs());
     },
-    [pathname, router],
+    [router],
   );
+
+  useEffect(() => {
+    startQueuedNav = navigate;
+  }, [navigate]);
 
   useEffect(() => {
     if (!pendingNav) {
       return;
     }
-    if (normalizePath(pathname) !== pendingNav.target) {
+    if (normalizePath(pathname) === pendingNav.from) {
       return;
     }
 
+    const epoch = pendingNav.epoch;
     const enterDelay = readDurationMs("--delay-page-enter", 400);
     const enterMs = readDurationMs("--duration-page-enter", 400);
     const wait = Math.max(
@@ -204,10 +290,16 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     );
 
     const enterTimer = window.setTimeout(() => {
+      if (pendingNav?.epoch !== epoch) {
+        return;
+      }
       window.scrollTo(0, 0);
       document.documentElement.classList.add("page-vt-entering");
     }, wait);
     const doneTimer = window.setTimeout(() => {
+      if (pendingNav?.epoch !== epoch) {
+        return;
+      }
       finishEnter();
     }, wait + enterMs);
 
