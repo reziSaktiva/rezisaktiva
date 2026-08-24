@@ -12,7 +12,7 @@ Portofolio pribadi jarang punya “kompetitor langsung” bernama. Yang bersaing
 
 Kerangka analisis:
 
-* **Referensi** — tujuh situs acuan bernama: 5 acuan craft & positioning awal + 2 referensi desain tambahan (karolinahess.com, mazurbartek.com — arah seni mockup, ditambahkan 2026-08-14/15)
+* **Referensi** — tujuh situs acuan bernama: 5 acuan craft & positioning awal + 2 referensi desain (karolinahess.com, mazurbartek.com — arah seni lalu **implementasi craft** R1, ADR-025)
 * **Pesaing** — kategori alternatif (LinkedIn/GitHub, portofolio developer, designer/agency, freelance productized) — belum named
 * **Prioritas pelajaran (terkunci):** clarity → presence → craft (opsi D / ADR-006)
 
@@ -31,8 +31,8 @@ Tujuan: memperkuat diferensiasi **product builder + fullstack + AI edge** (ADR-0
 | 3 | [lauren-waller.com](https://lauren-waller.com/) | IA bersih + satu klaim kredibel + bukti | Clarity: Work / About / Contact; bukti konkret di permukaan | Identitas product designer / Framer shop sebagai inti |
 | 4 | [p5aholic.me](https://p5aholic.me/) | Eksperimen web sebagai signature | Kurasi karya; playground sebagai satelit (bukan panggung utama) | Pure creative-dev tanpa outcome untuk founder/PO |
 | 5 | [cristianoronaldo.com](https://www.cristianoronaldo.com/) | Satu URL resmi = “dunia” identitas | Career/highlight sebagai narasi; rumah brand tunggal | Monetisasi line produk; skala selebritas |
-| 6 | [karolinahess.com](https://karolinahess.com/) | Craft tipografi + interaksi (tab/drawer info, type oversized menumpuk foto) | Pola Quick info (tab tepi kanan → drawer); ritme copy About singkat “yang bisa saya bantu” | Densitas dekorasi berlebih; playground murni tanpa outcome |
-| 7 | [mazurbartek.com](https://mazurbartek.com/) | Presence tenang lewat tipografi besar + whitespace | Layout About (sapaan + foto potret); ketenangan komposisi Home (type + whitespace) | Minim bukti/karya sebagai satu-satunya kesan; terlalu personal-blog |
+| 6 | [karolinahess.com](https://karolinahess.com/) | Craft tipografi + interaksi (tab/drawer info, type oversized, kartu bernomor) | Pola Quick info; ritme About “yang bisa saya bantu”; rest/active + tipe display; overlay transisi halaman | Palet cream/terracotta; densitas dekorasi berlebih; playground murni tanpa outcome |
+| 7 | [mazurbartek.com](https://mazurbartek.com/) | Presence tenang lewat tipografi besar + whitespace + inersia scroll | Tipe oversized + whitespace; services bernomor; scroll berinersia; pita “let’s connect” menyatu footer | Minim bukti/karya sebagai satu-satunya kesan; terlalu personal-blog; `scroll-behavior: smooth` native sebagai pengganti inersia |
 
 **Urutan prioritas pelajaran (D):**
 
@@ -40,7 +40,7 @@ Tujuan: memperkuat diferensiasi **product builder + fullstack + AI edge** (ADR-0
 2. **Presence** (Patrick + Ronaldo-lite + Bartek) — terasa rumah brand, bukan CV tersebar
 3. **Craft** (Dunks + p5aholic + Karolina) — edge yang memperkuat, bukan menggantikan cerita
 
-Di MVP: clarity + soft presence dulu; craft naik bertahap. Karolina & Bartek ditambahkan 2026-08-14/15 sebagai referensi arah seni mockup (tipografi, layout, interaksi) — melengkapi pasangan presence/craft yang sudah ada, bukan mengubah urutan D (lihat Update di ADR-006).
+Di MVP: clarity + soft presence dulu; craft naik bertahap. Karolina & Bartek ditambahkan 2026-08-14/15 sebagai referensi arah seni, lalu **diimplementasi sebagai craft pass** (ADR-025, 2026-08-24): ritme, tipe, interaksi, Lenis, page overlay, pita Contact — **bukan** palet. Bukti karya di Home/Work tetap diferensiasi vs Mazur. Urutan D tidak berubah (lihat Update di ADR-006).
 
 ## B. Category competitors (alternatif perhatian)
 
@@ -124,6 +124,7 @@ Detail metrik kuantitatif → `success-metrics.md`.
 * `problem-statement.md` — rantai visibility → narrative → evaluasi
 * `target-market.md` — ICP founder/PO SEA
 * `../../project-manager/decisions/ADR-006-competitor-reference-lens-clarity-presence-craft.md` — keputusan material
+* `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md` — implementasi craft Hess/Mazur
 * `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — positioning baseline
 * `../../project-manager/decisions/ADR-005-target-market-icp-sea-tech.md` — ICP
 * `../../project-manager/PROJECT_STATE.md` — status project

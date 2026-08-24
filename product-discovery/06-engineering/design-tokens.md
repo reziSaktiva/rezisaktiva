@@ -122,14 +122,18 @@ Toggle UI sudah Must (ADR-021). Menjadikan **dark sebagai default ship** atau **
 # Motion
 
 > Diperbarui **ADR-017** (2026-08-12): motion naik peran menjadi **bagian identitas visual R1**, bukan sekadar Could minimal — dengan clarity tetap prioritas tertinggi.
+>
+> Diperbarui **ADR-025** (2026-08-24): kadar craft naik (Hess/Mazur: ritme + gerak, bukan palet). Lenis + overlay transisi halaman diizinkan sebagai lapisan custom; tetap diikat ke token `--duration-*` / `--ease-standard`.
 
 | Tingkat | R1 |
 | ------- | --- |
 | Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
-| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/teaser, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya) |
-| Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya |
+| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/teaser, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); overlay wipe/clip antar halaman (durasi `--duration-medium`); pola rest = judul, active = body |
+| Pause | Lenis **berhenti** saat Contact modal (`html.ct-lock`) atau Quick Info (`html.qi-lock`) terbuka, supaya overlay tidak bergeser bersama inersia |
+| Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; transisi halaman instan (tanpa overlay); playable yang sudah ada tetap hormati media query yang sama |
+| Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya; overlay transisi yang tetap `pointer-events: auto` setelah selesai |
 
-Hormati `prefers-reduced-motion`.
+Hormati `prefers-reduced-motion`. Astryx tidak menyediakan komponen Lenis/page wipe — hook `useEntryAnimation` / `useContainerReveal` tetap untuk mount/hover, bukan pengganti scroll inertia.
 
 ---
 
@@ -170,7 +174,7 @@ Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.c
 | Tema default | **Light** |
 | Dark | Fondasi via prop `mode` di `Theme`; toggle UI = **Must R1 (ADR-021)**; default tetap light |
 | Nilai visual | Kanvas + aksen di tema built `rezisaktiva` (asal R1: arsip `shared.css`; SoT hidup = kode tema, ADR-024) |
-| Motion | Bagian identitas visual (ADR-017), hierarchy-first |
+| Motion | Bagian identitas visual (ADR-017), hierarchy-first; Lenis + page overlay (ADR-025) |
 | Baseline Engineering | ADR-016; superseded sebagian oleh **ADR-018** (styling/token) |
 
 ---
@@ -193,7 +197,9 @@ Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.c
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-016-engineering-baseline-v1.md`
 * `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md`
+* `../../project-manager/decisions/ADR-017-motion-as-identity-r1.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
 * `.cursor/rules/xds.mdc` — konvensi AI saat menulis komponen Astryx
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

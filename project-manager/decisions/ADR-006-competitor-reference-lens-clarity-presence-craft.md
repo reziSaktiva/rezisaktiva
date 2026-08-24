@@ -41,3 +41,7 @@ Accepted
 **karolinahess.com** (tier craft — tipografi & interaksi: pola Quick info tab/drawer, ritme copy About) dan **mazurbartek.com** (tier presence — tipografi besar + whitespace: layout About sapaan+foto, ketenangan komposisi Home) ditambahkan ke set referensi bernama di `competitor-analysis.md`, setelah dipakai berulang sebagai acuan arah seni sepanjang sesi mockup 2026-08-14/15 (Home, About, Quick info drawer).
 
 Ini memakai jalur yang sudah diizinkan di dokumen tersebut sendiri (Competitive Risks: "Named competitor muncul belakangan → Draft boleh ditambah named set tanpa mengubah kerangka D"; Success Criteria #5) — bukan perubahan kerangka. Urutan prioritas **clarity → presence → craft** tidak berubah; kedua referensi baru mengisi slot presence/craft yang sudah ada, bukan menambah lapisan baru.
+
+### Update — 2026-08-24
+
+Implementasi craft R1 (ADR-025) memakai Hess/Mazur sebagai acuan **ritme, tipe oversized, interaksi rest/active, inertia scroll, dan pita “let’s connect”** — bukan palet, bukan Framer spectacle. Bukti karya di Home/Work tetap diferensiasi vs Mazur. Kerangka D tidak berubah.
