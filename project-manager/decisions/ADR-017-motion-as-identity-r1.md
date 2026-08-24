@@ -46,3 +46,7 @@ Batas yang tetap berlaku (tidak berubah dari `design-tokens.md` / `ux-principles
 ### Update — 2026-08-12
 
 Referensi presence dikoreksi dari **cristianoronaldo.com** menjadi **bepatrickdavid.com** atas permintaan Boss Rezi saat sesi mockup berlangsung. Ini sekaligus menyelaraskan referensi kembali ke pasangan asli di `competitor-analysis.md` (bepatrickdavid = tier presence, p5aholic = tier craft/motion), tanpa mengubah keputusan inti ADR ini (motion tetap naik peran sebagai identitas, batas clarity-first tetap berlaku).
+
+### Update — 2026-08-24
+
+**ADR-025** memperluas kadar craft dan mengizinkan dua teknik yang belum disebut di sini: smooth-scroll inertia (Lenis) dan overlay transisi halaman. Batas clarity-first, tanpa parallax berat, dan `prefers-reduced-motion` **tetap berlaku**. Referensi gerak tambahan: ritme Hess/Mazur (bukan palet). Detail keputusan: `ADR-025-craft-motion-hess-mazur.md`.

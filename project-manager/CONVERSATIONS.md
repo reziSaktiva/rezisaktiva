@@ -14,6 +14,41 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-24] — T-025.5 / T-025.6 Home-Work craft + QA
+
+**Phase:** Development R1
+**Summary:** Display type Home/Work dinaikkan; tile karya pakai `useContainerReveal` (caption + scrim, scale gambar). QA di `localhost:3001` (bukan 127.0.0.1 — Next block-cross-site-dev). Lenis, Contact/QI lock, theme, reduced-motion, mobile expand lulus.
+**Key Decision/Insight:** Overlay Astryx tidak dipakai di tile tautan (touch toggle menunda navigasi); hook reveal lebih aman.
+**Impact:** `work-tile.tsx`, `home-page.tsx`, `globals.css`; T-025 Done.
+
+## [2026-08-24] — Craft pass Hess/Mazur (bukan palet)
+
+**Phase:** Development R1
+**Summary:** About tetap halaman sendiri; copy T-021 tidak ditulis ulang. Yang ditiru dari karolinahess.com dan mazurbartek.com: ritme layout, tipe oversized, rest/active, inertia scroll, transisi halaman, pita Contact menyatu footer — bukan palet, bukan menghapus teaser Home.
+**Key Decision/Insight:** Perubahan material vs ADR-017 → ADR-025 + task T-025 (bukan selip T-021/T-024). Lenis pause saat Contact/Quick Info; off jika reduced-motion.
+**Impact:** ADR-025; design-tokens §Motion; key-screen-patterns; competitor-analysis; T-025 di v03.
+
+## [2026-08-24] — Gabung Proses Kerja ke Home?
+
+**Phase:** Development R1
+**Summary:** Diskusi (tidak dieksekusi): halaman `/about` (label nav Proses Kerja / How I Work) terasa tipis; usul pindahkan poin ke Home (kecuali hero foto) lalu hapus halaman itu.
+**Key Decision/Insight:** Belum dikunci. Intuisi “halaman terlalu tipis untuk berdiri sendiri” valid, tapi dump seluruh About ke Home menabrak job Home (J1/J2, first viewport) dan mengorbankan J4 sebagai deepen opsional. “Poin” di halaman itu lebih dari 4 langkah proses (offers, approach, values). Opsi tengah: strip proses ringkas di Home, About tetap deepen — atau satu-pager hanya jika siap ADR IA.
+**Impact:** Belum ada. Kalau dikunci: ADR + `information-architecture.md` / nav / jobs J4. Bukan polish copy T-021.
+
+## [2026-08-24] — Locale switch: residual selected saat hover
+
+**Phase:** Development R1
+**Summary:** Saat hover bahasa non-selected, fill selected Astryx tertinggal di ID/EN yang aktif sementara pill custom sudah pindah. Override CSS hanya di `.site-locale-switch`; nav tidak disentuh.
+**Key Decision/Insight:** Satu indikator saja — `.site-pill-indicator` — sama seperti nav.
+**Impact:** `app/globals.css`; COMPLETE_TASK.
+
+## [2026-08-24] — Elevasi 3D pada pill nav terpilih
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta item nav terpilih (Home) memakai effect 3D yang sama dengan segmen locale terpilih (ID). Token `--elev-3d` dipasang ke `.site-pill-indicator` agar mengikuti hover/aktif.
+**Key Decision/Insight:** 3D di track kuning saja tidak cukup — pill gelap di dalam chip juga harus timbul.
+**Impact:** `app/globals.css`; COMPLETE_TASK.
+
 ## [2026-08-23] — Perbaikan P2 review PR #42 (a11y badge + elevasi overlay)
 
 **Phase:** Development R1

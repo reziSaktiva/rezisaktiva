@@ -41,7 +41,9 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 **Quick info panel (ADR-022):** overlay global (tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links). Bukan route baru. Tampil di semua halaman R1 kecuali Work case detail. Bukan pengganti Contact modal atau footer satelit.
 
-**Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Footer memuat LinkedIn & GitHub sebagai satelit, bukan WA/IG.
+**Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020).
+
+**Footer = pita Contact (ADR-025):** satu pita terakhir di semua rute — heading besar dari copy yang sudah dikunci + tombol 3D yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. Bukan garis “halaman vs footer” yang terpisah. Tombol Kontak di header tetap.
 
 ---
 
@@ -57,8 +59,10 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 4. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
 5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome · tautan bukti opsional; **satu-satunya** blok karya di Home
-6. Penguat arah ke About / Contact
+6. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
 7. Availability line (Should, opsional)
+
+**Contact di Home (ADR-025):** tidak ada section `#contact-cta` terpisah. Arah Contact = pita footer (S0) + tombol chrome. Hover tile teaser boleh diperkuat (scale/overlay).
 
 **Bedakan blok:** credibility line ≠ teaser. Jangan isi keduanya dengan daftar project/stack yang sama.
 
@@ -68,17 +72,19 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 ### S2 — About
 
-**Label chrome:** ID **"Proses Kerja"** / EN **"Process"** (ADR-020). Route tetap `/[id/en]/about`; nama modul tetap M2 About.
+**Label chrome:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-020 + kunci T-021.1). Route tetap `/[id/en]/about`; nama modul tetap M2 About. Halaman **tidak digabung ke Home** (ADR-025).
+
+**Pola rest / active (ADR-025):** rest menampilkan judul/nomor/display; body copy T-021.3 muncul saat item aktif — hover + focus keyboard di desktop, **klik di mobile** (hover saja gagal di sentuh). Copy tidak dipotong dan tidak ditulis ulang.
 
 **Blok berurutan:**
 
-1. Narasi product builder (ide → live)
-2. Konteks fullstack / pengalaman
-3. AI edge — jujur batasannya
-4. Cara kerja / apa yang dicari (tinggi, singkat)
-5. Soft CTA teks ke Contact
+1. Hero — h1 display besar; lead: baris pertama terlihat, baris kedua on expand
+2. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
+3. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
+4. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`
+5. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
 
-**Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; framing “developer for hire” yang menggeser brand.
+**Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; framing “developer for hire” yang menggeser brand; menumpuk seluruh body di rest.
 
 ---
 
@@ -94,7 +100,7 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 4. Availability line bila belum di Home
 5. Tanpa calendar, harga, WA, Instagram (form dikecualikan dari larangan ini per ADR-019)
 
-**Anti-pattern:** deretan ikon sosial setara Email; Contact hanya footer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi.
+**Anti-pattern:** deretan ikon sosial setara Email; Contact *hanya* di footer tanpa modal/Email primer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi. Pita footer yang **membuka modal yang sama** (ADR-025) bukan pengganti Email primer di dalam modal.
 
 ---
 
@@ -148,5 +154,6 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

@@ -4,13 +4,15 @@ import NextImage from "next/image";
 import NextLink from "next/link";
 import { Center } from "@astryxdesign/core/Center";
 import { Heading } from "@astryxdesign/core/Heading";
+import { useContainerReveal } from "@astryxdesign/core/hooks";
 import { Link } from "@astryxdesign/core/Link";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
+import { mergeProps } from "@astryxdesign/core/utils";
 import type { WorkItem } from "@/content/work";
 
 /**
- * Tile karya — visual `.work-tile` mockup.
+ * Tile karya — visual `.work-tile` mockup + craft hover (T-025.5).
  *
  * `href` (internal, via NextLink) — dipakai teaser Home, mengarah ke index
  * Work (bukan langsung ke repo/live); index R1 tidak link ke case M10
@@ -19,6 +21,10 @@ import type { WorkItem } from "@/content/work";
  * `item.href` (eksternal, repo/live nyata — T-021.5) dipakai di Work index
  * sendiri saat `href` tidak diberikan. Item tanpa `item.href` (mis. project
  * internal tanpa URL publik) tetap render statis, tidak clickable.
+ *
+ * Caption + scrim: `useContainerReveal` (hover/focus desktop; selalu
+ * terlihat di sentuh; reduced-motion dihormati). Bukan Overlay Astryx —
+ * touch toggle Overlay akan menunda navigasi tautan.
  */
 export function WorkTile({
   item,
@@ -32,10 +38,14 @@ export function WorkTile({
   /** Full-row leftover tile (not featured copy) — same aspect as featured so it is not a tall 4/5 banner. */
   wide?: boolean;
 }) {
+  const { getContainerProps, getContentRevealProps } = useContainerReveal();
   const className =
     featured || wide
       ? "home-work-tile home-work-tile--featured"
       : "home-work-tile";
+
+  const containerProps = getContainerProps();
+  const revealProps = getContentRevealProps({ isLayoutPreserved: true });
 
   const inner = (
     <>
@@ -47,16 +57,33 @@ export function WorkTile({
           sizes={featured || wide ? "100vw" : "50vw"}
         />
       </Center>
-      <VStack gap={1} className="home-work-tile-meta">
-        <Heading level={featured ? 2 : 3}>{item.name}</Heading>
-        <Text size="sm">{item.outcome}</Text>
+      <Center
+        aria-hidden="true"
+        {...mergeProps(revealProps, { className: "home-work-tile-scrim" })}
+      >
+        {null}
+      </Center>
+      <VStack
+        gap={1}
+        {...mergeProps(revealProps, { className: "home-work-tile-meta" })}
+      >
+        <Heading level={featured ? 2 : 3} className="home-work-tile-title">
+          {item.name}
+        </Heading>
+        <Text size="sm" className="home-work-tile-outcome">
+          {item.outcome}
+        </Text>
       </VStack>
     </>
   );
 
   if (href) {
     return (
-      <Link as={NextLink} href={href} className={className}>
+      <Link
+        as={NextLink}
+        href={href}
+        {...mergeProps(containerProps, { className })}
+      >
         {inner}
       </Link>
     );
@@ -69,11 +96,17 @@ export function WorkTile({
     // sudah cukup aman: `Link` Astryx otomatis menambah `rel="noopener
     // noreferrer"` untuk target apa pun yang bernilai `_blank`.
     return (
-      <Link href={item.href} target="_blank" className={className}>
+      <Link
+        href={item.href}
+        target="_blank"
+        {...mergeProps(containerProps, { className })}
+      >
         {inner}
       </Link>
     );
   }
 
-  return <Center className={className}>{inner}</Center>;
+  return (
+    <Center {...mergeProps(containerProps, { className })}>{inner}</Center>
+  );
 }

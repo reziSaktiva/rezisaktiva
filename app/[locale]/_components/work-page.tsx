@@ -1,17 +1,13 @@
 "use client";
 
-import { Button } from "@astryxdesign/core/Button";
 import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
-import { Icon } from "@astryxdesign/core/Icon";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
-import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { WORK_ITEMS, WORK_PAGE_COPY } from "@/content/work";
 import type { Locale } from "@/lib/locale";
-import { Magnetic, Reveal, WordReveal } from "./home-motion";
-import { ArrowRightIcon } from "./overlay-icons";
+import { Reveal, WordReveal } from "./home-motion";
 import { WorkTile } from "./work-tile";
 
 type WorkGridItem = { id: string; featured: boolean };
@@ -60,7 +56,6 @@ export function WorkPage({ locale }: { locale: Locale }) {
   const spanFullById = new Map(
     workTileLayout(items).map((slot) => [slot.id, slot.spanFull]),
   );
-  const { open } = useContactModal();
 
   return (
     <VStack className="work-page">
@@ -102,26 +97,6 @@ export function WorkPage({ locale }: { locale: Locale }) {
             })}
           </Grid>
         </VStack>
-      </Section>
-
-      <Section variant="transparent" padding={0} className="about-cta">
-        <Reveal>
-          <Text color="secondary" display="block" className="about-cta-q">
-            {copy.ctaQuestion}
-          </Text>
-        </Reveal>
-        <Reveal>
-          <Magnetic>
-            <Button
-              label={copy.ctaLink}
-              variant="primary"
-              size="lg"
-              onClick={open}
-              endContent={<Icon icon={ArrowRightIcon} />}
-              className="home-contact-cta"
-            />
-          </Magnetic>
-        </Reveal>
       </Section>
     </VStack>
   );

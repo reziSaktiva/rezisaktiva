@@ -83,11 +83,15 @@ export function QuickInfo({ locale }: { locale: Locale }) {
   return (
     <>
       <VStack
+        data-lenis-prevent=""
         className={isOpen ? "qi-scrim is-open" : "qi-scrim"}
         onClick={close}
         aria-hidden={!isOpen}
       />
-      <VStack className={isOpen ? "qi-wrap is-open" : "qi-wrap"}>
+      <VStack
+        data-lenis-prevent=""
+        className={isOpen ? "qi-wrap is-open" : "qi-wrap"}
+      >
         <Button
           label={copy.tab}
           variant="ghost"

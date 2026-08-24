@@ -2,26 +2,21 @@
 
 import NextImage from "next/image";
 import NextLink from "next/link";
-import { Button } from "@astryxdesign/core/Button";
 import { Center } from "@astryxdesign/core/Center";
 import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
-import { Icon } from "@astryxdesign/core/Icon";
 import { Link } from "@astryxdesign/core/Link";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
-import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { HERO_PORTRAIT_SRC, HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
 import { HeroWords, Magnetic, Reveal } from "./home-motion";
-import { ArrowRightIcon } from "./overlay-icons";
 import { WorkTile } from "./work-tile";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
   const workHref = `/${locale}/work`;
-  const { open } = useContactModal();
 
   return (
     <VStack className="home-page">
@@ -84,14 +79,16 @@ export function HomePage({ locale }: { locale: Locale }) {
                 {copy.workTitle}
               </Heading>
             </VStack>
-            <Link
-              as={NextLink}
-              href={workHref}
-              color="secondary"
-              className="home-cta-underline"
-            >
-              {copy.workAll}
-            </Link>
+            <Magnetic>
+              <Link
+                as={NextLink}
+                href={workHref}
+                color="secondary"
+                className="home-cta-underline"
+              >
+                {copy.workAll}
+              </Link>
+            </Magnetic>
           </Reveal>
 
           <Grid
@@ -118,47 +115,6 @@ export function HomePage({ locale }: { locale: Locale }) {
               );
             })}
           </Grid>
-        </VStack>
-      </Section>
-
-      <Section
-        variant="transparent"
-        padding={0}
-        className="home-section home-section--contact"
-        id="contact-cta"
-      >
-        <VStack className="home-container" gap={8}>
-          <Reveal>
-            <Text type="label" color="secondary" className="home-kicker">
-              {copy.contactLabel}
-            </Text>
-          </Reveal>
-          <Reveal>
-            <Heading level={2} className="home-contact-title">
-              {copy.contactTitle}
-            </Heading>
-          </Reveal>
-          <Reveal>
-            <Text
-              color="secondary"
-              display="block"
-              className="home-contact-body"
-            >
-              {copy.contactBody}
-            </Text>
-          </Reveal>
-          <Reveal>
-            <Magnetic>
-              <Button
-                label={copy.contactCta}
-                variant="primary"
-                size="lg"
-                onClick={open}
-                endContent={<Icon icon={ArrowRightIcon} />}
-                className="home-contact-cta"
-              />
-            </Magnetic>
-          </Reveal>
         </VStack>
       </Section>
     </VStack>

@@ -14,6 +14,47 @@ Format entri:
 - ...
 ```
 
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **T-025.4 follow-up (PR #43 review)** — About rest/active: desktop keyboard bisa Tab ke lead/kartu lalu body muncul via `:focus-within`; sentuh membuka dari seluruh kartu (watermark/padding), bukan hanya judul.
+
+## [2026-08-24]
+### Added
+- **T-025.5** — Home/Work display type lebih besar (`home-work-title`, proof body, Work h1); tile hover playable via `useContainerReveal` (caption + scrim; scale gambar); Magnetic pada CTA “lihat semua” Home. Chrome 3D + Quick Info tidak diubah.
+- **T-025.6** — QA browser (`localhost:3001`): 3 rute; Lenis on; Contact/`ct-lock` + Quick Info/`qi-lock`; page-wipe; theme light/dark; reduced-motion (Lenis off, About body visible); mobile caption + About expand klik; hamburger + elevasi 3D.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.3** — pita Contact di `SiteFooter` (heading/body/CTA dari `HOME_COPY`, buka modal yang sama); section `#contact-cta` / CTA halaman dihapus dari Home, About, Work.
+- **T-025.4** — About rest/active: hero lead2, offer body, value explanation (hover desktop / klik mobile); proses 4 langkah `CollapsibleGroup` + watermark + ikon langkah; tipe display lebih besar. `content/about.ts` tidak diubah.
+### Changed
+- Footer legal + satelit di bawah pita Contact; divider footer longgar (tanpa garis section terpisah di atas pita).
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.1** — ADR-025 (craft Hess/Mazur, bukan palet): About tetap M2; copy T-021 tidak diubah; Lenis + page overlay diizinkan; footer = pita Contact. Indeks DECISIONS; update `design-tokens.md` §Motion, `key-screen-patterns.md` (rest/active + footer band), `competitor-analysis.md`; task T-025 di v03 + TASKS.
+- **T-025.2** — Lenis window scroll di locale layout (pause `ct-lock`/`qi-lock`, off `prefers-reduced-motion`) + overlay wipe keyed pathname (`--duration-medium`, `pointer-events: none` saat idle).
+### Changed
+- ADR-017 / ADR-006: pointer ke ADR-025. Contact modal + Quick Info: `data-lenis-prevent`.
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Locale switch: fill/shadow selected + overlay hover bawaan SegmentedControl Astryx dinonaktifkan, supaya hanya satu pill yang geser (seperti nav). Nav tidak diubah.
+### Changed
+- Pill aktif chrome (Home/About/Karya + ID/EN) memakai token `--elev-3d` yang sama dengan chip locale, supaya item terpilih timbul 3D bukan hanya track kuningnya.
+
 ## [2026-08-23]
 ### Fixed
 - Review PR #42 (P2): StatusDot badge About tidak lagi mengekspos teks `availability` panjang ke screen reader (`aria-hidden` + label = badge). Close/copy Contact dan close Quick Info dikecualikan dari elevasi 3D; `.astryx-button:focus-visible` memakai outline agar cincin fokus tidak kalah `box-shadow`.
