@@ -67,28 +67,43 @@ function hasFineHover(): boolean {
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 }
 
+type RestActiveControl = {
+  panelId: string;
+  isActive: boolean;
+  controlProps: {
+    tabIndex: number;
+    role: "button";
+    "aria-expanded": boolean;
+    "aria-controls": string;
+    "aria-label": string;
+    onClick?: () => void;
+    onKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
+  } | null;
+};
+
 /**
  * Rest = judul selalu terlihat; active = body via hover/focus (desktop)
  * atau klik (mobile). Reduced-motion: body selalu terlihat (ADR-025).
  */
-function RestActive({
-  rest,
-  active,
-  className,
-  label,
-}: {
-  rest: ReactNode;
-  active: ReactNode;
-  className?: string;
-  label: string;
-}) {
+function useRestActiveControl(label: string): RestActiveControl {
   const panelId = useId();
   const [isOpen, setIsOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isInteractive, setIsInteractive] = useState(true);
   const [needsClick, setNeedsClick] = useState(false);
 
   useEffect(() => {
     const sync = () => {
-      setNeedsClick(!prefersReducedMotion() && !hasFineHover());
+      const reduceMotion = prefersReducedMotion();
+      const clickToOpen = !reduceMotion && !hasFineHover();
+      setIsInteractive(!reduceMotion);
+      setNeedsClick(clickToOpen);
+      if (reduceMotion) {
+        setIsOpen(false);
+        setIsFocused(false);
+      }
     };
     sync();
     const hoverMq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -101,47 +116,113 @@ function RestActive({
     };
   }, []);
 
-  const classNames = [
-    "about-rest-active",
-    needsClick && isOpen ? "is-active" : "",
-    className,
-  ]
+  const toggle = () => {
+    setIsOpen((open) => !open);
+  };
+
+  if (!isInteractive) {
+    return { panelId, isActive: false, controlProps: null };
+  }
+
+  return {
+    panelId,
+    isActive: needsClick && isOpen,
+    controlProps: {
+      tabIndex: 0,
+      role: "button",
+      "aria-expanded": needsClick ? isOpen : isFocused,
+      "aria-controls": panelId,
+      "aria-label": label,
+      onClick: needsClick ? toggle : undefined,
+      onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+        event.preventDefault();
+        if (needsClick) {
+          toggle();
+        }
+      },
+      onFocus: needsClick
+        ? undefined
+        : () => {
+            setIsFocused(true);
+          },
+      onBlur: needsClick
+        ? undefined
+        : () => {
+            setIsFocused(false);
+          },
+    },
+  };
+}
+
+function RestActive({
+  rest,
+  active,
+  className,
+  label,
+}: {
+  rest: ReactNode;
+  active: ReactNode;
+  className?: string;
+  label: string;
+}) {
+  const { panelId, isActive, controlProps } = useRestActiveControl(label);
+  const classNames = ["about-rest-active", isActive ? "is-active" : "", className]
     .filter(Boolean)
     .join(" ");
-
-  const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (!needsClick) {
-      return;
-    }
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      setIsOpen((open) => !open);
-    }
-  };
 
   return (
     <VStack
       className={classNames}
       gap={3}
-      tabIndex={needsClick ? 0 : undefined}
-      role={needsClick ? "button" : undefined}
-      aria-expanded={needsClick ? isOpen : undefined}
-      aria-controls={needsClick ? panelId : undefined}
-      aria-label={needsClick ? label : undefined}
-      onClick={
-        needsClick
-          ? () => {
-              setIsOpen((open) => !open);
-            }
-          : undefined
-      }
-      onKeyDown={onKeyDown}
+      {...controlProps}
     >
       {rest}
       <VStack id={panelId} className="about-rest-active-panel" gap={0}>
         {active}
       </VStack>
     </VStack>
+  );
+}
+
+function RestActiveCard({
+  rest,
+  active,
+  extra,
+  className,
+  label,
+  variant,
+}: {
+  rest: ReactNode;
+  active: ReactNode;
+  extra?: ReactNode;
+  className: string;
+  label: string;
+  variant: "default" | "muted";
+}) {
+  const { panelId, isActive, controlProps } = useRestActiveControl(label);
+  const classNames = ["about-rest-active", isActive ? "is-active" : "", className]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <Card
+      variant={variant}
+      elevation="none"
+      padding={6}
+      className={classNames}
+      {...controlProps}
+    >
+      {extra}
+      <VStack gap={3}>
+        {rest}
+        <VStack id={panelId} className="about-rest-active-panel" gap={0}>
+          {active}
+        </VStack>
+      </VStack>
+    </Card>
   );
 }
 
@@ -216,37 +297,33 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <Grid columns={3} gap={4} className="about-offer-grid">
             {copy.offers.map((offer, index) => (
               <Reveal key={offer.num}>
-                <Card
+                <RestActiveCard
                   variant="default"
-                  elevation="none"
-                  padding={6}
                   className="about-offer-card"
-                >
-                  <Text aria-hidden="true" className="about-offer-mark">
-                    {offer.num}
-                  </Text>
-                  <RestActive
-                    className="about-offer-copy"
-                    label={`${offer.num} ${offer.title}`}
-                    rest={
-                      <VStack gap={4}>
-                        <Icon
-                          icon={OFFER_ICONS[index] ?? ProductIcon}
-                          size="lg"
-                          color="accent"
-                        />
-                        <Heading level={3} className="about-card-title">
-                          {offer.title}
-                        </Heading>
-                      </VStack>
-                    }
-                    active={
-                      <Text color="secondary" display="block" size="sm">
-                        {offer.body}
-                      </Text>
-                    }
-                  />
-                </Card>
+                  label={`${offer.num} ${offer.title}`}
+                  extra={
+                    <Text aria-hidden="true" className="about-offer-mark">
+                      {offer.num}
+                    </Text>
+                  }
+                  rest={
+                    <VStack gap={4} className="about-offer-copy">
+                      <Icon
+                        icon={OFFER_ICONS[index] ?? ProductIcon}
+                        size="lg"
+                        color="accent"
+                      />
+                      <Heading level={3} className="about-card-title">
+                        {offer.title}
+                      </Heading>
+                    </VStack>
+                  }
+                  active={
+                    <Text color="secondary" display="block" size="sm">
+                      {offer.body}
+                    </Text>
+                  }
+                />
               </Reveal>
             ))}
           </Grid>
@@ -278,28 +355,23 @@ export function AboutPage({ locale }: { locale: Locale }) {
                 const { heading, body } = splitQuotedValue(value);
                 return (
                   <Reveal key={value}>
-                    <Card
+                    <RestActiveCard
                       variant="muted"
-                      elevation="none"
-                      padding={6}
                       className="about-value-card"
-                    >
-                      <RestActive
-                        label={heading}
-                        rest={
-                          <Heading level={3} className="about-value-title">
-                            {heading}
-                          </Heading>
-                        }
-                        active={
-                          body ? (
-                            <Text color="secondary" display="block" size="sm">
-                              {body}
-                            </Text>
-                          ) : null
-                        }
-                      />
-                    </Card>
+                      label={heading}
+                      rest={
+                        <Heading level={3} className="about-value-title">
+                          {heading}
+                        </Heading>
+                      }
+                      active={
+                        body ? (
+                          <Text color="secondary" display="block" size="sm">
+                            {body}
+                          </Text>
+                        ) : null
+                      }
+                    />
                   </Reveal>
                 );
               })}

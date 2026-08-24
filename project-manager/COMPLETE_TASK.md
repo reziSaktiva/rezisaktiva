@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-24]
 ### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **T-025.4 follow-up (PR #43 review)** — About rest/active: desktop keyboard bisa Tab ke lead/kartu lalu body muncul via `:focus-within`; sentuh membuka dari seluruh kartu (watermark/padding), bukan hanya judul.
+
+## [2026-08-24]
+### Added
 - **T-025.5** — Home/Work display type lebih besar (`home-work-title`, proof body, Work h1); tile hover playable via `useContainerReveal` (caption + scrim; scale gambar); Magnetic pada CTA “lihat semua” Home. Chrome 3D + Quick Info tidak diubah.
 - **T-025.6** — QA browser (`localhost:3001`): 3 rute; Lenis on; Contact/`ct-lock` + Quick Info/`qi-lock`; page-wipe; theme light/dark; reduced-motion (Lenis off, About body visible); mobile caption + About expand klik; hamburger + elevasi 3D.
 ### Changed

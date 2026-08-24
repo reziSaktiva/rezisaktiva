@@ -1130,13 +1130,7 @@ html[data-theme="dark"] body {
 
 @media (hover: hover) and (pointer: fine) {
   .about-rest-active:hover .about-rest-active-panel,
-  .about-rest-active:focus-within .about-rest-active-panel,
-  .about-offer-card:has(.about-rest-active):hover .about-rest-active-panel,
-  .about-offer-card:has(.about-rest-active):focus-within
-    .about-rest-active-panel,
-  .about-value-card:has(.about-rest-active):hover .about-rest-active-panel,
-  .about-value-card:has(.about-rest-active):focus-within
-    .about-rest-active-panel {
+  .about-rest-active:focus-within .about-rest-active-panel {
     max-height: 24rem;
     opacity: 1;
   }
@@ -1155,6 +1149,11 @@ html[data-theme="dark"] body {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
   border-radius: var(--radius-md);
+}
+
+.about-offer-card[role="button"]:focus-visible,
+.about-value-card[role="button"]:focus-visible {
+  outline-offset: -3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
