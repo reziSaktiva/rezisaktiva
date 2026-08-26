@@ -18,6 +18,14 @@ Format entri:
 ### Added
 - (tidak ada)
 ### Changed
+- **T-025.9 follow-up** — thumb scrollbar = kuning `--chip-bg` (`.site-nav-chip`) di light dan dark. Latar track muted tetap.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
 - **T-025.9** — scrollbar dokumen (track + thumb) mengikuti tema `rezisaktiva`: thin, pill, `--rz-scrollbar-*` (muted / text-secondary / text-primary). Light+dark. Firefox `scrollbar-color` + WebKit. Tidak diterapkan ke `.ct-panel` (ink tetap). T-025.8 tidak diubah.
 - T-025 parent ✅ Done (T-025.1–T-025.9). Catatan singkat di `design-tokens.md`. Snapshot / TASKS / v03: next = T-021.6.
 ### Fixed

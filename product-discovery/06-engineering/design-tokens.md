@@ -75,7 +75,7 @@ Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tet
 | `--color-fg` | Ink primer | Near-white soft | Teks utama |
 | `--color-fg-muted` | Abu untuk supporting | Abu terang | Meta, supporting |
 | `--color-border` | Hairline lembut | Border gelap lembut | Pemisah lean (bukan card-heavy) |
-| Native scrollbar (T-025.9) | Track muted `#e4dfd1`, thumb secondary `#6e6a5f` | Track `#121a2b`, thumb `#9b968a` | Dokumen `html` di `app/globals.css` (`--rz-scrollbar-*`, nilai = token di atas). Thin + pill. Bukan OS default, bukan palet Hess. Jangan disembunyikan (T-025.8). |
+| Native scrollbar (T-025.9) | Track muted `#e4dfd1`, thumb kuning chip `--chip-bg` (`#fde047`) | Track `#121a2b`, thumb kuning chip yang sama | Dokumen `html` di `app/globals.css`. Thin + pill. Track tetap muted; thumb = `.site-nav-chip`. Jangan disembunyikan (T-025.8). |
 
 ---
 

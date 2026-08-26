@@ -74,17 +74,14 @@
     inset 0 1px 0 rgb(255 255 255 / 0.16),
     0 1px 2px rgb(20 24 31 / 0.1);
   /*
-   * T-025.9 — scrollbar native. `<html>` di luar @scope Astryx
-   * (`[data-astryx-theme]`), jadi jangan `var(--color-*)` di sini (tidak
-   * resolve). Nilai = token tema `rezisaktiva`:
-   * track `--color-background-muted`, thumb `--color-text-secondary`,
-   * hover `--color-text-primary`. Bukan palet Hess. Prefix `--rz-*`
-   * supaya tidak menimpa `--color-*` di :root (xds / ADR-018).
+   * T-025.9 — scrollbar native. `<html>` di luar @scope Astryx.
+   * Track = `--color-background-muted` (light/dark). Thumb = kuning chip
+   * nav (`.site-nav-chip` / `--chip-bg`) di kedua tema. Prefix `--rz-*`.
    */
   --rz-scrollbar-size: 0.5rem;
   --rz-scrollbar-track: #e4dfd1;
-  --rz-scrollbar-thumb: #6e6a5f;
-  --rz-scrollbar-thumb-hover: #14181f;
+  --rz-scrollbar-thumb: var(--chip-bg);
+  --rz-scrollbar-thumb-hover: var(--chip-bg);
 }
 
 html[data-theme="dark"],
@@ -105,8 +102,6 @@ html[style*="color-scheme:dark"] {
     inset 0 1px 0 rgb(255 255 255 / 0.1),
     0 1px 2px rgb(0 0 0 / 0.35);
   --rz-scrollbar-track: #121a2b;
-  --rz-scrollbar-thumb: #9b968a;
-  --rz-scrollbar-thumb-hover: #edeae1;
 }
 
 /*
