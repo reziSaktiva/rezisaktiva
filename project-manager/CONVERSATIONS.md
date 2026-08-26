@@ -14,6 +14,34 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-26] — T-025.11: affordance lead About
+
+**Phase:** Development R1
+**Summary:** Boss Rezi tidak sadar lead About bisa diketuk. Minta pembeda visual **hanya** pada komponen itu, bukan kartu lain.
+**Key Decision/Insight:** Bukan KI. Cue tanpa copy baru: underline titik pada `lead1` + chevron Astryx; berputar saat hover/focus/tap. Reduced-motion: cue disembunyikan (body sudah selalu terbuka).
+**Impact:** T-025.11; `about-page.tsx` + `globals.css` `.about-lead-*`.
+
+## [2026-08-26] — T-025.10: kedip mobile setelah scroll
+
+**Phase:** Development R1
+**Summary:** Kedip kecil halaman *masuk* di layout mobile jika user sudah scroll ke tengah/bawah lalu pindah halaman. Bukan View Transitions.
+**Key Decision/Insight:** `translateY(100vh)` relatif ke dokumen, bukan viewport. Plus `scrollTo(0)` di iOS di awal enter = async → flash. Perbaikan: clone `translateY(-scrollY)`, freeze scroll ke 0 setelah clone, live `visibility:hidden` sampai enter; jarak `100dvh`.
+**Impact:** T-025.10; `page-transition.tsx`, `smooth-scroll.tsx`, `globals.css`.
+
+## [2026-08-26] — Handoff: kedip transisi halaman
+
+**Phase:** Development R1
+**Summary:** Boss Rezi minta catatan untuk chat baru: animasi pindah halaman masih kedip. T-025.7–T-025.9 sudah Done (snapshot CSS Hess, anti-kedip live-page, scrollbar track). Jangan View Transitions API.
+**Key Decision/Insight:** Mekanisme = clone main+footer exit 1s + live diparkir `translateY(100vh)` sampai `page-vt-entering`. Kedip historis = halaman baru tampil sebelum enter, ID kembar clone/live, scrollbar hilang (sudah di T-025.8). Sisa yang perlu dicek: satu frame sebelum lock, `Reveal` restart, pill nav ganti `selected` di tengah exit, `finishEnter` vs clone masih 200ms, Lenis start ulang.
+**Impact:** Chat baru; file `page-transition.tsx` + `globals.css` `.page-vt-*`. Jangan ubah palet / ritme token / T-025.8 overflow-y scroll. Acuan: karolinahess.com.
+
+## [2026-08-26] — Domain production: rezisaktiva.space
+
+**Phase:** Development R1
+**Summary:** Boss Rezi mengunci URL situs publik production: `https://rezisaktiva.space` (bukan hostname Vercel default).
+**Key Decision/Insight:** Canonical production = apex `https://rezisaktiva.space`. `NEXT_PUBLIC_SITE_URL` di Production harus nilai itu (OG/canonical). Tautan karya “Personal Portfolio” mengikuti domain ini.
+**Impact:** `.env.example`; `deployment-infrastructure.md` § Domain; catatan T-017; `content/work.ts`; `environment-management.md` katalog `NEXT_PUBLIC_SITE_URL`.
+
 ## [2026-08-26] — T-025.9: scrollbar mengikuti tema
 
 **Phase:** Development R1

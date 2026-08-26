@@ -70,7 +70,7 @@ R1 diharapkan **sangat pendek**. Contoh yang wajar (dikunci detail nama saat boo
 
 | Variabel | Wajib R1 | Tier | Catatan |
 | -------- | -------- | ---- | ------- |
-| `NEXT_PUBLIC_SITE_URL` | Should | Semua | Canonical URL untuk meta/OG/sitemap |
+| `NEXT_PUBLIC_SITE_URL` | Should | Semua | Canonical URL untuk meta/OG/sitemap. Production: `https://rezisaktiva.space` |
 | Analytics key (`NEXT_PUBLIC_*` atau server) | Could | Preview/Prod | Hanya jika analytics diaktifkan; privacy-aware |
 | `DATABASE_URL` | Tidak | — | N/A |
 | Auth secrets (`AUTH_*`, `NEXTAUTH_*`) | Tidak | — | N/A |

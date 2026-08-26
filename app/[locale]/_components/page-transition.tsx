@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { prefersReducedMotion } from "./smooth-scroll";
+import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
 
 type NavigateFn = (href: string) => void;
 
@@ -116,7 +116,7 @@ function sanitizeClone(root: ParentNode): void {
   });
 }
 
-function captureOutgoing(): HTMLElement {
+function captureOutgoing(scrollY: number): HTMLElement {
   const layer = document.createElement("div");
   layer.className = "page-vt-clone";
   layer.setAttribute("aria-hidden", "true");
@@ -124,10 +124,7 @@ function captureOutgoing(): HTMLElement {
 
   const shifter = document.createElement("div");
   shifter.className = "page-vt-clone-shift";
-  const htmlTransform = getComputedStyle(document.documentElement).transform;
-  const shiftY =
-    htmlTransform && htmlTransform !== "none" ? 0 : -window.scrollY;
-  shifter.style.transform = `translateY(${shiftY}px)`;
+  shifter.style.transform = `translateY(${-scrollY}px)`;
 
   const main = document.getElementById("astryx-app-shell-main");
   const footer = document.querySelector(".site-footer");
@@ -175,6 +172,7 @@ function applyDocumentLock(lock: boolean): void {
     root.classList.add("page-vt-lock");
     root.classList.remove("page-vt-entering");
     setLiveParked(true);
+    freezeWindowScrollAtTop();
     return;
   }
   root.classList.remove("page-vt-lock", "page-vt-entering");
@@ -371,7 +369,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       }
 
       clearClones();
-      const clone = captureOutgoing();
+      const clone = captureOutgoing(readWindowScrollY());
       armTransition({
         from,
         target,
@@ -429,7 +427,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       }
 
       clearClones();
-      const clone = captureOutgoing();
+      const clone = captureOutgoing(readWindowScrollY());
       armTransition({ from, target, clone });
     };
 
@@ -471,7 +469,6 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       if (pendingNav?.epoch !== epoch) {
         return;
       }
-      window.scrollTo(0, 0);
       document.documentElement.classList.add("page-vt-entering");
       setLiveParked(false);
     }, wait);

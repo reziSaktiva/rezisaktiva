@@ -1167,6 +1167,35 @@ html::-webkit-scrollbar-button {
   line-height: inherit;
 }
 
+.about-lead-rest {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--color-border-emphasized);
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--duration-medium) var(--ease-standard);
+}
+
+.about-lead-more {
+  pointer-events: none;
+  transition:
+    transform var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard);
+}
+
+.about-lead:hover .about-lead-rest,
+.about-lead:focus-within .about-lead-rest,
+.about-lead.is-active .about-lead-rest {
+  text-decoration-color: transparent;
+}
+
+.about-lead:hover .about-lead-more,
+.about-lead:focus-within .about-lead-more,
+.about-lead.is-active .about-lead-more {
+  transform: rotate(180deg);
+  opacity: 0.45;
+}
+
 @media (min-width: 768px) {
   .about-lead {
     font-size: var(--font-size-2xl);
@@ -1217,6 +1246,14 @@ html::-webkit-scrollbar-button {
     max-height: none;
     opacity: 1;
     transition: none;
+  }
+
+  .about-lead-rest {
+    text-decoration: none;
+  }
+
+  .about-lead-more {
+    display: none;
   }
 }
 
@@ -1734,6 +1771,12 @@ html.qi-lock {
  * menelan scrollbar track. Tetap tampilkan track (overflow-y: scroll);
  * wheel tetap diblokir Lenis. Jangan overflow: hidden pada html/body.
  * Specificity harus mengalahkan `.lenis.lenis-stopped` (3 class).
+ *
+ * T-025.10: parkir live pakai visibility:hidden + 100dvh. translateY(100vh)
+ * relatif ke dokumen — kalau user sudah scroll di mobile, halaman baru
+ * nyembul di viewport. Scroll di-reset ke 0 setelah clone (JS).
+ * Selector `.site-footer` harus `:not(.page-vt-clone *)` supaya snapshot
+ * exit tetap menampilkan pita Contact (P2 PR #46).
  */
 html.page-vt-lock,
 html.page-vt-lock body {
@@ -1770,23 +1813,28 @@ html.lenis.page-vt-lock.lenis-stopped {
 @keyframes page-vt-exit {
   to {
     transform: translateY(-100vh) scale(0.5);
+    transform: translateY(-100dvh) scale(0.5);
   }
 }
 
 @keyframes page-vt-enter {
   from {
     transform: translateY(100vh);
+    transform: translateY(100dvh);
   }
 }
 
 html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
-html.page-vt-lock:not(.page-vt-entering) .site-footer {
+html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
   transform: translateY(100vh);
+  transform: translateY(100dvh);
+  visibility: hidden;
   pointer-events: none;
 }
 
 html.page-vt-entering #astryx-app-shell-main,
-html.page-vt-entering .site-footer {
+html.page-vt-entering .site-footer:not(.page-vt-clone *) {
+  visibility: visible;
   animation: page-vt-enter var(--duration-page-enter) var(--ease-page-transition)
     both;
   backface-visibility: hidden;
@@ -1796,11 +1844,12 @@ html.page-vt-entering .site-footer {
   .page-vt-clone,
   .page-vt-clone.is-exiting,
   html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
-  html.page-vt-lock:not(.page-vt-entering) .site-footer,
+  html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
   html.page-vt-entering #astryx-app-shell-main,
-  html.page-vt-entering .site-footer {
+  html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     animation: none !important;
     transform: none !important;
+    visibility: visible !important;
   }
 }
 

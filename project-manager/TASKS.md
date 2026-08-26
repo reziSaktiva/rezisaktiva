@@ -9,7 +9,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 3. **T-022** — penyesuaian desain mobile (paritas mockup → kode) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 5. **T-024** — redesain visual About di kode produksi (ADR-024) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-6. **T-025** — craft Hess/Mazur (ADR-025) ✅ Done (T-025.1–T-025.9). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+6. **T-025** — craft Hess/Mazur (ADR-025) ✅ Done (T-025.1–T-025.11). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 7. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
 
 ## Indeks release

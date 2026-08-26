@@ -76,7 +76,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 * **Status:** ✅ Done (T-017.2, 2026-08-19)
 * **Domain:** Engineering
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M7), `06-engineering/environment-management.md`, ADR-015
-* **Implementasi:** `lib/page-metadata.ts` + `generateMetadata` di Home/About/Work; `metadataBase` di `app/layout.tsx`. Set `NEXT_PUBLIC_SITE_URL` di `.env.local` (lokal) dan Vercel (Preview/Production), contoh production: `https://rezisaktiva.vercel.app`.
+* **Implementasi:** `lib/page-metadata.ts` + `generateMetadata` di Home/About/Work; `metadataBase` di `app/layout.tsx`. Set `NEXT_PUBLIC_SITE_URL` di `.env.local` (lokal) dan Vercel (Preview/Production). Production: `https://rezisaktiva.space`.
 
 ### Subtasks
 
@@ -160,7 +160,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-025 — Craft pass Hess/Mazur (ADR-025)
 
-* **Status:** ✅ Done (T-025.1–T-025.9, 2026-08-26)
+* **Status:** ✅ Done (T-025.1–T-025.11, 2026-08-26)
 * **Domain:** UI/UX
 * **Baca dulu:** ADR-025, ADR-017, ADR-006, ADR-019, ADR-024, ADR-018, ADR-021; `product-discovery/06-engineering/design-tokens.md` (warna + §Motion); `04-ux/key-screen-patterns.md` (S0 footer, S1, S2 rest/active); `01-business/competitor-analysis.md` (Hess/Mazur); `content/about.ts` + `content/home.ts` (copy dikunci — jangan tulis ulang); `app/[locale]/layout.tsx`, `about-page.tsx`, `home-page.tsx`, `work-page.tsx`, `site-footer.tsx`, `home-motion.tsx`, `page-transition.tsx`; `app/globals.css`; tema built `rezisaktiva` (`theme/astryx-theme.css`); `.cursor/rules/xds.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`
 * **Keputusan:** About tetap M2; copy T-021 tidak diubah; palet/chrome 3D/Contact modal/Quick Info tetap; yang ditiru = ritme, tipe, interaksi, gerak. Lenis + page overlay di locale layout. Footer = pita Contact (buka modal yang ada). Jangan sentuh `design-mockups/`.
@@ -177,6 +177,8 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 - [x] **T-025.7** — Transisi halaman diselaraskan ke ritme karolinahess.com (snapshot CSS: 1s exit scale+naik, 0.4s enter dari bawah, delay 0.4s); warna tetap token tema
 - [x] **T-025.8** — Selama transisi halaman, **scrollbar track tetap terlihat** (jangan dihilangkan / `overflow: hidden` yang menelan track). Acuan: [karolinahess.com](https://karolinahess.com/). Branch: `feat/page-transition-hess-rhythm`. File: `page-transition.tsx`, `globals.css` (`.page-vt-*`). Jangan ubah palet / ritme exit-enter yang sudah dikunci. **Implementasi:** `Lenis.stop()` tetap (inersia mati), tapi `html.page-vt-lock` mengalahkan `.lenis-stopped { overflow: clip }` dengan `overflow-y: scroll` supaya track tidak hilang.
 - [x] **T-025.9** — Tampilan scrollbar native (track + thumb) **mengikuti tema `rezisaktiva`**: bentuk, warna, ketebalan selaras kanvas/border/brand — bukan OS default abu-abu, **bukan** palet Hess. Token CSS (`--color-background-body` / `--color-background-muted`, `--color-border`, `--color-brand` atau `--color-border-emphasized`); tanpa hex mentah. Light **dan** dark. Firefox (`scrollbar-width` + `scrollbar-color`) **dan** WebKit (`::-webkit-scrollbar`, `-track`, `-thumb`, radius). File: `app/globals.css` (boleh catatan singkat di `design-tokens.md`). **Jangan regresi T-025.8** (`html.page-vt-lock` tetap `overflow-y: scroll`, track tidak hilang saat transisi). Jangan sentuh ritme exit-enter, chrome 3D, Contact/QI lock, copy, atau `design-mockups/`. Verifikasi: Home/About/Work, light/dark, selama transisi halaman track tetap terlihat **dan** bertema. **Implementasi:** `--rz-scrollbar-track` = muted (light `#e4dfd1` / dark `#121a2b`). Thumb = `--chip-bg` kuning `.site-nav-chip` di kedua tema. Thin + pill di `html`. `.ct-panel` mereset `scrollbar-color: auto`.
+- [x] **T-025.10** — Kedip halaman baru di **mobile** setelah scroll tengah/bawah lalu pindah halaman. Parkir live `visibility: hidden` + `100dvh`; clone selalu `translateY(-scrollY)`; reset Lenis+window ke 0 **setelah** clone (bukan `scrollTo` di awal enter — di iOS itu async dan malah memunculkan halaman baru). Jangan regresi T-025.8 / ritme Hess.
+- [x] **T-025.11** — Affordance rest/active **hanya** pada lead About (`.about-lead`): underline titik + chevron; copy T-021 tidak diubah; kartu offer/value tidak disentuh.
 
 ---
 
