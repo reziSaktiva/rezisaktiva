@@ -46,7 +46,8 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | M6 | Site chrome & satellites | Nav lean + footer + tautan satelit + **toggle tema (ADR-021)** |
 | M7 | Destination meta (title/description/OG dasar) | URL layak jadi “link utama” |
 | M9 | Work index (katalog karya) | **Naik dari Won't → Must** (override ADR-020, 2026-08-15); nav "Karya" perlu destination nyata |
-| M13 | Quick Info panel | Overlay global glanceable — **Must R1 (ADR-022)**; bukan route; exclude Work case |
+| M10 | Project context sheet | **Must R1** (ADR-027): overlay dari bawah; bukan `/work/[slug]`; T-026 sebelum T-018 |
+| M13 | Quick Info panel | Overlay global glanceable — **Must R1 (ADR-022)**; bukan route |
 
 ---
 
@@ -56,7 +57,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | --------- | ---------- | -------------- |
 | Soft availability line | Satu kalimat terbuka kolaborasi/opportunity | Memperkuat soft presence |
 | Paritas makna ID/EN | Salinan setara, bukan dump mesin | Bilingual yang kredibel |
-| Teaser actionable | Highlight → bukti eksternal (repo/live) bila ada | Bukti tanpa halaman case |
+| Teaser actionable | Highlight → Work index (lalu sheet M10), bukti live/repo di dalam sheet bila ada | ADR-027 |
 | Aksesibilitas dasar | Heading, kontras, fokus keyboard | Clarity juga berarti bisa dipakai |
 | Motion sebagai identitas visual | Scroll-triggered reveal, micro-interaction halus, easing hero (**ADR-017**) | Naik dari Could minimal; tetap tunduk batas clarity-first, bukan modul halaman baru |
 
@@ -69,7 +70,7 @@ Should = kualitas Must, bukan modul halaman baru.
 | ID / item | Keterangan | Catatan |
 | --------- | ---------- | ------- |
 | M8 | Form kontak / booking ringan | Hanya jika email/tautan terasa kurang |
-| Early magnet | 1 case/proses singkat lebih awal | Idealnya release berikutnya; boleh jika konten siap (bukan blocker) |
+| Early magnet | Bentuk lain (halaman case `/work/[slug]`) | Bukan overlay M10 yang sudah Must R1 |
 
 ---
 
@@ -79,7 +80,7 @@ Untuk **rilis MVP** (kerangka clarity), sengaja **tidak** termasuk:
 
 | ID / item | Keterangan | Kapan dipertimbangkan |
 | --------- | ---------- | --------------------- |
-| M10 | Case / process detail | Post-MVP (magnet ringan ADR-007) — M9 sudah naik ke Must R1 (ADR-020), M10 tetap di sini |
+| M10 halaman `/work/[slug]` | Case study sebagai route | Bukan R1 (ADR-027); overlay sheet sudah Must |
 | M11 | Writing / notes hub | Future — bukan inti visi MVP |
 | M12 | Experiments / playground sebagai panggung | Future satelit craft |
 | — | Pricing, paket, checkout | Ditolak arah produk (ADR-008) |
@@ -103,7 +104,8 @@ Urutan pengerjaan disarankan (konten + surface), tetap dalam satu rilis MVP:
 | 5 | Lintas halaman | M5 Language + M6 Chrome (termasuk toggle tema, ADR-021) + M13 Quick Info (ADR-022) |
 | 6 | Destination hygiene | M7 Meta |
 | 7 | Poles Should | Availability, paritas ID/EN, a11y dasar |
-| 8 | Could (opsional) | M8 / early case |
+| 8 | Project context | M10 overlay sheet (ADR-027) |
+| 9 | Could (opsional) | M8 / route case nanti |
 
 Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 
@@ -113,7 +115,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 
 1. **Clarity sebelum craft** — jangan tunda Home/About/Contact demi animasi atau case sempurna.
 2. **Brand primer** — item yang mendorong hard sell / harga = Won't (arah produk).
-3. **Magnet bertahap** — M10 berharga, tetapi Won't untuk rilis MVP kecuali keputusan eksplisit geser ke opsi D. M9 sudah naik ke Must R1 (ADR-020, 2026-08-15) sebagai pengecualian eksplisit.
+3. **Magnet overlay di R1** — M10 sheet Must (ADR-027); halaman case `/work/[slug]` tetap di luar MVP.
 4. **Should ≠ Must** — ship Must lengkap lebih penting daripada poles sempurna.
 5. **Could tidak mencuri kapasitas** — form/case awal hanya jika Must+Should (termasuk motion identitas, ADR-017) sudah aman.
 6. **Selaras dual north star** — prioritas yang tidak membantu recall atau soft inbound path dipertanyakan.
@@ -134,7 +136,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 Prioritas dianggap cukup jika:
 
 1. Setiap Must Have di `mvp-definition.md` terpetakan ke baris Must di sini
-2. M10 tetap Won't untuk rilis MVP (selaras ADR-010); M9 sudah naik Must R1 (ADR-020); M13 Must R1 (ADR-022); toggle tema Must di M6 (ADR-021)
+2. M10 **overlay** Must R1 (ADR-027); route `/work/[slug]` tetap Won't R1; M9 Must (ADR-020); M13 Must (ADR-022); toggle tema Must di M6 (ADR-021)
 3. Urutan pengerjaan bisa dipakai langsung oleh `release-roadmap.md`
 4. Tidak ada item Must yang bertentangan dengan no-pricing / soft CTA
 

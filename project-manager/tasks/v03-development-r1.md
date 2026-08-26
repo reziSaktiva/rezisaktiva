@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ✅ Done. **T-024** (redesain visual About, ADR-024) ✅ Done. **T-025** (craft Hess/Mazur, ADR-025) ✅ Done.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ⏳ sebelum T-018.
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -86,7 +86,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-018 — Exit R1 → destination layak evaluasi
 
-* **Status:** ⏳ Todo — ditunda sampai T-021.1–T-021.7 (keputusan Boss Rezi 2026-08-19)
+* **Status:** ⏳ Todo — ditunda sampai T-021.1–T-021.7 **dan T-026** (ADR-027, 2026-08-26)
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `success-metrics.md` (Phase 1 — Validation)
 
@@ -102,8 +102,8 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 * **Status:** ✅ Done (T-019.2, 2026-08-19)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M9), ADR-020, `design-mockups/work.html`
-* **Catatan:** M9 naik jadi Must R1 lewat ADR-020 (2026-08-15); nav "Karya" (T-013.1) butuh destination nyata. Halaman detail per karya (M10/`work-case.html`) **tetap R2** — jangan bangun detail case di sini, cukup index/katalog yang link keluar (repo/live) atau ke placeholder detail sampai M10 digarap.
-* **Implementasi:** `app/[locale]/work/page.tsx` + `work-page.tsx` + `work-tile.tsx`; katalog `content/work.ts` (final: T-021.5). Tile R1 visual-only (bukan link ke M10).
+* **Catatan:** M9 naik Must R1 (ADR-020). Klik tile ke live/repo = perilaku T-019/T-021.5; **T-026 (ADR-027)** mengganti target klik jadi sheet dari bawah. Halaman `/work/[slug]` tetap bukan R1.
+* **Implementasi:** `app/[locale]/work/page.tsx` + `work-page.tsx` + `work-tile.tsx`; katalog `content/work.ts` (final: T-021.5). Tile index: T-026 mengubah klik.
 
 ### Subtasks
 
@@ -182,9 +182,26 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ---
 
+## T-026 — Project context sheet (M10 overlay, ADR-027)
+
+* **Status:** ⏳ Todo — **sebelum T-018** (bukan R2)
+* **Domain:** UI/UX + Product/UX (copy slot)
+* **Baca dulu:** ADR-027, ADR-026, ADR-022, ADR-020, ADR-018; `product-discovery/02-product/feature-modules.md` (M10), `04-ux/information-architecture.md`, `key-screen-patterns.md`, `navigation-patterns.md`; `content/work.ts`; `app/[locale]/_components/work-tile.tsx`, `work-page.tsx`, `quick-info.tsx`; `astryx component BottomSheet`
+* **Keputusan:** Sheet dari **bawah**. Klik tile **Work index** membuka sheet; **bukan** lompat langsung ke live/repo. Teaser Home tetap ke `/[locale]/work`. Isi: images, services, location or company, year, description. Live/repo opsional **di dalam** sheet. Prefer `BottomSheet` Astryx; fallback overlay custom dari bawah jika craft tidak cukup. Copy faktual, dikunci Boss Rezi — jangan dikarang.
+* **Bukan:** halaman `/work/[slug]`; migrasi shadcn; mengubah copy Home/About T-021 yang sudah dikunci.
+
+### Subtasks
+
+- [ ] **T-026.1** — Model + copy: perluas data karya (`content/work.ts` atau modul sibling) untuk slot images (galeri), services, location or company, year, description (ID + EN). Year R1 boleh dipakai ulang. Kunci teks/gambar dengan Boss Rezi.
+- [ ] **T-026.2** — Overlay: `BottomSheet` Astryx dulu (`label`, `purpose='info'`, tinggi/snap sesuai isi); jika tidak cukup untuk tema `rezisaktiva` / Lenis / craft, overlay custom dari bawah (pola Quick Info). Focus trap, Escape, scrim, lock scroll. Tutup Quick Info jika terbuka (pola `rz-contact-open`).
+- [ ] **T-026.3** — Wire Work index: tile klik → buka sheet item itu; `href` eksternal bukan target tile. Tautan live/repo sekunder di body sheet jika URL ada. Teaser Home tidak diubah (tetap ke index).
+- [ ] **T-026.4** — QA: `/id/work` dan `/en/work`; light/dark; 320/375 + desktop; reduced-motion; item tanpa URL publik tetap bisa dibuka.
+
+---
+
 ## Yang tidak masuk backlog Development R1
 
-- Work case / detail per karya (M10 — R2); Work index (M9) sudah masuk R1 via ADR-020 (T-019)
+- Halaman case `/work/[slug]` (bukan overlay M10 — ADR-027); Work index + sheet overlay sudah R1 (T-019, T-026)
 - Form, calendar, WA, Instagram, pricing (ADR-008 / ADR-014) — form Contact tetap di T-016, bukan di Quick Info
 - Blog / CMS / auth / DB (N/A — ADR-011/015)
 - Husky / test runner wajib (ditunda per `dx-tooling.md`)

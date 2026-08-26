@@ -66,6 +66,8 @@ Preferensi: dependency sedikit, intentional; prefer API platform (Next/Vercel) s
 
 **Pengecualian intentional (ADR-018, 2026-08-13):** Astryx (`@astryxdesign/core` + `@stylexjs/stylex` + `@astryxdesign/theme-neutral` + `@astryxdesign/cli`) ditambahkan sebagai component library + sistem styling, **menggantikan** `tailwindcss` / `@tailwindcss/postcss` (di-uninstall). Ini bukan penambahan lapisan di atas Tailwind, melainkan pergantian satu sistem styling dengan sistem lain — selaras prinsip dependency sedikit (satu sistem styling aktif, bukan dua paralel).
 
+**ADR-026 (2026-08-26):** tetap Astryx sampai exit R1; evaluasi shadcn hanya setelah T-018. T-026 (project sheet) memakai BottomSheet Astryx atau overlay custom — bukan hybrid.
+
 ---
 
 # Update Policy

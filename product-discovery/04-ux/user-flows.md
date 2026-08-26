@@ -104,7 +104,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 # Out of Scope Flows (R1)
 
-* F7 case detail per karya (M10) — katalog Work index (M9) sendiri sudah Must R1 (ADR-020), bukan lagi out of scope
+* F7 halaman case `/work/[slug]` — overlay M10 (sheet dari bawah) **ada** di R1 (ADR-027); route halaman yang tidak
 * Calendar booking
 * Chat WA / DM Instagram sebagai jalur Contact
 * Login, CMS, personalisasi akun

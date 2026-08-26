@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-26] — T-026 sebelum exit R1
+
+**Phase:** Development R1
+**Summary:** Boss Rezi ingin sheet per proyek dikerjakan **sebelum** rencana exit R1 (bukan setelah T-018 / R2).
+**Key Decision/Insight:** ADR-027 diubah: M10 overlay = Must R1; T-026 di v03; T-018 menunggu T-021 + T-026. ADR-026 tetap: tidak migrasi shadcn di R1.
+**Impact:** TASKS/PROJECT_STATE/v03; product-discovery 02/04/05; hapus v04.
+
+## [2026-08-26] — Migrasi Astryx → shadcn (diskusi)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi menilai Astryx terlalu kaku (contoh: BottomSheet hanya dari bawah; Quick Info tetap overlay custom). Tanya apakah migrasi ke shadcn memungkinkan.
+**Key Decision/Insight:** Dikunci **ADR-026**: tetap Astryx sampai T-018; evaluasi shadcn hanya setelah exit R1. Hybrid ditolak.
+**Impact:** ADR-026; dependency-strategy.md.
+
 ## [2026-08-26] — T-025.11: affordance lead About
 
 **Phase:** Development R1

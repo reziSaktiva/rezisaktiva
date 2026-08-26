@@ -28,6 +28,7 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
 | S2 About | `/[id/en]/about` | J4, E4 |
 | S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
+| S4 Work index + project sheet | `/[id/en]/work` + overlay M10 (ADR-027) | J2 |
 
 ---
 
@@ -101,6 +102,14 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 5. Tanpa calendar, harga, WA, Instagram (form dikecualikan dari larangan ini per ADR-019)
 
 **Anti-pattern:** deretan ikon sosial setara Email; Contact *hanya* di footer tanpa modal/Email primer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi. Pita footer yang **membuka modal yang sama** (ADR-025) bukan pengganti Email primer di dalam modal.
+
+---
+
+### S4 — Work index + project sheet
+
+**Work index (`/work`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027) — images, services, location or company, year, description. Live/repo hanya di dalam sheet. Teaser Home tetap ke index.
+
+**Komponen:** Astryx `BottomSheet` dulu; fallback overlay custom dari bawah. Bukan `/work/[slug]` di R1.
 
 ---
 

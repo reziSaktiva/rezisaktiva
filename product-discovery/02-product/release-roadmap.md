@@ -10,8 +10,8 @@ Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** —
 
 Strategi rilis: **bertahap menurut clarity → presence → craft** (ADR-006), dengan growth **destination + magnet ringan** (ADR-007).
 
-* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Work index (M9) + teaser + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
-* **R2 — Magnet ringan** = case/proses singkat (M10); Work index (M9) sudah live sejak R1 (ADR-020)
+* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Work index (M9) + **project sheet overlay (M10, ADR-027)** + teaser + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
+* **R2 — Magnet lanjutan** = halaman case `/work/[slug]` atau pendalaman sheet jika ADR baru; Work index + overlay M10 sudah live sejak R1
 * **R3 — Presence & craft** = poles pengalaman, Could terpilih (motion, form bila perlu)
 
 Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawah + dual north star (`success-metrics.md`).
@@ -51,9 +51,9 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M4 Work teaser, M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020), **M13 Quick Info** (ADR-022) |
+| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M4 Work teaser, M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022) |
 | Should | Availability line, paritas ID/EN, teaser actionable, a11y dasar |
-| Bukan | M10 (case/process detail), blog, CMS, pricing, craft sebagai blocker |
+| Bukan | Route `/work/[slug]`, blog, CMS, pricing |
 
 **Exit R1:**
 
@@ -72,7 +72,7 @@ Selaras **Phase 1 — Validation** di `success-metrics.md`.
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Inti | M10 ≥1 case/proses singkat (M9 Work index sudah live sejak R1 — ADR-020) |
+| Inti | Pendalaman magnet: halaman case `/work/[slug]` hanya jika ADR baru; overlay M10 sudah live R1 |
 | Opsional | Early case yang sempat Could di R1 dipindah/ dirapikan ke pola M9/M10 |
 | Bukan | Blog volume, newsletter machine, distribusi sosial wajib |
 
@@ -116,7 +116,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 # Roadmap Review
 
-* Baseline v1.0 dikunci (ADR-012); geser M9/M10 ke R1 = perubahan material (opsi D) → ADR + update MVP/priority. M9 sudah digeser (ADR-020, 2026-08-15); M10 masih menunggu keputusan terpisah bila diperlukan.
+* Baseline v1.0 dikunci (ADR-012); geser M9 ke R1 = ADR-020; geser M10 overlay ke R1 = **ADR-027**. Route `/work/[slug]` masih butuh ADR terpisah.
 * Setelah live, review exit R1 sebelum memulai build R2 secara serius.
 * Tanggal/estimasi minggu boleh ditambah di Engineering planning — bukan syarat dokumen ini.
 
