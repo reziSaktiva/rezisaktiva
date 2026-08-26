@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-26]
 ### Added
+- **T-025.9** (open) — tampilan scrollbar native (track + thumb: bentuk, warna, ketebalan) mengikuti tema `rezisaktiva`; token CSS; light/dark; Firefox + WebKit; jangan regresi T-025.8.
+### Changed
+- T-025 parent ⏳ In Progress lagi (T-025.1–T-025.8 tetap ✅). Snapshot / TASKS / v03: T-025.9 boleh paralel dengan T-021.6.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
 - (tidak ada)
 ### Changed
 - **T-025.8** — scrollbar track tetap terlihat selama transisi halaman. `Lenis.stop()` masih pause inersia; CSS `html.page-vt-lock` / `html.lenis.page-vt-lock.lenis-stopped` memakai `overflow-y: scroll` supaya `.lenis-stopped { overflow: clip }` tidak menelan track. Ritme exit-enter dan palet tidak diubah. Branch `feat/page-transition-hess-rhythm`.
