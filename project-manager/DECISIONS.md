@@ -4,6 +4,8 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-027 | M10 Must R1 = sheet konteks proyek dari bawah (bukan route `/work/[slug]`) | Accepted | 2026-08-26 | Tile Work index buka overlay; images/services/location-or-company/year/description; live/repo sekunder di sheet; **T-026 sebelum T-018** | [ADR-027](decisions/ADR-027-work-project-bottom-sheet-m10.md) |
+| ADR-026 | Tetap Astryx sampai exit R1; evaluasi shadcn hanya setelah T-018 | Accepted | 2026-08-26 | Tidak hybrid; ADR-018 berlaku di R1; T-026 tetap Astryx | [ADR-026](decisions/ADR-026-astryx-through-r1-shadcn-after-exit.md) |
 | ADR-025 | Craft pass Hess/Mazur — ritme, tipe, interaksi, gerak (bukan palet) | Accepted | 2026-08-24 | About tetap M2; copy T-021 tidak diubah; Lenis + page overlay diizinkan; footer = pita Contact; palet/chrome 3D tetap | [ADR-025](decisions/ADR-025-craft-motion-hess-mazur.md) |
 | ADR-024 | Kode produksi menggantikan mockup HTML sebagai SoT visual | Accepted | 2026-08-21 | `design-mockups/` arsip; acuan desain = `app/` + Astryx + arahan chat; pekerjaan pertama = About | [ADR-024](decisions/ADR-024-production-code-visual-sot.md) |
 | ADR-023 | Tambahan M3 Contact — tautan unduh CV/Portofolio (PDF) | Accepted (implementasi ditunda) | 2026-08-21 | Keputusan penempatan (Contact modal, bukan route/Quick Info) tetap berlaku; implementasi ditunda ke **T-023** menunggu CV versi Inggris; fix bug kontras light mode di modal yang sama tetap dipakai | [ADR-023](decisions/ADR-023-cv-download-contact-modal.md) |

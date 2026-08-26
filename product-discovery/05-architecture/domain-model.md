@@ -86,7 +86,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 
 1. **Publik read-only** — pengunjung tidak menulis state ke domain situs.
 2. **Authoring di luar produk** — Rezi mengedit konten di repo / alat deploy; itu proses engineering, bukan domain in-app.
-3. **Case detail per karya (M10)** = Later R2 — jangan naikkan ke model R1 diam-diam. Work index (M9) sendiri sudah Page R1 (override ADR-020).
+3. **Project sheet (M10 overlay)** = Must R1 (ADR-027) — bukan Page `/work/[slug]`. Work index (M9) tetap Page.
 4. **Materi sensitif** → `private/` atau di luar repo (ADR-003), bukan entitas produk.
 5. Menambah aggregate transaksi / user account → ADR + revisi Product scope.
 

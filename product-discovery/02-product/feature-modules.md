@@ -8,9 +8,9 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman inti + **teaser karya di Home** + **Contact & Quick Info sebagai overlay global** + **lintas-halaman** (bahasa, chrome, tema). Modul magnet detail (Work case, M10) dicatat sebagai supporting/future agar hubungan ke roadmap jelas tanpa memasukkannya ke Must Have MVP.
+Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman inti + **teaser karya di Home** + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). M10 di R1 = overlay (ADR-027), bukan halaman case.
 
-> **Catatan override (2026-08-15, ADR-020):** M9 (Work index) naik jadi Must R1 — nav chrome menyertakan link "Karya" ke `/[locale]/work`. M10 (case/process detail) tetap Post-MVP/R2.
+> **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026) — bukan route `/work/[slug]`.
 >
 > **Update (2026-08-16):** M6 menyertakan toggle tema Must R1 (**ADR-021**). Modul baru **M13 — Quick Info panel** (**ADR-022**) — overlay global, bukan halaman.
 >
@@ -118,10 +118,10 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
 | **M8 — Contact form / booking** | Alternatif jalur kontak | Could — bukan syarat MVP |
 | **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
-| **M10 — Case / process detail** | Cerita singkat per karya (magnet ringan) | Post-MVP; boleh dipercepat jika konten siap |
+| **M10 — Case / process detail** | Overlay dari bawah (bukan route): images, services, location or company, year, description; tile Work index membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026) |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
-| **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 kecuali Work case detail (M10); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022) |
+| **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
 
 ---
 
@@ -135,14 +135,14 @@ M5 Language ─── wraps ───► M1 Home, M2 About, M3 Contact, M6 Chrom
                               └── CTA soft ► M3 Contact
 
 M6 Chrome ── includes ► Theme toggle (ADR-021)
-M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 kecuali M10
+M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick Info tetap di Work index; sheet M10 overlay terpisah)
 
-M9 Work index (Must R1, ADR-020) ──► Post-MVP: M10 Case detail
+M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
 ```
 
 * M1 adalah pintu destination; M2 memperdalam trust; M3 menutup soft path.
 * M4 memberi sinyal bukti di permukaan tanpa memblok ship.
-* M9 Must R1 (ADR-020); M10 memperpanjang rantai narrative (ADR-004) di R2.
+* M9 Must R1 (ADR-020); M10 overlay sheet Must R1 (ADR-027); halaman `/work/[slug]` bukan R1.
 * M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).
 
 ---
@@ -153,7 +153,7 @@ M9 Work index (Must R1, ADR-020) ──► Post-MVP: M10 Case detail
 2. **Kurasi ketat** — teaser sedikit yang kuat > daftar panjang.
 3. **Soft by default** — Contact tidak berubah jadi sales page.
 4. **Bahasa sebagai lapisan** — bukan afterthought; konten inti dual.
-5. **Magnet detail tidak mencemari MVP** — M10 (case/process detail) eksplisit post-kerangka; M9 (Work index) sendiri sudah naik Must R1 (override ADR-020).
+5. **Magnet overlay, bukan halaman case** — M10 R1 = sheet dari bawah (ADR-027); `/work/[slug]` tetap di luar R1.
 6. **Satelit tetap satelit** — GitHub/LinkedIn mendukung, tidak menggantikan M1–M3.
 7. **Detail interaksi di UX** — dokumen ini tidak mengunci wireframe atau komponen UI.
 
@@ -163,8 +163,8 @@ M9 Work index (Must R1, ADR-020) ──► Post-MVP: M10 Case detail
 
 Modul dianggap cukup terdefinisi jika:
 
-1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M13
-2. M9 Must R1 (ADR-020); M10 tetap post-MVP; M13 overlay Must R1 (ADR-022)
+1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M10 + M13
+2. M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); M13 overlay Must R1 (ADR-022)
 3. Tidak ada modul yang bertentangan dengan brand primer / no-pricing
 4. Siap dipecah ke MoSCoW di `feature-priority.md` dan rilis di `release-roadmap.md`
 

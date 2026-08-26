@@ -46,6 +46,7 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 | `/` atau URL tanpa locale | Redirect ke locale default (geo → browser → preferensi setelah switcher) per ADR-014 |
 | Contact modal (tombol di chrome) | Overlay client-side; bukan route/page baru (ADR-019) |
 | Quick Info drawer (tab tepi kanan) | Overlay client-side; bukan route/page baru (ADR-022) |
+| Project sheet (tile Work index) | Overlay dari bawah; bukan route (ADR-027) |
 | Switcher | Navigasi ke sibling path locale; set preferensi untuk kunjungan `/` berikutnya saja |
 | Link satelit | Keluar situs (GitHub/LinkedIn) |
 | `mailto:` / form modal | Dibuka klien email pengguna, atau submit ringan dari form modal (ADR-019) — bukan API domain produk |

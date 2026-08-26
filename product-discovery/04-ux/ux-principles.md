@@ -81,8 +81,9 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 
 # Decision Rules
 
-* Menambah halaman Work/case ke R1 → Work index (M9) sudah masuk via ADR-020; case detail (M10) tetap butuh ADR baru.
-* Overlay Quick info **bukan** “halaman baru” (UX3) — formalisasi M13 via **ADR-022**; jangan jadikan route `/info`.
+* Overlay Quick info **bukan** “halaman baru” (UX3) — **ADR-022**; jangan jadikan route `/info`.
+* Overlay project sheet **bukan** “halaman baru” (UX3) — **ADR-027**; jangan jadikan `/work/[slug]` di R1.
+* Menambah halaman Work/case (`/work/[slug]`) → ADR baru. Work index (M9) + sheet M10 sudah Must R1.
 * Toggle tema Must R1 via **ADR-021**; default tetap light — mengubah default ship ke dark butuh ADR terpisah.
 * Mengangkat form/calendar/WA/IG ke Must Contact → keputusan Boss Rezi + ADR bila material.
 * Mengubah skema bahasa dari path prefix → ADR baru.

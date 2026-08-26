@@ -34,10 +34,11 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur. Label chrome: Proses Kerja / Process (ADR-020) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work teaser (di Home)** | 1–3 highlight karya/outcome singkat (bukan halaman detail) |
-| **Work index (M9)** | Halaman katalog karya `/[locale]/work` — naik dari Post-MVP (override ADR-020, 2026-08-15); bukan halaman detail case (M10 tetap Post-MVP) |
+| **Work index (M9)** | Halaman katalog karya `/[locale]/work` — Must R1 (ADR-020) |
+| **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |
 | **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
 | **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**); default ship tetap light |
-| **Quick Info panel (M13)** | Overlay global (tab kanan → drawer bio/Services/Tools/Works/Email/Links); semua halaman R1 kecuali Work case — **ADR-022** |
+| **Quick Info panel (M13)** | Overlay global (tab kanan → drawer); **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
 | **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
 | **Destination hygiene** | URL stabil, meta dasar, situs layak dibagikan sebagai link utama |
@@ -68,7 +69,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 # Out of Scope
 
-* Halaman detail case study / process per karya (M10, post-MVP / magnet phase) — halaman index Work (M9) sudah masuk Must R1 (ADR-020)
+* Halaman detail case `/work/[slug]` — bukan R1 (ADR-027); overlay sheet M10 sudah Must R1
 * Blog / writing hub / newsletter sebagai fitur inti
 * CMS, auth, dashboard, area private di situs
 * Pricing, paket jasa, checkout
@@ -92,7 +93,7 @@ MVP dianggap cukup jika:
 
 # Decision Rules
 
-* Menambah **halaman Work/detail case** ke definisi Must Have MVP → butuh keputusan eksplisit (geser ke opsi D atau release berikutnya). Work index (M9) sudah dinaikkan lewat ADR-020 (2026-08-15); detail case (M10) tetap butuh keputusan terpisah.
+* Menambah **halaman** Work/detail case (`/work/[slug]`) ke Must → ADR baru. Overlay M10 sudah Must R1 (ADR-027).
 * Menambah **harga / hard CTA** → bertentangan ADR-002 / ADR-008; ditolak kecuali ADR baru.
 * Form/calendar masuk Must Have hanya jika Boss Rezi mengunci kebutuhan itu.
 * Perubahan material MVP setelah Product Baseline → ADR baru.
@@ -108,7 +109,7 @@ MVP dianggap cukup jika:
 | MVP definition | **Baseline v1.0** (dokumen ini) |
 | Product Baseline | **v1.0** — ADR-012 |
 | Work index (M9) di MVP | Ya — Must R1 (override ADR-020) |
-| Case detail (M10) di MVP | Tidak (magnet bertahap) |
+| Case detail (M10) di MVP | Overlay sheet Must R1 (ADR-027); route `/work/[slug]` tidak |
 | Contact | Modal global, bukan halaman (ADR-019) |
 | Quick Info (M13) | Ya — Must R1 (ADR-022) |
 | Theme toggle | Ya — Must R1 (ADR-021), default ship light |
