@@ -7,11 +7,11 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 1. **T-026** — project context sheet (M10 overlay, ADR-027) **sebelum T-018**. Mulai **T-026.1** (copy/slot dikunci Boss Rezi). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 2. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — **T-021.2** (Home) hampir selesai (teaser menunggu daftar karya); **T-021.1**, **T-021.3**, **T-021.4**, **T-021.5** ✅ selesai. Sisa: T-021.6 (Quick Info) / T-021.7 (meta).
 3. **T-018** (exit R1) **ditunda** sampai T-021.1–T-021.7 **dan T-026**.
-3. **T-022** — penyesuaian desain mobile (paritas mockup → kode) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
-5. **T-024** — redesain visual About di kode produksi (ADR-024) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-6. **T-025** — craft Hess/Mazur (ADR-025) ✅ Done (T-025.1–T-025.11). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-7. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
+4. **T-022** — penyesuaian desain mobile (paritas mockup → kode) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+5. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
+6. **T-024** — redesain visual About di kode produksi (ADR-024) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+7. **T-025** — craft Hess/Mazur (ADR-025) ✅ Done (T-025.1–T-025.11). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+8. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
 
 ## Indeks release
 

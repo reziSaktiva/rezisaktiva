@@ -121,7 +121,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M10 — Case / process detail** | Overlay dari bawah (bukan route): images, services, location or company, year, description; tile Work index membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026) |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
-| **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 kecuali Work case detail (M10); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022) |
+| **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
 
 ---
 
@@ -163,7 +163,7 @@ M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, A
 
 Modul dianggap cukup terdefinisi jika:
 
-1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M13
+1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M10 + M13
 2. M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); M13 overlay Must R1 (ADR-022)
 3. Tidak ada modul yang bertentangan dengan brand primer / no-pricing
 4. Siap dipecah ke MoSCoW di `feature-priority.md` dan rilis di `release-roadmap.md`

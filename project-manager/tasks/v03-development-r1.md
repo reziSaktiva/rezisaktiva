@@ -116,12 +116,12 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 * **Status:** ✅ Done (T-020.2, 2026-08-19)
 * **Domain:** UI/UX
 * **Baca dulu:** `product-discovery/02-product/feature-modules.md` (M13), `04-ux/navigation-patterns.md` (Secondary — Quick info), `key-screen-patterns.md` (S0), `ux-principles.md` (overlay ≠ halaman baru, UX3), ADR-019, ADR-022, `design-mockups/shared.js` (`mountQuickInfo()`), `design-mockups/home.html`
-* **Catatan:** M13 naik jadi Must R1 lewat ADR-022 (2026-08-16). Overlay global (tab tepi kanan → drawer), **bukan route baru**. Tampil di semua halaman R1 kecuali Work case detail (M10). Jangan duplikasi Contact modal (ADR-019) atau footer satelit (M6): Email/Links di panel = tautan/rujukan, bukan form inbound.
-* **Implementasi:** `app/[locale]/_components/quick-info.tsx` di locale layout; copy `content/quick-info.ts` (final: T-021.6). Exclude Work case belum relevan (M10 belum ada).
+* **Catatan:** M13 Must R1 (ADR-022). Overlay global (tab tepi kanan → drawer), **bukan route baru**. Tampil di semua halaman R1 **termasuk Work index**; sheet M10 (ADR-027) overlay terpisah — jangan exclude Quick Info. Jangan duplikasi Contact modal (ADR-019) atau footer satelit (M6).
+* **Implementasi:** `app/[locale]/_components/quick-info.tsx` di locale layout; copy `content/quick-info.ts` (final: T-021.6). T-026 menutup Quick Info jika sheet terbuka (pola `rz-contact-open`), bukan unmount permanen di `/work`.
 
 ### Subtasks
 
-- [x] **T-020.2** — Komponen overlay (tab tepi kanan → drawer, focus trap, Astryx + overlay custom per ADR-018/ADR-022); mount di chrome global; **exclude** di Work case detail; jangan wire form Contact ke dalam drawer
+- [x] **T-020.2** — Komponen overlay (tab tepi kanan → drawer, focus trap, Astryx + overlay custom per ADR-018/ADR-022); mount di chrome global; jangan wire form Contact ke dalam drawer
 
 ---
 

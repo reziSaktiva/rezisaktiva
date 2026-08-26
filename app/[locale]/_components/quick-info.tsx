@@ -20,7 +20,7 @@ import { CloseIcon } from "./overlay-icons";
 /**
  * Quick Info overlay (T-020.2, ADR-022) — tab tepi kanan → drawer.
  * Visual dari `design-mockups/shared.js` `mountQuickInfo()` + `.qi-*`.
- * Bukan route; bukan form Contact. Exclude Work case (M10) menyusul R2.
+ * Bukan route; bukan form Contact. Tetap di Work index (ADR-027); sheet M10 overlay terpisah.
  */
 export function QuickInfo({ locale }: { locale: Locale }) {
   const copy = QUICK_INFO_COPY[locale];

@@ -19,7 +19,7 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 **Phase:** Development R1
 **Summary:** Boss Rezi ingin sheet per proyek dikerjakan **sebelum** rencana exit R1 (bukan setelah T-018 / R2).
 **Key Decision/Insight:** ADR-027 diubah: M10 overlay = Must R1; T-026 di v03; T-018 menunggu T-021 + T-026. ADR-026 tetap: tidak migrasi shadcn di R1.
-**Impact:** TASKS/PROJECT_STATE/v03; product-discovery 02/04/05; hapus v04.
+**Impact:** TASKS/PROJECT_STATE/v03; product-discovery 02/04/05; copy sheet di T-026.1 (bukan v10 T-021).
 
 ## [2026-08-26] — Migrasi Astryx → shadcn (diskusi)
 

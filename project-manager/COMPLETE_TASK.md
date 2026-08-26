@@ -16,12 +16,19 @@ Format entri:
 
 ## [2026-08-26]
 ### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- Review PR #48: v10 selaras T-026.1 / T-018; M13 tidak exclude Work index; penomoran Fokus TASKS; F7 = buka sheet; kriteria Must termasuk M10.
+
+## [2026-08-26]
+### Added
 - **ADR-026** — Astryx sampai exit R1; evaluasi shadcn hanya setelah T-018.
 - **ADR-027** — M10 Must R1 = project sheet dari bawah; **T-026** di `v03-development-r1.md` **sebelum T-018**.
 ### Changed
 - T-018 menunggu T-021.1–T-021.7 **dan T-026**. Fokus TASKS: T-026 dulu.
 - Baseline produk/UX/arsitektur: M10 overlay Must R1; `/work/[slug]` tetap bukan R1.
-- File `tasks/v04-r2-magnet.md` dihapus (T-026 bukan R2).
 ### Fixed
 - (tidak ada)
 

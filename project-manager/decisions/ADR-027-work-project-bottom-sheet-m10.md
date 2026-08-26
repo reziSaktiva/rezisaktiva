@@ -46,7 +46,7 @@ Ini **override** ADR-020 (M10 tetap R2) dan ADR-010 (tanpa magnet detail di MVP)
 - `04-ux/information-architecture.md`, `key-screen-patterns.md`, `navigation-patterns.md`, `user-flows.md`, `ux-principles.md`
 - `05-architecture/application-layer.md`, `domain-model.md`
 - Task **T-026** di `tasks/v03-development-r1.md`; **T-018** menunggu T-026
-- File `tasks/v04-r2-magnet.md` dihapus (T-026 bukan R2)
+- Copy sheet: **T-026.1** (bukan T-021 / v10)
 
 ### Update — 2026-08-26 (urutan)
 
