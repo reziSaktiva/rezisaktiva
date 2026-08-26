@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-26] — T-025.9: scrollbar mengikuti tema
+
+**Phase:** Development R1
+**Summary:** Setelah T-025.8 (track tetap terlihat saat transisi), Boss Rezi minta tampilan scrollbar native (bentuk, warna, ketebalan) diselaraskan ke tema situs — bukan OS default.
+**Key Decision/Insight:** Lanjut sebagai **T-025.9** di parent T-025 (bukan parent baru). Palet tetap `rezisaktiva` (ADR-025 / ADR-018), bukan Hess. Token CSS, light+dark, Firefox+WebKit. Jangan regresi T-025.8.
+**Impact:** v03 T-025 dibuka lagi (T-025.9 open); TASKS Fokus; Snapshot PROJECT_STATE.
+
 ## [2026-08-24] — Handoff: transisi Hess, sisa scrollbar track
 
 **Phase:** Development R1

@@ -137,12 +137,19 @@ export function SlidingPillGroup({
       resetToActive(true);
     };
 
+    /**
+     * Klik mouse menyisakan :focus di link nav, tapi biasanya bukan
+     * :focus-visible. onLeave dulu menahan reset selama ada fokus di chip
+     * — pill tidak kembali ke item terpilih sampai klik di luar. Keyboard
+     * (Tab) tetap menahan pill lewat :focus-visible.
+     */
     const onLeave = () => {
       const activeEl = document.activeElement;
       if (
         activeEl instanceof HTMLElement &&
         container.contains(activeEl) &&
-        activeEl !== container
+        activeEl !== container &&
+        activeEl.matches(":focus-visible")
       ) {
         return;
       }
@@ -156,6 +163,15 @@ export function SlidingPillGroup({
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     resetToActive(!reduced);
+    const leftoverFocus = document.activeElement;
+    if (
+      leftoverFocus instanceof HTMLElement &&
+      container.contains(leftoverFocus) &&
+      leftoverFocus !== container &&
+      !leftoverFocus.matches(":focus-visible")
+    ) {
+      leftoverFocus.blur();
+    }
 
     const snap = () => resetToActive(false);
     const observer = new ResizeObserver(snap);
