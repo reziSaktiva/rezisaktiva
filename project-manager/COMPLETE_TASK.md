@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-08-26]
 ### Added
+- (tidak ada)
+### Changed
+- **T-025.9** — scrollbar dokumen (track + thumb) mengikuti tema `rezisaktiva`: thin, pill, `--rz-scrollbar-*` (muted / text-secondary / text-primary). Light+dark. Firefox `scrollbar-color` + WebKit. Tidak diterapkan ke `.ct-panel` (ink tetap). T-025.8 tidak diubah.
+- T-025 parent ✅ Done (T-025.1–T-025.9). Catatan singkat di `design-tokens.md`. Snapshot / TASKS / v03: next = T-021.6.
+### Fixed
+- Scrollbar native masih gaya OS default (abu-abu) setelah track dipertahankan di T-025.8.
+
+## [2026-08-26]
+### Added
 - **T-025.9** (open) — tampilan scrollbar native (track + thumb: bentuk, warna, ketebalan) mengikuti tema `rezisaktiva`; token CSS; light/dark; Firefox + WebKit; jangan regresi T-025.8.
 ### Changed
 - T-025 parent ⏳ In Progress lagi (T-025.1–T-025.8 tetap ✅). Snapshot / TASKS / v03: T-025.9 boleh paralel dengan T-021.6.

@@ -73,6 +73,18 @@
     inset 0 2px 5px rgb(20 24 31 / 0.22),
     inset 0 1px 0 rgb(255 255 255 / 0.16),
     0 1px 2px rgb(20 24 31 / 0.1);
+  /*
+   * T-025.9 — scrollbar native. `<html>` di luar @scope Astryx
+   * (`[data-astryx-theme]`), jadi jangan `var(--color-*)` di sini (tidak
+   * resolve). Nilai = token tema `rezisaktiva`:
+   * track `--color-background-muted`, thumb `--color-text-secondary`,
+   * hover `--color-text-primary`. Bukan palet Hess. Prefix `--rz-*`
+   * supaya tidak menimpa `--color-*` di :root (xds / ADR-018).
+   */
+  --rz-scrollbar-size: 0.5rem;
+  --rz-scrollbar-track: #e4dfd1;
+  --rz-scrollbar-thumb: #6e6a5f;
+  --rz-scrollbar-thumb-hover: #14181f;
 }
 
 html[data-theme="dark"],
@@ -92,6 +104,9 @@ html[style*="color-scheme:dark"] {
     inset 0 2px 5px rgb(0 0 0 / 0.45),
     inset 0 1px 0 rgb(255 255 255 / 0.1),
     0 1px 2px rgb(0 0 0 / 0.35);
+  --rz-scrollbar-track: #121a2b;
+  --rz-scrollbar-thumb: #9b968a;
+  --rz-scrollbar-thumb-hover: #edeae1;
 }
 
 /*
@@ -121,6 +136,47 @@ html[data-theme="dark"],
 html[data-theme="dark"] body {
   background-color: #0a0f1a;
   color: #edeae1;
+}
+
+/*
+ * T-025.9: track + thumb mengikuti tema (thin, pill). Jangan
+ * `scrollbar-width: none` — track harus tetap kelihatan (T-025.8).
+ * Hanya scrollbar dokumen (`html`). `.ct-panel` mereset `scrollbar-color`
+ * ke `auto` karena properti itu mewaris — kartu Contact ink-tetap.
+ */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rz-scrollbar-thumb) var(--rz-scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+  width: var(--rz-scrollbar-size);
+  height: var(--rz-scrollbar-size);
+}
+
+html::-webkit-scrollbar-track {
+  background-color: var(--rz-scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--rz-scrollbar-thumb);
+  background-clip: padding-box;
+  border: 0.125rem solid var(--rz-scrollbar-track);
+  border-radius: 1rem;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--rz-scrollbar-thumb-hover);
+}
+
+html::-webkit-scrollbar-corner {
+  background-color: var(--rz-scrollbar-track);
+}
+
+html::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */
@@ -1414,6 +1470,10 @@ html[data-theme="dark"] body {
   width: min(880px, calc(100vw - 2rem));
   max-height: calc(100vh - 3rem);
   overflow: auto;
+  /* T-025.9: `scrollbar-color` mewaris dari html — kembalikan default
+   * supaya gutter cream tidak muncul di kartu ink tema-independen. */
+  scrollbar-width: auto;
+  scrollbar-color: auto;
   border-radius: 1.5rem;
   background: #0a0f1a;
   color: #ede9e1;

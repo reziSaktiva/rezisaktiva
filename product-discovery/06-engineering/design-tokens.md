@@ -75,6 +75,7 @@ Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tet
 | `--color-fg` | Ink primer | Near-white soft | Teks utama |
 | `--color-fg-muted` | Abu untuk supporting | Abu terang | Meta, supporting |
 | `--color-border` | Hairline lembut | Border gelap lembut | Pemisah lean (bukan card-heavy) |
+| Native scrollbar (T-025.9) | Track muted `#e4dfd1`, thumb secondary `#6e6a5f` | Track `#121a2b`, thumb `#9b968a` | Dokumen `html` di `app/globals.css` (`--rz-scrollbar-*`, nilai = token di atas). Thin + pill. Bukan OS default, bukan palet Hess. Jangan disembunyikan (T-025.8). |
 
 ---
 
@@ -175,6 +176,7 @@ Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.c
 | Dark | Fondasi via prop `mode` di `Theme`; toggle UI = **Must R1 (ADR-021)**; default tetap light |
 | Nilai visual | Kanvas + aksen di tema built `rezisaktiva` (asal R1: arsip `shared.css`; SoT hidup = kode tema, ADR-024) |
 | Motion | Bagian identitas visual (ADR-017), hierarchy-first; Lenis + page overlay (ADR-025) |
+| Native scrollbar | Tema `rezisaktiva` (T-025.9) — `--rz-scrollbar-*` di `app/globals.css`, bukan `--color-*` di `:root` |
 | Baseline Engineering | ADR-016; superseded sebagian oleh **ADR-018** (styling/token) |
 
 ---
