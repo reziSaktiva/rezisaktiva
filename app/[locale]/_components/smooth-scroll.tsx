@@ -1,7 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type Lenis from "lenis";
 import { ReactLenis, useLenis } from "lenis/react";
+
+let lenisForTransition: Lenis | null = null;
+
+export function readWindowScrollY(): number {
+  if (lenisForTransition) {
+    return lenisForTransition.scroll;
+  }
+  return window.scrollY || document.documentElement.scrollTop || 0;
+}
+
+/** Setelah clone terpasang: Lenis + native ke 0 supaya halaman baru tidak nyembul di viewport yang masih di tengah/bawah (mobile). */
+export function freezeWindowScrollAtTop(): void {
+  if (lenisForTransition) {
+    lenisForTransition.stop();
+    lenisForTransition.scrollTo(0, { immediate: true, force: true });
+  }
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -27,6 +48,7 @@ function OverlayLenisPause() {
       return;
     }
 
+    lenisForTransition = lenis;
     const sync = () => {
       if (isOverlayLocked()) {
         lenis.stop();
@@ -41,7 +63,12 @@ function OverlayLenisPause() {
       attributes: true,
       attributeFilter: ["class"],
     });
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (lenisForTransition === lenis) {
+        lenisForTransition = null;
+      }
+    };
   }, [lenis]);
 
   return null;

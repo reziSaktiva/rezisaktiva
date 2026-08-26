@@ -256,9 +256,18 @@ export function AboutPage({ locale }: { locale: Locale }) {
                 className="about-lead"
                 label={copy.lead2}
                 rest={
-                  <Text color="secondary" display="block">
-                    {copy.lead1}
-                  </Text>
+                  <VStack gap={3}>
+                    <Text
+                      color="secondary"
+                      display="block"
+                      className="about-lead-rest"
+                    >
+                      {copy.lead1}
+                    </Text>
+                    <HStack className="about-lead-more" aria-hidden="true">
+                      <Icon icon="chevronDown" size="sm" color="accent" />
+                    </HStack>
+                  </VStack>
                 }
                 active={
                   <Text color="secondary" display="block">

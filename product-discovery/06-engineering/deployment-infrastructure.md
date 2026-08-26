@@ -81,10 +81,11 @@ Detail pipeline CI tambahan (lint/typecheck di GitHub Actions vs hanya Vercel) �
 | Aspek | Keputusan R1 |
 | ----- | ------------ |
 | TLS | Disediakan Vercel (HTTPS) |
-| Domain kustom | Ya — diarahkan ke project Vercel saat bootstrap/go-live |
-| Apex + `www` | Satu canonical; sisanya redirect (detail saat setup domain) |
+| Domain kustom | Ya — diarahkan ke project Vercel |
+| Canonical | `https://rezisaktiva.space` (apex; dikunci Boss Rezi 2026-08-26) |
+| Apex + `www` | Canonical = apex; `www` (jika dipakai) redirect ke apex |
 
-Nama domain final dikunci saat go-live; dokumen ini mengunci **cara** (Vercel + TLS), bukan string hostname.
+Nama domain production: **`https://rezisaktiva.space`**. Hosting tetap Vercel + TLS.
 
 ---
 

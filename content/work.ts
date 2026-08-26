@@ -89,7 +89,7 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
       imageSrc: WORK_IMAGES["5"],
       year: "2026",
       featured: true,
-      href: "https://rezisaktiva.vercel.app",
+      href: "https://rezisaktiva.space",
     },
     {
       id: "6",
@@ -169,7 +169,7 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
       imageSrc: WORK_IMAGES["5"],
       year: "2026",
       featured: true,
-      href: "https://rezisaktiva.vercel.app",
+      href: "https://rezisaktiva.space",
     },
     {
       id: "6",

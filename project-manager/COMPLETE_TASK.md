@@ -16,6 +16,30 @@ Format entri:
 
 ## [2026-08-26]
 ### Added
+- **T-025.11** — pembeda visual pada lead About saja: underline titik + chevron (tanpa copy baru).
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- **T-025.10** — anti-kedip transisi halaman di mobile setelah scroll tengah/bawah.
+### Changed
+- Clone selalu digeser `-scrollY`; Lenis+window di-reset ke 0 setelah snapshot; parkir live `visibility: hidden` + `100dvh`; `scrollTo` di awal enter dihapus.
+### Fixed
+- Halaman baru sempat nyembul di viewport yang masih di posisi scroll lama (terlihat sebagai kedip kecil saat enter).
+
+## [2026-08-26]
+### Added
+- Canonical production URL dikunci: `https://rezisaktiva.space` (`CONVERSATIONS.md`).
+### Changed
+- `.env.example`, `deployment-infrastructure.md` § Domain, katalog `NEXT_PUBLIC_SITE_URL`, catatan T-017, tautan karya portofolio di `content/work.ts` — dari contoh `vercel.app` ke domain kustom.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
 - (tidak ada)
 ### Changed
 - (tidak ada)
