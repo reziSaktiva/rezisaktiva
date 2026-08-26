@@ -1674,10 +1674,21 @@ html.qi-lock {
  * Transisi halaman = snapshot CSS (ritme karolinahess.com).
  * Live page diparkir di bawah viewport sampai enter — tampil lebih dulu
  * = kedip. Selector live tidak boleh mengenai clone.
+ *
+ * T-025.8: Lenis.stop() menambah .lenis-stopped { overflow: clip } dan
+ * menelan scrollbar track. Tetap tampilkan track (overflow-y: scroll);
+ * wheel tetap diblokir Lenis. Jangan overflow: hidden pada html/body.
+ * Specificity harus mengalahkan `.lenis.lenis-stopped` (3 class).
  */
 html.page-vt-lock,
 html.page-vt-lock body {
   background-color: var(--color-background-body);
+}
+
+html.page-vt-lock,
+html.lenis.page-vt-lock.lenis-stopped {
+  overflow-x: clip;
+  overflow-y: scroll;
 }
 
 .page-vt-clone {

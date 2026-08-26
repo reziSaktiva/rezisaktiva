@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- **T-025.8** — scrollbar track tetap terlihat selama transisi halaman. `Lenis.stop()` masih pause inersia; CSS `html.page-vt-lock` / `html.lenis.page-vt-lock.lenis-stopped` memakai `overflow-y: scroll` supaya `.lenis-stopped { overflow: clip }` tidak menelan track. Ritme exit-enter dan palet tidak diubah. Branch `feat/page-transition-hess-rhythm`.
+- T-025 parent ✅ Done (T-025.1–T-025.8). Snapshot / TASKS / v03: next = T-021.6.
+### Fixed
+- Scrollbar track hilang saat pindah halaman karena `overflow: clip` dari Lenis stopped.
+
 ## [2026-08-24]
 ### Added
 - (tidak ada)

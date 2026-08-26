@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ✅ Done. **T-024** (redesain visual About, ADR-024) ✅ Done. **T-025** (craft Hess/Mazur, ADR-025) ⏳ T-025.1–T-025.7 ✅ / T-025.8 open.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, meta — sesuai Product/UX baseline (ADR-010, ADR-014, ADR-019, ADR-020, ADR-021, ADR-022) dan Astryx (ADR-018). Bukan magnet R2 (Work case/detail penuh — M10). **T-022** (paritas mobile vs mockup 2026-08-20) ✅ Done. **T-024** (redesain visual About, ADR-024) ✅ Done. **T-025** (craft Hess/Mazur, ADR-025) ✅ Done.
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -160,7 +160,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-025 — Craft pass Hess/Mazur (ADR-025)
 
-* **Status:** ⏳ In Progress (T-025.1–T-025.7 ✅; **T-025.8** open — scrollbar track tetap terlihat selama transisi, seperti karolinahess.com)
+* **Status:** ✅ Done (T-025.1–T-025.8, 2026-08-26)
 * **Domain:** UI/UX
 * **Baca dulu:** ADR-025, ADR-017, ADR-006, ADR-019, ADR-024; `product-discovery/06-engineering/design-tokens.md` §Motion; `04-ux/key-screen-patterns.md` (S0 footer, S1, S2 rest/active); `01-business/competitor-analysis.md` (Hess/Mazur); `content/about.ts` + `content/home.ts` (copy dikunci — jangan tulis ulang); `app/[locale]/layout.tsx`, `about-page.tsx`, `home-page.tsx`, `work-page.tsx`, `site-footer.tsx`, `home-motion.tsx`; `.cursor/rules/xds.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`
 * **Keputusan:** About tetap M2; copy T-021 tidak diubah; palet/chrome 3D/Contact modal/Quick Info tetap; yang ditiru = ritme, tipe, interaksi, gerak. Lenis + page overlay di locale layout. Footer = pita Contact (buka modal yang ada). Jangan sentuh `design-mockups/`.
@@ -175,7 +175,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 - [x] **T-025.5** — Home/Work: tipe display lebih besar + hover tile/CTA; bukti/teaser tetap di depan
 - [x] **T-025.6** — QA: Home/About/Work; Quick Info + Contact selama Lenis; hamburger + pill 3D; light/dark; reduced-motion; sentuh (expand klik)
 - [x] **T-025.7** — Transisi halaman diselaraskan ke ritme karolinahess.com (snapshot CSS: 1s exit scale+naik, 0.4s enter dari bawah, delay 0.4s); warna tetap token tema
-- [ ] **T-025.8** — Selama transisi halaman, **scrollbar track tetap terlihat** (jangan dihilangkan / `overflow: hidden` yang menelan track). Acuan: [karolinahess.com](https://karolinahess.com/). Branch: `feat/page-transition-hess-rhythm`. File: `page-transition.tsx`, `globals.css` (`.page-vt-*`). Jangan ubah palet / ritme exit-enter yang sudah dikunci.
+- [x] **T-025.8** — Selama transisi halaman, **scrollbar track tetap terlihat** (jangan dihilangkan / `overflow: hidden` yang menelan track). Acuan: [karolinahess.com](https://karolinahess.com/). Branch: `feat/page-transition-hess-rhythm`. File: `page-transition.tsx`, `globals.css` (`.page-vt-*`). Jangan ubah palet / ritme exit-enter yang sudah dikunci. **Implementasi:** `Lenis.stop()` tetap (inersia mati), tapi `html.page-vt-lock` mengalahkan `.lenis-stopped { overflow: clip }` dengan `overflow-y: scroll` supaya track tidak hilang.
 
 ---
 

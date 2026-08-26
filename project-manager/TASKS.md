@@ -9,7 +9,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 3. **T-022** — penyesuaian desain mobile (paritas mockup → kode) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 5. **T-024** — redesain visual About di kode produksi (ADR-024) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-6. **T-025** — craft Hess/Mazur (ADR-025) ⏳ T-025.1–T-025.7 ✅; **T-025.8** open (scrollbar track selama transisi). Branch: `feat/page-transition-hess-rhythm`. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+6. **T-025** — craft Hess/Mazur (ADR-025) ✅ Done (T-025.1–T-025.8). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 7. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
 
 ## Indeks release
@@ -18,7 +18,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
 | v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
-| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020, T-022, T-024, **T-025** | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ⏳ T-025.1–T-025.7 ✅ / T-025.8 open; T-018 ⏳ menunggu T-021) |
+| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020, T-022, T-024, **T-025** | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅; T-018 ⏳ menunggu T-021) |
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (T-021.2 hampir selesai, **T-021.1/T-021.3/T-021.4/T-021.5** ✅; **T-023** ⏸️ Deferred) |
 
 ## Aturan

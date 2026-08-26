@@ -169,6 +169,9 @@ function setLiveParked(parked: boolean): void {
 function applyDocumentLock(lock: boolean): void {
   const root = document.documentElement;
   if (lock) {
+    // page-vt-lock pauses Lenis (inertia) but CSS keeps overflow-y: scroll
+    // so the scrollbar track stays visible (T-025.8). Do not set overflow
+    // hidden/clip here.
     root.classList.add("page-vt-lock");
     root.classList.remove("page-vt-entering");
     setLiveParked(true);
