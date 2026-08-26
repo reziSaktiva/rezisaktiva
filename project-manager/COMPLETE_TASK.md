@@ -18,6 +18,14 @@ Format entri:
 ### Added
 - (tidak ada)
 ### Changed
+- (tidak ada)
+### Fixed
+- Pill nav (`.site-nav-chip`) tidak kembali ke item terpilih setelah pindah halaman lewat klik: `mouseleave` hanya menahan pill jika `:focus-visible` (keyboard); fokus sisa klik di-blur saat pathname berganti. `sliding-pill-group.tsx`.
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
 - **T-025.9 follow-up** — thumb scrollbar = kuning `--chip-bg` (`.site-nav-chip`) di light dan dark. Latar track muted tetap.
 ### Fixed
 - (tidak ada)
