@@ -1775,6 +1775,8 @@ html.qi-lock {
  * T-025.10: parkir live pakai visibility:hidden + 100dvh. translateY(100vh)
  * relatif ke dokumen — kalau user sudah scroll di mobile, halaman baru
  * nyembul di viewport. Scroll di-reset ke 0 setelah clone (JS).
+ * Selector `.site-footer` harus `:not(.page-vt-clone *)` supaya snapshot
+ * exit tetap menampilkan pita Contact (P2 PR #46).
  */
 html.page-vt-lock,
 html.page-vt-lock body {
@@ -1823,7 +1825,7 @@ html.lenis.page-vt-lock.lenis-stopped {
 }
 
 html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
-html.page-vt-lock:not(.page-vt-entering) .site-footer {
+html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
   transform: translateY(100vh);
   transform: translateY(100dvh);
   visibility: hidden;
@@ -1831,7 +1833,7 @@ html.page-vt-lock:not(.page-vt-entering) .site-footer {
 }
 
 html.page-vt-entering #astryx-app-shell-main,
-html.page-vt-entering .site-footer {
+html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   visibility: visible;
   animation: page-vt-enter var(--duration-page-enter) var(--ease-page-transition)
     both;
@@ -1842,9 +1844,9 @@ html.page-vt-entering .site-footer {
   .page-vt-clone,
   .page-vt-clone.is-exiting,
   html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
-  html.page-vt-lock:not(.page-vt-entering) .site-footer,
+  html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
   html.page-vt-entering #astryx-app-shell-main,
-  html.page-vt-entering .site-footer {
+  html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     animation: none !important;
     transform: none !important;
     visibility: visible !important;

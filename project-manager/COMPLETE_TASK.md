@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-26]
 ### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **P2 PR #46** — selector parkir transisi (`.site-footer`) tidak lagi mengenai footer di dalam `.page-vt-clone`; pita Contact tetap di snapshot exit.
+
+## [2026-08-26]
+### Added
 - **T-025.11** — pembeda visual pada lead About saja: underline titik + chevron (tanpa copy baru).
 ### Changed
 - (tidak ada)
