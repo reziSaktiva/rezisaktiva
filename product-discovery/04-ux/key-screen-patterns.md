@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan pola layar kunci (blok konten & hierarki) untuk R1 �
 
 # Overview
 
-Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process), **Contact**, plus **Chrome** (nav + switcher + footer + theme toggle + Quick info overlay) yang konsisten. Pola mendukung F1–F6 dan prinsip UX1–UX7.
+Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Kerja / How I Work), **Contact** (modal), **Work index + project sheet** (S4, ADR-027). Pola mendukung F1–F7 dan prinsip UX1–UX7.
 
 ---
 
@@ -24,10 +24,11 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 | Screen | Route | Jobs utama |
 | ------ | ----- | ---------- |
-| S0 Chrome | Global | J7, navigasi F1–F6 |
+| S0 Chrome | Global | J7, navigasi F1–F7 |
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
 | S2 About | `/[id/en]/about` | J4, E4 |
 | S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
+| S4 Work index + project sheet | `/[id/en]/work` + overlay M10 (ADR-027) | J2 |
 
 ---
 
@@ -39,7 +40,7 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 
 **Theme toggle (ADR-021):** kontrol dark/light di chrome; Must R1. Default ship tetap light — toggle tidak mengubah default. Di mobile (<1024px) tetap terlihat di luar hamburger (bersama Contact).
 
-**Quick info panel (ADR-022):** overlay global (tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links). Bukan route baru. Tampil di semua halaman R1 kecuali Work case detail. Bukan pengganti Contact modal atau footer satelit.
+**Quick info panel (ADR-022):** overlay global (tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links). Bukan route baru. Tampil di semua halaman R1 **termasuk Work index**; sheet M10 (ADR-027) overlay terpisah — jangan sembunyikan Quick Info karena sheet. Bukan pengganti Contact modal atau footer satelit.
 
 **Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020).
 
@@ -101,6 +102,14 @@ Empat “layar” R1: **Home**, **About** (label chrome: Proses Kerja / Process)
 5. Tanpa calendar, harga, WA, Instagram (form dikecualikan dari larangan ini per ADR-019)
 
 **Anti-pattern:** deretan ikon sosial setara Email; Contact *hanya* di footer tanpa modal/Email primer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi. Pita footer yang **membuka modal yang sama** (ADR-025) bukan pengganti Email primer di dalam modal.
+
+---
+
+### S4 — Work index + project sheet
+
+**Work index (`/work`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027) — images, services, location or company, year, description. Live/repo hanya di dalam sheet. Teaser Home tetap ke index.
+
+**Komponen:** Astryx `BottomSheet` dulu; fallback overlay custom dari bawah. Bukan `/work/[slug]` di R1.
 
 ---
 

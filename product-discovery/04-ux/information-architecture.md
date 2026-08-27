@@ -8,9 +8,9 @@ Dokumen ini menetapkan struktur informasi & halaman website portofolio **rezisak
 
 # Overview
 
-IA R1 = **tiga halaman konten** (Home, About, Work index) + **section teaser di Home** + **Contact & Quick Info sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
+IA R1 = **tiga halaman konten** (Home, About, Work index) + **section teaser di Home** + **Contact, Quick Info, dan project sheet sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
 
-> **Update (2026-08-15/16, ADR-019/ADR-020/ADR-021/ADR-022):** `/[id/en]/work` (Work index, M9) naik jadi Must R1. Contact **final sebagai modal global** (ADR-019) — route `/contact` terpisah **dihapus** dari IA (keputusan T-016 selesai, bukan lagi "belum final"). Theme toggle (ADR-021) dan Quick Info panel (ADR-022) melengkapi chrome. Halaman detail case (M10) tetap Later/R2.
+> **Update (2026-08-26, ADR-027):** M10 Must R1 = overlay sheet dari bawah (bukan `/work/[slug]`). Tile Work index membuka sheet.
 
 ---
 
@@ -36,11 +36,12 @@ Locale sebagai **path param** `[id/en]` — nilai ∈ `{ id, en }` (bukan query 
 Overlay global (bukan route, tampil di atas halaman manapun):
     • Contact modal      → dibuka dari tombol Contact di chrome (ADR-019)
     • Quick Info drawer  → dibuka dari tab tepi kanan (M13, ADR-022)
+    • Project sheet      → dibuka dari tile Work index (M10, ADR-027; dari bawah)
 ```
 
-Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019).
+Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). **Tidak ada** route `/work/[slug]` di R1.
 
-**Bukan R1 (Later / R2):** detail case per karya (M10), blog, auth area.
+**Bukan R1 (Later / R2):** halaman case `/work/[slug]`, blog, auth area.
 
 ---
 
@@ -52,15 +53,16 @@ Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` 
 2. Primary nav: Home · About (label lokal **ID "Proses Kerja"** / **EN "Process"**, ADR-020) · Karya (M9, override ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
 3. Language switcher (`ID` ↔ `EN`) → URL path sibling
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship tetap light
-5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru. Tampil di semua halaman R1 kecuali Work case detail (**ADR-022**)
-6. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
-7. Mobile (<1024px): nav halaman + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
+5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
+6. **Project sheet (M10)** — overlay dari bawah dari tile Work index; bukan rute baru (**ADR-027**)
+7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
+8. Mobile (<1024px): nav halaman + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
 
 ### Home (urutan konten)
 
 1. **Hero / first viewport** — positioning product builder (+ sinyal fullstack & AI edge)
 2. **Credibility line (bukti non-kartu)** — **satu** klaim singkat pengalaman/outcome (bukan grid, bukan list stack). Contoh bentuk: “~6 tahun fullstack · shipped produk live” — mendukung hero, **bukan** menggantikan teaser
-3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome · tautan bukti opsional. Ini **satu-satunya** blok karya di Home; jangan duplikasi isi credibility line sebagai daftar project
+3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome; klik ke Work index (bukan langsung live/repo)
 4. **Arah soft** — ke About dan/atau Contact
 5. **Availability line** (Should, opsional)
 
@@ -97,8 +99,9 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | `/[id/en]/work` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
 | Chrome global | Nav + switcher + footer + theme toggle | M5, M6 | Must (toggle: ADR-021) |
 | Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
-| Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022); exclude Work case |
-| `/[id/en]/work/[slug]` (detail case) | Work case detail | M10 | Later R2 |
+| Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022) |
+| Overlay global | Project context sheet (bukan path) | M10 | Must (ADR-027); dari bawah; tile Work index |
+| `/[id/en]/work/[slug]` | Work case sebagai halaman | — | Bukan R1 (ADR-027) |
 
 ---
 
@@ -164,7 +167,7 @@ Sebelum R1 dianggap siap live:
 
 * Menambah rute konten R1 baru → ADR + update Product bila perlu
 * Mengubah skema locale (hapus path prefix) → ADR baru
-* Memasukkan Work index ke inventory Must → sudah terjadi via ADR-020 (2026-08-15), override sebagian ADR-010; Work case detail (M10) masih butuh keputusan terpisah
+* Memasukkan Work index ke inventory Must → ADR-020. Overlay M10 Must R1 → **ADR-027**. Route `/work/[slug]` tetap butuh ADR baru.
 * Contact sebagai modal (bukan route) → final via ADR-019; T-016 selesai, jangan tambah route `/contact` tanpa ADR baru
 
 ---

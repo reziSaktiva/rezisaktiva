@@ -8,9 +8,9 @@ Dokumen ini mendefinisikan alur pengguna website portofolio **rezisaktiva** untu
 
 # Overview
 
-Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi singkat → soft next step. Bukan flow CMS, auth, atau case detail.
+Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi singkat → soft next step. Bukan flow CMS, auth, atau halaman case `/work/[slug]`.
 
-> **Update (2026-08-15/16, ADR-019/ADR-020):** Work index (`/work`, M9) naik Must R1 — boleh dikunjungi di F1/F2. Contact final sebagai modal global (ADR-019), bukan navigasi ke halaman baru.
+> **Update (2026-08-26, ADR-027):** F7 = buka **project sheet** (overlay dari bawah) dari tile Work index. Route `/work/[slug]` tetap di luar R1.
 
 ---
 
@@ -32,7 +32,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 | F4 | Cek sinyal hiring | P3 | Sekunder tipis |
 | F5 | Soft outreach klien | P4 | Sekunder tipis |
 | F6 | Share URL ke tim | P1/P2 | Primer sosial |
-| F7 | Baca case detail | — | Later R2 (bukan R1) |
+| F7 | Buka project sheet | P1/P2 | Primer (M10 overlay, ADR-027) |
 
 ---
 
@@ -44,8 +44,9 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 2. **Home** — baca first viewport (positioning)
 3. Skim **credibility line** (1 klaim non-kartu) + **work teaser** (1–3 kartu karya)
 4. Opsional: buka **About** atau **Work index** (`/work`, M9) bila butuh detail lebih
-5. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
-6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
+5. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
+6. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
+7. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
 
 **Failure modes:** Home = daftar stack; Contact tersembunyi; tidak ada Email jelas.
 
@@ -55,7 +56,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. Masuk Home (clarity)
 2. Ke **About** — cara berpikir / kolaborasi / AI edge jujur
-3. Kembali atau lanjut cek **teaser** outcome di Home / **Work index**
+3. Kembali atau lanjut cek **teaser** outcome di Home / **Work index** (tile membuka sheet, F7)
 4. **Contact modal** — Email primer (ADR-019)
 5. Sukses: cukup sinyal profesional + product thinking untuk outreach soft
 
@@ -84,6 +85,18 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 ---
 
+### F7 — Buka project sheet (ADR-027)
+
+1. User di **Work index** (`/[locale]/work`) — teaser Home hanya mengantar ke index, bukan membuka sheet
+2. Klik **tile karya** (bukan URL live/repo)
+3. **Sheet dari bawah** terbuka: images, services, location or company, year, description
+4. Opsional: tautan live/repo **di dalam sheet** (tab baru); tutup sheet (Escape / scrim / kontrol tutup)
+5. Sukses: paham proyek apa dan bagaimana dikerjakan tanpa meninggalkan situs lebih dulu
+
+**Failure modes:** tile langsung keluar ke GitHub/live; sheet kosong/dikarang; Quick Info hilang dari Work index.
+
+---
+
 # Secondary Flows
 
 ### F4 — Hiring sinyal (SC4)
@@ -104,7 +117,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 # Out of Scope Flows (R1)
 
-* F7 case detail per karya (M10) — katalog Work index (M9) sendiri sudah Must R1 (ADR-020), bukan lagi out of scope
+* Halaman case `/work/[slug]` (bukan overlay F7)
 * Calendar booking
 * Chat WA / DM Instagram sebagai jalur Contact
 * Login, CMS, personalisasi akun
@@ -113,9 +126,9 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 # Success Criteria
 
-* F1–F3 dan F6 terdokumentasi sebagai primer
+* F1–F3, F6, dan **F7** (project sheet) terdokumentasi sebagai primer
 * F4–F5 tipis pada permukaan yang sama
-* F7 eksplisit Later
+* Route `/work/[slug]` eksplisit di luar R1
 * Failure modes mengunci anti-pattern di key screens
 
 ---

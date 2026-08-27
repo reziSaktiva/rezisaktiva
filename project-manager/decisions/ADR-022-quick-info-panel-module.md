@@ -51,3 +51,7 @@ Accepted
 ### Update — 2026-08-16
 
 Task ID resmi untuk implementasi: **T-020** (`v03-development-r1.md`), subtask T-020.1 (konten) + T-020.2 (komponen overlay).
+
+### Update — 2026-08-26 (ADR-027)
+
+Pengecualian “Work case detail” di keputusan asli merujuk **halaman** `work-case.html` / `/work/[slug]`. M10 R1 = **overlay sheet**, bukan halaman itu. Quick Info **tetap tampil di Work index**. Jangan unmount Quick Info karena M10. Saat sheet terbuka, tutup Quick Info sementara (pola Contact), lalu tab tetap ada.
