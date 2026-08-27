@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
 import { Section } from "@astryxdesign/core/Section";
@@ -9,7 +9,7 @@ import { VStack } from "@astryxdesign/core/VStack";
 import { WORK_ITEMS, WORK_PAGE_COPY } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 import { Reveal, WordReveal } from "./home-motion";
-import { ProjectSheet } from "./project-sheet";
+import { PROJECT_SHEET_ID, ProjectSheet } from "./project-sheet";
 import { WorkTile } from "./work-tile";
 
 type WorkGridItem = { id: string; featured: boolean };
@@ -56,6 +56,7 @@ export function WorkPage({ locale }: { locale: Locale }) {
   const copy = WORK_PAGE_COPY[locale];
   const items = WORK_ITEMS[locale];
   const [openId, setOpenId] = useState<string | null>(null);
+  const closeSheet = useCallback(() => setOpenId(null), []);
   const openItem = items.find((item) => item.id === openId) ?? null;
   const spanFullById = new Map(
     workTileLayout(items).map((slot) => [slot.id, slot.spanFull]),
@@ -93,6 +94,8 @@ export function WorkPage({ locale }: { locale: Locale }) {
                     featured={item.featured}
                     wide={wide}
                     onSelect={() => setOpenId(item.id)}
+                    sheetOpen={openId === item.id}
+                    sheetPanelId={PROJECT_SHEET_ID}
                   />
                 </Reveal>
               );
@@ -111,7 +114,7 @@ export function WorkPage({ locale }: { locale: Locale }) {
       <ProjectSheet
         locale={locale}
         item={openItem}
-        onClose={() => setOpenId(null)}
+        onClose={closeSheet}
       />
     </VStack>
   );

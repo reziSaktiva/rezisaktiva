@@ -25,8 +25,14 @@ function isRepoUrl(url: string): boolean {
   return url.includes("github.com");
 }
 
+export const PROJECT_SHEET_ID = "ps-panel";
+
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function prefersReducedMotionNow(): boolean {
+  return typeof window !== "undefined" && prefersReducedMotion();
 }
 
 /**
@@ -83,6 +89,8 @@ export function ProjectSheet({
 
   if (item && item !== visible) {
     setVisible(item);
+  } else if (!item && visible && prefersReducedMotionNow()) {
+    setVisible(null);
   }
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
@@ -198,6 +206,7 @@ export function ProjectSheet({
         className={isOpen ? "ps-scrim is-open" : "ps-scrim"}
         onClick={onClose}
         aria-hidden={!isOpen}
+        inert={!isOpen || undefined}
       />
       <VStack
         data-lenis-prevent=""
@@ -205,12 +214,13 @@ export function ProjectSheet({
       >
         <VStack
           ref={dialogRef}
-          id="ps-panel"
+          id={PROJECT_SHEET_ID}
           className="ps-panel"
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
           aria-hidden={!isOpen}
+          inert={!isOpen || undefined}
           gap={0}
           onTransitionEnd={(event) => {
             if (event.target !== dialogRef.current) {

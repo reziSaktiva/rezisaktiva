@@ -18,6 +18,14 @@ Format entri:
 ### Added
 - (tidak ada)
 ### Changed
+- Tile Work index: hit-area `button` terpisah (heading tetap di luar tombol); `aria-haspopup` / `aria-expanded` / `aria-controls` ke `#ps-panel`.
+### Fixed
+- Project sheet: `inert` saat tertutup; unmount konten segera jika reduced-motion (tanpa `transitionend`); `onClose` di Work index distabilkan.
+
+## [2026-08-27]
+### Added
+- (tidak ada)
+### Changed
 - (tidak ada)
 ### Fixed
 - ESLint `react-hooks/set-state-in-effect` di `project-sheet.tsx`: sinkronkan `visible` saat render (bukan di effect) supaya konten sheet tetap ada selama animasi tutup — CI lint-typecheck PR #49.

@@ -28,6 +28,8 @@ export function WorkTile({
   item,
   href,
   onSelect,
+  sheetOpen = false,
+  sheetPanelId,
   featured = false,
   wide = false,
 }: {
@@ -35,6 +37,8 @@ export function WorkTile({
   href?: string;
   /** Work index: buka sheet. Jangan dipakai bersama `href`. */
   onSelect?: () => void;
+  sheetOpen?: boolean;
+  sheetPanelId?: string;
   featured?: boolean;
   /** Full-row leftover tile (not featured copy) — same aspect as featured so it is not a tall 4/5 banner. */
   wide?: boolean;
@@ -92,12 +96,19 @@ export function WorkTile({
 
   if (onSelect) {
     return (
-      <VStack
-        as="button"
-        onClick={onSelect}
-        {...mergeProps(containerProps, { className })}
-      >
+      <VStack {...mergeProps(containerProps, { className })}>
         {inner}
+        <VStack
+          as="button"
+          className="home-work-tile-hit"
+          onClick={onSelect}
+          aria-label={item.name}
+          aria-haspopup="dialog"
+          aria-expanded={sheetOpen}
+          aria-controls={sheetPanelId}
+        >
+          {null}
+        </VStack>
       </VStack>
     );
   }
