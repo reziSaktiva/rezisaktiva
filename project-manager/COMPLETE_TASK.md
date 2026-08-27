@@ -16,6 +16,33 @@ Format entri:
 
 ## [2026-08-27]
 ### Added
+- Cursor ring kuning “X” (pola dialog Contact) pada scrim Quick Info dan project sheet.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- **T-026.6** — tinggi section sheet hug konten + padding; stagger reveal teks dan kartu galeri.
+### Changed
+- Project sheet tinggi 5/6 viewport (1/6 atas terbuka); radius 0.75rem di pojok kiri/kanan atas. Kartu galeri tidak lagi 100dvh.
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- **T-026.5** — project sheet overlay custom lebar penuh dari bawah (chrome Quick Info); info di viewport pertama, galeri pin dengan scroll vertikal → geser horizontal.
+### Changed
+- T-026 implementasi hidup: bukan Astryx `BottomSheet` (tidak ada prop lebar penuh).
+### Fixed
+- (tidak ada)
+
+
+
+
+## [2026-08-27]
+### Added
 - **T-026.1–T-026.4** — project context sheet (M10): data slot dari CV (`content/work-sheet.ts`); `BottomSheet` Astryx di Work index; tile membuka sheet, live/repo di dalam sheet; teaser Home tetap ke `/[locale]/work`.
 ### Changed
 - Fokus: T-026 ✅; T-018 menunggu sisa T-021.

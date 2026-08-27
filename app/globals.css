@@ -933,6 +933,12 @@ button.home-work-tile {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  [data-overlay-scrim] {
+    cursor: none;
+  }
+}
+
 @media (max-width: 767px) {
   .home-hero {
     min-height: 100svh;
@@ -979,7 +985,11 @@ button.home-work-tile {
   .qi-scrim,
   .qi-tab,
   .astryx-bottom-sheet,
-  .ps-body {
+  .ps-panel,
+  .ps-scrim,
+  .ps-gallery-track,
+  .ps-reveal,
+  .ps-reveal-media {
     transition: none !important;
     animation: none !important;
     opacity: 1 !important;
@@ -998,6 +1008,28 @@ button.home-work-tile {
   .qi-wrap.is-open .qi-panel {
     visibility: visible;
     transform: none !important;
+  }
+
+  .ps-panel {
+    visibility: hidden;
+  }
+
+  .ps-wrap.is-open .ps-panel {
+    visibility: visible;
+    transform: none !important;
+  }
+
+  .ps-gallery,
+  .ps-gallery-pin {
+    height: auto !important;
+  }
+
+  .ps-gallery-pin {
+    position: relative !important;
+    top: auto !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: auto;
   }
 
   .ct-panel {
@@ -1775,35 +1807,16 @@ html.ps-lock {
   overflow: hidden;
 }
 
+html.ps-lock .qi-tab,
+html.ct-lock .qi-tab {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .astryx-bottom-sheet {
   background: var(--color-background-canvas);
   color: var(--color-text-primary);
   font-family: "Satoshi", var(--font-family-body);
-}
-
-.ps-media {
-  position: relative !important;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background-color: var(--color-background-muted);
-}
-
-.ps-media img {
-  object-fit: cover;
-}
-
-.ps-title {
-  font-family: "General Sans", var(--font-family-heading);
-}
-
-.ps-label {
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.ps-description {
-  max-width: 42rem;
 }
 
 /*
@@ -2198,5 +2211,235 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 
   .qi-header {
     padding: 0.95rem 1rem 0.85rem;
+  }
+}
+
+/* Project sheet — overlay custom dari bawah, chrome sama dengan Quick Info. */
+.ps-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 84;
+  background: color-mix(in srgb, var(--color-text-primary) 28%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.ps-scrim.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ps-wrap {
+  display: contents !important;
+}
+
+.ps-panel {
+  position: fixed;
+  inset: calc(100dvh / 6) 0 0 0;
+  z-index: 86;
+  width: 100%;
+  height: auto !important;
+  overflow: hidden;
+  background: var(--color-background-surface);
+  color: var(--color-text-primary);
+  border-radius: 0.75rem 0.75rem 0 0;
+  transform: translateY(100%);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.55s linear;
+}
+
+.ps-wrap.is-open .ps-panel {
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.ps-scroll {
+  display: block !important;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.ps-header {
+  z-index: 2;
+}
+
+.ps-header .qi-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ps-sheet-body {
+  display: contents !important;
+}
+
+.ps-info {
+  padding: clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.25rem, 6vw, 5rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ps-info-title {
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: clamp(2rem, 6.5vw, 4.75rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  max-width: 16ch;
+  margin: 0 0 1.75rem;
+}
+
+.ps-info-meta {
+  max-width: 42rem;
+}
+
+.ps-description {
+  max-width: 42rem;
+  margin-block-end: 1.25rem;
+}
+
+.ps-gallery {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.ps-gallery-pin {
+  position: sticky;
+  top: var(--ps-header-h, 4.5rem);
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-block: clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 4vw, 3rem);
+  touch-action: pan-y;
+}
+
+.ps-gallery-track {
+  width: max-content !important;
+  flex-shrink: 0;
+  padding-inline: clamp(1.25rem, 6vw, 5rem);
+  will-change: transform;
+}
+
+.ps-gallery-item {
+  position: relative !important;
+  flex: 0 0 min(85vw, 38rem) !important;
+  width: min(85vw, 38rem);
+  aspect-ratio: 16 / 10;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: var(--color-background-muted);
+}
+
+.ps-gallery-item img {
+  object-fit: cover;
+  transform: scale(1.01);
+  transition:
+    transform var(--duration-slow-max) var(--ease-standard),
+    filter var(--duration-slow-min) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ps-gallery-item:hover img {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes ps-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.1rem);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes ps-reveal-media {
+  from {
+    opacity: 0;
+    transform: translateX(2.25rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.ps-wrap.is-open .ps-reveal {
+  animation: ps-reveal 0.7s var(--ease-page-transition) both;
+}
+
+.ps-wrap.is-open .ps-info-title.ps-reveal {
+  animation-delay: 0.16s;
+}
+
+.ps-wrap.is-open .ps-info-meta.ps-reveal {
+  animation-delay: 0.24s;
+}
+
+.ps-wrap.is-open .ps-info > .qi-label.ps-reveal {
+  animation-delay: 0.32s;
+}
+
+.ps-wrap.is-open .ps-description.ps-reveal {
+  animation-delay: 0.4s;
+}
+
+.ps-wrap.is-open .qi-links.ps-reveal {
+  animation-delay: 0.48s;
+}
+
+.ps-wrap.is-open .ps-reveal-media {
+  animation: ps-reveal-media 0.75s var(--ease-page-transition) both;
+}
+
+.ps-wrap.is-open .ps-gallery-item:nth-child(1) {
+  animation-delay: 0.36s;
+}
+
+.ps-wrap.is-open .ps-gallery-item:nth-child(2) {
+  animation-delay: 0.44s;
+}
+
+.ps-wrap.is-open .ps-gallery-item:nth-child(3) {
+  animation-delay: 0.52s;
+}
+
+.ps-wrap.is-open .ps-gallery-item:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@media (min-width: 768px) {
+  .ps-gallery-item {
+    flex-basis: min(72vw, 38rem) !important;
+    width: min(72vw, 38rem);
+  }
+}
+
+@media (max-width: 639px) {
+  .ps-info {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .ps-info-title {
+    font-size: clamp(1.85rem, 11vw, 2.75rem);
+    margin-block-end: 1.35rem;
+  }
+
+  .ps-gallery-pin {
+    padding-block: 1.15rem 2rem;
   }
 }

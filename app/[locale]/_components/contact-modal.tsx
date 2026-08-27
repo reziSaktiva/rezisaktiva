@@ -138,6 +138,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
     <>
       <VStack
         data-ct-scrim=""
+        data-overlay-scrim=""
         data-lenis-prevent=""
         className={isOpen ? "ct-scrim is-open" : "ct-scrim"}
         onClick={handleClose}

@@ -263,9 +263,11 @@ export function CursorRing() {
     const isInside = (node: EventTarget | null, selector: string) =>
       node instanceof Element && Boolean(node.closest(selector));
 
+    const closeScrim = "[data-overlay-scrim]";
     const onPointerOver = (event: MouseEvent) => {
-      if (isInside(event.target, "[data-ct-scrim]")) {
+      if (isInside(event.target, closeScrim)) {
         onEnterClose();
+        onLeaveInteractive();
       }
       if (isInside(event.target, "a, button")) {
         onEnterInteractive();
@@ -273,8 +275,8 @@ export function CursorRing() {
     };
     const onPointerOut = (event: MouseEvent) => {
       if (
-        isInside(event.target, "[data-ct-scrim]") &&
-        !isInside(event.relatedTarget, "[data-ct-scrim]")
+        isInside(event.target, closeScrim) &&
+        !isInside(event.relatedTarget, closeScrim)
       ) {
         onLeaveClose();
       }

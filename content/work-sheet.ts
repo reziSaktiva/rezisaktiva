@@ -3,7 +3,8 @@ import type { Locale } from "@/lib/locale";
 /**
  * Slot project sheet (M10, T-026.1, ADR-027). Fakta dari
  * `private/Resume_rezi_updated_agustus_2026.md` — bukan dikarang.
- * Gambar R1 = gambar tile yang sudah ada (CV tidak punya aset galeri).
+ * Cover galeri = gambar tile. Frame tambahan = placeholder Unsplash
+ * sampai aset galeri nyata ada (CV tidak punya aset galeri).
  * Year tetap di `WorkItem` (T-021.5).
  */
 
@@ -13,6 +14,7 @@ export interface WorkSheetCopy {
   locationLabel: string;
   yearLabel: string;
   descriptionLabel: string;
+  imagesLabel: string;
   liveLabel: string;
   repoLabel: string;
 }
@@ -31,6 +33,7 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     locationLabel: "Lokasi / perusahaan",
     yearLabel: "Tahun",
     descriptionLabel: "Deskripsi",
+    imagesLabel: "Gambar proyek",
     liveLabel: "Live",
     repoLabel: "Repo",
   },
@@ -40,10 +43,36 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     locationLabel: "Location / company",
     yearLabel: "Year",
     descriptionLabel: "Description",
+    imagesLabel: "Project images",
     liveLabel: "Live",
     repoLabel: "Repo",
   },
 };
+
+/**
+ * Extra frames so the pinned gallery has horizontal travel. Covers stay
+ * the Work tile image; extras are Unsplash placeholders until real
+ * gallery assets exist (same class of placeholder as the tiles).
+ */
+const GALLERY_PLACEHOLDERS = [
+  "https://images.unsplash.com/photo-1545239351-ef35f43d514b?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1600&auto=format&fit=crop",
+] as const;
+
+export function workSheetImages(cover: string, id: string): readonly string[] {
+  const offset = Number.parseInt(id, 10) || 1;
+  const extras = [0, 1, 2]
+    .map(
+      (step) =>
+        GALLERY_PLACEHOLDERS[(offset + step) % GALLERY_PLACEHOLDERS.length],
+    )
+    .filter((src) => src !== cover);
+  return [cover, ...extras];
+}
 
 const INSPIRE = {
   id: "Insvire Omni Technology, Bandung",

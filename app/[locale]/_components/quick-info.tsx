@@ -90,6 +90,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
   return (
     <>
       <VStack
+        data-overlay-scrim=""
         data-lenis-prevent=""
         className={isOpen ? "qi-scrim is-open" : "qi-scrim"}
         onClick={close}
