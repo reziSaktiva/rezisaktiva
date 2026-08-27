@@ -81,11 +81,9 @@ export function ProjectSheet({
   const trackRef = useRef<HTMLElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    if (item) {
-      setVisible(item);
-    }
-  }, [item]);
+  if (item && item !== visible) {
+    setVisible(item);
+  }
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.imageSrc, visible.id) : [];
@@ -142,7 +140,7 @@ export function ProjectSheet({
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen || !visible) {
+    if (!isOpen || visible?.id == null) {
       return;
     }
     const scroll = scrollRef.current;

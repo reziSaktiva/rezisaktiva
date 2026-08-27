@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-27]
 ### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- ESLint `react-hooks/set-state-in-effect` di `project-sheet.tsx`: sinkronkan `visible` saat render (bukan di effect) supaya konten sheet tetap ada selama animasi tutup — CI lint-typecheck PR #49.
+
+## [2026-08-27]
+### Added
 - Cursor ring kuning “X” (pola dialog Contact) pada scrim Quick Info dan project sheet.
 ### Changed
 - (tidak ada)
