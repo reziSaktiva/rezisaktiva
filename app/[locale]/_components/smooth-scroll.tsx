@@ -33,6 +33,7 @@ function isOverlayLocked(): boolean {
   return (
     root.classList.contains("ct-lock") ||
     root.classList.contains("qi-lock") ||
+    root.classList.contains("ps-lock") ||
     root.classList.contains("page-vt-lock")
   );
 }

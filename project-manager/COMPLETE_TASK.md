@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-08-27]
+### Added
+- **T-026.1–T-026.4** — project context sheet (M10): data slot dari CV (`content/work-sheet.ts`); `BottomSheet` Astryx di Work index; tile membuka sheet, live/repo di dalam sheet; teaser Home tetap ke `/[locale]/work`.
+### Changed
+- Fokus: T-026 ✅; T-018 menunggu sisa T-021.
+### Fixed
+- (tidak ada)
+
+
 ## [2026-08-26]
 ### Added
 - (tidak ada)

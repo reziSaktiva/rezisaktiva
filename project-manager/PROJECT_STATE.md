@@ -4,10 +4,10 @@
 
 * **Phase / Milestone:** Development · R1 MVP Clarity (Hybrid lean, M1–M7 + M9 + M13 + M10 overlay + theme toggle)
 * **Active Mode:** Development — implementasi fitur/konten R1; bukan scaffold Bootstrap
-* **Top Next Tasks:** **T-026** (project sheet, ADR-027) sebelum T-018; copy T-021.6 / T-021.7; exit **T-018** setelah T-021.1–T-021.7 **dan T-026** — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** copy T-021.2 teaser / T-021.6 / T-021.7; lalu exit **T-018** (T-026 ✅) — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ In Progress, T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅, **T-026** ⏳, T-018 ⏳) + `tasks/v10-page-copy.md` (⏳ In Progress — T-021.2 hampir selesai, **T-021.1/T-021.3/T-021.4/T-021.5** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris)
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (⏳ In Progress, T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅, **T-026** ✅, T-018 ⏳) + `tasks/v10-page-copy.md` (⏳ In Progress — T-021.2 hampir selesai, **T-021.1/T-021.3/T-021.4/T-021.5** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -18,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-08-26 |
+| Last Updated | 2026-08-27 |
 
 ---
 
@@ -28,8 +28,8 @@
 | ----- | ----- |
 | Current Phase | Development |
 | Current Milestone | R1 MVP Clarity (Must M1–M7 + M9 + M13 + M10 overlay sheet + theme toggle) |
-| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅, **T-026** ⏳ (M10 sheet sebelum T-018); T-018 ⏳ (menunggu T-021 + T-026); T-021 copy ⏳ |
-| Project Status | Development in progress — UI R1 ✅; craft T-025 ✅; T-026 project sheet Must R1 (ADR-027); copy T-021; T-018 menunggu keduanya |
+| Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅, **T-026** ✅; T-018 ⏳ (menunggu T-021); T-021 copy ⏳ |
+| Project Status | Development in progress — UI R1 ✅; craft T-025 ✅; project sheet T-026 ✅; copy T-021 sisa; T-018 menunggu T-021 |
 
 ---
 
@@ -38,8 +38,8 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012) — exit kriteria terpenuhi (lihat T-012.1).
 * Acuan implementasi: `product-discovery/` + ADR-001 … ADR-027. Visual: kode produksi, bukan mockup HTML (ADR-024).
-* Fase aktif: **Development** — implementasi R1 termasuk **T-026** project sheet (M10 overlay, ADR-027) **sebelum T-018**.
-* Backlog Development R1: T-013…T-017, T-019, T-020, T-022, T-024, T-025 ✅. **T-026** ⏳. **T-018** menunggu T-021.1–T-021.7 **dan T-026**. Copy krom/halaman tetap T-021; slot sheet = T-026.1.
+* Fase aktif: **Development** — copy R1 (T-021) lalu exit T-018. Project sheet M10 (**T-026**) ✅.
+* Backlog Development R1: T-013…T-017, T-019, T-020, T-022, T-024, T-025, **T-026** ✅. **T-018** menunggu T-021.1–T-021.7.
 * **Copy R1 sedang berjalan (2026-08-21):** T-021.2 (Home) — h1, Bukti, seksi karya, Contact ✅ terkunci; teaser mengikuti daftar T-021.5. **T-021.5 (Work index) ✅ selesai** — daftar 8 karya kurasi terkunci dari `private/Resume_rezi_updated_agustus_2026.md` (bukan dikarang), plus `h1` ("Proyek / saya." — EN "My / Projects"), `lead`, dan CTA terkunci lewat diskusi. **T-021.1 (Chrome) ✅ selesai** — nav EN "How I Work" (bukan "Process"/"My Process"), tombol Contact "Kontak"/"Contact", aria hamburger toggle sesuai state, footer pakai URL LinkedIn/GitHub nyata (`content/contact.ts` sebagai satu sumber). **T-021.3 (About) ✅ selesai** — copy ditulis ulang total dari Boss Rezi (bukan salinan mockup lagi), menonjolkan orkestrasi tim AI subagent + pipeline discovery-arsitektur-build-ship + ADR-driven decisions. **T-021.4 (Contact modal) ✅ selesai** — semua label/body form dikonfirmasi apa adanya dari mockup; **bug kontras light mode ditemukan & diperbaiki** (beberapa teks tak terbaca karena token tema Astryx menimpa warna theme-independent modal — fix `!important` + `className` dedicated di `app/globals.css`). **Fitur unduh CV/Portofolio dipisah ke T-023 (⏸️ Deferred)** — keputusan penempatan tetap terkunci (ADR-023), tapi implementasi ditunda karena file CV yang ada sepenuhnya berbahasa Indonesia sementara link yang sama akan tampil di locale EN juga; kode yang sempat dibuat sudah di-revert dari PR T-021.4. Sisa T-021.6 (Quick Info), T-021.7 (meta) belum digarap.
 * **ADR-024 (2026-08-21) + T-024 (2026-08-23):** mockup HTML di-deprecate sebagai SoT visual. Iterasi desain About pertama di kode produksi **selesai**.
 * **ADR-025 (2026-08-24):** craft pass Hess/Mazur (bukan palet). About tetap M2; copy T-021 tidak diubah; Lenis + page overlay diizinkan. **T-025** ✅ (T-025.8: track tetap terlihat; T-025.9: scrollbar mengikuti tema `rezisaktiva`; T-025.10: anti-kedip mobile setelah scroll; T-025.11: affordance tap/hover pada lead About).

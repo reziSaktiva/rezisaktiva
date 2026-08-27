@@ -31,12 +31,19 @@ export function QuickInfo({ locale }: { locale: Locale }) {
   const lastFocus = useRef<HTMLElement | null>(null);
 
   const close = () => setIsOpen(false);
-  const open = () => setIsOpen(true);
+  const open = () => {
+    window.dispatchEvent(new Event("rz-quick-info-open"));
+    setIsOpen(true);
+  };
 
   useEffect(() => {
-    const onContactOpen = () => setIsOpen(false);
-    window.addEventListener("rz-contact-open", onContactOpen);
-    return () => window.removeEventListener("rz-contact-open", onContactOpen);
+    const onForeignOverlay = () => setIsOpen(false);
+    window.addEventListener("rz-contact-open", onForeignOverlay);
+    window.addEventListener("rz-project-sheet-open", onForeignOverlay);
+    return () => {
+      window.removeEventListener("rz-contact-open", onForeignOverlay);
+      window.removeEventListener("rz-project-sheet-open", onForeignOverlay);
+    };
   }, []);
 
   useEffect(() => {

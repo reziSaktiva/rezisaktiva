@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
 import { Section } from "@astryxdesign/core/Section";
@@ -8,6 +9,7 @@ import { VStack } from "@astryxdesign/core/VStack";
 import { WORK_ITEMS, WORK_PAGE_COPY } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 import { Reveal, WordReveal } from "./home-motion";
+import { ProjectSheet } from "./project-sheet";
 import { WorkTile } from "./work-tile";
 
 type WorkGridItem = { id: string; featured: boolean };
@@ -53,6 +55,8 @@ function workTileLayout(
 export function WorkPage({ locale }: { locale: Locale }) {
   const copy = WORK_PAGE_COPY[locale];
   const items = WORK_ITEMS[locale];
+  const [openId, setOpenId] = useState<string | null>(null);
+  const openItem = items.find((item) => item.id === openId) ?? null;
   const spanFullById = new Map(
     workTileLayout(items).map((slot) => [slot.id, slot.spanFull]),
   );
@@ -84,7 +88,12 @@ export function WorkPage({ locale }: { locale: Locale }) {
               const wide = spanFull && !item.featured;
               const tile = (
                 <Reveal key={item.id} className="home-work-reveal">
-                  <WorkTile item={item} featured={item.featured} wide={wide} />
+                  <WorkTile
+                    item={item}
+                    featured={item.featured}
+                    wide={wide}
+                    onSelect={() => setOpenId(item.id)}
+                  />
                 </Reveal>
               );
               return spanFull ? (
@@ -98,6 +107,12 @@ export function WorkPage({ locale }: { locale: Locale }) {
           </Grid>
         </VStack>
       </Section>
+
+      <ProjectSheet
+        locale={locale}
+        item={openItem}
+        onClose={() => setOpenId(null)}
+      />
     </VStack>
   );
 }

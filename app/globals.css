@@ -740,6 +740,16 @@ html::-webkit-scrollbar-button {
   border-radius: 0 !important;
 }
 
+button.home-work-tile {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
 .home-work-tile-media {
   position: absolute !important;
   inset: 0;
@@ -967,7 +977,9 @@ html::-webkit-scrollbar-button {
   .ct-scrim,
   .qi-panel,
   .qi-scrim,
-  .qi-tab {
+  .qi-tab,
+  .astryx-bottom-sheet,
+  .ps-body {
     transition: none !important;
     animation: none !important;
     opacity: 1 !important;
@@ -1758,8 +1770,40 @@ html::-webkit-scrollbar-button {
 }
 
 html.ct-lock,
-html.qi-lock {
+html.qi-lock,
+html.ps-lock {
   overflow: hidden;
+}
+
+.astryx-bottom-sheet {
+  background: var(--color-background-canvas);
+  color: var(--color-text-primary);
+  font-family: "Satoshi", var(--font-family-body);
+}
+
+.ps-media {
+  position: relative !important;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-background-muted);
+}
+
+.ps-media img {
+  object-fit: cover;
+}
+
+.ps-title {
+  font-family: "General Sans", var(--font-family-heading);
+}
+
+.ps-label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ps-description {
+  max-width: 42rem;
 }
 
 /*
