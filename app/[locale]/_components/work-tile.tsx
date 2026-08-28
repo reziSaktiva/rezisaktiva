@@ -14,13 +14,11 @@ import type { WorkItem } from "@/content/work";
 /**
  * Tile karya — visual `.work-tile` mockup + craft hover (T-025.5).
  *
- * `href` (internal, via NextLink) — dipakai teaser Home, mengarah ke index
- * Work (bukan langsung ke repo/live); index R1 tidak link ke case M10
- * (ADR-020).
+ * `href` (internal, via NextLink) — teaser Home, ke index Work (bukan
+ * sheet per item, ADR-027).
  *
- * `item.href` (eksternal, repo/live nyata — T-021.5) dipakai di Work index
- * sendiri saat `href` tidak diberikan. Item tanpa `item.href` (mis. project
- * internal tanpa URL publik) tetap render statis, tidak clickable.
+ * `onSelect` — Work index: klik tile membuka project sheet (T-026), bukan
+ * `item.href`. Live/repo hanya di dalam sheet.
  *
  * Caption + scrim: `useContainerReveal` (hover/focus desktop; selalu
  * terlihat di sentuh; reduced-motion dihormati). Bukan Overlay Astryx —
@@ -29,11 +27,18 @@ import type { WorkItem } from "@/content/work";
 export function WorkTile({
   item,
   href,
+  onSelect,
+  sheetOpen = false,
+  sheetPanelId,
   featured = false,
   wide = false,
 }: {
   item: WorkItem;
   href?: string;
+  /** Work index: buka sheet. Jangan dipakai bersama `href`. */
+  onSelect?: () => void;
+  sheetOpen?: boolean;
+  sheetPanelId?: string;
   featured?: boolean;
   /** Full-row leftover tile (not featured copy) — same aspect as featured so it is not a tall 4/5 banner. */
   wide?: boolean;
@@ -89,20 +94,22 @@ export function WorkTile({
     );
   }
 
-  if (item.href) {
-    // `isExternalLink` sengaja tidak dipakai di sini — ikon + label
-    // tersembunyi bawaannya dirender sebagai sibling di dalam tile media
-    // (`.home-work-tile`), bisa nyangkut di atas gambar. `target="_blank"`
-    // sudah cukup aman: `Link` Astryx otomatis menambah `rel="noopener
-    // noreferrer"` untuk target apa pun yang bernilai `_blank`.
+  if (onSelect) {
     return (
-      <Link
-        href={item.href}
-        target="_blank"
-        {...mergeProps(containerProps, { className })}
-      >
+      <VStack {...mergeProps(containerProps, { className })}>
         {inner}
-      </Link>
+        <VStack
+          as="button"
+          className="home-work-tile-hit"
+          onClick={onSelect}
+          aria-label={item.name}
+          aria-haspopup="dialog"
+          aria-expanded={sheetOpen}
+          aria-controls={sheetPanelId}
+        >
+          {null}
+        </VStack>
+      </VStack>
     );
   }
 

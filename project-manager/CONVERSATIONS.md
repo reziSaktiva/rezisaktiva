@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-27] — Project sheet = Quick Info dari bawah + galeri Hess
+
+**Phase:** Development R1
+**Summary:** Boss Rezi ingin sheet proyek sama persis dengan Quick Info, muncul dari bawah, lebar penuh; layout info di atas dan gambar di bawah; setelah sampai galeri, scroll ke bawah menggeser gambar ke samping (pola Recent Work karolinahess.com).
+**Key Decision/Insight:** Astryx BottomSheet tidak punya prop lebar penuh — overlay custom (pola Quick Info). Frame galeri ekstra masih placeholder Unsplash sampai aset nyata ada.
+**Impact:** `project-sheet.tsx`, `globals.css`, `content/work-sheet.ts`; T-026.5; `key-screen-patterns.md`.
+
 ## [2026-08-26] — T-026 sebelum exit R1
 
 **Phase:** Development R1

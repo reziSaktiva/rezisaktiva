@@ -14,6 +14,58 @@ Format entri:
 - ...
 ```
 
+## [2026-08-27]
+### Added
+- (tidak ada)
+### Changed
+- Tile Work index: hit-area `button` terpisah (heading tetap di luar tombol); `aria-haspopup` / `aria-expanded` / `aria-controls` ke `#ps-panel`.
+### Fixed
+- Project sheet: `inert` saat tertutup; unmount konten segera jika reduced-motion (tanpa `transitionend`); `onClose` di Work index distabilkan.
+
+## [2026-08-27]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- ESLint `react-hooks/set-state-in-effect` di `project-sheet.tsx`: sinkronkan `visible` saat render (bukan di effect) supaya konten sheet tetap ada selama animasi tutup — CI lint-typecheck PR #49.
+
+## [2026-08-27]
+### Added
+- Cursor ring kuning “X” (pola dialog Contact) pada scrim Quick Info dan project sheet.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- **T-026.6** — tinggi section sheet hug konten + padding; stagger reveal teks dan kartu galeri.
+### Changed
+- Project sheet tinggi 5/6 viewport (1/6 atas terbuka); radius 0.75rem di pojok kiri/kanan atas. Kartu galeri tidak lagi 100dvh.
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- **T-026.5** — project sheet overlay custom lebar penuh dari bawah (chrome Quick Info); info di viewport pertama, galeri pin dengan scroll vertikal → geser horizontal.
+### Changed
+- T-026 implementasi hidup: bukan Astryx `BottomSheet` (tidak ada prop lebar penuh).
+### Fixed
+- (tidak ada)
+
+
+
+
+## [2026-08-27]
+### Added
+- **T-026.1–T-026.4** — project context sheet (M10): data slot dari CV (`content/work-sheet.ts`); `BottomSheet` Astryx di Work index; tile membuka sheet, live/repo di dalam sheet; teaser Home tetap ke `/[locale]/work`.
+### Changed
+- Fokus: T-026 ✅; T-018 menunggu sisa T-021.
+### Fixed
+- (tidak ada)
+
+
 ## [2026-08-26]
 ### Added
 - (tidak ada)

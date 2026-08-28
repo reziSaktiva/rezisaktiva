@@ -7,8 +7,8 @@ import type { Locale } from "@/lib/locale";
  *
  * `href` = tautan keluar (live diutamakan, fallback repo). `undefined` =
  * tanpa tautan (SMC Migration: project internal, tidak ada URL publik).
- * R1 tidak link ke Work case (M10) — arti "tautan bukti" di sini adalah
- * keluar ke produk/repo asli.
+ * Di Work index, tile membuka sheet M10 (T-026); live/repo hanya di dalam
+ * sheet. Teaser Home tetap ke `/[locale]/work`.
  */
 
 export interface WorkItem {
