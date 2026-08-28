@@ -2,12 +2,26 @@ import type { Locale } from "@/lib/locale";
 import { WORK_ITEMS, type WorkItem } from "./work";
 
 /**
- * Copy Home. h1 dikunci T-021.2 (2026-08-20). Slot lain masih mockup
- * sampai dikunci di putaran diskusi berikutnya. Teaser = 3 karya pertama
- * katalog Work (final nama/outcome: T-021.5).
+ * Copy Home. Dikunci T-021.2 (h1/bukti/seksi karya/contact 2026-08-20;
+ * teaser 2026-08-28). Nama/outcome teaser = katalog T-021.5, satu sumber.
+ * Set teaser dikunci Boss Rezi: SMMP · Cook It Real Good · SMC Auction.
  */
 
 export type HomeTeaserItem = WorkItem;
+
+/** Urutan tampil di Home (tile pertama = featured penuh lebar). */
+const HOME_TEASER_IDS = ["1", "2", "4"] as const;
+
+function teasersFor(locale: Locale): readonly HomeTeaserItem[] {
+  const byId = new Map(WORK_ITEMS[locale].map((item) => [item.id, item]));
+  return HOME_TEASER_IDS.map((id) => {
+    const item = byId.get(id);
+    if (!item) {
+      throw new Error(`Home teaser: work id ${id} missing for locale ${locale}`);
+    }
+    return item;
+  });
+}
 
 export interface HomeCopy {
   h1: [string, string];
@@ -37,7 +51,7 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     workLabel: "Karya terpilih",
     workTitle: "Beberapa yang udah dipakai orang.",
     workAll: "Semua karya →",
-    teasers: WORK_ITEMS.id.slice(0, 3),
+    teasers: teasersFor("id"),
     contactLabel: "Contact",
     contactTitle: "Ada project?",
     contactBody:
@@ -53,7 +67,7 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     workLabel: "Selected work",
     workTitle: "A few things people actually use.",
     workAll: "All work →",
-    teasers: WORK_ITEMS.en.slice(0, 3),
+    teasers: teasersFor("en"),
     contactLabel: "Contact",
     contactTitle: "Got a project?",
     contactBody: "Tell me what you're building. If it's a fit, we go from there.",
