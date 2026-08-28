@@ -166,7 +166,7 @@ YYYY-MM-DD
 - Jangan tanya ritual jika task + dokumen + (untuk UI) kode produksi sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`, ADR-024).
 - Jangan salin detail task ke `PROJECT_STATE.md`.
 - Jangan daur ulang ID task/subtask (`T-XXX` / `T-XXX.N`); deferred = `⏸️` + alasan.
-- Skills resmi project hanya di `.cursor/skills/`.
+- Skills resmi project hanya di `.cursor/skills/`. Audit docs menyeluruh (`docs-consistency-audit`) hanya jika Boss Rezi meminta secara eksplisit.
 
 ---
 

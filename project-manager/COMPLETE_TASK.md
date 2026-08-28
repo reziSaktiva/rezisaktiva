@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-28]
 ### Added
+- Skill on-demand `.cursor/skills/docs-consistency-audit/` — audit docs sengaja (report-only); diindeks di `AGENTS.md`.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-28]
+### Added
 - (tidak ada)
 ### Changed
 - **T-021.2** teaser Home: set dikunci SMMP · Cook It Real Good · SMC Auction (`HOME_TEASER_IDS` di `content/home.ts`); nama/outcome tetap dari katalog T-021.5.

@@ -36,7 +36,8 @@ Satu-satunya folder skill project ini:
 .cursor/skills/
 ├── project-os-navigator/
 ├── proactive-clarification/
-└── work-report-simple/
+├── work-report-simple/
+└── docs-consistency-audit/   → hanya saat Boss Rezi minta audit docs (bukan rutin)
 ```
 
 Tidak ada `.claude/skills/` atau `CLAUDE.md` — project ini Cursor-first (ADR-001).

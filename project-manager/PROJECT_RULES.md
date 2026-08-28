@@ -106,6 +106,7 @@ Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah — **kec
 * Ikuti `.cursor/skills/project-os-navigator/SKILL.md` di awal sesi yang membutuhkan konteks project.
 * Cek kelengkapan task + dokumen acuan dulu (untuk UI: kode produksi yang ada, bukan mockup HTML). **Tanya Boss Rezi hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana) — bukan tanya ritual, bukan “tidak yakin” yang bisa diselesaikan dengan membaca. Jangan berasumsi/mengarang/lanjut diam-diam pada yang unplanned. `.cursor/rules/ask-before-assuming.mdc` + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya saat memang wajib).
 * Setelah pekerjaan selesai, laporkan dengan `.cursor/skills/work-report-simple/SKILL.md`.
+* Audit dokumentasi menyeluruh **hanya jika diminta eksplisit**: `.cursor/skills/docs-consistency-audit/SKILL.md` (report-only; jangan trigger otomatis).
 * Implementasi kode mengikuti `Active Conversation Mode` di `PROJECT_STATE.md` (misal: kode R1 diizinkan saat Active Mode = Development), kecuali Boss Rezi meminta eksplisit di luar mode itu.
 * Jangan memperbaiki inkonsistensi dokumen secara diam-diam — sebutkan ke user dulu.
 * **Task UI/UX wajib ikuti `.cursor/rules/ui-ux-mockup-check.mdc`** — acuan visual = kode produksi + arahan Boss Rezi (**ADR-024**). `design-mockups/` arsip, bukan kontrak. Verifikasi terhadap implementasi + arahan yang dikunci, bukan terhadap HTML mockup. Desain yang menabrak baseline UX / dua interpretasi belum dikunci = urgent, tanya Boss Rezi dulu.
