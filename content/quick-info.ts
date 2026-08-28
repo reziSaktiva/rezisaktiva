@@ -1,10 +1,10 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy Quick Info panel sementara dari mockup (`design-mockups/shared.js`).
- * Bukan copy final — kunci + ganti teks di T-021.6 (v10).
- *
- * Email/Links = tautan/rujukan, bukan form inbound (ADR-022).
+ * Copy Quick Info panel. Dikunci T-021.6 (2026-08-28) lewat diskusi:
+ * bio dari About (pendek); Services = offering About; Tools + label
+ * mockup apa adanya (campur EN di locale ID). Bukan form Contact (ADR-022).
+ * Daftar karya / email / LinkedIn+GitHub dari `content/work.ts` + `contact.ts`.
  */
 
 export interface QuickInfoCopy {
@@ -26,16 +26,9 @@ export const QUICK_INFO_COPY: Record<Locale, QuickInfoCopy> = {
     tab: "Quick info",
     title: "Quick info",
     close: "Tutup quick info",
-    bio: "Saya merancang pengalaman digital yang bersih. Berbasis di Indonesia. Bekerja worldwide. (contoh)",
+    bio: "Fullstack Product Builder. Saya mengorkestrasi tim AI subagent dari discovery hingga deployment—sementara arsitektur dan keputusan akhir tetap mutlak di tangan saya.",
     servicesLabel: "Services",
-    services: [
-      "Product",
-      "Fullstack",
-      "AI",
-      "Interaction design",
-      "Strategy",
-      "Research",
-    ],
+    services: ["Product", "Fullstack", "AI & Orchestration"],
     toolsLabel: "Tools",
     tools: ["Next.js", "TypeScript", "Astryx", "Figma", "Postgres", "Vercel"],
     worksLabel: "Works index",
@@ -46,16 +39,9 @@ export const QUICK_INFO_COPY: Record<Locale, QuickInfoCopy> = {
     tab: "Quick info",
     title: "Quick info",
     close: "Close quick info",
-    bio: "I craft clean digital experiences. Based in Indonesia. Working worldwide. (sample copy)",
+    bio: "Fullstack Product Builder. I orchestrate a team of AI subagents from discovery through deployment—but the architecture and final decisions remain firmly in my hands.",
     servicesLabel: "Services",
-    services: [
-      "Product",
-      "Fullstack",
-      "AI",
-      "Interaction design",
-      "Strategy",
-      "Research",
-    ],
+    services: ["Product", "Fullstack", "AI & Orchestration"],
     toolsLabel: "Tools",
     tools: ["Next.js", "TypeScript", "Astryx", "Figma", "Postgres", "Vercel"],
     worksLabel: "Works index",

@@ -4,8 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — **T-021.1**, **T-021.2**, **T-021.3**, **T-021.4**, **T-021.5** ✅. Sisa: **T-021.6** (Quick Info) / **T-021.7** (meta).
-2. **T-018** (exit R1) **ditunda** sampai T-021.1–T-021.7 (T-026 ✅).
+1. Copy teks di **v10** (`tasks/v10-page-copy.md`, **T-021**) — **T-021.1–T-021.7** ✅. Berikutnya: **T-018** (exit R1).
+2. **T-018** (exit R1) — prasyarat T-021 + T-026 ✅; siap dijalankan.
 3. **T-026** — project context sheet (M10 overlay, ADR-027) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 4. **T-022** — penyesuaian desain mobile (paritas mockup → kode) ✅ Done. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
 5. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
@@ -19,8 +19,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | ------- | ---- | ----- | ------ |
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
 | v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
-| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020, T-022, T-024, T-025, **T-026** | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅, **T-026** ✅; T-018 ⏳ menunggu T-021) |
-| v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (**T-021.1–T-021.5** ✅; sisa T-021.6 / T-021.7; **T-023** ⏸️ Deferred) |
+| v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020, T-022, T-024, T-025, **T-026** | ⏳ In Progress (T-013…T-017 ✅, T-019 ✅, T-020 ✅, **T-022** ✅, **T-024** ✅, **T-025** ✅, **T-026** ✅; T-018 ⏳ siap) |
+| v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (**T-021** ✅; **T-023** ⏸️ Deferred) |
 
 ## Aturan
 

@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. T-018 ⏳ menunggu T-021.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. T-018 ⏳ (prasyarat T-021 + T-026 terpenuhi).
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -86,7 +86,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-018 — Exit R1 → destination layak evaluasi
 
-* **Status:** ⏳ Todo — ditunda sampai T-021.1–T-021.7 (T-026 ✅, 2026-08-27)
+* **Status:** ⏳ Todo — prasyarat T-021.1–T-021.7 + T-026 ✅ (2026-08-28); siap verifikasi exit
 * **Domain:** Documentation
 * **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `success-metrics.md` (Phase 1 — Validation)
 

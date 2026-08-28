@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-28] — Disiplin kode / best practice (styling + rendering)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi ingin project punya aturan tegas: komponen, function, spacing (gap/padding/margin), dan kapan `"use server"` / streaming / SSG/ISR/SSR. Audit singkat: pengetahuan itu **belum** lengkap — yang ada kuat di proses/ADR/Astryx CLI, lemah di playbook kode.
+**Key Decision/Insight:** **T-021.6 / T-021.7 dulu.** Playbook disiplin kode (rule Cursor + dokumen engineering, selaras ADR-015/018) menyusul setelah copy dikunci. Bukan rewrite besar `app/` sekarang; bukan aturan yang hanya hidup di chat.
+**Impact:** Belum ada file baru. Nanti: rule/skill engineering + kemungkinan update `06-engineering/` (tanpa mengubah bentuk SSG ADR-015 tanpa ADR baru).
+
 ## [2026-08-27] — Project sheet = Quick Info dari bawah + galeri Hess
 
 **Phase:** Development R1

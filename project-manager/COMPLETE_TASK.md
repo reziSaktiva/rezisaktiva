@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-08-28]
 ### Added
+- (tidak ada)
+### Changed
+- **T-021.6** copy Quick Info dikunci di `content/quick-info.ts` (bio Boss Rezi; Services = About; Tools + label mockup).
+- **T-021.7** title + description dikunci di `content/site-meta.ts` (Work = Proyek/Projects). **T-021** ✅. Berikutnya **T-018**.
+### Fixed
+- (tidak ada)
+
+## [2026-08-28]
+### Added
 - Skill on-demand `.cursor/skills/docs-consistency-audit/` — audit docs sengaja (report-only); diindeks di `AGENTS.md`.
 ### Changed
 - (tidak ada)
