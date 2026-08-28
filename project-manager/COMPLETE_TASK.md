@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-08-28]
+### Added
+- (tidak ada)
+### Changed
+- **T-021.2** teaser Home: set dikunci SMMP · Cook It Real Good · SMC Auction (`HOME_TEASER_IDS` di `content/home.ts`); nama/outcome tetap dari katalog T-021.5.
+- Fokus copy R1: sisa **T-021.6** / **T-021.7**.
+### Fixed
+- (tidak ada)
+
 ## [2026-08-27]
 ### Added
 - (tidak ada)
