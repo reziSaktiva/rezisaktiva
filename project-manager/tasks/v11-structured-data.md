@@ -52,7 +52,7 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | Properti schema | Sumber |
 | --------------- | ------ |
 | `@id` | Stabil, site-wide: `{getSiteUrl()}/#person` (sama di ID dan EN) |
-| `name` | Nama legal **baru** di `content/` (usulan `content/person.ts`) — `"Rezi Saktiva"`. Belum ada field khusus; h1 About hanya “Rezi.” |
+| `name` | Teks nama yang **sudah tampil** di halaman — h1 About: `"Rezi"` (`ABOUT_COPY.h1`). **Jangan** `"Rezi Saktiva"` di JSON-LD selama string itu tidak ada di UI (Google: jangan markup yang tidak terlihat). Nama legal penuh = copy dulu (tampil di About/footer), baru field `content/`, baru schema |
 | `alternateName` | Brand `rezisaktiva` |
 | `jobTitle` | Field identitas yang sama makna dengan Quick Info (“Fullstack Product Builder”) — jangan parse kalimat bio |
 | `description` | `QUICK_INFO_COPY[locale].bio` |
@@ -77,7 +77,7 @@ Item Work tanpa `href` (SMC Migration): **jangan** mengarang URL; omit `url`.
 
 ### Subtasks
 
-- [ ] **T-029.1** — Sumber identitas: tambah `content/person.ts` (atau setara) untuk `name`, `jobTitle`, `alternateName`. Email/sameAs tetap `content/contact.ts`. Jangan tulis JSON-LD dulu. Pastikan `jobTitle` selaras Quick Info (bukan string baru yang tidak muncul di UI).
+- [ ] **T-029.1** — Sumber identitas: tambah `content/person.ts` (atau setara) untuk `name`, `jobTitle`, `alternateName`. `name` = `"Rezi"` (sudah di h1 About), `alternateName` = brand `rezisaktiva` (title/footer/nav). Email/sameAs tetap `content/contact.ts`. **Jangan** isi `name` dengan nama legal yang belum tertulis di halaman. Jangan tulis JSON-LD dulu. Pastikan `jobTitle` selaras Quick Info (bukan string baru yang tidak muncul di UI).
 - [ ] **T-029.2** — Builder `lib/` (mis. `lib/json-ld.ts`) yang menerima `locale` + surface (`home` \| `about` \| `work`) dan mengembalikan `@graph` sesuai paket. Hanya impor `content/` + `getSiteUrl` / `localePath` + `NAV_LABELS` + `SITE_META` / `WORK_ITEMS`. Tanpa literal copy.
 - [ ] **T-029.3** — Pasang di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Satu `<script type="application/ld+json">` per halaman. Contact modal / Quick Info / sheet **tidak** punya graph sendiri.
 - [ ] **T-029.4** — Verifikasi: (1) ubah satu string di `content/` → JSON-LD ikut (tes unit atau setara); (2) item tanpa `href` tanpa `url`; (3) tidak ada `Person.image` placeholder; (4) cek Rich Results Test / validator schema.org pada URL lokal atau preview — catat hasil di COMPLETE_TASK, bukan screenshot wajib.

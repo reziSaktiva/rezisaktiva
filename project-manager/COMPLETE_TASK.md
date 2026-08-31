@@ -15,6 +15,14 @@ Format entri:
 ```
 
 ## [2026-08-31]
+### Fixed
+- **T-029.1** — `Person.name` = nama yang sudah tampil (`Rezi` di h1 About), bukan `"Rezi Saktiva"` di JSON-LD selama string itu tidak ada di UI (`tasks/v11-structured-data.md`).
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-31]
 ### Added
 - **T-030** SEO R1 mengikuti 3 pilar (T-030.1 crawl sitemap/robots/lang; T-030.2 ukur CWV; T-030.3 hygiene on-page; T-030.4 ops Search Console). File [`tasks/v12-seo.md`](tasks/v12-seo.md). Bukan duplikat T-029; bukan halaman legal/contact baru; bukan GBP.
 ### Changed
