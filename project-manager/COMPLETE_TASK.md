@@ -14,6 +14,25 @@ Format entri:
 - ...
 ```
 
+## [2026-08-31]
+### Added
+- **T-028** rapikan `app/` bertahap (T-028.1 island server/client; T-028.2 About; T-028.3 stub mati; T-028.4 CSS token hemat). Belum dieksekusi.
+### Changed
+- **T-018.1–T-018.2** exit R1 ✅. `PROJECT_STATE.md` → Validation. Fokus TASKS = T-028.
+- `DEVELOPER_WORKFLOW.md` — hapus “fase aktif saat ini = Development” (bocoran Living Document).
+### Fixed
+- (tidak ada)
+
+## [2026-08-28]
+### Added
+- **T-027.1** playbook `product-discovery/06-engineering/code-discipline.md` (spacing, lapisan CSS vs StyleX, Server/Client, SSG).
+- **T-027.2** rule `.cursor/rules/code-discipline.mdc` (`alwaysApply`) + indeks `AGENTS.md` / `PROJECT_RULES.md` / `DEVELOPER_WORKFLOW.md` / navigator.
+### Changed
+- **T-027.2** override `xds.mdc`: `xstyle` diblokir sampai compiler Turbopack ada; jalur R1 = className + token di `globals.css`.
+- **T-027.3** mapping `design-tokens.md`; catatan `cookies()` tema di `application-layer.md`. **T-027** ✅ (issue #52). Berikutnya **T-018**.
+### Fixed
+- (tidak ada)
+
 ## [2026-08-28]
 ### Added
 - (tidak ada)

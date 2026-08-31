@@ -163,7 +163,7 @@ YYYY-MM-DD
 - Jangan mengubah baseline tanpa ADR.
 - Jangan membuat dokumen di luar scope phase aktif.
 - Jangan perbaiki inkonsistensi diam-diam (itu urgent — tanya Boss Rezi).
-- Jangan tanya ritual jika task + dokumen + (untuk UI) kode produksi sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`, ADR-024).
+- Jangan tanya ritual jika task + dokumen + (untuk UI) kode produksi sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`, ADR-024). Kerja baru di `app/` ikut `.cursor/rules/code-discipline.mdc`.
 - Jangan salin detail task ke `PROJECT_STATE.md`.
 - Jangan daur ulang ID task/subtask (`T-XXX` / `T-XXX.N`); deferred = `⏸️` + alasan.
 - Skills resmi project hanya di `.cursor/skills/`. Audit docs menyeluruh (`docs-consistency-audit`) hanya jika Boss Rezi meminta secara eksplisit.
@@ -186,7 +186,7 @@ rezisaktiva/
 ├── app/                     → Kode Next.js (App Router)
 ├── AGENTS.md
 ├── .cursor/skills/          → Process skills Cursor
-└── .cursor/rules/           → Rule aktif (Astryx, mockup gate, no-AI-attribution)
+└── .cursor/rules/           → Rule aktif (Astryx, disiplin kode, mockup gate, no-AI-attribution)
 ```
 
 ---

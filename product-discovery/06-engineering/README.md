@@ -33,6 +33,7 @@ Topik berikut tidak dibahas di sini:
 * `dx-tooling.md` — lint, format, test.
 * `dependency-strategy.md` — strategi dependency.
 * `design-tokens.md` — design tokens.
+* `code-discipline.md` — playbook harian: spacing, lapisan styling, Server/Client, SSG (ADR-015/018).
 * `../README.md` — dokumentasi fase Product Discovery.
 * `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
 * `../../project-manager/PROJECT_RULES.md` — aturan project.

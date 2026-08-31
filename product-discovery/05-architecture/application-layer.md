@@ -1,6 +1,6 @@
 # Application Layer
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru. Catatan runtime `cookies()` tema (ADR-021) ditambahkan 2026-08-28 (T-027) — bukan perubahan bentuk SSG.
 
 Dokumen ini mendefinisikan lapisan aplikasi konseptual untuk website portofolio **rezisaktiva** (static-first).
 
@@ -80,13 +80,14 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 
 | Concern | Pendekatan R1 |
 | ------- | ------------- |
-| Performa | Statis + CDN |
+| Performa | Statis + CDN; `generateStaticParams` per locale |
 | i18n | Path prefix di build; redirect `/` di edge/host |
 | Preferensi bahasa | Cookie/local — hanya memengaruhi `/` |
-| Form/API | Tidak di R1 |
+| Preferensi tema | Cookie `rz-theme` dibaca di root layout (`cookies()`, ADR-021) supaya anti-flash. Next merender layout per-request — **bukan** izin SSR-as-product, ISR, atau API. Jangan tambah `cookies()`/`headers()` di route lain. Playbook: `../06-engineering/code-discipline.md` |
+| Form/API | Tidak di R1 (Contact = mailto + form klien) |
 | Preview draft | Opsional later (bukan Must); bila ada, tetap di luar auth produk kecuali ADR baru |
 
-**SSR/hybrid penuh** ditolak untuk R1 (opsi B) — kompleksitas tanpa Must produk baru. Engineering boleh memakai framework yang *mampu* SSR, selama **delivery default R1 = SSG/static**.
+**SSR/hybrid penuh** ditolak untuk R1 (opsi B) — kompleksitas tanpa Must produk baru. Engineering boleh memakai framework yang *mampu* SSR, selama **delivery default R1 = SSG/static** (konten repo, bukan CMS/API). ISR dan streaming **bukan** default — lihat `code-discipline.md`.
 
 ---
 
@@ -113,6 +114,7 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 * `README.md`
 * `domain-model.md`
 * `integration-layer.md`
+* `../06-engineering/code-discipline.md` — kapan SSG / `cookies()` / client
 * `../04-ux/information-architecture.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
