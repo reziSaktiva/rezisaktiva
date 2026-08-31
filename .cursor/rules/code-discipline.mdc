@@ -53,5 +53,5 @@ export default async function AboutRoute({ params }: PageProps<"/[locale]/about"
 ## Render Next.js
 
 - Bentuk: SSG + `content/` + `generateStaticParams` locale (ADR-015).
-- `cookies()` **hanya** di `app/layout.tsx` untuk tema anti-flash. Jangan tambah baca cookie/header di route lain.
+- `cookies()` Next **hanya** di `app/layout.tsx` untuk tema (`rz-theme`). Locale `/`: `proxy.ts` baca `NEXT_LOCALE` + header geo/`Accept-Language` (ADR-014) — jangan hapus. Jangan tambah `cookies()`/`headers()` di route halaman locale.
 - ISR, `loading.tsx`/streaming, `revalidate`, `force-dynamic` **bukan** default R1. Ubah bentuk → ADR baru.

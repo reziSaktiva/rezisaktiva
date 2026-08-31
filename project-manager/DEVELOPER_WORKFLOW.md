@@ -16,7 +16,7 @@
 
 * **Product Discovery** — isi/revisi dokumen di `product-discovery/` per folder 01–06, catat ADR, update TASKS/STATE. Sudah selesai (lihat `tasks/v01-product-discovery.md`).
 * **Repository & Bootstrap** — scaffold repo, tooling, dependency baseline. Sudah selesai (lihat `tasks/v02-bootstrap.md`).
-* **Development R1** — implementasi Must Hybrid lean sampai exit T-018. Sudah selesai untuk R1; sisa di file yang sama: T-028 (rapikan kode, fase Validation).
+* **Development R1** — implementasi Must Hybrid lean sampai exit T-018. Sudah selesai (lihat `tasks/v03-development-r1.md`).
 
 ## Related Documents
 

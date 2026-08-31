@@ -147,7 +147,7 @@ Bentuk produk = **SSG + konten repo** (ADR-015). Bukan SSR default, bukan CMS, b
 | --------- | -- |
 | **`generateStaticParams`** | Wajib di route `[locale]` — `{ locale: "id" \| "en" }` |
 | **Konten** | File `content/` saat build, bukan fetch runtime |
-| **`cookies()`** | **Hanya** root `app/layout.tsx` untuk tema anti-flash (`rz-theme`, ADR-021). Trade-off: Next merender layout per-request. Ini **bukan** izin SSR-as-product atau baca cookie lain. |
+| **`cookies()` / cookie lain** | **Tema:** `cookies()` Next **hanya** di root `app/layout.tsx` (`rz-theme`, ADR-021). Trade-off: layout per-request — **bukan** izin SSR-as-product. **Locale:** `proxy.ts` membaca cookie `NEXT_LOCALE` + header geo/`Accept-Language` **hanya** untuk redirect `/` (ADR-014). Switcher menulis cookie itu di klien. Jangan tambah `cookies()`/`headers()` Next di `page.tsx`/`layout.tsx` locale. Jangan hapus atau “merapikan” `proxy.ts` karena playbook tema. |
 | **ISR** (`revalidate`, `unstable_cache`) | Bukan default. Konten berganti lewat git + deploy. |
 | **Streaming / `loading.tsx` / Suspense** | Bukan default. Tidak ada `loading.tsx`. Halaman kecil, data lokal. |
 | **Server Actions** | Bukan default. Lihat §3. |
@@ -169,7 +169,8 @@ Mengubah default ke SSR, ISR, streaming, atau Action backend **memerlukan ADR ba
 | Tailwind | Tetap tidak (ADR-018) |
 | Client | Hanya interaktivitas; route tetap server |
 | `"use server"` / ISR / streaming | Bukan default R1 |
-| `cookies()` | Pengecualian tema di root layout saja |
+| `cookies()` Next | Pengecualian tema di root layout saja |
+| Locale `/` | `proxy.ts` + cookie `NEXT_LOCALE` (ADR-014) — bukan `cookies()` di route halaman |
 | Kode lama | Rapikan bertahap; kerja baru ikut playbook |
 
 ---

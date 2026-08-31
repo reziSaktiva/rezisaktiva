@@ -82,8 +82,8 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 | ------- | ------------- |
 | Performa | Statis + CDN; `generateStaticParams` per locale |
 | i18n | Path prefix di build; redirect `/` di edge/host |
-| Preferensi bahasa | Cookie/local — hanya memengaruhi `/` |
-| Preferensi tema | Cookie `rz-theme` dibaca di root layout (`cookies()`, ADR-021) supaya anti-flash. Next merender layout per-request — **bukan** izin SSR-as-product, ISR, atau API. Jangan tambah `cookies()`/`headers()` di route lain. Playbook: `../06-engineering/code-discipline.md` |
+| Preferensi bahasa | Cookie `NEXT_LOCALE` + `proxy.ts` (baca cookie/header) **hanya** untuk redirect `/` — path ber-locale tidak di-rewrite (ADR-014) |
+| Preferensi tema | Cookie `rz-theme` dibaca di root layout (`cookies()` Next, ADR-021) supaya anti-flash. Next merender layout per-request — **bukan** izin SSR-as-product, ISR, atau API. Jangan tambah `cookies()`/`headers()` Next di route halaman locale. Jangan menyentuh `proxy.ts` seolah pelanggaran playbook tema. Playbook: `../06-engineering/code-discipline.md` |
 | Form/API | Tidak di R1 (Contact = mailto + form klien) |
 | Preview draft | Opsional later (bukan Must); bila ada, tetap di luar auth produk kecuali ADR baru |
 

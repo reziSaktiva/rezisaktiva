@@ -19,9 +19,10 @@ Format entri:
 - **T-028** rapikan `app/` bertahap (T-028.1 island server/client; T-028.2 About; T-028.3 stub mati; T-028.4 CSS token hemat). Belum dieksekusi.
 ### Changed
 - **T-018.1–T-018.2** exit R1 ✅. `PROJECT_STATE.md` → Validation. Fokus TASKS = T-028.
-- `DEVELOPER_WORKFLOW.md` — hapus “fase aktif saat ini = Development” (bocoran Living Document).
+- `DEVELOPER_WORKFLOW.md` — hapus “fase aktif saat ini = Development” (bocoran Living Document); historis R1 tanpa T-028/Validation.
 ### Fixed
-- (tidak ada)
+- Playbook cookie: kecualikan `proxy.ts` / `NEXT_LOCALE` (ADR-014) dari larangan `cookies()` tema.
+- T-018.1: smoke HTTP 200 + rasio kontras token; catatan Tab trap tetap dari kode.
 
 ## [2026-08-28]
 ### Added
