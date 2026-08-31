@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-08-31]
 ### Added
+- **T-031** Metadata API R1: ikon, kartu OG/Twitter, authors/applicationName, robots meta, manifest ringan (T-031.1–T-031.5). Bukan ulang title T-021.7 / JSON-LD T-029 / sitemap T-030. File [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+### Changed
+- Fokus TASKS / Snapshot → **T-031**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
 - **T-030.1** — `app/sitemap.ts` (6 URL dari `LOCALES` × `SITE_META` via `lib/site-routes.ts`) + `app/robots.ts` (Allow `/`, Sitemap → `getSiteUrl()/sitemap.xml`). `<html lang>` mengikuti path: `proxy.ts` set `x-locale` pada `/(id|en)/…` tanpa rewrite URL; `cookies()` tema `rz-theme` tetap.
 - **T-030.2** — Baseline Lighthouse mobile lab (Chrome headless, locale `en`, production `rezisaktiva.space`, 2026-08-31). PSI API anonim 429. INP field tidak ada di lab LH 12 — lab memakai TBT. **Home** `/en`: LCP 3.9s, CLS 0.057, TBT 700ms (perf 61). **About** `/en/about`: LCP 6.3s, CLS 0.057, TBT 470ms (perf 53). **Work** `/en/work`: LCP 2.6s, CLS 0.057, TBT 570ms (perf 75). Ambang Google: LCP < 2.5s / INP < 200ms / CLS < 0.1 — CLS lolos; LCP di atas ambang (hero/portrait Unsplash remote). Tidak dioptimasi spekulatif (bukan missing `sizes`; jangan rewrite Lenis / transisi / anti-flash tema). Foto nyata = task aset terpisah.
 - **T-030.3** — Satu `<h1>` per destinasi (`/id`,`/en`,`/id/about`,`/en/work`). `next/image` → `image/webp` (Accept webp). Alt About tetap teks placeholder, bukan klaim foto diri. Nav/teaser/footer tidak dirombak.

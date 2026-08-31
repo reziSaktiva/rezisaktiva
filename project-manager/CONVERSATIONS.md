@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-31] — Metadata API penuh (ikon + media)
+
+**Phase:** Validation
+**Summary:** Boss Rezi tanya apakah metadata sudah ada, lalu minta task baru agar head lengkap (icons, media items, dll.) mengikuti generateMetadata Next.js. Yang sudah ada hanya teks destinasi (T-017 / T-021.7); favicon masih default scaffold; tidak ada og:image.
+**Key Decision/Insight:** Jangan ulang title/canonical/JSON-LD/sitemap. Ikon + kartu share dari aset brand, bukan Unsplash. Bukan PWA penuh / App Store / keyword stuffing. Satu OG situs cukup untuk R1.
+**Impact:** `tasks/v13-metadata.md` **T-031**; indeks TASKS; Snapshot fokus.
+
 ## [2026-08-31] — SEO 3 pilar (teknis / on-page / off-page)
 
 **Phase:** Validation
