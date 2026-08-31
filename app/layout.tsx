@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { cookies } from "next/headers";
-import { ThemeModeProvider } from "./_components/theme-mode-provider";
+import { cookies, headers } from "next/headers";
+import { DEFAULT_LOCALE, LOCALE_REQUEST_HEADER, isLocale } from "@/lib/locale";
+import { getSiteUrl } from "@/lib/site-url";
 import {
   parseThemeModeCookieValue,
   THEME_MODE_STORAGE_KEY,
 } from "@/lib/theme-mode";
-import { getSiteUrl } from "@/lib/site-url";
+import { ThemeModeProvider } from "./_components/theme-mode-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -84,9 +85,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     parseThemeModeCookieValue(cookieStore.get(THEME_MODE_STORAGE_KEY)?.value) ??
     "light";
 
+  const headerLocale = (await headers()).get(LOCALE_REQUEST_HEADER);
+  const htmlLang =
+    headerLocale && isLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE;
+
   return (
     <html
-      lang="en"
+      lang={htmlLang}
       suppressHydrationWarning
       style={{ colorScheme: initialMode }}
     >

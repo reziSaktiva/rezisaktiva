@@ -1,13 +1,21 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { DEFAULT_LOCALE, LOCALE_COOKIE, isLocale, type Locale } from "@/lib/locale";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE,
+  LOCALE_REQUEST_HEADER,
+  isLocale,
+  localeFromPathname,
+  type Locale,
+} from "@/lib/locale";
 
 /**
  * Redirect `/` (path tanpa locale) ke locale default.
  *
  * Sesuai ADR-014, preferensi cookie hanya dipakai untuk redirect `/` / URL
- * tanpa locale — path yang sudah ber-locale TIDAK pernah di-rewrite di sini
- * (matcher di bawah hanya mencocokkan `/`).
+ * tanpa locale — path yang sudah ber-locale **tidak di-rewrite**. Matcher juga
+ * mencakup `/(id|en)/:path*` hanya untuk meneruskan `x-locale` ke root layout
+ * (`<html lang>`), bukan untuk mengubah URL.
  *
  * Keputusan implementasi (tidak eksplisit di ADR-014, dicatat untuk Boss Rezi):
  * urutan sinyal yang dipakai = preferensi cookie (hasil switch eksplisit)
@@ -61,13 +69,28 @@ function resolveLocale(request: NextRequest): Locale {
 }
 
 export function proxy(request: NextRequest) {
-  const locale = resolveLocale(request);
-  const url = request.nextUrl.clone();
-  url.pathname = `/${locale}`;
-  return NextResponse.redirect(url);
+  const { pathname } = request.nextUrl;
+
+  if (pathname === "/") {
+    const locale = resolveLocale(request);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}`;
+    return NextResponse.redirect(url);
+  }
+
+  // Path ber-locale tidak di-rewrite (ADR-014). Header hanya untuk `<html lang>` di root layout.
+  const locale = localeFromPathname(pathname);
+  if (locale) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(LOCALE_REQUEST_HEADER, locale);
+    return NextResponse.next({
+      request: { headers: requestHeaders },
+    });
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  // Hanya path tanpa locale ("/") — path ber-locale (/id/..., /en/...) tidak pernah disentuh proxy ini.
-  matcher: ["/"],
+  matcher: ["/", "/(id|en)/:path*"],
 };
