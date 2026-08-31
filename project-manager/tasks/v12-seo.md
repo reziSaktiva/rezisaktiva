@@ -66,14 +66,14 @@ Search Console (daftar properti, submit sitemap) = **ops Boss Rezi**, dicatat di
 
 ## T-030 — SEO R1 (teknis + on-page hygiene + off-page ops)
 
-* **Status:** ⏳ Open
+* **Status:** ✅ Done (2026-08-31)
 * **Domain:** Engineering
 * **Output:** crawler Google bisa menemukan & menandai bahasa 6 URL R1; baseline CWV tercatat; langkah Search Console tertulis untuk Boss Rezi
 * **Paket:** pemetaan 3 pilar di atas (2026-08-31)
 
 ### Subtasks
 
-- [ ] **T-030.1** — Crawl: `app/sitemap.ts` (6 URL locale × permukaan) + `app/robots.ts` (izinkan indeks publik, `sitemap` mengarah ke URL sitemap). `<html lang>` di root layout mengikuti locale path (`id` / `en`), bukan hardcode `"en"`. Jangan pecah anti-flash tema (`cookies()` `rz-theme`).
-- [ ] **T-030.2** — Performa: jalankan Lighthouse atau PageSpeed Insights pada Home / About / Work (satu locale cukup untuk baseline, catat mobile). Tulis LCP / INP / CLS di COMPLETE_TASK. Perbaiki **hanya** temuan teknis jelas yang tidak menabrak craft R1; jika angka sudah lolos ambang Google, jangan optimasi spekulatif.
-- [ ] **T-030.3** — On-page hygiene (tanpa copy baru): pastikan satu H1 per destinasi; `next/image` tetap (WebP/AVIF lewat optimizer, cek Network); alt: jangan deskripsi yang mengklaim placeholder Unsplash sebagai foto diri. Internal link yang ada (nav, teaser, footer) jangan dirombak.
-- [ ] **T-030.4** — Off-page ops (bukan PR fitur): langkah Search Console — verifikasi properti `rezisaktiva.space`, submit sitemap, cek `site:`. Ingatkan tautan kanonis di profil LinkedIn/GitHub. **Tidak** membuat Google Business Profile. Catat di COMPLETE_TASK bahwa langkah dashboard = Boss Rezi (agent tidak punya akses GSC).
+- [x] **T-030.1** — Crawl: `app/sitemap.ts` (6 URL locale × permukaan) + `app/robots.ts` (izinkan indeks publik, `sitemap` mengarah ke URL sitemap). `<html lang>` di root layout mengikuti locale path (`id` / `en`), bukan hardcode `"en"`. Jangan pecah anti-flash tema (`cookies()` `rz-theme`).
+- [x] **T-030.2** — Performa: jalankan Lighthouse atau PageSpeed Insights pada Home / About / Work (satu locale cukup untuk baseline, catat mobile). Tulis LCP / INP / CLS di COMPLETE_TASK. Perbaiki **hanya** temuan teknis jelas yang tidak menabrak craft R1; jika angka sudah lolos ambang Google, jangan optimasi spekulatif.
+- [x] **T-030.3** — On-page hygiene (tanpa copy baru): pastikan satu H1 per destinasi; `next/image` tetap (WebP/AVIF lewat optimizer, cek Network); alt: jangan deskripsi yang mengklaim placeholder Unsplash sebagai foto diri. Internal link yang ada (nav, teaser, footer) jangan dirombak.
+- [x] **T-030.4** — Off-page ops (bukan PR fitur): langkah Search Console — verifikasi properti `rezisaktiva.space`, submit sitemap, cek `site:`. Ingatkan tautan kanonis di profil LinkedIn/GitHub. **Tidak** membuat Google Business Profile. Catat di COMPLETE_TASK bahwa langkah dashboard = Boss Rezi (agent tidak punya akses GSC).

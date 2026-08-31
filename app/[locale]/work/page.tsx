@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { JsonLdScript } from "@/app/[locale]/_components/json-ld-script";
+import { buildJsonLd } from "@/lib/json-ld";
 import { LOCALES, isLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/page-metadata";
 import { WorkPage } from "../_components/work-page";
@@ -27,5 +29,10 @@ export default async function WorkRoute({
     notFound();
   }
 
-  return <WorkPage locale={locale} />;
+  return (
+    <>
+      <JsonLdScript data={buildJsonLd(locale, "work")} />
+      <WorkPage locale={locale} />
+    </>
+  );
 }

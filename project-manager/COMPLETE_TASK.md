@@ -15,6 +15,36 @@ Format entri:
 ```
 
 ## [2026-08-31]
+### Added
+- **T-031** Metadata API R1: ikon, kartu OG/Twitter, authors/applicationName, robots meta, manifest ringan (T-031.1–T-031.5). Bukan ulang title T-021.7 / JSON-LD T-029 / sitemap T-030. File [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+### Changed
+- Fokus TASKS / Snapshot → **T-031**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-030.1** — `app/sitemap.ts` (6 URL dari `LOCALES` × `SITE_META` via `lib/site-routes.ts`) + `app/robots.ts` (Allow `/`, Sitemap → `getSiteUrl()/sitemap.xml`). `<html lang>` mengikuti path: `proxy.ts` set `x-locale` pada `/(id|en)/…` tanpa rewrite URL; `cookies()` tema `rz-theme` tetap.
+- **T-030.2** — Baseline Lighthouse mobile lab (Chrome headless, locale `en`, production `rezisaktiva.space`, 2026-08-31). PSI API anonim 429. INP field tidak ada di lab LH 12 — lab memakai TBT. **Home** `/en`: LCP 3.9s, CLS 0.057, TBT 700ms (perf 61). **About** `/en/about`: LCP 6.3s, CLS 0.057, TBT 470ms (perf 53). **Work** `/en/work`: LCP 2.6s, CLS 0.057, TBT 570ms (perf 75). Ambang Google: LCP < 2.5s / INP < 200ms / CLS < 0.1 — CLS lolos; LCP di atas ambang (hero/portrait Unsplash remote). Tidak dioptimasi spekulatif (bukan missing `sizes`; jangan rewrite Lenis / transisi / anti-flash tema). Foto nyata = task aset terpisah.
+- **T-030.3** — Satu `<h1>` per destinasi (`/id`,`/en`,`/id/about`,`/en/work`). `next/image` → `image/webp` (Accept webp). Alt About tetap teks placeholder, bukan klaim foto diri. Nav/teaser/footer tidak dirombak.
+- **T-030.4** — Search Console = Boss Rezi (agent tidak punya akses GSC): (1) tambah properti URL-prefix `https://rezisaktiva.space`; (2) verifikasi; (3) Sitemaps → `https://rezisaktiva.space/sitemap.xml` setelah deploy; (4) cek `site:rezisaktiva.space`. Pastikan LinkedIn + GitHub menaut ke URL kanonis ber-locale (mis. `/en` atau `/id`). **Tidak** membuat Google Business Profile.
+### Changed
+- **T-030** ✅. Fokus TASKS / Snapshot → **T-023** ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-029.1** — `content/person.ts`: `name` `"Rezi"`, `alternateName` `"rezisaktiva"`, `jobTitle` `"Fullstack Product Builder"` (frasa yang sama di bio Quick Info). Email/sameAs tetap `content/contact.ts`.
+- **T-029.2** — `lib/json-ld.ts` `buildJsonLd(locale, surface)` → `@graph` WebSite + Person + WebPage/ProfilePage/CollectionPage + BreadcrumbList (About/Work) + ItemList/CreativeWork (Work). Tanpa literal copy.
+- **T-029.3** — satu `<script type="application/ld+json">` di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Overlay Contact / Quick Info / sheet tanpa graph.
+- **T-029.4** — `pnpm test` (`lib/json-ld.test.ts`, 6 tes): schema mengikuti `content/`; SMC Migration tanpa `url`; `Person.image` tidak ada. HTML lokal (`/id`+`/en` Home/About/Work): satu script per halaman, tipe sesuai paket. Rich Results Test Google tidak dijalankan (butuh URL publik, bukan localhost) — cek ulang setelah deploy/preview (T-030). Cek vs dokumen Google ProfilePage: `mainEntity` + `Person.name` ada; image placeholder sengaja di-omit.
+### Changed
+- **T-029** ✅. Fokus TASKS / Snapshot → **T-030**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
 ### Fixed
 - **T-029.1** — `Person.name` = nama yang sudah tampil (`Rezi` di h1 About), bukan `"Rezi Saktiva"` di JSON-LD selama string itu tidak ada di UI (`tasks/v11-structured-data.md`).
 ### Added

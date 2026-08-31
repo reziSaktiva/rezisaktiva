@@ -70,14 +70,14 @@ Item Work tanpa `href` (SMC Migration): **jangan** mengarang URL; omit `url`.
 
 ## T-029 — JSON-LD schema.org dari `content/` (M7)
 
-* **Status:** ⏳ Open
+* **Status:** ✅ Done (2026-08-31)
 * **Domain:** Engineering
 * **Output:** JSON-LD di Home / About / Work index, digenerate dari SoT konten; tes yang menegakkan field schema = field `content/`
 * **Keputusan paket:** tabel di atas (2026-08-31)
 
 ### Subtasks
 
-- [ ] **T-029.1** — Sumber identitas: tambah `content/person.ts` (atau setara) untuk `name`, `jobTitle`, `alternateName`. `name` = `"Rezi"` (sudah di h1 About), `alternateName` = brand `rezisaktiva` (title/footer/nav). Email/sameAs tetap `content/contact.ts`. **Jangan** isi `name` dengan nama legal yang belum tertulis di halaman. Jangan tulis JSON-LD dulu. Pastikan `jobTitle` selaras Quick Info (bukan string baru yang tidak muncul di UI).
-- [ ] **T-029.2** — Builder `lib/` (mis. `lib/json-ld.ts`) yang menerima `locale` + surface (`home` \| `about` \| `work`) dan mengembalikan `@graph` sesuai paket. Hanya impor `content/` + `getSiteUrl` / `localePath` + `NAV_LABELS` + `SITE_META` / `WORK_ITEMS`. Tanpa literal copy.
-- [ ] **T-029.3** — Pasang di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Satu `<script type="application/ld+json">` per halaman. Contact modal / Quick Info / sheet **tidak** punya graph sendiri.
-- [ ] **T-029.4** — Verifikasi: (1) ubah satu string di `content/` → JSON-LD ikut (tes unit atau setara); (2) item tanpa `href` tanpa `url`; (3) tidak ada `Person.image` placeholder; (4) cek Rich Results Test / validator schema.org pada URL lokal atau preview — catat hasil di COMPLETE_TASK, bukan screenshot wajib.
+- [x] **T-029.1** — Sumber identitas: tambah `content/person.ts` (atau setara) untuk `name`, `jobTitle`, `alternateName`. `name` = `"Rezi"` (sudah di h1 About), `alternateName` = brand `rezisaktiva` (title/footer/nav). Email/sameAs tetap `content/contact.ts`. **Jangan** isi `name` dengan nama legal yang belum tertulis di halaman. Jangan tulis JSON-LD dulu. Pastikan `jobTitle` selaras Quick Info (bukan string baru yang tidak muncul di UI).
+- [x] **T-029.2** — Builder `lib/` (mis. `lib/json-ld.ts`) yang menerima `locale` + surface (`home` \| `about` \| `work`) dan mengembalikan `@graph` sesuai paket. Hanya impor `content/` + `getSiteUrl` / `localePath` + `NAV_LABELS` + `SITE_META` / `WORK_ITEMS`. Tanpa literal copy.
+- [x] **T-029.3** — Pasang di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Satu `<script type="application/ld+json">` per halaman. Contact modal / Quick Info / sheet **tidak** punya graph sendiri.
+- [x] **T-029.4** — Verifikasi: (1) ubah satu string di `content/` → JSON-LD ikut (tes unit atau setara); (2) item tanpa `href` tanpa `url`; (3) tidak ada `Person.image` placeholder; (4) cek Rich Results Test / validator schema.org pada URL lokal atau preview — catat hasil di COMPLETE_TASK, bukan screenshot wajib.

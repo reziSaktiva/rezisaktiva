@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { JsonLdScript } from "@/app/[locale]/_components/json-ld-script";
+import { buildJsonLd } from "@/lib/json-ld";
 import { LOCALES, isLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/page-metadata";
 import { HomePage } from "./_components/home-page";
@@ -25,5 +27,10 @@ export default async function LocalePage({ params }: PageProps<"/[locale]">) {
     notFound();
   }
 
-  return <HomePage locale={locale} />;
+  return (
+    <>
+      <JsonLdScript data={buildJsonLd(locale, "home")} />
+      <HomePage locale={locale} />
+    </>
+  );
 }
