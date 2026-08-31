@@ -37,7 +37,7 @@ SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Astryx CLI: 
 ## Server / client / `"use server"`
 
 - Default = Server Component. Route `page.tsx`/`layout.tsx` **tetap server** (`generateStaticParams`, metadata).
-- `"use client"` hanya untuk hook, event, context, Lenis, overlay. Bukan karena impor Astryx — lihat `stub-page.tsx` / `overlay-icons.tsx`.
+- `"use client"` hanya untuk hook, event, context, Lenis, overlay. Bukan karena impor Astryx — lihat `home-page.tsx` / `overlay-icons.tsx`.
 - `"use server"` = Server Action. **Tidak ada di R1** (Contact = `mailto:` + form klien). Jangan taruh di page.
 
 ```tsx
