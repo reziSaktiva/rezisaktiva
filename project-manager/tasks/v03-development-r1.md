@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + work teaser, About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. T-018 ⏳ menunggu T-021.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. **T-027** ✅. **T-018** ✅. **T-028** ⏳ (rapikan kode bertahap, pasca-exit).
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -86,14 +86,15 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-018 — Exit R1 → destination layak evaluasi
 
-* **Status:** ⏳ Todo — ditunda sampai T-021.1–T-021.7 (T-026 ✅, 2026-08-27)
+* **Status:** ✅ Done (T-018.1–T-018.2, 2026-08-31)
 * **Domain:** Documentation
-* **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `success-metrics.md` (Phase 1 — Validation)
+* **Baca dulu:** `product-discovery/02-product/release-roadmap.md` (Exit R1), `01-business/success-metrics.md` (Phase 1 — Validation)
+* **Verifikasi (T-018.1, 2026-08-31):** copy T-021 + smoke live `http://127.0.0.1:3010` — `/id` `/en` `/about` `/work` **200**, satu `h1` per halaman, title meta T-021.7, `/` **307** ke locale. **NS-1:** About offering Product / Fullstack / AI & Orchestration + Quick Info bio “Fullstack Product Builder”. Home h1 puitis — positioning eksplisit di About/QI. **NS-2:** Contact = chrome + footer + modal. **Hybrid lean:** tidak ada `/work/[slug]`, blog, CMS, pricing. **Paritas ID/EN:** T-021.1–T-021.7. **A11y:** heading di HTML live; kontras token `#14181f`/`#edeae1` ≈ 14.8:1, chip `#14181f`/`#fde047` ≈ 13.5:1 (WCAG AAA body); fokus keyboard = `trapTabKey` + Escape di Contact/Quick Info (Tab trap tidak dijalankan di browser, hanya kode + HTML). **Bukan blocker:** foto Unsplash; T-023 ⏸️; `"use client"` luas → **T-028**.
 
 ### Subtasks
 
-- [ ] **T-018.1** — Verifikasi exit R1: reviewer bisa merangkum product builder + fullstack + AI edge; Contact soft path jelas; paritas makna ID/EN; a11y dasar (heading, kontras, fokus keyboard)
-- [ ] **T-018.2** — Update `PROJECT_STATE.md` (R1 exit / Validation) + append `COMPLETE_TASK.md` + update Fokus di `TASKS.md`
+- [x] **T-018.1** — Verifikasi exit R1: reviewer bisa merangkum product builder + fullstack + AI edge; Contact soft path jelas; paritas makna ID/EN; a11y dasar (heading, kontras, fokus keyboard)
+- [x] **T-018.2** — Update `PROJECT_STATE.md` (R1 exit / Validation) + append `COMPLETE_TASK.md` + update Fokus di `TASKS.md`
 
 ---
 
@@ -201,9 +202,44 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ---
 
+## T-027 — Playbook disiplin kode (styling + render Next.js)
+
+* **Status:** ✅ Done (T-027.1–T-027.3, 2026-08-28)
+* **Domain:** Documentation
+* **Baca dulu:** issue GitHub #52; `project-manager/CONVERSATIONS.md` (2026-08-28 Disiplin kode); ADR-015, ADR-018, ADR-019, ADR-021; `.cursor/rules/xds.mdc`; `product-discovery/06-engineering/design-tokens.md`; `05-architecture/application-layer.md`; kode produksi `app/` (pola `gap`/`padding`, `"use client"`, `cookies()`)
+* **Keputusan:** Playbook singkat di rule Cursor + Static Reference engineering. Kerja **baru** wajib ikut; rapikan `app/` lama bertahap, bukan big-bang. Tidak mengubah bentuk SSG (ADR-015) atau mengembalikan Tailwind (ADR-018). Gap StyleX vs Turbopack disebut eksplisit.
+* **Implementasi:** `product-discovery/06-engineering/code-discipline.md`; `.cursor/rules/code-discipline.mdc` (`alwaysApply`); indeks `AGENTS.md` / `PROJECT_RULES.md`; override `xds.mdc`; mapping `design-tokens.md`; catatan `cookies()` di `application-layer.md`.
+
+### Subtasks
+
+- [x] **T-027.1** — Dokumen engineering `code-discipline.md`: spacing (gap/padding/margin + token), lapisan komponen vs CSS vs StyleX, Server vs `"use client"` vs `"use server"`, SSG / `generateStaticParams` / `cookies()` / ISR-streaming bukan default. Contoh dari kode produksi. Indeks di `06-engineering/README.md`.
+- [x] **T-027.2** — Rule Cursor `.cursor/rules/code-discipline.mdc` (always-on) + indeks `AGENTS.md`, `PROJECT_RULES.md`, `DEVELOPER_WORKFLOW.md`, skill navigator. Override `xds.mdc`: jangan `xstyle` sampai compiler ada.
+- [x] **T-027.3** — Selaraskan `design-tokens.md` (mapping override) dan `application-layer.md` (`cookies()` tema). Tidak bentrok ADR-015/018.
+
+---
+
+## T-028 — Rapikan `app/` bertahap (ikuti playbook T-027)
+
+* **Status:** ⏳ Todo — setelah T-018 ✅; jangan big-bang
+* **Domain:** Engineering
+* **Baca dulu:** `product-discovery/06-engineering/code-discipline.md`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/xds.mdc`, ADR-015, ADR-018, ADR-021, ADR-025; kode `app/[locale]/_components/`, `app/layout.tsx`, `app/globals.css`
+* **Keputusan (2026-08-31):** Boss Rezi — T-018 dulu; rapikan kode lama **bertahap** (satu permukaan + verifikasi browser per batch). Bukan rewrite visual, bukan compiler StyleX, bukan hapus `cookies()` tema.
+* **Cakupan:** selaraskan kode *yang sudah ada* ke playbook. Kerja baru sudah wajib ikut T-027 tanpa task ini.
+
+### Subtasks
+
+- [ ] **T-028.1** — Island Server/Client: pecah `"use client"` di `home-page.tsx` (shell server; `HeroWords`/`Reveal`/`Magnetic` tetap client), `site-footer.tsx` (CTA island), `work-page.tsx` (state sheet vs markup statis). Route `page.tsx` tetap server.
+- [ ] **T-028.2** — About: pecah island rest/active / Collapsible dari markup statis jika tidak regresi visual (T-025). Verifikasi `/id/about` + `/en/about`.
+- [ ] **T-028.3** — Dead code: hapus `stub-page.tsx` jika tetap tidak diimpor; jangan sentuh `content/` copy terkunci.
+- [ ] **T-028.4** — CSS hemat: ganti px/rem di `globals.css` **hanya** jika sudah ada padanan `var(--spacing-*)` dan bukan ritme `clamp()` / motion Hess / overlay craft. Verifikasi light/dark + 320px.
+
+---
+
 ## Yang tidak masuk backlog Development R1
 
 - Halaman case `/work/[slug]` (bukan overlay M10 — ADR-027); Work index + sheet overlay sudah R1 (T-019, T-026)
 - Form, calendar, WA, Instagram, pricing (ADR-008 / ADR-014) — form Contact tetap di T-016, bukan di Quick Info
 - Blog / CMS / auth / DB (N/A — ADR-011/015)
 - Husky / test runner wajib (ditunda per `dx-tooling.md`)
+- Compiler StyleX / `xstyle` (gap T-013.4 dikunci di T-027; wiring = task terpisah, bukan T-028)
+- Rewrite besar `globals.css` / hapus `cookies()` anti-flash / ISR-streaming (bukan T-028)

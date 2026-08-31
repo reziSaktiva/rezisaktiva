@@ -42,5 +42,6 @@ MORE CLI:
 
 Baris "else Tailwind utilities backed by tokens ... via tailwind-theme.css" di atas adalah *default guidance* Astryx untuk opsi **coexist** dengan Tailwind. Project ini **replace penuh** (bukan coexist) — Tailwind sudah di-uninstall (`tailwindcss`, `@tailwindcss/postcss`), tidak ada `tailwind-theme.css`. Jangan tambahkan Tailwind atau bridge-nya kembali.
 
-* Custom styling di luar props komponen: pakai StyleX (`xstyle`) atau token Astryx langsung — **bukan** Tailwind utility class.
+* Custom styling di luar props komponen: **bukan** Tailwind. **Bukan** StyleX `xstyle` / `stylex.create()` dulu — compiler belum wired ke Turbopack (T-013.4, build gagal; ADR-018). Jalur R1: `className` scoped + token di `app/globals.css` (`var(--spacing-*)`, `var(--color-*)`).
 * Setup import (`reset.css` + `astryx.css` + `theme.css`) sudah terpasang di `app/globals.css`; provider `<Theme>` sudah dibungkus di `app/layout.tsx` (bukan `main.tsx` — project ini Next.js App Router). Jangan duplikasi setup.
+* Spacing, batas server/client, SSG: `.cursor/rules/code-discipline.mdc` + `product-discovery/06-engineering/code-discipline.md`.

@@ -14,6 +14,27 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-31] — Cara rapikan kode + exit R1
+
+**Phase:** Validation (setelah T-018)
+**Summary:** Boss Rezi tanya cara merapikan seluruh kode setelah playbook T-027. Keputusan: **jangan big-bang**. T-018 (exit R1) diselesaikan dulu; rapikan `app/` lama jadi **T-028** bertahap (island server/client dulu).
+**Key Decision/Insight:** Gap nyata = `"use client"` di hampir semua `_components/` (banyak sah: overlay/motion/tema; yang bisa dipecah: Home shell, Footer, sebagian Work/About). Bukan StyleX (sudah tidak dipakai). Bukan rewrite `globals.css` craft Hess. Verifikasi browser per batch.
+**Impact:** T-018 ✅; T-028 ⏳ di v03; PROJECT_STATE → Validation.
+
+## [2026-08-28] — Playbook disiplin kode dikunci (T-027 / #52)
+
+**Phase:** Development R1
+**Summary:** Setelah copy T-021 dikunci, playbook “kapan pakai apa” ditulis ke rule Cursor + `06-engineering/code-discipline.md`. Bukan rewrite `app/`. Gap StyleX vs Turbopack disebut eksplisit; `cookies()` tema tetap pengecualian anti-flash, bukan SSR-as-product.
+**Key Decision/Insight:** Kerja baru wajib ikut playbook. Rapikan kode lama bertahap. Compiler StyleX = task terpisah nanti.
+**Impact:** `code-discipline.md` + `.cursor/rules/code-discipline.mdc`; `xds.mdc`; `design-tokens.md`; `application-layer.md`; `AGENTS.md` / `PROJECT_RULES.md`; T-027.
+
+## [2026-08-28] — Disiplin kode / best practice (styling + rendering)
+
+**Phase:** Development R1
+**Summary:** Boss Rezi ingin project punya aturan tegas: komponen, function, spacing (gap/padding/margin), dan kapan `"use server"` / streaming / SSG/ISR/SSR. Audit singkat: pengetahuan itu **belum** lengkap — yang ada kuat di proses/ADR/Astryx CLI, lemah di playbook kode.
+**Key Decision/Insight:** **T-021.6 / T-021.7 dulu.** Playbook disiplin kode (rule Cursor + dokumen engineering, selaras ADR-015/018) menyusul setelah copy dikunci. Bukan rewrite besar `app/` sekarang; bukan aturan yang hanya hidup di chat.
+**Impact:** Belum ada file baru. Nanti: rule/skill engineering + kemungkinan update `06-engineering/` (tanpa mengubah bentuk SSG ADR-015 tanpa ADR baru).
+
 ## [2026-08-27] — Project sheet = Quick Info dari bawah + galeri Hess
 
 **Phase:** Development R1

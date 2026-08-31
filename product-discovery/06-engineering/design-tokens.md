@@ -1,6 +1,6 @@
 # Design Tokens
 
-> Status: **Baseline v1.1** — ditetapkan bersama Boss Rezi (2026-08-11; diperbarui 2026-08-13 via **ADR-018**; toggle UI Must R1 via **ADR-021**, 2026-08-16). Nilai visual **boleh diiterasi** saat desain/bootstrap; kontrak token saat ini = **Astryx (component library + StyleX + theme CSS)**, light default, dark fondasi via prop `mode`. Perubahan material struktur/tema memerlukan ADR baru.
+> Status: **Baseline v1.1** — ditetapkan bersama Boss Rezi (2026-08-11; diperbarui 2026-08-13 via **ADR-018**; toggle UI Must R1 via **ADR-021**, 2026-08-16). Nilai visual **boleh diiterasi** saat desain/bootstrap; kontrak token saat ini = **Astryx (component library + StyleX + theme CSS)**, light default, dark fondasi via prop `mode`. Mapping override R1 (T-027, 2026-08-28): className + `globals.css`, bukan `xstyle` sampai compiler ada. Perubahan material struktur/tema memerlukan ADR baru.
 
 Dokumen ini mendefinisikan sistem token & mapping implementasi untuk website portofolio **rezisaktiva**.
 
@@ -149,17 +149,17 @@ Theme component (mode: light/dark) — ThemeModeProvider
         ↓
 Komponen @astryxdesign/core (props semantik: color, type, level, dst)
         ↓
-xstyle (StyleX) untuk override spesifik-komponen bila perlu
+className scoped + app/globals.css (token) — bukan xstyle dulu
 ```
 
 | Lapisan | Isi |
 | ------- | --- |
 | Sumber kebenaran token | Tema built `rezisaktiva` (`theme/astryx-theme.css` + `theme/rezisaktiva.js`) — **ADR-024**; nilai kanvas/aksen R1 *berasal* dari arsip `design-mockups/shared.css` `--c-*` |
 | Komponen | `@astryxdesign/core/*` — props semantik, bukan hardcode hex/px |
-| Override lokal | `xstyle` (StyleX `stylex.create()`); dilarang `style={{}}` inline atau hex/px acak |
+| Override lokal | **Sekarang:** `className` scoped + `app/globals.css` (`var(--spacing-*)`, `var(--color-*)`). **Bukan** `xstyle` / `stylex.create()` sampai compiler StyleX di-wire ke Turbopack (gap T-013.4; ADR-018 Impact). Dilarang `style={{}}` inline atau hex/px acak di JSX. Playbook: `code-discipline.md` |
 | Konten MD/MDX | Tidak menyimpan hex brand; styling lewat komponen |
 | Kustomisasi brand | `pnpm theme:build` dari `lib/astryx-theme.ts` — bukan override `--color-*` manual di `:root` |
-| Agent docs | `.cursor/rules/xds.mdc` (konvensi wajib AI saat menulis komponen) |
+| Agent docs | `.cursor/rules/xds.mdc` + `.cursor/rules/code-discipline.mdc` |
 | Figma / design file | Opsional Later — docs ini cukup untuk bootstrap R1 |
 
 Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.css`, KI-001 / KI-002). Perubahan token berikutnya di `lib/astryx-theme.ts`, bukan di mockup. Rebuild: `pnpm theme:build`.
@@ -177,6 +177,7 @@ Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.c
 | Nilai visual | Kanvas + aksen di tema built `rezisaktiva` (asal R1: arsip `shared.css`; SoT hidup = kode tema, ADR-024) |
 | Motion | Bagian identitas visual (ADR-017), hierarchy-first; Lenis + page overlay (ADR-025) |
 | Native scrollbar | Tema `rezisaktiva` (T-025.9) — `--rz-scrollbar-*` di `app/globals.css`, bukan `--color-*` di `:root` |
+| Override komponen (R1) | className scoped + `globals.css` + token; StyleX `xstyle` belum (compiler Turbopack) — `code-discipline.md` |
 | Baseline Engineering | ADR-016; superseded sebagian oleh **ADR-018** (styling/token) |
 
 ---
@@ -203,5 +204,7 @@ Nilai hex kanvas/aksen R1 dikunci di tema built (asal historis: mockup `shared.c
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
 * `.cursor/rules/xds.mdc` — konvensi AI saat menulis komponen Astryx
+* `code-discipline.md` — spacing, lapisan CSS vs StyleX, Server/Client, SSG
+* `.cursor/rules/code-discipline.mdc` — ringkasan wajib agent
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
