@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-08-31] — SEO 3 pilar (teknis / on-page / off-page)
+
+**Phase:** Validation
+**Summary:** Boss Rezi kirim kerangka SEO Website (Technical, On-Page, Off-Page). Dipetakan ke portofolio R1, bukan toko/blog. Yang masuk kode: sitemap, robots, `html lang`, ukur CWV, hygiene on-page tanpa copy baru. JSON-LD tetap T-029. Off-page = Search Console + tautan satelit (ops), bukan GBP/backlink-as-code.
+**Key Decision/Insight:** Jangan rumus title “kata kunci di depan”. Jangan halaman Privacy Policy atau `/contact`. Jangan Google Business Profile. Alt/foto Unsplash tidak diklaim sebagai foto diri.
+**Impact:** `tasks/v12-seo.md` **T-030**; indeks TASKS; Snapshot fokus.
+
+## [2026-08-31] — Schema.org / JSON-LD untuk destinasi
+
+**Phase:** Validation
+**Summary:** Boss Rezi minta task schema Google. Schema.org punya ratusan tipe; yang masuk akal untuk portofolio pribadi R1 sedikit. Paket dikunci: WebSite + Person + ProfilePage (About) + WebPage/CollectionPage + BreadcrumbList + ItemList karya. JSON-LD harus digenerate dari `content/`, bukan file schema terpisah.
+**Key Decision/Insight:** Home bukan ProfilePage (bukan halaman bio murni). Organization/LocalBusiness/FAQ/HowTo/ContactPage di luar. `Person.image` ditahan selama foto Unsplash. Karya di sheet M10 tidak punya URL sendiri — ItemList memakai `href` live/repo, omit url jika tidak ada.
+**Impact:** `tasks/v11-structured-data.md` **T-029**; indeks TASKS; Snapshot fokus.
+
 ## [2026-08-31] — Cara rapikan kode + exit R1
 
 **Phase:** Validation (setelah T-018)
