@@ -16,6 +16,22 @@ Format entri:
 
 ## [2026-08-31]
 ### Added
+- **T-030** SEO R1 mengikuti 3 pilar (T-030.1 crawl sitemap/robots/lang; T-030.2 ukur CWV; T-030.3 hygiene on-page; T-030.4 ops Search Console). File [`tasks/v12-seo.md`](tasks/v12-seo.md). Bukan duplikat T-029; bukan halaman legal/contact baru; bukan GBP.
+### Changed
+- Fokus TASKS / Snapshot → **T-029** + **T-030**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-029** JSON-LD schema.org dari `content/` (T-029.1 identitas; T-029.2 builder; T-029.3 pasang Home/About/Work; T-029.4 verifikasi). Paket: WebSite, Person, ProfilePage, WebPage/CollectionPage, BreadcrumbList, ItemList+CreativeWork. File [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
+### Changed
+- Fokus TASKS / Snapshot → **T-029** ⏳; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
 - **T-028.1** island server/client: `home-page.tsx` + `site-footer.tsx` shell server; CTA `site-footer-cta.tsx`; Work grid/sheet `work-index-client.tsx`.
 - **T-028.2** About: `about-rest-active.tsx` + `about-process.tsx`; `about-page.tsx` server.
 ### Changed
