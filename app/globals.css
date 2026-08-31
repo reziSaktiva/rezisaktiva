@@ -78,7 +78,7 @@
    * Track = `--color-background-muted` (light/dark). Thumb = kuning chip
    * nav (`.site-nav-chip` / `--chip-bg`) di kedua tema. Prefix `--rz-*`.
    */
-  --rz-scrollbar-size: 0.5rem;
+  --rz-scrollbar-size: var(--spacing-2);
   --rz-scrollbar-track: #e4dfd1;
   --rz-scrollbar-thumb: var(--chip-bg);
   --rz-scrollbar-thumb-hover: var(--chip-bg);
@@ -178,8 +178,8 @@ html::-webkit-scrollbar-button {
 .site-top-nav {
   min-height: 3.75rem;
   padding-block: 0.7rem;
-  padding-inline: max(1rem, env(safe-area-inset-left, 0px))
-    max(1rem, env(safe-area-inset-right, 0px));
+  padding-inline: max(var(--spacing-4), env(safe-area-inset-left, 0px))
+    max(var(--spacing-4), env(safe-area-inset-right, 0px));
   flex-wrap: nowrap;
 }
 
@@ -261,8 +261,8 @@ html::-webkit-scrollbar-button {
   position: fixed;
   z-index: 55;
   top: calc(var(--appshell-header-height, 3.75rem) + 0.2rem);
-  right: max(0.75rem, env(safe-area-inset-right, 0px));
-  left: max(0.75rem, env(safe-area-inset-left, 0px));
+  right: max(var(--spacing-3), env(safe-area-inset-right, 0px));
+  left: max(var(--spacing-3), env(safe-area-inset-left, 0px));
   width: auto;
   padding: 0.4rem;
   overflow: visible;

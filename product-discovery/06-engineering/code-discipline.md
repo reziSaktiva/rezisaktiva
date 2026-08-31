@@ -77,10 +77,10 @@ Pengecualian `style={{}}` yang sudah ada: `colorScheme` di `<html>` (`app/layout
 import { VStack } from "@astryxdesign/core/VStack";
 import { Heading } from "@astryxdesign/core/Heading";
 
-export function StubPage({ heading }: { heading: string }) {
+export function HomePageShell({ title }: { title: string }) {
   return (
-    <VStack gap={2} padding={6}>
-      <Heading level={1}>{heading}</Heading>
+    <VStack className="home-page" gap={8}>
+      <Heading level={1}>{title}</Heading>
     </VStack>
   );
 }
@@ -104,7 +104,7 @@ Default Next App Router = **Server Component**. `"use client"` adalah *opt-in* u
 
 | Jenis | Kapan | Contoh produksi |
 | ----- | ----- | ---------------- |
-| **Server** (tanpa directive) | Tidak ada hook, event, browser API, context klien | `app/[locale]/page.tsx`, `about/page.tsx`, `overlay-icons.tsx`, `content/*.ts`, `stub-page.tsx` |
+| **Server** (tanpa directive) | Tidak ada hook, event, browser API, context klien | `app/[locale]/page.tsx`, `about/page.tsx`, `home-page.tsx`, `overlay-icons.tsx`, `content/*.ts` |
 | **`"use client"`** | `useState` / `useEffect` / context, event handler, Lenis, overlay (focus trap), theme toggle | `contact-modal.tsx`, `site-header.tsx`, `theme-toggle.tsx`, `page-transition.tsx` |
 | **`"use server"`** | Server Actions (fungsi mutasi yang dipanggil dari klien) | **Tidak ada di R1.** Contact = `mailto:` + form klien (ADR-019). Jangan menambah Action “karena tren.” |
 
@@ -112,8 +112,8 @@ Batas:
 
 * Route (`page.tsx` / `layout.tsx`) **tetap server**: `generateStaticParams`, `generateMetadata`, `params`. Island klien diimpor dari situ (`<HomePage locale={locale} />`).
 * File SVG/ikon murni **jangan** ditandai client — `overlay-icons.tsx`.
-* Jangan tulis `"use client"` hanya karena file mengimpor Astryx. `stub-page.tsx` membuktikan komponen Astryx bisa server.
-* Kerja baru: pecah island (motion, overlay, toggle) dari blok statis. Kode lama yang seluruh halaman `"use client"` **tidak** dirapikan di task ini.
+* Jangan tulis `"use client"` hanya karena file mengimpor Astryx. `home-page.tsx` / `site-footer.tsx` membuktikan komponen Astryx bisa server.
+* Kerja baru: pecah island (motion, overlay, toggle) dari blok statis. Kode lama dirapikan bertahap (T-028), bukan rewrite satu PR.
 
 **Pakai ini**
 

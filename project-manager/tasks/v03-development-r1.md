@@ -1,6 +1,6 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. **T-027** ✅. **T-018** ✅. **T-028** ⏳ (rapikan kode bertahap, pasca-exit).
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. **T-027** ✅. **T-018** ✅. **T-028** ✅.
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 
@@ -220,7 +220,7 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ## T-028 — Rapikan `app/` bertahap (ikuti playbook T-027)
 
-* **Status:** ⏳ Todo — setelah T-018 ✅; jangan big-bang
+* **Status:** ✅ Done (T-028.1–T-028.4, 2026-08-31)
 * **Domain:** Engineering
 * **Baca dulu:** `product-discovery/06-engineering/code-discipline.md`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/xds.mdc`, ADR-015, ADR-018, ADR-021, ADR-025; kode `app/[locale]/_components/`, `app/layout.tsx`, `app/globals.css`
 * **Keputusan (2026-08-31):** Boss Rezi — T-018 dulu; rapikan kode lama **bertahap** (satu permukaan + verifikasi browser per batch). Bukan rewrite visual, bukan compiler StyleX, bukan hapus `cookies()` tema.
@@ -228,10 +228,10 @@ Sebelum eksekusi task UI/UX (historis T-013…T-022): cek kelengkapan task **dan
 
 ### Subtasks
 
-- [ ] **T-028.1** — Island Server/Client: pecah `"use client"` di `home-page.tsx` (shell server; `HeroWords`/`Reveal`/`Magnetic` tetap client), `site-footer.tsx` (CTA island), `work-page.tsx` (state sheet vs markup statis). Route `page.tsx` tetap server.
-- [ ] **T-028.2** — About: pecah island rest/active / Collapsible dari markup statis jika tidak regresi visual (T-025). Verifikasi `/id/about` + `/en/about`.
-- [ ] **T-028.3** — Dead code: hapus `stub-page.tsx` jika tetap tidak diimpor; jangan sentuh `content/` copy terkunci.
-- [ ] **T-028.4** — CSS hemat: ganti px/rem di `globals.css` **hanya** jika sudah ada padanan `var(--spacing-*)` dan bukan ritme `clamp()` / motion Hess / overlay craft. Verifikasi light/dark + 320px.
+- [x] **T-028.1** — Island Server/Client: pecah `"use client"` di `home-page.tsx` (shell server; `HeroWords`/`Reveal`/`Magnetic` tetap client), `site-footer.tsx` (CTA island), `work-page.tsx` (state sheet vs markup statis). Route `page.tsx` tetap server.
+- [x] **T-028.2** — About: pecah island rest/active / Collapsible dari markup statis jika tidak regresi visual (T-025). Verifikasi `/id/about` + `/en/about`.
+- [x] **T-028.3** — Dead code: hapus `stub-page.tsx` jika tetap tidak diimpor; jangan sentuh `content/` copy terkunci.
+- [x] **T-028.4** — CSS hemat: ganti px/rem di `globals.css` **hanya** jika sudah ada padanan `var(--spacing-*)` dan bukan ritme `clamp()` / motion Hess / overlay craft. Verifikasi light/dark + 320px.
 
 ---
 

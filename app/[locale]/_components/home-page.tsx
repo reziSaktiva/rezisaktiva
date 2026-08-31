@@ -1,17 +1,14 @@
-"use client";
-
 import NextImage from "next/image";
-import NextLink from "next/link";
 import { Center } from "@astryxdesign/core/Center";
 import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
-import { Link } from "@astryxdesign/core/Link";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
 import { HERO_PORTRAIT_SRC, HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
-import { HeroWords, Magnetic, Reveal } from "./home-motion";
+import { HeroWords, Reveal } from "./home-motion";
+import { HomeWorkAllLink } from "./home-work-all-link";
 import { WorkTile } from "./work-tile";
 
 export function HomePage({ locale }: { locale: Locale }) {
@@ -79,16 +76,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 {copy.workTitle}
               </Heading>
             </VStack>
-            <Magnetic>
-              <Link
-                as={NextLink}
-                href={workHref}
-                color="secondary"
-                className="home-cta-underline"
-              >
-                {copy.workAll}
-              </Link>
-            </Magnetic>
+            <HomeWorkAllLink href={workHref} label={copy.workAll} />
           </Reveal>
 
           <Grid

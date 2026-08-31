@@ -16,6 +16,17 @@ Format entri:
 
 ## [2026-08-31]
 ### Added
+- **T-028.1** island server/client: `home-page.tsx` + `site-footer.tsx` shell server; CTA `site-footer-cta.tsx`; Work grid/sheet `work-index-client.tsx`.
+- **T-028.2** About: `about-rest-active.tsx` + `about-process.tsx`; `about-page.tsx` server.
+### Changed
+- **T-028.3** hapus `stub-page.tsx` (tidak diimpor); acuan playbook → `home-page.tsx`.
+- **T-028.4** token spacing chrome di `globals.css` (`--spacing-2`/`-3`/`-4`); clamp/motion/overlay tidak diubah.
+- **T-028** ✅. v03 Done. Fokus berikutnya **T-023** ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
 - **T-028** rapikan `app/` bertahap (T-028.1 island server/client; T-028.2 About; T-028.3 stub mati; T-028.4 CSS token hemat). Belum dieksekusi.
 ### Changed
 - **T-018.1–T-018.2** exit R1 ✅. `PROJECT_STATE.md` → Validation. Fokus TASKS = T-028.

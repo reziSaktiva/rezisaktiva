@@ -1,28 +1,22 @@
-"use client";
-
-import { Button } from "@astryxdesign/core/Button";
 import { Heading } from "@astryxdesign/core/Heading";
 import { HStack } from "@astryxdesign/core/HStack";
-import { Icon } from "@astryxdesign/core/Icon";
 import { Link } from "@astryxdesign/core/Link";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
-import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { CONTACT_SOCIALS } from "@/content/contact";
 import { HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
-import { Magnetic } from "./home-motion";
-import { ArrowRightIcon } from "./overlay-icons";
+import { SiteFooterCta } from "./site-footer-cta";
 
 /**
  * Footer = pita Contact (T-025.3, ADR-025): heading + CTA membuka modal
  * yang sama, lalu legal + satelit LinkedIn/GitHub. Bukan form baru;
  * tanpa WA/IG (ADR-014). Copy dari `HOME_COPY` (T-021.2) — tidak dikarang.
+ * Shell server; tombol modal = island `SiteFooterCta` (T-028.1).
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
-  const { open } = useContactModal();
 
   return (
     <Section
@@ -39,23 +33,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Heading level={2} className="home-contact-title">
             {copy.contactTitle}
           </Heading>
-          <Text
-            color="secondary"
-            display="block"
-            className="home-contact-body"
-          >
+          <Text color="secondary" display="block" className="home-contact-body">
             {copy.contactBody}
           </Text>
-          <Magnetic>
-            <Button
-              label={copy.contactCta}
-              variant="primary"
-              size="lg"
-              onClick={open}
-              endContent={<Icon icon={ArrowRightIcon} />}
-              className="home-contact-cta"
-            />
-          </Magnetic>
+          <SiteFooterCta label={copy.contactCta} />
         </VStack>
 
         <HStack
