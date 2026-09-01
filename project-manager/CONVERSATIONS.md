@@ -14,6 +14,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-01] — Minerank = migrasi + lelang + blog
+
+**Phase:** Validation
+**Summary:** Boss Rezi menggabungkan Minerank Blog, SMC Auction, dan SMC Migration menjadi satu karya web Minerank, urutan kerja migrasi database → auction → blog headless WordPress.
+**Key Decision/Insight:** Bukan tiga tile terpisah. Teaser Home memakai Minerank menggantikan SMC Auction. Tautan Live sheet = blog Minerank; smc.auction tetap di deskripsi.
+**Impact:** `content/data/projects.json`, tes JSON-LD (tidak ada lagi item tanpa href), T-021.2 / T-021.5.
+
+---
+
+## [2026-09-01] — Fakta profil ke JSON
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin projects, services, tools, email, dan links mudah diubah tanpa menyentuh TypeScript.
+**Key Decision/Insight:** Fakta hidup di `content/data/*.json`. Copy UI (label, h1, modal) tetap `content/*.ts`. Bukan CMS/DB; tetap SSG dari repo.
+**Impact:** `content/data/`, wrapper `work.ts` / `work-sheet.ts` / `contact.ts` / `quick-info.ts`, Quick Info / footer / Contact modal / JSON-LD iterate tautan.
+
+---
+
 ## [2026-09-01] — Path katalog `/work` → `/projects`
 
 **Phase:** Validation

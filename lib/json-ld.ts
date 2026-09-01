@@ -1,5 +1,5 @@
 import { PERSON } from "@/content/person";
-import { CONTACT_EMAIL, CONTACT_SOCIALS } from "@/content/contact";
+import { CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { WORK_ITEMS } from "@/content/work";
@@ -47,7 +47,7 @@ function personNode(locale: Locale): JsonLdNode {
     description: QUICK_INFO_COPY[locale].bio,
     email: CONTACT_EMAIL,
     url: pageUrl(locale, "about"),
-    sameAs: [CONTACT_SOCIALS.linkedin.href, CONTACT_SOCIALS.github.href],
+    sameAs: CONTACT_LINKS.map((link) => link.href),
     knowsAbout: [...QUICK_INFO_COPY[locale].services],
   };
 }

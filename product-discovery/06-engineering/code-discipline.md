@@ -104,7 +104,7 @@ Default Next App Router = **Server Component**. `"use client"` adalah *opt-in* u
 
 | Jenis | Kapan | Contoh produksi |
 | ----- | ----- | ---------------- |
-| **Server** (tanpa directive) | Tidak ada hook, event, browser API, context klien | `app/[locale]/page.tsx`, `about/page.tsx`, `home-page.tsx`, `overlay-icons.tsx`, `content/*.ts` |
+| **Server** (tanpa directive) | Tidak ada hook, event, browser API, context klien | `app/[locale]/page.tsx`, `about/page.tsx`, `home-page.tsx`, `overlay-icons.tsx`, `content/*.ts`, `content/data/*.json` |
 | **`"use client"`** | `useState` / `useEffect` / context, event handler, Lenis, overlay (focus trap), theme toggle | `contact-modal.tsx`, `site-header.tsx`, `theme-toggle.tsx`, `page-transition.tsx` |
 | **`"use server"`** | Server Actions (fungsi mutasi yang dipanggil dari klien) | **Tidak ada di R1.** Contact = `mailto:` + form klien (ADR-019). Jangan menambah Action “karena tren.” |
 

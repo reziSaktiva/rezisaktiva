@@ -2297,6 +2297,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 .ps-description {
   max-width: 42rem;
   margin-block-end: 1.25rem;
+  white-space: pre-wrap;
 }
 
 .ps-gallery {

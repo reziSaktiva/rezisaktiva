@@ -1,16 +1,13 @@
 import type { Locale } from "@/lib/locale";
-import { WORK_ITEMS, type WorkItem } from "./work";
+import { HOME_TEASER_IDS, WORK_ITEMS, type WorkItem } from "./work";
 
 /**
  * Copy Home. Dikunci T-021.2 (h1/bukti/seksi karya/contact 2026-08-20;
  * teaser 2026-08-28). Nama/outcome teaser = katalog T-021.5, satu sumber.
- * Set teaser dikunci Boss Rezi: SMMP · Cook It Real Good · SMC Auction.
+ * Set teaser dikunci di `content/data/projects.json` (`homeTeaserIds`).
  */
 
 export type HomeTeaserItem = WorkItem;
-
-/** Urutan tampil di Home (tile pertama = featured penuh lebar). */
-const HOME_TEASER_IDS = ["1", "2", "4"] as const;
 
 function teasersFor(locale: Locale): readonly HomeTeaserItem[] {
   const byId = new Map(WORK_ITEMS[locale].map((item) => [item.id, item]));

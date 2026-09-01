@@ -76,7 +76,7 @@ describe("buildJsonLd", () => {
     expect(works).toHaveLength(catalog.length);
 
     const withoutHref = catalog.filter((item) => !item.href);
-    expect(withoutHref.map((item) => item.id)).toEqual(["8"]);
+    expect(withoutHref).toHaveLength(0);
 
     for (const item of catalog) {
       const node = works.find((work) => work.name === item.name);

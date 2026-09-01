@@ -18,6 +18,22 @@ Format entri:
 ### Added
 - (tidak ada)
 ### Changed
+- Katalog: Minerank + SMC Auction + SMC Migration digabung jadi **Minerank** (migrasi → lelang → blog). Teaser Home: SMMP · Cook It Real Good · Minerank. Galeri sheet memakai aset Minerank + auction.
+### Fixed
+- Tes JSON-LD tidak lagi mengunci item id `8` tanpa `href`.
+
+## [2026-09-01]
+### Added
+- `content/data/projects.json`, `services.json`, `tools.json`, `email.json`, `links.json` — fakta profil yang bisa ditambah/dikurangi tanpa mengubah copy UI.
+### Changed
+- Wrapper `content/work.ts`, `work-sheet.ts`, `contact.ts`, `quick-info.ts` membaca JSON. Quick Info, footer, Contact modal, dan JSON-LD `sameAs` mengikuti daftar tautan.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
 - Teaser Home: klik tile membuka project sheet (sama dengan Work index). “Semua proyek” tetap ke `/[locale]/work`. ADR-027 + IA/S4/F7/M4/M10 diselaraskan.
 - Label chrome M9: Karya/Work → **Proyek / Projects** (`lib/nav.ts`); path katalog **`/projects`**; `/work` redirect permanen. Home kicker/CTA + Quick Info ikut.
 ### Fixed

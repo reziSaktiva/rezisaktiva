@@ -32,7 +32,7 @@ Tidak ada Turborepo / pnpm workspace multi-package untuk R1.
 ```text
 rezisaktiva/
 ├── app/                    # Next.js App Router (halaman /id|/en, …)
-├── content/                # SoT konten portofolio (MD/MDX atau setara)
+├── content/                # SoT konten: copy TS + fakta JSON di `content/data/`
 ├── public/                 # aset statis
 ├── product-discovery/      # SoT produk (docs)
 ├── project-manager/        # SoT cara kerja (docs)
@@ -48,7 +48,7 @@ rezisaktiva/
 | Area | Peran |
 | ---- | ----- |
 | `app/` | UI & routing locale |
-| `content/` | Konten yang di-build ke halaman (bukan SoT di DB) |
+| `content/` | Konten yang di-build ke halaman. Fakta yang sering diubah (proyek, services, tools, email, tautan) di `content/data/*.json`; copy UI tetap `content/*.ts` |
 | `product-discovery/` | Keputusan produk — bukan runtime |
 | `project-manager/` | Status/task/ADR — bukan runtime |
 | `private/` | Dilindungi; tidak di-bundle ke situs publik |

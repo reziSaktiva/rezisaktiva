@@ -70,7 +70,7 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 
 # Data Access Pattern
 
-* Baca konten dari **filesystem/repo pada build**
+* Baca konten dari **filesystem/repo pada build** (`content/*.ts` untuk copy UI; `content/data/*.json` untuk fakta yang sering diubah)
 * Tidak ada runtime query ke DB
 * Tidak ada cache application state yang harus disinkronkan antar user
 

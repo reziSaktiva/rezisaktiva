@@ -57,14 +57,14 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | `jobTitle` | Field identitas yang sama makna dengan Quick Info (“Fullstack Product Builder”) — jangan parse kalimat bio |
 | `description` | `QUICK_INFO_COPY[locale].bio` |
 | `email` | `CONTACT_EMAIL` |
-| `sameAs` | `CONTACT_SOCIALS` (LinkedIn, GitHub) |
+| `sameAs` | `CONTACT_LINKS` (`content/data/links.json`) |
 | `url` | Canonical About (`localePath(locale, "about")`) — halaman profil |
 | `knowsAbout` | `QUICK_INFO_COPY[locale].services` |
 | `image` | Kosong sampai foto nyata |
 
 `WebSite.@id` = `{getSiteUrl()}/#website`. Halaman memakai `@graph` dan merujuk `@id`, jangan salin ulang seluruh Person di setiap halaman.
 
-Item Work tanpa `href` (SMC Migration): **jangan** mengarang URL; omit `url`.
+Item Work tanpa `href`: **jangan** mengarang URL; omit `url`.
 
 ---
 

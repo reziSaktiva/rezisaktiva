@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import NextLink from "next/link";
-import { CONTACT_EMAIL, CONTACT_SOCIALS } from "@/content/contact";
+import { CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { WORK_ITEMS } from "@/content/work";
 import { trapTabKey } from "@/lib/focus-trap";
@@ -188,12 +188,11 @@ export function QuickInfo({ locale }: { locale: Locale }) {
               {copy.linksLabel}
             </Text>
             <HStack gap={5} wrap="wrap" className="qi-links">
-              <Link href={CONTACT_SOCIALS.linkedin.href} color="secondary">
-                {CONTACT_SOCIALS.linkedin.label}
-              </Link>
-              <Link href={CONTACT_SOCIALS.github.href} color="secondary">
-                {CONTACT_SOCIALS.github.label}
-              </Link>
+              {CONTACT_LINKS.map((link) => (
+                <Link key={link.id} href={link.href} color="secondary">
+                  {link.label}
+                </Link>
+              ))}
             </HStack>
           </VStack>
         </VStack>

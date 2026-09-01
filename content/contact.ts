@@ -1,22 +1,21 @@
 import type { Locale } from "@/lib/locale";
+import email from "./data/email.json";
+import links from "./data/links.json";
 
 /**
- * Copy Contact modal sementara dari mockup (`design-mockups/shared.js`).
- * Bukan copy final — kunci + ganti teks di T-021.4 (v10).
- *
- * Email & URL satelit (LinkedIn/GitHub) sudah nyata; sisa label/body form
- * masih placeholder mockup sampai T-021.4.
+ * Copy Contact modal. Email & tautan satelit dari
+ * `content/data/email.json` + `content/data/links.json`.
  */
 
-export const CONTACT_EMAIL = "rezisaktiva08@gmail.com";
+export const CONTACT_EMAIL = email.address;
 
-export const CONTACT_SOCIALS = {
-  linkedin: {
-    href: "https://www.linkedin.com/in/rezi-saktiva-bb89a12a1/",
-    label: "LinkedIn",
-  },
-  github: { href: "https://github.com/reziSaktiva", label: "GitHub" },
-} as const;
+export type ContactLink = {
+  id: string;
+  href: string;
+  label: string;
+};
+
+export const CONTACT_LINKS: readonly ContactLink[] = links;
 
 export interface ContactCopy {
   titleLead: string;
