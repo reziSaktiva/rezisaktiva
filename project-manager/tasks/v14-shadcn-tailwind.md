@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. Mulai eksekusi dari **T-032.1**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). Kerjakan di **satu branch** (`feat/shadcn-tailwind`). Dual-boot Astryx+shadcn hanya di branch itu. **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032.1** ✅. Mulai eksekusi dari **T-032.2**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). Kerjakan di **satu branch** (`feat/shadcn-tailwind`). Dual-boot Astryx+shadcn hanya di branch itu. **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -186,7 +186,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ### Subtasks
 
-- [ ] **T-032.1** — Baseline visual: tangkap referensi **sebelum** ubah UI (Home/About/Work, light+dark, 320 & desktop, Contact + Quick Info + satu project sheet). Catat computed token kanvas/fg/chip/accent di COMPLETE_TASK. Ini acuan T-037.6 — bukan mockup HTML.
+- [x] **T-032.1** — Baseline visual: tangkap referensi **sebelum** ubah UI (Home/About/Work, light+dark, 320 & desktop, Contact + Quick Info + satu project sheet). Catat computed token kanvas/fg/chip/accent di COMPLETE_TASK. Ini acuan T-037.6 — bukan mockup HTML. Artefak: [`baselines/t-032.1/`](../baselines/t-032.1/).
 - [ ] **T-032.2** — MCP: `pnpm dlx shadcn@latest mcp init --client cursor` (merge, jangan hapus `xds` dulu). Motion AI Kit: `npx motion-ai` project+Cursor. Enable sampai hijau. Jangan MCP Tailwind community. Catat isi akhir `.cursor/mcp.json` di COMPLETE_TASK.
 - [ ] **T-032.3** — Tailwind CSS **v4** + PostCSS sesuai Next 16 / shadcn CLI. `pnpm dlx shadcn@latest init` (radix, RSC, lucide, aliases `@/`, CSS `app/globals.css`). Jangan biarkan CLI menimpa font Fontshare atau palet tanpa map token. `lib/utils.ts` (`cn`) boleh baru.
 - [ ] **T-032.4** — Map token tabel di atas ke `:root` / `.dark` + `@theme inline`. `@custom-variant dark` = class `.dark`. Chip / `--elev-3d` / scrollbar T-025.9 tetap. Jangan override `--color-*` Astryx di `:root` sebagai jalur baru — jalur baru = variabel shadcn + variabel `--chip-*` yang sudah ada.
@@ -287,7 +287,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 - [ ] **T-037.3** — `globals.css`: hapus `@import` Astryx; ganti selector `.astryx-*` / `#astryx-app-shell-main` ke class baru (header/main). Jangan `!important` baru kecuali preseden sadar. Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
 - [ ] **T-037.4** — Docs/rule: `design-tokens.md`, `code-discipline.md` + `.mdc`, `dependency-strategy.md`, `06-engineering/README.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md` (indeks rule). **Ganti** `.cursor/rules/xds.mdc` jadi rule shadcn (alwaysApply) — konvensi CLI `pnpm exec`/`pnpm dlx shadcn`, tanpa Tailwind-as-coexist Astryx, tanpa StyleX. `ui-ux-mockup-check.mdc`: acuan = `app/` + shadcn/Tailwind, bukan Astryx.
 - [ ] **T-037.5** — `.cursor/mcp.json`: hapus `xds`. shadcn + motion tetap. Jangan sebut nama model/tool terlarang di commit.
-- [ ] **T-037.6** — QA paritas vs **T-032.1**: Home/About/Work; Contact/QI/sheet; chrome; light/dark; 320/375/desktop; reduced-motion; locale ID/EN; typecheck/lint/build. Catat gap yang tidak 1:1 (jika ada) — **perbaiki dulu** jika bentuk berubah tanpa keputusan. Foto Unsplash tetap bukan blocker.
+- [ ] **T-037.6** — QA paritas vs **T-032.1** ([`baselines/t-032.1/`](../baselines/t-032.1/)): Home/About/Work; Contact/QI/sheet; chrome; light/dark; 320/375/desktop; reduced-motion; locale ID/EN; typecheck/lint/build. Catat gap yang tidak 1:1 (jika ada) — **perbaiki dulu** jika bentuk berubah tanpa keputusan. Foto Unsplash tetap bukan blocker.
 - [ ] **T-037.7** — Snapshot/Fokus/COMPLETE_TASK: rilis v14 Done; Active Mode Validation; berikutnya **T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028.
 
 ---
@@ -295,7 +295,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 ## Urutan & paralel
 
 ```text
-T-032 (fondasi)          ← mulai di sini (prioritas)
+T-032 (fondasi)          ← T-032.1 ✅; lanjut T-032.2
     → T-033 (chrome)
         → T-034 (halaman) ──┐
                             ├──→ T-035 (overlay) → T-036 (motion) → T-037 (cabut + docs + QA)

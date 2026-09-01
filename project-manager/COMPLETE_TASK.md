@@ -16,6 +16,26 @@ Format entri:
 
 ## [2026-09-01]
 ### Added
+- **T-032.1** baseline visual produksi (bukan mockup HTML): [`baselines/t-032.1/`](baselines/t-032.1/) — Home/About/Work + Contact/Quick Info/project sheet; light+dark; 320×720 & 1440×900; locale `en`. Token computed (`getComputedStyle` pada `html`/`body`, cookie `rz-theme`):
+
+  | Peran | Light | Dark |
+  | ----- | ----- | ---- |
+  | Kanvas (`body` bg / `--color-background-body`) | `rgb(237, 234, 225)` `#edeae1` | `rgb(10, 15, 26)` `#0a0f1a` |
+  | Fg (`body` color / `--color-text-primary`) | `rgb(20, 24, 31)` `#14181f` | `rgb(237, 234, 225)` `#edeae1` |
+  | Accent (`--color-accent`) | `#4c7a73` | `#7fb3aa` |
+  | Chip kuning (`--chip-bg` / `--chip-fg`) | `#fde047` / `#14181f` | sama (kuning tetap) |
+  | Chrome pill aktif (`--chrome-pill-*` via `useChipColorVars`, desktop) | `#0a0f1a` / `#edeae1` | `#edeae1` / `#0a0f1a` |
+  | Scrollbar thumb | `#fde047` | `#fde047` |
+  | Scrollbar track (`--rz-scrollbar-track`) | `#e4dfd1` | `#121a2b` |
+
+  Fallback CSS `--chrome-pill-*` di `:root` tetap light (`#0a0f1a` / `#edeae1`); nilai runtime desktop dari inline style chip. JSON: `baselines/t-032.1/computed-tokens.json`.
+### Changed
+- Fokus: **T-032.2** berikutnya (MCP shadcn + Motion AI Kit).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
 - (tidak ada)
 ### Changed
 - Prioritas backlog: **T-032…T-037** diutamakan; **T-031** antrian setelah T-037 (Boss Rezi).
