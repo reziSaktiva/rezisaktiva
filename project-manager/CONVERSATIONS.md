@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-01] — Migrasi shadcn jadi prioritas
+
+**Phase:** Validation
+**Summary:** Boss Rezi meminta T-032…T-037 diutamakan di atas T-031.
+**Key Decision/Insight:** Kerja berikutnya = T-032.1. T-031 mengantri setelah T-037 agar tidak bentrok di `app/layout.tsx`.
+**Impact:** `TASKS.md` Fokus, `PROJECT_STATE.md`, ADR-028 poin 10, `v14-shadcn-tailwind.md`, `v13-metadata.md`.
+
+## [2026-09-01] — Migrasi Astryx ke shadcn + Tailwind
+
+**Phase:** Validation
+**Summary:** Boss Rezi meminta backlog migrasi dari Astryx ke shadcn/ui dan Tailwind. Inventaris komponen produksi, Motion (motion.dev), paritas bentuk visual, MCP, dan dark/light (ADR-021) dikunci di ADR-028 + T-032…T-037.
+**Key Decision/Insight:** Bukan redesain; end state tidak hybrid; dual-boot hanya di branch kerja; T-031 dulu karena `app/layout.tsx`; `next-themes` bukan default; MCP Tailwind community tidak dipasang.
+**Impact:** `decisions/ADR-028-*.md`, `tasks/v14-shadcn-tailwind.md`, `TASKS.md`, `PROJECT_STATE.md`, ADR-018 superseded, ADR-026 update. Docs engineering/rule agent menyusul di T-037.
+
 ## [2026-09-01] — Status pekerjaan jadi seksi Home
 
 **Phase:** Validation

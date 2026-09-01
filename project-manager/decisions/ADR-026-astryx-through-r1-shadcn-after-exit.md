@@ -36,3 +36,7 @@ Accepted
 - `product-discovery/06-engineering/dependency-strategy.md` — catatan: evaluasi shadcn bukan R1.
 - Task **T-026** (project sheet, Must R1, ADR-027) tetap di Astryx (`BottomSheet` atau overlay custom) — bukan alasan migrasi shadcn.
 - Evaluasi stack pasca-T-018 = ADR baru jika memutuskan pindah (supersede ADR-018).
+
+### Update — 2026-09-01
+
+Evaluasi pasca-T-018 selesai: pindah ke shadcn/ui + Tailwind CSS v4. Keputusan migrasi = **[ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md)**. Timing ADR ini (jangan pindah di tengah R1) tetap valid sebagai jejak.

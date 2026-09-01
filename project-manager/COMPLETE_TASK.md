@@ -16,6 +16,22 @@ Format entri:
 
 ## [2026-09-01]
 ### Added
+- (tidak ada)
+### Changed
+- Prioritas backlog: **T-032…T-037** diutamakan; **T-031** antrian setelah T-037 (Boss Rezi).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **ADR-028** + backlog **T-032…T-037** (`tasks/v14-shadcn-tailwind.md`): migrasi Astryx → shadcn/ui + Tailwind v4 (bukan redesain; Motion; MCP shadcn + Motion AI Kit).
+### Changed
+- ADR-018 **superseded**. Evaluasi ADR-026 selesai. Fokus: T-031 dulu, lalu T-032.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
 - Seksi Home **Now** (status pekerjaan): kicker Sekarang/Now + tautan Insvire Technologies, setelah hero.
 ### Changed
 - Pola S1 / IA Home / M1 / F1: Now masuk urutan konten Home (bukan item karya).

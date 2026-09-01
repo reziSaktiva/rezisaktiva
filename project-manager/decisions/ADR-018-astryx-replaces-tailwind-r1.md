@@ -6,7 +6,7 @@ Astryx (component library + StyleX + theme CSS) menggantikan Tailwind CSS + CSS 
 
 ### Status
 
-Accepted
+Superseded (ADR-028, 2026-09-01)
 
 ### Date
 
@@ -43,3 +43,7 @@ R1 memakai **Astryx** (`@astryxdesign/core`, `@stylexjs/stylex`, `@astryxdesign/
 
 * **Coexist (Astryx + Tailwind bridge)** — ditolak; menambah kompleksitas layer CSS (`@layer` ordering) untuk manfaat marginal di situs selean R1.
 * **Tetap Tailwind + CSS variables murni (tanpa component library)** — ditolak; Boss Rezi ingin AI agent punya "rel" komponen siap pakai yang mengurangi risiko UI tidak konsisten/di luar konvensi saat dikerjakan AI.
+
+### Update — 2026-09-01
+
+**Superseded oleh [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).** Setelah exit R1 (`T-018`), stack UI pindah ke shadcn/ui + Tailwind CSS v4. Isi ADR ini tetap jejak sejarah keputusan R1, bukan kontrak styling aktif.
