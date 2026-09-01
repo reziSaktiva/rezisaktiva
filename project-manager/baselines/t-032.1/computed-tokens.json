@@ -1,0 +1,122 @@
+{
+  "light-320": {
+    "dataTheme": "light",
+    "colorScheme": "light",
+    "bodyBackground": "rgb(237, 234, 225)",
+    "bodyColor": "rgb(20, 24, 31)",
+    "htmlBackground": "rgb(237, 234, 225)",
+    "tokens": {
+      "--color-background-surface": "#edeae1",
+      "--color-background-body": "#edeae1",
+      "--color-background-card": "#edeae1",
+      "--color-background-muted": "#e4dfd1",
+      "--color-text-primary": "#14181f",
+      "--color-text-secondary": "#6e6a5f",
+      "--color-accent": "#4c7a73",
+      "--color-on-accent": "#edeae1",
+      "--color-accent-muted": "#d8e2de",
+      "--color-border": "#dad5c7",
+      "--chip-bg": "#fde047",
+      "--chip-fg": "#14181f",
+      "--chrome-pill-bg": "#0a0f1a",
+      "--chrome-pill-fg": "#edeae1",
+      "--elev-3d": "inset 0 1px 0 #ffffff8c,\n    inset 0 -1.5px 2px #14181f24,\n    0 1px 0 #14181f29,\n    0 6px 14px #14181f1f",
+      "--rz-scrollbar-track": "#e4dfd1",
+      "--rz-scrollbar-thumb": "#fde047"
+    },
+    "chipInline": {
+      "chromePillBg": "",
+      "chromePillFg": ""
+    }
+  },
+  "light-desktop": {
+    "dataTheme": "light",
+    "colorScheme": "light",
+    "bodyBackground": "rgb(237, 234, 225)",
+    "bodyColor": "rgb(20, 24, 31)",
+    "htmlBackground": "rgb(237, 234, 225)",
+    "tokens": {
+      "--color-background-surface": "#edeae1",
+      "--color-background-body": "#edeae1",
+      "--color-background-card": "#edeae1",
+      "--color-background-muted": "#e4dfd1",
+      "--color-text-primary": "#14181f",
+      "--color-text-secondary": "#6e6a5f",
+      "--color-accent": "#4c7a73",
+      "--color-on-accent": "#edeae1",
+      "--color-accent-muted": "#d8e2de",
+      "--color-border": "#dad5c7",
+      "--chip-bg": "#fde047",
+      "--chip-fg": "#14181f",
+      "--chrome-pill-bg": "#0a0f1a",
+      "--chrome-pill-fg": "#edeae1",
+      "--elev-3d": "inset 0 1px 0 #ffffff8c,\n    inset 0 -1.5px 2px #14181f24,\n    0 1px 0 #14181f29,\n    0 6px 14px #14181f1f",
+      "--rz-scrollbar-track": "#e4dfd1",
+      "--rz-scrollbar-thumb": "#fde047"
+    },
+    "chipInline": {
+      "chromePillBg": "#0a0f1a",
+      "chromePillFg": "#edeae1"
+    }
+  },
+  "dark-320": {
+    "dataTheme": "dark",
+    "colorScheme": "dark",
+    "bodyBackground": "rgb(10, 15, 26)",
+    "bodyColor": "rgb(237, 234, 225)",
+    "htmlBackground": "rgb(10, 15, 26)",
+    "tokens": {
+      "--color-background-surface": "#0a0f1a",
+      "--color-background-body": "#0a0f1a",
+      "--color-background-card": "#0a0f1a",
+      "--color-background-muted": "#121a2b",
+      "--color-text-primary": "#edeae1",
+      "--color-text-secondary": "#9b968a",
+      "--color-accent": "#7fb3aa",
+      "--color-on-accent": "#0a0f1a",
+      "--color-accent-muted": "#1e302e",
+      "--color-border": "#222b3d",
+      "--chip-bg": "#fde047",
+      "--chip-fg": "#14181f",
+      "--chrome-pill-bg": "#0a0f1a",
+      "--chrome-pill-fg": "#edeae1",
+      "--elev-3d": "inset 0 1px 0 #ffffff38,\n    inset 0 -1.5px 2px #0000006b,\n    0 1px 0 #0000008c,\n    0 8px 18px #00000073",
+      "--rz-scrollbar-track": "#121a2b",
+      "--rz-scrollbar-thumb": "#fde047"
+    },
+    "chipInline": {
+      "chromePillBg": "",
+      "chromePillFg": ""
+    }
+  },
+  "dark-desktop": {
+    "dataTheme": "dark",
+    "colorScheme": "dark",
+    "bodyBackground": "rgb(10, 15, 26)",
+    "bodyColor": "rgb(237, 234, 225)",
+    "htmlBackground": "rgb(10, 15, 26)",
+    "tokens": {
+      "--color-background-surface": "#0a0f1a",
+      "--color-background-body": "#0a0f1a",
+      "--color-background-card": "#0a0f1a",
+      "--color-background-muted": "#121a2b",
+      "--color-text-primary": "#edeae1",
+      "--color-text-secondary": "#9b968a",
+      "--color-accent": "#7fb3aa",
+      "--color-on-accent": "#0a0f1a",
+      "--color-accent-muted": "#1e302e",
+      "--color-border": "#222b3d",
+      "--chip-bg": "#fde047",
+      "--chip-fg": "#14181f",
+      "--chrome-pill-bg": "#0a0f1a",
+      "--chrome-pill-fg": "#edeae1",
+      "--elev-3d": "inset 0 1px 0 #ffffff38,\n    inset 0 -1.5px 2px #0000006b,\n    0 1px 0 #0000008c,\n    0 8px 18px #00000073",
+      "--rz-scrollbar-track": "#121a2b",
+      "--rz-scrollbar-thumb": "#fde047"
+    },
+    "chipInline": {
+      "chromePillBg": "#edeae1",
+      "chromePillFg": "#0a0f1a"
+    }
+  }
+}
