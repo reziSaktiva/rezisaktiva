@@ -107,7 +107,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 ### S4 — Work index + project sheet
 
-**Work index (`/projects`):** katalog tile (M9). **Klik tile** (Work index **atau** teaser Home) membuka **project sheet dari bawah** (M10, ADR-027) — images, services, location or company, year, description. Live/repo hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke index.
+**Work index (`/projects`):** katalog tile (M9). **Klik tile** (Work index **atau** teaser Home) membuka **project sheet dari bawah** (M10, ADR-027) — live preview (iframe) atau galeri, services, location or company, year, description. Live/repo tautan hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke index.
 
 **Komponen:** overlay custom dari bawah (pola Quick Info, lebar penuh). Astryx `BottomSheet` dicoba dulu (T-026.2) lalu diganti karena tidak ada prop lebar penuh dan tidak cukup untuk galeri pin horizontal. Bukan `/work/[slug]` di R1.
 

@@ -17,7 +17,7 @@ Accepted
 1. **M10** masuk **Must R1** sebagai **overlay dari bawah** — bukan halaman `/[locale]/work/[slug]`. Pola overlay sama dengan Quick Info (bukan route); arah masuk dari **bawah**.
 2. **Klik tile di Work index dan teaser Home** membuka sheet itu — **bukan** navigasi langsung ke website live atau repo GitHub. Tautan **“Semua proyek”** di Home tetap ke `/[locale]/projects` (katalog).
 3. Isi sheet (slot wajib, bilingual ID/EN, copy dikunci Boss Rezi — AI tidak mengarang):
-   - **Images** — satu atau lebih gambar proyek
+   - **Images / live preview** — urutan: embed iframe situs live (bukan GitHub) bila URL ada dan situs mengizinkan framing; jika tidak, galeri gambar; jika keduanya tidak ada, seksi media kosong
    - **Services**
    - **Location or company** & **year**
    - **Description**
@@ -55,3 +55,7 @@ Draf awal ADR ini menempatkan T-026 setelah T-018. **Dibatalkan** hari yang sama
 ### Update — 2026-09-01 (teaser Home)
 
 Tile teaser di Home **juga** membuka sheet M10 (sama dengan Work index). Katalog tetap lewat tautan “Semua proyek” → `/[locale]/projects`. Bukan route case.
+
+### Update — 2026-09-01 (preview live di sheet)
+
+Seksi media: **iframe situs live** dulu (URL http(s) non-GitHub). Framing ditolak / timeout → **galeri**. Tanpa galeri → **kosong**. Tautan Live/Repo tetap sekunder di body.

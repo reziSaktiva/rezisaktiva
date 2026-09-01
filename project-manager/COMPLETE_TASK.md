@@ -18,6 +18,22 @@ Format entri:
 ### Added
 - (tidak ada)
 ### Changed
+- Katalog karya: item Personal Portfolio (situs ini) dihapus dari `content/data/projects.json`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- Pratinjau iframe situs live di project sheet (M10), dengan fallback galeri lalu kosong.
+### Changed
+- ADR-027 + S4/F7/M10: seksi media = iframe → galeri → kosong.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
 - Katalog: Minerank + SMC Auction + SMC Migration digabung jadi **Minerank** (migrasi → lelang → blog). Teaser Home: SMMP · Cook It Real Good · Minerank. Galeri sheet memakai aset Minerank + auction.
 ### Fixed
 - Tes JSON-LD tidak lagi mengunci item id `8` tanpa `href`.

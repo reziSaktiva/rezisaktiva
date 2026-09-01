@@ -89,7 +89,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. User di **Work index** (`/[locale]/projects`) **atau** di teaser Home
 2. Klik **tile karya** (bukan URL live/repo; tautan “Semua proyek” tetap ke index)
-3. **Sheet dari bawah** terbuka: images, services, location or company, year, description
+3. **Sheet dari bawah** terbuka: preview live (iframe) atau galeri, services, location or company, year, description
 4. Opsional: tautan live/repo **di dalam sheet** (tab baru); tutup sheet (Escape / scrim / kontrol tutup)
 5. Sukses: paham proyek apa dan bagaimana dikerjakan tanpa meninggalkan situs lebih dulu
 

@@ -3,8 +3,9 @@ import { PROJECTS_CATALOG } from "./work";
 
 /**
  * Slot project sheet (M10, T-026.1, ADR-027). Fakta di
- * `content/data/projects.json`. Cover galeri = `gallery`; kosong = seksi
- * gambar tidak dirender. Year tetap di `WorkItem`.
+ * `content/data/projects.json`. Cover galeri = `gallery`. Seksi media sheet:
+ * iframe live (jika URL http(s) non-GitHub dan situs izinkan framing), else
+ * `gallery`, else kosong. Year tetap di `WorkItem`.
  */
 
 export interface WorkSheetCopy {
@@ -14,6 +15,7 @@ export interface WorkSheetCopy {
   yearLabel: string;
   descriptionLabel: string;
   imagesLabel: string;
+  previewLabel: string;
   liveLabel: string;
   repoLabel: string;
 }
@@ -33,6 +35,7 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     yearLabel: "Tahun",
     descriptionLabel: "Deskripsi",
     imagesLabel: "Gambar proyek",
+    previewLabel: "Pratinjau situs",
     liveLabel: "Live",
     repoLabel: "Repo",
   },
@@ -43,6 +46,7 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     yearLabel: "Year",
     descriptionLabel: "Description",
     imagesLabel: "Project images",
+    previewLabel: "Live preview",
     liveLabel: "Live",
     repoLabel: "Repo",
   },

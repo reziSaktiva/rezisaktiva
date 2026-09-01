@@ -94,32 +94,6 @@
       }
     },
     {
-      "id": "5",
-      "name": "Personal Portfolio — rezisaktiva",
-      "year": "2026",
-      "featured": true,
-      "cover": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2400&auto=format&fit=crop",
-      "liveHref": "https://rezisaktiva.space",
-      "gitHref": "https://github.com/reziSaktiva/rezisaktiva",
-      "gallery": [],
-      "outcome": {
-        "id": "Situs ini sendiri: keputusan produk lewat 22 ADR, eksekusi lewat AI.",
-        "en": "This site itself: product decisions across 22 ADRs, execution through AI."
-      },
-      "services": {
-        "id": ["Product Owner & AI Orchestrator"],
-        "en": ["Product Owner & AI Orchestrator"]
-      },
-      "locationOrCompany": {
-        "id": "Bandung, Indonesia",
-        "en": "Bandung, Indonesia"
-      },
-      "description": {
-        "id": "Merancang dan mengarahkan pengembangan portofolio pribadi melalui alur kerja AI-native: product discovery → arsitektur → eksekusi fitur. Keputusan teknis dan produk dijaga lewat Architecture Decision Record (ADR).",
-        "en": "Designed and directed this personal portfolio through an AI-native workflow: product discovery → architecture → feature execution. Technical and product decisions are kept consistent through Architecture Decision Records (ADRs)."
-      }
-    },
-    {
       "id": "6",
       "name": "Gamestalgia",
       "year": "2023",

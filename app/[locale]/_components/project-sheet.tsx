@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import NextImage from "next/image";
 import { Button } from "@astryxdesign/core/Button";
-import { Center } from "@astryxdesign/core/Center";
-import { Grid, GridSpan } from "@astryxdesign/core/Grid";
+import { Grid } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
 import { HStack } from "@astryxdesign/core/HStack";
 import { Icon } from "@astryxdesign/core/Icon";
@@ -19,9 +17,8 @@ import {
 } from "@/content/work-sheet";
 import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
-import { workPhotoProps } from "@/lib/work-image";
 import { CloseIcon } from "./overlay-icons";
-import { workTileLayout } from "./work-tile-layout";
+import { ProjectSheetMedia } from "./project-sheet-media";
 
 function isRepoUrl(url: string): boolean {
   return url.includes("github.com");
@@ -61,14 +58,6 @@ export function ProjectSheet({
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.id) : [];
-  const spanFullByIndex = new Map(
-    workTileLayout(
-      images.map((_, index) => ({
-        id: String(index),
-        featured: index === 0,
-      })),
-    ).map((slot) => [slot.id, slot.spanFull]),
-  );
 
   useEffect(() => {
     const close = () => onClose();
@@ -251,55 +240,14 @@ export function ProjectSheet({
                   ) : null}
                 </VStack>
 
-                {images.length > 0 ? (
-                  <VStack
-                    as="section"
-                    gap={0}
-                    className="ps-gallery"
-                    aria-label={labels.imagesLabel}
-                  >
-                    <Grid
-                      columns={{ minWidth: 480, max: 2, repeat: "fit" }}
-                      gap={3}
-                      className="home-work-grid"
-                    >
-                      {images.map((src, index) => {
-                        const spanFull =
-                          spanFullByIndex.get(String(index)) === true;
-                        const featured = index === 0;
-                        const wide = spanFull && !featured;
-                        const tile = (
-                          <Center
-                            key={src}
-                            className={
-                              featured || wide
-                                ? "home-work-tile home-work-tile--featured ps-reveal-media"
-                                : "home-work-tile ps-reveal-media"
-                            }
-                          >
-                            <Center className="home-work-tile-media">
-                              <NextImage
-                                {...workPhotoProps(
-                                  src,
-                                  featured || wide
-                                    ? "(max-width: 767px) 100vw, 1400px"
-                                    : "(max-width: 767px) 100vw, 700px",
-                                )}
-                              />
-                            </Center>
-                          </Center>
-                        );
-                        return spanFull ? (
-                          <GridSpan key={src} columns="full">
-                            {tile}
-                          </GridSpan>
-                        ) : (
-                          tile
-                        );
-                      })}
-                    </Grid>
-                  </VStack>
-                ) : null}
+                <ProjectSheetMedia
+                  key={visible.id}
+                  liveHref={liveHref}
+                  images={images}
+                  previewTitle={`${visible.name} — ${labels.previewLabel}`}
+                  previewLabel={labels.previewLabel}
+                  imagesLabel={labels.imagesLabel}
+                />
               </VStack>
             ) : null}
           </VStack>

@@ -14,6 +14,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-01] — Katalog tanpa item situs ini sendiri
+
+**Phase:** Validation
+**Summary:** Boss Rezi menghapus karya “Personal Portfolio — rezisaktiva” dari katalog.
+**Key Decision/Insight:** Situs yang sedang dibuka bukan item Work/sheet. Domain production tetap `rezisaktiva.space`.
+**Impact:** `content/data/projects.json` (item id `5` dihapus); Home teaser tidak berubah; JSON-LD ItemList mengikuti `WORK_ITEMS`.
+
+---
+
+## [2026-09-01] — Preview live di project sheet
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin sheet menampilkan situs asli tiap karya, bukan hanya foto.
+**Key Decision/Insight:** Urutan media: embed iframe URL live → galeri jika framing gagal → kosong. Bukan GitHub. Tautan Live/Repo tetap di body.
+**Impact:** ADR-027, `project-sheet-media.tsx`, M10 di feature-modules / S4 / F7.
+
+---
+
 ## [2026-09-01] — Minerank = migrasi + lelang + blog
 
 **Phase:** Validation
