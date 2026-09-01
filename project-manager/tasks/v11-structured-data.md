@@ -60,6 +60,7 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | `sameAs` | `CONTACT_LINKS` (`content/data/links.json`) |
 | `url` | Canonical About (`localePath(locale, "about")`) — halaman profil |
 | `knowsAbout` | `QUICK_INFO_COPY[locale].services` |
+| `worksFor` | Nested `Organization` dari `PERSON.worksFor` (nama + URL situs perusahaan). Bukan graph Organization untuk situs ini — situs tetap pribadi. |
 | `image` | Kosong sampai foto nyata |
 
 `WebSite.@id` = `{getSiteUrl()}/#website`. Halaman memakai `@graph` dan merujuk `@id`, jangan salin ulang seluruh Person di setiap halaman.

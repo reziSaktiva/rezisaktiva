@@ -23,6 +23,11 @@ describe("buildJsonLd", () => {
     expect(person.name).toBe(PERSON.name);
     expect(person.alternateName).toBe(PERSON.alternateName);
     expect(person.jobTitle).toBe(PERSON.jobTitle);
+    expect(person.worksFor).toEqual({
+      "@type": "Organization",
+      name: PERSON.worksFor.name,
+      url: PERSON.worksFor.url,
+    });
     expect(person.description).toBe(QUICK_INFO_COPY.id.bio);
     expect(person.knowsAbout).toEqual([...QUICK_INFO_COPY.id.services]);
     expect(ABOUT_COPY.id.h1.join(" ")).toContain(PERSON.name);

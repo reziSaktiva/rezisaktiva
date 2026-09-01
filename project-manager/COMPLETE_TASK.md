@@ -16,6 +16,22 @@ Format entri:
 
 ## [2026-09-01]
 ### Added
+- Seksi Home **Now** (status pekerjaan): kicker Sekarang/Now + tautan Insvire Technologies, setelah hero.
+### Changed
+- Pola S1 / IA Home / M1 / F1: Now masuk urutan konten Home (bukan item karya).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- Tempat kerja saat ini: Insvire Technologies (`https://www.insvire.com/`) di About, Quick Info, dan JSON-LD `Person.worksFor`.
+### Changed
+- Mapping T-029: `worksFor` nested Organization dari `PERSON.worksFor`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
 - (tidak ada)
 ### Changed
 - Katalog karya: item Personal Portfolio (situs ini) dihapus dari `content/data/projects.json`.

@@ -58,10 +58,11 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Di bawah fold / lanjut scroll:**
 
-4. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
-5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome; klik membuka sheet (M10); **satu-satunya** blok karya di Home
-6. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
-7. Availability line (Should, opsional)
+4. **Now (status pekerjaan)** — satu seksi identitas: kicker + “saat ini di” + nama perusahaan (tautan situs). Bukan item katalog karya.
+5. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
+6. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome; klik membuka sheet (M10); **satu-satunya** blok karya di Home
+7. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
+8. Availability line (Should, opsional)
 
 **Contact di Home (ADR-025):** tidak ada section `#contact-cta` terpisah. Arah Contact = pita footer (S0) + tombol chrome. Hover tile teaser boleh diperkuat (scale/overlay).
 

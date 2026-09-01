@@ -663,6 +663,7 @@ html::-webkit-scrollbar-button {
   padding-right: 2vw;
 }
 
+.home-section--now,
 .home-section--proof {
   padding-block: 7rem;
 }
@@ -672,9 +673,27 @@ html::-webkit-scrollbar-button {
 }
 
 @media (min-width: 768px) {
+  .home-section--now,
   .home-section--proof {
     padding-block: 9rem;
   }
+}
+
+.home-now-title {
+  font-family: "General Sans", var(--font-family-heading);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  max-width: 56rem;
+}
+
+.home-now-title .astryx-link {
+  font-size: inherit !important;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 .home-proof-body {
@@ -1176,6 +1195,14 @@ button.home-work-tile,
     grid-template-columns: 0.8fr 1.2fr !important;
     gap: 5rem !important;
   }
+}
+
+.about-workplace {
+  font-size: var(--font-size-sm);
+}
+
+.about-workplace .astryx-text {
+  font-size: inherit !important;
 }
 
 .about-h1 {
@@ -2085,12 +2112,23 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   padding: 1.5rem 1.75rem 3rem;
 }
 
+.qi-intro {
+  max-width: 34rem;
+  margin-block-end: 2rem;
+}
+
 .qi-bio {
   font-size: 0.95rem;
   line-height: 1.45;
   color: var(--color-text-secondary);
-  max-width: 34rem;
-  margin-block-end: 2rem;
+}
+
+.qi-workplace {
+  font-size: 0.95rem;
+}
+
+.qi-workplace .astryx-text {
+  font-size: inherit !important;
 }
 
 .qi-cols {

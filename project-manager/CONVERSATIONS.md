@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-01] — Status pekerjaan jadi seksi Home
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin status pekerjaan saat ini tampil sebagai salah satu section di Home, bukan hanya di About/Quick Info.
+**Key Decision/Insight:** Seksi **Now** setelah hero, sebelum Bukti: kicker Sekarang/Now + kalimat tautan Insvire. Bukan tile katalog karya.
+**Impact:** `home-page.tsx`, `content/home.ts`, S1 di key-screen-patterns / IA / M1 / F1.
+
+## [2026-09-01] — Tempat kerja Insvire Technologies
+
+**Phase:** Validation
+**Summary:** Boss Rezi menambahkan fakta bahwa sekarang bekerja di Insvire Technologies, dengan situs perusahaan https://www.insvire.com/.
+**Key Decision/Insight:** Ini identitas tempat kerja, bukan item katalog proyek. Tampil di About + Quick Info; JSON-LD `Person.worksFor` nested Organization (bukan graph Organization untuk situs rezisaktiva). Jabatan di perusahaan tidak dikarang.
+**Impact:** `content/person.ts`, About, Quick Info, `lib/json-ld.ts`, mapping T-029.
+
 ## [2026-09-01] — Katalog tanpa item situs ini sendiri
 
 **Phase:** Validation

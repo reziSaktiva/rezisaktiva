@@ -12,6 +12,7 @@ import { VStack } from "@astryxdesign/core/VStack";
 import { ABOUT_COPY, ABOUT_PORTRAIT_SRC } from "@/content/about";
 import type { Locale } from "@/lib/locale";
 import { AboutOfferGrid } from "./about-offer-grid";
+import { WorkplaceLine } from "./workplace-line";
 import { AboutProcess } from "./about-process";
 import { RestActive, RestActiveCard } from "./about-rest-active";
 import { Reveal, WordReveal } from "./home-motion";
@@ -45,6 +46,9 @@ export function AboutPage({ locale }: { locale: Locale }) {
                   />
                 }
               />
+            </Reveal>
+            <Reveal>
+              <WorkplaceLine locale={locale} className="about-workplace" />
             </Reveal>
             <Heading level={1} className="about-h1">
               <WordReveal words={copy.h1} />

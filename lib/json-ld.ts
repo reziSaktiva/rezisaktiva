@@ -44,6 +44,11 @@ function personNode(locale: Locale): JsonLdNode {
     name: PERSON.name,
     alternateName: PERSON.alternateName,
     jobTitle: PERSON.jobTitle,
+    worksFor: {
+      "@type": "Organization",
+      name: PERSON.worksFor.name,
+      url: PERSON.worksFor.url,
+    },
     description: QUICK_INFO_COPY[locale].bio,
     email: CONTACT_EMAIL,
     url: pageUrl(locale, "about"),

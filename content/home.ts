@@ -22,6 +22,7 @@ function teasersFor(locale: Locale): readonly HomeTeaserItem[] {
 
 export interface HomeCopy {
   h1: [string, string];
+  nowLabel: string;
   buktiLabel: string;
   buktiEmphasis: string;
   buktiRest: string;
@@ -41,6 +42,7 @@ export const HERO_PORTRAIT_SRC =
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
     h1: ["Ceritamu", "lewat produk."],
+    nowLabel: "Sekarang",
     buktiLabel: "Bukti",
     buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
     buktiRest:
@@ -57,6 +59,7 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
   },
   en: {
     h1: ["Your story,", "in the product."],
+    nowLabel: "Now",
     buktiLabel: "Proof",
     buktiEmphasis: "AI didn't take my job.",
     buktiRest:

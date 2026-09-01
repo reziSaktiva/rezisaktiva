@@ -42,7 +42,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. Masuk via URL (locale default atau link ber-locale)
 2. **Home** — baca first viewport (positioning)
-3. Skim **credibility line** (1 klaim non-kartu) + **work teaser** (1–3 kartu karya)
+3. Skim **status pekerjaan (Now)** + **credibility line** (1 klaim non-kartu) + **work teaser** (1–3 kartu karya)
 4. Opsional: buka **About** atau **Work index** (`/projects`, M9) bila butuh detail lebih
 5. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
 6. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu

@@ -27,6 +27,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 **Isi inti:**
 
 * Hero / klaim positioning (product builder + fullstack + AI edge)
+* Section **Now** — status pekerjaan saat ini (bukan katalog karya)
 * Bukti singkat (highlight pengalaman atau outcome)
 * Section **Work teaser** (1–3 item)
 * Soft arah ke About dan Contact

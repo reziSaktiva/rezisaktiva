@@ -17,6 +17,7 @@ import { Link } from "@astryxdesign/core/Link";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
 import { CloseIcon } from "./overlay-icons";
+import { WorkplaceLine } from "./workplace-line";
 
 /**
  * Quick Info overlay (T-020.2, ADR-022) — tab tepi kanan → drawer.
@@ -134,9 +135,12 @@ export function QuickInfo({ locale }: { locale: Locale }) {
             <VStack className="qi-header-spacer" aria-hidden="true" />
           </HStack>
           <VStack className="qi-body" gap={0}>
-            <Text display="block" className="qi-bio">
-              {copy.bio}
-            </Text>
+            <VStack gap={3} className="qi-intro">
+              <Text display="block" className="qi-bio">
+                {copy.bio}
+              </Text>
+              <WorkplaceLine locale={locale} className="qi-workplace" />
+            </VStack>
             <Grid columns={2} gap={6} className="qi-cols">
               <VStack gap={3}>
                 <Text display="block" className="qi-label">
