@@ -5,7 +5,7 @@ import { getSiteUrl, localePath } from "@/lib/site-url";
 
 /**
  * OG dasar + canonical dari `NEXT_PUBLIC_SITE_URL` (T-017.2, M7).
- * Path tanpa prefix locale, mis. `""` (Home), `"about"`, `"work"`.
+ * Path tanpa prefix locale, mis. `""` (Home), `"about"`, `"projects"`.
  */
 export function pageMetadata(
   locale: Locale,

@@ -18,6 +18,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:locale(id|en)/work",
+        destination: "/:locale/projects",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

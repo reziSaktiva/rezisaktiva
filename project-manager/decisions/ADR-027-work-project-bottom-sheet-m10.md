@@ -15,7 +15,7 @@ Accepted
 ### Decision
 
 1. **M10** masuk **Must R1** sebagai **overlay dari bawah** — bukan halaman `/[locale]/work/[slug]`. Pola overlay sama dengan Quick Info (bukan route); arah masuk dari **bawah**.
-2. **Klik tile di Work index** membuka sheet itu — **bukan** navigasi langsung ke website live atau repo GitHub. Teaser Home tetap mengarah ke `/[locale]/work` (katalog), bukan membuka sheet per item.
+2. **Klik tile di Work index dan teaser Home** membuka sheet itu — **bukan** navigasi langsung ke website live atau repo GitHub. Tautan **“Semua proyek”** di Home tetap ke `/[locale]/projects` (katalog).
 3. Isi sheet (slot wajib, bilingual ID/EN, copy dikunci Boss Rezi — AI tidak mengarang):
    - **Images** — satu atau lebih gambar proyek
    - **Services**
@@ -51,3 +51,7 @@ Ini **override** ADR-020 (M10 tetap R2) dan ADR-010 (tanpa magnet detail di MVP)
 ### Update — 2026-08-26 (urutan)
 
 Draf awal ADR ini menempatkan T-026 setelah T-018. **Dibatalkan** hari yang sama: Must R1, sebelum T-018.
+
+### Update — 2026-09-01 (teaser Home)
+
+Tile teaser di Home **juga** membuka sheet M10 (sama dengan Work index). Katalog tetap lewat tautan “Semua proyek” → `/[locale]/projects`. Bukan route case.

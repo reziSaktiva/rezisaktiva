@@ -48,9 +48,9 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
     buktiRest:
       " AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.",
-    workLabel: "Karya terpilih",
+    workLabel: "Proyek terpilih",
     workTitle: "Beberapa yang udah dipakai orang.",
-    workAll: "Semua karya →",
+    workAll: "Semua proyek →",
     teasers: teasersFor("id"),
     contactLabel: "Contact",
     contactTitle: "Ada project?",
@@ -64,9 +64,9 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     buktiEmphasis: "AI didn't take my job.",
     buktiRest:
       " It leveled me up — from developer to engineer of my own AI ecosystem.",
-    workLabel: "Selected work",
+    workLabel: "Selected projects",
     workTitle: "A few things people actually use.",
-    workAll: "All work →",
+    workAll: "All projects →",
     teasers: teasersFor("en"),
     contactLabel: "Contact",
     contactTitle: "Got a project?",

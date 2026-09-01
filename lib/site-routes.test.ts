@@ -11,6 +11,12 @@ describe("r1PageUrls", () => {
     expect(new Set(entries.map((entry) => entry.url)).size).toBe(
       entries.length,
     );
+    expect(entries.some((entry) => entry.url.endsWith("/en/projects"))).toBe(
+      true,
+    );
+    expect(
+      entries.some((entry) => /\/(id|en)\/work(\/|$)/.test(entry.url)),
+    ).toBe(false);
     for (const locale of LOCALES) {
       for (const surface of surfaces) {
         expect(

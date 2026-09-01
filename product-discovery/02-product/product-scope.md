@@ -10,7 +10,7 @@ Dokumen ini menetapkan batas dan domain produk website portofolio pribadi **rezi
 
 **rezisaktiva** adalah situs portofolio publik yang berfungsi sebagai **satu rumah digital** untuk identitas product builder Rezi Saktiva: cerita jelas, bukti kredibel, dan jalur kontak soft.
 
-Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, dan **Work index** (`/work`); karya juga muncul sebagai **section teaser di Home**. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/work/[slug]`.
+Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, dan **Work index** (`/projects`); karya juga muncul sebagai **section teaser di Home**. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index **atau** teaser Home diklik (ADR-027) — bukan halaman `/projects/[slug]`.
 
 Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
@@ -34,7 +34,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 | ------ | ---------------- | ------------ |
 | **Identity & positioning** | Klaim product builder + fullstack + AI edge di permukaan | Inti — Home |
 | **Narrative / About** | Cerita, cara berpikir, konteks pengalaman | Inti — About |
-| **Work presence** | Teaser di Home + Work index (`/work`, M9) + **project sheet overlay (M10, ADR-027)** | Inti — Home teaser + index + sheet |
+| **Work presence** | Teaser di Home + Work index (`/projects`, M9) + **project sheet overlay (M10, ADR-027)** | Inti — Home teaser + index + sheet |
 | **Soft contact** | Jalur menghubungi yang jelas, tidak agresif, via modal global (ADR-019) | Inti — Contact modal |
 | **Language** | Pengalaman bilingual geo-aware + switcher | Inti lintas halaman |
 
@@ -55,7 +55,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 **Di dalam produk (R1 Hybrid lean):**
 
-* Situs publik multi-halaman lean: Home, About, Work index (`/work`, M9)
+* Situs publik multi-halaman lean: Home, About, Work index (`/projects`, M9)
 * Section karya/teaser di Home
 * Contact modal global (ADR-019) + Quick Info overlay (ADR-022) — bukan halaman terpisah
 * Theme toggle dark/light di chrome (ADR-021)
@@ -78,7 +78,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 Untuk MVP Hybrid lean, **belum** termasuk:
 
-* Halaman **detail case** `/work/[slug]` (bukan overlay M10 — overlay sudah Must R1 via ADR-027)
+* Halaman **detail case** `/projects/[slug]` (bukan overlay M10 — overlay sudah Must R1 via ADR-027)
 * Blog / writing hub
 * Form kontak berbackend, booking calendar, atau CRM
 * Playground/eksperimen web sebagai panggung utama

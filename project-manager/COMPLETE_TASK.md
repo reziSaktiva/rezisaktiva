@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
+- Teaser Home: klik tile membuka project sheet (sama dengan Work index). “Semua proyek” tetap ke `/[locale]/work`. ADR-027 + IA/S4/F7/M4/M10 diselaraskan.
+- Label chrome M9: Karya/Work → **Proyek / Projects** (`lib/nav.ts`); path katalog **`/projects`**; `/work` redirect permanen. Home kicker/CTA + Quick Info ikut.
+### Fixed
+- (tidak ada)
+
 ## [2026-08-31]
 ### Added
 - **T-031** Metadata API R1: ikon, kartu OG/Twitter, authors/applicationName, robots meta, manifest ringan (T-031.1–T-031.5). Bukan ulang title T-021.7 / JSON-LD T-029 / sitemap T-030. File [`tasks/v13-metadata.md`](tasks/v13-metadata.md).

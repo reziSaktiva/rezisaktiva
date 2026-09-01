@@ -14,6 +14,33 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-01] — Path katalog `/work` → `/projects`
+
+**Phase:** Validation
+**Summary:** Boss Rezi minta href halaman katalog mengikuti nama Proyek/Projects.
+**Key Decision/Insight:** Route App Router `app/[locale]/projects`; `/id/work` dan `/en/work` redirect 308. Aset gambar `public/work/` tidak dipindah.
+**Impact:** `lib/nav.ts`, `lib/site-url.ts`, `lib/site-routes.ts`, `lib/json-ld.ts`, `next.config.ts`, IA/nav, ADR-020.
+
+---
+
+## [2026-09-01] — Label halaman Karya/Work → Proyek/Projects
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin nama halaman katalog karya di chrome menjadi Proyek (ID) dan Projects (EN).
+**Key Decision/Insight:** Hanya label; URL tetap `/[locale]/work`. Title meta sudah Proyek/Projects sejak T-021.7.
+**Impact:** `lib/nav.ts`, `content/home.ts`, `content/quick-info.ts`, ADR-020, navigation-patterns, IA.
+
+---
+
+## [2026-09-01] — Teaser Home membuka project sheet
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin klik karya di Home membuka sheet yang sama dengan halaman Work, bukan langsung ke katalog.
+**Key Decision/Insight:** Tile teaser = sheet M10; tautan “Semua karya” tetap ke `/[locale]/work`. Override sebagian ADR-027 poin 2 (update 2026-09-01).
+**Impact:** `home-work-teasers.tsx`, ADR-027, IA, key-screen S4, F7, M4/M10, application-layer.
+
+---
+
 ## [2026-08-31] — Metadata API penuh (ikon + media)
 
 **Phase:** Validation

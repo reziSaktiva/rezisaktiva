@@ -7,8 +7,9 @@ import type { Locale } from "@/lib/locale";
  *
  * `href` = tautan keluar (live diutamakan, fallback repo). `undefined` =
  * tanpa tautan (SMC Migration: project internal, tidak ada URL publik).
- * Di Work index, tile membuka sheet M10 (T-026); live/repo hanya di dalam
- * sheet. Teaser Home tetap ke `/[locale]/work`.
+ * Di Work index dan teaser Home, tile membuka sheet M10 (T-026); live/repo
+ * hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke
+ * `/[locale]/projects`.
  */
 
 export interface WorkItem {
@@ -22,14 +23,14 @@ export interface WorkItem {
 }
 
 const WORK_IMAGES: Record<string, string> = {
-  "1": "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=1600&auto=format&fit=crop",
-  "2": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-  "3": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
-  "4": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
-  "5": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1600&auto=format&fit=crop",
-  "6": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
-  "7": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1200&auto=format&fit=crop",
-  "8": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+  "1": "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=2400&auto=format&fit=crop",
+  "2": "/work/cook-it-real-good/home.jpg",
+  "3": "/work/minerank/blog.jpg",
+  "4": "/work/smc-auction/home.jpg",
+  "5": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2400&auto=format&fit=crop",
+  "6": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2400&auto=format&fit=crop",
+  "7": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=2400&auto=format&fit=crop",
+  "8": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2400&auto=format&fit=crop",
 };
 
 export interface WorkPageCopy {
@@ -39,7 +40,14 @@ export interface WorkPageCopy {
   ctaLink: string;
 }
 
-export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
+/**
+ * Karya yang tidak ditampilkan di Work / Home / Quick Info / JSON-LD.
+ * Data tetap di katalog di bawah — hapus id dari set ini untuk menampilkan lagi.
+ * Id 6 = Gamestalgia, 7 = Curious (disembunyikan sementara).
+ */
+const HIDDEN_WORK_IDS = new Set(["6", "7"]);
+
+const WORK_ITEMS_ALL: Record<Locale, readonly WorkItem[]> = {
   id: [
     {
       id: "1",
@@ -200,6 +208,11 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
       featured: false,
     },
   ],
+};
+
+export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
+  id: WORK_ITEMS_ALL.id.filter((item) => !HIDDEN_WORK_IDS.has(item.id)),
+  en: WORK_ITEMS_ALL.en.filter((item) => !HIDDEN_WORK_IDS.has(item.id)),
 };
 
 export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {

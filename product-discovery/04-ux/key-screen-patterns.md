@@ -28,7 +28,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
 | S2 About | `/[id/en]/about` | J4, E4 |
 | S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
-| S4 Work index + project sheet | `/[id/en]/work` + overlay M10 (ADR-027) | J2 |
+| S4 Work index + project sheet | `/[id/en]/projects` + overlay M10 (ADR-027) | J2 |
 
 ---
 
@@ -59,7 +59,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 **Di bawah fold / lanjut scroll:**
 
 4. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
-5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome · tautan bukti opsional; **satu-satunya** blok karya di Home
+5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome; klik membuka sheet (M10); **satu-satunya** blok karya di Home
 6. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
 7. Availability line (Should, opsional)
 
@@ -107,7 +107,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 ### S4 — Work index + project sheet
 
-**Work index (`/work`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027) — images, services, location or company, year, description. Live/repo hanya di dalam sheet. Teaser Home tetap ke index.
+**Work index (`/projects`):** katalog tile (M9). **Klik tile** (Work index **atau** teaser Home) membuka **project sheet dari bawah** (M10, ADR-027) — images, services, location or company, year, description. Live/repo hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke index.
 
 **Komponen:** overlay custom dari bawah (pola Quick Info, lebar penuh). Astryx `BottomSheet` dicoba dulu (T-026.2) lalu diganti karena tidak ada prop lebar penuh dan tidak cukup untuk galeri pin horizontal. Bukan `/work/[slug]` di R1.
 

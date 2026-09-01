@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import NextImage from "next/image";
 import { Button } from "@astryxdesign/core/Button";
 import { Center } from "@astryxdesign/core/Center";
-import { Grid } from "@astryxdesign/core/Grid";
+import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
 import { HStack } from "@astryxdesign/core/HStack";
 import { Icon } from "@astryxdesign/core/Icon";
@@ -19,7 +19,9 @@ import {
 } from "@/content/work-sheet";
 import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
+import { workPhotoProps } from "@/lib/work-image";
 import { CloseIcon } from "./overlay-icons";
+import { workTileLayout } from "./work-tile-layout";
 
 function isRepoUrl(url: string): boolean {
   return url.includes("github.com");
@@ -27,44 +29,11 @@ function isRepoUrl(url: string): boolean {
 
 export const PROJECT_SHEET_ID = "ps-panel";
 
-function prefersReducedMotion(): boolean {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 function prefersReducedMotionNow(): boolean {
-  return typeof window !== "undefined" && prefersReducedMotion();
-}
-
-/**
- * Pin the gallery and convert remaining vertical scroll into a horizontal
- * shift — same idea as karolinahess.com “Recent works”.
- */
-function syncGalleryPin(
-  panel: HTMLElement,
-  section: HTMLElement,
-  pin: HTMLElement,
-  track: HTMLElement,
-): void {
-  const header = panel.querySelector<HTMLElement>(".ps-header");
-  const headerH = header?.offsetHeight ?? 0;
-  panel.style.setProperty("--ps-header-h", `${headerH}px`);
-  pin.style.height = "";
-
-  if (prefersReducedMotion()) {
-    section.style.height = "";
-    track.style.transform = "";
-    pin.style.height = "";
-    return;
-  }
-
-  const overflow = Math.max(0, track.scrollWidth - pin.clientWidth);
-  section.style.height = `${pin.clientHeight + overflow}px`;
-
-  const start = section.offsetTop;
-  const end = start + section.offsetHeight - pin.clientHeight;
-  const range = Math.max(1, end - start);
-  const progress = Math.min(1, Math.max(0, (panel.scrollTop - start) / range));
-  track.style.transform = `translate3d(${-overflow * progress}px, 0, 0)`;
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 }
 
 export function ProjectSheet({
@@ -82,9 +51,6 @@ export function ProjectSheet({
   const titleId = useId();
   const dialogRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLElement>(null);
-  const galleryRef = useRef<HTMLElement>(null);
-  const pinRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
   if (item && item !== visible) {
@@ -94,7 +60,15 @@ export function ProjectSheet({
   }
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
-  const images = visible ? workSheetImages(visible.imageSrc, visible.id) : [];
+  const images = visible ? workSheetImages(visible.id) : [];
+  const spanFullByIndex = new Map(
+    workTileLayout(
+      images.map((_, index) => ({
+        id: String(index),
+        featured: index === 0,
+      })),
+    ).map((slot) => [slot.id, slot.spanFull]),
+  );
 
   useEffect(() => {
     const close = () => onClose();
@@ -146,52 +120,6 @@ export function ProjectSheet({
     }
     lastFocus.current = null;
   }, [isOpen]);
-
-  useEffect(() => {
-    if (!isOpen || visible?.id == null) {
-      return;
-    }
-    const scroll = scrollRef.current;
-    const section = galleryRef.current;
-    const pin = pinRef.current;
-    const track = trackRef.current;
-    if (!scroll || !section || !pin || !track) {
-      return;
-    }
-
-    let frame = 0;
-    const sync = () => {
-      syncGalleryPin(scroll, section, pin, track);
-    };
-    const onScroll = () => {
-      if (frame) {
-        return;
-      }
-      frame = window.requestAnimationFrame(() => {
-        frame = 0;
-        sync();
-      });
-    };
-
-    sync();
-    scroll.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", sync);
-    const observer = new ResizeObserver(sync);
-    observer.observe(scroll);
-    observer.observe(track);
-    const imagesInTrack = track.querySelectorAll("img");
-    imagesInTrack.forEach((image) => image.addEventListener("load", sync));
-
-    return () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
-      }
-      scroll.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", sync);
-      observer.disconnect();
-      imagesInTrack.forEach((image) => image.removeEventListener("load", sync));
-    };
-  }, [isOpen, visible?.id, images.length]);
 
   const liveHref =
     visible?.href && !isRepoUrl(visible.href) ? visible.href : undefined;
@@ -323,42 +251,55 @@ export function ProjectSheet({
                   ) : null}
                 </VStack>
 
-                <VStack
-                  ref={galleryRef}
-                  as="section"
-                  gap={0}
-                  className="ps-gallery"
-                  aria-label={labels.imagesLabel}
-                >
+                {images.length > 0 ? (
                   <VStack
-                    ref={pinRef}
-                    className="ps-gallery-pin"
+                    as="section"
                     gap={0}
-                    justify="center"
+                    className="ps-gallery"
+                    aria-label={labels.imagesLabel}
                   >
-                    <HStack
-                      ref={trackRef}
-                      className="ps-gallery-track"
-                      gap={6}
-                      align="center"
-                      wrap="nowrap"
+                    <Grid
+                      columns={{ minWidth: 480, max: 2, repeat: "fit" }}
+                      gap={3}
+                      className="home-work-grid"
                     >
-                      {images.map((src, index) => (
-                        <Center
-                          key={`${src}-${index}`}
-                          className="ps-gallery-item ps-reveal-media"
-                        >
-                          <NextImage
-                            src={src}
-                            alt=""
-                            fill
-                            sizes="(max-width: 767px) 85vw, 38rem"
-                          />
-                        </Center>
-                      ))}
-                    </HStack>
+                      {images.map((src, index) => {
+                        const spanFull =
+                          spanFullByIndex.get(String(index)) === true;
+                        const featured = index === 0;
+                        const wide = spanFull && !featured;
+                        const tile = (
+                          <Center
+                            key={src}
+                            className={
+                              featured || wide
+                                ? "home-work-tile home-work-tile--featured ps-reveal-media"
+                                : "home-work-tile ps-reveal-media"
+                            }
+                          >
+                            <Center className="home-work-tile-media">
+                              <NextImage
+                                {...workPhotoProps(
+                                  src,
+                                  featured || wide
+                                    ? "(max-width: 767px) 100vw, 1400px"
+                                    : "(max-width: 767px) 100vw, 700px",
+                                )}
+                              />
+                            </Center>
+                          </Center>
+                        );
+                        return spanFull ? (
+                          <GridSpan key={src} columns="full">
+                            {tile}
+                          </GridSpan>
+                        ) : (
+                          tile
+                        );
+                      })}
+                    </Grid>
                   </VStack>
-                </VStack>
+                ) : null}
               </VStack>
             ) : null}
           </VStack>

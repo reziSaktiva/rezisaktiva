@@ -7,6 +7,7 @@ import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { WORK_ITEMS } from "@/content/work";
 import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
+import { projectsHref } from "@/lib/site-url";
 import { Button } from "@astryxdesign/core/Button";
 import { Grid } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
@@ -85,7 +86,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
     lastFocus.current = null;
   }, [isOpen]);
 
-  const workHref = `/${locale}/work`;
+  const workHref = projectsHref(locale);
 
   return (
     <>

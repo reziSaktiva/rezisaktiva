@@ -31,7 +31,7 @@ Locale sebagai **path param** `[id/en]` — nilai ∈ `{ id, en }` (bukan query 
 └── /[id/en]/
     ├── /[id/en]/         → Home
     ├── /[id/en]/about    → About
-    └── /[id/en]/work     → Work index (M9, Must R1 — ADR-020)
+    └── /[id/en]/projects → Work index (M9, Must R1 — ADR-020)
 
 Overlay global (bukan route, tampil di atas halaman manapun):
     • Contact modal      → dibuka dari tombol Contact di chrome (ADR-019)
@@ -39,9 +39,9 @@ Overlay global (bukan route, tampil di atas halaman manapun):
     • Project sheet      → dibuka dari tile Work index (M10, ADR-027; dari bawah)
 ```
 
-Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). **Tidak ada** route `/work/[slug]` di R1.
+Contoh konkret: `/id/`, `/id/about`, `/en/projects`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). **Tidak ada** route `/projects/[slug]` di R1.
 
-**Bukan R1 (Later / R2):** halaman case `/work/[slug]`, blog, auth area.
+**Bukan R1 (Later / R2):** halaman case `/projects/[slug]`, blog, auth area.
 
 ---
 
@@ -50,7 +50,7 @@ Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` 
 ### Lintas halaman (chrome)
 
 1. Identitas brand (nama / mark)
-2. Primary nav: Home · About (label lokal **ID "Proses Kerja"** / **EN "Process"**, ADR-020) · Karya (M9, override ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
+2. Primary nav: Home · About (label lokal **ID "Proses Kerja"** / **EN "How I Work"**) · **Proyek / Projects** (M9, path `/projects`, ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
 3. Language switcher (`ID` ↔ `EN`) → URL path sibling
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship tetap light
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
@@ -62,7 +62,7 @@ Contoh konkret: `/id/`, `/id/about`, `/en/work`. **Tidak ada** route `/contact` 
 
 1. **Hero / first viewport** — positioning product builder (+ sinyal fullstack & AI edge)
 2. **Credibility line (bukti non-kartu)** — **satu** klaim singkat pengalaman/outcome (bukan grid, bukan list stack). Contoh bentuk: “~6 tahun fullstack · shipped produk live” — mendukung hero, **bukan** menggantikan teaser
-3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome; klik ke Work index (bukan langsung live/repo)
+3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome; klik tile membuka project sheet (M10); tautan “Semua proyek” ke Work index (bukan langsung live/repo)
 4. **Arah soft** — ke About dan/atau Contact
 5. **Availability line** (Should, opsional)
 
@@ -96,12 +96,12 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | ------------ | ---- | ----- | -- |
 | `/[id/en]/` | Home | M1 + M4 | Must |
 | `/[id/en]/about` | About (label chrome: Proses Kerja / Process) | M2 | Must |
-| `/[id/en]/work` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
+| `/[id/en]/projects` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
 | Chrome global | Nav + switcher + footer + theme toggle | M5, M6 | Must (toggle: ADR-021) |
 | Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
 | Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022) |
 | Overlay global | Project context sheet (bukan path) | M10 | Must (ADR-027); dari bawah; tile Work index |
-| `/[id/en]/work/[slug]` | Work case sebagai halaman | — | Bukan R1 (ADR-027) |
+| `/[id/en]/projects/[slug]` | Work case sebagai halaman | — | Bukan R1 (ADR-027) |
 
 ---
 
@@ -110,7 +110,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | Entry | Perilaku yang diharapkan |
 | ----- | ------------------------ |
 | URL bare domain `/` | Redirect ke `/id/...` atau `/en/...` sesuai aturan default di bawah |
-| Link langsung ber-locale (mis. `/id/about`, `/en/work`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
+| Link langsung ber-locale (mis. `/id/about`, `/en/projects`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
 | Switcher | Pindah ke path sibling locale yang sama (Home↔Home, About↔About, dst.) |
 | Share URL | Prefer URL ber-locale agar penerima melihat bahasa yang sama (SC6) |
 | Satelit GitHub/LinkedIn (keluar) | Boleh; Contact & Home tetap destination utama |
