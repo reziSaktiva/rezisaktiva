@@ -16,6 +16,42 @@ Format entri:
 
 ## [2026-09-01]
 ### Added
+- **T-032.2** MCP project: `pnpm dlx shadcn@latest mcp init --client cursor` (merge; `xds` tetap). Motion AI Kit scope **project** + Cursor (hosted `motion` + `motion-plus`; bukan stdio + TOKEN). CLI `mcp init` juga memasang `shadcn` di `devDependencies`. Kit menulis `.cursor/skills/motion/`, `.cursor/rules/motion.mdc`, `.cursor/agents/motion-reviewer.md`. Tidak ada MCP Tailwind community.
+- Isi akhir `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "xds": {
+      "type": "url",
+      "url": "https://astryx.atmeta.com/mcp"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "motion": {
+      "type": "url",
+      "url": "https://mcp.motion.dev"
+    },
+    "motion-plus": {
+      "type": "url",
+      "url": "https://mcp.motion.dev/plus"
+    }
+  }
+}
+```
+
+### Changed
+- Fokus: **T-032.3** berikutnya (Tailwind v4 + `shadcn init`).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
 - **T-032.1** baseline visual produksi (bukan mockup HTML): [`baselines/t-032.1/`](baselines/t-032.1/) — Home/About/Work + Contact/Quick Info/project sheet; light+dark; 320×720 & 1440×900; locale `en`. Token computed (`getComputedStyle` pada `html`/`body`, cookie `rz-theme`):
 
   | Peran | Light | Dark |
