@@ -14,7 +14,7 @@ export function WorkplaceLine({
   const copy = PERSON_WORKPLACE_COPY[locale];
 
   return (
-    <HStack gap={2} wrap="wrap" align="baseline" className={className}>
+    <HStack gap={2} wrap="wrap" align="center" className={className}>
       <Text color="secondary">{copy.prefix}</Text>
       <Link
         href={PERSON.worksFor.url}
