@@ -10,15 +10,14 @@ import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
 import { mergeProps } from "@astryxdesign/core/utils";
 import type { WorkItem } from "@/content/work";
+import { workPhotoProps } from "@/lib/work-image";
 
 /**
  * Tile karya — visual `.work-tile` mockup + craft hover (T-025.5).
  *
- * `href` (internal, via NextLink) — teaser Home, ke index Work (bukan
- * sheet per item, ADR-027).
+ * `href` (internal, via NextLink) — tautan katalog, mis. “Semua proyek”.
  *
- * `onSelect` — Work index: klik tile membuka project sheet (T-026), bukan
- * `item.href`. Live/repo hanya di dalam sheet.
+ * `onSelect` — klik tile membuka project sheet (Home teaser + Work index).
  *
  * Caption + scrim: `useContainerReveal` (hover/focus desktop; selalu
  * terlihat di sentuh; reduced-motion dihormati). Bukan Overlay Astryx —
@@ -56,10 +55,12 @@ export function WorkTile({
     <>
       <Center className="home-work-tile-media">
         <NextImage
-          src={item.imageSrc}
-          alt=""
-          fill
-          sizes={featured || wide ? "100vw" : "50vw"}
+          {...workPhotoProps(
+            item.imageSrc,
+            featured || wide
+              ? "(max-width: 767px) 100vw, 1400px"
+              : "(max-width: 767px) 100vw, 700px",
+          )}
         />
       </Center>
       <Center

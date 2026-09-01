@@ -31,3 +31,10 @@ export function localePath(locale: string, pathname = ""): string {
       : "";
   return `/${locale}${suffix}`;
 }
+
+/** Path katalog M9 (label Proyek / Projects). */
+export const PROJECTS_PATH = "projects";
+
+export function projectsHref(locale: string): string {
+  return localePath(locale, PROJECTS_PATH);
+}

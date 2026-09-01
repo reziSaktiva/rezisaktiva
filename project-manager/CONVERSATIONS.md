@@ -14,6 +14,83 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-01] — Status pekerjaan jadi seksi Home
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin status pekerjaan saat ini tampil sebagai salah satu section di Home, bukan hanya di About/Quick Info.
+**Key Decision/Insight:** Seksi **Now** setelah hero, sebelum Bukti: kicker Sekarang/Now + kalimat tautan Insvire. Bukan tile katalog karya.
+**Impact:** `home-page.tsx`, `content/home.ts`, S1 di key-screen-patterns / IA / M1 / F1.
+
+## [2026-09-01] — Tempat kerja Insvire Technologies
+
+**Phase:** Validation
+**Summary:** Boss Rezi menambahkan fakta bahwa sekarang bekerja di Insvire Technologies, dengan situs perusahaan https://www.insvire.com/.
+**Key Decision/Insight:** Ini identitas tempat kerja, bukan item katalog proyek. Tampil di About + Quick Info; JSON-LD `Person.worksFor` nested Organization (bukan graph Organization untuk situs rezisaktiva). Jabatan di perusahaan tidak dikarang.
+**Impact:** `content/person.ts`, About, Quick Info, `lib/json-ld.ts`, mapping T-029.
+
+## [2026-09-01] — Katalog tanpa item situs ini sendiri
+
+**Phase:** Validation
+**Summary:** Boss Rezi menghapus karya “Personal Portfolio — rezisaktiva” dari katalog.
+**Key Decision/Insight:** Situs yang sedang dibuka bukan item Work/sheet. Domain production tetap `rezisaktiva.space`.
+**Impact:** `content/data/projects.json` (item id `5` dihapus); Home teaser tidak berubah; JSON-LD ItemList mengikuti `WORK_ITEMS`.
+
+---
+
+## [2026-09-01] — Preview live di project sheet
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin sheet menampilkan situs asli tiap karya, bukan hanya foto.
+**Key Decision/Insight:** Urutan media: embed iframe URL live → galeri jika framing gagal → kosong. Bukan GitHub. Tautan Live/Repo tetap di body.
+**Impact:** ADR-027, `project-sheet-media.tsx`, M10 di feature-modules / S4 / F7.
+
+---
+
+## [2026-09-01] — Minerank = migrasi + lelang + blog
+
+**Phase:** Validation
+**Summary:** Boss Rezi menggabungkan Minerank Blog, SMC Auction, dan SMC Migration menjadi satu karya web Minerank, urutan kerja migrasi database → auction → blog headless WordPress.
+**Key Decision/Insight:** Bukan tiga tile terpisah. Teaser Home memakai Minerank menggantikan SMC Auction. Tautan Live sheet = blog Minerank; smc.auction tetap di deskripsi.
+**Impact:** `content/data/projects.json`, tes JSON-LD (tidak ada lagi item tanpa href), T-021.2 / T-021.5.
+
+---
+
+## [2026-09-01] — Fakta profil ke JSON
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin projects, services, tools, email, dan links mudah diubah tanpa menyentuh TypeScript.
+**Key Decision/Insight:** Fakta hidup di `content/data/*.json`. Copy UI (label, h1, modal) tetap `content/*.ts`. Bukan CMS/DB; tetap SSG dari repo.
+**Impact:** `content/data/`, wrapper `work.ts` / `work-sheet.ts` / `contact.ts` / `quick-info.ts`, Quick Info / footer / Contact modal / JSON-LD iterate tautan.
+
+---
+
+## [2026-09-01] — Path katalog `/work` → `/projects`
+
+**Phase:** Validation
+**Summary:** Boss Rezi minta href halaman katalog mengikuti nama Proyek/Projects.
+**Key Decision/Insight:** Route App Router `app/[locale]/projects`; `/id/work` dan `/en/work` redirect 308. Aset gambar `public/work/` tidak dipindah.
+**Impact:** `lib/nav.ts`, `lib/site-url.ts`, `lib/site-routes.ts`, `lib/json-ld.ts`, `next.config.ts`, IA/nav, ADR-020.
+
+---
+
+## [2026-09-01] — Label halaman Karya/Work → Proyek/Projects
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin nama halaman katalog karya di chrome menjadi Proyek (ID) dan Projects (EN).
+**Key Decision/Insight:** Hanya label; URL tetap `/[locale]/work`. Title meta sudah Proyek/Projects sejak T-021.7.
+**Impact:** `lib/nav.ts`, `content/home.ts`, `content/quick-info.ts`, ADR-020, navigation-patterns, IA.
+
+---
+
+## [2026-09-01] — Teaser Home membuka project sheet
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin klik karya di Home membuka sheet yang sama dengan halaman Work, bukan langsung ke katalog.
+**Key Decision/Insight:** Tile teaser = sheet M10; tautan “Semua karya” tetap ke `/[locale]/work`. Override sebagian ADR-027 poin 2 (update 2026-09-01).
+**Impact:** `home-work-teasers.tsx`, ADR-027, IA, key-screen S4, F7, M4/M10, application-layer.
+
+---
+
 ## [2026-08-31] — Metadata API penuh (ikon + media)
 
 **Phase:** Validation

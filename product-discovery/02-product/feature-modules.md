@@ -27,6 +27,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 **Isi inti:**
 
 * Hero / klaim positioning (product builder + fullstack + AI edge)
+* Section **Now** — status pekerjaan saat ini (bukan katalog karya)
 * Bukti singkat (highlight pengalaman atau outcome)
 * Section **Work teaser** (1–3 item)
 * Soft arah ke About dan Contact
@@ -74,8 +75,9 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 
 **Isi inti:**
 
-* Kartu singkat: nama, peran/outcome, tautan eksternal bila ada
+* Kartu singkat: nama, peran/outcome
 * Kurasi ketat (kualitas > jumlah)
+* Klik tile membuka project sheet (M10); katalog lengkap via “Semua proyek” (M9)
 
 **Catatan:** Ini modul konten di dalam M1, dipisah agar prioritas & roadmap jelas. Halaman katalog terpisah ada di M9 Work index (Must R1, override ADR-020) — M4 tetap section teaser di Home, bukan pengganti M9.
 
@@ -118,7 +120,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
 | **M8 — Contact form / booking** | Alternatif jalur kontak | Could — bukan syarat MVP |
 | **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
-| **M10 — Case / process detail** | Overlay dari bawah (bukan route): images, services, location or company, year, description; tile Work index membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026) |
+| **M10 — Case / process detail** | Overlay dari bawah (bukan route): preview live (iframe) atau galeri, services, location or company, year, description; tile Work index **dan** teaser Home membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026) |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
 | **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
@@ -130,7 +132,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 ```text
 M5 Language ─── wraps ───► M1 Home, M2 About, M3 Contact, M6 Chrome, M9 Work index
                               │
-                              ├── contains ► M4 Work Teaser
+                              ├── contains ► M4 Work Teaser ── klik tile ──► M10
                               │
                               └── CTA soft ► M3 Contact
 

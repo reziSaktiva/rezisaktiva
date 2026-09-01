@@ -2,11 +2,12 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import NextLink from "next/link";
-import { CONTACT_EMAIL, CONTACT_SOCIALS } from "@/content/contact";
+import { CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { WORK_ITEMS } from "@/content/work";
 import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
+import { projectsHref } from "@/lib/site-url";
 import { Button } from "@astryxdesign/core/Button";
 import { Grid } from "@astryxdesign/core/Grid";
 import { Heading } from "@astryxdesign/core/Heading";
@@ -16,6 +17,7 @@ import { Link } from "@astryxdesign/core/Link";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
 import { CloseIcon } from "./overlay-icons";
+import { WorkplaceLine } from "./workplace-line";
 
 /**
  * Quick Info overlay (T-020.2, ADR-022) — tab tepi kanan → drawer.
@@ -85,7 +87,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
     lastFocus.current = null;
   }, [isOpen]);
 
-  const workHref = `/${locale}/work`;
+  const workHref = projectsHref(locale);
 
   return (
     <>
@@ -133,9 +135,12 @@ export function QuickInfo({ locale }: { locale: Locale }) {
             <VStack className="qi-header-spacer" aria-hidden="true" />
           </HStack>
           <VStack className="qi-body" gap={0}>
-            <Text display="block" className="qi-bio">
-              {copy.bio}
-            </Text>
+            <VStack gap={3} className="qi-intro">
+              <Text display="block" className="qi-bio">
+                {copy.bio}
+              </Text>
+              <WorkplaceLine locale={locale} className="qi-workplace" />
+            </VStack>
             <Grid columns={2} gap={6} className="qi-cols">
               <VStack gap={3}>
                 <Text display="block" className="qi-label">
@@ -187,12 +192,11 @@ export function QuickInfo({ locale }: { locale: Locale }) {
               {copy.linksLabel}
             </Text>
             <HStack gap={5} wrap="wrap" className="qi-links">
-              <Link href={CONTACT_SOCIALS.linkedin.href} color="secondary">
-                {CONTACT_SOCIALS.linkedin.label}
-              </Link>
-              <Link href={CONTACT_SOCIALS.github.href} color="secondary">
-                {CONTACT_SOCIALS.github.label}
-              </Link>
+              {CONTACT_LINKS.map((link) => (
+                <Link key={link.id} href={link.href} color="secondary">
+                  {link.label}
+                </Link>
+              ))}
             </HStack>
           </VStack>
         </VStack>

@@ -1,11 +1,11 @@
 import { PERSON } from "@/content/person";
-import { CONTACT_EMAIL, CONTACT_SOCIALS } from "@/content/contact";
+import { CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { WORK_ITEMS } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 import { NAV_LABELS } from "@/lib/nav";
-import { getSiteUrl, localePath } from "@/lib/site-url";
+import { getSiteUrl, localePath, PROJECTS_PATH } from "@/lib/site-url";
 
 export type JsonLdSurface = SiteSurface;
 
@@ -44,10 +44,15 @@ function personNode(locale: Locale): JsonLdNode {
     name: PERSON.name,
     alternateName: PERSON.alternateName,
     jobTitle: PERSON.jobTitle,
+    worksFor: {
+      "@type": "Organization",
+      name: PERSON.worksFor.name,
+      url: PERSON.worksFor.url,
+    },
     description: QUICK_INFO_COPY[locale].bio,
     email: CONTACT_EMAIL,
     url: pageUrl(locale, "about"),
-    sameAs: [CONTACT_SOCIALS.linkedin.href, CONTACT_SOCIALS.github.href],
+    sameAs: CONTACT_LINKS.map((link) => link.href),
     knowsAbout: [...QUICK_INFO_COPY[locale].services],
   };
 }
@@ -97,7 +102,7 @@ function profilePageNode(locale: Locale): JsonLdNode {
 }
 
 function collectionPageNode(locale: Locale): JsonLdNode {
-  const url = pageUrl(locale, "work");
+  const url = pageUrl(locale, PROJECTS_PATH);
   const meta = SITE_META[locale].work;
   return {
     "@type": "CollectionPage",
@@ -114,7 +119,8 @@ function collectionPageNode(locale: Locale): JsonLdNode {
 
 function breadcrumbNode(locale: Locale, leaf: "about" | "work"): JsonLdNode {
   const homeUrl = pageUrl(locale, "");
-  const leafUrl = pageUrl(locale, leaf);
+  const leafPath = leaf === "work" ? PROJECTS_PATH : leaf;
+  const leafUrl = pageUrl(locale, leafPath);
   return {
     "@type": "BreadcrumbList",
     "@id": `${leafUrl}#breadcrumb`,
@@ -156,7 +162,7 @@ function creativeWorkNode(
 }
 
 function itemListNode(locale: Locale): JsonLdNode {
-  const workIndexUrl = pageUrl(locale, "work");
+  const workIndexUrl = pageUrl(locale, PROJECTS_PATH);
   const items = WORK_ITEMS[locale];
   return {
     "@type": "ItemList",

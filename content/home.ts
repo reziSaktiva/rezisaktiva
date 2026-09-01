@@ -1,16 +1,13 @@
 import type { Locale } from "@/lib/locale";
-import { WORK_ITEMS, type WorkItem } from "./work";
+import { HOME_TEASER_IDS, WORK_ITEMS, type WorkItem } from "./work";
 
 /**
  * Copy Home. Dikunci T-021.2 (h1/bukti/seksi karya/contact 2026-08-20;
  * teaser 2026-08-28). Nama/outcome teaser = katalog T-021.5, satu sumber.
- * Set teaser dikunci Boss Rezi: SMMP · Cook It Real Good · SMC Auction.
+ * Set teaser dikunci di `content/data/projects.json` (`homeTeaserIds`).
  */
 
 export type HomeTeaserItem = WorkItem;
-
-/** Urutan tampil di Home (tile pertama = featured penuh lebar). */
-const HOME_TEASER_IDS = ["1", "2", "4"] as const;
 
 function teasersFor(locale: Locale): readonly HomeTeaserItem[] {
   const byId = new Map(WORK_ITEMS[locale].map((item) => [item.id, item]));
@@ -25,6 +22,7 @@ function teasersFor(locale: Locale): readonly HomeTeaserItem[] {
 
 export interface HomeCopy {
   h1: [string, string];
+  nowLabel: string;
   buktiLabel: string;
   buktiEmphasis: string;
   buktiRest: string;
@@ -44,13 +42,14 @@ export const HERO_PORTRAIT_SRC =
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
     h1: ["Ceritamu", "lewat produk."],
+    nowLabel: "Sekarang",
     buktiLabel: "Bukti",
     buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
     buktiRest:
       " AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.",
-    workLabel: "Karya terpilih",
+    workLabel: "Proyek terpilih",
     workTitle: "Beberapa yang udah dipakai orang.",
-    workAll: "Semua karya →",
+    workAll: "Semua proyek →",
     teasers: teasersFor("id"),
     contactLabel: "Contact",
     contactTitle: "Ada project?",
@@ -60,13 +59,14 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
   },
   en: {
     h1: ["Your story,", "in the product."],
+    nowLabel: "Now",
     buktiLabel: "Proof",
     buktiEmphasis: "AI didn't take my job.",
     buktiRest:
       " It leveled me up — from developer to engineer of my own AI ecosystem.",
-    workLabel: "Selected work",
+    workLabel: "Selected projects",
     workTitle: "A few things people actually use.",
-    workAll: "All work →",
+    workAll: "All projects →",
     teasers: teasersFor("en"),
     contactLabel: "Contact",
     contactTitle: "Got a project?",

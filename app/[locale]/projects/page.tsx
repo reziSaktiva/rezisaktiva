@@ -12,17 +12,17 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps<"/[locale]/work">): Promise<Metadata> {
+}: PageProps<"/[locale]/projects">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) {
     return {};
   }
-  return pageMetadata(locale, "work", "work");
+  return pageMetadata(locale, "work", "projects");
 }
 
 export default async function WorkRoute({
   params,
-}: PageProps<"/[locale]/work">) {
+}: PageProps<"/[locale]/projects">) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {

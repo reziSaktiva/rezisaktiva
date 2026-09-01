@@ -29,7 +29,7 @@ import { SlidingPillGroup } from "./sliding-pill-group";
 import { ThemeToggle } from "./theme-toggle";
 
 /**
- * Site chrome — T-013 (ADR-020): nav Home/About/Karya sebagai link,
+ * Site chrome — T-013 (ADR-020): nav Home/About/Proyek sebagai link,
  * Contact sebagai tombol pembuka modal (T-016, ADR-019).
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).

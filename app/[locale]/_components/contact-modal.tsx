@@ -12,7 +12,7 @@ import { useContactModal } from "@/app/_components/contact-modal-provider";
 import {
   CONTACT_COPY,
   CONTACT_EMAIL,
-  CONTACT_SOCIALS,
+  CONTACT_LINKS,
 } from "@/content/contact";
 import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
@@ -250,18 +250,23 @@ export function ContactModal({ locale }: { locale: Locale }) {
                 {copy.socialsLabel}
               </Text>
               <HStack gap={2} className="ct-socials">
-                <Link
-                  href={CONTACT_SOCIALS.linkedin.href}
-                  aria-label={CONTACT_SOCIALS.linkedin.label}
-                >
-                  <Icon icon={LinkedInIcon} />
-                </Link>
-                <Link
-                  href={CONTACT_SOCIALS.github.href}
-                  aria-label={CONTACT_SOCIALS.github.label}
-                >
-                  <Icon icon={GitHubIcon} />
-                </Link>
+                {CONTACT_LINKS.map((link) => {
+                  const icon =
+                    link.id === "linkedin"
+                      ? LinkedInIcon
+                      : link.id === "github"
+                        ? GitHubIcon
+                        : undefined;
+                  return (
+                    <Link
+                      key={link.id}
+                      href={link.href}
+                      aria-label={link.label}
+                    >
+                      {icon ? <Icon icon={icon} /> : link.label}
+                    </Link>
+                  );
+                })}
               </HStack>
               <HStack gap={2} align="center" className="ct-availability">
                 <VStack className="avail-dot" aria-hidden="true" />

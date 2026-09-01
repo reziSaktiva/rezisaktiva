@@ -1,9 +1,15 @@
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { LOCALES, type Locale } from "@/lib/locale";
-import { getSiteUrl, localePath } from "@/lib/site-url";
+import { getSiteUrl, localePath, PROJECTS_PATH } from "@/lib/site-url";
 
 function surfacePath(surface: SiteSurface): string {
-  return surface === "home" ? "" : surface;
+  if (surface === "home") {
+    return "";
+  }
+  if (surface === "work") {
+    return PROJECTS_PATH;
+  }
+  return surface;
 }
 
 function surfaces(): SiteSurface[] {

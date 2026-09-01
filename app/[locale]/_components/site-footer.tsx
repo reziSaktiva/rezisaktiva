@@ -4,7 +4,7 @@ import { Link } from "@astryxdesign/core/Link";
 import { Section } from "@astryxdesign/core/Section";
 import { Text } from "@astryxdesign/core/Text";
 import { VStack } from "@astryxdesign/core/VStack";
-import { CONTACT_SOCIALS } from "@/content/contact";
+import { CONTACT_LINKS } from "@/content/contact";
 import { HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
 import { SiteFooterCta } from "./site-footer-cta";
@@ -67,22 +67,17 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             rezisaktiva
           </Text>
           <HStack gap={4} align="center">
-            <Link
-              href={CONTACT_SOCIALS.linkedin.href}
-              isExternalLink
-              color="secondary"
-              size="sm"
-            >
-              {CONTACT_SOCIALS.linkedin.label}
-            </Link>
-            <Link
-              href={CONTACT_SOCIALS.github.href}
-              isExternalLink
-              color="secondary"
-              size="sm"
-            >
-              {CONTACT_SOCIALS.github.label}
-            </Link>
+            {CONTACT_LINKS.map((link) => (
+              <Link
+                key={link.id}
+                href={link.href}
+                isExternalLink
+                color="secondary"
+                size="sm"
+              >
+                {link.label}
+              </Link>
+            ))}
           </HStack>
         </HStack>
       </VStack>
