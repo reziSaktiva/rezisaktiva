@@ -3,6 +3,21 @@
     "xds": {
       "type": "url",
       "url": "https://astryx.atmeta.com/mcp"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "motion": {
+      "type": "url",
+      "url": "https://mcp.motion.dev"
+    },
+    "motion-plus": {
+      "type": "url",
+      "url": "https://mcp.motion.dev/plus"
     }
   }
 }

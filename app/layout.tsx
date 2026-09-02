@@ -19,48 +19,45 @@ export const metadata: Metadata = {
 };
 
 /**
- * Lapis pertahanan HANYA untuk kasus migrasi 1x (bukan lagi sumber utama
- * anti-flash — lihat `initialMode` di bawah, sumber kebenaran sekarang
- * cookie): kalau cookie belum PERNAH ada sama sekali (user lama dari
- * sebelum fix cookie ini ship, localStorage sudah punya preferensi tapi
- * belum pernah toggle sejak itu) tapi localStorage sudah punya preferensi,
- * script blocking ini set `data-theme`/`color-scheme` di `<html>` SEBELUM
- * React hydrate — pola resmi yang direkomendasikan Astryx sendiri (lihat
- * komentar `Theme` component di `@astryxdesign/core`: "For RSC/SSR, set
- * data-theme on <html> ... to avoid a flash of wrong theme before
- * hydration"). Tidak menyebabkan hydration mismatch karena `<html>` di JSX
- * di bawah tidak mendeklarasikan `data-theme` sama sekali — React tidak
- * mengelola atribut yang bukan bagian dari render output-nya sendiri.
+ * Anti-flash + `html.dark` (T-032.5) tanpa `className` di JSX `<html>`.
+ * Lenis, `ct-lock` / `qi-lock` / `ps-lock`, dan `page-vt-lock` juga menulis
+ * class di `documentElement` lewat `classList`. Kalau React punya
+ * `className` di `<html>`, reconcile RSC (navigasi setelah cookie tema
+ * berubah) menimpa seluruh atribut `class` dan class itu hilang.
  *
- * SENGAJA cek cookie dulu dan no-op kalau sudah ada (code review
- * 2026-08-16, lihat COMPLETE_TASK.md): kalau script ini tetap jalan
- * berdasarkan localStorage TANPA peduli cookie, dan keduanya kebetulan
- * berbeda (mis. user bersihkan cookie tapi tidak localStorage), script ini
- * akan memaksa `<html>` ke nilai localStorage padahal SSR (dan React yang
- * akan hydrate) sudah commit ke nilai cookie yang berbeda — flash yang
- * coba dihilangkan malah muncul lagi lewat jalur ini. Dengan hanya jalan
- * saat cookie benar-benar belum ada, lalu langsung MENULIS cookie itu juga
- * (self-healing), konflik ini cuma bisa terjadi maksimal 1x per browser
- * (kunjungan pertama setelah fix ini ship) — bukan risiko berulang.
+ * Script ini `classList.toggle("dark")` saja — tidak `setAttribute("class")`.
+ * Cookie menang vs localStorage (code review 2026-08-16). Tanpa cookie,
+ * localStorage di-apply sekali dan cookie di-tulis (migrasi 1x).
+ * `data-theme` tetap bukan prop JSX (Astryx `Theme` juga menulisnya).
  *
- * Key harus sama dengan `THEME_MODE_STORAGE_KEY` (`lib/theme-mode.ts`) —
- * di-inline langsung karena script ini harus plain JS (tidak bisa import
- * modul TS ke inline script).
+ * Key = `THEME_MODE_STORAGE_KEY` — di-inline karena script harus plain JS.
  */
 const themeInitScript = `
 (function () {
   try {
     var key = ${JSON.stringify(THEME_MODE_STORAGE_KEY)};
-    if (document.cookie.indexOf(key + "=") !== -1) {
-      return;
+    var prefix = key + "=";
+    var mode = null;
+    var parts = document.cookie.split("; ");
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i].indexOf(prefix) === 0) {
+        mode = parts[i].slice(prefix.length);
+        break;
+      }
     }
-    var stored = window.localStorage.getItem(key);
-    if (stored === "dark" || stored === "light") {
-      document.documentElement.setAttribute("data-theme", stored);
-      document.documentElement.style.colorScheme = stored;
+    var fromCookie = mode === "dark" || mode === "light";
+    if (!fromCookie) {
+      mode = window.localStorage.getItem(key);
+      if (mode !== "dark" && mode !== "light") {
+        return;
+      }
       var secure = location.protocol === "https:" ? "; secure" : "";
-      document.cookie = key + "=" + stored + "; path=/; max-age=31536000; samesite=lax" + secure;
+      document.cookie = key + "=" + mode + "; path=/; max-age=31536000; samesite=lax" + secure;
     }
+    var root = document.documentElement;
+    root.setAttribute("data-theme", mode);
+    root.style.colorScheme = mode;
+    root.classList.toggle("dark", mode === "dark");
   } catch (e) {}
 })();
 `;
@@ -96,6 +93,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       style={{ colorScheme: initialMode }}
     >
       <head>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link
           href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500&display=swap"
@@ -114,9 +114,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
          * Nilai selalu sinkron dengan `initialMode` (server, per-request).
          */}
         <meta name="color-scheme" content={initialMode} />
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeInitScript}
-        </Script>
       </head>
       <body>
         <ThemeModeProvider initialMode={initialMode}>

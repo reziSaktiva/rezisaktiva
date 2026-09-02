@@ -8,6 +8,8 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 
 **Paket dikunci Boss Rezi (2026-08-31):** identitas head + icons + media share.
 
+**Antrian (2026-09-01):** migrasi shadcn **T-032…T-037 diutamakan**. Jangan mulai T-031 sampai **T-037** Done — keduanya menyentuh head / `app/layout.tsx`. Setelah stack baru, T-031.4 `themeColor` harus selaras token shadcn (bukan Astryx).
+
 ---
 
 ## Yang sudah ada (jangan diulang)
@@ -52,7 +54,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 
 ## T-031 — Lengkapi Metadata API (ikon + media + identitas)
 
-* **Status:** ⏳ Open
+* **Status:** ⏳ Open — **antrian setelah T-037** (bukan prioritas)
 * **Domain:** Engineering
 * **Output:** head R1 punya ikon brand, kartu share, authors/applicationName; title/description T-021.7 tidak ditulis ulang
 * **Keputusan paket:** tabel di atas (2026-08-31)

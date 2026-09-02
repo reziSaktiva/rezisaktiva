@@ -14,6 +14,127 @@ Format entri:
 - ...
 ```
 
+## [2026-09-02]
+### Added
+- (tidak ada)
+### Changed
+- `tasks/v14-shadcn-tailwind.md` Dark/light poin 1 & 5 + teks T-032.5: `html.dark` lewat `classList`, bukan `className` React di `<html>`.
+### Fixed
+- Review PR #58: `className` di `<html>` menimpa class Lenis / lock overlay saat RSC navigasi setelah cookie tema berubah. `app/layout.tsx` tidak lagi set `className`; script `beforeInteractive` `classList.toggle("dark")` dari cookie (localStorage hanya jika cookie kosong). `ThemeModeProvider` tetap `classList` saat toggle.
+
+## [2026-09-02]
+### Added
+- **T-032.6** paket `motion` `^13.1.1`. Smoke re-export `motion` / `AnimatePresence` / `useReducedMotion` dari `motion/react` di `lib/motion.ts` (bukan `framer-motion`). `home-motion.tsx` tidak di-rewrite (T-036).
+- **T-032.7** primitf shadcn via `pnpm dlx shadcn@latest add` (radix-nova): `button`, `toggle`, `toggle-group`, `card`, `badge`, `collapsible`, `aspect-ratio`, `dialog`, `sheet`, `drawer`, `input`, `textarea`, `field`. Transitif CLI: `label`, `separator`, dep `vaul`. `FieldGroup` ikut di `components/ui/field.tsx` — item registry `field-group` adalah example, tidak di-add. Tidak ada Sidebar/Chart/Sonner. `globals.css` tidak diubah CLI.
+### Changed
+- **T-032** parent ✅ Done. Dual-boot Astryx+shadcn tetap sampai T-037. Halaman produksi masih Astryx (T-033+).
+### Fixed
+- **T-032.8** `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau; Astryx masih di `package.json`. SSR tema: default/`rz-theme=light` → `color-scheme:light` tanpa class `dark`; `rz-theme=dark` → `class="dark"` + `color-scheme:dark`; script `theme-init` + `classList.toggle("dark")` tetap di HTML produksi.
+
+## [2026-09-02]
+### Added
+- **T-032.5** wiring `html.dark`: `className="dark"` dari cookie `rz-theme` di `app/layout.tsx` (bersama `colorScheme` + meta `color-scheme` yang sudah ada); script `beforeInteractive` menambah class `dark` hanya di jalur migrasi 1x (cookie belum ada); `ThemeModeProvider` `classList.toggle("dark")` saat toggle. Astryx `<Theme mode>` tetap membungkus.
+### Changed
+- Kanvas `html.dark` / `html.dark body` di `globals.css` selaras navy `#0a0f1a`. Cookie tetap menang vs OS `prefers-color-scheme`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- **T-032.4** map token shadcn ke palet rezisaktiva di `app/globals.css`: `:root` / `.dark` memakai hex dari `lib/astryx-theme.ts` (kanvas `#edeae1`/`#0a0f1a`, muted/popover `#e4dfd1`/`#121a2b`, fg `#14181f`/`#edeae1`, secondary `#6e6a5f`/`#9b968a`, border `#dad5c7`/`#222b3d`, primary/accent teal `#4c7a73`/`#7fb3aa`, accent muted `#d8e2de`/`#1e302e`). `@theme inline` tetap `var(--background)` dst. `@custom-variant dark` = class `.dark` (bukan OS).
+### Changed
+- Chip `--chip-*`, `--elev-3d`, scrollbar T-025.9 tidak diubah; `.dark` ikut selector elev/scrollbar dark. Kanvas `html`/`body` tetap `data-theme` + `light-dark()` sampai T-032.5. Tidak ada override `--color-*` Astryx di `:root`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- **T-032.3** fondasi Tailwind CSS v4 + shadcn init di app yang sudah ada: `tailwindcss` + `@tailwindcss/postcss` (dev), `postcss.config.mjs`, `pnpm dlx shadcn@latest init --base radix --preset nova --yes --no-monorepo --force`. Hasil: `components.json` (style `radix-nova`, base radix, RSC, lucide, aliases `@/components` + `@/lib/utils`, CSS `app/globals.css`); `lib/utils.ts` (`cn`); deps `clsx`, `tailwind-merge`, `class-variance-authority`, `lucide-react`, `radix-ui`, `tw-animate-css`. Import CSS: `tailwindcss` + `tw-animate-css` + `shadcn/tailwind.css` di `app/globals.css` (satu file; Astryx tetap).
+### Changed
+- CLI nova sempat menulis Geist + `@layer base` `bg-background`/`font-sans`. **Dikembalikan:** Fontshare di `app/layout.tsx`; `--font-sans`/`--font-heading` = Satoshi / General Sans; kanvas `html`/`body` cream/navy tidak memakai token nova. Nilai oklch shadcn di `:root` / `.dark` + `@theme inline` dibiarkan sebagai scaffolding **T-032.4**.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- (tidak ada)
+### Changed
+- Scope **PR #58** dipersempit ke **T-032** saja (Boss Rezi). T-033…T-037 = PR terpisah. Dual-boot di `main` setelah merge T-032 disengaja sampai T-037.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **T-032.2** MCP project: `pnpm dlx shadcn@latest mcp init --client cursor` (merge; `xds` tetap). Motion AI Kit scope **project** + Cursor (hosted `motion` + `motion-plus`; bukan stdio + TOKEN). CLI `mcp init` juga memasang `shadcn` di `devDependencies`. Kit menulis `.cursor/skills/motion/`, `.cursor/rules/motion.mdc`, `.cursor/agents/motion-reviewer.md`. Tidak ada MCP Tailwind community.
+- Isi akhir `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "xds": {
+      "type": "url",
+      "url": "https://astryx.atmeta.com/mcp"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "motion": {
+      "type": "url",
+      "url": "https://mcp.motion.dev"
+    },
+    "motion-plus": {
+      "type": "url",
+      "url": "https://mcp.motion.dev/plus"
+    }
+  }
+}
+```
+
+### Changed
+- Fokus: **T-032.3** berikutnya (Tailwind v4 + `shadcn init`).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **T-032.1** baseline visual produksi (bukan mockup HTML): [`baselines/t-032.1/`](baselines/t-032.1/) — Home/About/Work + Contact/Quick Info/project sheet; light+dark; 320×720 & 1440×900; locale `en`. Token computed (`getComputedStyle` pada `html`/`body`, cookie `rz-theme`):
+
+  | Peran | Light | Dark |
+  | ----- | ----- | ---- |
+  | Kanvas (`body` bg / `--color-background-body`) | `rgb(237, 234, 225)` `#edeae1` | `rgb(10, 15, 26)` `#0a0f1a` |
+  | Fg (`body` color / `--color-text-primary`) | `rgb(20, 24, 31)` `#14181f` | `rgb(237, 234, 225)` `#edeae1` |
+  | Accent (`--color-accent`) | `#4c7a73` | `#7fb3aa` |
+  | Chip kuning (`--chip-bg` / `--chip-fg`) | `#fde047` / `#14181f` | sama (kuning tetap) |
+  | Chrome pill aktif (`--chrome-pill-*` via `useChipColorVars`, desktop) | `#0a0f1a` / `#edeae1` | `#edeae1` / `#0a0f1a` |
+  | Scrollbar thumb | `#fde047` | `#fde047` |
+  | Scrollbar track (`--rz-scrollbar-track`) | `#e4dfd1` | `#121a2b` |
+
+  Fallback CSS `--chrome-pill-*` di `:root` tetap light (`#0a0f1a` / `#edeae1`); nilai runtime desktop dari inline style chip. JSON: `baselines/t-032.1/computed-tokens.json`.
+### Changed
+- Fokus: **T-032.2** berikutnya (MCP shadcn + Motion AI Kit).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
+- Prioritas backlog: **T-032…T-037** diutamakan; **T-031** antrian setelah T-037 (Boss Rezi).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **ADR-028** + backlog **T-032…T-037** (`tasks/v14-shadcn-tailwind.md`): migrasi Astryx → shadcn/ui + Tailwind v4 (bukan redesain; Motion; MCP shadcn + Motion AI Kit).
+### Changed
+- ADR-018 **superseded**. Evaluasi ADR-026 selesai. Fokus: T-031 dulu, lalu T-032.
+### Fixed
+- (tidak ada)
+
 ## [2026-09-01]
 ### Added
 - Seksi Home **Now** (status pekerjaan): kicker Sekarang/Now + tautan Insvire Technologies, setelah hero.
