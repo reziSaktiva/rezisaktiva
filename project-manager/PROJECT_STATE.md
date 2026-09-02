@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
 * **Active Mode:** Validation — **prioritas T-032…T-037** migrasi shadcn (ADR-028); T-031 antrian setelah T-037; T-023 bila aset CV Inggris siap; bukan R2 tanpa ADR
-* **Top Next Tasks:** **T-032** ⏳ (**T-032.1–T-032.2** ✅; lanjut **T-032.3**); **T-031** ⏳ antrian; **T-023** ⏸️ — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** **T-032** ⏳ (**T-032.1–T-032.3** ✅; lanjut **T-032.4**); **T-031** ⏳ antrian; **T-023** ⏸️ — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (✅ Done — **T-028** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — **T-021** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris) + `tasks/v11-structured-data.md` (✅ Done — **T-029**) + `tasks/v12-seo.md` (✅ Done — **T-030**) + `tasks/v13-metadata.md` (⏳ Open — **T-031**, antrian setelah T-037) + `tasks/v14-shadcn-tailwind.md` (⏳ Open — **T-032…T-037** **prioritas**, ADR-028)

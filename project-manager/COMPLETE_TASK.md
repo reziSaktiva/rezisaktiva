@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-032.3** fondasi Tailwind CSS v4 + shadcn init di app yang sudah ada: `tailwindcss` + `@tailwindcss/postcss` (dev), `postcss.config.mjs`, `pnpm dlx shadcn@latest init --base radix --preset nova --yes --no-monorepo --force`. Hasil: `components.json` (style `radix-nova`, base radix, RSC, lucide, aliases `@/components` + `@/lib/utils`, CSS `app/globals.css`); `lib/utils.ts` (`cn`); deps `clsx`, `tailwind-merge`, `class-variance-authority`, `lucide-react`, `radix-ui`, `tw-animate-css`. Import CSS: `tailwindcss` + `tw-animate-css` + `shadcn/tailwind.css` di `app/globals.css` (satu file; Astryx tetap).
+### Changed
+- CLI nova sempat menulis Geist + `@layer base` `bg-background`/`font-sans`. **Dikembalikan:** Fontshare di `app/layout.tsx`; `--font-sans`/`--font-heading` = Satoshi / General Sans; kanvas `html`/`body` cream/navy tidak memakai token nova. Nilai oklch shadcn di `:root` / `.dark` + `@theme inline` dibiarkan sebagai scaffolding **T-032.4**.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
 - (tidak ada)
 ### Changed
 - Scope **PR #58** dipersempit ke **T-032** saja (Boss Rezi). T-033…T-037 = PR terpisah. Dual-boot di `main` setelah merge T-032 disengaja sampai T-037.
