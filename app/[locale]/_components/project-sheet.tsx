@@ -20,6 +20,9 @@ function isRepoUrl(url: string): boolean {
 
 export const PROJECT_SHEET_ID = "ps-panel";
 
+/** Selaras transisi `.ps-panel` di `globals.css` (0.55s). */
+const CLOSE_SETTLE_MS = 550;
+
 function prefersReducedMotionNow(): boolean {
   return (
     typeof window !== "undefined" &&
@@ -45,28 +48,30 @@ export function ProjectSheet({
   const labels = WORK_SHEET_COPY[locale];
   const isOpen = item != null;
   const [visible, setVisible] = useState<WorkItem | null>(item);
-  const [entered, setEntered] = useState(false);
+  const [headingName, setHeadingName] = useState(item?.name ?? "");
   const titleId = useId();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
   if (item && item !== visible) {
     setVisible(item);
-  } else if (!item && visible && prefersReducedMotionNow()) {
-    setVisible(null);
+  }
+  if (visible?.name && visible.name !== headingName) {
+    setHeadingName(visible.name);
   }
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.id) : [];
 
   useEffect(() => {
-    if (!isOpen) {
-      setEntered(false);
+    if (isOpen || visible == null) {
       return;
     }
-    const frame = window.requestAnimationFrame(() => setEntered(true));
-    return () => window.cancelAnimationFrame(frame);
-  }, [isOpen]);
+    const delay = prefersReducedMotionNow() ? 0 : CLOSE_SETTLE_MS;
+    const timer = window.setTimeout(() => setVisible(null), delay);
+    return () => window.clearTimeout(timer);
+  }, [isOpen, visible]);
 
   useEffect(() => {
     const close = () => onClose();
@@ -129,7 +134,7 @@ export function ProjectSheet({
         showHandle={false}
         aria-describedby={undefined}
         aria-labelledby={titleId}
-        overlayClassName={cn("ps-scrim", entered && "is-open")}
+        overlayClassName={cn("ps-scrim", isOpen && "is-open")}
         overlayProps={{
           "data-overlay-scrim": "",
           "data-lenis-prevent": "",
@@ -138,22 +143,14 @@ export function ProjectSheet({
         className={cn(
           "ps-panel mt-0 max-h-none border-0 bg-transparent p-0 shadow-none",
           "data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:max-h-none data-[vaul-drawer-direction=bottom]:rounded-t-[0.75rem] data-[vaul-drawer-direction=bottom]:border-0",
-          entered && "is-open",
+          isOpen && "is-open",
         )}
         onOpenAutoFocus={(event) => {
           event.preventDefault();
-          document.querySelector<HTMLElement>(".ps-close")?.focus();
+          closeBtnRef.current?.focus();
         }}
         onCloseAutoFocus={(event) => {
           event.preventDefault();
-        }}
-        onTransitionEnd={(event) => {
-          if (event.target !== event.currentTarget) {
-            return;
-          }
-          if (!isOpen) {
-            setVisible(null);
-          }
         }}
       >
         <div ref={scrollRef} data-lenis-prevent="" className="ps-scroll">
@@ -161,6 +158,7 @@ export function ProjectSheet({
             <div key={visible.id} className="ps-sheet-body">
               <div className="qi-header ps-header">
                 <Button
+                  ref={closeBtnRef}
                   type="button"
                   variant="ghost"
                   size="icon-sm"
@@ -238,7 +236,7 @@ export function ProjectSheet({
             </div>
           ) : (
             <DrawerTitle id={titleId} className="sr-only">
-              {labels.close}
+              {headingName}
             </DrawerTitle>
           )}
         </div>

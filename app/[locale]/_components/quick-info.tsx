@@ -27,6 +27,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
   const works = WORK_ITEMS[locale];
   const [isOpen, setIsOpen] = useState(false);
   const titleId = useId();
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
   const close = () => setIsOpen(false);
@@ -116,8 +117,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
           )}
           onOpenAutoFocus={(event) => {
             event.preventDefault();
-            const closeBtn = document.querySelector<HTMLElement>(".qi-close");
-            closeBtn?.focus();
+            closeBtnRef.current?.focus();
           }}
           onCloseAutoFocus={(event) => {
             event.preventDefault();
@@ -125,6 +125,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
         >
           <SheetHeader className="qi-header gap-0 p-0">
             <Button
+              ref={closeBtnRef}
               type="button"
               variant="ghost"
               size="icon-sm"

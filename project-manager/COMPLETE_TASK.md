@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- (none)
+### Changed
+- (none)
+### Fixed
+- **T-035** Review PR #62: project sheet tidak `setState` sinkron di effect (`entered`); isi drawer di-clear setelah timer close (bukan `transitionend`); fokus overlay ke ref tombol tutup; judul drawer kosong memakai nama karya terakhir, bukan label Tutup.
+
+## [2026-09-02]
+### Added
 - **T-035.5** Verifikasi overlay Contact / Quick Info / project sheet: ID+EN, light+dark, 320px (modal muat viewport; tab QI tidak menabrak baris hero), Tab trap, Escape, reduced-motion (transisi 0s). Teaser Home + tile Work membuka sheet, bukan live URL.
 ### Changed
 - **T-035** parent ✅ Done (T-035.1–T-035.5). Fokus berikutnya **T-036**.
