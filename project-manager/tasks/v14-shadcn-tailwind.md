@@ -199,7 +199,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-033 — Chrome: shell, nav, locale, tema, footer
 
-* **Status:** ⏳ Open — **prioritas #1** · T-033.1–T-033.3 ✅
+* **Status:** ⏳ Open — **prioritas #1** · T-033.1–T-033.5 ✅
 * **Domain:** UI/UX
 * **Depends:** T-032.8
 * **Baca dulu:** `site-header.tsx`, `site-footer.tsx`, `locale-switcher.tsx`, `theme-toggle.tsx`, `sliding-pill-group.tsx`, `app/[locale]/layout.tsx`, ADR-020, ADR-021
@@ -210,8 +210,8 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 - [x] **T-033.1** — Ganti `AppShell`: `topNav` + `mobileNav` → header sticky/transparan (hero overlay z seperti sekarang) + `<main>`. Footer tetap di luar main seperti layout sekarang. Jangan Sidebar.
 - [x] **T-033.2** — Desktop nav: `TopNav*` → link + pill kuning 3D (`sliding-pill-group` + token chip). Brand heading tetap. Paritas hover/selected.
 - [x] **T-033.3** — Mobile: `MobileNavToggle` / `SideNavItem` → `Button` + `Sheet` (judul `sr-only` jika perlu). Item full-width; switcher compact; jangan dobel toggle.
-- [ ] **T-033.4** — Locale: `SegmentedControl` → `ToggleGroup`. Cookie `NEXT_LOCALE` + perilaku redirect `/` tidak diubah (ADR-014).
-- [ ] **T-033.5** — Theme: `ToggleButton` → `Toggle`. Ikon Sun/Moon dari `overlay-icons.tsx`. Persist `rz-theme`. `useChipColorVars` tetap.
+- [x] **T-033.4** — Locale: `SegmentedControl` → `ToggleGroup`. Cookie `NEXT_LOCALE` + perilaku redirect `/` tidak diubah (ADR-014).
+- [x] **T-033.5** — Theme: `ToggleButton` → `Toggle`. Ikon Sun/Moon dari `overlay-icons.tsx`. Persist `rz-theme`. `useChipColorVars` tetap.
 - [ ] **T-033.6** — Footer + pita Contact (`site-footer-cta`): `Button` shadcn + Magnetic (masih boleh implementasi lama sampai T-036). Satelit LinkedIn/GitHub tetap.
 - [ ] **T-033.7** — Verifikasi chrome: 320/375/≥1024, light/dark, hamburger, locale, toggle, tanpa flash, hero 100svh overlay header.
 

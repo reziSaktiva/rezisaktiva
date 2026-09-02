@@ -41,8 +41,8 @@ import { ThemeToggle } from "./theme-toggle";
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
- * T-033.2–T-033.3: TopNav / MobileNavToggle / SideNavItem → link + Button
- * shadcn + Sheet. Locale switcher masih Astryx sampai T-033.4.
+ * T-033.2–T-033.5: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
+ * tema → Toggle. Footer CTA masih Astryx sampai T-033.6.
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();

@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-033.4** locale switcher: `SegmentedControl` → `ToggleGroup` + `ToggleGroupItem` (type single). Cookie `NEXT_LOCALE` + redirect `/` tetap (ADR-014). Pill kuning + separator `/` tetap; `useChipColorVars` tetap.
+- **T-033.5** theme toggle: `ToggleButton` → `Toggle` shadcn. Ikon Sun/Moon pindah ke `overlay-icons.tsx` (`theme-toggle-icons.tsx` dihapus). Persist `rz-theme` lewat `setThemeMode` (cookie + localStorage). Default & pressed tetap warna yang sama (hanya ikon yang berganti).
+### Changed
+- Selector chrome di `globals.css`: `.astryx-segmented-control-item` / `.astryx-toggle-button` → `.site-locale-switch-item` / `.site-theme-toggle-btn`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
 - **T-033.2** desktop nav: `TopNav` / `TopNavHeading` / `TopNavItem` → `next/link` + `Button` ghost shadcn di dalam `SlidingPillGroup` (chip kuning + pill 3D). Brand `rezisaktiva` tetap link ke `/{locale}`.
 - **T-033.3** mobile nav: `MobileNavToggle` / `SideNavItem` → `Button` hamburger + `Sheet` `modal={false}` (judul `sr-only`). Item full-width; switcher compact di dalam panel; tanpa tombol close kedua di Sheet.
 ### Changed
