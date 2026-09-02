@@ -404,14 +404,6 @@ html::-webkit-scrollbar-button {
 }
 
 /*
- * Overlay default Sheet ditutup: panel hamburger adalah disclosure (ADR-020),
- * Contact + toggle tema di header harus tetap bisa di-tap.
- */
-[data-slot="sheet-overlay"]:has(+ [data-slot="sheet-content"].site-mobile-nav) {
-  display: none;
-}
-
-/*
  * Stack Astryx memasang `display: flex` di stylesheet author, yang mengalahkan
  * UA rule `[hidden] { display: none }`. Tanpa ini panel hamburger tetap terlihat
  * setelah state React sudah tertutup (toggle/Escape/klik luar).

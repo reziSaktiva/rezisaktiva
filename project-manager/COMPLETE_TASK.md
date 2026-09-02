@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- (none)
+### Changed
+- `SheetContent` punya `showOverlay` (default true). Hamburger chrome memakai `showOverlay={false}` — overlay Radix tidak di-mount.
+### Fixed
+- **T-033** review PR #59: query hamburger `(max-width: 1024px)` → `(max-width: 1023px)` supaya ≥1024px = nav desktop (ADR-020, selaras CSS `min-width: 1024px`). Overlay Sheet hamburger tidak lagi di-hide via `:has()` (Contact + theme toggle tidak bisa tertutup overlay).
+
+## [2026-09-02]
+### Added
 - **T-033.6** footer + pita Contact: `Section`/`VStack`/`Heading`/`Text`/`Link` Astryx → `<footer>` semantik + class scoped. CTA `site-footer-cta` = `Button` shadcn `size="lg"` + `ArrowRightIcon` `data-icon="inline-end"` + Magnetic lama (sampai T-036). Satelit LinkedIn/GitHub tetap (`target=_blank` `rel=noopener noreferrer`). Tombol Contact chrome di header ikut `Button` shadcn (sisa Astryx Button di chrome).
 - **T-033.7** verifikasi chrome: 320 / 375 / 1280, light+dark; hamburger <1024 + sheet item Home/How I Work/Projects + locale di dalam panel; desktop pill nav + locale di header; toggle tema persist; cookie `rz-theme` → `html.dark` / `colorScheme`; hero `100svh` overlay header (`margin-top: -80px`); footer CTA + header Contact membuka modal Contact; locale EN→ID tetap di `/about`; cookie `NEXT_LOCALE`. `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau.
 ### Changed

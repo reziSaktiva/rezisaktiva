@@ -123,6 +123,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 id={mobileNavId}
                 side="top"
                 showCloseButton={false}
+                showOverlay={false}
                 aria-describedby={undefined}
                 className={cn(
                   "site-mobile-nav gap-2 border-0 p-0 shadow-none",
@@ -195,8 +196,8 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   );
 }
 
-/** Sama dengan AppShell `mobileNav.breakpoint: "lg"` (1024px). */
-const MOBILE_NAV_QUERY = "(max-width: 1024px)";
+/** Hamburger <1024px (ADR-020). Selaras `@media (min-width: 1024px)` desktop. */
+const MOBILE_NAV_QUERY = "(max-width: 1023px)";
 
 function useMobileNavBreakpoint(): boolean {
   const subscribe = useCallback((onStoreChange: () => void) => {
