@@ -1237,10 +1237,6 @@ button.home-work-tile,
   .home-work-tile-meta {
     padding: 1rem 1rem 0.9rem;
   }
-  .page-word--compact {
-    font-size: clamp(2.35rem, 11vw, 3.5rem);
-    line-height: 1.02;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1336,6 +1332,13 @@ button.home-work-tile,
   letter-spacing: -0.045em;
   font-weight: var(--font-weight-semibold);
   filter: none;
+}
+
+@media (max-width: 767px) {
+  .page-word--compact {
+    font-size: clamp(2.35rem, 11vw, 3.5rem);
+    line-height: 1.02;
+  }
 }
 
 .avail-dot {
@@ -1950,6 +1953,13 @@ button.home-work-tile,
   line-height: inherit;
   letter-spacing: inherit;
   font-weight: inherit;
+}
+
+@media (max-width: 767px) {
+  .work-h1 {
+    font-size: clamp(2.35rem, 11vw, 3.5rem);
+    line-height: 1.02;
+  }
 }
 
 .work-lead {

@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- (none)
+### Changed
+- (none)
+### Fixed
+- **T-034** Work `h1`: clamp compact `max-width: 767px` dipasang di `.work-h1` (setelah aturan desktop) supaya kata `.page-word--compact` yang `font-size: inherit` tidak tetap di skala desktop. Aturan compact generik dipindah ke bawah definisi `.page-word--compact` agar tidak kalah urutan berkas.
+
+## [2026-09-02]
+### Added
 - **T-034.3** Work index: `Section`/`VStack`/`Grid`/`GridSpan`/`Heading`/`Text`/`Link`/`Center` Astryx → `<section>` + flex/grid Tailwind + class scoped. `work-tile` judul `h2`/`h3` + outcome `<p>`; klik tile tetap buka sheet (overlay lama sampai T-035). `useContainerReveal` tetap sampai T-036.
 - **T-034.4** Skala tipe halaman: kicker = `.home-kicker`; hero = `.home-hero-line` (168px desktop, clamp T-022 di 320); About `h1` = `.about-h1`; Work `h1` = `.work-h1` (kata compact inherit); lead = `.work-lead` warna secondary; tile outcome = `.home-work-tile-outcome` `font-size-sm`. Bukan skala default shadcn.
 - **T-034.5** Verifikasi `/id` `/en` `/id/about` `/en/about` `/id/projects` `/en/projects`: satu `h1` per halaman; grid Home/Work; rest/active About (panel buka); tile Work membuka sheet; light+dark; 320 + desktop. Hero tidak mengecil (168px).
