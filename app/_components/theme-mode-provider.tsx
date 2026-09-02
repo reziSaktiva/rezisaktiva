@@ -58,11 +58,10 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
 
   /**
    * Sinkronkan `style.colorScheme` + class `dark` di `<html>` tiap kali
-   * `mode` berubah (toggle tanpa reload). Nilai awal dari `initialMode`
-   * sudah di-render server di `app/layout.tsx` (byte pertama HTML). Layout
-   * effect `Theme` Astryx (`useRootThemeSync`) cuma menyentuh `data-theme`,
-   * bukan `style.colorScheme` atau class Tailwind — keduanya di sini agar
-   * `mode` Astryx dan `html.dark` selalu sama (T-032.5).
+   * `mode` berubah (toggle tanpa reload). Jangan lewat `className` React di
+   * `<html>` — itu menimpa class Lenis / overlay lock. Nilai awal: cookie
+   * SSR untuk `colorScheme` + script `beforeInteractive` (`classList`).
+   * Layout effect `Theme` Astryx (`useRootThemeSync`) cuma `data-theme`.
    */
   useLayoutEffect(() => {
     const root = document.documentElement;

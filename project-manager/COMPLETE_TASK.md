@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- (tidak ada)
+### Changed
+- `tasks/v14-shadcn-tailwind.md` Dark/light poin 1 & 5 + teks T-032.5: `html.dark` lewat `classList`, bukan `className` React di `<html>`.
+### Fixed
+- Review PR #58: `className` di `<html>` menimpa class Lenis / lock overlay saat RSC navigasi setelah cookie tema berubah. `app/layout.tsx` tidak lagi set `className`; script `beforeInteractive` `classList.toggle("dark")` dari cookie (localStorage hanya jika cookie kosong). `ThemeModeProvider` tetap `classList` saat toggle.
+
+## [2026-09-02]
+### Added
 - **T-032.6** paket `motion` `^13.1.1`. Smoke re-export `motion` / `AnimatePresence` / `useReducedMotion` dari `motion/react` di `lib/motion.ts` (bukan `framer-motion`). `home-motion.tsx` tidak di-rewrite (T-036).
 - **T-032.7** primitf shadcn via `pnpm dlx shadcn@latest add` (radix-nova): `button`, `toggle`, `toggle-group`, `card`, `badge`, `collapsible`, `aspect-ratio`, `dialog`, `sheet`, `drawer`, `input`, `textarea`, `field`. Transitif CLI: `label`, `separator`, dep `vaul`. `FieldGroup` ikut di `components/ui/field.tsx` — item registry `field-group` adalah example, tidak di-add. Tidak ada Sidebar/Chart/Sonner. `globals.css` tidak diubah CLI.
 ### Changed

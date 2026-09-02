@@ -102,11 +102,11 @@ Kontrak produk = ADR-021. Hanya **mekanisme** yang berganti.
 
 **Lakukan**
 
-1. Baca cookie `rz-theme` di `app/layout.tsx` (sudah ada). Set di `<html>`: `className={initialMode === "dark" ? "dark" : undefined}`, `style={{ colorScheme: initialMode }}`, `<meta name="color-scheme" content={initialMode} />`.
+1. Baca cookie `rz-theme` di `app/layout.tsx` (sudah ada). Set di `<html>`: `style={{ colorScheme: initialMode }}`, `<meta name="color-scheme" content={initialMode} />`. Class `dark` **jangan** lewat `className` React di `<html>` (menimpa class Lenis / `ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`). Pakai `classList.toggle("dark")` di script `beforeInteractive` + `ThemeModeProvider`.
 2. Tailwind v4: `@custom-variant dark (&:is(.dark *));` supaya `dark:` mengikuti **class**, bukan OS. Jangan andalkan `prefers-color-scheme` sebagai sumber token.
 3. Token: `:root { --background: … }` light; `.dark { --background: … }` dark. Map nilai dari `lib/astryx-theme.ts` (pasangan light/dark di bawah). `@theme inline { --color-background: var(--background); … }` agar `bg-background` / `text-foreground` hidup.
 4. Pertahankan `lib/theme-mode.ts` + `useSyncExternalStore` + tulis cookie+localStorage. `ThemeModeProvider` **berhenti** merender `<Theme>` Astryx; cukup context + sync `document.documentElement.classList` / `colorScheme` saat toggle.
-5. Script `beforeInteractive` yang ada: selain `data-theme` lama, set **`class="dark"`** agar Tailwind/shadcn ikut sebelum hydrate. Self-healing cookie tetap. Jangan baca localStorage jika cookie sudah ada (anti-flash 2026-08-16).
+5. Script `beforeInteractive`: `classList.toggle("dark")` + `data-theme` + `color-scheme` dari **cookie** (bukan no-op kalau cookie ada). Self-healing localStorage hanya jika cookie belum ada. Jangan `setAttribute("class")`. Jangan baca localStorage jika cookie sudah ada (anti-flash 2026-08-16).
 6. Chip nav: tetap `useChipColorVars()` (hex mode React). Jangan `light-dark()`.
 7. Contact `.ct-panel`: tetap dark-ink **kedua tema**.
 8. Scrollbar T-025.9: track/thumb ikut token baru, light dan dark.
@@ -190,7 +190,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 - [x] **T-032.2** — MCP: `pnpm dlx shadcn@latest mcp init --client cursor` (merge, jangan hapus `xds` dulu). Motion AI Kit: `npx motion-ai` project+Cursor. Enable sampai hijau. Jangan MCP Tailwind community. Catat isi akhir `.cursor/mcp.json` di COMPLETE_TASK.
 - [x] **T-032.3** — Tailwind CSS **v4** + PostCSS sesuai Next 16 / shadcn CLI. `pnpm dlx shadcn@latest init` (radix, RSC, lucide, aliases `@/`, CSS `app/globals.css`). Jangan biarkan CLI menimpa font Fontshare atau palet tanpa map token. `lib/utils.ts` (`cn`) boleh baru.
 - [x] **T-032.4** — Map token tabel di atas ke `:root` / `.dark` + `@theme inline`. `@custom-variant dark` = class `.dark`. Chip / `--elev-3d` / scrollbar T-025.9 tetap. Jangan override `--color-*` Astryx di `:root` sebagai jalur baru — jalur baru = variabel shadcn + variabel `--chip-*` yang sudah ada.
-- [x] **T-032.5** — Wiring dark/light: `class="dark"` di `<html>` dari cookie; meta + `colorScheme`; script beforeInteractive set class `dark`; `ThemeModeProvider` sync class saat toggle. Astryx `<Theme>` boleh tetap membungkus **sementara** asal `mode` dan class `dark` **selalu sama**. Uji: default light; toggle persist; reload dark tanpa flash; OS dark + site light tidak auto-gelap.
+- [x] **T-032.5** — Wiring dark/light: meta + `colorScheme` SSR; `html.dark` via `classList.toggle` (script `beforeInteractive` dari cookie + `ThemeModeProvider` saat toggle) — **bukan** `className` React di `<html>`. Astryx `<Theme>` boleh tetap membungkus **sementara** asal `mode` dan class `dark` **selalu sama**. Uji: default light; toggle persist; reload dark tanpa flash; OS dark + site light tidak auto-gelap; class Lenis/overlay lock tidak tertimpa.
 - [x] **T-032.6** — `pnpm add motion`. Impor hanya dari `motion/react`. Belum wajib rewrite `home-motion.tsx` (itu T-036) kecuali dibutuhkan smoke import.
 - [x] **T-032.7** — `pnpm dlx shadcn@latest add` **hanya**: `button`, `toggle`, `toggle-group`, `card`, `badge`, `collapsible`, `aspect-ratio`, `dialog`, `sheet`, `drawer`, `input`, `textarea`, plus `field` / `field-group` jika registry CLI menyediakannya. Baca docs CLI per komponen. Jangan add Sidebar/Chart/Sonner.
 - [x] **T-032.8** — `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau dengan Astryx masih ada. Tidak ada regresi flash tema.
