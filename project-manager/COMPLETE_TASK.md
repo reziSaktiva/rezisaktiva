@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-032.6** paket `motion` `^13.1.1`. Smoke re-export `motion` / `AnimatePresence` / `useReducedMotion` dari `motion/react` di `lib/motion.ts` (bukan `framer-motion`). `home-motion.tsx` tidak di-rewrite (T-036).
+- **T-032.7** primitf shadcn via `pnpm dlx shadcn@latest add` (radix-nova): `button`, `toggle`, `toggle-group`, `card`, `badge`, `collapsible`, `aspect-ratio`, `dialog`, `sheet`, `drawer`, `input`, `textarea`, `field`. Transitif CLI: `label`, `separator`, dep `vaul`. `FieldGroup` ikut di `components/ui/field.tsx` — item registry `field-group` adalah example, tidak di-add. Tidak ada Sidebar/Chart/Sonner. `globals.css` tidak diubah CLI.
+### Changed
+- **T-032** parent ✅ Done. Dual-boot Astryx+shadcn tetap sampai T-037. Halaman produksi masih Astryx (T-033+).
+### Fixed
+- **T-032.8** `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau; Astryx masih di `package.json`. SSR tema: default/`rz-theme=light` → `color-scheme:light` tanpa class `dark`; `rz-theme=dark` → `class="dark"` + `color-scheme:dark`; script `theme-init` + `classList.toggle("dark")` tetap di HTML produksi.
+
+## [2026-09-02]
+### Added
 - **T-032.5** wiring `html.dark`: `className="dark"` dari cookie `rz-theme` di `app/layout.tsx` (bersama `colorScheme` + meta `color-scheme` yang sudah ada); script `beforeInteractive` menambah class `dark` hanya di jalur migrasi 1x (cookie belum ada); `ThemeModeProvider` `classList.toggle("dark")` saat toggle. Astryx `<Theme mode>` tetap membungkus.
 ### Changed
 - Kanvas `html.dark` / `html.dark body` di `globals.css` selaras navy `#0a0f1a`. Cookie tetap menang vs OS `prefers-color-scheme`.
