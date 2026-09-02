@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-02] — PR #58 hanya T-032
+
+**Phase:** Validation
+**Summary:** Boss Rezi menilai PR #58 terlalu lebar jika dipakai untuk seluruh migrasi T-032…T-037, dan minta scopenya dipersempit ke T-032.
+**Key Decision/Insight:** PR bertahap per parent. Dual-boot Astryx+shadcn boleh masuk `main` setelah T-032; cabut Astryx tetap DoD T-037. T-033+ PR baru.
+**Impact:** PR #58 title/body; `tasks/v14-shadcn-tailwind.md`; `PROJECT_STATE.md` Active Mode; `COMPLETE_TASK.md`.
+
 ## [2026-09-01] — Migrasi shadcn jadi prioritas
 
 **Phase:** Validation
@@ -25,7 +32,7 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 **Phase:** Validation
 **Summary:** Boss Rezi meminta backlog migrasi dari Astryx ke shadcn/ui dan Tailwind. Inventaris komponen produksi, Motion (motion.dev), paritas bentuk visual, MCP, dan dark/light (ADR-021) dikunci di ADR-028 + T-032…T-037.
-**Key Decision/Insight:** Bukan redesain; end state tidak hybrid; dual-boot hanya di branch kerja; T-031 dulu karena `app/layout.tsx`; `next-themes` bukan default; MCP Tailwind community tidak dipasang.
+**Key Decision/Insight:** Bukan redesain; end state tidak hybrid; dual-boot diizinkan di `main` setelah T-032 (PR #58) sampai T-037; T-031 mengantri setelah T-037; `next-themes` bukan default; MCP Tailwind community tidak dipasang.
 **Impact:** `decisions/ADR-028-*.md`, `tasks/v14-shadcn-tailwind.md`, `TASKS.md`, `PROJECT_STATE.md`, ADR-018 superseded, ADR-026 update. Docs engineering/rule agent menyusul di T-037.
 
 ## [2026-09-01] — Status pekerjaan jadi seksi Home

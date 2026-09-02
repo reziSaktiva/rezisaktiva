@@ -18,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-09-01 |
+| Last Updated | 2026-09-02 |
 
 ---
 
@@ -52,6 +52,7 @@ Diizinkan:
 
 * Bug / regresi pada permukaan R1 yang sudah live
 * **T-032…T-037** migrasi Astryx → shadcn + Tailwind v4 (**ADR-028**) — **prioritas**; per parent/subtask, bukan rewrite seluruh `app/` dalam satu subtask
+* Dual-boot Astryx+shadcn di `main` **setelah merge T-032** (PR #58), sampai T-037 mencabut Astryx
 * Polish R1 yang tidak menambah halaman (a11y, paritas); **T-031** metadata hanya **setelah T-037**; T-023 saat CV Inggris siap
 * Diskusi R2 (halaman case `/work/[slug]`) — implementasi butuh ADR
 * Update TASKS / PROJECT_STATE / COMPLETE_TASK
@@ -61,10 +62,11 @@ Tidak diizinkan (kecuali diminta eksplisit):
 * Scope R2/R3 (`/work/[slug]`, magnet baru, CMS) tanpa ADR
 * Redesain palet/copy/IA sambil migrasi (ADR-028: bentuk visual tetap)
 * Mengubah baseline Product Discovery tanpa ADR baru
-* Hybrid Astryx + shadcn di `main` / DoD (dual-boot hanya di branch kerja sampai T-037)
+* Menyatakan rilis v14 selesai selagi Astryx masih ada (DoD = T-037)
 * Memasang `xstyle` / compiler StyleX (gap ditutup dengan cabut Astryx)
 * Mengutamakan **T-031** di atas **T-032…T-037** (urutan dikunci 2026-09-01: migrasi dulu)
 * Mengerjakan T-031 paralel di `app/layout.tsx` selama T-032.5 / wiring tema masih jalan
+* Menambah T-033…T-037 ke PR #58 (PR itu T-032 saja)
 
 ---
 

@@ -14,7 +14,7 @@ Accepted
 
 ### Decision
 
-1. **Ganti stack UI.** Sistem komponen + token aktif = **shadcn/ui** (source di repo, CLI) + **Tailwind CSS v4**. Ini **menggantikan** ADR-018. Paket Astryx (`@astryxdesign/core`, `@astryxdesign/theme-neutral`, `@astryxdesign/cli`, `@stylexjs/stylex`) **di-uninstall** di akhir migrasi. **Tidak hybrid** di keadaan selesai (satu sistem styling — alasan yang sama dengan ADR-018/ADR-026). Dual-boot Astryx + shadcn hanya diizinkan di **branch kerja**, sampai cabut Astryx.
+1. **Ganti stack UI.** Sistem komponen + token aktif = **shadcn/ui** (source di repo, CLI) + **Tailwind CSS v4**. Ini **menggantikan** ADR-018. Paket Astryx (`@astryxdesign/core`, `@astryxdesign/theme-neutral`, `@astryxdesign/cli`, `@stylexjs/stylex`) **di-uninstall** di akhir migrasi. **Tidak hybrid** di keadaan selesai (satu sistem styling — alasan yang sama dengan ADR-018/ADR-026). Dual-boot Astryx + shadcn diizinkan di **`main` setelah T-032** (PR bertahap), sampai cabut Astryx di T-037.
 2. **Bukan redesain.** Bentuk visual produksi saat ini tetap kontrak (ADR-024): chrome pill kuning + elevasi 3D, palet `rezisaktiva`, Contact kartu dark-ink tema-independen, Quick Info dari kanan, project sheet dari bawah, ritme tipe/gerak Hess–Mazur (ADR-025). Yang berubah = primitf komponen dan cara token di-resolve, bukan layout, copy, atau palet. Acuan = kode `app/` **sebelum** migrasi + arahan yang sudah dikunci — bukan `design-mockups/`, bukan tampilan default shadcn (zinc/slate).
 3. **Evaluasi ADR-026 selesai.** Exit R1 (`T-018`) sudah terjadi. Keterbatasan Astryx yang memicu evaluasi (Drawer kiri/kanan, BottomSheet tidak full-width, compiler StyleX tidak wired ke Turbopack) ditutup dengan primitf shadcn (`Sheet`, `Drawer`, `Dialog`) + CSS/Tailwind, bukan menunggu Astryx beta.
 4. **Motion: ya, pakai [Motion](https://motion.dev/)** (`pnpm add motion`, impor `motion/react`). Ganti gerak identitas yang sekarang hand-rolled (`Reveal`, `WordReveal`, `HeroWords`, `Magnetic`, `useContainerReveal`) dan enter/exit overlay. **Lenis tetap** (inersia scroll, ADR-025 — bukan domain Motion). **Transisi halaman** tetap ritme CSS yang dikunci ADR-025 (bukan View Transitions API, bukan spectacle Framer). Hover warna/elevasi chrome tetap CSS. `prefers-reduced-motion` tetap wajib.
@@ -59,6 +59,10 @@ Accepted
 - ADR-018 **superseded** oleh ADR ini. ADR-021, ADR-017, ADR-025, ADR-019, ADR-022, ADR-024, ADR-027 **tetap berlaku** (perilaku produk/visual); hanya mekanisme komponen yang berganti.
 - Saat T-037: update `product-discovery/06-engineering/` (tokens, dependency, code-discipline, README), `ARCHITECTURE_OVERVIEW.md`, `AGENTS.md`, `.cursor/rules/`.
 - Compiler StyleX (catatan T-013.4 / T-027) **tidak dikerjakan** — gap ditutup dengan cabut Astryx.
+
+### Update — 2026-09-02
+
+Boss Rezi mempersempit **PR #58 ke T-032 saja**. T-033…T-037 = PR terpisah. Dual-boot boleh di `main` setelah merge T-032; poin 1 “hanya branch kerja” diganti. End state tetap tidak hybrid (T-037).
 
 ### Update — 2026-09-01
 

@@ -14,6 +14,14 @@ Format entri:
 - ...
 ```
 
+## [2026-09-02]
+### Added
+- (tidak ada)
+### Changed
+- Scope **PR #58** dipersempit ke **T-032** saja (Boss Rezi). T-033…T-037 = PR terpisah. Dual-boot di `main` setelah merge T-032 disengaja sampai T-037.
+### Fixed
+- (tidak ada)
+
 ## [2026-09-01]
 ### Added
 - **T-032.2** MCP project: `pnpm dlx shadcn@latest mcp init --client cursor` (merge; `xds` tetap). Motion AI Kit scope **project** + Cursor (hosted `motion` + `motion-plus`; bukan stdio + TOKEN). CLI `mcp init` juga memasang `shadcn` di `devDependencies`. Kit menulis `.cursor/skills/motion/`, `.cursor/rules/motion.mdc`, `.cursor/agents/motion-reviewer.md`. Tidak ada MCP Tailwind community.

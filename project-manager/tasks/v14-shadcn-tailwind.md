@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032.1** ✅. **T-032.2** ✅. Lanjut **T-032.3**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). Kerjakan di **satu branch** (`feat/shadcn-tailwind`). Dual-boot Astryx+shadcn hanya di branch itu. **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032.1** ✅. **T-032.2** ✅. Lanjut **T-032.3**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -181,7 +181,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 * **Domain:** Engineering
 * **Depends:** tidak ada (T-031 mengantri setelah T-037)
 * **Baca dulu:** blok di atas + `package.json`, `.cursor/mcp.json`, `app/layout.tsx`, `app/globals.css`
-* **Keputusan:** dual-boot diizinkan di branch ini saja. Halaman masih boleh Astryx sampai T-033+. Jangan uninstall Astryx di sini.
+* **Keputusan:** dual-boot diizinkan (termasuk di `main` setelah merge PR #58). Halaman masih boleh Astryx sampai T-033+. Jangan uninstall Astryx di sini. PR #58 berhenti di T-032.8.
 * **Output:** MCP hidup; `components.json`; token `rezisaktiva` di CSS shadcn; `motion` terpasang; `html.dark` sinkron cookie; build hijau; **visual halaman belum wajib identik** kecuali regresi tema flash
 
 ### Subtasks
@@ -304,7 +304,7 @@ T-032 (fondasi)          ← T-032.1 ✅; T-032.2 ✅; lanjut T-032.3
 T-031 (metadata) mengantri setelah T-037
 ```
 
-Jangan merge ke `main` di tengah dual-boot kecuali Boss Rezi minta. Satu PR di akhir T-037, atau PR bertahap **hanya** jika tiap PR masih visual-parity dan tidak meninggalkan dua sistem di `main`.
+**PR bertahap (2026-09-02):** [#58](https://github.com/reziSaktiva/rezisaktiva/pull/58) hanya **T-032** (fondasi: baseline, MCP, Tailwind v4, init shadcn, token, `html.dark`, Motion package, `shadcn add` primitf, typecheck/lint/build). Jangan taruh T-033…T-037 di PR yang sama. Chrome/halaman/overlay/cabut Astryx = PR berikutnya, satu parent per PR bila memungkinkan. Dual-boot di `main` setelah merge T-032 disengaja sampai T-037.
 
 ## Yang tidak masuk backlog v14
 
