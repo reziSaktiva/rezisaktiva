@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-033.2** desktop nav: `TopNav` / `TopNavHeading` / `TopNavItem` → `next/link` + `Button` ghost shadcn di dalam `SlidingPillGroup` (chip kuning + pill 3D). Brand `rezisaktiva` tetap link ke `/{locale}`.
+- **T-033.3** mobile nav: `MobileNavToggle` / `SideNavItem` → `Button` hamburger + `Sheet` `modal={false}` (judul `sr-only`). Item full-width; switcher compact di dalam panel; tanpa tombol close kedua di Sheet.
+### Changed
+- `SiteChrome` tidak lagi memakai `AppShellMobileContext`. Overlay default Sheet di-hide supaya Contact + toggle tema di header tetap bisa di-tap (ADR-020).
+### Fixed
+- Brand heading di grid desktop tidak meregang memenuhi kolom kiri (`justify-self: start`).
+
+## [2026-09-02]
+### Added
 - **T-033.1** `SiteChrome`: header sticky transparan + `<main id="astryx-app-shell-main">` menggantikan `AppShell`. Skip-to-content lokal. Footer tetap sibling di luar main.
 ### Changed
 - `app/[locale]/layout.tsx` tidak mengimpor `AppShell`. Konteks `AppShellMobileContext` tetap di `site-chrome.tsx` sampai T-033.2–T-033.3 (TopNav / hamburger masih Astryx).
