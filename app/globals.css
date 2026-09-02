@@ -1294,7 +1294,9 @@ button.home-work-tile,
     visibility: hidden;
   }
 
-  .ct-wrap.is-open .ct-panel {
+  .ct-wrap.is-open .ct-panel,
+  .ct-panel.is-open,
+  .ct-panel[data-open] {
     visibility: visible;
     transform: translate(-50%, -50%) !important;
     opacity: 1 !important;
@@ -1983,9 +1985,11 @@ button.home-work-tile,
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
+  backdrop-filter: none;
 }
 
-.ct-scrim.is-open {
+.ct-scrim.is-open,
+.ct-scrim[data-open] {
   opacity: 1;
   pointer-events: auto;
 }
@@ -1994,12 +1998,14 @@ button.home-work-tile,
   display: contents !important;
 }
 
+.ct-panel[data-slot="dialog-content"],
 .ct-panel {
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 92;
   width: min(880px, calc(100vw - 2rem));
+  max-width: none;
   max-height: calc(100vh - 3rem);
   overflow: auto;
   /* T-025.9: `scrollbar-color` mewaris dari html — kembalikan default
@@ -2021,7 +2027,9 @@ button.home-work-tile,
     visibility 0.4s linear;
 }
 
-.ct-wrap.is-open .ct-panel {
+.ct-wrap.is-open .ct-panel,
+.ct-panel.is-open,
+.ct-panel[data-open] {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   pointer-events: auto;
@@ -2047,6 +2055,7 @@ button.home-work-tile,
 }
 
 .ct-grid {
+  display: grid;
   width: 100%;
   padding-block-start: 0.5rem;
   grid-template-columns: 1fr !important;
@@ -2060,6 +2069,7 @@ button.home-work-tile,
   }
 }
 
+.ct-title[data-slot="dialog-title"],
 .ct-title {
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(1.6rem, 3.4vw, 2.5rem);
@@ -2098,6 +2108,8 @@ button.home-work-tile,
 .ct-input,
 .ct-textarea {
   width: 100%;
+  height: auto;
+  min-height: 0;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.9rem;
@@ -2106,6 +2118,7 @@ button.home-work-tile,
   font-family: "Satoshi", var(--font-family-body);
   font-size: 0.9rem;
   margin-block-end: 1.5rem;
+  box-shadow: none;
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease;
@@ -2135,6 +2148,7 @@ button.home-work-tile,
 
 .ct-submit {
   width: 100%;
+  height: auto;
   background: #fde047;
   color: #14181f;
   border: 0;
@@ -2188,6 +2202,9 @@ button.home-work-tile,
 }
 
 .ct-email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-block-end: 2rem;
 }
 
@@ -2221,6 +2238,9 @@ button.home-work-tile,
 }
 
 .ct-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-block-end: 2rem;
 }
 
@@ -2245,6 +2265,9 @@ button.home-work-tile,
 }
 
 .ct-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.78rem;
 }
 
