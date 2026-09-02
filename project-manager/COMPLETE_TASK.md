@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-032.5** wiring `html.dark`: `className="dark"` dari cookie `rz-theme` di `app/layout.tsx` (bersama `colorScheme` + meta `color-scheme` yang sudah ada); script `beforeInteractive` menambah class `dark` hanya di jalur migrasi 1x (cookie belum ada); `ThemeModeProvider` `classList.toggle("dark")` saat toggle. Astryx `<Theme mode>` tetap membungkus.
+### Changed
+- Kanvas `html.dark` / `html.dark body` di `globals.css` selaras navy `#0a0f1a`. Cookie tetap menang vs OS `prefers-color-scheme`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
 - **T-032.4** map token shadcn ke palet rezisaktiva di `app/globals.css`: `:root` / `.dark` memakai hex dari `lib/astryx-theme.ts` (kanvas `#edeae1`/`#0a0f1a`, muted/popover `#e4dfd1`/`#121a2b`, fg `#14181f`/`#edeae1`, secondary `#6e6a5f`/`#9b968a`, border `#dad5c7`/`#222b3d`, primary/accent teal `#4c7a73`/`#7fb3aa`, accent muted `#d8e2de`/`#1e302e`). `@theme inline` tetap `var(--background)` dst. `@custom-variant dark` = class `.dark` (bukan OS).
 ### Changed
 - Chip `--chip-*`, `--elev-3d`, scrollbar T-025.9 tidak diubah; `.dark` ikut selector elev/scrollbar dark. Kanvas `html`/`body` tetap `data-theme` + `light-dark()` sampai T-032.5. Tidak ada override `--color-*` Astryx di `:root`.

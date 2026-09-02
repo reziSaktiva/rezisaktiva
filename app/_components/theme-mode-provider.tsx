@@ -57,16 +57,17 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
   const mode = useSyncExternalStore(subscribeThemeMode, getSnapshot, getServerSnapshot);
 
   /**
-   * Sinkronkan `style.colorScheme` di `<html>` tiap kali `mode` berubah
-   * (toggle tanpa reload). Nilai awal dari `initialMode` sudah di-render
-   * server langsung sebagai inline style di `app/layout.tsx` (byte pertama
-   * HTML, lapis pertahanan terhadap heuristik auto-dark browser) — effect
-   * ini menjaganya tetap sinkron setelah toggle di client, karena layout
-   * effect `Theme` Astryx sendiri (`useRootThemeSync`) cuma menyentuh
-   * atribut `data-theme`, bukan `style.colorScheme`.
+   * Sinkronkan `style.colorScheme` + class `dark` di `<html>` tiap kali
+   * `mode` berubah (toggle tanpa reload). Nilai awal dari `initialMode`
+   * sudah di-render server di `app/layout.tsx` (byte pertama HTML). Layout
+   * effect `Theme` Astryx (`useRootThemeSync`) cuma menyentuh `data-theme`,
+   * bukan `style.colorScheme` atau class Tailwind — keduanya di sini agar
+   * `mode` Astryx dan `html.dark` selalu sama (T-032.5).
    */
   useLayoutEffect(() => {
-    document.documentElement.style.colorScheme = mode;
+    const root = document.documentElement;
+    root.style.colorScheme = mode;
+    root.classList.toggle("dark", mode === "dark");
   }, [mode]);
 
   const value = useMemo<ThemeModeContextValue>(

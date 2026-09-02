@@ -24,13 +24,15 @@ export const metadata: Metadata = {
  * cookie): kalau cookie belum PERNAH ada sama sekali (user lama dari
  * sebelum fix cookie ini ship, localStorage sudah punya preferensi tapi
  * belum pernah toggle sejak itu) tapi localStorage sudah punya preferensi,
- * script blocking ini set `data-theme`/`color-scheme` di `<html>` SEBELUM
- * React hydrate — pola resmi yang direkomendasikan Astryx sendiri (lihat
- * komentar `Theme` component di `@astryxdesign/core`: "For RSC/SSR, set
- * data-theme on <html> ... to avoid a flash of wrong theme before
- * hydration"). Tidak menyebabkan hydration mismatch karena `<html>` di JSX
- * di bawah tidak mendeklarasikan `data-theme` sama sekali — React tidak
- * mengelola atribut yang bukan bagian dari render output-nya sendiri.
+ * script blocking ini set `data-theme`/`color-scheme`/`class="dark"` di
+ * `<html>` SEBELUM React hydrate — pola resmi yang direkomendasikan Astryx
+ * sendiri (lihat komentar `Theme` component di `@astryxdesign/core`: "For
+ * RSC/SSR, set data-theme on <html> ... to avoid a flash of wrong theme
+ * before hydration"). `data-theme` sengaja tidak di-deklarasikan di JSX —
+ * React tidak mengelola atribut yang bukan bagian dari render output-nya.
+ * Class `dark` (T-032.5) **ada** di JSX dari cookie, supaya Tailwind/shadcn
+ * ikut SSR; script ini hanya menambah class itu pada jalur migrasi 1x
+ * (cookie belum ada, localStorage sudah).
  *
  * SENGAJA cek cookie dulu dan no-op kalau sudah ada (code review
  * 2026-08-16, lihat COMPLETE_TASK.md): kalau script ini tetap jalan
@@ -56,8 +58,10 @@ const themeInitScript = `
     }
     var stored = window.localStorage.getItem(key);
     if (stored === "dark" || stored === "light") {
-      document.documentElement.setAttribute("data-theme", stored);
-      document.documentElement.style.colorScheme = stored;
+      var root = document.documentElement;
+      root.setAttribute("data-theme", stored);
+      root.style.colorScheme = stored;
+      root.classList.toggle("dark", stored === "dark");
       var secure = location.protocol === "https:" ? "; secure" : "";
       document.cookie = key + "=" + stored + "; path=/; max-age=31536000; samesite=lax" + secure;
     }
@@ -93,6 +97,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang={htmlLang}
       suppressHydrationWarning
+      className={initialMode === "dark" ? "dark" : undefined}
       style={{ colorScheme: initialMode }}
     >
       <head>

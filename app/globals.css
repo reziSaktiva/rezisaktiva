@@ -6,7 +6,7 @@
 @import "../theme/astryx-theme.css";
 @import "lenis/dist/lenis.css";
 
-/* Class `.dark` (bukan OS). Nilai token = T-032.4; wiring `html.dark` = T-032.5. */
+/* Class `.dark` (bukan OS). Token = T-032.4; `html.dark` dari cookie = T-032.5. */
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -91,8 +91,8 @@
   --rz-scrollbar-thumb-hover: var(--chip-bg);
   /*
    * T-032.4 — token shadcn = palet rezisaktiva (`lib/astryx-theme.ts`).
-   * Bukan override `--color-*` Astryx; kanvas html/body tetap di bawah
-   * via `data-theme` sampai T-032.5 memasang `html.dark`.
+   * Bukan override `--color-*` Astryx. Kanvas html/body: `data-theme` +
+   * `html.dark` (T-032.5) + `light-dark()` dari `color-scheme`.
    */
   --background: #edeae1;
   --foreground: #14181f;
@@ -173,7 +173,9 @@ html[data-theme="light"] body {
 }
 
 html[data-theme="dark"],
-html[data-theme="dark"] body {
+html[data-theme="dark"] body,
+html.dark,
+html.dark body {
   background-color: #0a0f1a;
   color: #edeae1;
 }

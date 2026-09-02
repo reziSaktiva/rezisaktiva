@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032.1–T-032.4** ✅. Lanjut **T-032.5**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032.1–T-032.5** ✅. Lanjut **T-032.6**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -190,7 +190,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 - [x] **T-032.2** — MCP: `pnpm dlx shadcn@latest mcp init --client cursor` (merge, jangan hapus `xds` dulu). Motion AI Kit: `npx motion-ai` project+Cursor. Enable sampai hijau. Jangan MCP Tailwind community. Catat isi akhir `.cursor/mcp.json` di COMPLETE_TASK.
 - [x] **T-032.3** — Tailwind CSS **v4** + PostCSS sesuai Next 16 / shadcn CLI. `pnpm dlx shadcn@latest init` (radix, RSC, lucide, aliases `@/`, CSS `app/globals.css`). Jangan biarkan CLI menimpa font Fontshare atau palet tanpa map token. `lib/utils.ts` (`cn`) boleh baru.
 - [x] **T-032.4** — Map token tabel di atas ke `:root` / `.dark` + `@theme inline`. `@custom-variant dark` = class `.dark`. Chip / `--elev-3d` / scrollbar T-025.9 tetap. Jangan override `--color-*` Astryx di `:root` sebagai jalur baru — jalur baru = variabel shadcn + variabel `--chip-*` yang sudah ada.
-- [ ] **T-032.5** — Wiring dark/light: `class="dark"` di `<html>` dari cookie; meta + `colorScheme`; script beforeInteractive set class `dark`; `ThemeModeProvider` sync class saat toggle. Astryx `<Theme>` boleh tetap membungkus **sementara** asal `mode` dan class `dark` **selalu sama**. Uji: default light; toggle persist; reload dark tanpa flash; OS dark + site light tidak auto-gelap.
+- [x] **T-032.5** — Wiring dark/light: `class="dark"` di `<html>` dari cookie; meta + `colorScheme`; script beforeInteractive set class `dark`; `ThemeModeProvider` sync class saat toggle. Astryx `<Theme>` boleh tetap membungkus **sementara** asal `mode` dan class `dark` **selalu sama**. Uji: default light; toggle persist; reload dark tanpa flash; OS dark + site light tidak auto-gelap.
 - [ ] **T-032.6** — `pnpm add motion`. Impor hanya dari `motion/react`. Belum wajib rewrite `home-motion.tsx` (itu T-036) kecuali dibutuhkan smoke import.
 - [ ] **T-032.7** — `pnpm dlx shadcn@latest add` **hanya**: `button`, `toggle`, `toggle-group`, `card`, `badge`, `collapsible`, `aspect-ratio`, `dialog`, `sheet`, `drawer`, `input`, `textarea`, plus `field` / `field-group` jika registry CLI menyediakannya. Baca docs CLI per komponen. Jangan add Sidebar/Chart/Sonner.
 - [ ] **T-032.8** — `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau dengan Astryx masih ada. Tidak ada regresi flash tema.
@@ -295,7 +295,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 ## Urutan & paralel
 
 ```text
-T-032 (fondasi)          ← T-032.1–T-032.4 ✅; lanjut T-032.5
+T-032 (fondasi)          ← T-032.1–T-032.5 ✅; lanjut T-032.6
     → T-033 (chrome)
         → T-034 (halaman) ──┐
                             ├──→ T-035 (overlay) → T-036 (motion) → T-037 (cabut + docs + QA)
