@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-032.4** map token shadcn ke palet rezisaktiva di `app/globals.css`: `:root` / `.dark` memakai hex dari `lib/astryx-theme.ts` (kanvas `#edeae1`/`#0a0f1a`, muted/popover `#e4dfd1`/`#121a2b`, fg `#14181f`/`#edeae1`, secondary `#6e6a5f`/`#9b968a`, border `#dad5c7`/`#222b3d`, primary/accent teal `#4c7a73`/`#7fb3aa`, accent muted `#d8e2de`/`#1e302e`). `@theme inline` tetap `var(--background)` dst. `@custom-variant dark` = class `.dark` (bukan OS).
+### Changed
+- Chip `--chip-*`, `--elev-3d`, scrollbar T-025.9 tidak diubah; `.dark` ikut selector elev/scrollbar dark. Kanvas `html`/`body` tetap `data-theme` + `light-dark()` sampai T-032.5. Tidak ada override `--color-*` Astryx di `:root`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
 - **T-032.3** fondasi Tailwind CSS v4 + shadcn init di app yang sudah ada: `tailwindcss` + `@tailwindcss/postcss` (dev), `postcss.config.mjs`, `pnpm dlx shadcn@latest init --base radix --preset nova --yes --no-monorepo --force`. Hasil: `components.json` (style `radix-nova`, base radix, RSC, lucide, aliases `@/components` + `@/lib/utils`, CSS `app/globals.css`); `lib/utils.ts` (`cn`); deps `clsx`, `tailwind-merge`, `class-variance-authority`, `lucide-react`, `radix-ui`, `tw-animate-css`. Import CSS: `tailwindcss` + `tw-animate-css` + `shadcn/tailwind.css` di `app/globals.css` (satu file; Astryx tetap).
 ### Changed
 - CLI nova sempat menulis Geist + `@layer base` `bg-background`/`font-sans`. **Dikembalikan:** Fontshare di `app/layout.tsx`; `--font-sans`/`--font-heading` = Satoshi / General Sans; kanvas `html`/`body` cream/navy tidak memakai token nova. Nilai oklch shadcn di `:root` / `.dark` + `@theme inline` dibiarkan sebagai scaffolding **T-032.4**.

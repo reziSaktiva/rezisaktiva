@@ -6,7 +6,7 @@
 @import "../theme/astryx-theme.css";
 @import "lenis/dist/lenis.css";
 
-/* Class `.dark` (bukan OS). Wiring `html.dark` = T-032.5; map nilai = T-032.4. */
+/* Class `.dark` (bukan OS). Nilai token = T-032.4; wiring `html.dark` = T-032.5. */
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -63,7 +63,8 @@
    * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
    * bibir tebal di bawah, lalu drop shadow.
    * Sengaja BUKAN `light-dark()` — pola itu pernah flash di chip
-   * (2026-08-16). Nilai dark di-set lewat `html[data-theme="dark"]`.
+   * (2026-08-16). Nilai dark di-set lewat `html[data-theme="dark"]`
+   * (Astryx) dan class `.dark` (jalur shadcn, wiring T-032.5).
    */
   --elev-3d:
     inset 0 1px 0 rgb(255 255 255 / 0.55),
@@ -89,46 +90,48 @@
   --rz-scrollbar-thumb: var(--chip-bg);
   --rz-scrollbar-thumb-hover: var(--chip-bg);
   /*
-   * Scaffolding shadcn CLI (preset nova). Belum dipasang ke kanvas —
-   * html/body tetap cream/navy di bawah. Map ke palet rezisaktiva = T-032.4.
+   * T-032.4 — token shadcn = palet rezisaktiva (`lib/astryx-theme.ts`).
+   * Bukan override `--color-*` Astryx; kanvas html/body tetap di bawah
+   * via `data-theme` sampai T-032.5 memasang `html.dark`.
    */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #edeae1;
+  --foreground: #14181f;
+  --card: #edeae1;
+  --card-foreground: #14181f;
+  --popover: #e4dfd1;
+  --popover-foreground: #14181f;
+  --primary: #4c7a73;
+  --primary-foreground: #edeae1;
+  --secondary: #d8e2de;
+  --secondary-foreground: #14181f;
+  --muted: #e4dfd1;
+  --muted-foreground: #6e6a5f;
+  --accent: #d8e2de;
+  --accent-foreground: #14181f;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --border: #dad5c7;
+  --input: #dad5c7;
+  --ring: #4c7a73;
+  --chart-1: #4c7a73;
+  --chart-2: #6e6a5f;
+  --chart-3: #d8e2de;
+  --chart-4: #dad5c7;
+  --chart-5: #14181f;
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #edeae1;
+  --sidebar-foreground: #14181f;
+  --sidebar-primary: #4c7a73;
+  --sidebar-primary-foreground: #edeae1;
+  --sidebar-accent: #d8e2de;
+  --sidebar-accent-foreground: #14181f;
+  --sidebar-border: #dad5c7;
+  --sidebar-ring: #4c7a73;
 }
 
 html[data-theme="dark"],
 html[style*="color-scheme: dark"],
-html[style*="color-scheme:dark"] {
+html[style*="color-scheme:dark"],
+.dark {
   --elev-3d:
     inset 0 1px 0 rgb(255 255 255 / 0.22),
     inset 0 -1.5px 2px rgb(0 0 0 / 0.42),
@@ -2557,35 +2560,35 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #0a0f1a;
+  --foreground: #edeae1;
+  --card: #0a0f1a;
+  --card-foreground: #edeae1;
+  --popover: #121a2b;
+  --popover-foreground: #edeae1;
+  --primary: #7fb3aa;
+  --primary-foreground: #0a0f1a;
+  --secondary: #1e302e;
+  --secondary-foreground: #edeae1;
+  --muted: #121a2b;
+  --muted-foreground: #9b968a;
+  --accent: #1e302e;
+  --accent-foreground: #edeae1;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: #222b3d;
+  --input: #222b3d;
+  --ring: #7fb3aa;
+  --chart-1: #7fb3aa;
+  --chart-2: #9b968a;
+  --chart-3: #1e302e;
+  --chart-4: #222b3d;
+  --chart-5: #edeae1;
+  --sidebar: #0a0f1a;
+  --sidebar-foreground: #edeae1;
+  --sidebar-primary: #7fb3aa;
+  --sidebar-primary-foreground: #0a0f1a;
+  --sidebar-accent: #1e302e;
+  --sidebar-accent-foreground: #edeae1;
+  --sidebar-border: #222b3d;
+  --sidebar-ring: #7fb3aa;
 }
