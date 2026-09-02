@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  useCallback,
-  useId,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import { useCallback, useId, useState, useSyncExternalStore } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { Button as AstryxButton } from "@astryxdesign/core/Button";
-import { HStack } from "@astryxdesign/core/HStack";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -41,8 +34,8 @@ import { ThemeToggle } from "./theme-toggle";
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
- * T-033.2–T-033.5: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
- * tema → Toggle. Footer CTA masih Astryx sampai T-033.6.
+ * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
+ * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
@@ -101,7 +94,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
           })}
         </SlidingPillGroup>
       ) : null}
-      <HStack gap={3} align="center" className="site-header-tools">
+      <div className="site-header-tools">
         {!isMobile && <LocaleSwitcher locale={locale} />}
         {isMobile ? (
           <>
@@ -188,15 +181,16 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
           <ThemeToggle locale={locale} />
         </Magnetic>
         <Magnetic>
-          <AstryxButton
-            label={CONTACT_LABEL[locale]}
-            variant="primary"
+          <Button
+            type="button"
             size="sm"
             onClick={open}
             className="site-contact-button"
-          />
+          >
+            {CONTACT_LABEL[locale]}
+          </Button>
         </Magnetic>
-      </HStack>
+      </div>
     </nav>
   );
 }

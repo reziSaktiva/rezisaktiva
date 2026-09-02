@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-033.6** footer + pita Contact: `Section`/`VStack`/`Heading`/`Text`/`Link` Astryx → `<footer>` semantik + class scoped. CTA `site-footer-cta` = `Button` shadcn `size="lg"` + `ArrowRightIcon` `data-icon="inline-end"` + Magnetic lama (sampai T-036). Satelit LinkedIn/GitHub tetap (`target=_blank` `rel=noopener noreferrer`). Tombol Contact chrome di header ikut `Button` shadcn (sisa Astryx Button di chrome).
+- **T-033.7** verifikasi chrome: 320 / 375 / 1280, light+dark; hamburger <1024 + sheet item Home/How I Work/Projects + locale di dalam panel; desktop pill nav + locale di header; toggle tema persist; cookie `rz-theme` → `html.dark` / `colorScheme`; hero `100svh` overlay header (`margin-top: -80px`); footer CTA + header Contact membuka modal Contact; locale EN→ID tetap di `/about`; cookie `NEXT_LOCALE`. `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau.
+### Changed
+- **T-033** parent ✅ Done (T-033.1–T-033.7). Chrome tanpa impor `@astryxdesign` di header/footer/locale/theme (Magnetic/`Center` di `home-motion` tetap sampai T-036). Fokus berikutnya **T-034**.
+- `.site-contact-button` / `.home-contact-cta`: elevasi `--elev-3d` dipasang di class scoped (bukan `.astryx-button`). `.site-header-tools` + `.site-footer-*` pakai flex + `gap` token.
+### Fixed
+- (none)
+## [2026-09-02]
+### Added
 - **T-033.4** locale switcher: `SegmentedControl` → `ToggleGroup` + `ToggleGroupItem` (type single). Cookie `NEXT_LOCALE` + redirect `/` tetap (ADR-014). Pill kuning + separator `/` tetap; `useChipColorVars` tetap.
 - **T-033.5** theme toggle: `ToggleButton` → `Toggle` shadcn. Ikon Sun/Moon pindah ke `overlay-icons.tsx` (`theme-toggle-icons.tsx` dihapus). Persist `rz-theme` lewat `setThemeMode` (cookie + localStorage). Default & pressed tetap warna yang sama (hanya ikon yang berganti).
 ### Changed

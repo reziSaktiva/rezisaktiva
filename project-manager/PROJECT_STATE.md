@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
 * **Active Mode:** Validation — **prioritas T-033…T-037** migrasi shadcn (ADR-028); **T-032** ✅; T-031 antrian setelah T-037; T-023 bila aset CV Inggris siap; bukan R2 tanpa ADR
-* **Top Next Tasks:** **T-032** ✅; **T-033.1–T-033.5** ✅; lanjut **T-033.6**; **T-031** ⏳ antrian; **T-023** ⏸️ — lihat [`TASKS.md`](TASKS.md)
+* **Top Next Tasks:** **T-032** ✅; **T-033** ✅; lanjut **T-034**; **T-031** ⏳ antrian; **T-023** ⏸️ — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (✅ Done — **T-028** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — **T-021** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris) + `tasks/v11-structured-data.md` (✅ Done — **T-029**) + `tasks/v12-seo.md` (✅ Done — **T-030**) + `tasks/v13-metadata.md` (⏳ Open — **T-031**, antrian setelah T-037) + `tasks/v14-shadcn-tailwind.md` (⏳ Open — **T-032** ✅; **T-033…T-037** **prioritas**, ADR-028)
@@ -38,7 +38,7 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean terkirim di kode: Home, About, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, copy T-021. Acuan visual: kode produksi (ADR-024).
-* Fase aktif: **Validation** — buktikan clarity + soft path inbound (bukan volume outreach). **Prioritas: T-033…T-037** ⏳ migrasi shadcn (ADR-028). **T-032** ✅. **T-033.1–T-033.5** ✅. **T-031** ⏳ antrian setelah T-037. **T-023** ⏸️ CV Inggris. **T-030** ✅. **T-029** ✅. **T-028** ✅.
+* Fase aktif: **Validation** — buktikan clarity + soft path inbound (bukan volume outreach). **Prioritas: T-033…T-037** ⏳ migrasi shadcn (ADR-028). **T-032** ✅. **T-033** ✅. **T-031** ⏳ antrian setelah T-037. **T-023** ⏸️ CV Inggris. **T-030** ✅. **T-029** ✅. **T-028** ✅.
 * **Copy R1:** **T-021.1–T-021.7 ✅**. Foto hero/About masih placeholder Unsplash (bukan blocker exit).
 * **Catatan engineering:** gap StyleX/Turbopack (T-013.4) **ditutup di rencana ADR-028** — tidak di-wire; Astryx dicabut di **T-037**. Sampai T-037, kode produksi masih Astryx.
 

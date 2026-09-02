@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). Lanjut **T-033**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). Lanjut **T-034**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -199,7 +199,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-033 — Chrome: shell, nav, locale, tema, footer
 
-* **Status:** ⏳ Open — **prioritas #1** · T-033.1–T-033.5 ✅
+* **Status:** ✅ Done
 * **Domain:** UI/UX
 * **Depends:** T-032.8
 * **Baca dulu:** `site-header.tsx`, `site-footer.tsx`, `locale-switcher.tsx`, `theme-toggle.tsx`, `sliding-pill-group.tsx`, `app/[locale]/layout.tsx`, ADR-020, ADR-021
@@ -212,8 +212,8 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 - [x] **T-033.3** — Mobile: `MobileNavToggle` / `SideNavItem` → `Button` + `Sheet` (judul `sr-only` jika perlu). Item full-width; switcher compact; jangan dobel toggle.
 - [x] **T-033.4** — Locale: `SegmentedControl` → `ToggleGroup`. Cookie `NEXT_LOCALE` + perilaku redirect `/` tidak diubah (ADR-014).
 - [x] **T-033.5** — Theme: `ToggleButton` → `Toggle`. Ikon Sun/Moon dari `overlay-icons.tsx`. Persist `rz-theme`. `useChipColorVars` tetap.
-- [ ] **T-033.6** — Footer + pita Contact (`site-footer-cta`): `Button` shadcn + Magnetic (masih boleh implementasi lama sampai T-036). Satelit LinkedIn/GitHub tetap.
-- [ ] **T-033.7** — Verifikasi chrome: 320/375/≥1024, light/dark, hamburger, locale, toggle, tanpa flash, hero 100svh overlay header.
+- [x] **T-033.6** — Footer + pita Contact (`site-footer-cta`): `Button` shadcn + Magnetic (masih boleh implementasi lama sampai T-036). Satelit LinkedIn/GitHub tetap.
+- [x] **T-033.7** — Verifikasi chrome: 320/375/≥1024, light/dark, hamburger, locale, toggle, tanpa flash, hero 100svh overlay header.
 
 ---
 

@@ -4,7 +4,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ⏳ **prioritas** (ADR-028). **T-032** ✅. **T-033.1–T-033.5** ✅; lanjut **T-033.6**. Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
+1. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ⏳ **prioritas** (ADR-028). **T-032** ✅. **T-033** ✅ (T-033.1–T-033.7). Lanjut **T-034**. Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
 2. **T-031** — Metadata API: ikon, kartu share, identitas head ⏳ (T-031.1–T-031.5). **Antrian setelah T-037** (jangan paralel di `app/layout.tsx`). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 3. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 4. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
