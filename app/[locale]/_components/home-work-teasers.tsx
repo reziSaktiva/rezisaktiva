@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Grid, GridSpan } from "@astryxdesign/core/Grid";
 import type { WorkItem } from "@/content/work";
 import type { Locale } from "@/lib/locale";
+import { cn } from "@/lib/utils";
 import { Reveal } from "./home-motion";
 import { PROJECT_SHEET_ID, ProjectSheet } from "./project-sheet";
 import { WorkTile } from "./work-tile";
@@ -25,15 +25,14 @@ export function HomeWorkTeasers({
 
   return (
     <>
-      <Grid
-        columns={{ minWidth: 480, max: 2, repeat: "fit" }}
-        gap={3}
-        className="home-work-grid"
-      >
+      <div className="home-work-grid">
         {teasers.map((item, index) => {
           const featured = index === 0;
-          const tile = (
-            <Reveal key={item.id} className="home-work-reveal">
+          return (
+            <Reveal
+              key={item.id}
+              className={cn("home-work-reveal", featured && "col-span-full")}
+            >
               <WorkTile
                 item={item}
                 featured={featured}
@@ -43,15 +42,8 @@ export function HomeWorkTeasers({
               />
             </Reveal>
           );
-          return featured ? (
-            <GridSpan key={item.id} columns="full">
-              {tile}
-            </GridSpan>
-          ) : (
-            tile
-          );
         })}
-      </Grid>
+      </div>
       <ProjectSheet locale={locale} item={openItem} onClose={closeSheet} />
     </>
   );

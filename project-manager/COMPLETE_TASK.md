@@ -16,6 +16,25 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-034.3** Work index: `Section`/`VStack`/`Grid`/`GridSpan`/`Heading`/`Text`/`Link`/`Center` Astryx → `<section>` + flex/grid Tailwind + class scoped. `work-tile` judul `h2`/`h3` + outcome `<p>`; klik tile tetap buka sheet (overlay lama sampai T-035). `useContainerReveal` tetap sampai T-036.
+- **T-034.4** Skala tipe halaman: kicker = `.home-kicker`; hero = `.home-hero-line` (168px desktop, clamp T-022 di 320); About `h1` = `.about-h1`; Work `h1` = `.work-h1` (kata compact inherit); lead = `.work-lead` warna secondary; tile outcome = `.home-work-tile-outcome` `font-size-sm`. Bukan skala default shadcn.
+- **T-034.5** Verifikasi `/id` `/en` `/id/about` `/en/about` `/id/projects` `/en/projects`: satu `h1` per halaman; grid Home/Work; rest/active About (panel buka); tile Work membuka sheet; light+dark; 320 + desktop. Hero tidak mengecil (168px).
+### Changed
+- **T-034** parent ✅ Done (T-034.1–T-034.5). Fokus berikutnya **T-035**. Selector tile: `.home-work-tile-meta .astryx-heading` / `.astryx-text` tidak dipakai lagi.
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- **T-034.1** Home: `Section`/`VStack`/`Heading`/`Text`/`Link`/`Grid` Astryx → `<section>` + flex/grid Tailwind + class scoped. Now = tautan eksternal Insvire; teaser grid tetap buka sheet; CTA “Semua proyek” = `next/link` + Magnetic lama (sampai T-036). Hero dua baris (`home-hero-line` / `home-hero-line-2`) tidak diubah. `home-motion` masih Astryx sampai T-036; `work-tile` masih Astryx sampai T-034.3.
+- **T-034.2** About: Badge shadcn + `StatusDot` lokal (pulsa CSS, token success); portrait `AspectRatio` 4/5; offer/values `Card` shadcn + rest/active; proses `Collapsible` type single default `01`; workplace `ExternalSiteLink`. Chevron lead = Lucide `ChevronDown` 16px token aksen. Copy T-021.3 tidak diubah.
+### Changed
+- Selector craft: `.home-now-title .astryx-link` → `a`; `.about-workplace .astryx-text` / `.qi-workplace .astryx-text` → `.about-workplace-prefix`. Grid Home/About `display: grid` di class scoped yang sudah ada.
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
 - (none)
 ### Changed
 - `SheetContent` punya `showOverlay` (default true). Hamburger chrome memakai `showOverlay={false}` — overlay Radix tidak di-mount.

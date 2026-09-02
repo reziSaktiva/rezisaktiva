@@ -1,11 +1,9 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Grid, GridSpan } from "@astryxdesign/core/Grid";
-import { Section } from "@astryxdesign/core/Section";
-import { VStack } from "@astryxdesign/core/VStack";
 import type { WorkItem } from "@/content/work";
 import type { Locale } from "@/lib/locale";
+import { cn } from "@/lib/utils";
 import { Reveal } from "./home-motion";
 import { PROJECT_SHEET_ID, ProjectSheet } from "./project-sheet";
 import { workTileLayout } from "./work-tile-layout";
@@ -27,18 +25,20 @@ export function WorkIndexClient({
 
   return (
     <>
-      <Section variant="transparent" padding={0} className="work-grid-section">
-        <VStack className="home-container">
-          <Grid
-            columns={{ minWidth: 480, max: 2, repeat: "fit" }}
-            gap={3}
-            className="home-work-grid"
-          >
+      <section className="work-grid-section">
+        <div className="home-container">
+          <div className="home-work-grid">
             {items.map((item) => {
               const spanFull = spanFullById.get(item.id) === true;
               const wide = spanFull && !item.featured;
-              const tile = (
-                <Reveal key={item.id} className="home-work-reveal">
+              return (
+                <Reveal
+                  key={item.id}
+                  className={cn(
+                    "home-work-reveal",
+                    spanFull && "col-span-full",
+                  )}
+                >
                   <WorkTile
                     item={item}
                     featured={item.featured}
@@ -49,17 +49,10 @@ export function WorkIndexClient({
                   />
                 </Reveal>
               );
-              return spanFull ? (
-                <GridSpan key={item.id} columns="full">
-                  {tile}
-                </GridSpan>
-              ) : (
-                tile
-              );
             })}
-          </Grid>
-        </VStack>
-      </Section>
+          </div>
+        </div>
+      </section>
 
       <ProjectSheet locale={locale} item={openItem} onClose={closeSheet} />
     </>

@@ -7,8 +7,8 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { Card } from "@astryxdesign/core/Card";
-import { VStack } from "@astryxdesign/core/VStack";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -120,21 +120,21 @@ export function RestActive({
   label: string;
 }) {
   const { panelId, isActive, controlProps } = useRestActiveControl(label);
-  const classNames = [
-    "about-rest-active",
-    isActive ? "is-active" : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
 
   return (
-    <VStack className={classNames} gap={3} {...controlProps}>
+    <div
+      className={cn(
+        "about-rest-active flex flex-col gap-3",
+        isActive && "is-active",
+        className,
+      )}
+      {...controlProps}
+    >
       {rest}
-      <VStack id={panelId} className="about-rest-active-panel" gap={0}>
+      <div id={panelId} className="about-rest-active-panel">
         {active}
-      </VStack>
-    </VStack>
+      </div>
+    </div>
   );
 }
 
@@ -154,29 +154,26 @@ export function RestActiveCard({
   variant: "default" | "muted";
 }) {
   const { panelId, isActive, controlProps } = useRestActiveControl(label);
-  const classNames = [
-    "about-rest-active",
-    isActive ? "is-active" : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
 
   return (
     <Card
-      variant={variant}
-      elevation="none"
-      padding={6}
-      className={classNames}
+      className={cn(
+        "about-rest-active gap-3 p-6 text-base text-foreground shadow-none ring-0",
+        variant === "muted"
+          ? "border-0 bg-muted"
+          : "border-border bg-card border",
+        isActive && "is-active",
+        className,
+      )}
       {...controlProps}
     >
       {extra}
-      <VStack gap={3}>
+      <div className="flex flex-col gap-3">
         {rest}
-        <VStack id={panelId} className="about-rest-active-panel" gap={0}>
+        <div id={panelId} className="about-rest-active-panel">
           {active}
-        </VStack>
-      </VStack>
+        </div>
+      </div>
     </Card>
   );
 }

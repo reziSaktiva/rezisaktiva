@@ -856,6 +856,7 @@ html::-webkit-scrollbar-button {
   justify-content: space-between;
   padding-block: var(--spacing-6);
   font-family: "General Sans", var(--font-family-heading);
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -907,6 +908,7 @@ html::-webkit-scrollbar-button {
 }
 
 .home-now-title {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: var(--font-weight-semibold);
@@ -915,7 +917,7 @@ html::-webkit-scrollbar-button {
   max-width: 56rem;
 }
 
-.home-now-title .astryx-link {
+.home-now-title a {
   font-size: inherit !important;
   font-family: inherit;
   font-weight: inherit;
@@ -924,6 +926,7 @@ html::-webkit-scrollbar-button {
 }
 
 .home-proof-body {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   line-height: 1.12;
@@ -932,6 +935,7 @@ html::-webkit-scrollbar-button {
 }
 
 .home-work-title {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(1.75rem, 4.2vw, 3.25rem);
   font-weight: var(--font-weight-semibold);
@@ -944,6 +948,7 @@ html::-webkit-scrollbar-button {
   display: inline-block;
   flex-shrink: 0;
   font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
 }
 
 .home-cta-underline::after {
@@ -968,6 +973,15 @@ html::-webkit-scrollbar-button {
 .home-work-reveal,
 .home-work-grid {
   width: 100%;
+}
+
+.home-work-grid {
+  display: grid;
+  gap: var(--spacing-3);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, max(480px, calc((100% - var(--spacing-3)) / 2))), 1fr)
+  );
 }
 
 .home-work-grid > * {
@@ -1062,11 +1076,10 @@ button.home-work-tile,
   pointer-events: none;
 }
 
-.home-work-tile-meta .astryx-heading,
-.home-work-tile-meta .astryx-text,
 .home-work-tile-title,
 .home-work-tile-outcome {
   color: inherit;
+  margin: 0;
 }
 
 .home-work-tile-title {
@@ -1075,6 +1088,10 @@ button.home-work-tile,
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.02em;
   line-height: 1.15;
+}
+
+.home-work-tile-outcome {
+  font-size: var(--font-size-sm);
 }
 
 .home-contact-title {
@@ -1407,6 +1424,7 @@ button.home-work-tile,
 
 .about-hero-grid,
 .about-split {
+  display: grid;
   width: 100%;
   grid-template-columns: 1fr !important;
   gap: 3rem !important;
@@ -1433,11 +1451,65 @@ button.home-work-tile,
   font-size: var(--font-size-sm);
 }
 
-.about-workplace .astryx-text {
-  font-size: inherit !important;
+.about-workplace-prefix {
+  color: var(--color-text-secondary);
+  font-size: inherit;
+}
+
+.about-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-0-5, 0.125rem);
+  color: var(--color-text-accent);
+  text-decoration: underline;
+  font: inherit;
+}
+
+.about-external-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+}
+
+.about-availability-badge {
+  height: var(--spacing-5);
+  gap: var(--spacing-1);
+  background-color: var(--color-background-green);
+  color: var(--color-text-green);
+  border-color: transparent;
+}
+
+.about-status-dot {
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-success);
+}
+
+.about-status-dot.is-pulsing {
+  animation: about-status-pulse 2s ease-in-out infinite;
+}
+
+@keyframes about-status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-status-dot.is-pulsing {
+    animation: none;
+  }
 }
 
 .about-h1 {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(3.25rem, 9vw, 6.5rem) !important;
   font-weight: var(--font-weight-semibold);
@@ -1457,11 +1529,13 @@ button.home-work-tile,
   max-width: 38rem;
   font-size: var(--font-size-xl);
   line-height: 1.55;
+  color: var(--color-text-secondary);
 }
 
-.about-lead .astryx-text {
-  font-size: inherit !important;
+.about-lead p {
+  font-size: inherit;
   line-height: inherit;
+  margin: 0;
 }
 
 .about-lead-rest {
@@ -1478,6 +1552,12 @@ button.home-work-tile,
   transition:
     transform var(--duration-medium) var(--ease-standard),
     opacity var(--duration-medium) var(--ease-standard);
+}
+
+.about-lead-more svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-accent);
 }
 
 .about-lead:hover .about-lead-rest,
@@ -1555,6 +1635,7 @@ button.home-work-tile,
 }
 
 .about-portrait {
+  position: relative;
   width: 100%;
   max-width: 28rem;
   margin-inline: auto;
@@ -1571,6 +1652,7 @@ button.home-work-tile,
 }
 
 .about-portrait img {
+  object-fit: cover;
   object-position: center 20%;
   filter: grayscale(1) contrast(1.06);
 }
@@ -1586,6 +1668,7 @@ button.home-work-tile,
 }
 
 .about-section-title {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: var(--font-weight-semibold);
@@ -1595,6 +1678,7 @@ button.home-work-tile,
 
 .about-offer-grid,
 .about-values-grid {
+  display: grid;
   width: 100%;
   grid-template-columns: 1fr !important;
 }
@@ -1643,10 +1727,17 @@ button.home-work-tile,
 }
 
 .about-card-title {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(var(--font-size-xl), 2.4vw, 1.75rem);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.02em;
+}
+
+.about-card-body {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
 }
 
 .about-values-band {
@@ -1655,6 +1746,7 @@ button.home-work-tile,
 }
 
 .about-approach {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(1.35rem, 3.2vw, 2.25rem);
   line-height: 1.3;
@@ -1663,6 +1755,7 @@ button.home-work-tile,
 }
 
 .about-value-title {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
   font-size: clamp(1.25rem, 2.6vw, 1.75rem);
   font-weight: var(--font-weight-semibold);
@@ -1672,10 +1765,54 @@ button.home-work-tile,
 
 .about-process-note {
   max-width: 40rem;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .about-process-trigger {
   width: 100%;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  padding-inline: 0;
+  cursor: pointer;
+  text-align: start;
+  color: inherit;
+  font: inherit;
+}
+
+.about-process-trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+.about-process-chevron {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--color-icon-secondary);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.about-process-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.about-offer-icon,
+.about-process-icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.about-offer-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.about-process-icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .about-process-num {
@@ -1711,6 +1848,9 @@ button.home-work-tile,
 .about-process-copy {
   position: relative;
   max-width: 40rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
 }
 
 .site-footer {
@@ -1796,18 +1936,28 @@ button.home-work-tile,
 }
 
 .work-h1 {
+  margin: 0;
   font-family: "General Sans", var(--font-family-heading);
+  font-weight: var(--font-weight-semibold);
   max-width: 18ch;
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
 }
 
 .work-h1 .page-word--compact {
-  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  font-size: inherit !important;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
 }
 
 .work-lead {
+  margin: 0;
   max-width: 32rem;
   font-size: clamp(var(--font-size-md), 1.6vw, 1.25rem);
   line-height: 1.55;
+  color: var(--color-text-secondary);
 }
 
 .work-grid-section {
@@ -2402,8 +2552,8 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   font-size: 0.95rem;
 }
 
-.qi-workplace .astryx-text {
-  font-size: inherit !important;
+.qi-workplace .about-workplace-prefix {
+  font-size: inherit;
 }
 
 .qi-cols {

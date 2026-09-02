@@ -2,18 +2,13 @@
 
 import NextImage from "next/image";
 import NextLink from "next/link";
-import { Center } from "@astryxdesign/core/Center";
-import { Heading } from "@astryxdesign/core/Heading";
 import { useContainerReveal } from "@astryxdesign/core/hooks";
-import { Link } from "@astryxdesign/core/Link";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
 import { mergeProps } from "@astryxdesign/core/utils";
 import type { WorkItem } from "@/content/work";
 import { workPhotoProps } from "@/lib/work-image";
 
 /**
- * Tile karya — visual `.work-tile` mockup + craft hover (T-025.5).
+ * Tile karya — visual `.work-tile` + craft hover (T-025.5).
  *
  * `href` (internal, via NextLink) — tautan katalog, mis. “Semua proyek”.
  *
@@ -21,7 +16,7 @@ import { workPhotoProps } from "@/lib/work-image";
  *
  * Caption + scrim: `useContainerReveal` (hover/focus desktop; selalu
  * terlihat di sentuh; reduced-motion dihormati). Bukan Overlay Astryx —
- * touch toggle Overlay akan menunda navigasi tautan.
+ * touch toggle Overlay akan menunda navigasi tautan. Hook tetap sampai T-036.
  */
 export function WorkTile({
   item,
@@ -51,9 +46,11 @@ export function WorkTile({
   const containerProps = getContainerProps();
   const revealProps = getContentRevealProps({ isLayoutPreserved: true });
 
+  const TitleTag = featured ? "h2" : "h3";
+
   const inner = (
     <>
-      <Center className="home-work-tile-media">
+      <div className="home-work-tile-media">
         <NextImage
           {...workPhotoProps(
             item.imageSrc,
@@ -62,59 +59,46 @@ export function WorkTile({
               : "(max-width: 767px) 100vw, 700px",
           )}
         />
-      </Center>
-      <Center
+      </div>
+      <div
         aria-hidden="true"
         {...mergeProps(revealProps, { className: "home-work-tile-scrim" })}
+      />
+      <div
+        {...mergeProps(revealProps, {
+          className: "home-work-tile-meta flex flex-col gap-1",
+        })}
       >
-        {null}
-      </Center>
-      <VStack
-        gap={1}
-        {...mergeProps(revealProps, { className: "home-work-tile-meta" })}
-      >
-        <Heading level={featured ? 2 : 3} className="home-work-tile-title">
-          {item.name}
-        </Heading>
-        <Text size="sm" className="home-work-tile-outcome">
-          {item.outcome}
-        </Text>
-      </VStack>
+        <TitleTag className="home-work-tile-title">{item.name}</TitleTag>
+        <p className="home-work-tile-outcome">{item.outcome}</p>
+      </div>
     </>
   );
 
   if (href) {
     return (
-      <Link
-        as={NextLink}
-        href={href}
-        {...mergeProps(containerProps, { className })}
-      >
+      <NextLink href={href} {...mergeProps(containerProps, { className })}>
         {inner}
-      </Link>
+      </NextLink>
     );
   }
 
   if (onSelect) {
     return (
-      <VStack {...mergeProps(containerProps, { className })}>
+      <div {...mergeProps(containerProps, { className })}>
         {inner}
-        <VStack
-          as="button"
+        <button
+          type="button"
           className="home-work-tile-hit"
           onClick={onSelect}
           aria-label={item.name}
           aria-haspopup="dialog"
           aria-expanded={sheetOpen}
           aria-controls={sheetPanelId}
-        >
-          {null}
-        </VStack>
-      </VStack>
+        />
+      </div>
     );
   }
 
-  return (
-    <Center {...mergeProps(containerProps, { className })}>{inner}</Center>
-  );
+  return <div {...mergeProps(containerProps, { className })}>{inner}</div>;
 }
