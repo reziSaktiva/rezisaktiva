@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). Lanjut **T-035**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ⏳ (T-035.1–T-035.2 ✅; lanjut T-035.3). T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -245,8 +245,8 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ### Subtasks
 
-- [ ] **T-035.1** — Contact → `Dialog`. Skin `.ct-*` (kartu dark-ink). Form → `FieldGroup`/`Field`/`Input`/`Textarea`. Validasi + Terkirim + salin email + `mailto:` primer. `DialogTitle` wajib. Jangan route `/contact`.
-- [ ] **T-035.2** — Quick Info → `Sheet` kanan. Tab tepi, isi, tutup. Jangan duplikasi form Contact. Mount tetap global di locale layout.
+- [x] **T-035.1** — Contact → `Dialog`. Skin `.ct-*` (kartu dark-ink). Form → `FieldGroup`/`Field`/`Input`/`Textarea`. Validasi + Terkirim + salin email + `mailto:` primer. `DialogTitle` wajib. Jangan route `/contact`.
+- [x] **T-035.2** — Quick Info → `Sheet` kanan. Tab tepi, isi, tutup. Jangan duplikasi form Contact. Mount tetap global di locale layout.
 - [ ] **T-035.3** — Project sheet → `Drawer` bawah lebar penuh. Galeri + slot M10. Tile index + teaser Home membuka sheet, bukan live URL. Item tanpa URL publik tetap bisa dibuka.
 - [ ] **T-035.4** — Integrasi: event `rz-contact-open` / `rz-project-sheet-open`; Lenis pause; focus restore; overlay stacking (satu overlay “asing” menutup yang lain seperti sekarang).
 - [ ] **T-035.5** — Verifikasi ketiga overlay, ID/EN, light/dark, 320px (modal muat viewport; tab QI tidak menabrak hero), keyboard Escape/Tab, reduced-motion.

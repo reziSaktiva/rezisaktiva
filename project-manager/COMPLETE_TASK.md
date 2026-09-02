@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-035.1** Contact overlay: primitf `Dialog` shadcn + skin `.ct-*`. Form `FieldGroup`/`Field`/`Input`/`Textarea`; validasi, Terkirim, salin email, `mailto:` primer; `DialogTitle` wajib. `ct-lock` + `data-lenis-prevent` tetap.
+- **T-035.2** Quick Info: primitf `Sheet` `side="right"` + skin `.qi-*`. Tab tepi kanan, isi bio/services/tools/works/email/links; bukan form Contact; mount tetap di locale layout. `qi-lock` + event `rz-quick-info-open` tetap.
+### Changed
+- (none)
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
 - (none)
 ### Changed
 - (none)
