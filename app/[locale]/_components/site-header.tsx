@@ -34,14 +34,12 @@ import { ThemeToggle } from "./theme-toggle";
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
- * Dua slot AppShell (`topNav` + `mobileNav`) dirender lewat komponen
- * terpisah karena harus dipasang sebagai prop yang berbeda pada AppShell,
- * bukan nested di dalam satu sama lain.
+ * Header + panel mobile dipasang di `SiteChrome` (T-033.1). Konteks
+ * `useAppShellMobile` masih dari Astryx sampai T-033.2–T-033.3.
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
-  // Breakpoint sinkron dengan mobileNav={{ breakpoint: 'lg' }} pada AppShell
-  // (lg = 1024px) — sumber kebenaran tunggal untuk kapan hamburger aktif.
+  // Breakpoint sinkron dengan `SiteChrome` (max-width 1024px / lg).
   const { isMobile, isMobileNavOpen } = useAppShellMobile();
   const chipColorVars = useChipColorVars();
   const { open } = useContactModal();

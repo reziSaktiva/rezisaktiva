@@ -199,7 +199,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-033 — Chrome: shell, nav, locale, tema, footer
 
-* **Status:** ⏳ Open — **prioritas #1**
+* **Status:** ⏳ Open — **prioritas #1** · T-033.1 ✅
 * **Domain:** UI/UX
 * **Depends:** T-032.8
 * **Baca dulu:** `site-header.tsx`, `site-footer.tsx`, `locale-switcher.tsx`, `theme-toggle.tsx`, `sliding-pill-group.tsx`, `app/[locale]/layout.tsx`, ADR-020, ADR-021
@@ -207,7 +207,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ### Subtasks
 
-- [ ] **T-033.1** — Ganti `AppShell`: `topNav` + `mobileNav` → header sticky/transparan (hero overlay z seperti sekarang) + `<main>`. Footer tetap di luar main seperti layout sekarang. Jangan Sidebar.
+- [x] **T-033.1** — Ganti `AppShell`: `topNav` + `mobileNav` → header sticky/transparan (hero overlay z seperti sekarang) + `<main>`. Footer tetap di luar main seperti layout sekarang. Jangan Sidebar.
 - [ ] **T-033.2** — Desktop nav: `TopNav*` → link + pill kuning 3D (`sliding-pill-group` + token chip). Brand heading tetap. Paritas hover/selected.
 - [ ] **T-033.3** — Mobile: `MobileNavToggle` / `SideNavItem` → `Button` + `Sheet` (judul `sr-only` jika perlu). Item full-width; switcher compact; jangan dobel toggle.
 - [ ] **T-033.4** — Locale: `SegmentedControl` → `ToggleGroup`. Cookie `NEXT_LOCALE` + perilaku redirect `/` tidak diubah (ADR-014).

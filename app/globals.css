@@ -221,6 +221,55 @@ html::-webkit-scrollbar-button {
   height: 0;
 }
 
+/* Skip-to-content — paritas a11y AppShell, tanpa dependensi i18n Astryx. */
+.site-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  z-index: 9999;
+}
+
+.site-skip-link:focus {
+  position: fixed;
+  top: var(--spacing-2);
+  inset-inline-start: var(--spacing-2);
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding-block: var(--spacing-2);
+  padding-inline: var(--spacing-4);
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  background-color: var(--color-background-surface);
+  color: var(--color-text-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-chrome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.site-chrome-main {
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+.site-chrome-main:focus {
+  outline: none;
+}
+
 /* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */
 .site-top-nav {
   min-height: 3.75rem;
@@ -569,11 +618,13 @@ html::-webkit-scrollbar-button {
  * class (pola chrome T-013), token Astryx untuk warna/spacing, clamp hero
  * meniru mockup karena tidak ada step token yang setara.
  *
- * Header overlay: mockup `.header-quiet.fixed` (transparan, di atas hero).
- * AppShell height=auto sudah sticky; background dikosongkan supaya hero
+ * Header overlay: `.header-quiet.fixed` (transparan, di atas hero).
+ * `SiteChrome` header sticky; background dikosongkan supaya hero
  * 100svh bisa masuk di bawah nav.
  */
 .astryx-app-shell-header {
+  position: sticky;
+  top: 0;
   z-index: 50;
   overflow: visible;
   background-color: transparent;

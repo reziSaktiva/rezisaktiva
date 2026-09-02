@@ -76,7 +76,7 @@ function OverlayLenisPause() {
 }
 
 /**
- * Window Lenis — sibling, tidak membungkus halaman (AppShell `height="auto"`).
+ * Window Lenis — sibling, tidak membungkus halaman (`SiteChrome` min-height auto).
  * Off jika `prefers-reduced-motion`.
  */
 export function SmoothScroll() {

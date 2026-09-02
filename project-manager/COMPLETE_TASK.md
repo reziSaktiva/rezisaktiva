@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- **T-033.1** `SiteChrome`: header sticky transparan + `<main id="astryx-app-shell-main">` menggantikan `AppShell`. Skip-to-content lokal. Footer tetap sibling di luar main.
+### Changed
+- `app/[locale]/layout.tsx` tidak mengimpor `AppShell`. Konteks `AppShellMobileContext` tetap di `site-chrome.tsx` sampai T-033.2–T-033.3 (TopNav / hamburger masih Astryx).
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
 - (tidak ada)
 ### Changed
 - `tasks/v14-shadcn-tailwind.md` Dark/light poin 1 & 5 + teks T-032.5: `html.dark` lewat `classList`, bukan `className` React di `<html>`.

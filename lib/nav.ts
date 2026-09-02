@@ -51,6 +51,11 @@ export const MENU_TOGGLE_LABEL: Record<Locale, { open: string; close: string }> 
   en: { open: "Open menu", close: "Close menu" },
 };
 
+export const SKIP_TO_CONTENT_LABEL: Record<Locale, string> = {
+  id: "Lewati ke konten",
+  en: "Skip to content",
+};
+
 /**
  * Cocokkan pathname aktif ke item nav untuk state `isSelected`.
  * Home hanya aktif tepat di root locale; item lain aktif dengan prefix match
