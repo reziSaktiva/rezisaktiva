@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). Lanjut **T-034**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). Lanjut **T-035**. T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -219,7 +219,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-034 — Halaman Home, About, Work
 
-* **Status:** ⏳ Open
+* **Status:** ✅ Done
 * **Domain:** UI/UX
 * **Depends:** T-033.7
 * **Baca dulu:** `home-page.tsx`, `about-page.tsx`, `work-page.tsx` + island terkait; copy `content/` **jangan diubah**
@@ -227,11 +227,11 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ### Subtasks
 
-- [ ] **T-034.1** — Home: section, teaser grid, Now, CTA. Hapus impor Astryx di permukaan Home (kecuali gerak yang masih `home-motion` sampai T-036). Paritas hero dua baris mobile (T-022).
-- [ ] **T-034.2** — About: Badge+StatusDot lokal, portrait `AspectRatio`, offer `Card` + rest/active, values, `Collapsible` proses, workplace `Link`. Chevron lead = bentuk yang sama. Copy T-021.3 tidak diubah.
-- [ ] **T-034.3** — Work index: grid tile, kicker/judul. `work-tile` tanpa `Link`/`Heading` Astryx; klik tetap buka sheet (T-035 boleh masih overlay lama jika T-035 belum, asal perilaku sama).
-- [ ] **T-034.4** — Skala tipe: map `Heading level` / `Text type="label"|size|color` ke class yang sudah di `globals.css`. Jangan skala default shadcn yang mengecilkan hero.
-- [ ] **T-034.5** — Verifikasi `/id` `/en` `/about` `/work`: satu `h1` per halaman, grid, rest/active About, tile Work; light/dark; 320 + desktop.
+- [x] **T-034.1** — Home: section, teaser grid, Now, CTA. Hapus impor Astryx di permukaan Home (kecuali gerak yang masih `home-motion` sampai T-036). Paritas hero dua baris mobile (T-022).
+- [x] **T-034.2** — About: Badge+StatusDot lokal, portrait `AspectRatio`, offer `Card` + rest/active, values, `Collapsible` proses, workplace `Link`. Chevron lead = bentuk yang sama. Copy T-021.3 tidak diubah.
+- [x] **T-034.3** — Work index: grid tile, kicker/judul. `work-tile` tanpa `Link`/`Heading` Astryx; klik tetap buka sheet (T-035 boleh masih overlay lama jika T-035 belum, asal perilaku sama).
+- [x] **T-034.4** — Skala tipe: map `Heading level` / `Text type="label"|size|color` ke class yang sudah di `globals.css`. Jangan skala default shadcn yang mengecilkan hero.
+- [x] **T-034.5** — Verifikasi `/id` `/en` `/about` `/work`: satu `h1` per halaman, grid, rest/active About, tile Work; light/dark; 320 + desktop.
 
 ---
 

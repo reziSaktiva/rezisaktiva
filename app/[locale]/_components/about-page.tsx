@@ -1,21 +1,15 @@
 import NextImage from "next/image";
-import { AspectRatio } from "@astryxdesign/core/AspectRatio";
-import { Badge } from "@astryxdesign/core/Badge";
-import { Grid } from "@astryxdesign/core/Grid";
-import { Heading } from "@astryxdesign/core/Heading";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Icon } from "@astryxdesign/core/Icon";
-import { Section } from "@astryxdesign/core/Section";
-import { StatusDot } from "@astryxdesign/core/StatusDot";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
+import { ChevronDown } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Badge } from "@/components/ui/badge";
 import { ABOUT_COPY, ABOUT_PORTRAIT_SRC } from "@/content/about";
 import type { Locale } from "@/lib/locale";
 import { AboutOfferGrid } from "./about-offer-grid";
-import { WorkplaceLine } from "./workplace-line";
 import { AboutProcess } from "./about-process";
 import { RestActive, RestActiveCard } from "./about-rest-active";
 import { Reveal, WordReveal } from "./home-motion";
+import { StatusDot } from "./status-dot";
+import { WorkplaceLine } from "./workplace-line";
 
 function splitQuotedValue(value: string): { heading: string; body: string } {
   const match = value.match(/^[“"](.+?)[”"]\s*(.*)$/u);
@@ -29,103 +23,80 @@ export function AboutPage({ locale }: { locale: Locale }) {
   const copy = ABOUT_COPY[locale];
 
   return (
-    <VStack className="about-page">
-      <Section variant="transparent" padding={0} className="about-hero">
-        <Grid columns={2} gap={8} align="center" className="about-hero-grid">
-          <VStack gap={4}>
+    <div className="about-page flex flex-col">
+      <section className="about-hero">
+        <div className="about-hero-grid grid items-center">
+          <div className="flex flex-col gap-4">
             <Reveal>
-              <Badge
-                variant="green"
-                label={copy.availabilityBadge}
-                icon={
-                  <StatusDot
-                    variant="success"
-                    label={copy.availabilityBadge}
-                    isPulsing
-                    aria-hidden
-                  />
-                }
-              />
+              <Badge className="about-availability-badge">
+                <StatusDot
+                  label={copy.availabilityBadge}
+                  isPulsing
+                  aria-hidden
+                />
+                {copy.availabilityBadge}
+              </Badge>
             </Reveal>
             <Reveal>
               <WorkplaceLine locale={locale} className="about-workplace" />
             </Reveal>
-            <Heading level={1} className="about-h1">
+            <h1 className="about-h1">
               <WordReveal words={copy.h1} />
-            </Heading>
+            </h1>
             <Reveal>
               <RestActive
                 className="about-lead"
                 label={copy.lead2}
                 rest={
-                  <VStack gap={3}>
-                    <Text
-                      color="secondary"
-                      display="block"
-                      className="about-lead-rest"
-                    >
-                      {copy.lead1}
-                    </Text>
-                    <HStack className="about-lead-more" aria-hidden="true">
-                      <Icon icon="chevronDown" size="sm" color="accent" />
-                    </HStack>
-                  </VStack>
+                  <div className="flex flex-col gap-3">
+                    <p className="about-lead-rest">{copy.lead1}</p>
+                    <span className="about-lead-more flex" aria-hidden="true">
+                      <ChevronDown size={16} />
+                    </span>
+                  </div>
                 }
-                active={
-                  <Text color="secondary" display="block">
-                    {copy.lead2}
-                  </Text>
-                }
+                active={<p>{copy.lead2}</p>}
               />
             </Reveal>
-          </VStack>
+          </div>
           <Reveal>
-            <AspectRatio ratio={4 / 5} fit="cover" className="about-portrait">
+            <AspectRatio ratio={4 / 5} className="about-portrait">
               <NextImage
                 src={ABOUT_PORTRAIT_SRC}
                 alt={copy.portraitAlt}
-                width={900}
-                height={1125}
+                fill
                 sizes="(max-width: 1023px) 90vw, 45vw"
                 priority
               />
             </AspectRatio>
           </Reveal>
-        </Grid>
-      </Section>
+        </div>
+      </section>
 
-      <Section variant="transparent" padding={0} className="about-section">
-        <VStack gap={8}>
+      <section className="about-section">
+        <div className="flex flex-col gap-8">
           <Reveal>
-            <Heading level={2} className="about-section-title">
-              {copy.helpTitle}
-            </Heading>
+            <h2 className="about-section-title">{copy.helpTitle}</h2>
           </Reveal>
           <AboutOfferGrid offers={copy.offers} />
-        </VStack>
-      </Section>
+        </div>
+      </section>
 
-      <Section variant="transparent" padding={0} className="about-values-band">
-        <VStack gap={8} className="about-section about-values-inner">
-          <VStack gap={4}>
+      <section className="about-values-band">
+        <div className="about-section about-values-inner flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
             <Reveal>
-              <Text type="label" color="secondary" className="home-kicker">
-                {copy.approachLabel}
-              </Text>
+              <p className="home-kicker">{copy.approachLabel}</p>
             </Reveal>
             <Reveal>
-              <Text display="block" className="about-approach">
-                {copy.approachBody}
-              </Text>
+              <p className="about-approach">{copy.approachBody}</p>
             </Reveal>
-          </VStack>
-          <VStack gap={4}>
+          </div>
+          <div className="flex flex-col gap-4">
             <Reveal>
-              <Text type="label" color="secondary" className="home-kicker">
-                {copy.valuesLabel}
-              </Text>
+              <p className="home-kicker">{copy.valuesLabel}</p>
             </Reveal>
-            <Grid columns={3} gap={4} className="about-values-grid">
+            <div className="about-values-grid grid gap-4">
               {copy.values.map((value) => {
                 const { heading, body } = splitQuotedValue(value);
                 return (
@@ -134,48 +105,32 @@ export function AboutPage({ locale }: { locale: Locale }) {
                       variant="muted"
                       className="about-value-card"
                       label={heading}
-                      rest={
-                        <Heading level={3} className="about-value-title">
-                          {heading}
-                        </Heading>
-                      }
+                      rest={<h3 className="about-value-title">{heading}</h3>}
                       active={
-                        body ? (
-                          <Text color="secondary" display="block" size="sm">
-                            {body}
-                          </Text>
-                        ) : null
+                        body ? <p className="about-card-body">{body}</p> : null
                       }
                     />
                   </Reveal>
                 );
               })}
-            </Grid>
-          </VStack>
-        </VStack>
-      </Section>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <Section variant="transparent" padding={0} className="about-section">
-        <VStack gap={8}>
-          <VStack gap={4}>
+      <section className="about-section">
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
             <Reveal>
-              <Heading level={2} className="about-section-title">
-                {copy.processTitle}
-              </Heading>
+              <h2 className="about-section-title">{copy.processTitle}</h2>
             </Reveal>
             <Reveal>
-              <Text
-                color="secondary"
-                display="block"
-                className="about-process-note"
-              >
-                {copy.processNote}
-              </Text>
+              <p className="about-process-note">{copy.processNote}</p>
             </Reveal>
-          </VStack>
+          </div>
           <AboutProcess steps={copy.steps} />
-        </VStack>
-      </Section>
-    </VStack>
+        </div>
+      </section>
+    </div>
   );
 }

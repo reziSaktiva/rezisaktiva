@@ -1,8 +1,33 @@
-import { Link } from "@astryxdesign/core/Link";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Text } from "@astryxdesign/core/Text";
+import type { ReactNode } from "react";
+import { ExternalLink } from "lucide-react";
 import { PERSON, PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
+import { cn } from "@/lib/utils";
+
+export function ExternalSiteLink({
+  href,
+  children,
+  newTabLabel,
+  className,
+}: {
+  href: string;
+  children: ReactNode;
+  newTabLabel: string;
+  className?: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn("about-external-link", className)}
+    >
+      {children}
+      <ExternalLink aria-hidden size={12} className="about-external-icon" />
+      <span className="sr-only">{newTabLabel}</span>
+    </a>
+  );
+}
 
 export function WorkplaceLine({
   locale,
@@ -14,16 +39,11 @@ export function WorkplaceLine({
   const copy = PERSON_WORKPLACE_COPY[locale];
 
   return (
-    <HStack gap={2} wrap="wrap" align="center" className={className}>
-      <Text color="secondary">{copy.prefix}</Text>
-      <Link
-        href={PERSON.worksFor.url}
-        isExternalLink
-        hasUnderline
-        newTabLabel={copy.newTab}
-      >
+    <span className={cn("flex flex-wrap items-center gap-2", className)}>
+      <span className="about-workplace-prefix">{copy.prefix}</span>
+      <ExternalSiteLink href={PERSON.worksFor.url} newTabLabel={copy.newTab}>
         {PERSON.worksFor.name}
-      </Link>
-    </HStack>
+      </ExternalSiteLink>
+    </span>
   );
 }
