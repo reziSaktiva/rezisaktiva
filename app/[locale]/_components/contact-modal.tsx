@@ -133,7 +133,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
         }}
         data-lenis-prevent=""
         className={cn(
-          "ct-panel max-w-none gap-0 text-inherit shadow-none ring-0 sm:max-w-none",
+          "ct-panel max-w-none translate-x-0 translate-y-0 gap-0 text-inherit shadow-none ring-0 sm:max-w-none",
           "data-open:animate-none data-closed:animate-none data-open:zoom-in-100 data-closed:zoom-out-100",
           isOpen && "is-open",
         )}

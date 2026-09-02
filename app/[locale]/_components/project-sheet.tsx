@@ -1,22 +1,16 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Button } from "@astryxdesign/core/Button";
-import { Grid } from "@astryxdesign/core/Grid";
-import { Heading } from "@astryxdesign/core/Heading";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Icon } from "@astryxdesign/core/Icon";
-import { Link } from "@astryxdesign/core/Link";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
+import { Button } from "@/components/ui/button";
+import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer";
 import type { WorkItem } from "@/content/work";
 import {
   WORK_SHEET_COPY,
   getWorkSheet,
   workSheetImages,
 } from "@/content/work-sheet";
-import { trapTabKey } from "@/lib/focus-trap";
 import type { Locale } from "@/lib/locale";
+import { cn } from "@/lib/utils";
 import { CloseIcon } from "./overlay-icons";
 import { ProjectSheetMedia } from "./project-sheet-media";
 
@@ -33,6 +27,12 @@ function prefersReducedMotionNow(): boolean {
   );
 }
 
+/**
+ * Project sheet M10 (T-026, ADR-027; T-035.3–T-035.4) — Drawer vaul dari
+ * bawah, skin `.ps-*`. Tile index + teaser Home membuka sheet, bukan live
+ * URL. Event `rz-project-sheet-open`; `ps-lock` + Lenis pause; overlay asing
+ * menutup sheet.
+ */
 export function ProjectSheet({
   locale,
   item,
@@ -45,9 +45,9 @@ export function ProjectSheet({
   const labels = WORK_SHEET_COPY[locale];
   const isOpen = item != null;
   const [visible, setVisible] = useState<WorkItem | null>(item);
+  const [entered, setEntered] = useState(false);
   const titleId = useId();
-  const dialogRef = useRef<HTMLElement>(null);
-  const scrollRef = useRef<HTMLElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
   if (item && item !== visible) {
@@ -58,6 +58,15 @@ export function ProjectSheet({
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.id) : [];
+
+  useEffect(() => {
+    if (!isOpen) {
+      setEntered(false);
+      return;
+    }
+    const frame = window.requestAnimationFrame(() => setEntered(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, [isOpen]);
 
   useEffect(() => {
     const close = () => onClose();
@@ -79,25 +88,11 @@ export function ProjectSheet({
         : null;
     window.dispatchEvent(new Event("rz-project-sheet-open"));
     document.documentElement.classList.add("ps-lock");
-    const dialog = dialogRef.current;
     scrollRef.current?.scrollTo({ top: 0 });
-    dialog?.querySelector<HTMLElement>(".ps-close")?.focus();
-
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (dialogRef.current) {
-        trapTabKey(event, dialogRef.current);
-      }
-    };
-    document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("keydown", onKey);
       document.documentElement.classList.remove("ps-lock");
     };
-  }, [isOpen, item?.id, onClose]);
+  }, [isOpen, item?.id]);
 
   useEffect(() => {
     if (isOpen) {
@@ -116,143 +111,138 @@ export function ProjectSheet({
     visible?.href && isRepoUrl(visible.href) ? visible.href : sheet?.gitHref;
 
   return (
-    <>
-      <VStack
-        data-overlay-scrim=""
+    <Drawer
+      open={isOpen}
+      onOpenChange={(next) => {
+        if (!next) {
+          onClose();
+        }
+      }}
+      direction="bottom"
+      shouldScaleBackground={false}
+      noBodyStyles
+      handleOnly
+      repositionInputs={false}
+    >
+      <DrawerContent
+        id={PROJECT_SHEET_ID}
+        showHandle={false}
+        aria-describedby={undefined}
+        aria-labelledby={titleId}
+        overlayClassName={cn("ps-scrim", entered && "is-open")}
+        overlayProps={{
+          "data-overlay-scrim": "",
+          "data-lenis-prevent": "",
+        }}
         data-lenis-prevent=""
-        className={isOpen ? "ps-scrim is-open" : "ps-scrim"}
-        onClick={onClose}
-        aria-hidden={!isOpen}
-        inert={!isOpen || undefined}
-      />
-      <VStack
-        data-lenis-prevent=""
-        className={isOpen ? "ps-wrap is-open" : "ps-wrap"}
+        className={cn(
+          "ps-panel mt-0 max-h-none border-0 bg-transparent p-0 shadow-none",
+          "data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:max-h-none data-[vaul-drawer-direction=bottom]:rounded-t-[0.75rem] data-[vaul-drawer-direction=bottom]:border-0",
+          entered && "is-open",
+        )}
+        onOpenAutoFocus={(event) => {
+          event.preventDefault();
+          document.querySelector<HTMLElement>(".ps-close")?.focus();
+        }}
+        onCloseAutoFocus={(event) => {
+          event.preventDefault();
+        }}
+        onTransitionEnd={(event) => {
+          if (event.target !== event.currentTarget) {
+            return;
+          }
+          if (!isOpen) {
+            setVisible(null);
+          }
+        }}
       >
-        <VStack
-          ref={dialogRef}
-          id={PROJECT_SHEET_ID}
-          className="ps-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={titleId}
-          aria-hidden={!isOpen}
-          inert={!isOpen || undefined}
-          gap={0}
-          onTransitionEnd={(event) => {
-            if (event.target !== dialogRef.current) {
-              return;
-            }
-            if (!isOpen) {
-              setVisible(null);
-            }
-          }}
-        >
-          <VStack
-            ref={scrollRef}
-            data-lenis-prevent=""
-            className="ps-scroll"
-            gap={0}
-          >
-            {visible && sheet ? (
-              <VStack key={visible.id} gap={0} className="ps-sheet-body">
-                <HStack
-                  className="qi-header ps-header"
-                  align="center"
-                  justify="between"
+        <div ref={scrollRef} data-lenis-prevent="" className="ps-scroll">
+          {visible && sheet ? (
+            <div key={visible.id} className="ps-sheet-body">
+              <div className="qi-header ps-header">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon-sm"
+                  aria-label={labels.close}
+                  onClick={onClose}
+                  className="qi-close ps-close"
                 >
-                  <Button
-                    label={labels.close}
-                    variant="ghost"
-                    size="sm"
-                    isIconOnly
-                    icon={<Icon icon={CloseIcon} />}
-                    onClick={onClose}
-                    className="qi-close ps-close"
-                  />
-                  <Heading level={2} className="qi-title" aria-hidden="true">
-                    {visible.name}
-                  </Heading>
-                  <VStack className="qi-header-spacer" aria-hidden="true" />
-                </HStack>
+                  <CloseIcon />
+                </Button>
+                <p className="qi-title" aria-hidden="true">
+                  {visible.name}
+                </p>
+                <span className="qi-header-spacer" aria-hidden="true" />
+              </div>
 
-                <VStack
-                  as="section"
-                  gap={0}
-                  className="ps-info"
-                  aria-labelledby={titleId}
+              <section className="ps-info" aria-labelledby={titleId}>
+                <DrawerTitle
+                  id={titleId}
+                  className="ps-info-title ps-reveal"
                 >
-                  <Heading
-                    level={2}
-                    id={titleId}
-                    className="ps-info-title ps-reveal"
-                  >
-                    {visible.name}
-                  </Heading>
-                  <Grid
-                    columns={2}
-                    gap={6}
-                    className="qi-cols ps-info-meta ps-reveal"
-                  >
-                    <VStack gap={3}>
-                      <Text display="block" className="qi-label">
-                        {labels.servicesLabel}
-                      </Text>
-                      <VStack gap={2} className="qi-list">
-                        {sheet.services.map((service) => (
-                          <Text key={service}>{service}</Text>
-                        ))}
-                      </VStack>
-                    </VStack>
-                    <VStack gap={3}>
-                      <Text display="block" className="qi-label">
-                        {labels.locationLabel}
-                      </Text>
-                      <Text>{sheet.locationOrCompany}</Text>
-                      <Text display="block" className="qi-label">
-                        {labels.yearLabel}
-                      </Text>
-                      <Text>{visible.year}</Text>
-                    </VStack>
-                  </Grid>
-                  <Text display="block" className="qi-label ps-reveal">
-                    {labels.descriptionLabel}
-                  </Text>
-                  <Text
-                    display="block"
-                    className="qi-bio ps-description ps-reveal"
-                  >
-                    {sheet.description}
-                  </Text>
-                  {liveHref || repoHref ? (
-                    <HStack gap={5} wrap="wrap" className="qi-links ps-reveal">
-                      {liveHref ? (
-                        <Link href={liveHref} target="_blank">
-                          {labels.liveLabel}
-                        </Link>
-                      ) : null}
-                      {repoHref ? (
-                        <Link href={repoHref} target="_blank">
-                          {labels.repoLabel}
-                        </Link>
-                      ) : null}
-                    </HStack>
-                  ) : null}
-                </VStack>
+                  {visible.name}
+                </DrawerTitle>
+                <div className="qi-cols ps-info-meta ps-reveal">
+                  <div className="flex flex-col gap-3">
+                    <p className="qi-label">{labels.servicesLabel}</p>
+                    <ul className="qi-list">
+                      {sheet.services.map((service) => (
+                        <li key={service}>{service}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <p className="qi-label">{labels.locationLabel}</p>
+                    <p>{sheet.locationOrCompany}</p>
+                    <p className="qi-label">{labels.yearLabel}</p>
+                    <p>{visible.year}</p>
+                  </div>
+                </div>
+                <p className="qi-label ps-reveal">{labels.descriptionLabel}</p>
+                <p className="qi-bio ps-description ps-reveal">
+                  {sheet.description}
+                </p>
+                {liveHref || repoHref ? (
+                  <div className="qi-links ps-reveal">
+                    {liveHref ? (
+                      <a
+                        href={liveHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {labels.liveLabel}
+                      </a>
+                    ) : null}
+                    {repoHref ? (
+                      <a
+                        href={repoHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {labels.repoLabel}
+                      </a>
+                    ) : null}
+                  </div>
+                ) : null}
+              </section>
 
-                <ProjectSheetMedia
-                  key={visible.id}
-                  liveHref={liveHref}
-                  images={images}
-                  previewTitle={`${visible.name} — ${labels.previewLabel}`}
-                  previewLabel={labels.previewLabel}
-                  imagesLabel={labels.imagesLabel}
-                />
-              </VStack>
-            ) : null}
-          </VStack>
-        </VStack>
-      </VStack>
-    </>
+              <ProjectSheetMedia
+                key={visible.id}
+                liveHref={liveHref}
+                images={images}
+                previewTitle={`${visible.name} — ${labels.previewLabel}`}
+                previewLabel={labels.previewLabel}
+                imagesLabel={labels.imagesLabel}
+              />
+            </div>
+          ) : (
+            <DrawerTitle id={titleId} className="sr-only">
+              {labels.close}
+            </DrawerTitle>
+          )}
+        </div>
+      </DrawerContent>
+    </Drawer>
   );
 }
