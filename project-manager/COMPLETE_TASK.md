@@ -16,6 +16,49 @@ Format entri:
 
 ## [2026-09-02]
 ### Added
+- (none)
+### Changed
+- `SheetContent` punya `showOverlay` (default true). Hamburger chrome memakai `showOverlay={false}` — overlay Radix tidak di-mount.
+### Fixed
+- **T-033** review PR #59: query hamburger `(max-width: 1024px)` → `(max-width: 1023px)` supaya ≥1024px = nav desktop (ADR-020, selaras CSS `min-width: 1024px`). Overlay Sheet hamburger tidak lagi di-hide via `:has()` (Contact + theme toggle tidak bisa tertutup overlay).
+
+## [2026-09-02]
+### Added
+- **T-033.6** footer + pita Contact: `Section`/`VStack`/`Heading`/`Text`/`Link` Astryx → `<footer>` semantik + class scoped. CTA `site-footer-cta` = `Button` shadcn `size="lg"` + `ArrowRightIcon` `data-icon="inline-end"` + Magnetic lama (sampai T-036). Satelit LinkedIn/GitHub tetap (`target=_blank` `rel=noopener noreferrer`). Tombol Contact chrome di header ikut `Button` shadcn (sisa Astryx Button di chrome).
+- **T-033.7** verifikasi chrome: 320 / 375 / 1280, light+dark; hamburger <1024 + sheet item Home/How I Work/Projects + locale di dalam panel; desktop pill nav + locale di header; toggle tema persist; cookie `rz-theme` → `html.dark` / `colorScheme`; hero `100svh` overlay header (`margin-top: -80px`); footer CTA + header Contact membuka modal Contact; locale EN→ID tetap di `/about`; cookie `NEXT_LOCALE`. `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau.
+### Changed
+- **T-033** parent ✅ Done (T-033.1–T-033.7). Chrome tanpa impor `@astryxdesign` di header/footer/locale/theme (Magnetic/`Center` di `home-motion` tetap sampai T-036). Fokus berikutnya **T-034**.
+- `.site-contact-button` / `.home-contact-cta`: elevasi `--elev-3d` dipasang di class scoped (bukan `.astryx-button`). `.site-header-tools` + `.site-footer-*` pakai flex + `gap` token.
+### Fixed
+- (none)
+## [2026-09-02]
+### Added
+- **T-033.4** locale switcher: `SegmentedControl` → `ToggleGroup` + `ToggleGroupItem` (type single). Cookie `NEXT_LOCALE` + redirect `/` tetap (ADR-014). Pill kuning + separator `/` tetap; `useChipColorVars` tetap.
+- **T-033.5** theme toggle: `ToggleButton` → `Toggle` shadcn. Ikon Sun/Moon pindah ke `overlay-icons.tsx` (`theme-toggle-icons.tsx` dihapus). Persist `rz-theme` lewat `setThemeMode` (cookie + localStorage). Default & pressed tetap warna yang sama (hanya ikon yang berganti).
+### Changed
+- Selector chrome di `globals.css`: `.astryx-segmented-control-item` / `.astryx-toggle-button` → `.site-locale-switch-item` / `.site-theme-toggle-btn`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- **T-033.2** desktop nav: `TopNav` / `TopNavHeading` / `TopNavItem` → `next/link` + `Button` ghost shadcn di dalam `SlidingPillGroup` (chip kuning + pill 3D). Brand `rezisaktiva` tetap link ke `/{locale}`.
+- **T-033.3** mobile nav: `MobileNavToggle` / `SideNavItem` → `Button` hamburger + `Sheet` `modal={false}` (judul `sr-only`). Item full-width; switcher compact di dalam panel; tanpa tombol close kedua di Sheet.
+### Changed
+- `SiteChrome` tidak lagi memakai `AppShellMobileContext`. Overlay default Sheet di-hide supaya Contact + toggle tema di header tetap bisa di-tap (ADR-020).
+### Fixed
+- Brand heading di grid desktop tidak meregang memenuhi kolom kiri (`justify-self: start`).
+
+## [2026-09-02]
+### Added
+- **T-033.1** `SiteChrome`: header sticky transparan + `<main id="astryx-app-shell-main">` menggantikan `AppShell`. Skip-to-content lokal. Footer tetap sibling di luar main.
+### Changed
+- `app/[locale]/layout.tsx` tidak mengimpor `AppShell`. Konteks `AppShellMobileContext` tetap di `site-chrome.tsx` sampai T-033.2–T-033.3 (TopNav / hamburger masih Astryx).
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
 - (tidak ada)
 ### Changed
 - `tasks/v14-shadcn-tailwind.md` Dark/light poin 1 & 5 + teks T-032.5: `html.dark` lewat `classList`, bukan `className` React di `<html>`.

@@ -1,12 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import {
-  SegmentedControl,
-  SegmentedControlItem,
-} from "@astryxdesign/core/SegmentedControl";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { LOCALE_COOKIE, LOCALES, type Locale } from "@/lib/locale";
+import { cn } from "@/lib/utils";
 import { useTransitionNavigate } from "./page-transition";
 import { SlidingPillGroup } from "./sliding-pill-group";
 
@@ -27,6 +25,8 @@ function hrefForLocale(pathname: string, target: Locale): string {
  * untuk redirect `/` (tidak pernah rewrite path ber-locale) sesuai ADR-014.
  * Path tetap dievaluasi di sibling locale (Home↔Home, About↔About, dst.)
  * per `navigation-patterns.md`.
+ *
+ * T-033.4: SegmentedControl → ToggleGroup (type single; kosong diabaikan).
  */
 export function LocaleSwitcher({
   locale,
@@ -52,25 +52,22 @@ export function LocaleSwitcher({
 
   return (
     <SlidingPillGroup
-      className={
-        isMenu
-          ? "site-locale-switch-host site-locale-switch-host--menu"
-          : "site-locale-switch-host"
-      }
+      className={cn(
+        "site-locale-switch-host",
+        isMenu && "site-locale-switch-host--menu",
+      )}
       style={chipColorVars}
-      itemSelector=".astryx-segmented-control-item"
+      itemSelector=".site-locale-switch-item"
       layoutKey={locale}
     >
-      <SegmentedControl
+      <ToggleGroup
+        type="single"
         value={locale}
-        onChange={handleChange}
-        label="Bahasa / Language"
+        onValueChange={handleChange}
         size="sm"
-        className={
-          isMenu
-            ? "site-locale-switch site-locale-switch--menu"
-            : "site-locale-switch"
-        }
+        spacing={1}
+        aria-label="Bahasa / Language"
+        className={cn("site-locale-switch", isMenu && "site-locale-switch--menu")}
       >
         {LOCALES.flatMap((value, index) => [
           index > 0 && (
@@ -82,13 +79,16 @@ export function LocaleSwitcher({
               /
             </span>
           ),
-          <SegmentedControlItem
+          <ToggleGroupItem
             key={value}
             value={value}
-            label={LABELS[value]}
-          />,
+            className="site-locale-switch-item"
+            data-selected={value === locale ? "true" : undefined}
+          >
+            {LABELS[value]}
+          </ToggleGroupItem>,
         ])}
-      </SegmentedControl>
+      </ToggleGroup>
     </SlidingPillGroup>
   );
 }

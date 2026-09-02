@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@astryxdesign/core/Button";
-import { Icon } from "@astryxdesign/core/Icon";
+import { Button } from "@/components/ui/button";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { Magnetic } from "./home-motion";
 import { ArrowRightIcon } from "./overlay-icons";
@@ -12,13 +11,14 @@ export function SiteFooterCta({ label }: { label: string }) {
   return (
     <Magnetic>
       <Button
-        label={label}
-        variant="primary"
+        type="button"
         size="lg"
         onClick={open}
-        endContent={<Icon icon={ArrowRightIcon} />}
         className="home-contact-cta"
-      />
+      >
+        {label}
+        <ArrowRightIcon data-icon="inline-end" />
+      </Button>
     </Magnetic>
   );
 }

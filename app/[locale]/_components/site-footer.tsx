@@ -1,9 +1,3 @@
-import { Heading } from "@astryxdesign/core/Heading";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Link } from "@astryxdesign/core/Link";
-import { Section } from "@astryxdesign/core/Section";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
 import { CONTACT_LINKS } from "@/content/contact";
 import { HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
@@ -14,38 +8,24 @@ import { SiteFooterCta } from "./site-footer-cta";
  * yang sama, lalu legal + satelit LinkedIn/GitHub. Bukan form baru;
  * tanpa WA/IG (ADR-014). Copy dari `HOME_COPY` (T-021.2) — tidak dikarang.
  * Shell server; tombol modal = island `SiteFooterCta` (T-028.1).
+ *
+ * T-033.6: Section/VStack/Heading/Text/Link Astryx → semantik + class
+ * scoped; CTA = Button shadcn + Magnetic (gerak lama sampai T-036).
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
 
   return (
-    <Section
-      variant="transparent"
-      padding={0}
-      className="site-footer"
-      id="contact-cta"
-    >
-      <VStack className="site-footer-inner" gap={10}>
-        <VStack className="site-footer-band" gap={6}>
-          <Text type="label" color="secondary" className="home-kicker">
-            {copy.contactLabel}
-          </Text>
-          <Heading level={2} className="home-contact-title">
-            {copy.contactTitle}
-          </Heading>
-          <Text color="secondary" display="block" className="home-contact-body">
-            {copy.contactBody}
-          </Text>
+    <footer className="site-footer" id="contact-cta">
+      <div className="site-footer-inner">
+        <div className="site-footer-band">
+          <p className="home-kicker">{copy.contactLabel}</p>
+          <h2 className="home-contact-title">{copy.contactTitle}</h2>
+          <p className="home-contact-body">{copy.contactBody}</p>
           <SiteFooterCta label={copy.contactCta} />
-        </VStack>
+        </div>
 
-        <HStack
-          justify="between"
-          align="center"
-          gap={4}
-          wrap="wrap"
-          className="site-footer-legal"
-        >
+        <div className="site-footer-legal">
           {/*
            * Bug ditemukan 2026-08-16 saat regression test PR theme flash (tidak
            * terkait ADR-021/tema — pre-existing, ada di `main` juga): setiap
@@ -55,32 +35,28 @@ export function SiteFooter({ locale }: { locale: Locale }) {
            * yang React sendiri sebut di pesan error hydration-nya ("Date.now()
            * or Math.random() which changes each time it's called").
            * `suppressHydrationWarning` adalah pola resmi React untuk nilai
-           * seperti ini (react.dev/link/hydration-mismatch); dipasang di
-           * `<span>` pembungkus (bukan prop `Text` — tipe `TextProps` Astryx
-           * belum expose `suppressHydrationWarning` walau runtime-nya
-           * meneruskan lewat `...props`, jadi dibungkus manual di sini supaya
-           * tidak perlu `as any`). Angka tahun sendiri tidak berubah dalam
-           * satu sesi, jadi tidak ada dampak visual — cuma hilangkan warning.
+           * seperti ini (react.dev/link/hydration-mismatch). Angka tahun
+           * sendiri tidak berubah dalam satu sesi, jadi tidak ada dampak
+           * visual — cuma hilangkan warning.
            */}
-          <Text color="secondary" size="sm">
+          <p className="site-footer-legal-copy">
             © <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
             rezisaktiva
-          </Text>
-          <HStack gap={4} align="center">
+          </p>
+          <div className="site-footer-satellites">
             {CONTACT_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.id}
                 href={link.href}
-                isExternalLink
-                color="secondary"
-                size="sm"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
-          </HStack>
-        </HStack>
-      </VStack>
-    </Section>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

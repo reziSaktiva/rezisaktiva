@@ -1,18 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useId, useState, useSyncExternalStore } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { useAppShellMobile } from "@astryxdesign/core/AppShell";
-import { Button } from "@astryxdesign/core/Button";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Icon } from "@astryxdesign/core/Icon";
-import { MobileNavToggle } from "@astryxdesign/core/MobileNav";
-import { SideNavItem } from "@astryxdesign/core/SideNav";
-import { TopNav, TopNavHeading, TopNavItem } from "@astryxdesign/core/TopNav";
-import { VStack } from "@astryxdesign/core/VStack";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
+import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/locale";
 import {
   CONTACT_LABEL,
@@ -34,160 +34,184 @@ import { ThemeToggle } from "./theme-toggle";
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
- * Dua slot AppShell (`topNav` + `mobileNav`) dirender lewat komponen
- * terpisah karena harus dipasang sebagai prop yang berbeda pada AppShell,
- * bukan nested di dalam satu sama lain.
+ * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
+ * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
-  // Breakpoint sinkron dengan mobileNav={{ breakpoint: 'lg' }} pada AppShell
-  // (lg = 1024px) — sumber kebenaran tunggal untuk kapan hamburger aktif.
-  const { isMobile, isMobileNavOpen } = useAppShellMobile();
+  const isMobile = useMobileNavBreakpoint();
   const chipColorVars = useChipColorVars();
   const { open } = useContactModal();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileNavPath, setMobileNavPath] = useState(pathname);
+  const mobileNavId = useId();
+
+  if (mobileNavPath !== pathname) {
+    setMobileNavPath(pathname);
+    if (mobileNavOpen) {
+      setMobileNavOpen(false);
+    }
+  }
+  if (!isMobile && mobileNavOpen) {
+    setMobileNavOpen(false);
+  }
 
   return (
-    <TopNav
-      label="Main navigation"
-      className="site-top-nav"
-      heading={
-        <TopNavHeading
-          heading="rezisaktiva"
-          headingHref={`/${locale}`}
-          className="site-brand-heading"
-        />
-      }
-      centerContent={
-        // Ternary (bukan `&&`) supaya hasilnya `undefined`, bukan `false`,
-        // saat mobile — TopNav mengecek `centerContent != null` untuk
-        // memilih mode layout grid, dan `false != null` bernilai true.
-        !isMobile ? (
-          <SlidingPillGroup
-            gap={2}
-            padding={2}
-            align="center"
-            className="site-nav-chip"
-            style={chipColorVars}
-            itemSelector=".astryx-top-nav-item"
-            layoutKey={pathname}
-          >
-            {NAV_ITEMS.map((item) => (
-              <TopNavItem
+    <nav
+      aria-label="Main navigation"
+      className={cn("site-top-nav", isMobile && "site-top-nav--compact")}
+    >
+      <NextLink href={`/${locale}`} className="site-brand-heading">
+        rezisaktiva
+      </NextLink>
+      {!isMobile ? (
+        <SlidingPillGroup
+          gap={2}
+          padding={2}
+          align="center"
+          className="site-nav-chip"
+          style={chipColorVars}
+          itemSelector=".site-nav-item"
+          layoutKey={pathname}
+        >
+          {NAV_ITEMS.map((item) => {
+            const selected = isNavItemActive(pathname, locale, item);
+            return (
+              <Button
                 key={item.key}
-                as={NextLink}
-                href={item.href(locale)}
-                label={NAV_LABELS[locale][item.key]}
-                isSelected={isNavItemActive(pathname, locale, item)}
-              />
-            ))}
-          </SlidingPillGroup>
-        ) : undefined
-      }
-      endContent={
-        <HStack gap={3} align="center" className="site-header-tools">
-          {!isMobile && <LocaleSwitcher locale={locale} />}
-          <MobileNavToggle
-            label={
-              isMobileNavOpen
-                ? MENU_TOGGLE_LABEL[locale].close
-                : MENU_TOGGLE_LABEL[locale].open
-            }
-            className="site-nav-toggle"
-          >
-            <Icon icon={isMobileNavOpen ? CloseIcon : MenuIcon} />
-          </MobileNavToggle>
-          <Magnetic>
-            <ThemeToggle locale={locale} />
-          </Magnetic>
-          <Magnetic>
+                variant="ghost"
+                size="sm"
+                asChild
+                className="site-nav-item"
+                data-selected={selected ? "true" : undefined}
+                aria-current={selected ? "page" : undefined}
+              >
+                <NextLink href={item.href(locale)}>
+                  {NAV_LABELS[locale][item.key]}
+                </NextLink>
+              </Button>
+            );
+          })}
+        </SlidingPillGroup>
+      ) : null}
+      <div className="site-header-tools">
+        {!isMobile && <LocaleSwitcher locale={locale} />}
+        {isMobile ? (
+          <>
             <Button
-              label={CONTACT_LABEL[locale]}
-              variant="primary"
-              size="sm"
-              onClick={open}
-              className="site-contact-button"
-            />
-          </Magnetic>
-        </HStack>
-      }
-    />
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="site-nav-toggle"
+              aria-label={
+                mobileNavOpen
+                  ? MENU_TOGGLE_LABEL[locale].close
+                  : MENU_TOGGLE_LABEL[locale].open
+              }
+              aria-expanded={mobileNavOpen}
+              aria-controls={mobileNavId}
+              onClick={() => setMobileNavOpen((isOpen) => !isOpen)}
+            >
+              {mobileNavOpen ? <CloseIcon /> : <MenuIcon />}
+            </Button>
+            <Sheet
+              open={mobileNavOpen}
+              onOpenChange={setMobileNavOpen}
+              modal={false}
+            >
+              <SheetContent
+                id={mobileNavId}
+                side="top"
+                showCloseButton={false}
+                showOverlay={false}
+                aria-describedby={undefined}
+                className={cn(
+                  "site-mobile-nav gap-2 border-0 p-0 shadow-none",
+                  "inset-x-auto bottom-auto h-auto w-auto max-w-none sm:max-w-none",
+                  "data-open:animate-none data-closed:animate-none",
+                )}
+                onOpenAutoFocus={(event) => event.preventDefault()}
+                onCloseAutoFocus={(event) => event.preventDefault()}
+                onPointerDownOutside={(event) => {
+                  const target = event.target;
+                  if (
+                    target instanceof Element &&
+                    target.closest(".site-nav-toggle")
+                  ) {
+                    event.preventDefault();
+                  }
+                }}
+              >
+                <SheetHeader className="sr-only">
+                  <SheetTitle>{MENU_LABEL[locale]}</SheetTitle>
+                </SheetHeader>
+                <SlidingPillGroup
+                  orientation="vertical"
+                  gap={0.5}
+                  padding={1}
+                  className="site-mobile-nav-chip"
+                  style={chipColorVars}
+                  itemSelector=".site-mobile-nav-item"
+                  layoutKey={pathname}
+                >
+                  {NAV_ITEMS.map((item) => {
+                    const selected = isNavItemActive(pathname, locale, item);
+                    return (
+                      <Button
+                        key={item.key}
+                        variant="ghost"
+                        asChild
+                        className="site-mobile-nav-item"
+                        data-selected={selected ? "true" : undefined}
+                        aria-current={selected ? "page" : undefined}
+                        onClick={() => setMobileNavOpen(false)}
+                      >
+                        <NextLink href={item.href(locale)}>
+                          {NAV_LABELS[locale][item.key]}
+                        </NextLink>
+                      </Button>
+                    );
+                  })}
+                </SlidingPillGroup>
+                <LocaleSwitcher locale={locale} variant="menu" />
+              </SheetContent>
+            </Sheet>
+          </>
+        ) : null}
+        <Magnetic>
+          <ThemeToggle locale={locale} />
+        </Magnetic>
+        <Magnetic>
+          <Button
+            type="button"
+            size="sm"
+            onClick={open}
+            className="site-contact-button"
+          >
+            {CONTACT_LABEL[locale]}
+          </Button>
+        </Magnetic>
+      </div>
+    </nav>
   );
 }
 
-export function SiteMobileNav({ locale }: { locale: Locale }) {
-  const pathname = usePathname();
-  const chipColorVars = useChipColorVars();
-  const { closeMobileNav, isMobileNavOpen, mobileNavId } = useAppShellMobile();
-  const closeMobileNavRef = useRef(closeMobileNav);
+/** Hamburger <1024px (ADR-020). Selaras `@media (min-width: 1024px)` desktop. */
+const MOBILE_NAV_QUERY = "(max-width: 1023px)";
 
-  useEffect(() => {
-    closeMobileNavRef.current = closeMobileNav;
-  }, [closeMobileNav]);
+function useMobileNavBreakpoint(): boolean {
+  const subscribe = useCallback((onStoreChange: () => void) => {
+    const media = window.matchMedia(MOBILE_NAV_QUERY);
+    media.addEventListener("change", onStoreChange);
+    return () => media.removeEventListener("change", onStoreChange);
+  }, []);
 
-  useEffect(() => {
-    closeMobileNavRef.current();
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!isMobileNavOpen) {
-      return;
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeMobileNavRef.current();
-      }
-    };
-
-    const onPointerDown = (event: PointerEvent) => {
-      const target = event.target;
-      if (!(target instanceof Element)) {
-        return;
-      }
-      if (target.closest(".site-mobile-nav, .site-nav-toggle")) {
-        return;
-      }
-      closeMobileNavRef.current();
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.removeEventListener("pointerdown", onPointerDown);
-    };
-  }, [isMobileNavOpen]);
-
-  return (
-    <VStack
-      id={mobileNavId}
-      gap={2}
-      className="site-mobile-nav"
-      hidden={!isMobileNavOpen}
-      role="navigation"
-      aria-label={MENU_LABEL[locale]}
-    >
-      <SlidingPillGroup
-        orientation="vertical"
-        gap={0.5}
-        padding={1}
-        className="site-mobile-nav-chip"
-        style={chipColorVars}
-        itemSelector=".astryx-side-nav-item"
-        layoutKey={pathname}
-      >
-        {NAV_ITEMS.map((item) => (
-          <SideNavItem
-            key={item.key}
-            as={NextLink}
-            href={item.href(locale)}
-            label={NAV_LABELS[locale][item.key]}
-            isSelected={isNavItemActive(pathname, locale, item)}
-            onClick={closeMobileNav}
-          />
-        ))}
-      </SlidingPillGroup>
-      <LocaleSwitcher locale={locale} variant="menu" />
-    </VStack>
+  const getSnapshot = useCallback(
+    () => window.matchMedia(MOBILE_NAV_QUERY).matches,
+    [],
   );
+
+  const getServerSnapshot = useCallback(() => false, []);
+
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

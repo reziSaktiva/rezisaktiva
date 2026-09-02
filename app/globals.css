@@ -221,13 +221,71 @@ html::-webkit-scrollbar-button {
   height: 0;
 }
 
+/* Skip-to-content — paritas a11y AppShell, tanpa dependensi i18n Astryx. */
+.site-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  z-index: 9999;
+}
+
+.site-skip-link:focus {
+  position: fixed;
+  top: var(--spacing-2);
+  inset-inline-start: var(--spacing-2);
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding-block: var(--spacing-2);
+  padding-inline: var(--spacing-4);
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  background-color: var(--color-background-surface);
+  color: var(--color-text-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-chrome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.site-chrome-main {
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+.site-chrome-main:focus {
+  outline: none;
+}
+
 /* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */
 .site-top-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 3.75rem;
   padding-block: 0.7rem;
   padding-inline: max(var(--spacing-4), env(safe-area-inset-left, 0px))
     max(var(--spacing-4), env(safe-area-inset-right, 0px));
   flex-wrap: nowrap;
+}
+
+.site-top-nav--compact {
+  display: flex;
 }
 
 @media (min-width: 1024px) {
@@ -244,6 +302,9 @@ html::-webkit-scrollbar-button {
   line-height: 1.1;
   white-space: nowrap;
   flex-shrink: 0;
+  justify-self: start;
+  color: var(--color-text-primary);
+  text-decoration: none;
 }
 
 @media (min-width: 1024px) {
@@ -284,16 +345,34 @@ html::-webkit-scrollbar-button {
   background-color: var(--chip-bg);
   border-radius: 16px;
 }
-.site-nav-chip .astryx-top-nav-item {
+.site-nav-chip .site-nav-item {
   position: relative;
   z-index: 1;
+  height: auto;
+  min-height: 0;
   background-color: transparent;
   color: var(--chip-fg);
   border-radius: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  padding-block: var(--spacing-1-5);
+  padding-inline: var(--spacing-3);
+  box-shadow: none;
+  transform: none;
   transition: color 200ms ease;
 }
-.site-nav-chip .astryx-top-nav-item[data-selected],
-.site-nav-chip .astryx-top-nav-item.is-pill-on {
+.site-nav-chip .site-nav-item:hover,
+.site-nav-chip .site-nav-item:focus,
+.site-nav-chip .site-nav-item:focus-visible,
+.site-nav-chip .site-nav-item:active,
+.site-nav-chip .site-nav-item[data-selected] {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  transform: none;
+}
+.site-nav-chip .site-nav-item[data-selected],
+.site-nav-chip .site-nav-item.is-pill-on {
   background-color: transparent;
   color: var(--chrome-pill-fg);
 }
@@ -307,15 +386,21 @@ html::-webkit-scrollbar-button {
 .site-mobile-nav {
   position: fixed;
   z-index: 55;
-  top: calc(var(--appshell-header-height, 3.75rem) + 0.2rem);
-  right: max(var(--spacing-3), env(safe-area-inset-right, 0px));
-  left: max(var(--spacing-3), env(safe-area-inset-left, 0px));
-  width: auto;
+  top: calc(var(--appshell-header-height, 3.75rem) + 0.2rem) !important;
+  right: max(var(--spacing-3), env(safe-area-inset-right, 0px)) !important;
+  left: max(var(--spacing-3), env(safe-area-inset-left, 0px)) !important;
+  bottom: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
   padding: 0.4rem;
   overflow: visible;
-  background-color: var(--chip-bg);
+  background-color: var(--chip-bg) !important;
+  border: none !important;
   border-radius: 1.15rem;
-  box-shadow: 0 18px 40px rgb(0 0 0 / 0.14);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.14) !important;
+  animation: none !important;
+  transition: none !important;
 }
 
 /*
@@ -338,7 +423,7 @@ html::-webkit-scrollbar-button {
   border-radius: 0.8rem;
 }
 
-.site-mobile-nav-chip .astryx-side-nav-item {
+.site-mobile-nav-chip .site-mobile-nav-item {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -348,18 +433,29 @@ html::-webkit-scrollbar-button {
   color: var(--chip-fg);
   border-radius: 0.8rem;
   font-size: 0.9375rem;
+  font-weight: 500;
   padding-block: 0.65rem;
   padding-inline: 0.95rem;
   gap: 0;
+  text-decoration: none;
+  box-shadow: none;
+  transform: none;
   transition: color 200ms ease;
 }
 
-.site-mobile-nav-chip .astryx-side-nav-item svg {
-  display: none;
+.site-mobile-nav-chip .site-mobile-nav-item:hover,
+.site-mobile-nav-chip .site-mobile-nav-item:focus,
+.site-mobile-nav-chip .site-mobile-nav-item:focus-visible,
+.site-mobile-nav-chip .site-mobile-nav-item:active,
+.site-mobile-nav-chip .site-mobile-nav-item[data-selected] {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  transform: none;
 }
 
-.site-mobile-nav-chip .astryx-side-nav-item[data-selected],
-.site-mobile-nav-chip .astryx-side-nav-item.is-pill-on {
+.site-mobile-nav-chip .site-mobile-nav-item[data-selected],
+.site-mobile-nav-chip .site-mobile-nav-item.is-pill-on {
   background-color: transparent;
   color: var(--chrome-pill-fg);
 }
@@ -378,7 +474,7 @@ html::-webkit-scrollbar-button {
   padding-inline: 0.45rem;
 }
 
-.site-locale-switch--menu .astryx-segmented-control-item {
+.site-locale-switch--menu .site-locale-switch-item {
   min-width: 2.35rem;
   min-height: 2rem;
   font-size: 0.8125rem;
@@ -398,9 +494,12 @@ html::-webkit-scrollbar-button {
   padding-inline: var(--spacing-3);
   gap: var(--spacing-1);
 }
-.site-locale-switch .astryx-segmented-control-item {
+.site-locale-switch .site-locale-switch-item {
   position: relative;
   z-index: 1;
+  height: auto;
+  min-height: 0;
+  min-width: 0;
   background-color: transparent;
   color: var(--chip-fg);
   border-radius: 16px;
@@ -409,26 +508,27 @@ html::-webkit-scrollbar-button {
   transition: color 200ms ease;
 }
 /*
- * SegmentedControl Astryx punya fill + shadow sendiri untuk selected, dan
- * overlay hover untuk item non-selected. Itu muncul bersamaan dengan
- * `.site-pill-indicator` — residual di bahasa yang terpilih saat hover
- * bahasa lain. Nav TopNav tidak punya fill itu setelah di-override; di
- * sini StyleX selected/hover harus dilawan eksplisit (termasuk :hover).
+ * ToggleGroupItem punya fill muted + ring fokus. Itu muncul bersamaan
+ * dengan `.site-pill-indicator` — residual di bahasa yang terpilih saat
+ * hover bahasa lain. Dilawan eksplisit (termasuk :hover / data-state).
  * Jangan sentuh `.site-nav-chip`.
  */
-.site-locale-switch .astryx-segmented-control-item,
-.site-locale-switch .astryx-segmented-control-item:hover,
-.site-locale-switch .astryx-segmented-control-item:focus,
-.site-locale-switch .astryx-segmented-control-item:focus-visible,
-.site-locale-switch .astryx-segmented-control-item[data-selected],
-.site-locale-switch .astryx-segmented-control-item[data-selected]:hover,
-.site-locale-switch .astryx-segmented-control-item.selected {
+.site-locale-switch .site-locale-switch-item,
+.site-locale-switch .site-locale-switch-item:hover,
+.site-locale-switch .site-locale-switch-item:focus,
+.site-locale-switch .site-locale-switch-item:focus-visible,
+.site-locale-switch .site-locale-switch-item[data-selected],
+.site-locale-switch .site-locale-switch-item[data-selected]:hover,
+.site-locale-switch .site-locale-switch-item[data-state="on"],
+.site-locale-switch .site-locale-switch-item[data-state="on"]:hover,
+.site-locale-switch .site-locale-switch-item[aria-pressed="true"] {
   background-color: transparent !important;
   background-image: none !important;
   box-shadow: none !important;
 }
-.site-locale-switch .astryx-segmented-control-item[data-selected],
-.site-locale-switch .astryx-segmented-control-item.is-pill-on {
+.site-locale-switch .site-locale-switch-item[data-selected],
+.site-locale-switch .site-locale-switch-item[data-state="on"],
+.site-locale-switch .site-locale-switch-item.is-pill-on {
   color: var(--chrome-pill-fg);
 }
 
@@ -479,17 +579,23 @@ html::-webkit-scrollbar-button {
  */
 .site-contact-button,
 .home-contact-cta,
-.site-theme-toggle .astryx-toggle-button,
-.site-theme-toggle .astryx-toggle-button[data-is-pressed="true"],
-.site-theme-toggle .astryx-toggle-button[aria-pressed="true"] {
+.site-theme-toggle-btn,
+.site-theme-toggle-btn[data-state="on"],
+.site-theme-toggle-btn[aria-pressed="true"] {
   background-image: none !important;
   background-color: var(--color-background-inverted) !important;
   color: var(--color-background-surface) !important;
   border-radius: var(--radius-full);
+  cursor: pointer;
+  transform: none;
   transition:
     background-color var(--duration-medium-min) var(--ease-standard),
     color var(--duration-medium-min) var(--ease-standard),
     box-shadow var(--duration-medium-min) var(--ease-standard);
+}
+.site-contact-button,
+.home-contact-cta {
+  box-shadow: var(--elev-3d) !important;
 }
 .site-contact-button {
   height: 2.25rem;
@@ -499,7 +605,7 @@ html::-webkit-scrollbar-button {
   font-size: 0.75rem;
 }
 .site-theme-toggle,
-.site-theme-toggle .astryx-toggle-button {
+.site-theme-toggle-btn {
   width: 2.25rem;
   height: 2.25rem;
 }
@@ -513,7 +619,7 @@ html::-webkit-scrollbar-button {
     font-size: inherit;
   }
   .site-theme-toggle,
-  .site-theme-toggle .astryx-toggle-button {
+  .site-theme-toggle-btn {
     width: var(--size-element-lg);
     height: var(--size-element-lg);
   }
@@ -525,13 +631,31 @@ html::-webkit-scrollbar-button {
   min-width: 2.25rem !important;
   flex-shrink: 0;
   border-radius: var(--radius-full) !important;
+  border-color: transparent !important;
   background-color: var(--chip-bg) !important;
   color: var(--chip-fg) !important;
+  box-shadow: var(--elev-3d) !important;
 }
 
 .site-nav-toggle:hover {
   background-color: var(--color-accent) !important;
   color: var(--color-on-accent) !important;
+  box-shadow: var(--elev-3d-hover) !important;
+}
+
+.site-nav-toggle[aria-expanded="true"]:not(:hover) {
+  background-color: var(--chip-bg) !important;
+  color: var(--chip-fg) !important;
+}
+
+.site-nav-toggle:active {
+  box-shadow: var(--elev-3d-pressed) !important;
+}
+
+.site-nav-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: var(--elev-3d) !important;
 }
 
 .site-nav-toggle svg {
@@ -540,8 +664,17 @@ html::-webkit-scrollbar-button {
 }
 
 .site-header-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
   flex-shrink: 0;
   flex-wrap: nowrap;
+  justify-self: end;
+  justify-content: flex-end;
+}
+
+.site-top-nav--compact .site-header-tools {
+  margin-inline-start: auto;
 }
 
 @media (max-width: 1023px) {
@@ -555,12 +688,55 @@ html::-webkit-scrollbar-button {
 }
 .site-contact-button:hover,
 .home-contact-cta:hover,
-.site-theme-toggle .astryx-toggle-button:hover,
-.site-theme-toggle .astryx-toggle-button[data-is-pressed="true"]:hover,
-.site-theme-toggle .astryx-toggle-button[aria-pressed="true"]:hover {
+.site-theme-toggle-btn:hover,
+.site-theme-toggle-btn[data-state="on"]:hover,
+.site-theme-toggle-btn[aria-pressed="true"]:hover {
   background-image: none !important;
   background-color: var(--color-accent) !important;
   color: var(--color-on-accent) !important;
+}
+
+.site-contact-button:hover,
+.home-contact-cta:hover {
+  box-shadow: var(--elev-3d-hover) !important;
+}
+
+.site-contact-button:active,
+.home-contact-cta:active {
+  box-shadow: var(--elev-3d-pressed) !important;
+  transform: none;
+}
+
+.site-contact-button:focus-visible,
+.home-contact-cta:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: var(--elev-3d) !important;
+}
+
+.site-theme-toggle-btn {
+  min-width: 0;
+  padding: 0;
+  box-shadow: var(--elev-3d) !important;
+}
+
+.site-theme-toggle-btn:hover {
+  box-shadow: var(--elev-3d-hover) !important;
+}
+
+.site-theme-toggle-btn:active {
+  box-shadow: var(--elev-3d-pressed) !important;
+}
+
+.site-theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: var(--elev-3d) !important;
+}
+
+.site-theme-toggle-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 /*
@@ -569,11 +745,13 @@ html::-webkit-scrollbar-button {
  * class (pola chrome T-013), token Astryx untuk warna/spacing, clamp hero
  * meniru mockup karena tidak ada step token yang setara.
  *
- * Header overlay: mockup `.header-quiet.fixed` (transparan, di atas hero).
- * AppShell height=auto sudah sticky; background dikosongkan supaya hero
+ * Header overlay: `.header-quiet.fixed` (transparan, di atas hero).
+ * `SiteChrome` header sticky; background dikosongkan supaya hero
  * 100svh bisa masuk di bawah nav.
  */
 .astryx-app-shell-header {
+  position: sticky;
+  top: 0;
   z-index: 50;
   overflow: visible;
   background-color: transparent;
@@ -601,6 +779,8 @@ html::-webkit-scrollbar-button {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .home-hero {
@@ -903,6 +1083,8 @@ button.home-work-tile,
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.03em;
   line-height: 0.9;
+  color: var(--color-text-primary);
+  margin: 0;
 }
 
 @media (min-width: 640px) {
@@ -920,6 +1102,8 @@ button.home-work-tile,
 .home-contact-body {
   max-width: 28rem;
   line-height: 1.625;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 .home-contact-cta {
@@ -927,6 +1111,7 @@ button.home-work-tile,
   height: auto;
   padding-block: var(--spacing-3);
   padding-inline: var(--spacing-6);
+  font-size: var(--font-size-base);
 }
 
 .home-magnetic {
@@ -1547,13 +1732,56 @@ button.home-work-tile,
 
 .site-footer-inner,
 .site-footer-band {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
+.site-footer-inner {
+  gap: var(--spacing-10);
+}
+
+.site-footer-band {
+  gap: var(--spacing-6);
+}
+
 .site-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
   padding-block-start: var(--spacing-6);
   border-block-start: 1px solid
     color-mix(in srgb, var(--color-border-default) 55%, transparent);
+}
+
+.site-footer-legal-copy {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.site-footer-satellites {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.site-footer-satellites a {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: color var(--duration-medium-min) var(--ease-standard);
+}
+
+.site-footer-satellites a:hover {
+  color: var(--color-text-primary);
+}
+
+.site-footer-satellites a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .work-hero {
