@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). **T-036** ✅ (T-036.1–T-036.6). T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Status rilis:** ✅ **Done** (2026-09-03, **T-037.7**). **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). **T-036** ✅ (T-036.1–T-036.6). **T-037** ✅ (T-037.1–T-037.7). Berikutnya **T-031**. **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`); T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -274,7 +274,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-037 — Cabut Astryx, docs/rule, QA paritas
 
-* **Status:** ⏳ Open
+* **Status:** ✅ Done
 * **Domain:** Engineering + Documentation + UI/UX
 * **Depends:** T-033 … T-036 (tidak ada sisa impor Astryx di UI)
 * **Baca dulu:** `package.json`, `.cursor/rules/*`, `AGENTS.md`, `product-discovery/06-engineering/*`, `ARCHITECTURE_OVERVIEW.md`
@@ -288,7 +288,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 - [x] **T-037.4** — Docs/rule: `design-tokens.md`, `code-discipline.md` + `.mdc`, `dependency-strategy.md`, `06-engineering/README.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md` (indeks rule). **Ganti** `.cursor/rules/xds.mdc` jadi rule shadcn (alwaysApply) — konvensi CLI `pnpm exec`/`pnpm dlx shadcn`, tanpa Tailwind-as-coexist Astryx, tanpa StyleX. `ui-ux-mockup-check.mdc`: acuan = `app/` + shadcn/Tailwind, bukan Astryx.
 - [x] **T-037.5** — `.cursor/mcp.json`: hapus `xds`. shadcn + motion tetap. Jangan sebut nama model/tool terlarang di commit.
 - [x] **T-037.6** — QA paritas vs **T-032.1** ([`baselines/t-032.1/`](../baselines/t-032.1/)): Home/About/Work; Contact/QI/sheet; chrome; light/dark; 320/375/desktop; reduced-motion; locale ID/EN; typecheck/lint/build. Catat gap yang tidak 1:1 (jika ada) — **perbaiki dulu** jika bentuk berubah tanpa keputusan. Foto Unsplash tetap bukan blocker.
-- [ ] **T-037.7** — Snapshot/Fokus/COMPLETE_TASK: rilis v14 Done; Active Mode Validation; berikutnya **T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028.
+- [x] **T-037.7** — Snapshot/Fokus/COMPLETE_TASK: rilis v14 Done; Active Mode Validation; berikutnya **T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028.
 
 ---
 

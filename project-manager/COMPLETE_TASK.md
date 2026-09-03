@@ -16,6 +16,11 @@ Format entri:
 
 ## [2026-09-03]
 ### Changed
+- **T-037.7:** rilis v14 (**T-032…T-037**) ✅ Done. Snapshot/Fokus: Active Mode Validation, **prioritas T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028 (tidak dikembalikan).
+- **T-037** parent ✅. `tasks/v14-shadcn-tailwind.md` + indeks TASKS v14 Done; `v13-metadata.md` T-031 Open prioritas.
+
+## [2026-09-03]
+### Changed
 - **T-037.6:** QA vs [`baselines/t-032.1/`](baselines/t-032.1/). `pnpm typecheck` / `lint` / `build` hijau. Kanvas/fg body+html, chip, scrollbar, aksen light/dark cocok dengan `computed-tokens.json` (320 + desktop). Overlay Contact/QI/sheet buka-tutup Escape; locale `/en` + `/id` (375); reduced-motion tanpa cursor ring; page-vt lock hilang setelah enter. Capture overlay di `capture.mjs` menunggu `#ct-panel` / `#qi-panel` / `.ps-panel`.
 - Gap yang **bukan** perubahan bentuk: token craft `--color-*` tersimpan sebagai pasangan `light-dark` (computed dua hex), bukan hex tunggal Astryx; cursor ring di-unmount saat reduced-motion (T-036.5), bukan `display: none`. Foto Unsplash tetap placeholder.
 
