@@ -14,6 +14,13 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-03] — Dependabot PR #61 ditutup
+
+**Phase:** Validation
+**Summary:** Dependabot membuka PR #61 (grup patch-and-minor) yang mencampur Astryx 0.4.6→0.5.1 dengan Next 16.3.3. Preview Vercel Blocked (PR bot); CI gagal di `theme:check` karena output tema Astryx stale.
+**Key Decision/Insight:** Jangan merge #61. Astryx tidak di-bump (T-037). Next 16.3.3 di PR terpisah. Dependabot ignore `@astryxdesign/*` sampai Astryx dicabut.
+**Impact:** PR #61 closed; `.github/dependabot.yml`; bump `next` / `eslint-config-next`.
+
 ## [2026-09-02] — PR #58 hanya T-032
 
 **Phase:** Validation

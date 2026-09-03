@@ -16,6 +16,13 @@ Format entri:
 
 ## [2026-09-03]
 ### Changed
+- Dependabot npm: ignore `@astryxdesign/*` sampai T-037 (ADR-028) — cegah PR grup seperti #61.
+- `next` + `eslint-config-next` 16.3.2 → 16.3.3 (patch keamanan; tanpa bump Astryx).
+### Fixed
+- PR Dependabot #61 ditutup: bump Astryx 0.5.1 tercampur dengan patch Next.
+
+## [2026-09-03]
+### Changed
 - `next.config.ts`: `images.qualities` `[75, 90]`; `allowedDevOrigins` `127.0.0.1` + `localhost` (HMR dari origin itu tidak diblokir).
 ### Fixed
 - Warning Next Image `quality "90"` di luar allowlist; request `_next` dari `127.0.0.1` di `next dev`.
