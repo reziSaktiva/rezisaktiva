@@ -10,17 +10,19 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
+  SheetOverlay,
   SheetTitle,
 } from "@/components/ui/sheet";
 import type { Locale } from "@/lib/locale";
 import { projectsHref } from "@/lib/site-url";
-import { cn } from "@/lib/utils";
 import { CloseIcon } from "./overlay-icons";
+import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 import { WorkplaceLine } from "./workplace-line";
 
 /**
- * Quick Info overlay (T-020.2, ADR-022; T-035.2) — tab tepi kanan → Sheet.
- * Bukan route; bukan form Contact. Tetap di Work index (ADR-027); sheet M10 overlay terpisah.
+ * Quick Info overlay (T-020.2, ADR-022; T-035.2, T-036.3) — tab tepi kanan →
+ * Sheet. Enter/exit = transisi CSS token + `forceMount`. Bukan route;
+ * bukan form Contact. Tetap di Work index (ADR-027); sheet M10 terpisah.
  */
 export function QuickInfo({ locale }: { locale: Locale }) {
   const copy = QUICK_INFO_COPY[locale];
@@ -46,6 +48,9 @@ export function QuickInfo({ locale }: { locale: Locale }) {
     };
   }, []);
 
+  useOverlayDocumentLock(isOpen, "qi-lock", "--duration-sheet-panel", 550);
+  const present = useOverlayPresence(isOpen, "--duration-sheet-panel", 550);
+
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -54,10 +59,6 @@ export function QuickInfo({ locale }: { locale: Locale }) {
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
-    document.documentElement.classList.add("qi-lock");
-    return () => {
-      document.documentElement.classList.remove("qi-lock");
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -95,6 +96,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
           }
         }}
       >
+        {present ? (
         <SheetContent
           id="qi-panel"
           side="right"
@@ -102,19 +104,16 @@ export function QuickInfo({ locale }: { locale: Locale }) {
           showCloseButton={false}
           aria-describedby={undefined}
           aria-labelledby={titleId}
-          overlayClassName={cn("qi-scrim", isOpen && "is-open")}
-          overlayProps={{
-            "data-overlay-scrim": "",
-            "data-lenis-prevent": "",
-          }}
+          overlay={
+            <SheetOverlay
+              forceMount
+              className="qi-scrim"
+              data-overlay-scrim=""
+              data-lenis-prevent=""
+            />
+          }
           data-lenis-prevent=""
-          className={cn(
-            "qi-panel gap-0 border-0 p-0 shadow-none sm:max-w-none",
-            "data-[side=right]:w-full data-[side=right]:sm:max-w-none",
-            "data-open:animate-none data-closed:animate-none",
-            "data-[side=right]:data-open:slide-in-from-right-0 data-[side=right]:data-closed:slide-out-to-right-0",
-            isOpen && "is-open",
-          )}
+          className="qi-panel gap-0 border-0 p-0 shadow-none"
           onOpenAutoFocus={(event) => {
             event.preventDefault();
             closeBtnRef.current?.focus();
@@ -193,6 +192,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
             </div>
           </div>
         </SheetContent>
+        ) : null}
       </Sheet>
     </>
   );

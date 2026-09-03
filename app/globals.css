@@ -58,6 +58,13 @@
   --duration-page-enter: 0.4s;
   --delay-page-enter: 0.4s;
   --ease-page-transition: cubic-bezier(0.65, 0, 0.43, 1);
+  /* Overlay Dialog/Sheet/Drawer (T-036.3) — tween, bukan bounce. */
+  --duration-ct-scrim: 0.35s;
+  --duration-ct-panel-opacity: 0.3s;
+  --duration-ct-panel: 0.4s;
+  --duration-sheet-scrim: 0.45s;
+  --duration-sheet-panel: 0.55s;
+  --ease-overlay: cubic-bezier(0.22, 1, 0.36, 1);
   /*
    * Elevasi timbul 3D untuk chrome chip + seluruh `.astryx-button`.
    * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
@@ -874,16 +881,6 @@ html::-webkit-scrollbar-button {
   letter-spacing: -0.055em;
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  opacity: 0;
-  transform: translateY(0.4em);
-  transition:
-    opacity var(--duration-medium-max) var(--ease-standard),
-    transform var(--duration-medium-max) var(--ease-standard);
-}
-
-.home-hero-line.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .home-hero-line-2 {
@@ -941,6 +938,14 @@ html::-webkit-scrollbar-button {
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.03em;
   line-height: 1.1;
+}
+
+.home-work-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-6);
 }
 
 .home-cta-underline {
@@ -1076,6 +1081,33 @@ button.home-work-tile,
   pointer-events: none;
 }
 
+.home-work-tile-scrim,
+.home-work-tile-meta {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.home-work-tile:focus-within .home-work-tile-scrim,
+.home-work-tile:focus-within .home-work-tile-meta {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .home-work-tile:hover:not(:disabled, [aria-disabled="true"])
+    .home-work-tile-scrim,
+  .home-work-tile:hover:not(:disabled, [aria-disabled="true"])
+    .home-work-tile-meta {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .home-work-tile-scrim,
+  .home-work-tile-meta {
+    opacity: 1;
+  }
+}
+
 .home-work-tile-title,
 .home-work-tile-outcome {
   color: inherit;
@@ -1132,21 +1164,7 @@ button.home-work-tile,
 }
 
 .home-magnetic {
-  transition: transform var(--duration-fast-max) var(--ease-standard);
   display: inline-flex;
-}
-
-.home-reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity var(--duration-slow-min) var(--ease-standard),
-    transform var(--duration-slow-min) var(--ease-standard);
-}
-
-.home-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .home-cursor-ring {
@@ -1240,6 +1258,10 @@ button.home-work-tile,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-cursor-ring {
+    display: none;
+  }
+
   .home-reveal,
   .home-hero-line,
   .home-magnetic,
@@ -1277,15 +1299,28 @@ button.home-work-tile,
     transform: translateY(-50%) !important;
   }
 
-  .qi-panel {
-    visibility: hidden;
+  .ct-panel[data-slot="dialog-content"],
+  .ct-panel {
+    transform: translate(-50%, -50%) !important;
   }
 
-  .qi-wrap.is-open .qi-panel,
-  .qi-panel.is-open,
-  .qi-panel[data-open] {
-    visibility: visible;
-    transform: none !important;
+  .ct-scrim[data-state="closed"],
+  .qi-scrim[data-state="closed"] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .ct-panel[data-state="closed"] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .qi-panel[data-state="closed"] {
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(100%) !important;
   }
 
   .ps-panel {
@@ -1299,19 +1334,6 @@ button.home-work-tile,
     visibility: visible;
     transform: none !important;
   }
-
-  .ct-panel {
-    visibility: hidden;
-  }
-
-  .ct-wrap.is-open .ct-panel,
-  .ct-panel.is-open,
-  .ct-panel[data-open] {
-    visibility: visible;
-    translate: none;
-    transform: translate(-50%, -50%) !important;
-    opacity: 1 !important;
-  }
 }
 
 /*
@@ -1323,19 +1345,6 @@ button.home-work-tile,
 .page-word {
   display: inline;
   font-family: "General Sans", var(--font-family-heading);
-  opacity: 0;
-  transform: translateY(0.4em);
-  filter: blur(4px);
-  transition:
-    opacity var(--duration-slow-min) var(--ease-standard),
-    transform var(--duration-slow-min) var(--ease-standard),
-    filter var(--duration-slow-min) var(--ease-standard);
-}
-
-.page-word.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
 }
 
 .page-word--compact {
@@ -1993,16 +2002,21 @@ button.home-work-tile,
   inset: 0;
   z-index: 90;
   background: rgba(10, 15, 26, 0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
   backdrop-filter: none;
+  opacity: 0;
+  pointer-events: none !important;
+  transition: opacity var(--duration-ct-scrim) ease;
 }
 
-.ct-scrim.is-open,
-.ct-scrim[data-open] {
+.ct-scrim[data-state="open"] {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto !important;
+}
+
+@starting-style {
+  .ct-scrim[data-state="open"] {
+    opacity: 0;
+  }
 }
 
 .ct-wrap {
@@ -2014,10 +2028,8 @@ button.home-work-tile,
   position: fixed;
   top: 50%;
   left: 50%;
-  /* Dialog shadcn memakai `translate: -50% -50%` (Tailwind). Kalau ikut
-   * `transform: translate(-50%, -50%)` di bawah, kartu terpusat dua kali
-   * dan keluar viewport (T-035.5). */
-  translate: none;
+  /* Pusatkan lewat `translate(-50%, -50%)`. Scale enter/exit = keyframe
+   * `.ct-panel[data-state]` (T-036.3/T-036.6). */
   z-index: 92;
   width: min(880px, calc(100vw - 2rem));
   max-width: none;
@@ -2032,23 +2044,29 @@ button.home-work-tile,
   color: #ede9e1;
   padding: 2.25rem;
   box-shadow: 0 40px 90px -24px rgba(0, 0, 0, 0.55);
-  transform: translate(-50%, -50%) scale(0.96);
   opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
   pointer-events: none;
   visibility: hidden;
   transition:
-    opacity 0.3s ease,
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.4s linear;
+    opacity var(--duration-ct-panel-opacity) ease,
+    transform var(--duration-ct-panel) var(--ease-overlay),
+    visibility var(--duration-ct-panel) linear;
 }
 
-.ct-wrap.is-open .ct-panel,
-.ct-panel.is-open,
-.ct-panel[data-open] {
-  transform: translate(-50%, -50%) scale(1);
+.ct-panel[data-slot="dialog-content"][data-state="open"],
+.ct-panel[data-state="open"] {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
   pointer-events: auto;
   visibility: visible;
+}
+
+@starting-style {
+  .ct-panel[data-state="open"] {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
 }
 
 .ct-close {
@@ -2348,24 +2366,13 @@ html.lenis.page-vt-lock.lenis-stopped {
   pointer-events: none;
   background-color: var(--color-background-body);
   backface-visibility: hidden;
-}
-
-.page-vt-clone.is-exiting {
-  animation: page-vt-exit var(--duration-page-exit) var(--ease-page-transition)
-    both;
+  will-change: transform;
 }
 
 .page-vt-clone .astryx-app-shell-header,
 .page-vt-clone .home-cursor-ring,
 .page-vt-clone .site-mobile-nav {
   visibility: hidden !important;
-}
-
-@keyframes page-vt-exit {
-  to {
-    transform: translateY(-100vh) scale(0.5);
-    transform: translateY(-100dvh) scale(0.5);
-  }
 }
 
 @keyframes page-vt-enter {
@@ -2392,8 +2399,6 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-vt-clone,
-  .page-vt-clone.is-exiting,
   html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
   html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
   html.page-vt-entering #astryx-app-shell-main,
@@ -2453,16 +2458,21 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   inset: 0;
   z-index: 70;
   background: color-mix(in srgb, var(--color-text-primary) 28%, transparent);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.45s ease;
   backdrop-filter: none;
+  opacity: 0;
+  pointer-events: none !important;
+  transition: opacity var(--duration-sheet-scrim) ease;
 }
 
-.qi-scrim.is-open,
-.qi-scrim[data-open] {
+.qi-scrim[data-state="open"] {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto !important;
+}
+
+@starting-style {
+  .qi-scrim[data-state="open"] {
+    opacity: 0;
+  }
 }
 
 .qi-wrap {
@@ -2493,8 +2503,8 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     background-color 0.25s ease,
     color 0.25s ease,
     box-shadow 0.25s ease,
-    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--duration-ct-panel) var(--ease-overlay),
+    transform var(--duration-sheet-panel) var(--ease-overlay);
 }
 
 .qi-tab span {
@@ -2515,6 +2525,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   top: 0;
   right: 0;
   bottom: 0;
+  left: auto;
   z-index: 80;
   width: 100%;
   height: 100%;
@@ -2527,22 +2538,28 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   pointer-events: none;
   visibility: hidden;
   transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.55s linear;
+    transform var(--duration-sheet-panel) var(--ease-overlay),
+    visibility var(--duration-sheet-panel) linear;
 }
 
-@media (min-width: 768px) {
-  .qi-panel {
-    width: min(38rem, calc(100vw - 2.5rem));
-  }
-}
-
-.qi-wrap.is-open .qi-panel,
-.qi-panel.is-open,
-.qi-panel[data-open] {
+.qi-panel[data-slot="sheet-content"][data-state="open"],
+.qi-panel[data-state="open"] {
   transform: translateX(0);
   pointer-events: auto;
   visibility: visible;
+}
+
+@starting-style {
+  .qi-panel[data-state="open"] {
+    transform: translateX(100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .qi-panel[data-slot="sheet-content"],
+  .qi-panel {
+    width: min(38rem, calc(100vw - 2.5rem));
+  }
 }
 
 .qi-header {
@@ -2757,9 +2774,14 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   background: color-mix(in srgb, var(--color-text-primary) 28%, transparent);
   opacity: 0;
   pointer-events: none !important;
-  transition: opacity 0.45s ease;
-  animation: none !important;
+  transition: opacity var(--duration-sheet-scrim) ease;
   backdrop-filter: none;
+}
+
+@starting-style {
+  .ps-scrim[data-state="open"] {
+    opacity: 0;
+  }
 }
 
 .ps-scrim.is-open,
@@ -2791,12 +2813,17 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   transform: translateY(100%);
   pointer-events: none;
   visibility: hidden;
-  animation: none !important;
   touch-action: auto;
   user-select: auto;
   transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.55s linear;
+    transform var(--duration-sheet-panel) var(--ease-overlay),
+    visibility var(--duration-sheet-panel) linear;
+}
+
+@starting-style {
+  .ps-panel[data-state="open"] {
+    transform: translateY(100%);
+  }
 }
 
 .ps-wrap.is-open .ps-panel,

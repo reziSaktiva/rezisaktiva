@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { animate, EASE_PAGE_TRANSITION, readCssDurationMs } from "@/lib/motion";
 import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
 
 type NavigateFn = (href: string) => void;
@@ -65,20 +66,6 @@ function resolveInternalHref(anchor: HTMLAnchorElement): string | null {
   }
 
   return `${url.pathname}${url.search}`;
-}
-
-function readDurationMs(token: string, fallback: number): number {
-  const raw = getComputedStyle(document.documentElement)
-    .getPropertyValue(token)
-    .trim();
-  const value = Number.parseFloat(raw);
-  if (!Number.isFinite(value)) {
-    return fallback;
-  }
-  if (raw.endsWith("s") && !raw.endsWith("ms")) {
-    return value * 1000;
-  }
-  return value;
 }
 
 function sanitizeClone(root: ParentNode): void {
@@ -144,6 +131,8 @@ function captureOutgoing(scrollY: number): HTMLElement {
 }
 
 function clearClones(): void {
+  cloneAnimation?.stop();
+  cloneAnimation = null;
   document.querySelectorAll(".page-vt-clone").forEach((node) => node.remove());
 }
 
@@ -195,6 +184,7 @@ let startQueuedNav: NavigateFn | null = null;
 let rafId = 0;
 let safetyTimer = 0;
 const runningTimers: number[] = [];
+let cloneAnimation: { stop: () => void } | null = null;
 
 const SAFETY_BUFFER_MS = 750;
 const REPLACED_FROM = "__replaced__";
@@ -253,9 +243,9 @@ function failSafeUnlock(): void {
 
 function safetyTimeoutMs(): number {
   return (
-    readDurationMs("--duration-page-exit", 1000) +
-    readDurationMs("--delay-page-enter", 400) +
-    readDurationMs("--duration-page-enter", 400) +
+    readCssDurationMs("--duration-page-exit", 1000) +
+    readCssDurationMs("--delay-page-enter", 400) +
+    readCssDurationMs("--duration-page-enter", 400) +
     SAFETY_BUFFER_MS
   );
 }
@@ -306,16 +296,40 @@ function armTransition(options: {
       if (pendingNav?.epoch !== epoch) {
         return;
       }
-      clone.classList.add("is-exiting");
+      // T-036.4: clone exit via Motion tween, token Hess identik
+      // (1s + cubic-bezier(0.65, 0, 0.43, 1)). Enter tetap CSS
+      // (fill-mode both, T-025.10).
+      const exitMs = readCssDurationMs("--duration-page-exit", 1000);
+      cloneAnimation?.stop();
+      cloneAnimation = animate(
+        clone,
+        {
+          transform: [
+            "translateY(0) scale(1)",
+            "translateY(-100dvh) scale(0.5)",
+          ],
+        },
+        {
+          duration: exitMs / 1000,
+          ease: EASE_PAGE_TRANSITION,
+          onComplete: () => {
+            cloneAnimation = null;
+            clone.remove();
+          },
+        },
+      );
       if (options.push && options.pushHref) {
         options.push(options.pushHref);
       }
     });
-    const exitMs = readDurationMs("--duration-page-exit", 1000);
+    const exitMs = readCssDurationMs("--duration-page-exit", 1000);
     runningTimers.push(
       window.setTimeout(() => {
-        clone.remove();
-      }, exitMs),
+        if (clone.isConnected) {
+          clone.remove();
+        }
+        cloneAnimation = null;
+      }, exitMs + 80),
     );
   }
 
@@ -341,6 +355,8 @@ function retargetBusyNav(target: string): void {
 /**
  * Transisi halaman mengikuti ritme karolinahess.com tanpa View Transitions
  * API. State di luar React supaya remount Strict Mode tidak mematikan clone.
+ * Exit clone = Motion tween (T-036.4); enter live = CSS snapshot (T-025.7–10).
+ * `html.page-vt-lock` tetap `overflow-y: scroll` (track tidak hilang).
  */
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -458,8 +474,8 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     }
 
     const epoch = pendingNav.epoch;
-    const enterDelay = readDurationMs("--delay-page-enter", 400);
-    const enterMs = readDurationMs("--duration-page-enter", 400);
+    const enterDelay = readCssDurationMs("--delay-page-enter", 400);
+    const enterMs = readCssDurationMs("--duration-page-enter", 400);
     const wait = Math.max(
       0,
       enterDelay - (performance.now() - pendingNav.startedAt),

@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). **T-036** ✅ (T-036.1–T-036.6). T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -255,20 +255,20 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-036 — Motion (motion.dev) + Lenis tetap
 
-* **Status:** ⏳ Open
+* **Status:** ✅ Done
 * **Domain:** UI/UX
 * **Depends:** T-035.5 disarankan (overlay sudah primitf); minimal T-032.6
 * **Baca dulu:** `home-motion.tsx`, `motion-runtime.tsx`, `smooth-scroll.tsx`, `page-transition.tsx`, ADR-017, ADR-025
-* **Keputusan:** Paket `motion`; Lenis tidak diganti; page-vt ritme tidak diganti; reduced-motion = instan / tanpa magnetic / tanpa cursor ring.
+* **Keputusan:** Paket `motion` untuk Home reveal/magnetic; overlay Dialog/Sheet/Drawer = transisi CSS token (bukan spring); Lenis tidak diganti; page-vt ritme tidak diganti; reduced-motion = instan / tanpa magnetic / tanpa cursor ring.
 
 ### Subtasks
 
-- [ ] **T-036.1** — Rewrite `Reveal`, `WordReveal`, `HeroWords`, `Magnetic` memakai `motion/react`. Hormati `useReducedMotion`. Jangan spring default yang mengubah timing CSS `.home-reveal`.
-- [ ] **T-036.2** — `work-tile`: ganti `useContainerReveal`. Hover/touch overlay tile tetap (bukan Overlay Astryx).
-- [ ] **T-036.3** — Enter/exit Dialog/Sheet/Drawer: `AnimatePresence` atau transisi primitf **di-kalibrasi** ke durasi sekarang. Jangan bounce.
-- [ ] **T-036.4** — `page-transition.tsx`: ritme Hess tetap (T-025.7–T-025.10). Track scrollbar tetap terlihat (`overflow-y: scroll` saat lock). Boleh membungkus dengan Motion **hanya jika** timing/easing identik.
-- [ ] **T-036.5** — `CursorRing`: tetap off di sentuh + reduced-motion. Lenis: pause saat overlay lock; off reduced-motion.
-- [ ] **T-036.6** — Verifikasi gerak: Home reveal + magnetic, About rest/active, tile Work, overlay, ganti locale/halaman (page-vt), reduced-motion OS.
+- [x] **T-036.1** — Rewrite `Reveal`, `WordReveal`, `HeroWords`, `Magnetic` memakai `motion/react`. Hormati `useReducedMotion`. Jangan spring default yang mengubah timing CSS `.home-reveal`.
+- [x] **T-036.2** — `work-tile`: ganti `useContainerReveal`. Hover/touch overlay tile tetap (bukan Overlay Astryx).
+- [x] **T-036.3** — Enter/exit Dialog/Sheet/Drawer: `AnimatePresence` atau transisi primitf **di-kalibrasi** ke durasi sekarang. Jangan bounce.
+- [x] **T-036.4** — `page-transition.tsx`: ritme Hess tetap (T-025.7–T-025.10). Track scrollbar tetap terlihat (`overflow-y: scroll` saat lock). Boleh membungkus dengan Motion **hanya jika** timing/easing identik.
+- [x] **T-036.5** — `CursorRing`: tetap off di sentuh + reduced-motion. Lenis: pause saat overlay lock; off reduced-motion.
+- [x] **T-036.6** — Verifikasi gerak: Home reveal + magnetic, About rest/active, tile Work, overlay, ganti locale/halaman (page-vt), reduced-motion OS.
 
 ---
 

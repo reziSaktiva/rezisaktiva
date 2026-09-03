@@ -11,6 +11,7 @@ import {
 } from "@/content/work-sheet";
 import type { Locale } from "@/lib/locale";
 import { cn } from "@/lib/utils";
+import { readCssDurationMs } from "@/lib/motion";
 import { CloseIcon } from "./overlay-icons";
 import { ProjectSheetMedia } from "./project-sheet-media";
 
@@ -19,9 +20,6 @@ function isRepoUrl(url: string): boolean {
 }
 
 export const PROJECT_SHEET_ID = "ps-panel";
-
-/** Selaras transisi `.ps-panel` di `globals.css` (0.55s). */
-const CLOSE_SETTLE_MS = 550;
 
 function prefersReducedMotionNow(): boolean {
   return (
@@ -68,7 +66,9 @@ export function ProjectSheet({
     if (isOpen || visible == null) {
       return;
     }
-    const delay = prefersReducedMotionNow() ? 0 : CLOSE_SETTLE_MS;
+    const delay = prefersReducedMotionNow()
+      ? 0
+      : readCssDurationMs("--duration-sheet-panel", 550);
     const timer = window.setTimeout(() => setVisible(null), delay);
     return () => window.clearTimeout(timer);
   }, [isOpen, visible]);

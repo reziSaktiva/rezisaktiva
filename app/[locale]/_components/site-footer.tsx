@@ -10,7 +10,7 @@ import { SiteFooterCta } from "./site-footer-cta";
  * Shell server; tombol modal = island `SiteFooterCta` (T-028.1).
  *
  * T-033.6: Section/VStack/Heading/Text/Link Astryx → semantik + class
- * scoped; CTA = Button shadcn + Magnetic (gerak lama sampai T-036).
+ * scoped; CTA = Button shadcn + Magnetic (T-036.1).
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];

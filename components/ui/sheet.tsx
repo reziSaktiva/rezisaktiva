@@ -37,7 +37,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 z-50 bg-black/10 supports-backdrop-filter:backdrop-blur-xs",
         className,
       )}
       {...props}
@@ -51,14 +51,17 @@ function SheetContent({
   side = "right",
   showCloseButton = true,
   showOverlay = true,
+  overlay,
   overlayClassName,
   overlayProps,
   forceMount,
+  asChild,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: "top" | "right" | "bottom" | "left";
   showCloseButton?: boolean;
   showOverlay?: boolean;
+  overlay?: React.ReactNode;
   overlayClassName?: string;
   overlayProps?: React.ComponentProps<typeof SheetPrimitive.Overlay> & {
     "data-overlay-scrim"?: string;
@@ -66,36 +69,44 @@ function SheetContent({
   };
 }) {
   return (
-    <SheetPortal>
-      {showOverlay ? (
-        <SheetOverlay
-          forceMount={forceMount}
-          className={overlayClassName}
-          {...overlayProps}
-        />
-      ) : null}
+    <SheetPortal forceMount={forceMount}>
+      {overlay ??
+        (showOverlay ? (
+          <SheetOverlay
+            forceMount={forceMount}
+            className={overlayClassName}
+            {...overlayProps}
+          />
+        ) : null)}
       <SheetPrimitive.Content
         data-slot="sheet-content"
         data-side={side}
         forceMount={forceMount}
+        asChild={asChild}
         className={cn(
-          "fixed z-50 flex flex-col gap-4 bg-popover bg-clip-padding text-sm text-popover-foreground shadow-lg transition duration-200 ease-in-out data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:h-auto data-[side=bottom]:border-t data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:h-full data-[side=left]:w-3/4 data-[side=left]:border-r data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:h-full data-[side=right]:w-3/4 data-[side=right]:border-l data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:h-auto data-[side=top]:border-b data-[side=left]:sm:max-w-sm data-[side=right]:sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-[side=bottom]:data-open:slide-in-from-bottom-10 data-[side=left]:data-open:slide-in-from-left-10 data-[side=right]:data-open:slide-in-from-right-10 data-[side=top]:data-open:slide-in-from-top-10 data-closed:animate-out data-closed:fade-out-0 data-[side=bottom]:data-closed:slide-out-to-bottom-10 data-[side=left]:data-closed:slide-out-to-left-10 data-[side=right]:data-closed:slide-out-to-right-10 data-[side=top]:data-closed:slide-out-to-top-10",
+          "fixed z-50 flex flex-col gap-4 bg-popover bg-clip-padding text-sm text-popover-foreground shadow-lg data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:h-auto data-[side=bottom]:border-t data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:h-full data-[side=left]:w-3/4 data-[side=left]:border-r data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:h-full data-[side=right]:w-3/4 data-[side=right]:border-l data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:h-auto data-[side=top]:border-b data-[side=left]:sm:max-w-sm data-[side=right]:sm:max-w-sm",
           className,
         )}
         {...props}
       >
-        {children}
-        {showCloseButton && (
-          <SheetPrimitive.Close data-slot="sheet-close" asChild>
-            <Button
-              variant="ghost"
-              className="absolute top-3 right-3"
-              size="icon-sm"
-            >
-              <XIcon />
-              <span className="sr-only">Close</span>
-            </Button>
-          </SheetPrimitive.Close>
+        {asChild ? (
+          children
+        ) : (
+          <>
+            {children}
+            {showCloseButton ? (
+              <SheetPrimitive.Close data-slot="sheet-close" asChild>
+                <Button
+                  variant="ghost"
+                  className="absolute top-3 right-3"
+                  size="icon-sm"
+                >
+                  <XIcon />
+                  <span className="sr-only">Close</span>
+                </Button>
+              </SheetPrimitive.Close>
+            ) : null}
+          </>
         )}
       </SheetPrimitive.Content>
     </SheetPortal>
@@ -160,4 +171,5 @@ export {
   SheetFooter,
   SheetTitle,
   SheetDescription,
+  SheetOverlay,
 };

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import type Lenis from "lenis";
 import { ReactLenis, useLenis } from "lenis/react";
+import { useReducedMotion } from "@/lib/motion";
 
 let lenisForTransition: Lenis | null = null;
 
@@ -75,24 +76,20 @@ function OverlayLenisPause() {
   return null;
 }
 
+function subscribeNever(): () => void {
+  return () => {};
+}
+
 /**
  * Window Lenis — sibling, tidak membungkus halaman (`SiteChrome` min-height auto).
- * Off jika `prefers-reduced-motion`.
+ * Off jika `prefers-reduced-motion`. Pause `ct-lock` / `qi-lock` / `ps-lock` /
+ * `page-vt-lock` (ADR-025, T-036.5).
  */
 export function SmoothScroll() {
-  const [enabled, setEnabled] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const isClient = useSyncExternalStore(subscribeNever, () => true, () => false);
 
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => {
-      setEnabled(!media.matches);
-    };
-    sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
-  }, []);
-
-  if (!enabled) {
+  if (!isClient || reduceMotion !== false) {
     return null;
   }
 

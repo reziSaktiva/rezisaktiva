@@ -10,7 +10,12 @@ import {
 } from "react";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogOverlay,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,10 +30,13 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from "./overlay-icons";
+import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 
 /**
- * Contact modal global (T-016.2, ADR-019; T-035.1) — Dialog shadcn + skin
- * `.ct-*` (kartu dark-ink, tema-independen). Bukan route `/contact`.
+ * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3) — Dialog shadcn +
+ * skin `.ct-*` (kartu dark-ink). Enter/exit = transisi CSS token +
+ * `forceMount` hanya selama overlay masih `present` (bukan spring). Bukan
+ * route `/contact`.
  *
  * Form: validasi client + state "Terkirim"; tidak ada backend (M8 Could).
  * mailto: tetap primer lewat tautan email.
@@ -55,6 +63,9 @@ export function ContactModal({ locale }: { locale: Locale }) {
     close();
   }, [close]);
 
+  useOverlayDocumentLock(isOpen, "ct-lock", "--duration-ct-panel", 400);
+  const present = useOverlayPresence(isOpen, "--duration-ct-panel", 400);
+
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -63,10 +74,6 @@ export function ContactModal({ locale }: { locale: Locale }) {
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
-    document.documentElement.classList.add("ct-lock");
-    return () => {
-      document.documentElement.classList.remove("ct-lock");
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -119,24 +126,24 @@ export function ContactModal({ locale }: { locale: Locale }) {
         }
       }}
     >
+      {present ? (
       <DialogContent
         id="ct-panel"
         forceMount
         showCloseButton={false}
         aria-describedby={undefined}
         aria-labelledby={titleId}
-        overlayClassName={cn("ct-scrim", isOpen && "is-open")}
-        overlayProps={{
-          "data-ct-scrim": "",
-          "data-overlay-scrim": "",
-          "data-lenis-prevent": "",
-        }}
+        overlay={
+          <DialogOverlay
+            forceMount
+            className="ct-scrim"
+            data-ct-scrim=""
+            data-overlay-scrim=""
+            data-lenis-prevent=""
+          />
+        }
         data-lenis-prevent=""
-        className={cn(
-          "ct-panel max-w-none translate-x-0 translate-y-0 gap-0 text-inherit shadow-none ring-0 sm:max-w-none",
-          "data-open:animate-none data-closed:animate-none data-open:zoom-in-100 data-closed:zoom-out-100",
-          isOpen && "is-open",
-        )}
+        className="ct-panel max-w-none translate-none gap-0 text-inherit shadow-none ring-0 sm:max-w-none"
         onOpenAutoFocus={(event) => {
           event.preventDefault();
           document.getElementById(emailId)?.focus();
@@ -246,6 +253,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
           </div>
         </div>
       </DialogContent>
+      ) : null}
     </Dialog>
   );
 }
