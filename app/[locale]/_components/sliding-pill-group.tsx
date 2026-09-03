@@ -4,16 +4,10 @@ import {
   useCallback,
   useEffect,
   useRef,
-  type ComponentProps,
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { HStack } from "@astryxdesign/core/HStack";
-import { VStack } from "@astryxdesign/core/VStack";
-
-type StackGap = ComponentProps<typeof HStack>["gap"];
-type StackPadding = ComponentProps<typeof HStack>["padding"];
-type StackAlign = NonNullable<ComponentProps<typeof HStack>["align"]>;
+import { cn } from "@/lib/utils";
 
 /**
  * Sliding pill — mockup `initPillGroups()` (`design-mockups/shared.js`).
@@ -26,9 +20,6 @@ export function SlidingPillGroup({
   itemSelector,
   layoutKey,
   orientation = "horizontal",
-  gap,
-  padding,
-  align = "center",
 }: {
   children: ReactNode;
   className?: string;
@@ -36,12 +27,9 @@ export function SlidingPillGroup({
   itemSelector: string;
   layoutKey: string;
   orientation?: "horizontal" | "vertical";
-  gap?: StackGap;
-  padding?: StackPadding;
-  align?: StackAlign;
 }) {
-  const containerRef = useRef<HTMLElement>(null);
-  const pillRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const pillRef = useRef<HTMLDivElement>(null);
 
   const getItems = useCallback(() => {
     const container = containerRef.current;
@@ -188,40 +176,18 @@ export function SlidingPillGroup({
     };
   }, [itemSelector, layoutKey, place, resetToActive, syncText]);
 
-  const pill = (
-    <VStack
-      ref={pillRef}
-      className="site-pill-indicator"
-      aria-hidden="true"
-    />
-  );
-
-  if (orientation === "vertical") {
-    return (
-      <VStack
-        ref={containerRef}
-        gap={gap}
-        padding={padding}
-        className={className}
-        style={style}
-      >
-        {pill}
-        {children}
-      </VStack>
-    );
-  }
-
   return (
-    <HStack
+    <div
       ref={containerRef}
-      gap={gap}
-      padding={padding}
-      align={align}
-      className={className}
+      className={cn(
+        "site-pill-group",
+        orientation === "vertical" && "site-pill-group--vertical",
+        className,
+      )}
       style={style}
     >
-      {pill}
+      <div ref={pillRef} className="site-pill-indicator" aria-hidden="true" />
       {children}
-    </HStack>
+    </div>
   );
 }

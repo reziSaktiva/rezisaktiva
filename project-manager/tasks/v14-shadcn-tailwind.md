@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-01):** pindah primitf ke shadcn + Tailwind v4; bentuk visual produksi tetap; Motion (motion.dev) untuk gerak identitas; MCP shadcn + Motion; dark/light tetap kontrak ADR-021.
 
-**Prioritas (2026-09-01):** rilis ini **diutamakan** di atas T-031. **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). **T-036** ✅ (T-036.1–T-036.6). T-031 mengantri **setelah T-037** (keduanya menyentuh `app/layout.tsx` / head). **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`). T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
+**Status rilis:** ✅ **Done** (2026-09-03, **T-037.7**). **T-032** ✅ (T-032.1–T-032.8). **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). **T-036** ✅ (T-036.1–T-036.6). **T-037** ✅ (T-037.1–T-037.7). Berikutnya **T-031**. **PR #58 = T-032 saja** (branch `feat/shadcn-tailwind`); T-033…T-037 = PR terpisah. Dual-boot Astryx+shadcn diizinkan di `main` setelah T-032, sampai T-037 mencabut Astryx (Boss Rezi, 2026-09-02). **Definition of Done rilis ini:** Astryx tidak ada di `package.json`, tidak ada impor `@astryxdesign` / `@stylexjs`, MCP `xds` sudah dicabut.
 
 ---
 
@@ -144,7 +144,7 @@ SoT = `.cursor/mcp.json` di root repo (di-commit). Plugin Cursor yang error **bu
 | ------ | ----- | ---- | ----- |
 | **shadcn** resmi | Ya | `pnpm dlx shadcn@latest mcp init --client cursor` → `"command": "npx", "args": ["shadcn@latest", "mcp"]` | T-032.2, **sebelum** `shadcn add` massal |
 | **Motion AI Kit** | Ya (karena paket `motion`) | `npx motion-ai` scope **project** + agent Cursor. MCP hosted Motion; **jangan** flow lama `npx` + TOKEN | T-032.2 |
-| **xds** (Astryx `https://astryx.atmeta.com/mcp`) | Hapus | Setelah tidak ada impor Astryx | T-037.5 |
+| **xds** (Astryx `https://astryx.atmeta.com/mcp`) | Dihapus | T-037.5 | T-037.5 ✅ |
 | Tailwind community MCP | **Tidak** | — | Jangan |
 | shadcn.io berbayar | **Tidak** | — | Jangan |
 
@@ -274,7 +274,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## T-037 — Cabut Astryx, docs/rule, QA paritas
 
-* **Status:** ⏳ Open
+* **Status:** ✅ Done
 * **Domain:** Engineering + Documentation + UI/UX
 * **Depends:** T-033 … T-036 (tidak ada sisa impor Astryx di UI)
 * **Baca dulu:** `package.json`, `.cursor/rules/*`, `AGENTS.md`, `product-discovery/06-engineering/*`, `ARCHITECTURE_OVERVIEW.md`
@@ -282,13 +282,13 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ### Subtasks
 
-- [ ] **T-037.1** — Grep `@astryxdesign` / `@stylexjs` / `astryx-` di `app/`, `lib/`, `theme/`: kosong. Hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.d.ts` (atau ganti tipe tema baru jika masih perlu). Script `astryx` / `theme:build` / `theme:check` di `package.json` dihapus.
-- [ ] **T-037.2** — `pnpm remove @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex` + dev `@astryxdesign/cli`. Lockfile update sadar (bukan regenerate buta).
-- [ ] **T-037.3** — `globals.css`: hapus `@import` Astryx; ganti selector `.astryx-*` / `#astryx-app-shell-main` ke class baru (header/main). Jangan `!important` baru kecuali preseden sadar. Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
-- [ ] **T-037.4** — Docs/rule: `design-tokens.md`, `code-discipline.md` + `.mdc`, `dependency-strategy.md`, `06-engineering/README.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md` (indeks rule). **Ganti** `.cursor/rules/xds.mdc` jadi rule shadcn (alwaysApply) — konvensi CLI `pnpm exec`/`pnpm dlx shadcn`, tanpa Tailwind-as-coexist Astryx, tanpa StyleX. `ui-ux-mockup-check.mdc`: acuan = `app/` + shadcn/Tailwind, bukan Astryx.
-- [ ] **T-037.5** — `.cursor/mcp.json`: hapus `xds`. shadcn + motion tetap. Jangan sebut nama model/tool terlarang di commit.
-- [ ] **T-037.6** — QA paritas vs **T-032.1** ([`baselines/t-032.1/`](../baselines/t-032.1/)): Home/About/Work; Contact/QI/sheet; chrome; light/dark; 320/375/desktop; reduced-motion; locale ID/EN; typecheck/lint/build. Catat gap yang tidak 1:1 (jika ada) — **perbaiki dulu** jika bentuk berubah tanpa keputusan. Foto Unsplash tetap bukan blocker.
-- [ ] **T-037.7** — Snapshot/Fokus/COMPLETE_TASK: rilis v14 Done; Active Mode Validation; berikutnya **T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028.
+- [x] **T-037.1** — Grep `@astryxdesign` / `@stylexjs` / `astryx-` di `app/`, `lib/`, `theme/`: kosong. Hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.d.ts` (atau ganti tipe tema baru jika masih perlu). Script `astryx` / `theme:build` / `theme:check` di `package.json` dihapus.
+- [x] **T-037.2** — `pnpm remove @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex` + dev `@astryxdesign/cli`. Lockfile update sadar (bukan regenerate buta).
+- [x] **T-037.3** — `globals.css`: hapus `@import` Astryx; ganti selector `.astryx-*` / `#astryx-app-shell-main` ke class baru (header/main). Jangan `!important` baru kecuali preseden sadar. Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
+- [x] **T-037.4** — Docs/rule: `design-tokens.md`, `code-discipline.md` + `.mdc`, `dependency-strategy.md`, `06-engineering/README.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md` (indeks rule). **Ganti** `.cursor/rules/xds.mdc` jadi rule shadcn (alwaysApply) — konvensi CLI `pnpm exec`/`pnpm dlx shadcn`, tanpa Tailwind-as-coexist Astryx, tanpa StyleX. `ui-ux-mockup-check.mdc`: acuan = `app/` + shadcn/Tailwind, bukan Astryx.
+- [x] **T-037.5** — `.cursor/mcp.json`: hapus `xds`. shadcn + motion tetap. Jangan sebut nama model/tool terlarang di commit.
+- [x] **T-037.6** — QA paritas vs **T-032.1** ([`baselines/t-032.1/`](../baselines/t-032.1/)): Home/About/Work; Contact/QI/sheet; chrome; light/dark; 320/375/desktop; reduced-motion; locale ID/EN; typecheck/lint/build. Catat gap yang tidak 1:1 (jika ada) — **perbaiki dulu** jika bentuk berubah tanpa keputusan. Foto Unsplash tetap bukan blocker.
+- [x] **T-037.7** — Snapshot/Fokus/COMPLETE_TASK: rilis v14 Done; Active Mode Validation; berikutnya **T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028.
 
 ---
 

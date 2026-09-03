@@ -1,43 +1,43 @@
 ---
-description: Playbook kode R1 — spacing, lapisan styling (bukan StyleX dulu), Server vs Client, SSG; kerja baru di app/ wajib ikut
+description: Playbook kode — spacing, lapisan styling (shadcn + Tailwind v4), Server vs Client, SSG; kerja baru di app/ wajib ikut
 alwaysApply: true
 ---
 
 # Disiplin kode (R1)
 
-SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Astryx CLI: `.cursor/rules/xds.mdc`. **Kerja baru** ikut ini; jangan rewrite besar `app/` lama di task yang sama.
+SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Komponen: `.cursor/rules/shadcn.mdc`. **Kerja baru** ikut ini; jangan rewrite besar `app/` lama di task yang sama.
 
 ## Spacing
 
-- **`gap`** = jarak antar anak `VStack`/`HStack`/`Grid`. **`padding`** = inset dalam container. **Bukan** `margin` di tiap sibling.
-- Step Astryx: `gap={2}` rapat; `gap={3}` kicker+judul; `gap={8}` isi section. `padding={0}` di `Section` jika ritme halaman ada di CSS scoped (`.home-container`).
+- **`gap`** = jarak antar anak (Tailwind `gap-*` atau CSS `gap` di class scoped). **`padding`** = inset dalam container. **Bukan** `margin` di tiap sibling. **Bukan** `space-y-*` / `space-x-*`.
+- Ritme produksi: `gap-2` rapat; `gap-3` kicker+judul; `gap-8` isi section. Ritme viewport di CSS scoped (`.home-container`, `.home-section`).
 - Token `var(--spacing-*)` di `globals.css`. Bukan `p-[13px]`, bukan hex di JSX.
 
 ```tsx
 // pakai
-<Section variant="transparent" padding={0} className="home-section">
-  <VStack className="home-container" gap={8}>
-    <VStack gap={3}>
-      <Text type="label">{kicker}</Text>
-      <Heading level={2}>{title}</Heading>
-    </VStack>
-  </VStack>
-</Section>
+<section className="home-section">
+  <div className="home-container flex flex-col gap-8">
+    <div className="flex flex-col gap-3">
+      <p className="home-kicker">{kicker}</p>
+      <h2 className="home-work-title">{title}</h2>
+    </div>
+  </div>
+</section>
 
 // jangan
-<div style={{ marginBottom: 32 }}><Heading>{title}</Heading></div>
+<div style={{ marginBottom: 32 }}><h2>{title}</h2></div>
 ```
 
 ## Styling
 
-1. Props Astryx → 2. `VStack`/`HStack`/`Grid`/`Section`/`AppShell` → 3. `className` scoped + `app/globals.css` (token) → 4. `lib/astryx-theme.ts`.
-- **`xstyle` / `stylex.create()` dilarang** sampai compiler StyleX di-wire ke Turbopack (T-013.4, build gagal; ADR-018).
-- Tidak ada Tailwind. Tidak ada `<div>` hanya untuk spasi. `style={{}}` layout/warna dilarang (`colorScheme` di `<html>` = pengecualian yang sudah ada).
+1. Primitf shadcn yang sudah ada (`components/ui/`) → 2. utility Tailwind token-backed → 3. `className` scoped + `app/globals.css` → 4. token `:root` / `.dark` (bukan file tema Astryx).
+- **StyleX / Astryx dilarang.** Tidak ada `xstyle`, tidak ada `@astryxdesign`.
+- Tidak ada `<div>` hanya untuk spasi. `style={{}}` layout/warna dilarang (`colorScheme` di `<html>` = pengecualian yang sudah ada).
 
 ## Server / client / `"use server"`
 
 - Default = Server Component. Route `page.tsx`/`layout.tsx` **tetap server** (`generateStaticParams`, metadata).
-- `"use client"` hanya untuk hook, event, context, Lenis, overlay. Bukan karena impor Astryx — lihat `home-page.tsx` / `overlay-icons.tsx`.
+- `"use client"` hanya untuk hook, event, context, Lenis, overlay. Bukan karena impor shadcn — primitf RSC-friendly.
 - `"use server"` = Server Action. **Tidak ada di R1** (Contact = `mailto:` + form klien). Jangan taruh di page.
 
 ```tsx

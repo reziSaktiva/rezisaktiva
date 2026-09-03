@@ -3,9 +3,10 @@
 import type { ReactNode } from "react";
 import type { Locale } from "@/lib/locale";
 import { SKIP_TO_CONTENT_LABEL } from "@/lib/nav";
+import { MAIN_CONTENT_ID } from "@/lib/site-chrome";
 import { SiteTopNav } from "./site-header";
 
-const MAIN_CONTENT_ID = "astryx-app-shell-main";
+export { MAIN_CONTENT_ID };
 
 function SiteSkipLink({ locale }: { locale: Locale }) {
   return (
@@ -36,7 +37,7 @@ export function SiteChrome({
   return (
     <div className="site-chrome">
       <SiteSkipLink locale={locale} />
-      <header className="astryx-app-shell-header">
+      <header className="site-chrome-header">
         <SiteTopNav locale={locale} />
       </header>
       <main id={MAIN_CONTENT_ID} className="site-chrome-main" tabIndex={-1}>

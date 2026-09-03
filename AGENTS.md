@@ -17,7 +17,7 @@ Dokumen ini **bukan** Source of Truth produk. Ia mengarahkan agent ke dokumen ya
 | Produk & engineering | `product-discovery/` |
 | Orientasi arsitektur (ringkas) | `project-manager/ARCHITECTURE_OVERVIEW.md` |
 | Alur kerja developer | `project-manager/DEVELOPER_WORKFLOW.md` |
-| Visual UI/UX | kode produksi (`app/`, tema Astryx) + arahan Boss Rezi — **bukan** `design-mockups/` (arsip; ADR-024; gate: `.cursor/rules/ui-ux-mockup-check.mdc`) |
+| Visual UI/UX | kode produksi (`app/`, shadcn + Tailwind, token `globals.css`) + arahan Boss Rezi — **bukan** `design-mockups/` (arsip; ADR-024; gate: `.cursor/rules/ui-ux-mockup-check.mdc`) |
 
 ## Wajib di awal sesi
 
@@ -26,7 +26,7 @@ Dokumen ini **bukan** Source of Truth produk. Ia mengarahkan agent ke dokumen ya
 3. Ikuti skill: `.cursor/skills/project-os-navigator/SKILL.md`.
 4. Cek kelengkapan task + dokumen acuan + (untuk UI) kode produksi yang ada. Tanya Boss Rezi **hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana): `.cursor/rules/ask-before-assuming.mdc` + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya). Jangan tanya ritual.
 5. Setelah pekerjaan selesai: `.cursor/skills/work-report-simple/SKILL.md`.
-6. Untuk task yang menyentuh UI/UX: `.cursor/rules/ui-ux-mockup-check.mdc` (acuan = kode produksi + arahan; `design-mockups/` arsip — ADR-024; verifikasi sebelum lapor selesai), `.cursor/rules/xds.mdc` (konvensi Astryx saat coding), dan `.cursor/rules/code-discipline.mdc` (spacing, server/client, SSG — SoT: `product-discovery/06-engineering/code-discipline.md`).
+6. Untuk task yang menyentuh UI/UX: `.cursor/rules/ui-ux-mockup-check.mdc` (acuan = kode produksi + arahan; `design-mockups/` arsip — ADR-024; verifikasi sebelum lapor selesai), `.cursor/rules/shadcn.mdc` (konvensi shadcn + Tailwind saat coding), dan `.cursor/rules/code-discipline.mdc` (spacing, server/client, SSG — SoT: `product-discovery/06-engineering/code-discipline.md`).
 
 ## Skills (`.cursor/skills/`)
 
@@ -49,8 +49,8 @@ Rule aktif (`alwaysApply: true`), semua berlaku sejak Development:
 ```
 .cursor/rules/
 ├── no-ai-attribution-git.mdc   → tanpa atribusi AI di commit/branch/PR
-├── xds.mdc                     → konvensi wajib Astryx design system
-├── code-discipline.mdc         → spacing, lapisan CSS (bukan StyleX dulu), Server vs
+├── shadcn.mdc                  → konvensi wajib shadcn/ui + Tailwind v4 (ADR-028)
+├── code-discipline.mdc         → spacing, lapisan styling, Server vs
 │                                  Client, SSG; kerja baru di app/
 ├── ui-ux-mockup-check.mdc      → kode produksi = acuan visual (ADR-024); mockup HTML
 │                                  arsip; pelajari app/ dulu; verifikasi vs kode + arahan
@@ -61,7 +61,7 @@ Rule aktif (`alwaysApply: true`), semua berlaku sejak Development:
 
 ## Stack & layout (saat ini)
 
-Next.js (App Router) + TypeScript + pnpm di root — single-app (ADR-016). Styling: Astryx design system, bukan Tailwind (ADR-018). Docs tetap di `product-discovery/` + `project-manager/`. Acuan visual: kode produksi (ADR-024); `design-mockups/` arsip. Detail stack: `product-discovery/06-engineering/`.
+Next.js (App Router) + TypeScript + pnpm di root — single-app (ADR-016). Styling: shadcn/ui + Tailwind CSS v4 (ADR-028). Docs tetap di `product-discovery/` + `project-manager/`. Acuan visual: kode produksi (ADR-024); `design-mockups/` arsip. Detail stack: `product-discovery/06-engineering/`.
 
 ## Aturan keras
 

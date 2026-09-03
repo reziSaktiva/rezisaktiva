@@ -1,8 +1,8 @@
 # Code Discipline
 
-> Status: **Baseline** — playbook harian implementasi di `app/` (dikunci 2026-08-28, issue #52 / T-027). Bukan Living Document: tidak memuat phase/progress. Perubahan material → ADR baru + revisi dokumen ini.
+> Status: **Baseline** — playbook harian implementasi di `app/` (dikunci 2026-08-28, issue #52 / T-027; styling diperbarui **ADR-028** / T-037.4). Bukan Living Document: tidak memuat phase/progress. Perubahan material → ADR baru + revisi dokumen ini.
 
-Dokumen ini adalah acuan “kapan pakai apa” saat menulis kode. Ringkasan wajib untuk agent: `.cursor/rules/code-discipline.mdc`. Konvensi komponen Astryx: `.cursor/rules/xds.mdc`.
+Dokumen ini adalah acuan “kapan pakai apa” saat menulis kode. Ringkasan wajib untuk agent: `.cursor/rules/code-discipline.mdc`. Konvensi komponen: `.cursor/rules/shadcn.mdc`.
 
 Berlaku untuk **kerja baru**. Rapikan `app/` yang sudah ada hanya bertahap, setelah aturan ini dikunci — bukan rewrite besar.
 
@@ -10,78 +10,74 @@ Berlaku untuk **kerja baru**. Rapikan `app/` yang sudah ada hanya bertahap, sete
 
 # Purpose
 
-Satu acuan untuk spacing, lapisan styling, batas Server/Client, dan model render Next.js — selaras **ADR-015** (static-first SSG) dan **ADR-018** (Astryx, tanpa Tailwind).
+Satu acuan untuk spacing, lapisan styling, batas Server/Client, dan model render Next.js — selaras **ADR-015** (static-first SSG) dan **ADR-028** (shadcn/ui + Tailwind CSS v4).
 
 ---
 
 # 1. Spacing — gap / padding / margin
 
-Skala Astryx berbasis **4px**. Prop `gap` / `padding` pada `VStack` / `HStack` / `Grid` / `Section` memakai step: `0 | 0.5 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6 | 8 | 10` (bukan string, bukan px). Token CSS: `var(--spacing-*)`.
+Skala token CSS berbasis **4px** (`var(--spacing-*)` di `app/globals.css`). Utility Tailwind `gap-*` memakai skala yang sama (contoh: `gap-8` = `--spacing-8` = 32px). Bukan string px acak di JSX.
 
 | Pakai | Untuk | Jangan |
 | ----- | ----- | ------ |
-| **`gap`** | Jarak **antar** anak dalam satu stack/grid | `margin` di tiap anak untuk merenggangkan sibling |
+| **`gap`** | Jarak **antar** anak dalam satu flex/grid (`gap-8`, `flex flex-col gap-3`) | `margin` di tiap anak untuk merenggangkan sibling; **`space-y-*` / `space-x-*`** |
 | **`padding`** | Inset **di dalam** satu container (isi vs tepi) | `padding` di parent **dan** `margin` di anak untuk hal yang sama |
-| **`margin`** | Jarang. Reset (`margin: 0`) atau ritme di CSS overlay yang **bukan** anak Stack | Membungkus komponen dengan `<div>` hanya untuk kasih margin |
+| **`margin`** | Jarang. Reset (`margin: 0`) atau ritme di CSS overlay yang **bukan** anak stack | Membungkus komponen dengan `<div>` hanya untuk kasih margin |
 
 Ritme yang dipakai di kode produksi:
 
-* Internal rapat (ikon + teks, item list): `gap={2}` — `contact-modal.tsx`, `quick-info.tsx`
-* Kicker + judul: `gap={3}` — `home-page.tsx`
-* Isi kartu / kolom overlay: `gap={3}`–`{4}`
-* Isi satu section (kicker → body → grid): `gap={8}` pada `VStack` + `className="home-container"`
-* Section halaman: `padding={0}` pada `Section`, ritme viewport di CSS scoped (`.home-section`, `.about-section`) — Astryx scale tidak mengekspresikan `clamp()` / vw
+* Internal rapat (ikon + teks, item list): `gap-2`
+* Kicker + judul: `gap-3` — `home-page.tsx`
+* Isi satu section (kicker → body → grid): `gap-8` pada `flex flex-col` + `className="home-container"`
+* Section halaman: ritme viewport di CSS scoped (`.home-section`, `.about-section`) — `clamp()` / vw di class scoped, bukan di JSX
 
 **Pakai ini**
 
 ```tsx
-<Section variant="transparent" padding={0} className="home-section">
-  <VStack className="home-container" gap={8}>
-    <VStack gap={3}>
-      <Text type="label">{kicker}</Text>
-      <Heading level={2}>{title}</Heading>
-    </VStack>
-  </VStack>
-</Section>
+<section className="home-section">
+  <div className="home-container flex flex-col gap-8">
+    <div className="flex flex-col gap-3">
+      <p className="home-kicker">{kicker}</p>
+      <h2 className="home-work-title">{title}</h2>
+    </div>
+  </div>
+</section>
 ```
 
 **Jangan itu**
 
 ```tsx
 <div style={{ marginBottom: 32 }}>
-  <Heading level={2}>{title}</Heading>
+  <h2>{title}</h2>
 </div>
-<VStack gap={8} padding={8} className="p-[13px]">
+<div className="space-y-8 p-[13px]">
 ```
 
 Di `globals.css`: utamakan `var(--spacing-4)` bukan `16px` / `1rem` acak. Nilai `clamp()` / breakpoint untuk craft halaman (Hess, overlay) boleh, asal di class scoped — bukan hex/px tersebar di JSX.
 
 ---
 
-# 2. Komponen vs CSS custom vs StyleX
+# 2. Komponen vs Tailwind vs CSS custom
 
 Urutan (atas = coba dulu):
 
-1. **Props Astryx** — `color`, `type`, `level`, `gap`, `padding`, `variant`. Cek `astryx component <Name>` sebelum mengarang.
-2. **Layout Astryx** — `AppShell`, `Section`, `VStack` / `HStack` / `Grid` / `Center`. Bukan `<div>` untuk susun halaman.
-3. **`className` scoped + `app/globals.css`** — chrome, overlay, craft yang props tidak cukup. Prefix class per permukaan (`.site-*`, `.ct-*`, `.qi-*`, `.ps-*`, `.home-*`, `.about-*`, `.page-vt-*`). Token: `var(--spacing-*)`, `var(--color-*)`, `var(--radius-*)`.
-4. **Tema built** — `lib/astryx-theme.ts` + `pnpm theme:build`. Jangan override `--color-*` di `:root`.
-5. **StyleX `xstyle` / `stylex.create()`** — **diblokir dulu.** Compiler StyleX (`@stylexjs/babel-plugin` + plugin bundler) **belum** wired ke Turbopack. Dicoba saat T-013.4: build gagal. ADR-018 sudah mencatat plugin belum di-setel. Jangan import `stylex.create` sampai ada task + keputusan (trade-off Turbopack vs webpack).
-6. **Jangan** Tailwind / `tailwind-theme.css` (ADR-018, uninstall). **Jangan** `style={{…}}` untuk layout/warna. **Jangan** `!important` kecuali sudah ada preseden sadar di file yang sama (override Astryx yang tidak kena token).
+1. **Primitf shadcn yang sudah ada** — `components/ui/` (Dialog, Sheet, Drawer, Button, …) yang sudah di-skin ke palet rezisaktiva. Cek `pnpm exec shadcn docs <Name>` sebelum mengarang. Jangan menambah primitf katalog (Sidebar, Chart, Sonner, …) tanpa task.
+2. **Layout Tailwind token-backed** — `flex` / `flex-col` / `grid` / `gap-*` / `items-center`. Bukan `<div>` hanya untuk spasi. Bukan `space-y-*`.
+3. **`className` scoped + `app/globals.css`** — chrome, overlay, craft yang utility tidak cukup. Prefix class per permukaan (`.site-*`, `.ct-*`, `.qi-*`, `.ps-*`, `.home-*`, `.about-*`, `.page-vt-*`). Token: `var(--spacing-*)`, `var(--background)`, `var(--chip-*)`, `--elev-3d`.
+4. **Token tema** — `:root` (light) dan `.dark` di `globals.css` + `@theme inline`. Class `dark` di `<html>` (cookie `rz-theme`). Bukan file `theme/` Astryx. Bukan override palet default shadcn zinc.
+5. **StyleX / Astryx** — **dilarang.** Compiler StyleX tidak di-wire (T-013.4); paket dicabut di T-037. Jangan impor `@astryxdesign` / `@stylexjs`.
+6. **Jangan** `style={{…}}` untuk layout/warna. **Jangan** `!important` kecuali sudah ada preseden sadar di file yang sama (overlay Contact theme-independent).
 
 Pengecualian `style={{}}` yang sudah ada: `colorScheme` di `<html>` (`app/layout.tsx`) — bukan layout komponen.
 
-**Pakai ini** (island interaktif; file tanpa hook tetap server):
+**Pakai ini** (file tanpa hook tetap server):
 
 ```tsx
-import { VStack } from "@astryxdesign/core/VStack";
-import { Heading } from "@astryxdesign/core/Heading";
-
 export function HomePageShell({ title }: { title: string }) {
   return (
-    <VStack className="home-page" gap={8}>
-      <Heading level={1}>{title}</Heading>
-    </VStack>
+    <div className="home-page flex flex-col">
+      <h1 className="home-hero-heading">{title}</h1>
+    </div>
   );
 }
 ```
@@ -89,12 +85,12 @@ export function HomePageShell({ title }: { title: string }) {
 **Jangan itu**
 
 ```tsx
-import { css } from "@stylexjs/stylex"; // build gagal — compiler belum ada
-<div className="flex gap-4 p-4">
-<VStack style={{ gap: 16, background: "#fff" }}>
+import { css } from "@stylexjs/stylex";
+<div className="space-y-4 p-[13px] bg-[#fff]">
+<div style={{ gap: 16, background: "#fff" }}>
 ```
 
-`<div>`: boleh hanya sebagai hook DOM yang Astryx tidak sediakan (akar portal, target Lenis). Kalau yang dibutuhkan cuma jarak atau kolom — `VStack` / `HStack` / `Grid`.
+`<div>`: boleh sebagai hook DOM (akar portal, target Lenis) atau wrapper flex/grid yang membawa `className` layout. Kalau yang dibutuhkan cuma jarak atau kolom — `flex` + `gap-*`, bukan wrapper kosong.
 
 ---
 
@@ -112,7 +108,7 @@ Batas:
 
 * Route (`page.tsx` / `layout.tsx`) **tetap server**: `generateStaticParams`, `generateMetadata`, `params`. Island klien diimpor dari situ (`<HomePage locale={locale} />`).
 * File SVG/ikon murni **jangan** ditandai client — `overlay-icons.tsx`.
-* Jangan tulis `"use client"` hanya karena file mengimpor Astryx. `home-page.tsx` / `site-footer.tsx` membuktikan komponen Astryx bisa server.
+* Jangan tulis `"use client"` hanya karena file mengimpor shadcn. Primitf RSC-on.
 * Kerja baru: pecah island (motion, overlay, toggle) dari blok statis. Kode lama dirapikan bertahap (T-028), bukan rewrite satu PR.
 
 **Pakai ini**
@@ -164,9 +160,9 @@ Mengubah default ke SSR, ISR, streaming, atau Action backend **memerlukan ADR ba
 | Keputusan | Pilihan |
 | --------- | ------- |
 | Acuan harian | Dokumen ini + `.cursor/rules/code-discipline.mdc` |
-| Spacing | `gap` antar anak; `padding` inset; token / prop step; CSS scoped untuk clamp |
-| Override visual | className + `globals.css` + token; **bukan** StyleX sampai compiler ada |
-| Tailwind | Tetap tidak (ADR-018) |
+| Spacing | `gap` antar anak; `padding` inset; token / `gap-*`; CSS scoped untuk clamp; bukan `space-y-*` |
+| Override visual | primitf shadcn + Tailwind token + className scoped; **bukan** StyleX / Astryx |
+| Tailwind | **Ya** — v4, satu sistem bersama shadcn (**ADR-028**). Bukan bridge Astryx. |
 | Client | Hanya interaktivitas; route tetap server |
 | `"use server"` / ISR / streaming | Bukan default R1 |
 | `cookies()` Next | Pengecualian tema di root layout saja |
@@ -178,11 +174,12 @@ Mengubah default ke SSR, ISR, streaming, atau Action backend **memerlukan ADR ba
 # Related Documents
 
 * `.cursor/rules/code-discipline.mdc` — ringkasan wajib agent
-* `.cursor/rules/xds.mdc` — CLI & komponen Astryx (ADR-018)
+* `.cursor/rules/shadcn.mdc` — CLI & primitf shadcn (ADR-028)
 * `design-tokens.md` — token & mapping implementasi
 * `../05-architecture/application-layer.md` — bentuk SSG
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md`
+* `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md` — superseded oleh ADR-028
+* `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/PROJECT_STATE.md`

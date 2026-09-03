@@ -186,7 +186,7 @@ rezisaktiva/
 ├── app/                     → Kode Next.js (App Router)
 ├── AGENTS.md
 ├── .cursor/skills/          → Process skills Cursor
-└── .cursor/rules/           → Rule aktif (Astryx, disiplin kode, mockup gate, no-AI-attribution)
+└── .cursor/rules/           → Rule aktif (shadcn, disiplin kode, mockup gate, no-AI-attribution)
 ```
 
 ---

@@ -4,8 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ⏳ **prioritas** (ADR-028). **T-032** ✅. **T-033** ✅ (T-033.1–T-033.7). **T-034** ✅ (T-034.1–T-034.5). **T-035** ✅ (T-035.1–T-035.5). **T-036** ✅ (T-036.1–T-036.6). **T-037** ⏳. Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
-2. **T-031** — Metadata API: ikon, kartu share, identitas head ⏳ (T-031.1–T-031.5). **Antrian setelah T-037** (jangan paralel di `app/layout.tsx`). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+1. **T-031** — Metadata API: ikon, kartu share, identitas head ⏳ **prioritas** (T-031.1–T-031.5). Rilis v14 (shadcn + Tailwind) ✅. Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+2. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
 3. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 4. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
 5. **T-029** — JSON-LD schema.org dari `content/` ✅ (T-029.1–T-029.4, 2026-08-31). Detail: [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
@@ -26,8 +26,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (**T-021** ✅; **T-023** ⏸️ Deferred) |
 | v11 Structured data | [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md) | T-029 | ✅ Done |
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
-| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏳ Open (**antrian** setelah T-037) |
-| v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ⏳ Open (**prioritas**; ADR-028) |
+| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏳ Open (**prioritas**) |
+| v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
 
 ## Aturan
 

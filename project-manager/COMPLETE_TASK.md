@@ -15,6 +15,51 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Added
+- Token craft yang masih dipakai setelah cabut Astryx: `--size-element-*`, `--color-background-green`, `--color-text-green`, `--color-border-default` di `app/globals.css`.
+- `lib/site-chrome.ts` (`MAIN_CONTENT_ID`) + tes `lib/site-chrome.test.ts`; CI menjalankan `pnpm test`.
+### Changed
+- `data-theme` di markup SSR `<html>` (cookie `initialMode`); token craft `--color-*` hex light/dark, bukan `light-dark()`.
+- Dependabot npm: hapus ignore `@astryxdesign/*` (T-037 selesai).
+### Fixed
+- Page-vt: park `.site-chrome-main:not(.page-vt-clone *)` supaya snapshot exit tidak ikut hidden (review PR #67).
+
+## [2026-09-03]
+### Changed
+- **T-037.7:** rilis v14 (**T-032…T-037**) ✅ Done. Snapshot/Fokus: Active Mode Validation, **prioritas T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028 (tidak dikembalikan).
+- **T-037** parent ✅. `tasks/v14-shadcn-tailwind.md` + indeks TASKS v14 Done; `v13-metadata.md` T-031 Open prioritas.
+
+## [2026-09-03]
+### Changed
+- **T-037.6:** QA vs [`baselines/t-032.1/`](baselines/t-032.1/). `pnpm typecheck` / `lint` / `build` hijau. Kanvas/fg body+html, chip, scrollbar, aksen light/dark cocok dengan `computed-tokens.json` (320 + desktop). Overlay Contact/QI/sheet buka-tutup Escape; locale `/en` + `/id` (375); reduced-motion tanpa cursor ring; page-vt lock hilang setelah enter. Capture overlay di `capture.mjs` menunggu `#ct-panel` / `#qi-panel` / `.ps-panel`.
+- Gap yang **bukan** perubahan bentuk: token craft `--color-*` tersimpan sebagai pasangan `light-dark` (computed dua hex), bukan hex tunggal Astryx; cursor ring di-unmount saat reduced-motion (T-036.5), bukan `display: none`. Foto Unsplash tetap placeholder.
+
+## [2026-09-03]
+### Changed
+- **T-037.5:** `.cursor/mcp.json` tanpa server `xds`. Tetap `shadcn` (npx `shadcn@latest mcp`), `motion`, dan `motion-plus`.
+
+## [2026-09-03]
+### Added
+- Rule `.cursor/rules/shadcn.mdc` (`alwaysApply`) — CLI `pnpm exec` / `pnpm dlx shadcn`, token Tailwind v4, tanpa StyleX/Astryx.
+### Changed
+- **T-037.4:** SoT engineering (`design-tokens.md`, `code-discipline.md`, `dependency-strategy.md`, `06-engineering/README.md`) + `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md`, `code-discipline.mdc`, `ui-ux-mockup-check.mdc`, skill navigator. Hapus `.cursor/rules/xds.mdc`.
+
+## [2026-09-03]
+### Changed
+- **T-037.2:** `pnpm remove` `@astryxdesign/core`, `@astryxdesign/theme-neutral`, `@stylexjs/stylex`, dan dev `@astryxdesign/cli`. `package.json` + `pnpm-lock.yaml` tanpa paket itu (bukan regenerate lockfile buta).
+- **T-037.3** diverifikasi: `app/globals.css` tanpa `@import` Astryx; selector chrome/page-vt pakai `.site-chrome-header` / `.site-chrome-main` (bukan `.astryx-*` / `#astryx-app-shell-main`). Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
+
+## [2026-09-03]
+### Added
+- Token craft (`--spacing-*`, `--color-*`, durasi, radius, easing) di `:root` `app/globals.css` supaya halaman tetap hidup tanpa file tema built.
+### Changed
+- **T-037.1:** hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.{js,d.ts,variants.d.ts}`; script `astryx` / `theme:build` / `theme:check`; langkah CI `pnpm theme:check`.
+- Cabut wrapper `Theme` + impor `HStack`/`VStack`; pill nav jadi flex scoped; id/class chrome `site-chrome-main` / `site-chrome-header`.
+- **T-037.3:** hapus `@import` Astryx di `globals.css`; selector page-vt & header tidak lagi memakai id/class lama.
+### Fixed
+- Toggle tema menulis `data-theme` di `<html>` (sebelumnya tugas wrapper tema).
+
+## [2026-09-03]
 ### Changed
 - Dependabot npm: ignore `@astryxdesign/*` sampai T-037 (ADR-028) — cegah PR grup seperti #61.
 - `next` + `eslint-config-next` 16.3.2 → 16.3.3 (patch keamanan; tanpa bump Astryx).

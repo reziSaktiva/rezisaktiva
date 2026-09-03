@@ -28,7 +28,9 @@ export const metadata: Metadata = {
  * Script ini `classList.toggle("dark")` saja — tidak `setAttribute("class")`.
  * Cookie menang vs localStorage (code review 2026-08-16). Tanpa cookie,
  * localStorage di-apply sekali dan cookie di-tulis (migrasi 1x).
- * `data-theme` tetap bukan prop JSX (Astryx `Theme` juga menulisnya).
+ * `data-theme` di-set di JSX dari cookie (`initialMode`) supaya first paint
+ * CSS `html[data-theme]` tidak menunggu script. Toggle tanpa reload tetap
+ * lewat `ThemeModeProvider` (`setAttribute`), bukan `className` di `<html>`.
  *
  * Key = `THEME_MODE_STORAGE_KEY` — di-inline karena script harus plain JS.
  */
@@ -89,6 +91,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang={htmlLang}
+      data-theme={initialMode}
       suppressHydrationWarning
       style={{ colorScheme: initialMode }}
     >

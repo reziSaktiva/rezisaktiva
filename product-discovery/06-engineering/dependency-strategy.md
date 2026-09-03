@@ -1,6 +1,6 @@
 # Dependency Strategy
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.1** — ditetapkan bersama Boss Rezi (2026-08-11; styling **ADR-028** / T-037.4). Perubahan material setelah ini memerlukan ADR baru.
 
 Dokumen ini mendefinisikan strategi dependency untuk website portofolio **rezisaktiva**.
 
@@ -34,7 +34,7 @@ R1 = **single-app** + **pnpm** (sudah dikunci di `monorepo-setup.md`).
 | `engines` | Node LTS yang didukung Next saat bootstrap (opsional di `package.json`) |
 | Package manager | **pnpm** — deklarasikan via `packageManager` field bila memakai Corepack |
 
-Major upgrade framework (Next, React, Astryx) = PR terpisah + cek Preview Vercel.
+Major upgrade framework (Next, React, shadcn/Tailwind) = PR terpisah + cek Preview Vercel.
 
 ---
 
@@ -56,17 +56,17 @@ Satu `package.json` di **root** (bukan monorepo workspace).
 
 | Jenis | Contoh | Catatan |
 | ----- | ------ | ------- |
-| `dependencies` | `next`, `react`, `react-dom`, `@astryxdesign/core`, `@stylexjs/stylex`, `@astryxdesign/theme-neutral` | Runtime / bundle produksi |
-| `devDependencies` | `typescript`, `eslint`, `prettier`, `@astryxdesign/cli`, types | Build, lint, format, docs |
+| `dependencies` | `next`, `react`, `react-dom`, `motion`, `lenis`, primitf shadcn (Radix/`vaul` lewat source `components/ui`) | Runtime / bundle produksi |
+| `devDependencies` | `typescript`, `eslint`, `prettier`, `tailwindcss`, `@tailwindcss/postcss`, `shadcn`, types | Build, lint, format, CLI komponen |
 | Peer / optional rumit | Hindari kecuali library memaksa | Situs lean |
 
 Jangan menambah library “karena template” (auth, ORM, state global) — selaras N/A di auth/DB.
 
 Preferensi: dependency sedikit, intentional; prefer API platform (Next/Vercel) sebelum library baru.
 
-**Pengecualian intentional (ADR-018, 2026-08-13):** Astryx (`@astryxdesign/core` + `@stylexjs/stylex` + `@astryxdesign/theme-neutral` + `@astryxdesign/cli`) ditambahkan sebagai component library + sistem styling, **menggantikan** `tailwindcss` / `@tailwindcss/postcss` (di-uninstall). Ini bukan penambahan lapisan di atas Tailwind, melainkan pergantian satu sistem styling dengan sistem lain — selaras prinsip dependency sedikit (satu sistem styling aktif, bukan dua paralel).
+**Satu sistem styling (ADR-028, 2026-09-01):** shadcn/ui + Tailwind CSS v4 menggantikan Astryx + StyleX (ADR-018 superseded). Bukan coexist, bukan hybrid. Paket `@astryxdesign/*` dan `@stylexjs/stylex` dicabut di T-037.
 
-**ADR-026 (2026-08-26):** tetap Astryx sampai exit R1; evaluasi shadcn hanya setelah T-018. T-026 (project sheet) memakai BottomSheet Astryx atau overlay custom — bukan hybrid.
+**ADR-026 (historis):** timing “jangan pindah di tengah R1” tetap valid sebagai jejak; evaluasi pasca-T-018 selesai via ADR-028.
 
 ---
 
@@ -78,7 +78,7 @@ Preferensi: dependency sedikit, intentional; prefer API platform (Next/Vercel) s
 | Frekuensi | Mingguan atau grup patch/minor; major = review manual |
 | Security advisories | Prioritaskan PR keamanan |
 | Renovate | Alternatif setara jika lebih disukai nanti — jangan jalankan keduanya bersamaan |
-| Update manual | Tetap boleh untuk Next/React/Astryx besar |
+| Update manual | Tetap boleh untuk Next/React/Tailwind besar |
 
 Setelah merge update: pastikan CI hijau + Preview Vercel OK.
 
@@ -96,7 +96,7 @@ Bun **bukan** bagian strategi update R1; reopen package manager memerlukan updat
 | Auto-update | **Dependabot** (Renovate alternatif) |
 | Exact pin default | Tidak |
 | Baseline Engineering | ADR-016 |
-| Styling/component library | **Astryx** (menggantikan Tailwind) — **ADR-018** |
+| Styling/component library | **shadcn/ui + Tailwind CSS v4** — **ADR-028** (ADR-018 superseded) |
 
 ---
 
@@ -115,5 +115,6 @@ Bun **bukan** bagian strategi update R1; reopen package manager memerlukan updat
 * `cicd-pipeline.md` — install di Actions
 * `dx-tooling.md` — ESLint / Prettier sebagai devDeps
 * `deployment-infrastructure.md` — install di Vercel
+* `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

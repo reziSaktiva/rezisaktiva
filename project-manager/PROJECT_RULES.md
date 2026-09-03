@@ -110,7 +110,7 @@ Hanya boleh ditambah entri baru di bagian atas; jangan rewrite sejarah — **kec
 * Implementasi kode mengikuti `Active Conversation Mode` di `PROJECT_STATE.md` (misal: kode R1 diizinkan saat Active Mode = Development), kecuali Boss Rezi meminta eksplisit di luar mode itu.
 * Jangan memperbaiki inkonsistensi dokumen secara diam-diam — sebutkan ke user dulu.
 * **Task UI/UX wajib ikuti `.cursor/rules/ui-ux-mockup-check.mdc`** — acuan visual = kode produksi + arahan Boss Rezi (**ADR-024**). `design-mockups/` arsip, bukan kontrak. Verifikasi terhadap implementasi + arahan yang dikunci, bukan terhadap HTML mockup. Desain yang menabrak baseline UX / dua interpretasi belum dikunci = urgent, tanya Boss Rezi dulu.
-* **Kerja baru di `app/` wajib ikuti `.cursor/rules/code-discipline.mdc`** — spacing (`gap`/`padding`), lapisan CSS (bukan StyleX dulu), Server vs Client, SSG. SoT: `../product-discovery/06-engineering/code-discipline.md`.
+* **Kerja baru di `app/` wajib ikuti `.cursor/rules/code-discipline.mdc`** — spacing (`gap`/`padding`), lapisan styling (shadcn + Tailwind v4), Server vs Client, SSG. SoT: `../product-discovery/06-engineering/code-discipline.md`. Konvensi UI: `.cursor/rules/shadcn.mdc`.
 
 ---
 
