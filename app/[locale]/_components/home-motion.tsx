@@ -3,10 +3,10 @@
 import {
   useEffect,
   useRef,
+  useState,
   type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
-import { Center } from "@astryxdesign/core/Center";
 import {
   DURATION_FAST_MAX,
   DURATION_MEDIUM_MAX,
@@ -20,10 +20,6 @@ import {
   useReducedMotion,
 } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-
-function prefersReducedMotion(): boolean {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
 
 function hasFineHover(): boolean {
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -201,21 +197,46 @@ export function Magnetic({ children }: { children: ReactNode }) {
 }
 
 /**
- * Cursor ring desktop — mockup `.cursor-ring` (ADR-017).
+ * Cursor ring desktop — `.home-cursor-ring` (ADR-017, T-036.5).
+ * Off di sentuh dan `prefers-reduced-motion`. `div` + `left`/`top` + CSS
+ * `translate(-50%, -50%)` — bukan Motion `x`/`y` (menimpa centering).
  */
 export function CursorRing() {
+  const reduceMotion = useReducedMotion();
+  const [fineHover, setFineHover] = useState(false);
+
+  useEffect(() => {
+    const hover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => {
+      setFineHover(hover.matches);
+    };
+    sync();
+    hover.addEventListener("change", sync);
+    return () => hover.removeEventListener("change", sync);
+  }, []);
+
+  if (reduceMotion !== false || !fineHover) {
+    return null;
+  }
+
+  return <CursorRingFollow />;
+}
+
+function CursorRingFollow() {
   const ringRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
   const current = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const ring = ringRef.current;
-    if (!ring || prefersReducedMotion() || !hasFineHover()) {
+    if (!ring) {
       return;
     }
 
     target.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     current.current = { ...target.current };
+    ring.style.left = `${target.current.x}px`;
+    ring.style.top = `${target.current.y}px`;
 
     const onMove = (event: MouseEvent) => {
       target.current = { x: event.clientX, y: event.clientY };
@@ -281,9 +302,5 @@ export function CursorRing() {
     };
   }, []);
 
-  return (
-    <Center ref={ringRef} className="home-cursor-ring" aria-hidden="true">
-      {null}
-    </Center>
-  );
+  return <div ref={ringRef} className="home-cursor-ring" aria-hidden="true" />;
 }

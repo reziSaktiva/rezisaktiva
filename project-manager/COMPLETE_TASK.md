@@ -15,6 +15,22 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Changed
+- **T-036.6** ✅ — verifikasi gerak di `/en`: Home reveal + magnetic + cursor ring, About rest/active, tile Work, overlay Contact/QI/sheet, page-vt Home→About, reduced-motion (Lenis/ring off, reveal instan, caption tile terlihat, body About selalu terbuka, ganti halaman tanpa clone Hess).
+- Overlay Contact/QI/sheet: enter/exit pakai transisi CSS token + `@starting-style` (T-036.3 primitf). Kartu Contact tetap terpusat.
+- **T-036** parent ✅. Fokus berikutnya **T-037**.
+### Fixed
+- Dialog Contact bisa macet terbuka jika Radix Presence menunggu `animationend` keyframe yang tidak selesai; overlay tidak lagi memakai keyframe untuk Presence.
+
+## [2026-09-03]
+### Added
+- **T-036.5** `CursorRing` tanpa Astryx `Center`: tidak di-render di sentuh (`hover`+`pointer: fine`) dan `prefers-reduced-motion`; posisi `left`/`top` + CSS `translate(-50%, -50%)`. Lenis `useReducedMotion` — off sampai motion diizinkan; pause `ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`. CSS `.home-cursor-ring { display: none }` di reduced-motion.
+### Changed
+- **T-036** ⏳ (**T-036.1–T-036.5** ✅; lanjut **T-036.6**). Parent belum Done.
+### Fixed
+- (none)
+
+## [2026-09-03]
 ### Added
 - **T-036.3** Contact Dialog + Quick Info Sheet: `AnimatePresence` + `motion/react` tween (bukan spring). Durasi/easing sama dengan CSS lama (scrim 0.35s/0.45s `ease`; kartu Contact scale 0.4s `cubic-bezier(0.22, 1, 0.36, 1)`; QI slide 0.55s). Project sheet Drawer tetap CSS vaul, dikalibrasi token `--duration-sheet-panel` / `--ease-overlay` (0.55s, bukan bounce 0.5s vaul).
 - **T-036.4** Clone exit transisi halaman memakai `animate()` Motion dengan token Hess (`--duration-page-exit` 1s + `--ease-page-transition`). Enter live tetap CSS snapshot (T-025.10). `html.page-vt-lock` tetap `overflow-y: scroll`.

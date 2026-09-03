@@ -19,12 +19,10 @@ import {
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { AnimatePresence } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { CONTACT_COPY, CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import type { Locale } from "@/lib/locale";
 import { Magnetic } from "./home-motion";
-import { DialogPanelMotion, OverlayScrimMotion } from "./overlay-motion";
 import {
   ArrowRightIcon,
   CloseIcon,
@@ -35,8 +33,8 @@ import {
 
 /**
  * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3) — Dialog shadcn +
- * skin `.ct-*` (kartu dark-ink). Enter/exit = `AnimatePresence` + tween token,
- * bukan spring. Bukan route `/contact`.
+ * skin `.ct-*` (kartu dark-ink). Enter/exit = keyframe CSS token, bukan
+ * spring. Bukan route `/contact`.
  *
  * Form: validasi client + state "Terkirim"; tidak ada backend (M8 Could).
  * mailto: tetap primer lewat tautan email.
@@ -127,39 +125,29 @@ export function ContactModal({ locale }: { locale: Locale }) {
         }
       }}
     >
-      <AnimatePresence>
-        {isOpen ? (
-          <DialogContent
-            key="ct-dialog"
-            id="ct-panel"
-            forceMount
-            asChild
-            showCloseButton={false}
-            aria-describedby={undefined}
-            aria-labelledby={titleId}
-            overlay={
-              <DialogOverlay
-                asChild
-                forceMount
-                className="ct-scrim"
-                data-ct-scrim=""
-                data-overlay-scrim=""
-                data-lenis-prevent=""
-              >
-                <OverlayScrimMotion kind="contact" />
-              </DialogOverlay>
-            }
+      <DialogContent
+        id="ct-panel"
+        showCloseButton={false}
+        aria-describedby={undefined}
+        aria-labelledby={titleId}
+        overlay={
+          <DialogOverlay
+            className="ct-scrim"
+            data-ct-scrim=""
+            data-overlay-scrim=""
             data-lenis-prevent=""
-            className="ct-panel max-w-none gap-0 text-inherit shadow-none ring-0 sm:max-w-none"
-            onOpenAutoFocus={(event) => {
-              event.preventDefault();
-              document.getElementById(emailId)?.focus();
-            }}
-            onCloseAutoFocus={(event) => {
-              event.preventDefault();
-            }}
-          >
-            <DialogPanelMotion>
+          />
+        }
+        data-lenis-prevent=""
+        className="ct-panel max-w-none translate-none gap-0 text-inherit shadow-none ring-0 sm:max-w-none"
+        onOpenAutoFocus={(event) => {
+          event.preventDefault();
+          document.getElementById(emailId)?.focus();
+        }}
+        onCloseAutoFocus={(event) => {
+          event.preventDefault();
+        }}
+      >
         <Button
           type="button"
           variant="ghost"
@@ -260,10 +248,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
             </div>
           </div>
         </div>
-            </DialogPanelMotion>
-          </DialogContent>
-        ) : null}
-      </AnimatePresence>
+      </DialogContent>
     </Dialog>
   );
 }
