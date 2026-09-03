@@ -10,8 +10,6 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { Theme } from "@astryxdesign/core/theme";
-import { rezisaktivaTheme } from "@/theme/rezisaktiva";
 import {
   getThemeModeSnapshot,
   setThemeMode,
@@ -61,10 +59,12 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
    * `mode` berubah (toggle tanpa reload). Jangan lewat `className` React di
    * `<html>` — itu menimpa class Lenis / overlay lock. Nilai awal: cookie
    * SSR untuk `colorScheme` + script `beforeInteractive` (`classList`).
-   * Layout effect `Theme` Astryx (`useRootThemeSync`) cuma `data-theme`.
+   * `data-theme` ikut di-set di sini (bukan wrapper tema lama) supaya
+   * selector `html[data-theme]` tetap sinkron saat toggle tanpa reload.
    */
   useLayoutEffect(() => {
     const root = document.documentElement;
+    root.setAttribute("data-theme", mode);
     root.style.colorScheme = mode;
     root.classList.toggle("dark", mode === "dark");
   }, [mode]);
@@ -78,11 +78,7 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
   );
 
   return (
-    <ThemeModeContext value={value}>
-      <Theme theme={rezisaktivaTheme} mode={mode}>
-        {children}
-      </Theme>
-    </ThemeModeContext>
+    <ThemeModeContext value={value}>{children}</ThemeModeContext>
   );
 }
 

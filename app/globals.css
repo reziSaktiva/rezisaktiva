@@ -1,35 +1,18 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@astryxdesign/core/reset.css";
-@import "@astryxdesign/core/astryx.css";
-@import "../theme/astryx-theme.css";
 @import "lenis/dist/lenis.css";
 
 /* Class `.dark` (bukan OS). Token = T-032.4; `html.dark` dari cookie = T-032.5. */
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Sumber token: tema built `theme/astryx-theme.css` (extends theme-neutral,
- * nilai `--c-*` mockup) — lihat design-tokens.md dan ADR-018.
- * Jangan override `--color-*` di :root (lihat .cursor/rules/xds.mdc).
- */
-
-/*
- * Chrome chip/pill (`site-header.tsx`, `locale-switcher.tsx`) — idealnya
- * pakai `xstyle`/StyleX (`.cursor/rules/xds.mdc`), tapi compiler StyleX
- * belum wired ke build Turbopack project ini (lihat COMPLETE_TASK.md,
- * catatan T-013.4). Sebagai gantinya dipakai class scoped + token Astryx
- * langsung (`var(--spacing-*)`, `var(--radius-full)`, dst) — bukan
- * `defineTheme` `components` override. Warna/layout chrome tetap discope
- * lewat class wrapper (`.site-*`) — jangan menimpa class Astryx secara
- * global untuk hal itu (blast radius PR #28). Pengecualian sadar: elevasi
- * timbul 3D (`--elev-3d`) dipasang ke seluruh `.astryx-button` karena
- * itu style tombol yang diminta untuk semua instance Button.
+ * Chrome chip/pill (`site-header.tsx`, `locale-switcher.tsx`) — class
+ * scoped + token di `:root` (`var(--spacing-*)`, `var(--radius-full)`).
+ * Warna/layout chrome tetap di wrapper (`.site-*`).
  *
- * `--chip-bg`/`--chip-fg` BUKAN token Astryx (`--color-*`) — satu-satunya
- * sumber kebenaran warna chip kuning ini (dulu terduplikasi antara
- * `lib/theme.ts` dan file ini; sekarang cuma di sini).
+ * `--chip-bg`/`--chip-fg` — satu-satunya sumber kebenaran warna chip kuning
+ * (dulu terduplikasi antara `lib/theme.ts` dan file ini; sekarang cuma di sini).
  */
 /*
  * `--chrome-pill-bg`/`--chrome-pill-fg` di bawah adalah fallback statis
@@ -40,7 +23,7 @@
  * BUKAN CSS `light-dark()` lagi (bug flash 2026-08-16, lihat
  * COMPLETE_TASK.md) — browser sempat resolve `light-dark()` di sini pakai
  * skema warna yang salah sesaat sebelum settle, dan `transition` bawaan
- * Astryx pada chip bikin koreksi itu terlihat sebagai animasi warna.
+ * pada chip bikin koreksi itu terlihat sebagai animasi warna.
  *
  * PENTING — jaga sinkron manual (code review 2026-08-16): nilai hex di
  * bawah HARUS sama dengan `CHIP_COLOR_BY_MODE.light` di
@@ -66,12 +49,12 @@
   --duration-sheet-panel: 0.55s;
   --ease-overlay: cubic-bezier(0.22, 1, 0.36, 1);
   /*
-   * Elevasi timbul 3D untuk chrome chip + seluruh `.astryx-button`.
+   * Elevasi timbul 3D untuk chrome chip.
    * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
    * bibir tebal di bawah, lalu drop shadow.
    * Sengaja BUKAN `light-dark()` — pola itu pernah flash di chip
    * (2026-08-16). Nilai dark di-set lewat `html[data-theme="dark"]`
-   * (Astryx) dan class `.dark` (jalur shadcn, wiring T-032.5).
+   * dan class `.dark` (T-032.5).
    */
   --elev-3d:
     inset 0 1px 0 rgb(255 255 255 / 0.55),
@@ -88,7 +71,7 @@
     inset 0 1px 0 rgb(255 255 255 / 0.16),
     0 1px 2px rgb(20 24 31 / 0.1);
   /*
-   * T-025.9 — scrollbar native. `<html>` di luar @scope Astryx.
+   * T-025.9 — scrollbar native.
    * Track = `--color-background-muted` (light/dark). Thumb = kuning chip
    * nav (`.site-nav-chip` / `--chip-bg`) di kedua tema. Prefix `--rz-*`.
    */
@@ -97,9 +80,10 @@
   --rz-scrollbar-thumb: var(--chip-bg);
   --rz-scrollbar-thumb-hover: var(--chip-bg);
   /*
-   * T-032.4 — token shadcn = palet rezisaktiva (`lib/astryx-theme.ts`).
-   * Bukan override `--color-*` Astryx. Kanvas html/body: `data-theme` +
-   * `html.dark` (T-032.5) + `light-dark()` dari `color-scheme`.
+   * T-032.4 — token shadcn = palet rezisaktiva. Kanvas html/body:
+   * `data-theme` + `html.dark` (T-032.5) + `light-dark()` dari `color-scheme`.
+   * T-037.1 — token craft (`--spacing-*`, `--color-*`) di `:root` (bukan
+   * file tema built).
    */
   --background: #edeae1;
   --foreground: #14181f;
@@ -133,6 +117,86 @@
   --sidebar-accent-foreground: #14181f;
   --sidebar-border: #dad5c7;
   --sidebar-ring: #4c7a73;
+
+  --spacing-0: 0px;
+  --spacing-0-5: 2px;
+  --spacing-1: 4px;
+  --spacing-1-5: 6px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-11: 44px;
+  --spacing-12: 48px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --ease-standard: cubic-bezier(0.24, 1, 0.4, 1);
+  --font-size-4xs: 0.375rem;
+  --font-size-3xs: 0.4375rem;
+  --font-size-2xs: 0.5rem;
+  --font-size-xs: 0.625rem;
+  --font-size-sm: 0.75rem;
+  --font-size-base: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.0625rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.8125rem;
+  --font-size-4xl: 2.1875rem;
+  --font-size-5xl: 2.625rem;
+  --font-family-body: Figtree, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-family-heading: Figtree, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-family-code: ui-monospace, "SF Mono", Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --duration-fast-min: 95ms;
+  --duration-fast: 125ms;
+  --duration-fast-max: 165ms;
+  --duration-medium-min: 225ms;
+  --duration-medium: 300ms;
+  --duration-medium-max: 400ms;
+  --duration-slow-min: 525ms;
+  --duration-slow: 700ms;
+  --duration-slow-max: 935ms;
+  --radius-none: 0px;
+  --radius-inner: 0.375rem;
+  --radius-element: 0.625rem;
+  --radius-container: 0.75rem;
+  --radius-page: 1.75rem;
+  --radius-full: 9999px;
+  --color-background-surface: light-dark(#edeae1, #0a0f1a);
+  --color-background-body: light-dark(#edeae1, #0a0f1a);
+  --color-background-canvas: var(--color-background-body);
+  --color-background-card: light-dark(#edeae1, #0a0f1a);
+  --color-background-popover: light-dark(#e4dfd1, #121a2b);
+  --color-background-muted: light-dark(#e4dfd1, #121a2b);
+  --color-background-inverted: light-dark(#0a0f1a, #edeae1);
+  --color-accent: light-dark(#4c7a73, #7fb3aa);
+  --color-accent-muted: light-dark(#d8e2de, #1e302e);
+  --color-on-accent: light-dark(#edeae1, #0a0f1a);
+  --color-text-accent: light-dark(#4c7a73, #7fb3aa);
+  --color-icon-accent: light-dark(#4c7a73, #7fb3aa);
+  --color-text-primary: light-dark(#14181f, #edeae1);
+  --color-text-secondary: light-dark(#6e6a5f, #9b968a);
+  --color-text-disabled: light-dark(#a3a3a3, #525252);
+  --color-icon-primary: light-dark(#14181f, #edeae1);
+  --color-icon-secondary: light-dark(#6e6a5f, #9b968a);
+  --color-on-dark: #edeae1;
+  --color-on-light: #14181f;
+  --color-border: light-dark(#dad5c7, #222b3d);
+  --color-border-emphasized: light-dark(#dad5c7, #222b3d);
+  --color-success: light-dark(#007004, #9fe59b);
+  --shadow-low: 0 2px 4px light-dark(oklch(0 0 0 / 5%), oklch(0 0 0 / 25%)),
+    0 4px 8px light-dark(oklch(0 0 0 / 10%), oklch(0 0 0 / 40%)),
+    inset 0 0 0 1px light-dark(transparent, oklch(1 0 0 / 8%));
 }
 
 html[data-theme="dark"],
@@ -157,14 +221,13 @@ html[style*="color-scheme:dark"],
 }
 
 /*
- * Kanvas halaman di luar @scope tema Astryx (`[data-astryx-theme]` hanya
- * membungkus subtree React). Nilai = `--c-bg` / `--c-fg` mockup
+ * Kanvas halaman. Nilai = `--c-bg` / `--c-fg` mockup
  * (`design-mockups/shared.css`) — KI-002.
  *
  * `light-dark()` mengikuti `color-scheme` inline di `<html>` (SSR dari
  * cookie, `app/layout.tsx`) supaya first paint dark tidak cream. Selector
- * `[data-theme]` tetap ada untuk setelah hydrate (Astryx menulis atribut itu
- * di layout effect, bukan di markup SSR).
+ * `[data-theme]` tetap ada untuk setelah hydrate (`ThemeModeProvider`
+ * menulis atribut itu di layout effect, bukan di markup SSR).
  */
 html,
 body {
@@ -321,6 +384,18 @@ html::-webkit-scrollbar-button {
   }
 }
 
+.site-pill-group {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.site-pill-group--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
 /* Sliding pill — mockup `.pill-indicator` + `initPillGroups()`. */
 .site-pill-indicator {
   position: absolute;
@@ -351,6 +426,8 @@ html::-webkit-scrollbar-button {
   overflow: visible;
   background-color: var(--chip-bg);
   border-radius: 16px;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
 }
 .site-nav-chip .site-nav-item {
   position: relative;
@@ -424,6 +501,8 @@ html::-webkit-scrollbar-button {
   width: 100%;
   background-color: transparent;
   border-radius: 0.9rem;
+  gap: var(--spacing-0-5);
+  padding: var(--spacing-1);
 }
 
 .site-mobile-nav-chip .site-pill-indicator {
@@ -550,32 +629,13 @@ html::-webkit-scrollbar-button {
 }
 
 /*
- * Timbul 3D (arahan Boss Rezi): chip chrome + pill aktif di dalamnya +
- * Button Astryx yang berisi. `!important` pada `.astryx-button` mengalahkan
- * StyleX runtime (elevation default `none`). Overlay icon-only (close/copy
- * modal) dikecualikan — shadow timbul di ghost transparan terlihat kotor,
- * dan `box-shadow` `!important` tidak boleh menelan cincin fokus.
+ * Timbul 3D (arahan Boss Rezi): chip chrome + pill aktif di dalamnya.
+ * Overlay icon-only (close/copy modal) dikecualikan — shadow timbul di
+ * ghost transparan terlihat kotor.
  */
 .site-nav-chip,
 .site-locale-switch {
   box-shadow: var(--elev-3d);
-}
-
-.astryx-button:not(.ct-close):not(.ct-copy):not(.qi-close) {
-  box-shadow: var(--elev-3d) !important;
-}
-
-.astryx-button:not(.ct-close):not(.ct-copy):not(.qi-close):hover {
-  box-shadow: var(--elev-3d-hover) !important;
-}
-
-.astryx-button:not(.ct-close):not(.ct-copy):not(.qi-close):active {
-  box-shadow: var(--elev-3d-pressed) !important;
-}
-
-.astryx-button:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
 }
 
 /*
@@ -756,7 +816,7 @@ html::-webkit-scrollbar-button {
  * `SiteChrome` header sticky; background dikosongkan supaya hero
  * 100svh bisa masuk di bawah nav.
  */
-.astryx-app-shell-header {
+.site-chrome-header {
   position: sticky;
   top: 0;
   z-index: 50;
@@ -1278,7 +1338,6 @@ button.home-work-tile,
   .qi-panel,
   .qi-scrim,
   .qi-tab,
-  .astryx-bottom-sheet,
   .ps-panel,
   .ps-scrim,
   .ps-reveal,
@@ -2325,12 +2384,6 @@ html.ct-lock .qi-tab {
   pointer-events: none;
 }
 
-.astryx-bottom-sheet {
-  background: var(--color-background-canvas);
-  color: var(--color-text-primary);
-  font-family: "Satoshi", var(--font-family-body);
-}
-
 /*
  * Transisi halaman = snapshot CSS (ritme karolinahess.com).
  * Live page diparkir di bawah viewport sampai enter — tampil lebih dulu
@@ -2369,7 +2422,7 @@ html.lenis.page-vt-lock.lenis-stopped {
   will-change: transform;
 }
 
-.page-vt-clone .astryx-app-shell-header,
+.page-vt-clone .site-chrome-header,
 .page-vt-clone .home-cursor-ring,
 .page-vt-clone .site-mobile-nav {
   visibility: hidden !important;
@@ -2382,7 +2435,7 @@ html.lenis.page-vt-lock.lenis-stopped {
   }
 }
 
-html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
+html.page-vt-lock:not(.page-vt-entering) .site-chrome-main,
 html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
   transform: translateY(100vh);
   transform: translateY(100dvh);
@@ -2390,7 +2443,7 @@ html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
   pointer-events: none;
 }
 
-html.page-vt-entering #astryx-app-shell-main,
+html.page-vt-entering .site-chrome-main,
 html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   visibility: visible;
   animation: page-vt-enter var(--duration-page-enter) var(--ease-page-transition)
@@ -2399,9 +2452,9 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
+  html.page-vt-lock:not(.page-vt-entering) .site-chrome-main,
   html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
-  html.page-vt-entering #astryx-app-shell-main,
+  html.page-vt-entering .site-chrome-main,
   html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     animation: none !important;
     transform: none !important;

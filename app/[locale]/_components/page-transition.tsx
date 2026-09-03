@@ -113,7 +113,7 @@ function captureOutgoing(scrollY: number): HTMLElement {
   shifter.className = "page-vt-clone-shift";
   shifter.style.transform = `translateY(${-scrollY}px)`;
 
-  const main = document.getElementById("astryx-app-shell-main");
+  const main = document.getElementById("site-chrome-main");
   const footer = document.querySelector(".site-footer");
   if (main) {
     shifter.appendChild(main.cloneNode(true));
@@ -137,7 +137,7 @@ function clearClones(): void {
 }
 
 function setLiveParked(parked: boolean): void {
-  const main = document.getElementById("astryx-app-shell-main");
+  const main = document.getElementById("site-chrome-main");
   const footer = document.querySelector(".site-footer");
   for (const node of [main, footer]) {
     if (!(node instanceof HTMLElement)) {

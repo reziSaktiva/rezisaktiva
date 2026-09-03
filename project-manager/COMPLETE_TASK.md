@@ -15,6 +15,16 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Added
+- Token craft (`--spacing-*`, `--color-*`, durasi, radius, easing) di `:root` `app/globals.css` supaya halaman tetap hidup tanpa file tema built.
+### Changed
+- **T-037.1:** hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.{js,d.ts,variants.d.ts}`; script `astryx` / `theme:build` / `theme:check`; langkah CI `pnpm theme:check`.
+- Cabut wrapper `Theme` + impor `HStack`/`VStack`; pill nav jadi flex scoped; id/class chrome `site-chrome-main` / `site-chrome-header`.
+- **T-037.3:** hapus `@import` Astryx di `globals.css`; selector page-vt & header tidak lagi memakai id/class lama.
+### Fixed
+- Toggle tema menulis `data-theme` di `<html>` (sebelumnya tugas wrapper tema).
+
+## [2026-09-03]
 ### Changed
 - Dependabot npm: ignore `@astryxdesign/*` sampai T-037 (ADR-028) — cegah PR grup seperti #61.
 - `next` + `eslint-config-next` 16.3.2 → 16.3.3 (patch keamanan; tanpa bump Astryx).

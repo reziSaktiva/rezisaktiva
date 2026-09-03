@@ -66,9 +66,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
       </NextLink>
       {!isMobile ? (
         <SlidingPillGroup
-          gap={2}
-          padding={2}
-          align="center"
           className="site-nav-chip"
           style={chipColorVars}
           itemSelector=".site-nav-item"
@@ -146,8 +143,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 </SheetHeader>
                 <SlidingPillGroup
                   orientation="vertical"
-                  gap={0.5}
-                  padding={1}
                   className="site-mobile-nav-chip"
                   style={chipColorVars}
                   itemSelector=".site-mobile-nav-item"

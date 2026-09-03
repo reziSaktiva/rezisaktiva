@@ -29,6 +29,3 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
-
-      - name: Check Astryx theme build
-        run: pnpm theme:check

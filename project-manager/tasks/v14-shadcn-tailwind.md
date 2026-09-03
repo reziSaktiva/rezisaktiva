@@ -282,9 +282,9 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ### Subtasks
 
-- [ ] **T-037.1** — Grep `@astryxdesign` / `@stylexjs` / `astryx-` di `app/`, `lib/`, `theme/`: kosong. Hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.d.ts` (atau ganti tipe tema baru jika masih perlu). Script `astryx` / `theme:build` / `theme:check` di `package.json` dihapus.
+- [x] **T-037.1** — Grep `@astryxdesign` / `@stylexjs` / `astryx-` di `app/`, `lib/`, `theme/`: kosong. Hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.d.ts` (atau ganti tipe tema baru jika masih perlu). Script `astryx` / `theme:build` / `theme:check` di `package.json` dihapus.
 - [ ] **T-037.2** — `pnpm remove @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex` + dev `@astryxdesign/cli`. Lockfile update sadar (bukan regenerate buta).
-- [ ] **T-037.3** — `globals.css`: hapus `@import` Astryx; ganti selector `.astryx-*` / `#astryx-app-shell-main` ke class baru (header/main). Jangan `!important` baru kecuali preseden sadar. Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
+- [x] **T-037.3** — `globals.css`: hapus `@import` Astryx; ganti selector `.astryx-*` / `#astryx-app-shell-main` ke class baru (header/main). Jangan `!important` baru kecuali preseden sadar. Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
 - [ ] **T-037.4** — Docs/rule: `design-tokens.md`, `code-discipline.md` + `.mdc`, `dependency-strategy.md`, `06-engineering/README.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md` (indeks rule). **Ganti** `.cursor/rules/xds.mdc` jadi rule shadcn (alwaysApply) — konvensi CLI `pnpm exec`/`pnpm dlx shadcn`, tanpa Tailwind-as-coexist Astryx, tanpa StyleX. `ui-ux-mockup-check.mdc`: acuan = `app/` + shadcn/Tailwind, bukan Astryx.
 - [ ] **T-037.5** — `.cursor/mcp.json`: hapus `xds`. shadcn + motion tetap. Jangan sebut nama model/tool terlarang di commit.
 - [ ] **T-037.6** — QA paritas vs **T-032.1** ([`baselines/t-032.1/`](../baselines/t-032.1/)): Home/About/Work; Contact/QI/sheet; chrome; light/dark; 320/375/desktop; reduced-motion; locale ID/EN; typecheck/lint/build. Catat gap yang tidak 1:1 (jika ada) — **perbaiki dulu** jika bentuk berubah tanpa keputusan. Foto Unsplash tetap bukan blocker.
