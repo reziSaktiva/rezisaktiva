@@ -874,16 +874,6 @@ html::-webkit-scrollbar-button {
   letter-spacing: -0.055em;
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  opacity: 0;
-  transform: translateY(0.4em);
-  transition:
-    opacity var(--duration-medium-max) var(--ease-standard),
-    transform var(--duration-medium-max) var(--ease-standard);
-}
-
-.home-hero-line.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .home-hero-line-2 {
@@ -941,6 +931,14 @@ html::-webkit-scrollbar-button {
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.03em;
   line-height: 1.1;
+}
+
+.home-work-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-6);
 }
 
 .home-cta-underline {
@@ -1076,6 +1074,33 @@ button.home-work-tile,
   pointer-events: none;
 }
 
+.home-work-tile-scrim,
+.home-work-tile-meta {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.home-work-tile:focus-within .home-work-tile-scrim,
+.home-work-tile:focus-within .home-work-tile-meta {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .home-work-tile:hover:not(:disabled, [aria-disabled="true"])
+    .home-work-tile-scrim,
+  .home-work-tile:hover:not(:disabled, [aria-disabled="true"])
+    .home-work-tile-meta {
+    opacity: 1;
+  }
+}
+
+@media (any-pointer: coarse) {
+  .home-work-tile-scrim,
+  .home-work-tile-meta {
+    opacity: 1;
+  }
+}
+
 .home-work-tile-title,
 .home-work-tile-outcome {
   color: inherit;
@@ -1132,21 +1157,7 @@ button.home-work-tile,
 }
 
 .home-magnetic {
-  transition: transform var(--duration-fast-max) var(--ease-standard);
   display: inline-flex;
-}
-
-.home-reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity var(--duration-slow-min) var(--ease-standard),
-    transform var(--duration-slow-min) var(--ease-standard);
-}
-
-.home-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .home-cursor-ring {
@@ -1323,19 +1334,6 @@ button.home-work-tile,
 .page-word {
   display: inline;
   font-family: "General Sans", var(--font-family-heading);
-  opacity: 0;
-  transform: translateY(0.4em);
-  filter: blur(4px);
-  transition:
-    opacity var(--duration-slow-min) var(--ease-standard),
-    transform var(--duration-slow-min) var(--ease-standard),
-    filter var(--duration-slow-min) var(--ease-standard);
-}
-
-.page-word.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
 }
 
 .page-word--compact {

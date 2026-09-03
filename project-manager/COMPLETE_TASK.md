@@ -14,6 +14,15 @@ Format entri:
 - ...
 ```
 
+## [2026-09-03]
+### Added
+- **T-036.1** `Reveal` / `WordReveal` / `HeroWords` / `Magnetic` memakai `motion/react` (tween token `--duration-*` + `--ease-standard`, `useReducedMotion`). Bukan spring default. `CursorRing` masih Astryx `Center` sampai T-036.5.
+- **T-036.2** `work-tile` tanpa `useContainerReveal` / `mergeProps`. Caption+scrim hover/focus desktop, selalu terlihat di sentuh, reduced-motion instan (CSS; bukan Overlay Astryx).
+### Changed
+- Token durasi/easing Motion di `lib/motion.ts`. Layout `.home-work-head` pindah ke CSS (pengganti HStack).
+### Fixed
+- (none)
+
 ## [2026-09-02]
 ### Added
 - (none)

@@ -3,14 +3,23 @@
 import {
   useEffect,
   useRef,
-  useState,
-  type CSSProperties,
+  type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
 import { Center } from "@astryxdesign/core/Center";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
+import {
+  DURATION_FAST_MAX,
+  DURATION_MEDIUM_MAX,
+  DURATION_SLOW_MIN,
+  EASE_STANDARD,
+  WORD_REVEAL_DELAY,
+  WORD_REVEAL_STAGGER,
+  animate,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+} from "@/lib/motion";
+import { cn } from "@/lib/utils";
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -20,8 +29,27 @@ function hasFineHover(): boolean {
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 }
 
+const REVEAL_TWEEN = {
+  type: "tween" as const,
+  duration: DURATION_SLOW_MIN,
+  ease: EASE_STANDARD,
+};
+
+const HERO_TWEEN = {
+  type: "tween" as const,
+  duration: DURATION_MEDIUM_MAX,
+  ease: EASE_STANDARD,
+};
+
+const MAGNETIC_TWEEN = {
+  type: "tween" as const,
+  duration: DURATION_FAST_MAX,
+  ease: EASE_STANDARD,
+};
+
 /**
- * Scroll-triggered fade/slide — pola mockup `.reveal` (ADR-017).
+ * Scroll-triggered fade/slide — pola `.home-reveal` (ADR-017).
+ * Tween `--duration-slow-min` + `--ease-standard`, bukan spring.
  */
 export function Reveal({
   children,
@@ -32,56 +60,22 @@ export function Reveal({
   className?: string;
   axis?: "vertical" | "horizontal";
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) {
-      return;
-    }
-    if (prefersReducedMotion()) {
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            io.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.15 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  const classNames = ["home-reveal", isVisible ? "is-visible" : "", className]
-    .filter(Boolean)
-    .join(" ");
-
-  if (axis === "horizontal") {
-    return (
-      <HStack
-        ref={ref}
-        align="end"
-        justify="between"
-        gap={6}
-        wrap="wrap"
-        className={classNames}
-      >
-        {children}
-      </HStack>
-    );
-  }
+  const reduceMotion = useReducedMotion();
 
   return (
-    <VStack ref={ref} className={classNames}>
+    <motion.div
+      className={cn(
+        "home-reveal",
+        axis === "horizontal" && "home-work-head",
+        className,
+      )}
+      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={reduceMotion ? { duration: 0 } : REVEAL_TWEEN}
+    >
       {children}
-    </VStack>
+    </motion.div>
   );
 }
 
@@ -96,46 +90,37 @@ export function WordReveal({
   words: readonly string[];
   variant?: "inline" | "compact";
 }) {
-  const [visibleCount, setVisibleCount] = useState(0);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) {
-      return;
-    }
-
-    const timers = words.map((_, index) =>
-      window.setTimeout(
-        () => {
-          setVisibleCount((count) => Math.max(count, index + 1));
-        },
-        120 + index * 80,
-      ),
-    );
-    return () => {
-      for (const timer of timers) {
-        window.clearTimeout(timer);
-      }
-    };
-  }, [words]);
+  const reduceMotion = useReducedMotion();
+  const compact = variant === "compact";
 
   return (
     <>
       {words.map((word, index) => (
-        <Text
+        <motion.span
           key={`${word}-${index}`}
-          display={variant === "compact" ? "block" : "inline"}
-          className={[
-            variant === "compact"
-              ? "page-word page-word--compact"
-              : "page-word",
-            index < visibleCount ? "is-visible" : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          className={cn("page-word", compact && "page-word--compact")}
+          initial={
+            reduceMotion
+              ? { opacity: 1, y: 0, filter: "blur(0px)" }
+              : {
+                  opacity: 0,
+                  y: "0.4em",
+                  filter: compact ? "blur(0px)" : "blur(4px)",
+                }
+          }
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : {
+                  ...REVEAL_TWEEN,
+                  delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
+                }
+          }
         >
           {word}
           {variant === "inline" && index < words.length - 1 ? " " : ""}
-        </Text>
+        </motion.span>
       ))}
     </>
   );
@@ -145,44 +130,29 @@ export function WordReveal({
  * Word reveal hero — mockup `runWordReveal()` (120ms + i * 80ms).
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
-  const [visibleCount, setVisibleCount] = useState(0);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) {
-      return;
-    }
-
-    const timers = lines.map((_, index) =>
-      window.setTimeout(
-        () => {
-          setVisibleCount((count) => Math.max(count, index + 1));
-        },
-        120 + index * 80,
-      ),
-    );
-    return () => {
-      for (const timer of timers) {
-        window.clearTimeout(timer);
-      }
-    };
-  }, [lines]);
+  const reduceMotion = useReducedMotion();
 
   return (
     <>
       {lines.map((line, index) => (
-        <Text
+        <motion.span
           key={line}
-          display="block"
-          className={[
-            "home-hero-line",
-            index === 1 ? "home-hero-line-2" : "",
-            index < visibleCount ? "is-visible" : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          className={cn("home-hero-line", index === 1 && "home-hero-line-2")}
+          initial={
+            reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: "0.4em" }
+          }
+          animate={{ opacity: 1, y: 0 }}
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : {
+                  ...HERO_TWEEN,
+                  delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
+                }
+          }
         >
           {line}
-        </Text>
+        </motion.span>
       ))}
     </>
   );
@@ -192,39 +162,41 @@ export function HeroWords({ lines }: { lines: readonly [string, string] }) {
  * Magnetic pull on hover — mockup `.magnetic` (cursor-aware, ADR-017).
  */
 export function Magnetic({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const reduceMotion = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || prefersReducedMotion() || !hasFineHover()) {
+  const onMove = (event: ReactMouseEvent<HTMLSpanElement>) => {
+    if (reduceMotion || !hasFineHover()) {
       return;
     }
+    const box = event.currentTarget.getBoundingClientRect();
+    void animate(
+      x,
+      (event.clientX - box.left - box.width / 2) * 0.18,
+      MAGNETIC_TWEEN,
+    );
+    void animate(
+      y,
+      (event.clientY - box.top - box.height / 2) * 0.3,
+      MAGNETIC_TWEEN,
+    );
+  };
 
-    const onMove = (event: MouseEvent) => {
-      const box = el.getBoundingClientRect();
-      const x = event.clientX - box.left - box.width / 2;
-      const y = event.clientY - box.top - box.height / 2;
-      setOffset({ x: x * 0.18, y: y * 0.3 });
-    };
-    const onLeave = () => setOffset({ x: 0, y: 0 });
-
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
-  const style: CSSProperties = {
-    transform: `translate(${offset.x}px, ${offset.y}px)`,
+  const onLeave = () => {
+    void animate(x, 0, MAGNETIC_TWEEN);
+    void animate(y, 0, MAGNETIC_TWEEN);
   };
 
   return (
-    <Center ref={ref} isInline className="home-magnetic" style={style}>
+    <motion.span
+      className="home-magnetic"
+      style={{ x, y }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
       {children}
-    </Center>
+    </motion.span>
   );
 }
 
