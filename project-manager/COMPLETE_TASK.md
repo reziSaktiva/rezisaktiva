@@ -15,6 +15,16 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Added
+- Token craft yang masih dipakai setelah cabut Astryx: `--size-element-*`, `--color-background-green`, `--color-text-green`, `--color-border-default` di `app/globals.css`.
+- `lib/site-chrome.ts` (`MAIN_CONTENT_ID`) + tes `lib/site-chrome.test.ts`; CI menjalankan `pnpm test`.
+### Changed
+- `data-theme` di markup SSR `<html>` (cookie `initialMode`); token craft `--color-*` hex light/dark, bukan `light-dark()`.
+- Dependabot npm: hapus ignore `@astryxdesign/*` (T-037 selesai).
+### Fixed
+- Page-vt: park `.site-chrome-main:not(.page-vt-clone *)` supaya snapshot exit tidak ikut hidden (review PR #67).
+
+## [2026-09-03]
 ### Changed
 - **T-037.7:** rilis v14 (**T-032…T-037**) ✅ Done. Snapshot/Fokus: Active Mode Validation, **prioritas T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028 (tidak dikembalikan).
 - **T-037** parent ✅. `tasks/v14-shadcn-tailwind.md` + indeks TASKS v14 Done; `v13-metadata.md` T-031 Open prioritas.

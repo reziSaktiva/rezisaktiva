@@ -81,9 +81,8 @@
   --rz-scrollbar-thumb-hover: var(--chip-bg);
   /*
    * T-032.4 — token shadcn = palet rezisaktiva. Kanvas html/body:
-   * `data-theme` + `html.dark` (T-032.5) + `light-dark()` dari `color-scheme`.
-   * T-037.1 — token craft (`--spacing-*`, `--color-*`) di `:root` (bukan
-   * file tema built).
+   * `data-theme` SSR + `html.dark` (T-032.5). Craft `--color-*` = hex
+   * light/dark (bukan `light-dark()`). T-037.1 — spacing/type/size di `:root`.
    */
   --background: #edeae1;
   --foreground: #14181f;
@@ -172,37 +171,75 @@
   --radius-container: 0.75rem;
   --radius-page: 1.75rem;
   --radius-full: 9999px;
-  --color-background-surface: light-dark(#edeae1, #0a0f1a);
-  --color-background-body: light-dark(#edeae1, #0a0f1a);
+  --size-element-sm: 28px;
+  --size-element-md: 32px;
+  --size-element-lg: 36px;
+  /*
+   * Craft `--color-*` = hex light di `:root`, hex dark di
+   * `html[data-theme="dark"]` / `.dark` — bukan `light-dark()` (flash chip
+   * 2026-08-16). Teal aksen craft (`--color-accent`) terpisah dari token
+   * shadcn `--accent` (muted) yang dipetakan `@theme inline`.
+   */
+  --color-background-surface: #edeae1;
+  --color-background-body: #edeae1;
   --color-background-canvas: var(--color-background-body);
-  --color-background-card: light-dark(#edeae1, #0a0f1a);
-  --color-background-popover: light-dark(#e4dfd1, #121a2b);
-  --color-background-muted: light-dark(#e4dfd1, #121a2b);
-  --color-background-inverted: light-dark(#0a0f1a, #edeae1);
-  --color-accent: light-dark(#4c7a73, #7fb3aa);
-  --color-accent-muted: light-dark(#d8e2de, #1e302e);
-  --color-on-accent: light-dark(#edeae1, #0a0f1a);
-  --color-text-accent: light-dark(#4c7a73, #7fb3aa);
-  --color-icon-accent: light-dark(#4c7a73, #7fb3aa);
-  --color-text-primary: light-dark(#14181f, #edeae1);
-  --color-text-secondary: light-dark(#6e6a5f, #9b968a);
-  --color-text-disabled: light-dark(#a3a3a3, #525252);
-  --color-icon-primary: light-dark(#14181f, #edeae1);
-  --color-icon-secondary: light-dark(#6e6a5f, #9b968a);
+  --color-background-card: #edeae1;
+  --color-background-popover: #e4dfd1;
+  --color-background-muted: #e4dfd1;
+  --color-background-inverted: #0a0f1a;
+  --color-background-green: #c5e5c0;
+  --color-accent: #4c7a73;
+  --color-accent-muted: #d8e2de;
+  --color-on-accent: #edeae1;
+  --color-text-accent: #4c7a73;
+  --color-icon-accent: #4c7a73;
+  --color-text-primary: #14181f;
+  --color-text-secondary: #6e6a5f;
+  --color-text-disabled: #a3a3a3;
+  --color-text-green: #0c5700;
+  --color-icon-primary: #14181f;
+  --color-icon-secondary: #6e6a5f;
   --color-on-dark: #edeae1;
   --color-on-light: #14181f;
-  --color-border: light-dark(#dad5c7, #222b3d);
-  --color-border-emphasized: light-dark(#dad5c7, #222b3d);
-  --color-success: light-dark(#007004, #9fe59b);
-  --shadow-low: 0 2px 4px light-dark(oklch(0 0 0 / 5%), oklch(0 0 0 / 25%)),
-    0 4px 8px light-dark(oklch(0 0 0 / 10%), oklch(0 0 0 / 40%)),
-    inset 0 0 0 1px light-dark(transparent, oklch(1 0 0 / 8%));
+  --color-border: #dad5c7;
+  --color-border-emphasized: #dad5c7;
+  --color-border-default: var(--color-border);
+  --color-success: #007004;
+  --shadow-low:
+    0 2px 4px oklch(0 0 0 / 5%), 0 4px 8px oklch(0 0 0 / 10%),
+    inset 0 0 0 1px transparent;
 }
 
 html[data-theme="dark"],
 html[style*="color-scheme: dark"],
 html[style*="color-scheme:dark"],
 .dark {
+  --color-background-surface: #0a0f1a;
+  --color-background-body: #0a0f1a;
+  --color-background-canvas: var(--color-background-body);
+  --color-background-card: #0a0f1a;
+  --color-background-popover: #121a2b;
+  --color-background-muted: #121a2b;
+  --color-background-inverted: #edeae1;
+  --color-background-green: #84c9803d;
+  --color-accent: #7fb3aa;
+  --color-accent-muted: #1e302e;
+  --color-on-accent: #0a0f1a;
+  --color-text-accent: #7fb3aa;
+  --color-icon-accent: #7fb3aa;
+  --color-text-primary: #edeae1;
+  --color-text-secondary: #9b968a;
+  --color-text-disabled: #525252;
+  --color-text-green: #9fe59b;
+  --color-icon-primary: #edeae1;
+  --color-icon-secondary: #9b968a;
+  --color-border: #222b3d;
+  --color-border-emphasized: #222b3d;
+  --color-border-default: var(--color-border);
+  --color-success: #9fe59b;
+  --shadow-low:
+    0 2px 4px oklch(0 0 0 / 25%), 0 4px 8px oklch(0 0 0 / 40%),
+    inset 0 0 0 1px oklch(1 0 0 / 8%);
   --elev-3d:
     inset 0 1px 0 rgb(255 255 255 / 0.22),
     inset 0 -1.5px 2px rgb(0 0 0 / 0.42),
@@ -224,10 +261,9 @@ html[style*="color-scheme:dark"],
  * Kanvas halaman. Nilai = `--c-bg` / `--c-fg` mockup
  * (`design-mockups/shared.css`) — KI-002.
  *
- * `light-dark()` mengikuti `color-scheme` inline di `<html>` (SSR dari
- * cookie, `app/layout.tsx`) supaya first paint dark tidak cream. Selector
- * `[data-theme]` tetap ada untuk setelah hydrate (`ThemeModeProvider`
- * menulis atribut itu di layout effect, bukan di markup SSR).
+ * `light-dark()` di `html, body` = jaring `color-scheme` sebelum CSS tema.
+ * `data-theme` ada di markup SSR (`app/layout.tsx`); `ThemeModeProvider`
+ * menyinkronkan atribut itu saat toggle tanpa reload.
  */
 html,
 body {
@@ -2397,8 +2433,9 @@ html.ct-lock .qi-tab {
  * T-025.10: parkir live pakai visibility:hidden + 100dvh. translateY(100vh)
  * relatif ke dokumen — kalau user sudah scroll di mobile, halaman baru
  * nyembul di viewport. Scroll di-reset ke 0 setelah clone (JS).
- * Selector `.site-footer` harus `:not(.page-vt-clone *)` supaya snapshot
- * exit tetap menampilkan pita Contact (P2 PR #46).
+ * Selector `.site-chrome-main` dan `.site-footer` harus
+ * `:not(.page-vt-clone *)` — clone menghapus `id` tapi menyimpan class;
+ * tanpa pengecualian, snapshot exit ikut di-park (P2 PR #46 + review PR #67).
  */
 html.page-vt-lock,
 html.page-vt-lock body {
@@ -2435,7 +2472,7 @@ html.lenis.page-vt-lock.lenis-stopped {
   }
 }
 
-html.page-vt-lock:not(.page-vt-entering) .site-chrome-main,
+html.page-vt-lock:not(.page-vt-entering) .site-chrome-main:not(.page-vt-clone *),
 html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
   transform: translateY(100vh);
   transform: translateY(100dvh);
@@ -2443,7 +2480,7 @@ html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
   pointer-events: none;
 }
 
-html.page-vt-entering .site-chrome-main,
+html.page-vt-entering .site-chrome-main:not(.page-vt-clone *),
 html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   visibility: visible;
   animation: page-vt-enter var(--duration-page-enter) var(--ease-page-transition)
@@ -2452,9 +2489,9 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.page-vt-lock:not(.page-vt-entering) .site-chrome-main,
+  html.page-vt-lock:not(.page-vt-entering) .site-chrome-main:not(.page-vt-clone *),
   html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
-  html.page-vt-entering .site-chrome-main,
+  html.page-vt-entering .site-chrome-main:not(.page-vt-clone *),
   html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     animation: none !important;
     transform: none !important;

@@ -3,9 +3,10 @@
 import type { ReactNode } from "react";
 import type { Locale } from "@/lib/locale";
 import { SKIP_TO_CONTENT_LABEL } from "@/lib/nav";
+import { MAIN_CONTENT_ID } from "@/lib/site-chrome";
 import { SiteTopNav } from "./site-header";
 
-export const MAIN_CONTENT_ID = "site-chrome-main";
+export { MAIN_CONTENT_ID };
 
 function SiteSkipLink({ locale }: { locale: Locale }) {
   return (

@@ -153,7 +153,7 @@ className scoped + craft CSS (.home-* .ct-* .qi-* .ps-* .page-vt-*)
 
 | Lapisan | Isi |
 | ------- | --- |
-| Sumber kebenaran token | `app/globals.css` (`--background`, `--foreground`, `--spacing-*`, `--chip-*`, `--elev-3d`) — **ADR-024** / **ADR-028**; nilai kanvas/aksen R1 *berasal* dari arsip `design-mockups/shared.css` `--c-*` |
+| Sumber kebenaran token | `app/globals.css` (`--background`, `--foreground`, `--spacing-*`, `--size-element-*`, `--chip-*`, `--elev-3d`, `--color-*` craft) — **ADR-024** / **ADR-028**; nilai kanvas/aksen R1 *berasal* dari arsip `design-mockups/shared.css` `--c-*` |
 | Komponen | shadcn di `components/ui/` + permukaan `app/[locale]/_components/` — bukan hardcode hex/px |
 | Override lokal | utility Tailwind token-backed + `className` scoped. **Bukan** StyleX. Dilarang `style={{}}` inline atau hex/px acak di JSX. Playbook: `code-discipline.md` |
 | Konten MD/MDX | Tidak menyimpan hex brand; styling lewat komponen |

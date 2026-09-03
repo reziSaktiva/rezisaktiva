@@ -59,8 +59,8 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
    * `mode` berubah (toggle tanpa reload). Jangan lewat `className` React di
    * `<html>` — itu menimpa class Lenis / overlay lock. Nilai awal: cookie
    * SSR untuk `colorScheme` + script `beforeInteractive` (`classList`).
-   * `data-theme` ikut di-set di sini (bukan wrapper tema lama) supaya
-   * selector `html[data-theme]` tetap sinkron saat toggle tanpa reload.
+   * `data-theme` di-set di markup SSR (`app/layout.tsx`) dan di-sync di sini
+   * saat toggle tanpa reload. Jangan `className` React di `<html>`.
    */
   useLayoutEffect(() => {
     const root = document.documentElement;

@@ -11,6 +11,7 @@ import {
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { animate, EASE_PAGE_TRANSITION, readCssDurationMs } from "@/lib/motion";
+import { MAIN_CONTENT_ID } from "@/lib/site-chrome";
 import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
 
 type NavigateFn = (href: string) => void;
@@ -113,7 +114,7 @@ function captureOutgoing(scrollY: number): HTMLElement {
   shifter.className = "page-vt-clone-shift";
   shifter.style.transform = `translateY(${-scrollY}px)`;
 
-  const main = document.getElementById("site-chrome-main");
+  const main = document.getElementById(MAIN_CONTENT_ID);
   const footer = document.querySelector(".site-footer");
   if (main) {
     shifter.appendChild(main.cloneNode(true));
@@ -137,7 +138,7 @@ function clearClones(): void {
 }
 
 function setLiveParked(parked: boolean): void {
-  const main = document.getElementById("site-chrome-main");
+  const main = document.getElementById(MAIN_CONTENT_ID);
   const footer = document.querySelector(".site-footer");
   for (const node of [main, footer]) {
     if (!(node instanceof HTMLElement)) {
