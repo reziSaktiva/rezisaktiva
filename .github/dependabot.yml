@@ -10,6 +10,10 @@ updates:
           - "patch"
           - "minor"
     open-pull-requests-limit: 10
+    # Astryx is being removed (T-037 / ADR-028). Ignore until then so weekly
+    # patch-and-minor PRs do not bump @astryxdesign/* (see closed PR #61).
+    ignore:
+      - dependency-name: "@astryxdesign/*"
     commit-message:
       prefix: "chore(deps)"
 
