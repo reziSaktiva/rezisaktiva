@@ -10,17 +10,20 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
+  SheetOverlay,
   SheetTitle,
 } from "@/components/ui/sheet";
 import type { Locale } from "@/lib/locale";
+import { AnimatePresence } from "@/lib/motion";
 import { projectsHref } from "@/lib/site-url";
-import { cn } from "@/lib/utils";
 import { CloseIcon } from "./overlay-icons";
+import { OverlayScrimMotion, SheetPanelMotion } from "./overlay-motion";
 import { WorkplaceLine } from "./workplace-line";
 
 /**
- * Quick Info overlay (T-020.2, ADR-022; T-035.2) — tab tepi kanan → Sheet.
- * Bukan route; bukan form Contact. Tetap di Work index (ADR-027); sheet M10 overlay terpisah.
+ * Quick Info overlay (T-020.2, ADR-022; T-035.2, T-036.3) — tab tepi kanan →
+ * Sheet. Enter/exit = `AnimatePresence` + tween. Bukan route; bukan form
+ * Contact. Tetap di Work index (ADR-027); sheet M10 overlay terpisah.
  */
 export function QuickInfo({ locale }: { locale: Locale }) {
   const copy = QUICK_INFO_COPY[locale];
@@ -95,34 +98,39 @@ export function QuickInfo({ locale }: { locale: Locale }) {
           }
         }}
       >
-        <SheetContent
-          id="qi-panel"
-          side="right"
-          forceMount
-          showCloseButton={false}
-          aria-describedby={undefined}
-          aria-labelledby={titleId}
-          overlayClassName={cn("qi-scrim", isOpen && "is-open")}
-          overlayProps={{
-            "data-overlay-scrim": "",
-            "data-lenis-prevent": "",
-          }}
-          data-lenis-prevent=""
-          className={cn(
-            "qi-panel gap-0 border-0 p-0 shadow-none sm:max-w-none",
-            "data-[side=right]:w-full data-[side=right]:sm:max-w-none",
-            "data-open:animate-none data-closed:animate-none",
-            "data-[side=right]:data-open:slide-in-from-right-0 data-[side=right]:data-closed:slide-out-to-right-0",
-            isOpen && "is-open",
-          )}
-          onOpenAutoFocus={(event) => {
-            event.preventDefault();
-            closeBtnRef.current?.focus();
-          }}
-          onCloseAutoFocus={(event) => {
-            event.preventDefault();
-          }}
-        >
+        <AnimatePresence>
+          {isOpen ? (
+            <SheetContent
+              key="qi-sheet"
+              id="qi-panel"
+              side="right"
+              forceMount
+              asChild
+              showCloseButton={false}
+              aria-describedby={undefined}
+              aria-labelledby={titleId}
+              overlay={
+                <SheetOverlay
+                  asChild
+                  forceMount
+                  className="qi-scrim"
+                  data-overlay-scrim=""
+                  data-lenis-prevent=""
+                >
+                  <OverlayScrimMotion kind="sheet" />
+                </SheetOverlay>
+              }
+              data-lenis-prevent=""
+              className="qi-panel gap-0 border-0 p-0 shadow-none"
+              onOpenAutoFocus={(event) => {
+                event.preventDefault();
+                closeBtnRef.current?.focus();
+              }}
+              onCloseAutoFocus={(event) => {
+                event.preventDefault();
+              }}
+            >
+              <SheetPanelMotion>
           <SheetHeader className="qi-header gap-0 p-0">
             <Button
               ref={closeBtnRef}
@@ -192,7 +200,10 @@ export function QuickInfo({ locale }: { locale: Locale }) {
               ))}
             </div>
           </div>
-        </SheetContent>
+              </SheetPanelMotion>
+            </SheetContent>
+          ) : null}
+        </AnimatePresence>
       </Sheet>
     </>
   );

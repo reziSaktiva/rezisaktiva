@@ -58,6 +58,13 @@
   --duration-page-enter: 0.4s;
   --delay-page-enter: 0.4s;
   --ease-page-transition: cubic-bezier(0.65, 0, 0.43, 1);
+  /* Overlay Dialog/Sheet/Drawer (T-036.3) — tween, bukan bounce. */
+  --duration-ct-scrim: 0.35s;
+  --duration-ct-panel-opacity: 0.3s;
+  --duration-ct-panel: 0.4s;
+  --duration-sheet-scrim: 0.45s;
+  --duration-sheet-panel: 0.55s;
+  --ease-overlay: cubic-bezier(0.22, 1, 0.36, 1);
   /*
    * Elevasi timbul 3D untuk chrome chip + seluruh `.astryx-button`.
    * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
@@ -1288,17 +1295,6 @@ button.home-work-tile,
     transform: translateY(-50%) !important;
   }
 
-  .qi-panel {
-    visibility: hidden;
-  }
-
-  .qi-wrap.is-open .qi-panel,
-  .qi-panel.is-open,
-  .qi-panel[data-open] {
-    visibility: visible;
-    transform: none !important;
-  }
-
   .ps-panel {
     visibility: hidden;
   }
@@ -1309,19 +1305,6 @@ button.home-work-tile,
   .ps-panel[data-state="open"] {
     visibility: visible;
     transform: none !important;
-  }
-
-  .ct-panel {
-    visibility: hidden;
-  }
-
-  .ct-wrap.is-open .ct-panel,
-  .ct-panel.is-open,
-  .ct-panel[data-open] {
-    visibility: visible;
-    translate: none;
-    transform: translate(-50%, -50%) !important;
-    opacity: 1 !important;
   }
 }
 
@@ -1991,16 +1974,7 @@ button.home-work-tile,
   inset: 0;
   z-index: 90;
   background: rgba(10, 15, 26, 0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
   backdrop-filter: none;
-}
-
-.ct-scrim.is-open,
-.ct-scrim[data-open] {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .ct-wrap {
@@ -2012,10 +1986,8 @@ button.home-work-tile,
   position: fixed;
   top: 50%;
   left: 50%;
-  /* Dialog shadcn memakai `translate: -50% -50%` (Tailwind). Kalau ikut
-   * `transform: translate(-50%, -50%)` di bawah, kartu terpusat dua kali
-   * dan keluar viewport (T-035.5). */
-  translate: none;
+  /* Pusatkan lewat CSS `translate` (Tailwind -translate-x/y-1/2). Scale
+   * enter/exit = Motion (T-036.3) supaya tidak dobel transform (T-035.5). */
   z-index: 92;
   width: min(880px, calc(100vw - 2rem));
   max-width: none;
@@ -2030,23 +2002,6 @@ button.home-work-tile,
   color: #ede9e1;
   padding: 2.25rem;
   box-shadow: 0 40px 90px -24px rgba(0, 0, 0, 0.55);
-  transform: translate(-50%, -50%) scale(0.96);
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.4s linear;
-}
-
-.ct-wrap.is-open .ct-panel,
-.ct-panel.is-open,
-.ct-panel[data-open] {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
 }
 
 .ct-close {
@@ -2346,24 +2301,13 @@ html.lenis.page-vt-lock.lenis-stopped {
   pointer-events: none;
   background-color: var(--color-background-body);
   backface-visibility: hidden;
-}
-
-.page-vt-clone.is-exiting {
-  animation: page-vt-exit var(--duration-page-exit) var(--ease-page-transition)
-    both;
+  will-change: transform;
 }
 
 .page-vt-clone .astryx-app-shell-header,
 .page-vt-clone .home-cursor-ring,
 .page-vt-clone .site-mobile-nav {
   visibility: hidden !important;
-}
-
-@keyframes page-vt-exit {
-  to {
-    transform: translateY(-100vh) scale(0.5);
-    transform: translateY(-100dvh) scale(0.5);
-  }
 }
 
 @keyframes page-vt-enter {
@@ -2390,8 +2334,6 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-vt-clone,
-  .page-vt-clone.is-exiting,
   html.page-vt-lock:not(.page-vt-entering) #astryx-app-shell-main,
   html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
   html.page-vt-entering #astryx-app-shell-main,
@@ -2451,16 +2393,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   inset: 0;
   z-index: 70;
   background: color-mix(in srgb, var(--color-text-primary) 28%, transparent);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.45s ease;
   backdrop-filter: none;
-}
-
-.qi-scrim.is-open,
-.qi-scrim[data-open] {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .qi-wrap {
@@ -2491,8 +2424,8 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     background-color 0.25s ease,
     color 0.25s ease,
     box-shadow 0.25s ease,
-    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--duration-ct-panel) var(--ease-overlay),
+    transform var(--duration-sheet-panel) var(--ease-overlay);
 }
 
 .qi-tab span {
@@ -2513,6 +2446,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   top: 0;
   right: 0;
   bottom: 0;
+  left: auto;
   z-index: 80;
   width: 100%;
   height: 100%;
@@ -2521,26 +2455,13 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   background: var(--color-background-surface);
   color: var(--color-text-primary);
   border-radius: 0.75rem 0 0 0.75rem;
-  transform: translateX(100%);
-  pointer-events: none;
-  visibility: hidden;
-  transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.55s linear;
 }
 
 @media (min-width: 768px) {
+  .qi-panel[data-slot="sheet-content"],
   .qi-panel {
     width: min(38rem, calc(100vw - 2.5rem));
   }
-}
-
-.qi-wrap.is-open .qi-panel,
-.qi-panel.is-open,
-.qi-panel[data-open] {
-  transform: translateX(0);
-  pointer-events: auto;
-  visibility: visible;
 }
 
 .qi-header {
@@ -2755,7 +2676,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   background: color-mix(in srgb, var(--color-text-primary) 28%, transparent);
   opacity: 0;
   pointer-events: none !important;
-  transition: opacity 0.45s ease;
+  transition: opacity var(--duration-sheet-scrim) ease;
   animation: none !important;
   backdrop-filter: none;
 }
@@ -2793,8 +2714,8 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   touch-action: auto;
   user-select: auto;
   transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.55s linear;
+    transform var(--duration-sheet-panel) var(--ease-overlay),
+    visibility var(--duration-sheet-panel) linear;
 }
 
 .ps-wrap.is-open .ps-panel,

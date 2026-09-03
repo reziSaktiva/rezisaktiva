@@ -18,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-09-02 |
+| Last Updated | 2026-09-03 |
 
 ---
 
@@ -38,7 +38,7 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean terkirim di kode: Home, About, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, copy T-021. Acuan visual: kode produksi (ADR-024).
-* Fase aktif: **Validation** — buktikan clarity + soft path inbound (bukan volume outreach). **Prioritas: T-033…T-037** ⏳ migrasi shadcn (ADR-028). **T-032** ✅. **T-033** ✅. **T-034** ✅. **T-035** ✅. **T-036** ⏳. **T-031** ⏳ antrian setelah T-037. **T-023** ⏸️ CV Inggris. **T-030** ✅. **T-029** ✅. **T-028** ✅.
+* Fase aktif: **Validation** — buktikan clarity + soft path inbound (bukan volume outreach). **Prioritas: T-033…T-037** ⏳ migrasi shadcn (ADR-028). **T-032** ✅. **T-033** ✅. **T-034** ✅. **T-035** ✅. **T-036** ⏳ (**T-036.1–T-036.4** ✅; lanjut **T-036.5**). **T-031** ⏳ antrian setelah T-037. **T-023** ⏸️ CV Inggris. **T-030** ✅. **T-029** ✅. **T-028** ✅.
 * **Copy R1:** **T-021.1–T-021.7 ✅**. Foto hero/About masih placeholder Unsplash (bukan blocker exit).
 * **Catatan engineering:** gap StyleX/Turbopack (T-013.4) **ditutup di rencana ADR-028** — tidak di-wire; Astryx dicabut di **T-037**. Sampai T-037, kode produksi masih Astryx.
 

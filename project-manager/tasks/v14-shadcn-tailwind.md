@@ -265,8 +265,8 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 - [x] **T-036.1** — Rewrite `Reveal`, `WordReveal`, `HeroWords`, `Magnetic` memakai `motion/react`. Hormati `useReducedMotion`. Jangan spring default yang mengubah timing CSS `.home-reveal`.
 - [x] **T-036.2** — `work-tile`: ganti `useContainerReveal`. Hover/touch overlay tile tetap (bukan Overlay Astryx).
-- [ ] **T-036.3** — Enter/exit Dialog/Sheet/Drawer: `AnimatePresence` atau transisi primitf **di-kalibrasi** ke durasi sekarang. Jangan bounce.
-- [ ] **T-036.4** — `page-transition.tsx`: ritme Hess tetap (T-025.7–T-025.10). Track scrollbar tetap terlihat (`overflow-y: scroll` saat lock). Boleh membungkus dengan Motion **hanya jika** timing/easing identik.
+- [x] **T-036.3** — Enter/exit Dialog/Sheet/Drawer: `AnimatePresence` atau transisi primitf **di-kalibrasi** ke durasi sekarang. Jangan bounce.
+- [x] **T-036.4** — `page-transition.tsx`: ritme Hess tetap (T-025.7–T-025.10). Track scrollbar tetap terlihat (`overflow-y: scroll` saat lock). Boleh membungkus dengan Motion **hanya jika** timing/easing identik.
 - [ ] **T-036.5** — `CursorRing`: tetap off di sentuh + reduced-motion. Lenis: pause saat overlay lock; off reduced-motion.
 - [ ] **T-036.6** — Verifikasi gerak: Home reveal + magnetic, About rest/active, tile Work, overlay, ganti locale/halaman (page-vt), reduced-motion OS.
 

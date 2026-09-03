@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { animate, EASE_PAGE_TRANSITION } from "@/lib/motion";
 import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
 
 type NavigateFn = (href: string) => void;
@@ -144,6 +145,8 @@ function captureOutgoing(scrollY: number): HTMLElement {
 }
 
 function clearClones(): void {
+  cloneAnimation?.stop();
+  cloneAnimation = null;
   document.querySelectorAll(".page-vt-clone").forEach((node) => node.remove());
 }
 
@@ -195,6 +198,7 @@ let startQueuedNav: NavigateFn | null = null;
 let rafId = 0;
 let safetyTimer = 0;
 const runningTimers: number[] = [];
+let cloneAnimation: { stop: () => void } | null = null;
 
 const SAFETY_BUFFER_MS = 750;
 const REPLACED_FROM = "__replaced__";
@@ -306,7 +310,16 @@ function armTransition(options: {
       if (pendingNav?.epoch !== epoch) {
         return;
       }
-      clone.classList.add("is-exiting");
+      // T-036.4: clone exit via Motion tween, token Hess identik
+      // (1s + cubic-bezier(0.65, 0, 0.43, 1)). Enter tetap CSS
+      // (fill-mode both, T-025.10).
+      const exitSec = readDurationMs("--duration-page-exit", 1000) / 1000;
+      cloneAnimation?.stop();
+      cloneAnimation = animate(
+        clone,
+        { transform: ["none", "translateY(-100dvh) scale(0.5)"] },
+        { duration: exitSec, ease: EASE_PAGE_TRANSITION },
+      );
       if (options.push && options.pushHref) {
         options.push(options.pushHref);
       }
@@ -314,6 +327,8 @@ function armTransition(options: {
     const exitMs = readDurationMs("--duration-page-exit", 1000);
     runningTimers.push(
       window.setTimeout(() => {
+        cloneAnimation?.stop();
+        cloneAnimation = null;
         clone.remove();
       }, exitMs),
     );
@@ -341,6 +356,8 @@ function retargetBusyNav(target: string): void {
 /**
  * Transisi halaman mengikuti ritme karolinahess.com tanpa View Transitions
  * API. State di luar React supaya remount Strict Mode tidak mematikan clone.
+ * Exit clone = Motion tween (T-036.4); enter live = CSS snapshot (T-025.7–10).
+ * `html.page-vt-lock` tetap `overflow-y: scroll` (track tidak hilang).
  */
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();

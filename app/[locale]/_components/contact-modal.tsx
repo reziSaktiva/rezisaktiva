@@ -10,14 +10,21 @@ import {
 } from "react";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogOverlay,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { AnimatePresence } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { CONTACT_COPY, CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import type { Locale } from "@/lib/locale";
 import { Magnetic } from "./home-motion";
+import { DialogPanelMotion, OverlayScrimMotion } from "./overlay-motion";
 import {
   ArrowRightIcon,
   CloseIcon,
@@ -27,8 +34,9 @@ import {
 } from "./overlay-icons";
 
 /**
- * Contact modal global (T-016.2, ADR-019; T-035.1) — Dialog shadcn + skin
- * `.ct-*` (kartu dark-ink, tema-independen). Bukan route `/contact`.
+ * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3) — Dialog shadcn +
+ * skin `.ct-*` (kartu dark-ink). Enter/exit = `AnimatePresence` + tween token,
+ * bukan spring. Bukan route `/contact`.
  *
  * Form: validasi client + state "Terkirim"; tidak ada backend (M8 Could).
  * mailto: tetap primer lewat tautan email.
@@ -119,32 +127,39 @@ export function ContactModal({ locale }: { locale: Locale }) {
         }
       }}
     >
-      <DialogContent
-        id="ct-panel"
-        forceMount
-        showCloseButton={false}
-        aria-describedby={undefined}
-        aria-labelledby={titleId}
-        overlayClassName={cn("ct-scrim", isOpen && "is-open")}
-        overlayProps={{
-          "data-ct-scrim": "",
-          "data-overlay-scrim": "",
-          "data-lenis-prevent": "",
-        }}
-        data-lenis-prevent=""
-        className={cn(
-          "ct-panel max-w-none translate-x-0 translate-y-0 gap-0 text-inherit shadow-none ring-0 sm:max-w-none",
-          "data-open:animate-none data-closed:animate-none data-open:zoom-in-100 data-closed:zoom-out-100",
-          isOpen && "is-open",
-        )}
-        onOpenAutoFocus={(event) => {
-          event.preventDefault();
-          document.getElementById(emailId)?.focus();
-        }}
-        onCloseAutoFocus={(event) => {
-          event.preventDefault();
-        }}
-      >
+      <AnimatePresence>
+        {isOpen ? (
+          <DialogContent
+            key="ct-dialog"
+            id="ct-panel"
+            forceMount
+            asChild
+            showCloseButton={false}
+            aria-describedby={undefined}
+            aria-labelledby={titleId}
+            overlay={
+              <DialogOverlay
+                asChild
+                forceMount
+                className="ct-scrim"
+                data-ct-scrim=""
+                data-overlay-scrim=""
+                data-lenis-prevent=""
+              >
+                <OverlayScrimMotion kind="contact" />
+              </DialogOverlay>
+            }
+            data-lenis-prevent=""
+            className="ct-panel max-w-none gap-0 text-inherit shadow-none ring-0 sm:max-w-none"
+            onOpenAutoFocus={(event) => {
+              event.preventDefault();
+              document.getElementById(emailId)?.focus();
+            }}
+            onCloseAutoFocus={(event) => {
+              event.preventDefault();
+            }}
+          >
+            <DialogPanelMotion>
         <Button
           type="button"
           variant="ghost"
@@ -245,7 +260,10 @@ export function ContactModal({ locale }: { locale: Locale }) {
             </div>
           </div>
         </div>
-      </DialogContent>
+            </DialogPanelMotion>
+          </DialogContent>
+        ) : null}
+      </AnimatePresence>
     </Dialog>
   );
 }

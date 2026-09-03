@@ -128,7 +128,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 className={cn(
                   "site-mobile-nav gap-2 border-0 p-0 shadow-none",
                   "inset-x-auto bottom-auto h-auto w-auto max-w-none sm:max-w-none",
-                  "data-open:animate-none data-closed:animate-none",
                 )}
                 onOpenAutoFocus={(event) => event.preventDefault()}
                 onCloseAutoFocus={(event) => event.preventDefault()}

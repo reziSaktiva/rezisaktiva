@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-03]
 ### Added
+- **T-036.3** Contact Dialog + Quick Info Sheet: `AnimatePresence` + `motion/react` tween (bukan spring). Durasi/easing sama dengan CSS lama (scrim 0.35s/0.45s `ease`; kartu Contact scale 0.4s `cubic-bezier(0.22, 1, 0.36, 1)`; QI slide 0.55s). Project sheet Drawer tetap CSS vaul, dikalibrasi token `--duration-sheet-panel` / `--ease-overlay` (0.55s, bukan bounce 0.5s vaul).
+- **T-036.4** Clone exit transisi halaman memakai `animate()` Motion dengan token Hess (`--duration-page-exit` 1s + `--ease-page-transition`). Enter live tetap CSS snapshot (T-025.10). `html.page-vt-lock` tetap `overflow-y: scroll`.
+### Changed
+- Token overlay/page-vt di `lib/motion.ts` + `:root` `globals.css`. Primitf Dialog/Sheet tanpa `animate-in`/`zoom-in-95` default.
+### Fixed
+- Slot Radix `asChild` butuh satu child (tombol tutup primitf tidak boleh sibling saat Motion). Lebar QI desktop `min(38rem)` menang atas `w-full` Tailwind.
+
+## [2026-09-03]
+### Added
 - **T-036.1** `Reveal` / `WordReveal` / `HeroWords` / `Magnetic` memakai `motion/react` (tween token `--duration-*` + `--ease-standard`, `useReducedMotion`). Bukan spring default. `CursorRing` masih Astryx `Center` sampai T-036.5.
 - **T-036.2** `work-tile` tanpa `useContainerReveal` / `mergeProps`. Caption+scrim hover/focus desktop, selalu terlihat di sentuh, reduced-motion instan (CSS; bukan Overlay Astryx).
 ### Changed
