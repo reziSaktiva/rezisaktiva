@@ -15,6 +15,16 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Added
+- Tes `parseCssDurationToMs` di `lib/motion.test.ts`.
+### Changed
+- Token overlay/page-vt dibaca dari CSS (`readCssDurationMs`); konstanta durasi overlay yang tidak terpakai di `lib/motion.ts` dicabut.
+- Caption tile Work: selalu terlihat hanya di `hover: none` (bukan `any-pointer: coarse`).
+### Fixed
+- Exit Contact/Quick Info: `forceMount` + `pointer-events`/`visibility` saat tertutup, supaya transisi tutup tidak terpotong unmount Radix; `ct-lock`/`qi-lock` menunggu durasi token.
+- Clone page-vt: hapus di `onComplete` Motion, bukan `stop()` di timer.
+
+## [2026-09-03]
 ### Changed
 - **T-036.6** ✅ — verifikasi gerak di `/en`: Home reveal + magnetic + cursor ring, About rest/active, tile Work, overlay Contact/QI/sheet, page-vt Home→About, reduced-motion (Lenis/ring off, reveal instan, caption tile terlihat, body About selalu terbuka, ganti halaman tanpa clone Hess).
 - Overlay Contact/QI/sheet: enter/exit pakai transisi CSS token + `@starting-style` (T-036.3 primitf). Kartu Contact tetap terpusat.

@@ -30,11 +30,13 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from "./overlay-icons";
+import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 
 /**
  * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3) — Dialog shadcn +
- * skin `.ct-*` (kartu dark-ink). Enter/exit = keyframe CSS token, bukan
- * spring. Bukan route `/contact`.
+ * skin `.ct-*` (kartu dark-ink). Enter/exit = transisi CSS token +
+ * `forceMount` hanya selama overlay masih `present` (bukan spring). Bukan
+ * route `/contact`.
  *
  * Form: validasi client + state "Terkirim"; tidak ada backend (M8 Could).
  * mailto: tetap primer lewat tautan email.
@@ -61,6 +63,9 @@ export function ContactModal({ locale }: { locale: Locale }) {
     close();
   }, [close]);
 
+  useOverlayDocumentLock(isOpen, "ct-lock", "--duration-ct-panel", 400);
+  const present = useOverlayPresence(isOpen, "--duration-ct-panel", 400);
+
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -69,10 +74,6 @@ export function ContactModal({ locale }: { locale: Locale }) {
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
-    document.documentElement.classList.add("ct-lock");
-    return () => {
-      document.documentElement.classList.remove("ct-lock");
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -125,13 +126,16 @@ export function ContactModal({ locale }: { locale: Locale }) {
         }
       }}
     >
+      {present ? (
       <DialogContent
         id="ct-panel"
+        forceMount
         showCloseButton={false}
         aria-describedby={undefined}
         aria-labelledby={titleId}
         overlay={
           <DialogOverlay
+            forceMount
             className="ct-scrim"
             data-ct-scrim=""
             data-overlay-scrim=""
@@ -249,6 +253,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
           </div>
         </div>
       </DialogContent>
+      ) : null}
     </Dialog>
   );
 }

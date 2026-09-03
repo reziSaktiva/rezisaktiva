@@ -69,7 +69,7 @@ function SheetContent({
   };
 }) {
   return (
-    <SheetPortal>
+    <SheetPortal forceMount={forceMount}>
       {overlay ??
         (showOverlay ? (
           <SheetOverlay

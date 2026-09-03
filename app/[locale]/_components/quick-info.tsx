@@ -16,11 +16,12 @@ import {
 import type { Locale } from "@/lib/locale";
 import { projectsHref } from "@/lib/site-url";
 import { CloseIcon } from "./overlay-icons";
+import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 import { WorkplaceLine } from "./workplace-line";
 
 /**
  * Quick Info overlay (T-020.2, ADR-022; T-035.2, T-036.3) — tab tepi kanan →
- * Sheet. Enter/exit = keyframe CSS token (T-036.3 primitf). Bukan route;
+ * Sheet. Enter/exit = transisi CSS token + `forceMount`. Bukan route;
  * bukan form Contact. Tetap di Work index (ADR-027); sheet M10 terpisah.
  */
 export function QuickInfo({ locale }: { locale: Locale }) {
@@ -47,6 +48,9 @@ export function QuickInfo({ locale }: { locale: Locale }) {
     };
   }, []);
 
+  useOverlayDocumentLock(isOpen, "qi-lock", "--duration-sheet-panel", 550);
+  const present = useOverlayPresence(isOpen, "--duration-sheet-panel", 550);
+
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -55,10 +59,6 @@ export function QuickInfo({ locale }: { locale: Locale }) {
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
-    document.documentElement.classList.add("qi-lock");
-    return () => {
-      document.documentElement.classList.remove("qi-lock");
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -96,14 +96,17 @@ export function QuickInfo({ locale }: { locale: Locale }) {
           }
         }}
       >
+        {present ? (
         <SheetContent
           id="qi-panel"
           side="right"
+          forceMount
           showCloseButton={false}
           aria-describedby={undefined}
           aria-labelledby={titleId}
           overlay={
             <SheetOverlay
+              forceMount
               className="qi-scrim"
               data-overlay-scrim=""
               data-lenis-prevent=""
@@ -189,6 +192,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
             </div>
           </div>
         </SheetContent>
+        ) : null}
       </Sheet>
     </>
   );

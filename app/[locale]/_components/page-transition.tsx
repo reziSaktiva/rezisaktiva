@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { animate, EASE_PAGE_TRANSITION } from "@/lib/motion";
+import { animate, EASE_PAGE_TRANSITION, readCssDurationMs } from "@/lib/motion";
 import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
 
 type NavigateFn = (href: string) => void;
@@ -66,20 +66,6 @@ function resolveInternalHref(anchor: HTMLAnchorElement): string | null {
   }
 
   return `${url.pathname}${url.search}`;
-}
-
-function readDurationMs(token: string, fallback: number): number {
-  const raw = getComputedStyle(document.documentElement)
-    .getPropertyValue(token)
-    .trim();
-  const value = Number.parseFloat(raw);
-  if (!Number.isFinite(value)) {
-    return fallback;
-  }
-  if (raw.endsWith("s") && !raw.endsWith("ms")) {
-    return value * 1000;
-  }
-  return value;
 }
 
 function sanitizeClone(root: ParentNode): void {
@@ -257,9 +243,9 @@ function failSafeUnlock(): void {
 
 function safetyTimeoutMs(): number {
   return (
-    readDurationMs("--duration-page-exit", 1000) +
-    readDurationMs("--delay-page-enter", 400) +
-    readDurationMs("--duration-page-enter", 400) +
+    readCssDurationMs("--duration-page-exit", 1000) +
+    readCssDurationMs("--delay-page-enter", 400) +
+    readCssDurationMs("--duration-page-enter", 400) +
     SAFETY_BUFFER_MS
   );
 }
@@ -313,24 +299,37 @@ function armTransition(options: {
       // T-036.4: clone exit via Motion tween, token Hess identik
       // (1s + cubic-bezier(0.65, 0, 0.43, 1)). Enter tetap CSS
       // (fill-mode both, T-025.10).
-      const exitSec = readDurationMs("--duration-page-exit", 1000) / 1000;
+      const exitMs = readCssDurationMs("--duration-page-exit", 1000);
       cloneAnimation?.stop();
       cloneAnimation = animate(
         clone,
-        { transform: ["none", "translateY(-100dvh) scale(0.5)"] },
-        { duration: exitSec, ease: EASE_PAGE_TRANSITION },
+        {
+          transform: [
+            "translateY(0) scale(1)",
+            "translateY(-100dvh) scale(0.5)",
+          ],
+        },
+        {
+          duration: exitMs / 1000,
+          ease: EASE_PAGE_TRANSITION,
+          onComplete: () => {
+            cloneAnimation = null;
+            clone.remove();
+          },
+        },
       );
       if (options.push && options.pushHref) {
         options.push(options.pushHref);
       }
     });
-    const exitMs = readDurationMs("--duration-page-exit", 1000);
+    const exitMs = readCssDurationMs("--duration-page-exit", 1000);
     runningTimers.push(
       window.setTimeout(() => {
-        cloneAnimation?.stop();
+        if (clone.isConnected) {
+          clone.remove();
+        }
         cloneAnimation = null;
-        clone.remove();
-      }, exitMs),
+      }, exitMs + 80),
     );
   }
 
@@ -475,8 +474,8 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     }
 
     const epoch = pendingNav.epoch;
-    const enterDelay = readDurationMs("--delay-page-enter", 400);
-    const enterMs = readDurationMs("--duration-page-enter", 400);
+    const enterDelay = readCssDurationMs("--delay-page-enter", 400);
+    const enterMs = readCssDurationMs("--duration-page-enter", 400);
     const wait = Math.max(
       0,
       enterDelay - (performance.now() - pendingNav.startedAt),

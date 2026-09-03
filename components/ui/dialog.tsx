@@ -68,7 +68,7 @@ function DialogContent({
   };
 }) {
   return (
-    <DialogPortal>
+    <DialogPortal forceMount={forceMount}>
       {overlay ?? (
         <DialogOverlay
           forceMount={forceMount}
