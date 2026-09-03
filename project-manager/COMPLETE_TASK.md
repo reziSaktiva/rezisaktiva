@@ -15,6 +15,12 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Changed
+- `next.config.ts`: `images.qualities` `[75, 90]`; `allowedDevOrigins` `127.0.0.1` + `localhost` (HMR dari origin itu tidak diblokir).
+### Fixed
+- Warning Next Image `quality "90"` di luar allowlist; request `_next` dari `127.0.0.1` di `next dev`.
+
+## [2026-09-03]
 ### Added
 - Tes `parseCssDurationToMs` di `lib/motion.test.ts`.
 ### Changed

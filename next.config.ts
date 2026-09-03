@@ -10,7 +10,11 @@ const nextConfig: NextConfig = {
     // ~/package-lock.json and warns that it is outside the Git root.
     root: projectRoot,
   },
+  // Browser tools / HMR often hit 127.0.0.1 while `next dev` is bound to localhost.
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
   images: {
+    // `workPhotoProps` and Unsplash `quality={90}` (default allowlist is only 75).
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: "https",
