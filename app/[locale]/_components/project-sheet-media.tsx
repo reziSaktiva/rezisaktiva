@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import NextImage from "next/image";
-import { Center } from "@astryxdesign/core/Center";
-import { Grid, GridSpan } from "@astryxdesign/core/Grid";
-import { VStack } from "@astryxdesign/core/VStack";
 import { workPhotoProps } from "@/lib/work-image";
 import {
   isHttpLivePreviewUrl,
   isIframeFramingBlocked,
 } from "@/lib/project-live-preview";
+import { cn } from "@/lib/utils";
 import { workTileLayout } from "./work-tile-layout";
 
 const FRAME_PROBE_MS = 2500;
@@ -33,18 +31,14 @@ function ProjectSheetGallery({
   );
 
   return (
-    <VStack as="section" gap={0} className="ps-gallery" aria-label={label}>
-      <Grid
-        columns={{ minWidth: 480, max: 2, repeat: "fit" }}
-        gap={3}
-        className="home-work-grid"
-      >
+    <section className="ps-gallery" aria-label={label}>
+      <div className="home-work-grid">
         {images.map((src, index) => {
           const spanFull = spanFullByIndex.get(String(index)) === true;
           const featured = index === 0;
           const wide = spanFull && !featured;
           const tile = (
-            <Center
+            <div
               key={src}
               className={
                 featured || wide
@@ -52,7 +46,7 @@ function ProjectSheetGallery({
                   : "home-work-tile ps-reveal-media"
               }
             >
-              <Center className="home-work-tile-media">
+              <div className="home-work-tile-media">
                 <NextImage
                   {...workPhotoProps(
                     src,
@@ -61,19 +55,19 @@ function ProjectSheetGallery({
                       : "(max-width: 767px) 100vw, 700px",
                   )}
                 />
-              </Center>
-            </Center>
+              </div>
+            </div>
           );
           return spanFull ? (
-            <GridSpan key={src} columns="full">
+            <div key={src} className="col-span-full">
               {tile}
-            </GridSpan>
+            </div>
           ) : (
             tile
           );
         })}
-      </Grid>
-    </VStack>
+      </div>
+    </section>
   );
 }
 
@@ -131,17 +125,16 @@ export function ProjectSheetMedia({
   }
 
   return (
-    <VStack
-      as="section"
-      gap={0}
-      className={
-        mode === "live" ? "ps-preview ps-preview--live" : "ps-preview"
-      }
+    <section
+      className={cn(
+        "ps-preview",
+        mode === "live" && "ps-preview--live",
+      )}
       data-state={mode}
       aria-label={previewLabel}
       aria-hidden={mode === "probing" || undefined}
     >
-      <Center className="ps-preview-frame ps-reveal-media">
+      <div className="ps-preview-frame ps-reveal-media">
         <iframe
           ref={iframeRef}
           className="ps-preview-iframe"
@@ -149,7 +142,7 @@ export function ProjectSheetMedia({
           title={previewTitle}
           onLoad={onIframeLoad}
         />
-      </Center>
-    </VStack>
+      </div>
+    </section>
   );
 }

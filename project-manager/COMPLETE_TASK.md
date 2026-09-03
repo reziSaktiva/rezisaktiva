@@ -20,6 +20,40 @@ Format entri:
 ### Changed
 - (none)
 ### Fixed
+- **T-035** Review PR #62: project sheet tidak `setState` sinkron di effect (`entered`); isi drawer di-clear setelah timer close (bukan `transitionend`); fokus overlay ke ref tombol tutup; judul drawer kosong memakai nama karya terakhir, bukan label Tutup.
+
+## [2026-09-02]
+### Added
+- **T-035.5** Verifikasi overlay Contact / Quick Info / project sheet: ID+EN, light+dark, 320px (modal muat viewport; tab QI tidak menabrak baris hero), Tab trap, Escape, reduced-motion (transisi 0s). Teaser Home + tile Work membuka sheet, bukan live URL.
+### Changed
+- **T-035** parent ✅ Done (T-035.1–T-035.5). Fokus berikutnya **T-036**.
+### Fixed
+- Contact Dialog: Tailwind `translate: -50% -50%` ditumpuk `transform: translate(-50%, -50%)` — kartu keluar viewport. Reset `translate: none` + `translate-x-0 translate-y-0`. Aturan 320/389px memakai selector `[data-slot="dialog-content"]` supaya gutter mobile tidak kalah specificity. Tab QI di reduced-motion tetap `translateY(-50%)`.
+
+## [2026-09-02]
+### Added
+- **T-035.3** Project sheet: primitf `Drawer` (vaul, dari bawah) + skin `.ps-*`. Galeri/iframe M10 tetap; tile Home + Work index membuka sheet, bukan live URL. Tanpa impor Astryx di `project-sheet.tsx` / `project-sheet-media.tsx`. `DrawerTitle` wajib.
+- **T-035.4** Integrasi overlay: event `rz-project-sheet-open` / dengar `rz-contact-open` + `rz-quick-info-open`; `ps-lock` + Lenis pause; focus restore ke tile; Escape/scrim/tombol tutup. Bukan scale-background vaul.
+### Changed
+- (none)
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- **T-035.1** Contact overlay: primitf `Dialog` shadcn + skin `.ct-*`. Form `FieldGroup`/`Field`/`Input`/`Textarea`; validasi, Terkirim, salin email, `mailto:` primer; `DialogTitle` wajib. `ct-lock` + `data-lenis-prevent` tetap.
+- **T-035.2** Quick Info: primitf `Sheet` `side="right"` + skin `.qi-*`. Tab tepi kanan, isi bio/services/tools/works/email/links; bukan form Contact; mount tetap di locale layout. `qi-lock` + event `rz-quick-info-open` tetap.
+### Changed
+- (none)
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- (none)
+### Changed
+- (none)
+### Fixed
 - **T-034** Work `h1`: clamp compact `max-width: 767px` dipasang di `.work-h1` (setelah aturan desktop) supaya kata `.page-word--compact` yang `font-size: inherit` tidak tetap di skala desktop. Aturan compact generik dipindah ke bawah definisi `.page-word--compact` agar tidak kalah urutan berkas.
 
 ## [2026-09-02]

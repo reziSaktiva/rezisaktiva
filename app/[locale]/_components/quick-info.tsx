@@ -5,23 +5,21 @@ import NextLink from "next/link";
 import { CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { WORK_ITEMS } from "@/content/work";
-import { trapTabKey } from "@/lib/focus-trap";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import type { Locale } from "@/lib/locale";
 import { projectsHref } from "@/lib/site-url";
-import { Button } from "@astryxdesign/core/Button";
-import { Grid } from "@astryxdesign/core/Grid";
-import { Heading } from "@astryxdesign/core/Heading";
-import { HStack } from "@astryxdesign/core/HStack";
-import { Icon } from "@astryxdesign/core/Icon";
-import { Link } from "@astryxdesign/core/Link";
-import { Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
+import { cn } from "@/lib/utils";
 import { CloseIcon } from "./overlay-icons";
 import { WorkplaceLine } from "./workplace-line";
 
 /**
- * Quick Info overlay (T-020.2, ADR-022) — tab tepi kanan → drawer.
- * Visual dari `design-mockups/shared.js` `mountQuickInfo()` + `.qi-*`.
+ * Quick Info overlay (T-020.2, ADR-022; T-035.2) — tab tepi kanan → Sheet.
  * Bukan route; bukan form Contact. Tetap di Work index (ADR-027); sheet M10 overlay terpisah.
  */
 export function QuickInfo({ locale }: { locale: Locale }) {
@@ -29,7 +27,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
   const works = WORK_ITEMS[locale];
   const [isOpen, setIsOpen] = useState(false);
   const titleId = useId();
-  const panelRef = useRef<HTMLElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
   const close = () => setIsOpen(false);
@@ -57,21 +55,7 @@ export function QuickInfo({ locale }: { locale: Locale }) {
         ? document.activeElement
         : null;
     document.documentElement.classList.add("qi-lock");
-    const closeBtn = panelRef.current?.querySelector<HTMLElement>(".qi-close");
-    closeBtn?.focus();
-
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        close();
-        return;
-      }
-      if (panelRef.current) {
-        trapTabKey(event, panelRef.current);
-      }
-    };
-    document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("keydown", onKey);
       document.documentElement.classList.remove("qi-lock");
     };
   }, [isOpen]);
@@ -91,116 +75,125 @@ export function QuickInfo({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <VStack
-        data-overlay-scrim=""
-        data-lenis-prevent=""
-        className={isOpen ? "qi-scrim is-open" : "qi-scrim"}
-        onClick={close}
-        aria-hidden={!isOpen}
-      />
-      <VStack
-        data-lenis-prevent=""
-        className={isOpen ? "qi-wrap is-open" : "qi-wrap"}
+      <Button
+        type="button"
+        variant="ghost"
+        onClick={open}
+        aria-expanded={isOpen}
+        aria-controls="qi-panel"
+        className="qi-tab"
       >
-        <Button
-          label={copy.tab}
-          variant="ghost"
-          onClick={open}
-          aria-expanded={isOpen}
-          aria-controls="qi-panel"
-          className="qi-tab"
-        />
-        <VStack
-          ref={panelRef}
+        <span>{copy.tab}</span>
+      </Button>
+      <Sheet
+        open={isOpen}
+        onOpenChange={(next) => {
+          if (next) {
+            open();
+          } else {
+            close();
+          }
+        }}
+      >
+        <SheetContent
           id="qi-panel"
-          className="qi-panel"
-          role="dialog"
-          aria-modal="true"
+          side="right"
+          forceMount
+          showCloseButton={false}
+          aria-describedby={undefined}
           aria-labelledby={titleId}
-          aria-hidden={!isOpen}
+          overlayClassName={cn("qi-scrim", isOpen && "is-open")}
+          overlayProps={{
+            "data-overlay-scrim": "",
+            "data-lenis-prevent": "",
+          }}
+          data-lenis-prevent=""
+          className={cn(
+            "qi-panel gap-0 border-0 p-0 shadow-none sm:max-w-none",
+            "data-[side=right]:w-full data-[side=right]:sm:max-w-none",
+            "data-open:animate-none data-closed:animate-none",
+            "data-[side=right]:data-open:slide-in-from-right-0 data-[side=right]:data-closed:slide-out-to-right-0",
+            isOpen && "is-open",
+          )}
+          onOpenAutoFocus={(event) => {
+            event.preventDefault();
+            closeBtnRef.current?.focus();
+          }}
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+          }}
         >
-          <HStack className="qi-header" align="center" justify="between">
+          <SheetHeader className="qi-header gap-0 p-0">
             <Button
-              label={copy.close}
+              ref={closeBtnRef}
+              type="button"
               variant="ghost"
-              size="sm"
-              isIconOnly
-              icon={<Icon icon={CloseIcon} />}
+              size="icon-sm"
+              aria-label={copy.close}
               onClick={close}
               className="qi-close"
-            />
-            <Heading level={2} id={titleId} className="qi-title">
+            >
+              <CloseIcon />
+            </Button>
+            <SheetTitle id={titleId} className="qi-title">
               {copy.title}
-            </Heading>
-            <VStack className="qi-header-spacer" aria-hidden="true" />
-          </HStack>
-          <VStack className="qi-body" gap={0}>
-            <VStack gap={3} className="qi-intro">
-              <Text display="block" className="qi-bio">
-                {copy.bio}
-              </Text>
+            </SheetTitle>
+            <span className="qi-header-spacer" aria-hidden="true" />
+          </SheetHeader>
+          <div className="qi-body">
+            <div className="qi-intro">
+              <p className="qi-bio">{copy.bio}</p>
               <WorkplaceLine locale={locale} className="qi-workplace" />
-            </VStack>
-            <Grid columns={2} gap={6} className="qi-cols">
-              <VStack gap={3}>
-                <Text display="block" className="qi-label">
-                  {copy.servicesLabel}
-                </Text>
-                <VStack gap={2} className="qi-list">
+            </div>
+            <div className="qi-cols">
+              <div>
+                <p className="qi-label">{copy.servicesLabel}</p>
+                <ul className="qi-list">
                   {copy.services.map((item) => (
-                    <Text key={item}>{item}</Text>
+                    <li key={item}>{item}</li>
                   ))}
-                </VStack>
-              </VStack>
-              <VStack gap={3}>
-                <Text display="block" className="qi-label">
-                  {copy.toolsLabel}
-                </Text>
-                <VStack gap={2} className="qi-list">
+                </ul>
+              </div>
+              <div>
+                <p className="qi-label">{copy.toolsLabel}</p>
+                <ul className="qi-list">
                   {copy.tools.map((item) => (
-                    <Text key={item}>{item}</Text>
+                    <li key={item}>{item}</li>
                   ))}
-                </VStack>
-              </VStack>
-            </Grid>
-            <Text display="block" className="qi-label">
-              {copy.worksLabel}
-            </Text>
-            <VStack gap={2} className="qi-index">
+                </ul>
+              </div>
+            </div>
+            <p className="qi-label">{copy.worksLabel}</p>
+            <div className="qi-index">
               {works.map((item) => (
-                <Link
+                <NextLink
                   key={item.id}
-                  as={NextLink}
                   href={workHref}
                   className="qi-index-link"
                 >
-                  <Text>{item.name}</Text>
-                  <Text className="qi-year">[{item.year}]</Text>
-                </Link>
+                  <span>{item.name}</span>
+                  <span className="qi-year">[{item.year}]</span>
+                </NextLink>
               ))}
-            </VStack>
-            <Text display="block" className="qi-label">
-              {copy.emailLabel}
-            </Text>
-            <Link
+            </div>
+            <p className="qi-label">{copy.emailLabel}</p>
+            <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="qi-email cta-underline"
             >
               {CONTACT_EMAIL}
-            </Link>
-            <Text display="block" className="qi-label">
-              {copy.linksLabel}
-            </Text>
-            <HStack gap={5} wrap="wrap" className="qi-links">
+            </a>
+            <p className="qi-label">{copy.linksLabel}</p>
+            <div className="qi-links">
               {CONTACT_LINKS.map((link) => (
-                <Link key={link.id} href={link.href} color="secondary">
+                <a key={link.id} href={link.href}>
                   {link.label}
-                </Link>
+                </a>
               ))}
-            </HStack>
-          </VStack>
-        </VStack>
-      </VStack>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </>
   );
 }
