@@ -43,9 +43,12 @@ export function useOverlayPresence(
 ) {
   const [keepMounted, setKeepMounted] = useState(isOpen);
 
+  if (isOpen && !keepMounted) {
+    setKeepMounted(true);
+  }
+
   useEffect(() => {
     if (isOpen) {
-      setKeepMounted(true);
       return;
     }
     const timer = window.setTimeout(() => {
