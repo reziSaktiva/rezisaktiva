@@ -15,6 +15,14 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Added
+- Tes regresi `lib/home-motion-hydration.test.ts`: `Reveal` / `WordReveal` / `HeroWords` tidak cabang `initial` lewat `useReducedMotion`; Magnetic `onLeave` ikut `skipMagneticPull`; `<body>` tanpa `suppressHydrationWarning`.
+### Changed
+- Magnetic: `onMove` dan `onLeave` memakai gate yang sama (`skipMagneticPull`) supaya `animate()` imperatif tidak jalan saat reduced motion.
+### Fixed
+- Cabut `suppressHydrationWarning` di `<body>` (script tema hanya menyentuh `<html>`).
+
+## [2026-09-03]
 ### Changed
 - `MotionConfig reducedMotion="user"` di `MotionRuntime` — reduced motion lewat Motion, bukan cabang `initial` SSR/klien.
 - Reveal / WordReveal / HeroWords: `initial` sama di server dan klien. Magnetic = `span` + `animate()` DOM, bukan `motion.span` + MotionValue di `style`.

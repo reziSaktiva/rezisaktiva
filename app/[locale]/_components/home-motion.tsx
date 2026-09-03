@@ -141,8 +141,10 @@ export function Magnetic({ children }: { children: ReactNode }) {
   const reduceMotion = useReducedMotion();
   const nodeRef = useRef<HTMLSpanElement>(null);
 
+  const skipMagneticPull = () => Boolean(reduceMotion) || !hasFineHover();
+
   const onMove = (event: ReactMouseEvent<HTMLSpanElement>) => {
-    if (reduceMotion || !hasFineHover()) {
+    if (skipMagneticPull()) {
       return;
     }
     const node = nodeRef.current;
@@ -161,6 +163,9 @@ export function Magnetic({ children }: { children: ReactNode }) {
   };
 
   const onLeave = () => {
+    if (skipMagneticPull()) {
+      return;
+    }
     const node = nodeRef.current;
     if (!node) {
       return;
