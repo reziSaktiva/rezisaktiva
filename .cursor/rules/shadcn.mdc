@@ -1,0 +1,50 @@
+---
+description: Konvensi wajib saat menulis UI dengan shadcn/ui + Tailwind CSS v4 (ADR-028)
+alwaysApply: true
+---
+
+# shadcn + Tailwind v4
+
+Sistem komponen + styling aktif = **shadcn/ui** (source di `components/ui/`) + **Tailwind CSS v4**. Menggantikan Astryx (ADR-018 superseded). **Satu sistem** — bukan coexist dengan Astryx, bukan StyleX.
+
+## CLI
+
+Project ini pnpm. Tambah/ubah primitf:
+
+- `pnpm exec shadcn <cmd>` — CLI yang sudah di `devDependencies`
+- `pnpm dlx shadcn@latest <cmd>` — jika perlu versi CLI terbaru
+
+Contoh: `pnpm exec shadcn add button`, `pnpm exec shadcn docs dialog`, `pnpm exec shadcn search sheet`.
+
+Jangan `astryx …`. Jangan pasang MCP Tailwind community. Konfigurasi ada di `components.json` (Radix, RSC, lucide, CSS = `app/globals.css`).
+
+## Setup (sudah terpasang)
+
+Import di `app/globals.css`: `tailwindcss`, `tw-animate-css`, `shadcn/tailwind.css`. Token `:root` / `.dark` + `@theme inline` + `@custom-variant dark` = class `.dark` (bukan OS). Dark/light = cookie `rz-theme` + `html.dark` (ADR-021). Jangan duplikasi setup. Jangan `next-themes` sebagai default.
+
+## Workflow
+
+1. Cek primitf yang **sudah ada** di `components/ui/` dan permukaan `app/[locale]/_components/` sebelum menambah.
+2. CLI `search` / `docs` sebelum mengarang overlay/form baru.
+3. Komposisi halaman tetap di `app/[locale]/_components/`. File generated hanya `components/ui/` + `lib/utils.ts` (`cn`).
+4. **Jangan** menambah Sidebar, Chart, Command, Sonner, Calendar hanya karena katalog. Ikon krom brand tetap `overlay-icons.tsx`.
+
+## Styling
+
+Urutan: 1. primitf shadcn yang sudah di-skin → 2. utility Tailwind **token-backed** (`flex`, `flex-col`, `gap-8`, `bg-background`, `text-foreground`) → 3. `className` scoped + `app/globals.css` (`var(--spacing-*)`, `--chip-*`, `--elev-3d`, craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*`) → 4. `cn()` untuk class kondisional.
+
+- **`gap-*` / `flex` / `grid`**, bukan `space-y-*` / `space-x-*`, bukan `margin` di tiap sibling.
+- Bukan redesain: palet rezisaktiva, pill kuning, elevasi 3D, overlay craft. Bukan tampilan default zinc/slate shadcn.
+- **Tidak ada StyleX** (`xstyle` / `stylex.create()`). Gap compiler Turbopack ditutup dengan cabut Astryx (T-037).
+- Dilarang `style={{}}` layout/warna (`colorScheme` di `<html>` = pengecualian yang sudah ada). Dilarang hex/px acak di JSX (`bg-[#fff]`, `p-[13px]`).
+- `!important` hanya jika sudah ada preseden sadar di file yang sama (overlay theme-independent).
+
+## Overlay & gerak
+
+Contact = `Dialog`, Quick Info = `Sheet` kanan, project = `Drawer` bawah — sudah di-skin. Title a11y wajib. Motion identitas = `motion/react`; overlay enter/exit = transisi CSS token; Lenis tetap. Hormati `prefers-reduced-motion`.
+
+## SELF-CHECK
+
+Sebelum selesai: tidak ada impor `@astryxdesign` / `@stylexjs`; tidak ada `space-y-*` untuk ritme; token dari `globals.css`; bentuk mengikuti kode produksi + arahan, bukan mockup HTML dan bukan demo shadcn.
+
+Spacing, Server vs Client, SSG: `.cursor/rules/code-discipline.mdc` + `product-discovery/06-engineering/code-discipline.md`.

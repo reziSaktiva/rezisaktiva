@@ -17,6 +17,8 @@ Pola: `{light\|dark}-{320\|desktop}-{home\|about\|work\|contact\|quick-info\|pro
 
 Project sheet = tile pertama di `/en/projects` (Social Media Management Platform).
 
+Capture overlay menunggu `#ct-panel`, `#qi-panel`, `.ps-panel` (bukan `.ct-wrap.is-open` / `.qi-wrap.is-open` / `.ps-wrap.is-open` — primitf shadcn T-035).
+
 Token computed: [`computed-tokens.json`](computed-tokens.json). Ringkasan juga di `COMPLETE_TASK.md` (entri 2026-09-01 T-032.1).
 
 ## Ulangi capture

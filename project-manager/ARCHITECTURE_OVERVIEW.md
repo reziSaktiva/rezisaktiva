@@ -7,7 +7,7 @@
 * **Pola:** Static-first SSG (Next.js App Router) + konten disimpan di repo (`content/`) — bukan CMS/DB dinamis.
 * **Single-app:** satu `package.json` di root, bukan monorepo workspace (ADR-016).
 * **N/A sadar:** database, background jobs, realtime, dan auth area privat **tidak dibutuhkan** untuk skala portofolio ini (ADR-011, ADR-015) — didokumentasikan sebagai keputusan, bukan celah.
-* **Styling:** Astryx design system, menggantikan Tailwind sebagai layer utama (ADR-018).
+* **Styling:** shadcn/ui + Tailwind CSS v4 (ADR-028). ADR-018 (Astryx) superseded.
 * Detail per lapisan: `../product-discovery/05-architecture/application-layer.md`, `domain-model.md`, `database-strategy.md`, `integration-layer.md`.
 
 ## Status

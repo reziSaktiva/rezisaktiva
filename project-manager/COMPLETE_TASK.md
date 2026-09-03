@@ -16,6 +16,21 @@ Format entri:
 
 ## [2026-09-03]
 ### Changed
+- **T-037.6:** QA vs [`baselines/t-032.1/`](baselines/t-032.1/). `pnpm typecheck` / `lint` / `build` hijau. Kanvas/fg body+html, chip, scrollbar, aksen light/dark cocok dengan `computed-tokens.json` (320 + desktop). Overlay Contact/QI/sheet buka-tutup Escape; locale `/en` + `/id` (375); reduced-motion tanpa cursor ring; page-vt lock hilang setelah enter. Capture overlay di `capture.mjs` menunggu `#ct-panel` / `#qi-panel` / `.ps-panel`.
+- Gap yang **bukan** perubahan bentuk: token craft `--color-*` tersimpan sebagai pasangan `light-dark` (computed dua hex), bukan hex tunggal Astryx; cursor ring di-unmount saat reduced-motion (T-036.5), bukan `display: none`. Foto Unsplash tetap placeholder.
+
+## [2026-09-03]
+### Changed
+- **T-037.5:** `.cursor/mcp.json` tanpa server `xds`. Tetap `shadcn` (npx `shadcn@latest mcp`), `motion`, dan `motion-plus`.
+
+## [2026-09-03]
+### Added
+- Rule `.cursor/rules/shadcn.mdc` (`alwaysApply`) — CLI `pnpm exec` / `pnpm dlx shadcn`, token Tailwind v4, tanpa StyleX/Astryx.
+### Changed
+- **T-037.4:** SoT engineering (`design-tokens.md`, `code-discipline.md`, `dependency-strategy.md`, `06-engineering/README.md`) + `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md`, `code-discipline.mdc`, `ui-ux-mockup-check.mdc`, skill navigator. Hapus `.cursor/rules/xds.mdc`.
+
+## [2026-09-03]
+### Changed
 - **T-037.2:** `pnpm remove` `@astryxdesign/core`, `@astryxdesign/theme-neutral`, `@stylexjs/stylex`, dan dev `@astryxdesign/cli`. `package.json` + `pnpm-lock.yaml` tanpa paket itu (bukan regenerate lockfile buta).
 - **T-037.3** diverifikasi: `app/globals.css` tanpa `@import` Astryx; selector chrome/page-vt pakai `.site-chrome-header` / `.site-chrome-main` (bukan `.astryx-*` / `#astryx-app-shell-main`). Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
 

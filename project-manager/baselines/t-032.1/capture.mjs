@@ -144,21 +144,21 @@ async function main() {
           await shot(page, `${prefix}-work`);
 
           await page.locator(".site-contact-button").click();
-          await page.locator(".ct-wrap.is-open").waitFor({ state: "visible" });
+          await page.locator("#ct-panel").waitFor({ state: "visible" });
           await page.waitForTimeout(200);
           await shotViewport(page, `${prefix}-contact`);
           await page.keyboard.press("Escape");
-          await page.locator(".ct-wrap.is-open").waitFor({ state: "hidden" });
+          await page.locator("#ct-panel").waitFor({ state: "hidden" });
 
           await page.locator(".qi-tab").click();
-          await page.locator(".qi-wrap.is-open").waitFor({ state: "visible" });
+          await page.locator("#qi-panel").waitFor({ state: "visible" });
           await page.waitForTimeout(200);
           await shotViewport(page, `${prefix}-quick-info`);
           await page.keyboard.press("Escape");
-          await page.locator(".qi-wrap.is-open").waitFor({ state: "hidden" });
+          await page.locator("#qi-panel").waitFor({ state: "hidden" });
 
           await page.locator(".home-work-tile-hit").first().click();
-          await page.locator(".ps-wrap.is-open").waitFor({ state: "visible" });
+          await page.locator(".ps-panel").waitFor({ state: "visible" });
           await page.waitForTimeout(200);
           await shotViewport(page, `${prefix}-project-sheet`);
         });
