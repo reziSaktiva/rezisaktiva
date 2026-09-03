@@ -15,6 +15,11 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Changed
+- **T-037.2:** `pnpm remove` `@astryxdesign/core`, `@astryxdesign/theme-neutral`, `@stylexjs/stylex`, dan dev `@astryxdesign/cli`. `package.json` + `pnpm-lock.yaml` tanpa paket itu (bukan regenerate lockfile buta).
+- **T-037.3** diverifikasi: `app/globals.css` tanpa `@import` Astryx; selector chrome/page-vt pakai `.site-chrome-header` / `.site-chrome-main` (bukan `.astryx-*` / `#astryx-app-shell-main`). Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
+
+## [2026-09-03]
 ### Added
 - Token craft (`--spacing-*`, `--color-*`, durasi, radius, easing) di `:root` `app/globals.css` supaya halaman tetap hidup tanpa file tema built.
 ### Changed
