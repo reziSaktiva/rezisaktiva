@@ -55,3 +55,7 @@ Task ID resmi untuk implementasi: **T-020** (`v03-development-r1.md`), subtask T
 ### Update — 2026-08-26 (ADR-027)
 
 Pengecualian “Work case detail” di keputusan asli merujuk **halaman** `work-case.html` / `/work/[slug]`. M10 R1 = **overlay sheet**, bukan halaman itu. Quick Info **tetap tampil di Work index**. Jangan unmount Quick Info karena M10. Saat sheet terbuka, tutup Quick Info sementara (pola Contact), lalu tab tetap ada.
+
+### Update — 2026-09-03 (ADR-028)
+
+Primitf overlay Quick Info = shadcn `Sheet` `side="right"` (T-035), di-skin bentuk yang sama. Poin 5 (“overlay custom / bukan alasan pindah shadcn”) adalah jejak R1 (ADR-018/026); migrasi pasca-exit = [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).

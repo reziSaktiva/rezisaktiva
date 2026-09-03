@@ -171,7 +171,7 @@ Setelah edit `mcp.json`: enable di Cursor Settings sampai titik hijau. Agent eks
 
 ## Baca dulu (semua parent)
 
-[ADR-028](../decisions/ADR-028-shadcn-tailwind-replaces-astryx.md), ADR-018 (superseded), ADR-021, ADR-024, ADR-017, ADR-025, ADR-019, ADR-022, ADR-027, ADR-015; `product-discovery/06-engineering/design-tokens.md`, `code-discipline.md`, `dependency-strategy.md`; `.cursor/rules/xds.mdc`, `code-discipline.mdc`, `ui-ux-mockup-check.mdc`; `app/globals.css`, `app/layout.tsx`, `lib/theme-mode.ts`, `lib/astryx-theme.ts`; [shadcn MCP](https://ui.shadcn.com/docs/mcp), [Tailwind v4 + shadcn](https://ui.shadcn.com/docs/tailwind-v4), [Motion React](https://motion.dev/docs/react), [Motion AI Kit](https://motion.dev/docs/ai-kit-install).
+[ADR-028](../decisions/ADR-028-shadcn-tailwind-replaces-astryx.md), ADR-018 (superseded), ADR-021, ADR-024, ADR-017, ADR-025, ADR-019, ADR-022, ADR-027, ADR-015; `product-discovery/06-engineering/design-tokens.md`, `code-discipline.md`, `dependency-strategy.md`; `.cursor/rules/shadcn.mdc` (menggantikan `xds.mdc`, T-037.4), `code-discipline.mdc`, `ui-ux-mockup-check.mdc`; `app/globals.css`, `app/layout.tsx`, `lib/theme-mode.ts`. `lib/astryx-theme.ts` dihapus di T-037.1. [shadcn MCP](https://ui.shadcn.com/docs/mcp), [Tailwind v4 + shadcn](https://ui.shadcn.com/docs/tailwind-v4), [Motion React](https://motion.dev/docs/react), [Motion AI Kit](https://motion.dev/docs/ai-kit-install).
 
 ---
 

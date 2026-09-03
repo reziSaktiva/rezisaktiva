@@ -1,6 +1,8 @@
 # v0.3 — Development R1 (MVP Clarity)
 
-Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline dan Astryx (ADR-018, ADR-026). **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. **T-027** ✅. **T-018** ✅. **T-028** ✅.
+Release untuk implementasi fitur/konten R1 Must (M1–M7, + M9 via ADR-020, + theme toggle via ADR-021, + M13 via ADR-022, + **M10 overlay sheet via ADR-027**): chrome, Home + About, Contact, Work index, Quick Info panel, project sheet, meta — sesuai Product/UX baseline. **Bukan** halaman case `/work/[slug]`. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-026** ✅. **T-027** ✅. **T-018** ✅. **T-028** ✅.
+
+**Stack styling (historis):** rilis ini dikerjakan di Astryx (ADR-018, ADR-026). Stack hidup sekarang = shadcn/ui + Tailwind CSS v4 (**ADR-028**, v14 Done). Gap StyleX/Turbopack (T-013.4) ditutup dengan cabut Astryx di T-037 — bukan task wiring terpisah. File `.cursor/rules/xds.mdc` sudah diganti `shadcn.mdc`.
 
 Urutan kerja: chrome dulu (dipakai semua halaman), lalu halaman, lalu meta, lalu exit.
 

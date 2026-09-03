@@ -59,6 +59,7 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
   * ✅ **Update (2026-09-01):** Minerank, SMC Auction, dan SMC Migration digabung jadi satu karya **Minerank** (migrasi → lelang → blog headless). Fakta di `content/data/projects.json`.
 - [x] **T-021.6** — Quick Info: tab, judul, bio, Services, Tools, Works index (rujukan ke daftar T-021.5), Email, Links, tutup. Slot: `qi.*`. Bukan form Contact. Tulis ke `content/` (layout: T-020.2).
   * ✅ **Selesai (2026-08-28):** Bio dikunci Boss Rezi (pendek dari About, bukan geografi mockup). Services = Product · Fullstack · AI & Orchestration (T-021.3). Tools = Next.js, TypeScript, Astryx, Figma, Postgres, Vercel. Label tab/judul/section mockup apa adanya (EN di locale ID). Close "Tutup quick info" / "Close quick info". Email + Links + indeks karya tetap dari `CONTACT_*` / `WORK_ITEMS` (bukan copy baru).
+  * ✅ **Update (2026-09-03):** Tools: Astryx diganti **shadcn/ui** (stack ADR-028). Slot lain tidak berubah.
 - [x] **T-021.7** — Meta destinasi: `title` + `description` per permukaan R1 (Home, About, Work index) per locale; Contact = modal jadi tidak punya title halaman. Slot mockup: `title.home`, `title.about`, `title.work`. Tulis ke `content/` / metadata UI (OG/canonical tetap T-017.2).
   * ✅ **Selesai (2026-08-28):** Title Home `rezisaktiva — Home`; About `… — Proses Kerja` / `… — How I Work`; Work `… — Proyek` / `… — Projects` (bukan Karya/Work). Description Home = CTA Contact; About = draf orkestrasi pendek yang sudah ada; Work = framing Proyek/Projects (makna lead T-021.5).
 
@@ -82,5 +83,5 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
 
 - Copy halaman case `/work/[slug]` — bukan R1
 - Copy overlay project sheet (M10) — **T-026.1** di v03, bukan T-021
-- String murni UI library Astryx yang tidak tampil sebagai copy brand
+- String murni UI library (shadcn) yang tidak tampil sebagai copy brand
 - Implementasi komponen (T-014.2, T-015.2, …)

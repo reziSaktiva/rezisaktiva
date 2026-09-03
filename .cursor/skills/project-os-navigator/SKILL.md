@@ -185,8 +185,8 @@ rezisaktiva/
 ├── design-mockups/          → Arsip HTML R1 (bukan SoT visual — ADR-024)
 ├── app/                     → Kode Next.js (App Router)
 ├── AGENTS.md
-├── .cursor/skills/          → Process skills Cursor
-└── .cursor/rules/           → Rule aktif (shadcn, disiplin kode, mockup gate, no-AI-attribution)
+├── .cursor/skills/          → Process skills Cursor + skill library Motion (ADR-028)
+└── .cursor/rules/           → Rule aktif (shadcn, disiplin kode, mockup gate, no-AI-attribution, ask-before-assuming)
 ```
 
 ---
