@@ -2,7 +2,7 @@
   "id": [
     "Next.js",
     "TypeScript",
-    "Astryx",
+    "shadcn/ui",
     "Figma",
     "Postgres",
     "Vercel"
@@ -10,7 +10,7 @@
   "en": [
     "Next.js",
     "TypeScript",
-    "Astryx",
+    "shadcn/ui",
     "Figma",
     "Postgres",
     "Vercel"

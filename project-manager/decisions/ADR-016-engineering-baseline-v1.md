@@ -42,3 +42,7 @@ Accepted
 - **Dark mode Must** (toggle + QA penuh di R1) — ditolak; A+ (fondasi siap, toggle Later).
 - **CI Vercel-only tanpa Actions** — ditolak; opsi B dikunci di T-006.5.
 - Engineering Baseline v1.0 seperti di atas — diterima.
+
+### Update — 2026-09-03
+
+Styling/token poin 2 (**Tailwind + CSS variables**) sudah dua kali diganti: **ADR-018** (Astryx) lalu **[ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md)** (shadcn/ui + Tailwind CSS v4). Isi ADR ini tetap jejak Engineering Baseline v1.0; kontrak styling aktif = ADR-028.

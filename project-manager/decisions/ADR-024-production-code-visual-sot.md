@@ -32,3 +32,7 @@ Accepted
 - Deprecate hanya untuk About; halaman lain tetap mockup-first — ditolak; Boss Rezi memilih deprecate global.
 - Pindah SoT visual ke Figma — ditolak untuk sekarang; iterasi langsung di kode + chat.
 - Hapus folder `design-mockups/` — tidak dilakukan; arsip tetap berguna sebagai jejak sejarah R1, bukan acuan hidup.
+
+### Update — 2026-09-03 (ADR-028)
+
+Keputusan SoT visual (kode produksi + arahan Boss Rezi; `design-mockups/` arsip) **tetap**. Mekanisme komponen/token berganti ke shadcn/ui + Tailwind CSS v4 — bukan Astryx (ADR-018 superseded). Acuan hidup = `app/` + token `app/globals.css` + primitf yang sudah di-skin.

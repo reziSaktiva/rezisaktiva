@@ -16,7 +16,6 @@ import {
   WORD_REVEAL_STAGGER,
   animate,
   motion,
-  useMotionValue,
   useReducedMotion,
 } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -56,8 +55,6 @@ export function Reveal({
   className?: string;
   axis?: "vertical" | "horizontal";
 }) {
-  const reduceMotion = useReducedMotion();
-
   return (
     <motion.div
       className={cn(
@@ -65,10 +62,10 @@ export function Reveal({
         axis === "horizontal" && "home-work-head",
         className,
       )}
-      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={reduceMotion ? { duration: 0 } : REVEAL_TWEEN}
+      transition={REVEAL_TWEEN}
     >
       {children}
     </motion.div>
@@ -86,7 +83,6 @@ export function WordReveal({
   words: readonly string[];
   variant?: "inline" | "compact";
 }) {
-  const reduceMotion = useReducedMotion();
   const compact = variant === "compact";
 
   return (
@@ -95,24 +91,16 @@ export function WordReveal({
         <motion.span
           key={`${word}-${index}`}
           className={cn("page-word", compact && "page-word--compact")}
-          initial={
-            reduceMotion
-              ? { opacity: 1, y: 0, filter: "blur(0px)" }
-              : {
-                  opacity: 0,
-                  y: "0.4em",
-                  filter: compact ? "blur(0px)" : "blur(4px)",
-                }
-          }
+          initial={{
+            opacity: 0,
+            y: "0.4em",
+            filter: compact ? "blur(0px)" : "blur(4px)",
+          }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={
-            reduceMotion
-              ? { duration: 0 }
-              : {
-                  ...REVEAL_TWEEN,
-                  delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
-                }
-          }
+          transition={{
+            ...REVEAL_TWEEN,
+            delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
+          }}
         >
           {word}
           {variant === "inline" && index < words.length - 1 ? " " : ""}
@@ -126,26 +114,18 @@ export function WordReveal({
  * Word reveal hero — mockup `runWordReveal()` (120ms + i * 80ms).
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
-  const reduceMotion = useReducedMotion();
-
   return (
     <>
       {lines.map((line, index) => (
         <motion.span
           key={line}
           className={cn("home-hero-line", index === 1 && "home-hero-line-2")}
-          initial={
-            reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: "0.4em" }
-          }
+          initial={{ opacity: 0, y: "0.4em" }}
           animate={{ opacity: 1, y: 0 }}
-          transition={
-            reduceMotion
-              ? { duration: 0 }
-              : {
-                  ...HERO_TWEEN,
-                  delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
-                }
-          }
+          transition={{
+            ...HERO_TWEEN,
+            delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
+          }}
         >
           {line}
         </motion.span>
@@ -159,40 +139,44 @@ export function HeroWords({ lines }: { lines: readonly [string, string] }) {
  */
 export function Magnetic({ children }: { children: ReactNode }) {
   const reduceMotion = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const nodeRef = useRef<HTMLSpanElement>(null);
 
   const onMove = (event: ReactMouseEvent<HTMLSpanElement>) => {
     if (reduceMotion || !hasFineHover()) {
       return;
     }
+    const node = nodeRef.current;
+    if (!node) {
+      return;
+    }
     const box = event.currentTarget.getBoundingClientRect();
     void animate(
-      x,
-      (event.clientX - box.left - box.width / 2) * 0.18,
-      MAGNETIC_TWEEN,
-    );
-    void animate(
-      y,
-      (event.clientY - box.top - box.height / 2) * 0.3,
+      node,
+      {
+        x: (event.clientX - box.left - box.width / 2) * 0.18,
+        y: (event.clientY - box.top - box.height / 2) * 0.3,
+      },
       MAGNETIC_TWEEN,
     );
   };
 
   const onLeave = () => {
-    void animate(x, 0, MAGNETIC_TWEEN);
-    void animate(y, 0, MAGNETIC_TWEEN);
+    const node = nodeRef.current;
+    if (!node) {
+      return;
+    }
+    void animate(node, { x: 0, y: 0 }, MAGNETIC_TWEEN);
   };
 
   return (
-    <motion.span
+    <span
+      ref={nodeRef}
       className="home-magnetic"
-      style={{ x, y }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >
       {children}
-    </motion.span>
+    </span>
   );
 }
 

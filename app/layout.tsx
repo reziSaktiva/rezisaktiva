@@ -118,7 +118,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
          */}
         <meta name="color-scheme" content={initialMode} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeModeProvider initialMode={initialMode}>
           {children}
         </ThemeModeProvider>

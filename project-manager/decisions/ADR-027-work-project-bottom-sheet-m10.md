@@ -59,3 +59,7 @@ Tile teaser di Home **juga** membuka sheet M10 (sama dengan Work index). Katalog
 ### Update — 2026-09-01 (preview live di sheet)
 
 Seksi media: **iframe situs live** dulu (URL http(s) non-GitHub). Framing ditolak / timeout → **galeri**. Tanpa galeri → **kosong**. Tautan Live/Repo tetap sekunder di body.
+
+### Update — 2026-09-03 (ADR-028)
+
+Primitf sheet M10 = shadcn `Drawer` dari bawah (T-035), lebar penuh, di-skin `.ps-*`. Poin 5 (“coba BottomSheet Astryx / bukan pindah shadcn”) adalah jejak R1 (ADR-026); T-026.2 sudah fallback overlay custom, lalu T-035 menggantinya dengan Drawer. Keputusan produk (overlay dari bawah, bukan `/work/[slug]`) **tetap**. Lihat [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).

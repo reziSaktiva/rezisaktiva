@@ -110,7 +110,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Work index (`/projects`):** katalog tile (M9). **Klik tile** (Work index **atau** teaser Home) membuka **project sheet dari bawah** (M10, ADR-027) — live preview (iframe) atau galeri, services, location or company, year, description. Live/repo tautan hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke index.
 
-**Komponen:** overlay custom dari bawah (pola Quick Info, lebar penuh). Astryx `BottomSheet` dicoba dulu (T-026.2) lalu diganti karena tidak ada prop lebar penuh dan tidak cukup untuk galeri pin horizontal. Bukan `/work/[slug]` di R1.
+**Komponen:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. Astryx `BottomSheet` dicoba dulu (T-026.2) lalu diganti overlay custom karena tidak ada prop lebar penuh; overlay custom itu diganti `Drawer` saat migrasi. Bukan `/work/[slug]` di R1.
 
 ---
 
@@ -121,7 +121,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 * **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris (mis. “Membangun” / “produk.”) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work teaser: judul + tautan “lihat semua” boleh **stack** (bukan dipaksa satu baris); tile featured **lebih tinggi** daripada strip 16:8. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
 * **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
 * Panjang salinan ID/EN boleh beda, **makna setara**.
-* Acuan visual: **kode produksi** (`app/`, tema `rezisaktiva`) — **ADR-024**. `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
+* Acuan visual: **kode produksi** (`app/`, token `app/globals.css`, shadcn + Tailwind — ADR-024 / ADR-028). `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
 
 ---
 
@@ -165,5 +165,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
+* `../../project-manager/decisions/ADR-027-work-project-bottom-sheet-m10.md`
+* `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

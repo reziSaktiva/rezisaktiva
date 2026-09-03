@@ -15,6 +15,20 @@ Format entri:
 ```
 
 ## [2026-09-03]
+### Changed
+- `MotionConfig reducedMotion="user"` di `MotionRuntime` — reduced motion lewat Motion, bukan cabang `initial` SSR/klien.
+- Reveal / WordReveal / HeroWords: `initial` sama di server dan klien. Magnetic = `span` + `animate()` DOM, bukan `motion.span` + MotionValue di `style`.
+- `suppressHydrationWarning` di `<body>` (html sudah punya) — pola Next untuk atribut yang disuntik tooling/extension.
+### Fixed
+- Hydration mismatch Home/About: `useReducedMotion()` mengubah `initial` opacity/y antara SSR dan klien (overlay menunjuk `home-page.tsx` / `about-page.tsx` / `site-header.tsx`).
+
+## [2026-09-03]
+### Changed
+- Quick Info Tools: Astryx → **shadcn/ui** di `content/data/tools.json` (ID & EN); catatan T-021.6 di `tasks/v10-page-copy.md`.
+### Fixed
+- Audit docs pasca-migrasi Astryx → shadcn: catatan Update ADR-016/021/022/024/027; ringkasan ADR-024 di `DECISIONS.md`; S4 `key-screen-patterns.md`; `design-mockups/README.md`; Known Issues `PROJECT_STATE.md`; tanggal `PROJECT_RULES.md`; indeks skill Motion di `AGENTS.md` + navigator; banner stack di `tasks/v03-development-r1.md`; Baca dulu v14 tanpa `xds.mdc` / `astryx-theme.ts`.
+
+## [2026-09-03]
 ### Added
 - Token craft yang masih dipakai setelah cabut Astryx: `--size-element-*`, `--color-background-green`, `--color-text-green`, `--color-border-default` di `app/globals.css`.
 - `lib/site-chrome.ts` (`MAIN_CONTENT_ID`) + tes `lib/site-chrome.test.ts`; CI menjalankan `pnpm test`.

@@ -5,6 +5,7 @@
  */
 export {
   AnimatePresence,
+  MotionConfig,
   animate,
   motion,
   useMotionValue,

@@ -44,3 +44,7 @@ Accepted
 ### Update — 2026-08-16
 
 Task ID resmi untuk implementasi: **T-013.4** (`v03-development-r1.md`, di bawah parent T-013 Site chrome R1).
+
+### Update — 2026-09-03 (ADR-028)
+
+Keputusan produk (toggle Must R1, default light, `prefers-color-scheme` Could) **tetap**. Mekanisme token berganti: class `dark` di `<html>` + cookie `rz-theme`, bukan `<Theme mode>` Astryx. Lihat [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).

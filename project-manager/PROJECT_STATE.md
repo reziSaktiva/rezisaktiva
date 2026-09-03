@@ -68,7 +68,7 @@ Tidak diizinkan (kecuali diminta eksplisit):
 
 ## Known Issues
 
-Tidak ada yang terbuka. KI-001 (warna theme toggle) dan KI-002 (background light) ditutup 2026-08-19: tema built `rezisaktiva` memetakan `--c-*` mockup ke token Astryx; chrome toggle/Contact memakai brand + hover aksen.
+Tidak ada yang terbuka. KI-001 (warna theme toggle) dan KI-002 (background light) ditutup 2026-08-19 (saat itu: tema built `rezisaktiva` memetakan `--c-*` mockup ke token Astryx). Token hidup sekarang di `app/globals.css` (ADR-028); chrome toggle/Contact memakai brand + hover aksen.
 
 ---
 
