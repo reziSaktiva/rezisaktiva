@@ -14,6 +14,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — T-041.3 project sheet elevated
+**Phase:** Validation
+**Summary:** Boss Rezi kunci Drawer karya = elevated `#141418` seperti Contact/QI; radius atas 1.15rem; close ghost. Bukan ghost kanvas, bukan lebih tinggi.
+**Key Decision/Insight:** Tiga overlay satu keluarga material. Live/repo tetap di dalam. Reduced-motion mematikan tween overlay.
+**Impact:** `globals.css` `.ps-*`, `project-sheet.tsx`; v15 **T-041** ✅. Berikutnya T-042.
+
+## [2026-09-04] — T-041.2 Quick Info elevated + tab datar
+**Phase:** Validation
+**Summary:** Boss Rezi kunci panel QI = elevated `#141418` seperti Contact; tab tepi bukan nampan wine, melainkan datar vellum + hairline + hover darah.
+**Key Decision/Insight:** Satu keluarga overlay dengan hamburger/Contact. Tab bukan selected chrome (bukan splatter ADR-030).
+**Impact:** `globals.css` `.qi-*`, `quick-info.tsx` komentar; v15 **T-041.2** ✅.
+
+## [2026-09-04] — T-041.1 Contact elevated token
+**Phase:** Validation
+**Summary:** Boss Rezi kunci kulit Contact = kartu elevated `#141418` (bukan ghost, bukan pulau ink, bukan frame lancip). Dialog/Email primer/job tetap.
+**Key Decision/Insight:** Palet sudah gelap; kartu tidak perlu dark-ink independen. Kirim ikut tombol datar T-038.3.
+**Impact:** `globals.css` `.ct-*`, `contact-modal.tsx` komentar; v15 **T-041.1** ✅.
+
 ## [2026-09-04] — Bug cursor pisau hilang di modal
 **Phase:** Validation
 **Summary:** Saat Contact (dan overlay lain) terbuka, pisau tidak kelihatan. Native cursor juga `none`, jadi pointer kosong.

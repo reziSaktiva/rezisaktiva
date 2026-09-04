@@ -29,10 +29,10 @@ function prefersReducedMotionNow(): boolean {
 }
 
 /**
- * Project sheet M10 (T-026, ADR-027; T-035.3–T-035.4) — Drawer vaul dari
- * bawah, skin `.ps-*`. Tile index + teaser Home membuka sheet, bukan live
- * URL. Event `rz-project-sheet-open`; `ps-lock` + Lenis pause; overlay asing
- * menutup sheet.
+ * Project sheet M10 (T-026, ADR-027; T-035.3–T-035.4; T-041.3) — Drawer
+ * vaul dari bawah, skin `.ps-*` elevated token. Tile index + teaser Home
+ * membuka sheet, bukan live URL. Event `rz-project-sheet-open`; `ps-lock` +
+ * Lenis pause; overlay asing menutup sheet.
  */
 export function ProjectSheet({
   locale,
@@ -142,7 +142,7 @@ export function ProjectSheet({
         data-lenis-prevent=""
         className={cn(
           "ps-panel mt-0 max-h-none border-0 bg-transparent p-0 shadow-none",
-          "data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:max-h-none data-[vaul-drawer-direction=bottom]:rounded-t-[0.75rem] data-[vaul-drawer-direction=bottom]:border-0",
+          "data-[vaul-drawer-direction=bottom]:mt-0 data-[vaul-drawer-direction=bottom]:max-h-none data-[vaul-drawer-direction=bottom]:rounded-t-[1.15rem] data-[vaul-drawer-direction=bottom]:border-0",
           isOpen && "is-open",
         )}
         onOpenAutoFocus={(event) => {

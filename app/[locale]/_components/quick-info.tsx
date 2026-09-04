@@ -20,9 +20,10 @@ import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 import { WorkplaceLine } from "./workplace-line";
 
 /**
- * Quick Info overlay (T-020.2, ADR-022; T-035.2, T-036.3) — tab tepi kanan →
- * Sheet. Enter/exit = transisi CSS token + `forceMount`. Bukan route;
- * bukan form Contact. Tetap di Work index (ADR-027); sheet M10 terpisah.
+ * Quick Info overlay (T-020.2, ADR-022; T-035.2, T-036.3; T-041.2) — tab
+ * tepi kanan → Sheet. Panel elevated token; tab datar. Enter/exit = transisi
+ * CSS token + `forceMount`. Bukan route; bukan form Contact. Tetap di Work
+ * index (ADR-027); sheet M10 terpisah.
  */
 export function QuickInfo({ locale }: { locale: Locale }) {
   const copy = QUICK_INFO_COPY[locale];

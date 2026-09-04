@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.6). **T-041** ⏳ **berikutnya**. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.6). **T-041** ✅. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -164,22 +164,22 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ## T-041 — Overlay (setelah T-040)
 
-* **Status:** ⏳ Open — gerbang **T-040** ✅; Q&A per overlay
+* **Status:** ✅ **Done** (2026-09-04) — T-041.1–T-041.3; gerbang T-042 terbuka
 * **Domain:** Design / Engineering
 * **Output:** Contact, Quick Info, project sheet di-skin; sisi/primitif/job tetap
 * **Baca dulu tambahan:** `contact-modal.tsx`, `quick-info.tsx`, `project-sheet.tsx`, class `.ct-*` / `.qi-*` / `.ps-*`
 
 ### Subtasks
 
-- [ ] **T-041.1** — Q&A + kode: Contact `Dialog`. Kartu tidak wajib tetap “dark-ink independen” jika palet baru sudah gelap — kunci di chat. Email tetap primer visual vs satelit.
-- [ ] **T-041.2** — Q&A + kode: Quick Info `Sheet` kanan + tab tepi.
-- [ ] **T-041.3** — Q&A + kode: project `Drawer` bawah (lebar penuh, live/repo di dalam). Verifikasi tiga overlay + `prefers-reduced-motion`.
+- [x] **T-041.1** — Q&A + kode: Contact `Dialog`. **Dikunci chat 2026-09-04:** kartu elevated token (`#141418` / `--chip-bg`, vellum, border `#2C2C32`) — keluarga hamburger T-040.4. Hex ink `#0a0f1a` hilang. Kirim datar (T-038.3). Email tetap primer vs satelit.
+- [x] **T-041.2** — Q&A + kode: Quick Info `Sheet` kanan + tab tepi. **Dikunci chat 2026-09-04:** panel elevated `#141418` seperti Contact; tab datar (vellum + hairline, hover darah), bukan nampan wine.
+- [x] **T-041.3** — Q&A + kode: project `Drawer` bawah (lebar penuh, live/repo di dalam). **Dikunci chat 2026-09-04:** elevated `#141418`, radius atas 1.15rem, scrim gelap token, close ghost. Verifikasi tiga overlay + `prefers-reduced-motion`.
 
 ---
 
 ## T-042 — Halaman (setelah T-041)
 
-* **Status:** ⏳ Open — gerbang **T-041.3** + Q&A per halaman
+* **Status:** ⏳ Open — gerbang **T-041.3** ✅ + Q&A per halaman
 * **Domain:** Design / Engineering
 * **Output:** Home / About / Work memakai kulit baru; **blok dan copy sama**
 * **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `about-offer-grid.tsx`, `about-process.tsx`, `about-rest-active.tsx`, `work-page.tsx`, `work-tile.tsx`, `home-work-teasers.tsx`

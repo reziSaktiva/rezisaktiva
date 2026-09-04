@@ -15,6 +15,24 @@ Format entri:
 ```
 
 ## [2026-09-04]
+### Changed
+- Hover drip: kembalikan lidah halus versi sebelumnya (tanpa polygon/miring/rambut); tetap tanpa bulatan ujung (radius kecil, bukan oval).
+
+## [2026-09-04]
+### Changed
+- Hover drip: cabut bulatan ujung; lidah meruncing + miring tidak seragam; dua rambut tipis; tanpa nampan atas.
+
+## [2026-09-04]
+### Changed
+- Hover drip tile: lidah dipersempit (~7–11px, ~4.5% lebar kartu), nampan atas 38% dicabut (sisa rim 8px), tinggi tetes 36–64% supaya foto tetap terbaca.
+
+## [2026-09-04]
+### Changed
+- **T-041.3** — Project Drawer: elevated `#141418`, radius atas 1.15rem, scrim gelap, live/repo di dalam. Reduced-motion: transisi overlay `none`. **T-041** ✅.
+- **T-041.2** — Quick Info: panel elevated `#141418`; tab tepi datar (vellum + hairline, hover darah), bukan nampan wine. Close ghost. Email primer vs Links.
+- **T-041.1** — Contact Dialog: kartu elevated token (`#141418`, border `#2C2C32`, vellum) keluarga hamburger; hex ink lama dicabut. Tombol kirim datar (hairline, tanpa 3D). Email lebih besar dari ikon sosial.
+
+## [2026-09-04]
 ### Fixed
 - Cursor pisau tidak tampil saat modal/overlay terbuka: z-index 60 tertutup Contact 90/92; state scrim `is-close` menyembunyikan bilah. Pisau di-portal ke `document.body`, z-index 200, tetap pisau di atas overlay (I-beam hanya di field teks).
 
