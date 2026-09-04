@@ -5,6 +5,7 @@ import { DEFAULT_LOCALE, LOCALE_REQUEST_HEADER, isLocale } from "@/lib/locale";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   parseThemeModeCookieValue,
+  THEME_HOLD_FORCE_DARK,
   THEME_MODE_STORAGE_KEY,
 } from "@/lib/theme-mode";
 import { ThemeModeProvider } from "./_components/theme-mode-provider";
@@ -38,23 +39,28 @@ const themeInitScript = `
 (function () {
   try {
     var key = ${JSON.stringify(THEME_MODE_STORAGE_KEY)};
+    var forceDark = ${THEME_HOLD_FORCE_DARK ? "true" : "false"};
     var prefix = key + "=";
     var mode = null;
-    var parts = document.cookie.split("; ");
-    for (var i = 0; i < parts.length; i++) {
-      if (parts[i].indexOf(prefix) === 0) {
-        mode = parts[i].slice(prefix.length);
-        break;
+    if (forceDark) {
+      mode = "dark";
+    } else {
+      var parts = document.cookie.split("; ");
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].indexOf(prefix) === 0) {
+          mode = parts[i].slice(prefix.length);
+          break;
+        }
       }
-    }
-    var fromCookie = mode === "dark" || mode === "light";
-    if (!fromCookie) {
-      mode = window.localStorage.getItem(key);
-      if (mode !== "dark" && mode !== "light") {
-        return;
+      var fromCookie = mode === "dark" || mode === "light";
+      if (!fromCookie) {
+        mode = window.localStorage.getItem(key);
+        if (mode !== "dark" && mode !== "light") {
+          return;
+        }
+        var secure = location.protocol === "https:" ? "; secure" : "";
+        document.cookie = key + "=" + mode + "; path=/; max-age=31536000; samesite=lax" + secure;
       }
-      var secure = location.protocol === "https:" ? "; secure" : "";
-      document.cookie = key + "=" + mode + "; path=/; max-age=31536000; samesite=lax" + secure;
     }
     var root = document.documentElement;
     root.setAttribute("data-theme", mode);
@@ -71,7 +77,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
    * client langsung sinkron — tidak ada lagi render koreksi
    * `useSyncExternalStore` yang bikin flash. `cookies()` di Next.js
    * request-scoped/aman untuk concurrent request (bukan module state).
-   * Default "light" kalau cookie belum ada (ADR-021 poin 2, tidak berubah).
+   * Default "dark" selama T-038.2 hold (`THEME_HOLD_FORCE_DARK`).
+   * Cookie light tidak boleh menampilkan palet krem lama.
    *
    * Trade-off yang perlu diketahui: memanggil `cookies()` di root layout
    * membuat SELURUH app keluar dari static rendering (semua route jadi
@@ -80,9 +87,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
    * dihindari selagi tema harus diketahui server sebelum render pertama.
    */
   const cookieStore = await cookies();
-  const initialMode =
-    parseThemeModeCookieValue(cookieStore.get(THEME_MODE_STORAGE_KEY)?.value) ??
-    "light";
+  const storedTheme = parseThemeModeCookieValue(
+    cookieStore.get(THEME_MODE_STORAGE_KEY)?.value,
+  );
+  const initialMode = THEME_HOLD_FORCE_DARK ? "dark" : (storedTheme ?? "light");
 
   const headerLocale = (await headers()).get(LOCALE_REQUEST_HEADER);
   const htmlLang =

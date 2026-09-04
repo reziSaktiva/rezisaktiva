@@ -14,6 +14,55 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — T-039 token wine + kanvas dingin
+
+**Phase:** Validation
+**Summary:** Palet dikunci dan ditulis ke `globals.css`. Light di-hold (comment + force dark). Toggle disembunyikan. Font blackletter belum dipasang (T-039.2).
+**Key Decision/Insight:** Aksen `#6B1C23`, kanvas `#0B0B0D`, teks `#E8E4DC`. Bentuk bercak/nampan hilang = T-040, bukan T-039.
+**Impact:** `app/globals.css`, `layout.tsx`, `theme-mode.ts`, `site-header.tsx`, `design-tokens.md`, v15 T-039.
+
+## [2026-09-04] — T-038 selesai; T-039 berikutnya
+
+**Phase:** Validation
+**Summary:** T-038.1–T-038.5 dikunci. Tipe: blackletter display (judul besar saja) + grotesk body. Berikutnya token T-039.
+**Key Decision/Insight:** Matriks: copy/IA/overlay tetap; light hold; selected bercak 3D; tombol datar; transisi stutter; bukan Hess.
+**Impact:** v15 T-038 Done; TASKS/PROJECT_STATE fokus T-039.
+
+## [2026-09-04] — T-038.3 chrome + transisi dikunci
+
+**Phase:** Validation
+**Summary:** Selected = bercak darah 3D (bukan tombol, bukan pill). Container kuning hilang. Tombol chrome polos/datar + aksen darah tipis hover. Transisi halaman = hard cut + stutter frame (jump horror), bukan Hess.
+**Key Decision/Insight:** Bentuk darah hanya penanda aktif. CTA bukan bercak. Glitch = stutter/jump, bukan RGB/VHS. Reduced-motion tetap instan.
+**Impact:** v15 T-038.3 ✅; T-043.1; ADR-025 ritme Hess tidak wajib (sudah dinote ADR-029).
+
+## [2026-09-04] — T-038.3 selected = bercak darah, bukan tombol
+
+**Phase:** Validation
+**Summary:** Selected bukan pill dan bukan button. Gambar Boss Rezi = **bercak darah** (stain), tetap 3D. Hanya penanda item aktif.
+**Key Decision/Insight:** Bentuk darah ≠ CTA. Contact/submit tetap tombol (bahasa belum dikunci). Container kuning tetap hilang.
+**Impact:** `tasks/v15-visual-identity.md` T-038.3.
+
+## [2026-09-04] — T-038.3 container vs selected (nav)
+
+**Phase:** Validation
+**Summary:** Bahasa chrome dipecah: **selected** = pil geser (putih/krem di dark); **container** = nampan kuning. Selected → darah. Container **dihilangkan** (bukan polos, bukan nampan).
+**Key Decision/Insight:** Nav + switcher tanpa tray. Hanya pil darah yang menandai item aktif. Lembar hamburger bukan chip tray — panel tetap, bukan kuning (T-040.4). Contact/submit/transisi belum dikunci.
+**Impact:** `tasks/v15-visual-identity.md` T-038.3.
+
+## [2026-09-04] — T-038.1–T-038.2 pembacaan + light hold
+
+**Phase:** Validation
+**Summary:** Boss Rezi menerima usulan pembacaan empat kata (deadpan / satu justaposisi diam / gothic sebagai struktur / aksen darah wine-clot). Light mode di-hold atau di-comment — jangan dihapus.
+**Key Decision/Insight:** T-038.1 ✅. T-038.2 ✅: default ship dark; token light di-comment di T-039; toggle disembunyikan selama hold; `theme-toggle.tsx` + cookie tetap. Bukan dark-only permanen.
+**Impact:** ADR-029, ADR-021 (update), v15 T-038.1–T-038.2, `design-tokens.md`, `04-ux/` + M6 (kalimat default light), `COMPLETE_TASK.md`. Berikutnya T-038.3.
+
+## [2026-09-04] — Migrasi tema: absurdism / surrealism / Gothic / dark-blood
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin ganti seluruh design produksi lewat tanya-jawab per komponen. Arah seni: absurdism, surrealism, Gothic Art, dark and blood. Batas dikunci: **kulit visual saja** (palet, tipe, chrome, gerak, mood); copy, IA, dan perilaku overlay tetap.
+**Key Decision/Insight:** ADR-029. Metode = Q&A per permukaan lalu kode (bukan big-bang). Stack shadcn + Tailwind tetap. Default light/dark belum dikunci (T-038.2 / ADR-021). T-031 mengantri sampai token baru (T-039). Clarity first viewport tetap mengikat.
+**Impact:** `decisions/ADR-029-visual-identity-gothic-blood.md`; `tasks/v15-visual-identity.md` (T-038…T-043); `TASKS.md`; `PROJECT_STATE.md`; ADR-028/025 update; `tasks/v13-metadata.md` (T-031 ⏸️); `BRAINSTORM.md`; `COMPLETE_TASK.md`.
+
 ## [2026-09-04] — Now masuk hero Home
 
 **Phase:** Validation

@@ -104,7 +104,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 **Isi inti:**
 
 * Nav: Home, About (label lokal Proses Kerja / Process), Karya (M9, override ADR-020) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link
-* **Toggle tema (dark/light)** di chrome — Must R1 (**ADR-021**); default ship tetap light; di mobile tetap di luar hamburger
+* **Toggle tema (dark/light)** di chrome — Must R1 (**ADR-021**) **saat kedua tema hidup**; update 2026-09-04: default ship dark, light hold, toggle tersembunyi; di mobile Contact tetap di luar hamburger
 * Footer: identitas singkat, satelit, legal ringan bila perlu
 * Konsistensi soft availability di chrome (opsional)
 * Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)

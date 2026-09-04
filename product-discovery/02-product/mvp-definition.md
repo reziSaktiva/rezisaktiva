@@ -37,7 +37,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **Work index (M9)** | Halaman katalog karya `/[locale]/work` — Must R1 (ADR-020) |
 | **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |
 | **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
-| **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**); default ship tetap light |
+| **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**) saat light hidup; hold T-038.2 = default dark, toggle tersembunyi |
 | **Quick Info panel (M13)** | Overlay global (tab kanan → drawer); **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
 | **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |

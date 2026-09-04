@@ -47,3 +47,7 @@ Ini **perluasan material vs ADR-017** (kadar craft + dua teknik baru: inertia sc
 - `product-discovery/01-business/competitor-analysis.md` — selaraskan “implementasi craft” Hess/Mazur (bukan hanya arah seni mockup).
 - ADR-017 — tetap berlaku untuk batas clarity; teknik baru merujuk ADR ini.
 - Task **T-025** di `project-manager/tasks/v03-development-r1.md`.
+
+### Update — 2026-09-04 (ADR-029)
+
+Pola yang **tetap**: About sebagai halaman sendiri, rest/active, pita Contact, Lenis, reduced-motion, bukti karya di Home/Work. Bahasa visual yang **tidak lagi wajib**: palet lama, chrome 3D kuning, transisi halaman wajib meniru ritme Hess 1s/0.4s — nasib konkret dikunci di **T-038.3**. Identitas visual baru = [ADR-029](ADR-029-visual-identity-gothic-blood.md).

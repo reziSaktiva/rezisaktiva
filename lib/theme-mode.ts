@@ -41,6 +41,13 @@
  */
 export const THEME_MODE_STORAGE_KEY = "rz-theme";
 
+/**
+ * T-038.2 / ADR-021 update 2026-09-04 — light di-hold.
+ * Ship selalu dark; toggle chrome disembunyikan. Jangan hapus mesin cookie.
+ * Cabut hold: set `false` + tampilkan `ThemeToggle` lagi.
+ */
+export const THEME_HOLD_FORCE_DARK = true;
+
 /** Nama cookie sama dengan storage key — satu sumber nilai, dua media penyimpanan. */
 const THEME_MODE_COOKIE_KEY = THEME_MODE_STORAGE_KEY;
 const THEME_MODE_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365; // 1 tahun

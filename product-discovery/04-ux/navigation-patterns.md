@@ -69,8 +69,8 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 > **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
 
 * Breakpoint **<1024px**: nav halaman (Home/About/Proyek) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
-* **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019) + **toggle tema (Must R1, ADR-021)**. Ini menjaga acceptance "Contact ≤ 1 ketukan" meski nav halaman lain di balik menu. Toggle tidak mengubah default ship light.
-* ≥1024px (desktop): nav halaman, switcher, tombol Contact, dan toggle tema (ADR-021) semua selalu terlihat di header — tidak ada hamburger.
+* **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019). **Toggle tema (ADR-021):** Must di luar hamburger **saat light hidup**; selama hold T-038.2 toggle **tidak** ditampilkan. Default ship **dark**.
+* ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
 * Footer satelit tetap ada sebagai pelengkap, bukan pengganti Contact.
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
 * **Komposisi panel hamburger** (kontrak visual mockup, 2026-08-20): satu lembar aksen kuning; **item nav halaman selebar panel** (state aktif = bar penuh, bukan pill selebar teks); **switcher ID/EN compact** (chip, tidak meregang penuh).

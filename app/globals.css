@@ -11,31 +11,21 @@
  * scoped + token di `:root` (`var(--spacing-*)`, `var(--radius-full)`).
  * Warna/layout chrome tetap di wrapper (`.site-*`).
  *
- * `--chip-bg`/`--chip-fg` — satu-satunya sumber kebenaran warna chip kuning
- * (dulu terduplikasi antara `lib/theme.ts` dan file ini; sekarang cuma di sini).
- */
-/*
- * `--chrome-pill-bg`/`--chrome-pill-fg` di bawah adalah fallback statis
- * default light (ADR-021 poin 2). Nilai sebenarnya SELALU disuntikkan
- * sebagai inline style oleh `useChipColorVars()`
- * (`app/_components/theme-mode-provider.tsx`) di elemen wrapper
- * `.site-nav-chip`/`.site-locale-switch`/`.site-mobile-nav-chip`. Sengaja
- * BUKAN CSS `light-dark()` lagi (bug flash 2026-08-16, lihat
- * COMPLETE_TASK.md) — browser sempat resolve `light-dark()` di sini pakai
- * skema warna yang salah sesaat sebelum settle, dan `transition` bawaan
- * pada chip bikin koreksi itu terlihat sebagai animasi warna.
+ * `--chip-bg` — nampan grup (T-038.3 dihilangkan; token = elevated, bukan kuning).
+ * `--chrome-pill-bg`/`--chrome-pill-fg` — selected (bercak darah T-038.3).
+ * Nilai pill runtime: `useChipColorVars()`; fallback di `:root` harus sama.
  *
- * PENTING — jaga sinkron manual (code review 2026-08-16): nilai hex di
- * bawah HARUS sama dengan `CHIP_COLOR_BY_MODE.light` di
- * `app/_components/theme-mode-provider.tsx` (sumber yang sebenarnya
- * dipakai runtime). Fallback ini cuma jaring pengaman kalau
- * `useChipColorVars()` gagal ter-render untuk alasan apapun.
+ * LIGHT HOLD (T-038.2) — arsip palet krem/kuning, JANGAN HAPUS:
+ *   --chip-bg #fde047; --chip-fg #14181f;
+ *   --chrome-pill-bg light #0a0f1a / dark #edeae1;
+ *   --background #edeae1; --foreground #14181f; --accent craft teal #4c7a73;
+ *   --color-background-body #edeae1; scrollbar track #e4dfd1.
  */
 :root {
-  --chip-bg: #fde047;
-  --chip-fg: #14181f;
-  --chrome-pill-bg: #0a0f1a;
-  --chrome-pill-fg: #edeae1;
+  --chip-bg: #141418;
+  --chip-fg: #e8e4dc;
+  --chrome-pill-bg: #6b1c23;
+  --chrome-pill-fg: #e8e4dc;
   /* Ritme transisi halaman karolinahess.com — bukan --duration-medium. */
   --duration-page-exit: 1s;
   --duration-page-enter: 0.4s;
@@ -57,65 +47,61 @@
    * dan class `.dark` (T-032.5).
    */
   --elev-3d:
-    inset 0 1px 0 rgb(255 255 255 / 0.55),
-    inset 0 -1.5px 2px rgb(20 24 31 / 0.14),
-    0 1px 0 rgb(20 24 31 / 0.16),
-    0 6px 14px rgb(20 24 31 / 0.12);
+    inset 0 1px 0 rgb(255 255 255 / 0.22),
+    inset 0 -1.5px 2px rgb(0 0 0 / 0.42),
+    0 1px 0 rgb(0 0 0 / 0.55),
+    0 8px 18px rgb(0 0 0 / 0.45);
   --elev-3d-hover:
-    inset 0 1px 0 rgb(255 255 255 / 0.62),
-    inset 0 -1.5px 2px rgb(20 24 31 / 0.12),
-    0 2px 0 rgb(20 24 31 / 0.14),
-    0 10px 20px rgb(20 24 31 / 0.14);
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    inset 0 -1.5px 2px rgb(0 0 0 / 0.38),
+    0 2px 0 rgb(0 0 0 / 0.5),
+    0 12px 24px rgb(0 0 0 / 0.5);
   --elev-3d-pressed:
-    inset 0 2px 5px rgb(20 24 31 / 0.22),
-    inset 0 1px 0 rgb(255 255 255 / 0.16),
-    0 1px 2px rgb(20 24 31 / 0.1);
+    inset 0 2px 5px rgb(0 0 0 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 1px 2px rgb(0 0 0 / 0.35);
   /*
-   * T-025.9 — scrollbar native.
-   * Track = `--color-background-muted` (light/dark). Thumb = kuning chip
-   * nav (`.site-nav-chip` / `--chip-bg`) di kedua tema. Prefix `--rz-*`.
+   * T-025.9 — scrollbar. Thumb = darah T-039.1, track elevated.
    */
   --rz-scrollbar-size: var(--spacing-2);
-  --rz-scrollbar-track: #e4dfd1;
-  --rz-scrollbar-thumb: var(--chip-bg);
-  --rz-scrollbar-thumb-hover: var(--chip-bg);
+  --rz-scrollbar-track: #141418;
+  --rz-scrollbar-thumb: #6b1c23;
+  --rz-scrollbar-thumb-hover: #8a242e;
   /*
-   * T-032.4 — token shadcn = palet rezisaktiva. Kanvas html/body:
-   * `data-theme` SSR + `html.dark` (T-032.5). Craft `--color-*` = hex
-   * light/dark (bukan `light-dark()`). T-037.1 — spacing/type/size di `:root`.
+   * T-039.1 — palet gothic-blood (kanvas #0B0B0D, vellum #E8E4DC, wine #6B1C23).
    */
-  --background: #edeae1;
-  --foreground: #14181f;
-  --card: #edeae1;
-  --card-foreground: #14181f;
-  --popover: #e4dfd1;
-  --popover-foreground: #14181f;
-  --primary: #4c7a73;
-  --primary-foreground: #edeae1;
-  --secondary: #d8e2de;
-  --secondary-foreground: #14181f;
-  --muted: #e4dfd1;
-  --muted-foreground: #6e6a5f;
-  --accent: #d8e2de;
-  --accent-foreground: #14181f;
+  --background: #0b0b0d;
+  --foreground: #e8e4dc;
+  --card: #0b0b0d;
+  --card-foreground: #e8e4dc;
+  --popover: #141418;
+  --popover-foreground: #e8e4dc;
+  --primary: #6b1c23;
+  --primary-foreground: #e8e4dc;
+  --secondary: #141418;
+  --secondary-foreground: #e8e4dc;
+  --muted: #141418;
+  --muted-foreground: #8f8a82;
+  --accent: #141418;
+  --accent-foreground: #e8e4dc;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #dad5c7;
-  --input: #dad5c7;
-  --ring: #4c7a73;
-  --chart-1: #4c7a73;
-  --chart-2: #6e6a5f;
-  --chart-3: #d8e2de;
-  --chart-4: #dad5c7;
-  --chart-5: #14181f;
+  --border: #2c2c32;
+  --input: #2c2c32;
+  --ring: #6b1c23;
+  --chart-1: #6b1c23;
+  --chart-2: #8f8a82;
+  --chart-3: #141418;
+  --chart-4: #2c2c32;
+  --chart-5: #e8e4dc;
   --radius: 0.625rem;
-  --sidebar: #edeae1;
-  --sidebar-foreground: #14181f;
-  --sidebar-primary: #4c7a73;
-  --sidebar-primary-foreground: #edeae1;
-  --sidebar-accent: #d8e2de;
-  --sidebar-accent-foreground: #14181f;
-  --sidebar-border: #dad5c7;
-  --sidebar-ring: #4c7a73;
+  --sidebar: #0b0b0d;
+  --sidebar-foreground: #e8e4dc;
+  --sidebar-primary: #6b1c23;
+  --sidebar-primary-foreground: #e8e4dc;
+  --sidebar-accent: #141418;
+  --sidebar-accent-foreground: #e8e4dc;
+  --sidebar-border: #2c2c32;
+  --sidebar-ring: #6b1c23;
 
   --spacing-0: 0px;
   --spacing-0-5: 2px;
@@ -180,31 +166,31 @@
    * 2026-08-16). Teal aksen craft (`--color-accent`) terpisah dari token
    * shadcn `--accent` (muted) yang dipetakan `@theme inline`.
    */
-  --color-background-surface: #edeae1;
-  --color-background-body: #edeae1;
+  --color-background-surface: #0b0b0d;
+  --color-background-body: #0b0b0d;
   --color-background-canvas: var(--color-background-body);
-  --color-background-card: #edeae1;
-  --color-background-popover: #e4dfd1;
-  --color-background-muted: #e4dfd1;
-  --color-background-inverted: #0a0f1a;
-  --color-background-green: #c5e5c0;
-  --color-accent: #4c7a73;
-  --color-accent-muted: #d8e2de;
-  --color-on-accent: #edeae1;
-  --color-text-accent: #4c7a73;
-  --color-icon-accent: #4c7a73;
-  --color-text-primary: #14181f;
-  --color-text-secondary: #6e6a5f;
-  --color-text-disabled: #a3a3a3;
-  --color-text-green: #0c5700;
-  --color-icon-primary: #14181f;
-  --color-icon-secondary: #6e6a5f;
-  --color-on-dark: #edeae1;
-  --color-on-light: #14181f;
-  --color-border: #dad5c7;
-  --color-border-emphasized: #dad5c7;
+  --color-background-card: #0b0b0d;
+  --color-background-popover: #141418;
+  --color-background-muted: #141418;
+  --color-background-inverted: #e8e4dc;
+  --color-background-green: #84c9803d;
+  --color-accent: #6b1c23;
+  --color-accent-muted: #8a242e;
+  --color-on-accent: #e8e4dc;
+  --color-text-accent: #8a242e;
+  --color-icon-accent: #8a242e;
+  --color-text-primary: #e8e4dc;
+  --color-text-secondary: #8f8a82;
+  --color-text-disabled: #525252;
+  --color-text-green: #9fe59b;
+  --color-icon-primary: #e8e4dc;
+  --color-icon-secondary: #8f8a82;
+  --color-on-dark: #e8e4dc;
+  --color-on-light: #0b0b0d;
+  --color-border: #2c2c32;
+  --color-border-emphasized: #2c2c32;
   --color-border-default: var(--color-border);
-  --color-success: #007004;
+  --color-success: #9fe59b;
   --shadow-low:
     0 2px 4px oklch(0 0 0 / 5%), 0 4px 8px oklch(0 0 0 / 10%),
     inset 0 0 0 1px transparent;
@@ -214,27 +200,28 @@ html[data-theme="dark"],
 html[style*="color-scheme: dark"],
 html[style*="color-scheme:dark"],
 .dark {
-  --color-background-surface: #0a0f1a;
-  --color-background-body: #0a0f1a;
+  --color-background-surface: #0b0b0d;
+  --color-background-body: #0b0b0d;
   --color-background-canvas: var(--color-background-body);
-  --color-background-card: #0a0f1a;
-  --color-background-popover: #121a2b;
-  --color-background-muted: #121a2b;
-  --color-background-inverted: #edeae1;
+  --color-background-card: #0b0b0d;
+  --color-background-popover: #141418;
+  --color-background-muted: #141418;
+  --color-background-inverted: #e8e4dc;
   --color-background-green: #84c9803d;
-  --color-accent: #7fb3aa;
-  --color-accent-muted: #1e302e;
-  --color-on-accent: #0a0f1a;
-  --color-text-accent: #7fb3aa;
-  --color-icon-accent: #7fb3aa;
-  --color-text-primary: #edeae1;
-  --color-text-secondary: #9b968a;
+  --color-accent: #6b1c23;
+  --color-accent-muted: #8a242e;
+  --color-on-accent: #e8e4dc;
+  --color-text-accent: #8a242e;
+  --color-icon-accent: #8a242e;
+  --color-text-primary: #e8e4dc;
+  --color-text-secondary: #8f8a82;
   --color-text-disabled: #525252;
   --color-text-green: #9fe59b;
-  --color-icon-primary: #edeae1;
-  --color-icon-secondary: #9b968a;
-  --color-border: #222b3d;
-  --color-border-emphasized: #222b3d;
+  --color-icon-primary: #e8e4dc;
+  --color-icon-secondary: #8f8a82;
+  --color-on-dark: #e8e4dc;
+  --color-border: #2c2c32;
+  --color-border-emphasized: #2c2c32;
   --color-border-default: var(--color-border);
   --color-success: #9fe59b;
   --shadow-low:
@@ -254,7 +241,7 @@ html[style*="color-scheme:dark"],
     inset 0 2px 5px rgb(0 0 0 / 0.45),
     inset 0 1px 0 rgb(255 255 255 / 0.1),
     0 1px 2px rgb(0 0 0 / 0.35);
-  --rz-scrollbar-track: #121a2b;
+  --rz-scrollbar-track: #141418;
 }
 
 /*
@@ -267,23 +254,19 @@ html[style*="color-scheme:dark"],
  */
 html,
 body {
-  background-color: light-dark(#edeae1, #0a0f1a);
-  color: light-dark(#14181f, #edeae1);
+  background-color: #0b0b0d;
+  color: #e8e4dc;
   overflow-x: clip;
 }
 
 html[data-theme="light"],
-html[data-theme="light"] body {
-  background-color: #edeae1;
-  color: #14181f;
-}
-
+html[data-theme="light"] body,
 html[data-theme="dark"],
 html[data-theme="dark"] body,
 html.dark,
 html.dark body {
-  background-color: #0a0f1a;
-  color: #edeae1;
+  background-color: #0b0b0d;
+  color: #e8e4dc;
 }
 
 /*
@@ -1262,7 +1245,7 @@ button.home-work-tile,
   width: 56px;
   height: 56px;
   border-color: transparent;
-  background: #fde047;
+  background: var(--color-accent);
 }
 
 .home-cursor-ring.is-close::before,
@@ -2135,7 +2118,7 @@ button.home-work-tile,
 }
 
 .ct-close:hover {
-  background: #fde047 !important;
+  background: var(--color-accent) !important;
   color: #14181f !important;
 }
 
@@ -2179,7 +2162,7 @@ button.home-work-tile,
 }
 
 .ct-title .ct-accent {
-  color: #fde047 !important;
+  color: var(--color-accent) !important;
 }
 
 .ct-label {
@@ -2217,7 +2200,7 @@ button.home-work-tile,
 .ct-input:focus,
 .ct-textarea:focus {
   outline: none;
-  border-color: #fde047;
+  border-color: var(--color-accent);
   background: rgba(255, 255, 255, 0.09);
 }
 
@@ -2234,7 +2217,7 @@ button.home-work-tile,
 .ct-submit {
   width: 100%;
   height: auto;
-  background: #fde047;
+  background: var(--color-accent);
   color: #14181f;
   border: 0;
   border-radius: 9999px;
@@ -2254,7 +2237,7 @@ button.home-work-tile,
 }
 
 .ct-submit:hover {
-  background: #eab90c;
+  background: var(--color-accent-muted);
   box-shadow: var(--elev-3d-hover);
 }
 
@@ -2267,7 +2250,7 @@ button.home-work-tile,
   height: 1.65rem;
   border-radius: 9999px;
   background: #14181f;
-  color: #fde047;
+  color: var(--color-accent);
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -2301,7 +2284,7 @@ button.home-work-tile,
 }
 
 .ct-email-link:hover {
-  color: #fde047;
+  color: var(--color-accent);
 }
 
 .ct-copy {
@@ -2309,7 +2292,7 @@ button.home-work-tile,
   height: 1.85rem !important;
   min-width: 1.85rem !important;
   border-radius: 0.55rem !important;
-  background: #fde047 !important;
+  background: var(--color-accent) !important;
   color: #14181f !important;
   box-shadow: none !important;
 }
@@ -2340,7 +2323,7 @@ button.home-work-tile,
 }
 
 .ct-socials a:hover {
-  background: #fde047;
+  background: var(--color-accent);
   color: #14181f;
 }
 
@@ -2361,7 +2344,7 @@ button.home-work-tile,
 }
 
 .ct-availability .avail-dot {
-  background: #fde047;
+  background: var(--color-accent);
   box-shadow: 0 0 0 0 rgba(253, 224, 71, 0.55);
 }
 
@@ -2532,7 +2515,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   right: 0;
   z-index: 82;
   transform: translateY(-50%);
-  background: #fde047 !important;
+  background: var(--color-accent) !important;
   color: #14181f !important;
   border-radius: 0.75rem 0 0 0.75rem !important;
   font-family: "Satoshi", var(--font-family-body);
@@ -3153,35 +3136,35 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 .dark {
-  --background: #0a0f1a;
-  --foreground: #edeae1;
-  --card: #0a0f1a;
-  --card-foreground: #edeae1;
-  --popover: #121a2b;
-  --popover-foreground: #edeae1;
-  --primary: #7fb3aa;
-  --primary-foreground: #0a0f1a;
-  --secondary: #1e302e;
-  --secondary-foreground: #edeae1;
-  --muted: #121a2b;
-  --muted-foreground: #9b968a;
-  --accent: #1e302e;
-  --accent-foreground: #edeae1;
+  --background: #0b0b0d;
+  --foreground: #e8e4dc;
+  --card: #0b0b0d;
+  --card-foreground: #e8e4dc;
+  --popover: #141418;
+  --popover-foreground: #e8e4dc;
+  --primary: #6b1c23;
+  --primary-foreground: #e8e4dc;
+  --secondary: #141418;
+  --secondary-foreground: #e8e4dc;
+  --muted: #141418;
+  --muted-foreground: #8f8a82;
+  --accent: #141418;
+  --accent-foreground: #e8e4dc;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: #222b3d;
-  --input: #222b3d;
-  --ring: #7fb3aa;
-  --chart-1: #7fb3aa;
-  --chart-2: #9b968a;
-  --chart-3: #1e302e;
-  --chart-4: #222b3d;
-  --chart-5: #edeae1;
-  --sidebar: #0a0f1a;
-  --sidebar-foreground: #edeae1;
-  --sidebar-primary: #7fb3aa;
-  --sidebar-primary-foreground: #0a0f1a;
-  --sidebar-accent: #1e302e;
-  --sidebar-accent-foreground: #edeae1;
-  --sidebar-border: #222b3d;
-  --sidebar-ring: #7fb3aa;
+  --border: #2c2c32;
+  --input: #2c2c32;
+  --ring: #6b1c23;
+  --chart-1: #6b1c23;
+  --chart-2: #8f8a82;
+  --chart-3: #141418;
+  --chart-4: #2c2c32;
+  --chart-5: #e8e4dc;
+  --sidebar: #0b0b0d;
+  --sidebar-foreground: #e8e4dc;
+  --sidebar-primary: #6b1c23;
+  --sidebar-primary-foreground: #e8e4dc;
+  --sidebar-accent: #141418;
+  --sidebar-accent-foreground: #e8e4dc;
+  --sidebar-border: #2c2c32;
+  --sidebar-ring: #6b1c23;
 }

@@ -120,8 +120,9 @@ export function useThemeMode(): ThemeModeContextValue {
  * `globals.css` (komentar di sana menunjuk balik ke sini).
  */
 const CHIP_COLOR_BY_MODE: Record<ThemeMode, { bg: string; fg: string }> = {
-  light: { bg: "#0a0f1a", fg: "#edeae1" },
-  dark: { bg: "#edeae1", fg: "#0a0f1a" },
+  /* T-038.3 selected = bercak darah; T-039.1 wine. Hold: sama di kedua mode. */
+  light: { bg: "#6B1C23", fg: "#E8E4DC" },
+  dark: { bg: "#6B1C23", fg: "#E8E4DC" },
 };
 
 /**

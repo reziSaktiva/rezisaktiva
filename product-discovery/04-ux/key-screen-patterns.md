@@ -38,7 +38,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Blok:** brand · primary nav (About = label lokal **Proses Kerja** / **Process**, ADR-020) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
 
-**Theme toggle (ADR-021):** kontrol dark/light di chrome; Must R1. Default ship tetap light — toggle tidak mengubah default. Di mobile (<1024px) tetap terlihat di luar hamburger (bersama Contact).
+**Theme toggle (ADR-021):** kontrol dark/light di chrome saat **kedua** tema hidup. Update 2026-09-04 / T-038.2: default ship **dark**; light di-hold; toggle **disembunyikan** sampai hold dicabut. Di mobile, Contact tetap di luar hamburger.
 
 **Quick info panel (ADR-022):** overlay global (tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links). Bukan route baru. Tampil di semua halaman R1 **termasuk Work index**; sheet M10 (ADR-027) overlay terpisah — jangan sembunyikan Quick Info karena sheet. Bukan pengganti Contact modal atau footer satelit.
 

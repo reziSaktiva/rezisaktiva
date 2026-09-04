@@ -20,7 +20,7 @@ Jangan `astryx …`. Jangan pasang MCP Tailwind community. Konfigurasi ada di `c
 
 ## Setup (sudah terpasang)
 
-Import di `app/globals.css`: `tailwindcss`, `tw-animate-css`, `shadcn/tailwind.css`. Token `:root` / `.dark` + `@theme inline` + `@custom-variant dark` = class `.dark` (bukan OS). Dark/light = cookie `rz-theme` + `html.dark` (ADR-021). Jangan duplikasi setup. Jangan `next-themes` sebagai default.
+Import di `app/globals.css`: `tailwindcss`, `tw-animate-css`, `shadcn/tailwind.css`. Token `@theme inline` + `@custom-variant dark` = class `.dark` (bukan OS). **Default ship = dark** (T-038.2); light di-comment/hold — jangan hapus blok arsip. Cookie `rz-theme` + `html.dark` tetap (ADR-021). Toggle chrome **tersembunyi** selama hold. Jangan duplikasi setup. Jangan `next-themes` sebagai default.
 
 ## Workflow
 

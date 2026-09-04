@@ -1,6 +1,6 @@
 # Design Tokens
 
-> Status: **Baseline v1.2** — ditetapkan bersama Boss Rezi (2026-08-11; ADR-018 2026-08-13 superseded; toggle UI Must R1 via **ADR-021**, 2026-08-16; **ADR-028** / T-037.4, 2026-09-03). Nilai visual **boleh diiterasi**; kontrak token saat ini = **shadcn/ui + Tailwind CSS v4** (`:root` / `.dark` di `app/globals.css`), light default, dark via class `html.dark`. Perubahan material struktur/tema memerlukan ADR baru.
+> Status: **Baseline v1.2** — ditetapkan bersama Boss Rezi (2026-08-11; ADR-018 2026-08-13 superseded; toggle UI Must R1 via **ADR-021**, 2026-08-16; **ADR-028** / T-037.4, 2026-09-03; default ship dark + light hold **T-038.2** / ADR-029, 2026-09-04). Nilai visual **boleh diiterasi**; kontrak token saat ini = **shadcn/ui + Tailwind CSS v4** (`:root` / `.dark` di `app/globals.css`), **dark default**, light di-comment sampai hold dicabut. Perubahan material struktur/tema memerlukan ADR baru.
 
 Dokumen ini mendefinisikan sistem token & mapping implementasi untuk website portofolio **rezisaktiva**.
 
@@ -10,11 +10,11 @@ Dokumen ini mendefinisikan sistem token & mapping implementasi untuk website por
 
 R1 memakai **shadcn/ui + Tailwind CSS v4** (**ADR-028**, menggantikan Astryx / ADR-018):
 
-* **Token** di `app/globals.css`: `:root` (light) dan `.dark` (dark); `@theme inline` memetakan `--color-background` dll. ke variabel shadcn
-* **Light** = tema default yang di-ship (tanpa class `dark` di `<html>`)
-* Dark = class **`dark`** di `<html>` + `data-theme` (bukan `prefers-color-scheme` sebagai sumber token; `@custom-variant dark` mengikat ke class)
-* **Toggle dark mode di UI = Must R1** (**ADR-021**) — default ship tetap light; preferensi di cookie + `localStorage` key `rz-theme`
-* Palet = rezisaktiva (kanvas/aksen yang sama seperti produksi sebelum migrasi). Bukan zinc/slate default shadcn. Bukan `astryx theme` / file `theme/` built.
+* **Token** di `app/globals.css`: palet **gelap yang di-ship** + blok light **di-comment** (hold T-038.2); `@theme inline` memetakan `--color-background` dll. ke variabel shadcn
+* **Light** = token **di-hold** (comment/arsip) — bukan tema yang di-ship
+* **Dark** = default ship: class **`dark`** di `<html>` + `data-theme` (bukan `prefers-color-scheme` sebagai sumber token; `@custom-variant dark` mengikat ke class)
+* **Toggle dark mode di UI** = Must R1 (**ADR-021**) **saat light hidup**; selama hold = **disembunyikan** (komponen + cookie tetap)
+* Palet ship = gothic-blood (ADR-029). Palet krem/kuning lama bukan kontrak. Bukan zinc/slate default shadcn. Bukan `astryx theme` / file `theme/` built.
 
 Selaras UX: clarity first, lean surface, motion hanya jika memperkuat hierarchy (UX1, UX3, Interaction §6).
 
@@ -54,13 +54,13 @@ Detail ukuran final + `line-height` dikunci saat implementasi; hierarki heading 
 
 # Color — Brand
 
-Arah: **ink gelap + aksen tunggal yang tenang** — bukan purple-gradient generik, bukan cream + terracotta klise.
+Arah ship (T-039.1 / ADR-029): **kanvas hitam dingin + vellum + satu aksen wine**. Light = arsip comment, bukan kolom hidup.
 
-| Token | Light (default) | Dark (disiapkan) | Peran |
+| Token | Light (hold / arsip) | Dark (ship) | Peran |
 | ----- | --------------- | ---------------- | ----- |
-| `--color-brand` | Ink / near-black (mis. `#0B1220`) | Tint lebih lembut di atas surface gelap | Brand mark, heading kuat |
-| `--color-accent` | Satu aksen (mis. teal dalam `#0F766E` atau setara) | Versi lebih terang untuk kontras | CTA lembut, fokus, underline aktif |
-| `--color-accent-muted` | Aksen pudar untuk hover/bg tipis | Disesuaikan | State sekunder |
+| `--color-brand` / teks kuat | `#14181f` | `#E8E4DC` | Heading, brand |
+| `--color-accent` | `#4c7a73` (arsip teal) | `#6B1C23` wine | Selected bercak, fokus, hover tombol |
+| `--color-accent-muted` | arsip | `#8A242E` | Hover darah |
 
 Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tetap primer visual — ADR-014).
 
@@ -70,12 +70,12 @@ Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tet
 
 | Token | Light | Dark (disiapkan) | Peran |
 | ----- | ----- | ---------------- | ----- |
-| `--color-bg` | Off-white hangat-netral *atau* cool gray sangat muda — hindari flat `#FFF` polos tanpa depth | Surface gelap (bukan pure `#000` wajib) | Latar halaman |
-| `--color-bg-elevated` | Sedikit beda dari `bg` untuk section | Sedikit lebih terang dari `bg` dark | Section / teaser |
-| `--color-fg` | Ink primer | Near-white soft | Teks utama |
-| `--color-fg-muted` | Abu untuk supporting | Abu terang | Meta, supporting |
-| `--color-border` | Hairline lembut | Border gelap lembut | Pemisah lean (bukan card-heavy) |
-| Native scrollbar (T-025.9) | Track muted `#e4dfd1`, thumb kuning chip `--chip-bg` (`#fde047`) | Track `#121a2b`, thumb kuning chip yang sama | Dokumen `html` di `app/globals.css`. Thin + pill. Track tetap muted; thumb = `.site-nav-chip`. Jangan disembunyikan (T-025.8). |
+| `--color-bg` | `#edeae1` (arsip) | `#0B0B0D` | Latar halaman |
+| `--color-bg-elevated` | arsip | `#141418` | Section / chrome sisa nampan |
+| `--color-fg` | `#14181f` (arsip) | `#E8E4DC` vellum | Teks utama |
+| `--color-fg-muted` | arsip | `#8F8A82` | Meta |
+| `--color-border` | arsip | `#2C2C32` | Hairline |
+| Native scrollbar (T-025.9) | arsip kuning | Track `#141418`, thumb `#6B1C23` | Jangan disembunyikan (T-025.8) |
 
 ---
 
@@ -110,13 +110,14 @@ Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebi
 
 | Aspek | R1 |
 | ----- | --- |
-| Default ship | **Light** |
-| Token dark | **Ya** — class `.dark` di `<html>` (`html.dark`), bukan prop `mode` Astryx |
-| Strategi | `ThemeModeProvider` + cookie `rz-theme`; script anti-flash `classList.toggle("dark")`. Jangan `next-themes` sebagai default |
-| Toggle di chrome | **Must R1** (**ADR-021**) — kontrol UI wajib di chrome; default ship tetap light |
-| `prefers-color-scheme` | Boleh sebagai Could setelah token dark stabil; jangan mengganti default light tanpa keputusan Boss Rezi |
+| Default ship | **Dark** (T-038.2 / ADR-021 update 2026-09-04) |
+| Token dark | **Ya** — class `.dark` di `<html>` (`html.dark`); palet gothic-blood hidup di sini (T-039) |
+| Token light | **Hold** — comment/arsip, jangan hapus |
+| Strategi | `ThemeModeProvider` + cookie `rz-theme`; selama hold, ship memaksa gelap. Jangan `next-themes` sebagai default |
+| Toggle di chrome | **Must R1** saat light hidup (**ADR-021**); **tersembunyi** selama hold |
+| `prefers-color-scheme` | Could; jangan mengganti default dark-hold tanpa keputusan Boss Rezi |
 
-Toggle UI sudah Must (ADR-021). Menjadikan **dark sebagai default ship** atau **QA kontras dual-theme penuh** sebagai syarat exit tetap perlu keputusan/ADR terpisah — fondasi class `html.dark` + token `:root`/`.dark` tidak berubah.
+Toggle UI Must saat light hidup (ADR-021). **Dark sebagai default ship** dikunci T-038.2. Menghidupkan kembali light (skin gothic, bukan invert) = task + update ADR, bukan selip v15.
 
 ---
 

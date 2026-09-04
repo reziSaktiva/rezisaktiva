@@ -16,6 +16,36 @@ Format entri:
 
 ## [2026-09-04]
 ### Changed
+- **T-039.1 / T-039.3 / T-039.4 / T-039.5** — token gothic-blood hidup (`#0B0B0D` / `#E8E4DC` / `#6B1C23`); light di-comment; `THEME_HOLD_FORCE_DARK`; toggle tidak di-mount; kuning overlay → `--color-accent`. **T-039.2** (font) belum.
+- Verifikasi browser Home `/id`: `html.dark`, kanvas rgb(11,11,13), toggle absen.
+
+## [2026-09-04]
+### Changed
+- **T-038** ✅ (T-038.1–T-038.5). Matriks keep/change:
+  - **Tetap:** copy, IA, overlay job, stack, Lenis, reduced-motion, cookie tema (mesin).
+  - **Hold:** light mode (comment/arsip, toggle tersembunyi).
+  - **Ganti:** palet gelap + aksen darah; selected = bercak 3D; tanpa nampan kuning; tombol datar; transisi hard-cut stutter; display blackletter (judul besar) + grotesk body.
+- **T-038.4** — blackletter hanya heading besar; body/nav/form grotesk. Family konkret di T-039.2.
+
+## [2026-09-04]
+### Changed
+- **T-038.3** — selected = bercak darah 3D (bukan tombol); nampan kuning dihilangkan; tombol chrome datar + aksen darah tipis; transisi halaman = hard cut + stutter (bukan Hess).
+
+## [2026-09-04]
+### Changed
+- **T-038.1** — pembacaan arah seni dikunci (tabel v15).
+- **T-038.2** — default ship **dark**; light **hold/comment** (jangan hapus); toggle chrome tersembunyi selama hold. ADR-021 + ADR-029 di-update. Docs UX/token/M6 diselaraskan.
+
+## [2026-09-04]
+### Added
+- **ADR-029** — migrasi identitas visual ke absurdism / surrealism / Gothic Art / dark-blood (kulit visual; IA/copy/overlay tetap; metode Q&A per permukaan).
+- **v15** [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) — **T-038** kunci arah; **T-039** token; **T-040** chrome; **T-041** overlay; **T-042** halaman; **T-043** gerak sistem + docs.
+### Changed
+- Fokus: **T-038** prioritas. **T-031** ⏸️ sampai **T-039**. Active Mode mengizinkan redesain visual ADR-029 (bukan copy/IA).
+- ADR-028: klausul “bukan redesain” visual diganti ADR-029; stack tetap. ADR-025: pola UX tetap; palet/chrome 3D tidak lagi wajib.
+
+## [2026-09-04]
+### Changed
 - Hero Home: klaim dua baris tidak lagi di-split ke atas/bawah viewport; Now (kicker + tautan tempat kerja) pindah ke dalam `#hero` (`#now` di bawah klaim). Seksi Now terpisah dihapus.
 
 ## [2026-09-04]

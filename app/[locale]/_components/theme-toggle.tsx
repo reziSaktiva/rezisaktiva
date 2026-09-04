@@ -12,11 +12,9 @@ const THEME_TOGGLE_LABEL: Record<Locale, string> = {
 };
 
 /**
- * T-013.4 (ADR-021) — toggle dark/light, selalu terlihat di luar hamburger
- * (bersama tombol Contact, lihat `site-header.tsx`). Default ship tetap
- * light; preferensi `rz-theme` lewat `setThemeMode` (cookie + localStorage).
- *
- * T-033.5: ToggleButton → Toggle shadcn. Ikon Sun/Moon dari overlay-icons.
+ * T-013.4 (ADR-021) — toggle dark/light.
+ * T-038.2 hold: **tidak di-mount** di `site-header.tsx`. File tetap.
+ * Saat hold dicabut, pasang lagi di luar hamburger.
  */
 export function ThemeToggle({ locale }: { locale: Locale }) {
   const { mode } = useThemeMode();

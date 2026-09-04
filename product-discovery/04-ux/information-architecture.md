@@ -52,7 +52,7 @@ Contoh konkret: `/id/`, `/id/about`, `/en/projects`. **Tidak ada** route `/conta
 1. Identitas brand (nama / mark)
 2. Primary nav: Home · About (label lokal **ID "Proses Kerja"** / **EN "How I Work"**) · **Proyek / Projects** (M9, path `/projects`, ADR-020) sebagai link; Contact sebagai tombol pembuka modal (ADR-019), bukan link
 3. Language switcher (`ID` ↔ `EN`) → URL path sibling
-4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship tetap light
+4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship **dark**, light hold, toggle tersembunyi selama hold (T-038.2, 2026-09-04)
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
 6. **Project sheet (M10)** — overlay dari bawah dari tile Work index; bukan rute baru (**ADR-027**)
 7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu

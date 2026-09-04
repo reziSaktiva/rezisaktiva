@@ -47,7 +47,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 # Interaction Principles
 
-1. **Navigasi + switcher selalu terlihat di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Contact tidak dikubur. **Toggle tema** selalu di chrome (Must R1, ADR-021) dan **tidak mengubah default light-ship**.
+1. **Navigasi + switcher selalu terlihat di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Contact tidak dikubur. **Toggle tema:** Must di chrome **saat light hidup**; selama hold T-038.2 (ADR-021 update 2026-09-04) toggle **disembunyikan**, default ship **dark**.
 2. **Switcher bahasa** mengganti locale dengan URL path yang shareable; preferensi user (setelah switch) hanya memengaruhi redirect `/` / URL tanpa locale — tidak menulis ulang path `/id/...` atau `/en/...` yang dibuka langsung.
 3. **Primary CTA di Contact** = mulai email; satelit tidak bersaing visual dengan Email.
 4. **Tidak ada dead end:** dari Home selalu ada jalur jelas ke About dan Contact.
@@ -84,7 +84,7 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 * Overlay Quick info **bukan** “halaman baru” (UX3) — **ADR-022**; jangan jadikan route `/info`.
 * Overlay project sheet **bukan** “halaman baru” (UX3) — **ADR-027**; jangan jadikan `/work/[slug]` di R1.
 * Menambah halaman Work/case (`/work/[slug]`) → ADR baru. Work index (M9) + sheet M10 sudah Must R1.
-* Toggle tema Must R1 via **ADR-021**; default tetap light — mengubah default ship ke dark butuh ADR terpisah.
+* Toggle tema Must R1 via **ADR-021**; default ship **dark** + light hold (update 2026-09-04 / T-038.2). Cabut hold / hidupkan light lagi = keputusan + update ADR.
 * Mengangkat form/calendar/WA/IG ke Must Contact → keputusan Boss Rezi + ADR bila material.
 * Mengubah skema bahasa dari path prefix → ADR baru.
 * Perubahan material prinsip setelah Baseline UX → ADR baru.

@@ -4,17 +4,19 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-031** — Metadata API: ikon, kartu share, identitas head ⏳ **prioritas** (T-031.1–T-031.5). Rilis v14 (shadcn + Tailwind) ✅. Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
-2. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
-3. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
-4. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
-5. **T-029** — JSON-LD schema.org dari `content/` ✅ (T-029.1–T-029.4, 2026-08-31). Detail: [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
-6. **T-028** — rapikan `app/` ✅ (T-028.1–T-028.4, 2026-08-31). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-7. **T-018** — exit R1 ✅ (2026-08-31). Validation aktif. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-8. **T-027** — playbook disiplin kode ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-9. **T-026** — project context sheet (M10) ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-10. **T-021** — copy R1 ✅. **T-022** ✅. **T-024** ✅. **T-025** ✅.
-11. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
+1. **T-039** — Sistem token identitas visual (palet gelap + arsip light) ⏳ **prioritas** (T-039.1–T-039.5). Gerbang **T-038** ✅. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). **ADR-029**.
+2. **T-038** — Kunci arah seni ✅ (T-038.1–T-038.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+3. **T-031** — Metadata API: ikon, kartu share, identitas head ⏸️ **Deferred** sampai **T-039** (token baru; ikon/OG/`themeColor` ikut palet). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+4. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
+5. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
+6. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
+7. **T-029** — JSON-LD schema.org dari `content/` ✅ (T-029.1–T-029.4, 2026-08-31). Detail: [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
+8. **T-028** — rapikan `app/` ✅ (T-028.1–T-028.4, 2026-08-31). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+9. **T-018** — exit R1 ✅ (2026-08-31). Validation aktif. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+10. **T-027** — playbook disiplin kode ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+11. **T-026** — project context sheet (M10) ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+12. **T-021** — copy R1 ✅. **T-022** ✅. **T-024** ✅. **T-025** ✅.
+13. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
 
 ## Indeks release
 
@@ -26,8 +28,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (**T-021** ✅; **T-023** ⏸️ Deferred) |
 | v11 Structured data | [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md) | T-029 | ✅ Done |
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
-| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏳ Open (**prioritas**) |
+| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-039) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** prioritas; ADR-029) |
 
 ## Aturan
 
@@ -48,3 +51,4 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 * `tasks/v12-seo.md`
 * `tasks/v13-metadata.md`
 * `tasks/v14-shadcn-tailwind.md`
+* `tasks/v15-visual-identity.md`

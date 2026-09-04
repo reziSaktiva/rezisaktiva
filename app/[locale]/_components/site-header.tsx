@@ -26,7 +26,6 @@ import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
 import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
-import { ThemeToggle } from "./theme-toggle";
 
 /**
  * Site chrome — T-013 (ADR-020): nav Home/About/Proyek sebagai link,
@@ -172,9 +171,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
             </Sheet>
           </>
         ) : null}
-        <Magnetic>
-          <ThemeToggle locale={locale} />
-        </Magnetic>
         <Magnetic>
           <Button
             type="button"
