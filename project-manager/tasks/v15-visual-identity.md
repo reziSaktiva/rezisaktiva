@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ⏳ **berikutnya** (gerbang terbuka). **T-040…T-043** menunggu T-039. **T-031** ⏸️ sampai **T-039**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ⏳ **berikutnya** (T-040.2 nav dimulai). **T-041…T-043** menunggu T-040. **T-031** ⏸️ sampai **T-039** (token sudah; metadata masih antri).
 
 ---
 
@@ -129,7 +129,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ## T-039 — Sistem token (setelah T-038)
 
-* **Status:** ⏳ Open — gerbang **T-038.5**
+* **Status:** ✅ **Done** (2026-09-04) — T-039.1–T-039.5
 * **Domain:** Design / Engineering
 * **Output:** `:root` aktif = palet gelap gothic-blood; blok light lama **di-comment** (arsip T-038.2); `design-tokens.md` selaras; belum restyle semua komponen
 * **Keputusan paket:** satu aksen darah; netral gelap; kontras teks lolos a11y
@@ -137,7 +137,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 ### Subtasks
 
 - [x] **T-039.1** — Palet gelap hidup. Dikunci: kanvas `#0B0B0D` · elevated `#141418` · vellum `#E8E4DC` · muted `#8F8A82` · border `#2C2C32` · darah `#6B1C23` · hover `#8A242E`. Light di-comment `LIGHT HOLD`. Ship memaksa gelap (`THEME_HOLD_FORCE_DARK`).
-- [ ] **T-039.2** — Tipe: pasang pasangan T-038.4 (blackletter **hanya** display besar + grotesk body/nav/form). Lisensi web OK. Hindari costume blackletter. Body tetap terbaca di 320px.
+- [x] **T-039.2** — Tipe: **Texturina** (display, blackletter/textura OFL) + **Instrument Sans** (body/nav/form, grotesk OFL) via `next/font/google`. Bukan costume. Body inherit grotesk di 320px.
 - [x] **T-039.3** — Chip: nampan `--chip-bg` elevated (bukan kuning); selected `--chrome-pill-*` wine/vellum. Scrollbar thumb darah. Hex `#fde047` overlay diarahkan ke `--color-accent`. `--elev-3d` versi gelap (untuk bercak selected).
 - [x] **T-039.4** — `design-tokens.md` selaras T-039.1.
 - [x] **T-039.5** — Browser `http://127.0.0.1:3001/id`: `data-theme=dark`, `html.dark`, kanvas `rgb(11,11,13)`, teks `rgb(232,228,220)`, `--color-accent` / pill `#6b1c23`, `--chip-bg` `#141418`, toggle tidak di DOM. **T-031** tetap ⏸️.
@@ -146,7 +146,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ## T-040 — Chrome (setelah T-039)
 
-* **Status:** ⏳ Open — gerbang **T-039.5** + Q&A per cluster
+* **Status:** ⏳ Open — gerbang **T-039** ✅; mulai **T-040.2** (nav)
 * **Domain:** Design / Engineering
 * **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah
 * **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, class `.site-*` di `globals.css`
@@ -154,8 +154,8 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 ### Subtasks
 
 - [ ] **T-040.1** — Q&A + kode: brand/wordmark + bar header (lapisan, kontras di atas hero).
-- [ ] **T-040.2** — Q&A + kode: nav halaman + sliding pill (bentuk ikut T-038.3).
-- [ ] **T-040.3** — Q&A + kode: locale switcher. Theme toggle **jangan tampil** selama hold (T-038.2); file komponen tetap.
+- [x] **T-040.2** — Nav halaman desktop: nampan hilang; selected = bercak darah 3D (bukan pill). Dikunci chat 2026-09-04.
+- [x] **T-040.3** — Locale switcher sama bahasa nav: tanpa nampan; selected = bercak 3D. Theme toggle tetap tidak tampil (hold T-038.2).
 - [ ] **T-040.4** — Q&A + kode: hamburger sheet &lt;1024px (item full-width, switcher compact; Contact di luar hamburger; tanpa toggle sampai hold dicabut).
 - [ ] **T-040.5** — Q&A + kode: pita footer + CTA yang membuka modal Contact yang sama. Verifikasi chrome di Home/About/Work, mobile + desktop.
 

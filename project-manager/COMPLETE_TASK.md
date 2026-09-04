@@ -16,6 +16,22 @@ Format entri:
 
 ## [2026-09-04]
 ### Changed
+- **T-040.3** — locale switcher ID/EN tanpa nampan; selected = bercak 3D yang sama dengan nav.
+
+## [2026-09-04]
+### Fixed
+- **T-040.2** — bentuk selected nav dikembalikan ke bercak radius organik + `--elev-3d` (bukan mask SVG noda).
+
+## [2026-09-04]
+### Added
+- **T-039.2** — pasangan font: Texturina (display blackletter, OFL) + Instrument Sans (grotesk body/nav/form, OFL) via `next/font`; Fontshare General Sans/Satoshi dicabut.
+### Changed
+- **T-039** ✅ (T-039.1–T-039.5).
+- **T-040.2** — nav desktop tanpa nampan; selected = bercak darah 3D (bukan pill). Locale switcher & hamburger belum.
+- **T-031** tetap ⏸️ sampai T-043.
+
+## [2026-09-04]
+### Changed
 - **T-039.1 / T-039.3 / T-039.4 / T-039.5** — token gothic-blood hidup (`#0B0B0D` / `#E8E4DC` / `#6B1C23`); light di-comment; `THEME_HOLD_FORCE_DARK`; toggle tidak di-mount; kuning overlay → `--color-accent`. **T-039.2** (font) belum.
 - Verifikasi browser Home `/id`: `html.dark`, kanvas rgb(11,11,13), toggle absen.
 

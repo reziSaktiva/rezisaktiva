@@ -4,9 +4,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-039** — Sistem token identitas visual (palet gelap + arsip light) ⏳ **prioritas** (T-039.1–T-039.5). Gerbang **T-038** ✅. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). **ADR-029**.
-2. **T-038** — Kunci arah seni ✅ (T-038.1–T-038.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
-3. **T-031** — Metadata API: ikon, kartu share, identitas head ⏸️ **Deferred** sampai **T-039** (token baru; ikon/OG/`themeColor` ikut palet). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+1. **T-040** — Chrome identitas visual (T-040.2–T-040.3; berikutnya T-040.1 wordmark) ⏳ **prioritas**. **T-039** ✅. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). **ADR-029**.
+2. **T-039** — Sistem token identitas visual ✅ (T-039.1–T-039.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+3. **T-031** — Metadata API: ikon, kartu share, identitas head ⏸️ **Deferred** sampai **T-043** (kulit v15 selesai). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 4. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
 5. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 6. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
@@ -28,9 +28,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (**T-021** ✅; **T-023** ⏸️ Deferred) |
 | v11 Structured data | [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md) | T-029 | ✅ Done |
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
-| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-039) |
+| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
-| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** prioritas; ADR-029) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** prioritas; ADR-029) |
 
 ## Aturan
 

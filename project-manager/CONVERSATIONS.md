@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — T-040.3 locale switcher = nav
+**Phase:** Validation
+**Summary:** ID/EN memakai bahasa chrome yang sama dengan nav: nampan hilang, selected = bercak darah 3D.
+**Key Decision/Insight:** Toggle tema tetap tersembunyi (hold).
+**Impact:** `globals.css`, v15 T-040.3.
+
+## [2026-09-04] — T-039.2 font + T-040.2 nav bercak
+**Phase:** Validation
+**Summary:** Pasangan dikunci di implementasi: Texturina (judul besar) + Instrument Sans (body/nav). Nav desktop: nampan dihilangkan; selected jadi bercak darah 3D.
+**Key Decision/Insight:** Bukan Pirata One / Inter. Wordmark, locale switcher, hamburger, tombol Contact belum (T-040.1/3/4/5).
+**Impact:** `app/fonts.ts`, `layout.tsx`, `globals.css`, `sliding-pill-group.tsx`, `design-tokens.md`, v15 T-039/T-040.
+
 ## [2026-09-04] — T-039 token wine + kanvas dingin
 
 **Phase:** Validation

@@ -35,8 +35,8 @@ Nilai hex/font di bawah = **arah awal**, bukan brand kit final yang kaku.
 
 | Token | Arah R1 | Catatan |
 | ----- | ------- | ------- |
-| `--font-display` | Satu family ekspresif untuk brand / heading hero | Hindari Inter / Roboto / Arial / system-only sebagai identity |
-| `--font-sans` | Family readable untuk body & UI | Boleh berdekatan dengan display atau pasangan yang sengaja |
+| `--font-display` | **Texturina** (OFL, Google Fonts via `next/font`) — blackletter/textura | Hanya hero / h1 / judul section. Bukan chrome. Bukan Pirata One |
+| `--font-sans` / `--font-heading` | **Instrument Sans** (OFL) — grotesk | Body, nav, form, judul kecil. Bukan Inter/Roboto/Arial |
 | `--font-mono` | Opsional, tipis | Hanya jika ada snippet/kode di About — bukan Must |
 
 Skala tipe (arah):

@@ -59,9 +59,10 @@ export function SlidingPillGroup({
     const cRect = container.getBoundingClientRect();
     const iRect = item.getBoundingClientRect();
     pill.style.opacity = "1";
-    pill.style.width = `${iRect.width}px`;
-    pill.style.height = `${iRect.height}px`;
-    pill.style.transform = `translate(${iRect.left - cRect.left}px, ${iRect.top - cRect.top}px)`;
+    pill.style.setProperty("--pill-w", `${iRect.width}px`);
+    pill.style.setProperty("--pill-h", `${iRect.height}px`);
+    pill.style.setProperty("--pill-x", `${iRect.left - cRect.left}px`);
+    pill.style.setProperty("--pill-y", `${iRect.top - cRect.top}px`);
     if (!animate) {
       requestAnimationFrame(() => {
         pill.classList.remove("site-pill-indicator--no-transition");
