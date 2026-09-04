@@ -2,6 +2,7 @@ import { HOME_COPY } from "@/content/home";
 import { PERSON, PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
 import { projectsHref } from "@/lib/site-url";
+import { HomeHeroWallpaper } from "./home-hero-wallpaper";
 import { HeroWords, Reveal } from "./home-motion";
 import { HomeWorkAllLink } from "./home-work-all-link";
 import { HomeWorkTeasers } from "./home-work-teasers";
@@ -14,6 +15,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   return (
     <div className="home-page flex flex-col">
       <section className="home-hero" id="hero">
+        <HomeHeroWallpaper />
         <div className="home-hero-inner flex flex-col justify-between">
           <h1 className="home-hero-heading">
             <HeroWords lines={copy.h1} />

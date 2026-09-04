@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — Cursor pisau berdarah + wallpaper live hero Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta cursor situs jadi pisau berdarah, dan video `dark-magic-v2-live-wallpaper.mp4` jadi latar hero Home (section paling atas). Bukan gelombang T-041; implementasi maju karena dikunci eksplisit di chat.
+**Key Decision/Insight:** Pisau = objek sureal/absurd di kursor (bukan gore medis halaman). Video loop di `.home-hero` dengan veil supaya klaim first viewport tetap terbaca (UX1 / ADR-029). Reduced-motion: tanpa video, tanpa kursor kustom.
+**Impact:** `home-hero-wallpaper.tsx`, `home-page.tsx`, `home-motion.tsx`, `globals.css`, aset `public/cursors/` + `public/media/`; catatan T-042.1 / T-043.2.
+
 ## [2026-09-04] — T-040.6 selected = blood splatter unbounded
 **Phase:** Validation
 **Summary:** Selected chrome ganti dari bercak diam menjadi percikan + aliran darah ke seluruh viewport. Luka 3D di label tetap supaya teks terbaca. Overlay tetap di atas lapisan darah.

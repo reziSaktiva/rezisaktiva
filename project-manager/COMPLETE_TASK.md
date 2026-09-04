@@ -15,6 +15,15 @@ Format entri:
 ```
 
 ## [2026-09-04]
+### Added
+- Cursor desktop = pisau berdarah (`public/cursors/bloody-knife.png`); hotspot ujung bilah; scrim overlay tetap X; reduced-motion/sentuh = kursor sistem.
+- Wallpaper live di hero Home: `public/media/home-hero-live.mp4` (1080p, dari sumber 4K) + poster + veil token. Reduced-motion = poster diam.
+
+### Changed
+- Ring kursor diganti pengikut pisau (`.home-cursor-knife`). Native cursor `none` saat pisau aktif.
+- Catatan kunci di **T-042.1** / **T-043.2** (implementasi maju atas permintaan eksplisit; **T-041** tetap prioritas gelombang).
+
+## [2026-09-04]
 ### Fixed
 - Overlay Next.js 2 issue: (1) `<Script>` tema di `app/layout.tsx` diganti `ThemeInitScript` + `useServerInsertedHTML` (React 19 menolak `<script>` di pohon komponen). (2) Hydration `BloodSplatterLayer` — wrapper selalu di-render (jangan `return null` dari `useReducedMotion` SSR); bukan menabrak tombol footer. Nav `<1024px`: breakpoint hamburger setelah mount (bukan `useSyncExternalStore` vs snapshot server desktop).
 

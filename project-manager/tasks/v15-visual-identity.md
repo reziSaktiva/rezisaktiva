@@ -186,7 +186,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ### Subtasks
 
-- [ ] **T-042.1** — Q&A + kode: Home (hero klaim dua baris + Now di first viewport, credibility, teaser). Tanpa potret. Tanpa menambah blok.
+- [ ] **T-042.1** — Q&A + kode: Home (hero klaim dua baris + Now di first viewport, credibility, teaser). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` di `.home-hero` + veil token agar klaim tetap terbaca. Sisa restyle blok Home tetap menunggu T-041.
 - [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, offers, values, proses rest/active). Copy tidak dipotong.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi tiga rute, tema gelap yang di-ship, 320 / 375 / desktop.
 
@@ -201,6 +201,6 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 ### Subtasks
 
 - [ ] **T-043.1** — Kode transisi halaman: **hard cut + stutter frame** (T-038.3). Pause overlay tetap. Reduced-motion = instan. Jangan View Transitions API. Jangan clip video. Durasi pendek (UX1). Lenis tetap.
-- [ ] **T-043.2** — Scrollbar, fokus keyboard, cursor ring bila masih ada: token baru, kontras, target sentuh 320px.
+- [ ] **T-043.2** — Scrollbar, fokus keyboard, cursor: token baru, kontras, target sentuh 320px. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit):** cursor desktop = pisau berdarah (`/cursors/bloody-knife.png`); native cursor disembunyikan; reduced-motion / sentuh = kursor sistem. Sisa scrollbar/fokus tetap di subtask ini.
 - [ ] **T-043.3** — Docs: `design-tokens.md` (bila drift), `code-discipline.md`, `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` (hapus “pill kuning” sebagai kontrak identitas). `04-ux/` hanya jika kalimat masih mengunci kuning sebagai Must visual — bukan rewrite prinsip.
 - [ ] **T-043.4** — Verifikasi penuh R1 (tiga rute × tema yang hidup × overlay × reduced-motion). Update Snapshot: v15 Done. **T-031** kembali antrian bila masih ⏸️.
