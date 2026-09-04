@@ -16,6 +16,7 @@ import {
   subscribeThemeMode,
   type ThemeMode,
 } from "@/lib/theme-mode";
+import { ThemeInitScript } from "./theme-init-script";
 
 interface ThemeModeContextValue {
   mode: ThemeMode;
@@ -58,9 +59,10 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
    * Sinkronkan `style.colorScheme` + class `dark` di `<html>` tiap kali
    * `mode` berubah (toggle tanpa reload). Jangan lewat `className` React di
    * `<html>` — itu menimpa class Lenis / overlay lock. Nilai awal: cookie
-   * SSR untuk `colorScheme` + script `beforeInteractive` (`classList`).
+   * SSR untuk `colorScheme` + `ThemeInitScript` (`classList`).
    * `data-theme` di-set di markup SSR (`app/layout.tsx`) dan di-sync di sini
-   * saat toggle tanpa reload. Jangan `className` React di `<html>`.
+   * saat toggle tanpa reload. Class `dark` awal: `ThemeInitScript`
+   * (`useServerInsertedHTML` + `classList`). Jangan `className` React di `<html>`.
    */
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -78,7 +80,10 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
   );
 
   return (
-    <ThemeModeContext value={value}>{children}</ThemeModeContext>
+    <ThemeModeContext value={value}>
+      <ThemeInitScript />
+      {children}
+    </ThemeModeContext>
   );
 }
 

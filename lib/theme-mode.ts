@@ -35,9 +35,10 @@
  * dan bug flash yang sama muncul kembali. `getThemeModeSnapshot` sekarang
  * SELALU prime dari `fallback` (`initialMode`, dari cookie) tanpa membaca
  * localStorage sama sekali — localStorage hanya jadi target tulis
- * (`writeStoredThemeMode`, dipakai `themeInitScript` di `app/layout.tsx`
- * sebagai fallback pra-hydrasi kalau cookie belum pernah ada sama sekali —
- * kasus migrasi 1x, self-healing karena script itu langsung menulis cookie).
+ * (`writeStoredThemeMode`, dipakai `getThemeInitScript` /
+ * `ThemeInitScript` sebagai fallback pra-hydrasi kalau cookie belum pernah
+ * ada sama sekali — kasus migrasi 1x, self-healing karena script itu
+ * langsung menulis cookie).
  */
 export const THEME_MODE_STORAGE_KEY = "rz-theme";
 
@@ -125,4 +126,43 @@ export function setThemeMode(mode: ThemeMode): void {
   for (const listener of listeners) {
     listener();
   }
+}
+
+/**
+ * Blocking anti-flash — diinjeksikan lewat `useServerInsertedHTML`
+ * (bukan `<Script>` / `<script>` di pohon layout: React 19 menolak itu).
+ */
+export function getThemeInitScript(): string {
+  return `(function () {
+  try {
+    var key = ${JSON.stringify(THEME_MODE_STORAGE_KEY)};
+    var forceDark = ${THEME_HOLD_FORCE_DARK ? "true" : "false"};
+    var prefix = key + "=";
+    var mode = null;
+    if (forceDark) {
+      mode = "dark";
+    } else {
+      var parts = document.cookie.split("; ");
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].indexOf(prefix) === 0) {
+          mode = parts[i].slice(prefix.length);
+          break;
+        }
+      }
+      var fromCookie = mode === "dark" || mode === "light";
+      if (!fromCookie) {
+        mode = window.localStorage.getItem(key);
+        if (mode !== "dark" && mode !== "light") {
+          return;
+        }
+        var secure = location.protocol === "https:" ? "; secure" : "";
+        document.cookie = key + "=" + mode + "; path=/; max-age=31536000; samesite=lax" + secure;
+      }
+    }
+    var root = document.documentElement;
+    root.setAttribute("data-theme", mode);
+    root.style.colorScheme = mode;
+    root.classList.toggle("dark", mode === "dark");
+  } catch (e) {}
+})();`;
 }

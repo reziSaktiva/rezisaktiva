@@ -4,7 +4,8 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
-| ADR-029 | Identitas visual R1: absurdism / surrealism / Gothic Art / dark-blood | Accepted | 2026-09-04 | Kulit visual saja; T-038.1 pembacaan dikunci; dark-first; light hold/comment; T-038…T-043 | [ADR-029](decisions/ADR-029-visual-identity-gothic-blood.md) |
+| ADR-030 | Selected chrome = blood splatter unbounded | Accepted | 2026-09-04 | Pengecualian T-038.1: percik/alir ke seluruh halaman; canvas 2D; reduced-motion = bercak diam; T-040.6 | [ADR-030](decisions/ADR-030-selected-blood-splatter.md) |
+| ADR-029 | Identitas visual R1: absurdism / surrealism / Gothic Art / dark-blood | Accepted | 2026-09-04 | Kulit visual saja; T-038.1 pembacaan dikunci; splatter hanya via ADR-030; dark-first; light hold; T-038…T-043 | [ADR-029](decisions/ADR-029-visual-identity-gothic-blood.md) |
 | ADR-028 | shadcn/ui + Tailwind CSS v4 menggantikan Astryx (pasca-exit R1) | Accepted | 2026-09-01 | Stack tetap; “bukan redesain” visual diganti ADR-029; Motion; `html.dark` + cookie `rz-theme`; T-032…T-037 | [ADR-028](decisions/ADR-028-shadcn-tailwind-replaces-astryx.md) |
 | ADR-027 | M10 Must R1 = sheet konteks proyek dari bawah (bukan route `/work/[slug]`) | Accepted | 2026-08-26 | Tile Work index **dan** teaser Home buka overlay; “Semua karya” tetap ke katalog; live/repo sekunder di sheet | [ADR-027](decisions/ADR-027-work-project-bottom-sheet-m10.md) |
 | ADR-026 | Tetap Astryx sampai exit R1; evaluasi shadcn hanya setelah T-018 | Accepted | 2026-08-26 | Timing R1; evaluasi selesai via **ADR-028** | [ADR-026](decisions/ADR-026-astryx-through-r1-shadcn-after-exit.md) |

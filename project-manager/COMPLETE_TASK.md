@@ -15,6 +15,19 @@ Format entri:
 ```
 
 ## [2026-09-04]
+### Fixed
+- Overlay Next.js 2 issue: (1) `<Script>` tema di `app/layout.tsx` diganti `ThemeInitScript` + `useServerInsertedHTML` (React 19 menolak `<script>` di pohon komponen). (2) Hydration `BloodSplatterLayer` — wrapper selalu di-render (jangan `return null` dari `useReducedMotion` SSR); bukan menabrak tombol footer. Nav `<1024px`: breakpoint hamburger setelah mount (bukan `useSyncExternalStore` vs snapshot server desktop).
+
+## [2026-09-04]
+### Added
+- **ADR-030** — selected chrome = blood splatter yang mengalir ke seluruh halaman (pengecualian T-038.1).
+- **T-040.6** — canvas overlay percik/tetes dari item `data-selected`; reduced-motion = bercak diam.
+
+### Changed
+- ADR-029 poin 1 & 4: splatter hanya lewat ADR-030.
+- T-038.1 / T-038.3 catatan v15 + `design-tokens.md` elevation selected.
+
+## [2026-09-04]
 ### Changed
 - **T-040.5** — pita footer ghost (tanpa nampan); CTA teks datar + panah, hover darah; job tetap buka modal Contact. Legal hairline + satelit. Verifikasi Home/About/Work, desktop + 375.
 - **T-040** ✅ (T-040.1–T-040.5). Berikutnya **T-041** overlay.

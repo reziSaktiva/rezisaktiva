@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅. **T-041** ⏳ **berikutnya**. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.6). **T-041** ⏳ **berikutnya**. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -21,7 +21,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 | Clarity | UX1: first viewport tetap menjawab siapa & untuk siapa | Atmosfer membungkus klaim, tidak menelannya |
 | Acuan visual | Bukan `design-mockups/` | Kode `app/` **sebelum** gelombang ini + arahan yang dikunci di chat per permukaan |
 
-**Bukan gore / mall-goth / chaos acak** — dikunci **T-038.1**. Darah = material/aksen (wine / clot / arterial), bukan splatter horror.
+**Bukan gore medis / mall-goth / chaos acak** — dikunci **T-038.1**. Darah di permukaan umum = material/aksen (wine / clot / arterial). **Pengecualian selected chrome:** splatter yang mengalir ke halaman (**ADR-030**, T-040.6).
 
 ---
 
@@ -45,7 +45,7 @@ Ini **bukan** restyle diam-diam.
 | **Absurdism** | Portofolio yang menolak tropes “SaaS landing”; deadpan; satu objek/perilaku yang *salah dengan sengaja* | Meme, glitch acak, lelucon Comic Sans |
 | **Surrealism** | Skala/justaposisi seperti mimpi yang diam; satu uncanny, bukan kolase | AI sludge, mata mengambang di mana-mana |
 | **Gothic Art** | Vertikalitas, kontras tinggi, geometri lancip/travee sebagai struktur — jejak katedral & naskah, bukan stiker | Hot Topic, Halloween, vampir klise |
-| **Dark and blood** | Kanvas rendah-cahaya; **satu** aksen darah (wine / clot / arterial) mengganti kuning chip | Splatter horror, gore medis, NSFW |
+| **Dark and blood** | Kanvas rendah-cahaya; **satu** aksen darah (wine / clot / arterial) mengganti kuning chip; selected chrome = splatter (ADR-030) | Gore medis, NSFW, mall-goth; splatter di permukaan selain selected |
 
 **Light mode (T-038.2):** **hold** — jangan hapus. Token light lama di-comment di T-039 (arsip). Bukan invert. Skin light gothic (vellum) **bukan** v15. Default ship = **dark**. Toggle chrome **disembunyikan** selama hold.
 
@@ -112,10 +112,10 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ### Subtasks
 
-- [x] **T-038.1** — Pembacaan absurdism / surrealism / Gothic Art / dark-and-blood **diterima** (tabel di atas, 2026-09-04). Dilarang: gore, mall-goth, chaos, NSFW, splatter.
+- [x] **T-038.1** — Pembacaan absurdism / surrealism / Gothic Art / dark-and-blood **diterima** (tabel di atas, 2026-09-04). Dilarang: gore medis, mall-goth, chaos, NSFW. Splatter **hanya** selected chrome (ADR-030, 2026-09-04).
 - [x] **T-038.2** — Default ship **dark**. Light **hold**: comment/arsip di T-039, jangan hapus, jangan invert. Toggle chrome **disembunyikan** selama hold (`theme-toggle.tsx` + cookie tetap). ADR-021 di-update 2026-09-04.
 - [x] **T-038.3** — Bahasa chrome + transisi. **Cakupan:** satu keluarga — bukan tile/About.
-  - **Selected (bukan tombol):** **bercak darah** 3D (noda/stain, bukan pill). Hanya penanda item aktif (nav + switcher). Mengikuti area label.
+  - **Selected (bukan tombol):** **bercak darah** 3D sebagai luka di label + **splatter mengalir ke halaman** (ADR-030 / T-040.6). Hanya penanda item aktif (nav + switcher). Mengikuti area label untuk luka; percikan tidak dibatasi chrome.
   - **Container** nampan kuning **dihilangkan**.
   - **Tombol** (Contact header/footer, kirim modal, hamburger): **polos/datar** — teks atau isi gelap + aksen darah tipis di hover/focus. Tanpa 3D, tanpa bercak.
   - Lembar hamburger = panel tetap, bukan lembar kuning (T-040.4).
@@ -146,10 +146,10 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ## T-040 — Chrome (setelah T-039)
 
-* **Status:** ✅ **Done** (2026-09-04) — T-040.1–T-040.5
+* **Status:** ✅ **Done** (2026-09-04) — T-040.1–T-040.6
 * **Domain:** Design / Engineering
-* **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah
-* **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, class `.site-*` di `globals.css`
+* **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah; selected = splatter (ADR-030)
+* **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, `blood-splatter-layer.tsx`, class `.site-*` di `globals.css`
 
 ### Subtasks
 
@@ -158,6 +158,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 - [x] **T-040.3** — Locale switcher sama bahasa nav: tanpa nampan; selected = bercak 3D. Theme toggle tetap tidak tampil (hold T-038.2).
 - [x] **T-040.4** — Lembar hamburger: panel elevated + selected bar stain. Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04.
 - [x] **T-040.5** — Pita footer ghost; CTA teks datar + panah buka modal Contact yang sama. Dikunci chat 2026-09-04. Verifikasi Home/About/Work, desktop + 375.
+- [x] **T-040.6** — Selected = blood splatter mengalir unbounded (ADR-030). Luka 3D di label tetap. Reduced-motion = tanpa percikan. Dikunci chat 2026-09-04.
 
 ---
 

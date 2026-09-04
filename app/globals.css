@@ -901,6 +901,33 @@ html::-webkit-scrollbar-button {
   background-color: transparent;
 }
 
+/*
+ * T-040.6 / ADR-030 — percikan selected ke viewport. Di bawah header
+ * (teks tetap terbaca lewat bar transparan) dan di atas isi halaman.
+ * Overlay Contact/QI/sheet/cursor di atas ini.
+ */
+.site-blood-splatter {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.site-blood-splatter canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-blood-splatter {
+    display: none;
+  }
+}
+
 .home-page {
   font-family: var(--font-family-body);
   width: 100%;

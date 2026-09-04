@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — T-040.6 selected = blood splatter unbounded
+**Phase:** Validation
+**Summary:** Selected chrome ganti dari bercak diam menjadi percikan + aliran darah ke seluruh viewport. Luka 3D di label tetap supaya teks terbaca. Overlay tetap di atas lapisan darah.
+**Key Decision/Insight:** Pengecualian T-038.1 / ADR-029 hanya untuk selected (ADR-030). Reduced-motion = tanpa percikan.
+**Impact:** ADR-030, ADR-029 update, `blood-splatter-layer.tsx`, layout locale, `globals.css`, v15 T-040.6.
+
 ## [2026-09-04] — T-040.5 ghost pita footer
 **Phase:** Validation
 **Summary:** Pita Contact tanpa nampan. Judul Texturina + CTA teks datar dengan panah; hover aksen darah. Modal Contact yang sama. Legal hairline + LinkedIn/GitHub.

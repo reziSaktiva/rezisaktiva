@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useId, useState, useSyncExternalStore } from "react";
+import { useEffect, useId, useState } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -193,18 +193,17 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
 const MOBILE_NAV_QUERY = "(max-width: 1023px)";
 
 function useMobileNavBreakpoint(): boolean {
-  const subscribe = useCallback((onStoreChange: () => void) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
     const media = window.matchMedia(MOBILE_NAV_QUERY);
-    media.addEventListener("change", onStoreChange);
-    return () => media.removeEventListener("change", onStoreChange);
+    const sync = () => {
+      setIsMobile(media.matches);
+    };
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
   }, []);
 
-  const getSnapshot = useCallback(
-    () => window.matchMedia(MOBILE_NAV_QUERY).matches,
-    [],
-  );
-
-  const getServerSnapshot = useCallback(() => false, []);
-
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  return isMobile;
 }

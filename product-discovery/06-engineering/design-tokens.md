@@ -99,7 +99,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 | ------ | ------------ |
 | Spacing | Skala token 4px di `globals.css` (`--spacing-*`) + Tailwind `gap-*`; konsisten ritme section |
 | Radius | Sedang untuk teaser/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
-| Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Selected nav/switcher/hamburger:** bercak 3D (`--elev-3d`). **Tombol chrome** (Contact header/footer, hamburger): datar (T-038.3 / T-040.1 / T-040.5). |
+| Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Selected nav/switcher/hamburger:** bercak 3D (`--elev-3d`) + splatter viewport (ADR-030 / T-040.6). **Tombol chrome** (Contact header/footer, hamburger): datar (T-038.3 / T-040.1 / T-040.5). |
 | Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = kode produksi (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
 Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebihan.
