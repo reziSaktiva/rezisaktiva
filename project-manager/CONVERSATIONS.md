@@ -14,6 +14,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — T-040.5 ghost pita footer
+**Phase:** Validation
+**Summary:** Pita Contact tanpa nampan. Judul Texturina + CTA teks datar dengan panah; hover aksen darah. Modal Contact yang sama. Legal hairline + LinkedIn/GitHub.
+**Key Decision/Insight:** CTA footer ikut bahasa tombol datar T-038.3, bukan 3D.
+**Impact:** `globals.css`, `site-footer-cta.tsx`, `site-footer.tsx`, v15 T-040 ✅.
+
+## [2026-09-04] — T-040.4 hamburger elevated + bar stain
+**Phase:** Validation
+**Summary:** Lembar hamburger <1024px jadi panel elevated `#141418`, bukan nampan kuning. Item full-width; selected = bercak darah 3D merentang sebagai bar; switcher compact memakai bercak yang sama.
+**Key Decision/Insight:** Contact tetap di luar. Toggle tetap tidak tampil.
+**Impact:** `globals.css`, `site-header.tsx`, v15 T-040.4.
+
+## [2026-09-04] — T-040.1 ghost overlay
+**Phase:** Validation
+**Summary:** Wordmark tetap grotesk (Instrument Sans), lowercase, tracking tipis, vellum. Bar header transparan di atas hero. Contact header + ikon hamburger datar; hover = aksen darah.
+**Key Decision/Insight:** Bukan wash, bukan hairline, bukan bar elevated. CTA footer masih 3D sampai T-040.5.
+**Impact:** `globals.css`, `site-header.tsx`, v15 T-040.1.
+
 ## [2026-09-04] — T-040.3 locale switcher = nav
 **Phase:** Validation
 **Summary:** ID/EN memakai bahasa chrome yang sama dengan nav: nampan hilang, selected = bercak darah 3D.

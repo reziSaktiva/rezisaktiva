@@ -16,6 +16,19 @@ Format entri:
 
 ## [2026-09-04]
 ### Changed
+- **T-040.5** — pita footer ghost (tanpa nampan); CTA teks datar + panah, hover darah; job tetap buka modal Contact. Legal hairline + satelit. Verifikasi Home/About/Work, desktop + 375.
+- **T-040** ✅ (T-040.1–T-040.5). Berikutnya **T-041** overlay.
+
+## [2026-09-04]
+### Changed
+- **T-040.4** — lembar hamburger = panel elevated `#141418` + selected bar stain 3D (keluarga nav). Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04.
+
+## [2026-09-04]
+### Changed
+- **T-040.1** — wordmark Instrument Sans lowercase + tracking; bar header tetap transparan. Contact header + hamburger jadi teks/ikon datar (tanpa 3D); hover = aksen darah. CTA footer belum (T-040.5).
+
+## [2026-09-04]
+### Changed
 - **T-040.3** — locale switcher ID/EN tanpa nampan; selected = bercak 3D yang sama dengan nav.
 
 ## [2026-09-04]

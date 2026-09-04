@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ⏳ **berikutnya** (T-040.2 nav dimulai). **T-041…T-043** menunggu T-040. **T-031** ⏸️ sampai **T-039** (token sudah; metadata masih antri).
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅. **T-041** ⏳ **berikutnya**. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -146,24 +146,24 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ## T-040 — Chrome (setelah T-039)
 
-* **Status:** ⏳ Open — gerbang **T-039** ✅; mulai **T-040.2** (nav)
+* **Status:** ✅ **Done** (2026-09-04) — T-040.1–T-040.5
 * **Domain:** Design / Engineering
 * **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah
 * **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, class `.site-*` di `globals.css`
 
 ### Subtasks
 
-- [ ] **T-040.1** — Q&A + kode: brand/wordmark + bar header (lapisan, kontras di atas hero).
+- [x] **T-040.1** — Wordmark grotesk + tracking; bar transparan; Contact/hamburger datar. Dikunci chat 2026-09-04 (ghost overlay).
 - [x] **T-040.2** — Nav halaman desktop: nampan hilang; selected = bercak darah 3D (bukan pill). Dikunci chat 2026-09-04.
 - [x] **T-040.3** — Locale switcher sama bahasa nav: tanpa nampan; selected = bercak 3D. Theme toggle tetap tidak tampil (hold T-038.2).
-- [ ] **T-040.4** — Q&A + kode: hamburger sheet &lt;1024px (item full-width, switcher compact; Contact di luar hamburger; tanpa toggle sampai hold dicabut).
-- [ ] **T-040.5** — Q&A + kode: pita footer + CTA yang membuka modal Contact yang sama. Verifikasi chrome di Home/About/Work, mobile + desktop.
+- [x] **T-040.4** — Lembar hamburger: panel elevated + selected bar stain. Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04.
+- [x] **T-040.5** — Pita footer ghost; CTA teks datar + panah buka modal Contact yang sama. Dikunci chat 2026-09-04. Verifikasi Home/About/Work, desktop + 375.
 
 ---
 
 ## T-041 — Overlay (setelah T-040)
 
-* **Status:** ⏳ Open — gerbang **T-040.5** + Q&A per overlay
+* **Status:** ⏳ Open — gerbang **T-040** ✅; Q&A per overlay
 * **Domain:** Design / Engineering
 * **Output:** Contact, Quick Info, project sheet di-skin; sisi/primitif/job tetap
 * **Baca dulu tambahan:** `contact-modal.tsx`, `quick-info.tsx`, `project-sheet.tsx`, class `.ct-*` / `.qi-*` / `.ps-*`

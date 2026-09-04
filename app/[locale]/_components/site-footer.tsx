@@ -11,6 +11,7 @@ import { SiteFooterCta } from "./site-footer-cta";
  *
  * T-033.6: Section/VStack/Heading/Text/Link Astryx → semantik + class
  * scoped; CTA = Button shadcn + Magnetic (T-036.1).
+ * T-040.5: pita ghost (tanpa nampan); CTA teks datar + panah.
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
