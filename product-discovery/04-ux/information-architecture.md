@@ -60,12 +60,11 @@ Contoh konkret: `/id/`, `/id/about`, `/en/projects`. **Tidak ada** route `/conta
 
 ### Home (urutan konten)
 
-1. **Hero / first viewport** — positioning product builder (+ sinyal fullstack & AI edge)
-2. **Now (status pekerjaan)** — seksi identitas tempat kerja saat ini (nama + tautan situs perusahaan). Bukan tile karya.
-3. **Credibility line (bukti non-kartu)** — **satu** klaim singkat pengalaman/outcome (bukan grid, bukan list stack). Contoh bentuk: “~6 tahun fullstack · shipped produk live” — mendukung hero, **bukan** menggantikan teaser
-4. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome; klik tile membuka project sheet (M10); tautan “Semua proyek” ke Work index (bukan langsung live/repo)
-5. **Arah soft** — ke About dan/atau Contact
-6. **Availability line** (Should, opsional)
+1. **Hero / first viewport** — klaim tipografi (dua baris) **tanpa potret** + **Now** (status pekerjaan: kicker + nama perusahaan tautan). Bukan tile karya. Foto hanya di About
+2. **Credibility line (bukti non-kartu)** — **satu** klaim singkat pengalaman/outcome (bukan grid, bukan list stack). Contoh bentuk: “~6 tahun fullstack · shipped produk live” — mendukung hero, **bukan** menggantikan teaser
+3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome; klik tile membuka project sheet (M10); tautan “Semua proyek” ke Work index (bukan langsung live/repo)
+4. **Arah soft** — ke About dan/atau Contact
+5. **Availability line** (Should, opsional)
 
 **Aturan beda blok:** credibility line = sinyal kredibel 1 baris; work teaser = bukti karya terkurasi. Anti-pattern: dua blok yang sama-sama menumpuk tech stack / highlight identik.
 
@@ -73,11 +72,12 @@ Contoh konkret: `/id/`, `/id/about`, `/en/projects`. **Tidak ada** route `/conta
 
 Label chrome: **Proses Kerja** (`id`) / **Process** (`en`) — ADR-020; route tetap `/[id/en]/about`.
 
-1. Narasi product builder (ide → live)
-2. Fondasi fullstack (konteks pengalaman)
-3. AI edge jujur
-4. Cara kerja / apa yang dicari (tingkat tinggi)
-5. Soft arah ke Contact / kembali ke teaser Home
+1. **Potret diri** (satu-satunya permukaan R1 yang menampilkan foto Rezi)
+2. Narasi product builder (ide → live)
+3. Fondasi fullstack (konteks pengalaman)
+4. AI edge jujur
+5. Cara kerja / apa yang dicari (tingkat tinggi)
+6. Soft arah ke Contact / kembali ke teaser Home
 
 ### Contact (modal global, ADR-019 — bukan halaman/route)
 

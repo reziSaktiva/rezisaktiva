@@ -14,6 +14,20 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — Now masuk hero Home
+
+**Phase:** Validation
+**Summary:** Setelah foto cutout dicabut, Boss Rezi minta hero diperbaiki dan seksi Now (current work) dipindah ke first viewport.
+**Key Decision/Insight:** Hero 100svh = klaim dua baris rapat di atas + Now (kicker + tautan Insvire) di bawah. Bukan seksi terpisah setelah fold. Bukan tile karya. Credibility tetap di bawah fold.
+**Impact:** `home-page.tsx`, `globals.css`; `04-ux` IA + key-screen-patterns; `COMPLETE_TASK.md`.
+
+## [2026-09-04] — Hero Home tanpa foto diri
+
+**Phase:** Validation
+**Summary:** Boss Rezi tidak ingin foto di Home; potret hanya di About. Cutout Unsplash di hero Home dicabut; komposisi first viewport = tipe oversized + whitespace.
+**Key Decision/Insight:** Home = klaim + bukti karya, bukan wajah. About = satu-satunya permukaan R1 untuk foto diri. Bukan ganti IA; bukan ADR (cutout dulu arah seni mockup, bukan baseline UX). `Person.image` tetap ditahan sampai aset About nyata.
+**Impact:** `home-page.tsx`, `content/home.ts`, `globals.css`; `04-ux` IA + key-screen-patterns; `PROJECT_STATE.md`; catatan foto v11/v13; `COMPLETE_TASK.md`. `design-mockups/` tidak diubah (ADR-024).
+
 ## [2026-09-03] — Dependabot PR #61 ditutup
 
 **Phase:** Validation

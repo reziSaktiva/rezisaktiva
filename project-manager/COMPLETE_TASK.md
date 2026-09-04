@@ -14,6 +14,16 @@ Format entri:
 - ...
 ```
 
+## [2026-09-04]
+### Changed
+- Hero Home: klaim dua baris tidak lagi di-split ke atas/bawah viewport; Now (kicker + tautan tempat kerja) pindah ke dalam `#hero` (`#now` di bawah klaim). Seksi Now terpisah dihapus.
+
+## [2026-09-04]
+### Changed
+- Hero Home: cabut foto cutout (Unsplash). First viewport = judul dua baris + ruang kosong; header overlay 100svh tetap.
+- Potret diri hanya di About (`about-portrait`). `HERO_PORTRAIT_SRC` dihapus dari `content/home.ts`.
+- Pola UX: Home tanpa potret; About satu-satunya foto diri. `Person.image` tetap ditahan selama About Unsplash.
+
 ## [2026-09-03]
 ### Added
 - Tes regresi `lib/home-motion-hydration.test.ts`: `Reveal` / `WordReveal` / `HeroWords` tidak cabang `initial` lewat `useReducedMotion`; Magnetic `onLeave` ikut `skipMagneticPull`; `<body>` tanpa `suppressHydrationWarning`.

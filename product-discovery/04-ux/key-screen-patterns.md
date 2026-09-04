@@ -52,17 +52,18 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Above the fold (wajib menang):**
 
-1. Klaim positioning: **product builder**
-2. Satu baris pendukung: fullstack sebagai bukti + AI sebagai edge (jujur, tidak overclaim)
-3. Satu arah soft (ke About atau Contact) — tidak memaksa form
+1. Klaim positioning: **product builder** (tipografi dua baris; **tanpa potret**)
+2. **Now (status pekerjaan)** — di dalam hero, bawah klaim: kicker + “saat ini di” + nama perusahaan (tautan situs). Bukan item katalog karya; bukan pengganti foto
+3. Satu arah soft (ke About atau Contact) — tidak memaksa form; Contact = chrome + pita footer
+
+**Tanpa potret di Home.** Hero 100svh = klaim di atas + Now di bawah. Foto diri hanya di S2 About. Jangan mengisi kekosongan dengan cutout wajah, blob, atau stock Unsplash.
 
 **Di bawah fold / lanjut scroll:**
 
-4. **Now (status pekerjaan)** — satu seksi identitas: kicker + “saat ini di” + nama perusahaan (tautan situs). Bukan item katalog karya.
-5. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
-6. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome; klik membuka sheet (M10); **satu-satunya** blok karya di Home
-7. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
-8. Availability line (Should, opsional)
+4. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
+5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome; klik membuka sheet (M10); **satu-satunya** blok karya di Home
+6. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
+7. Availability line (Should, opsional)
 
 **Contact di Home (ADR-025):** tidak ada section `#contact-cta` terpisah. Arah Contact = pita footer (S0) + tombol chrome. Hover tile teaser boleh diperkuat (scale/overlay).
 
@@ -80,7 +81,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Blok berurutan:**
 
-1. Hero — h1 display besar; lead: baris pertama terlihat, baris kedua on expand
+1. Hero — h1 display besar + **potret 4:5** (satu-satunya foto diri R1); lead: baris pertama terlihat, baris kedua on expand
 2. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
 3. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
 4. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`

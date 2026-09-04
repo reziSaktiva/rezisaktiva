@@ -39,7 +39,7 @@
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean terkirim di kode: Home, About, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, copy T-021. Acuan visual: kode produksi (ADR-024).
 * Fase aktif: **Validation** — buktikan clarity + soft path inbound (bukan volume outreach). **Prioritas: T-031** ⏳ metadata. **T-032…T-037** ✅ (v14 Done, ADR-028). **T-023** ⏸️ CV Inggris. **T-030** ✅. **T-029** ✅. **T-028** ✅.
-* **Copy R1:** **T-021.1–T-021.7 ✅**. Foto hero/About masih placeholder Unsplash (bukan blocker exit).
+* **Copy R1:** **T-021.1–T-021.7 ✅**. Home tanpa potret (tipe + whitespace). Foto About masih placeholder Unsplash (bukan blocker exit).
 * **Catatan engineering:** gap StyleX/Turbopack (T-013.4) ditutup dengan cabut Astryx. Rilis v14 **T-037.7** ✅. Berikutnya **T-031**.
 
 ---

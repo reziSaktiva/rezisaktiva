@@ -36,9 +36,6 @@ export interface HomeCopy {
   contactCta: string;
 }
 
-export const HERO_PORTRAIT_SRC =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop";
-
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
     h1: ["Ceritamu", "lewat produk."],

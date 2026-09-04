@@ -1,5 +1,4 @@
-import NextImage from "next/image";
-import { HERO_PORTRAIT_SRC, HOME_COPY } from "@/content/home";
+import { HOME_COPY } from "@/content/home";
 import { PERSON, PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
 import { projectsHref } from "@/lib/site-url";
@@ -15,38 +14,26 @@ export function HomePage({ locale }: { locale: Locale }) {
   return (
     <div className="home-page flex flex-col">
       <section className="home-hero" id="hero">
-        <div className="home-hero-cutout" aria-hidden="true">
-          <NextImage
-            src={HERO_PORTRAIT_SRC}
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 767px) 70vw, 38vw"
-          />
-        </div>
         <div className="home-hero-inner flex flex-col justify-between">
           <h1 className="home-hero-heading">
             <HeroWords lines={copy.h1} />
           </h1>
-        </div>
-      </section>
-
-      <section className="home-section home-section--now" id="now">
-        <div className="home-container flex flex-col gap-8">
-          <Reveal>
-            <p className="home-kicker">{copy.nowLabel}</p>
-          </Reveal>
-          <Reveal>
-            <h2 className="home-now-title">
-              {PERSON_WORKPLACE_COPY[locale].prefix}{" "}
-              <ExternalSiteLink
-                href={PERSON.worksFor.url}
-                newTabLabel={PERSON_WORKPLACE_COPY[locale].newTab}
-              >
-                {PERSON.worksFor.name}
-              </ExternalSiteLink>
-            </h2>
-          </Reveal>
+          <div id="now" className="home-hero-now flex flex-col gap-8">
+            <Reveal>
+              <p className="home-kicker">{copy.nowLabel}</p>
+            </Reveal>
+            <Reveal>
+              <h2 className="home-now-title">
+                {PERSON_WORKPLACE_COPY[locale].prefix}{" "}
+                <ExternalSiteLink
+                  href={PERSON.worksFor.url}
+                  newTabLabel={PERSON_WORKPLACE_COPY[locale].newTab}
+                >
+                  {PERSON.worksFor.name}
+                </ExternalSiteLink>
+              </h2>
+            </Reveal>
+          </div>
         </div>
       </section>
 

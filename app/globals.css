@@ -893,44 +893,6 @@ html::-webkit-scrollbar-button {
   margin-block-start: calc(-1 * var(--appshell-header-height, 80px));
 }
 
-.home-hero-cutout {
-  position: absolute !important;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(38vw, 400px);
-  height: min(64vh, 620px);
-  z-index: 0;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    #000 14%,
-    #000 78%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    #000 14%,
-    #000 78%,
-    transparent 100%
-  );
-}
-
-.home-hero-cutout img {
-  object-fit: cover;
-  object-position: center 18%;
-  filter: grayscale(1) contrast(1.08);
-  mix-blend-mode: multiply;
-  opacity: 0.42;
-}
-
-[data-theme="dark"] .home-hero-cutout img {
-  mix-blend-mode: screen;
-  filter: grayscale(1) contrast(1.15) brightness(0.92);
-}
-
 .home-hero-inner {
   position: relative;
   z-index: 10;
@@ -953,18 +915,16 @@ html::-webkit-scrollbar-button {
 }
 
 .home-hero-heading {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-block: var(--spacing-6);
+  padding-block-start: var(--spacing-6);
   font-family: "General Sans", var(--font-family-heading);
   margin: 0;
 }
 
 @media (min-width: 768px) {
   .home-hero-heading {
-    padding-block: var(--spacing-8);
+    padding-block-start: var(--spacing-8);
   }
 }
 
@@ -984,7 +944,10 @@ html::-webkit-scrollbar-button {
   padding-right: 2vw;
 }
 
-.home-section--now,
+.home-hero-now {
+  padding-block-end: var(--spacing-4);
+}
+
 .home-section--proof {
   padding-block: 7rem;
 }
@@ -994,7 +957,6 @@ html::-webkit-scrollbar-button {
 }
 
 @media (min-width: 768px) {
-  .home-section--now,
   .home-section--proof {
     padding-block: 9rem;
   }
@@ -1333,11 +1295,6 @@ button.home-work-tile,
   .home-hero {
     min-height: 100svh;
     min-height: 100dvh;
-  }
-  .home-hero-cutout {
-    width: min(62vw, 260px);
-    height: min(42vh, 340px);
-    top: 50%;
   }
   .home-hero-line {
     font-size: clamp(2.6rem, 13.6vw, 4.25rem);
@@ -2837,11 +2794,6 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   .home-hero-line {
     font-size: clamp(2.35rem, 12.4vw, 3.15rem);
     line-height: 0.94;
-  }
-
-  .home-hero-cutout {
-    width: min(68vw, 220px);
-    height: min(38vh, 260px);
   }
 
   .qi-tab {

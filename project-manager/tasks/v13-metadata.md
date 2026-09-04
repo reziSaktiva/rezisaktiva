@@ -30,7 +30,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 | Area | Cara | Isi |
 | ---- | ---- | --- |
 | **Icons** | File-based di `app/` (`icon`, `apple-icon`) dan/atau `metadata.icons` | Favicon multi-size + Apple touch. Sumber = aset brand **rezisaktiva**, bukan `public/next.svg` / globe scaffold |
-| **Media (openGraph.images + twitter.images)** | File-based `opengraph-image` / `twitter-image` **atau** path di `pageMetadata` ke file di `public/` / `app/` | Satu kartu share situs (≈1200×630). Boleh sama untuk semua destinasi R1. Bukan foto Unsplash hero/About |
+| **Media (openGraph.images + twitter.images)** | File-based `opengraph-image` / `twitter-image` **atau** path di `pageMetadata` ke file di `public/` / `app/` | Satu kartu share situs (≈1200×630). Boleh sama untuk semua destinasi R1. Bukan foto Unsplash About |
 | **Identitas** | `generateMetadata` / `metadata` root atau `pageMetadata` | `applicationName` = brand; `authors` / `creator` / `publisher` dari `content/person.ts` (`PERSON.name`) + URL About; `formatDetection` (matikan auto-link telepon/alamat yang tidak ada) |
 | **Robots meta** | `metadata.robots` | Izinkan index/follow publik — selaras `app/robots.ts`, bukan `noindex` |
 | **Manifest** | `app/manifest.ts` (ringan) | `name` / `short_name` / `icons` / `display` — **bukan** service worker / install-prompt PWA penuh |
