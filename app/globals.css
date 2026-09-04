@@ -1354,7 +1354,8 @@ button.home-work-tile,
   width: 64px;
   height: 64px;
   pointer-events: none;
-  z-index: 60;
+  /* Di atas Contact/QI/sheet (90–92). Skip-link tetap 9999. */
+  z-index: 200;
   transform: translate(-3px, -2px);
   transform-origin: 3px 2px;
   opacity: 0;
@@ -1399,7 +1400,7 @@ button.home-work-tile,
   }
 }
 
-.home-cursor-knife.is-hover:not(.is-close):not(.is-text) {
+.home-cursor-knife.is-hover:not(.is-text) {
   width: 72px;
   height: 72px;
   transform: translate(-3px, -2px) scale(1.08);
@@ -1407,40 +1408,6 @@ button.home-work-tile,
 
 .home-cursor-knife.is-text {
   opacity: 0 !important;
-}
-
-.home-cursor-knife.is-close {
-  z-index: 100;
-  width: 56px;
-  height: 56px;
-  transform: translate(-50%, -50%);
-  background: var(--color-accent);
-  border-radius: var(--radius-full);
-  filter: none;
-}
-
-.home-cursor-knife.is-close .home-cursor-knife-blade {
-  opacity: 0;
-}
-
-.home-cursor-knife.is-close::before,
-.home-cursor-knife.is-close::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18px;
-  height: 2px;
-  background: var(--color-text-primary);
-  border-radius: 2px;
-}
-
-.home-cursor-knife.is-close::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.home-cursor-knife.is-close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 @media (max-width: 767px) {

@@ -7,6 +7,7 @@ import {
   type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
+import { createPortal } from "react-dom";
 import {
   DURATION_FAST_MAX,
   DURATION_MEDIUM_MAX,
@@ -189,6 +190,8 @@ export function Magnetic({ children }: { children: ReactNode }) {
  * Cursor pisau berdarah — desktop, pointer halus.
  * Off di sentuh dan `prefers-reduced-motion`. `div` + `left`/`top` + CSS
  * translate ke ujung bilah — bukan Motion `x`/`y` (menimpa hotspot).
+ * Portal ke `document.body` supaya z-index di atas Dialog/Sheet/Drawer
+ * (overlay Contact z-90/92) — jangan di dalam pohon layout.
  */
 export function CursorRing() {
   const reduceMotion = useReducedMotion();
@@ -234,12 +237,10 @@ function CursorKnifeFollow() {
       knife.classList.add("is-active");
     };
     const onLeave = () => {
-      knife.classList.remove("is-active", "is-hover", "is-close", "is-text");
+      knife.classList.remove("is-active", "is-hover", "is-text");
     };
     const onEnterInteractive = () => knife.classList.add("is-hover");
     const onLeaveInteractive = () => knife.classList.remove("is-hover");
-    const onEnterClose = () => knife.classList.add("is-close");
-    const onLeaveClose = () => knife.classList.remove("is-close");
     const onEnterText = () => knife.classList.add("is-text");
     const onLeaveText = () => knife.classList.remove("is-text");
 
@@ -249,18 +250,12 @@ function CursorKnifeFollow() {
     const isInside = (node: EventTarget | null, selector: string) =>
       node instanceof Element && Boolean(node.closest(selector));
 
-    const closeScrim = "[data-overlay-scrim]";
     const textField = "input, textarea, select, [contenteditable='true']";
     const onPointerOver = (event: MouseEvent) => {
       if (isInside(event.target, textField)) {
         onEnterText();
         onLeaveInteractive();
-        onLeaveClose();
         return;
-      }
-      if (isInside(event.target, closeScrim)) {
-        onEnterClose();
-        onLeaveInteractive();
       }
       if (isInside(event.target, "a, button")) {
         onEnterInteractive();
@@ -272,12 +267,6 @@ function CursorKnifeFollow() {
         !isInside(event.relatedTarget, textField)
       ) {
         onLeaveText();
-      }
-      if (
-        isInside(event.target, closeScrim) &&
-        !isInside(event.relatedTarget, closeScrim)
-      ) {
-        onLeaveClose();
       }
       if (
         isInside(event.target, "a, button") &&
@@ -309,7 +298,7 @@ function CursorKnifeFollow() {
     };
   }, []);
 
-  return (
+  return createPortal(
     <div ref={knifeRef} className="home-cursor-knife" aria-hidden="true">
       <img
         className="home-cursor-knife-blade"
@@ -319,6 +308,7 @@ function CursorKnifeFollow() {
         height={256}
         draggable={false}
       />
-    </div>
+    </div>,
+    document.body,
   );
 }

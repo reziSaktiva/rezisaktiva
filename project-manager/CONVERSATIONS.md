@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-04] — Bug cursor pisau hilang di modal
+**Phase:** Validation
+**Summary:** Saat Contact (dan overlay lain) terbuka, pisau tidak kelihatan. Native cursor juga `none`, jadi pointer kosong.
+**Key Decision/Insight:** Overlay portal z-90/92 menutupi pisau z-60; state X di scrim malah menyembunyikan bilah. Perbaikan: portal ke `body` + z-index 200 + pisau tetap cursor di overlay.
+**Impact:** `home-motion.tsx`, `globals.css`.
+
 ## [2026-09-04] — Cursor pisau berdarah + wallpaper live hero Home
 **Phase:** Validation
 **Summary:** Boss Rezi minta cursor situs jadi pisau berdarah, dan video `dark-magic-v2-live-wallpaper.mp4` jadi latar hero Home (section paling atas). Bukan gelombang T-041; implementasi maju karena dikunci eksplisit di chat.

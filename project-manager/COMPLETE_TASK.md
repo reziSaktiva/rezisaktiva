@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-04]
+### Fixed
+- Cursor pisau tidak tampil saat modal/overlay terbuka: z-index 60 tertutup Contact 90/92; state scrim `is-close` menyembunyikan bilah. Pisau di-portal ke `document.body`, z-index 200, tetap pisau di atas overlay (I-beam hanya di field teks).
+
+## [2026-09-04]
 ### Added
 - Cursor desktop = pisau berdarah (`public/cursors/bloody-knife.png`); hotspot ujung bilah; scrim overlay tetap X; reduced-motion/sentuh = kursor sistem.
 - Wallpaper live di hero Home: `public/media/home-hero-live.mp4` (1080p, dari sumber 4K) + poster + veil token. Reduced-motion = poster diam.

@@ -201,6 +201,6 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 ### Subtasks
 
 - [ ] **T-043.1** — Kode transisi halaman: **hard cut + stutter frame** (T-038.3). Pause overlay tetap. Reduced-motion = instan. Jangan View Transitions API. Jangan clip video. Durasi pendek (UX1). Lenis tetap.
-- [ ] **T-043.2** — Scrollbar, fokus keyboard, cursor: token baru, kontras, target sentuh 320px. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit):** cursor desktop = pisau berdarah (`/cursors/bloody-knife.png`); native cursor disembunyikan; reduced-motion / sentuh = kursor sistem. Sisa scrollbar/fokus tetap di subtask ini.
+- [ ] **T-043.2** — Scrollbar, fokus keyboard, cursor: token baru, kontras, target sentuh 320px. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit):** cursor desktop = pisau berdarah (`/cursors/bloody-knife.png`); native cursor disembunyikan; reduced-motion / sentuh = kursor sistem. Pisau tetap terlihat di atas overlay (Contact/QI/sheet) — bukan diganti X. Sisa scrollbar/fokus tetap di subtask ini.
 - [ ] **T-043.3** — Docs: `design-tokens.md` (bila drift), `code-discipline.md`, `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` (hapus “pill kuning” sebagai kontrak identitas). `04-ux/` hanya jika kalimat masih mengunci kuning sebagai Must visual — bukan rewrite prinsip.
 - [ ] **T-043.4** — Verifikasi penuh R1 (tiga rute × tema yang hidup × overlay × reduced-motion). Update Snapshot: v15 Done. **T-031** kembali antrian bila masih ⏸️.
