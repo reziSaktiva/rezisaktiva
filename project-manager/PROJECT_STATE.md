@@ -7,7 +7,7 @@
 * **Top Next Tasks:** **T-042** ⏳; **T-043** ⏳; **T-045** ✅; **T-044** ✅; **T-041** ✅; **T-040** ✅; **T-039** ✅; **T-038** ✅; **T-031** ⏸️; **T-023** ⏸️; **T-032…T-037** ✅ — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (✅ Done — **T-028** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — **T-021** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris) + `tasks/v11-structured-data.md` (✅ Done — **T-029**) + `tasks/v12-seo.md` (✅ Done — **T-030**) + `tasks/v13-metadata.md` (⏸️ Deferred — **T-031** tunggu T-043) + `tasks/v14-shadcn-tailwind.md` (✅ Done — **T-032…T-037**, ADR-028) + `tasks/v15-visual-identity.md` (⏳ Open — **T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042…T-043** ⏳; ADR-029, ADR-031) + `tasks/v16-home-single-section.md` (✅ Done — **T-044**, ADR-032, **ADR-033**) + `tasks/v17-about-workflow.md` (✅ Done — **T-045**, **ADR-035**)
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (✅ Done — **T-028** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — **T-021** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris) + `tasks/v11-structured-data.md` (✅ Done — **T-029**) + `tasks/v12-seo.md` (✅ Done — **T-030**) + `tasks/v13-metadata.md` (⏸️ Deferred — **T-031** tunggu T-043) + `tasks/v14-shadcn-tailwind.md` (✅ Done — **T-032…T-037**, ADR-028) + `tasks/v15-visual-identity.md` (⏳ Open — **T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042…T-043** ⏳; ADR-029, ADR-031, **ADR-035**) + `tasks/v16-home-single-section.md` (✅ Done — **T-044**, ADR-032, **ADR-033**) + `tasks/v17-about-workflow.md` (✅ Done — **T-045**, **ADR-035**)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -27,7 +27,7 @@
 | Item | Value |
 | ----- | ----- |
 | Current Phase | Validation (Phase 1 — `01-business/success-metrics.md`) |
-| Current Milestone | R1 MVP Clarity exited (Must M1–M7 + M9 + M13 + M10 overlay + theme toggle) |
+| Current Milestone | R1 MVP Clarity exited (Must M1–M7 + M9 + M10 overlay + M13 + M14 Workflow + theme toggle) |
 | Overall Progress | Product Discovery T-001–T-007 ✅; Bootstrap T-008–T-012 ✅; Development R1 T-013…T-028 ✅, **T-021** ✅; T-023 ⏸️; **T-029** ✅; **T-030** ✅; **T-031** ⏸️; **T-032…T-037** ✅ (ADR-028); **T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-044** ✅ (ADR-032); **T-045** ✅ (ADR-035); **T-042…T-043** ⏳ (ADR-029) |
 | Project Status | R1 exited — destination layak evaluasi; **v14** ✅; **v16** ✅ (Home hero-only); **v17** ✅ (About/Workflow); **v15** ⏳ halaman **T-042**; T-031 deferred; T-023 deferred |
 

@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042** ⏳ berikutnya. **T-043** setelah T-042. **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -15,7 +15,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 | Area | Tetap | Berganti |
 | ---- | ----- | -------- |
 | Copy / konten | `content/*` T-021, Now, katalog karya | Tidak |
-| IA / overlay **perilaku** | Contact modal (ADR-019), Quick Info kanan (ADR-022), sheet karya dari bawah (ADR-027), hamburger &lt;1024px (ADR-020), About = rute sendiri, footer = pita Contact (ADR-025) | Skin visual overlay/chrome |
+| IA / overlay **perilaku** | Contact modal (ADR-019), Quick Info kanan (ADR-022), sheet karya dari bawah (ADR-027), hamburger &lt;1024px (ADR-020), About + Workflow sebagai rute terpisah (ADR-035), pita Contact di About / Workflow / Work index **bukan** Home (ADR-025 / ADR-033) | Skin visual overlay/chrome |
 | Stack | shadcn primitf yang sudah ada, Tailwind v4, Motion, Lenis, cookie `rz-theme`, anti-flash | Palet, tipe, mood, bahasa elevasi/chip |
 | Render | SSG + `content/` + `generateStaticParams`; `"use client"` hanya island | Tidak |
 | Clarity | UX1: first viewport tetap menjawab siapa & untuk siapa | Atmosfer membungkus klaim, tidak menelannya |
@@ -57,7 +57,7 @@ Ini **bukan** restyle diam-diam.
 T-038 kunci arah  →  T-039 token  →  T-040 chrome  →  T-041 overlay  →  T-042 halaman  →  T-043 gerak sistem + docs
 ```
 
-Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header/footer terlihat di semua rute.
+Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header di semua rute; pita footer di About / Workflow / Work index (bukan Home, ADR-033).
 
 ### Inventaris Q&A (cluster)
 
@@ -82,10 +82,11 @@ Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header/footer
 - Quick Info (`Sheet` kanan + tab tepi)
 - Project sheet (`Drawer` bawah)
 
-**T-042 — Halaman** (blok tetap)
+**T-042 — Halaman** (blok tetap; IA ADR-032 / ADR-035)
 
-- Home: hero klaim + Now (**satu section**, ADR-032)
-- About: hero + potret 4:5, **bukti AI**, offers, values, proses rest/active
+- Home: hero klaim + Now (**satu section**, ADR-032); tanpa pita footer (ADR-033)
+- About: hero + potret 4:5 + **bukti AI** (tanpa offers/proses — ADR-035)
+- Workflow: offers, values, proses rest/active (`/workflow`)
 - Work: index + tile (klik → sheet yang sama)
 
 **T-043 — Sistem**
@@ -97,9 +98,9 @@ Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header/footer
 
 ## Verifikasi tiap parent implementasi (wajib, rule UI)
 
-Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA dual-theme untuk kulit baru); 320px + 375px + desktop ≥1024px; overlay Contact + Quick Info + project sheet; reduced-motion. Bukan satu screenshot. Bandingkan vs kode **sebelum** perubahan + arahan yang dikunci — bukan mockup HTML.
+Home / About / Workflow / Work; **tema gelap yang di-ship** (light di-hold — jangan QA dual-theme untuk kulit baru); 320px + 375px + desktop ≥1024px; overlay Contact + Quick Info + project sheet; reduced-motion. Bukan satu screenshot. Bandingkan vs kode **sebelum** perubahan + arahan yang dikunci — bukan mockup HTML.
 
-**Baca dulu (semua parent):** ADR-029, ADR-024, ADR-028 (stack), ADR-021 (sampai T-038.2), ADR-019/022/027, `04-ux/key-screen-patterns.md`, `06-engineering/design-tokens.md`, `app/globals.css`, `.cursor/rules/shadcn.mdc`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`.
+**Baca dulu (semua parent):** ADR-029, ADR-024, ADR-028 (stack), ADR-021 (sampai T-038.2), ADR-019/022/027, ADR-032/033/035, `04-ux/key-screen-patterns.md`, `06-engineering/design-tokens.md`, `app/globals.css`, `.cursor/rules/shadcn.mdc`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`.
 
 ---
 
@@ -187,7 +188,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ### Subtasks
 
-- [ ] **T-042.1** — Q&A + kode: Home (**satu section**, hero klaim dua baris + Now di first viewport — ADR-032 / ADR-033 tanpa pita footer). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh; About tidak ikut. **ADR-032:** credibility + teaser dicabut. **ADR-033:** pita footer dicabut dari Home. Sisa restyle hero Home tetap menunggu T-041 bila belum.
+- [ ] **T-042.1** — Q&A + kode: Home (**satu section**, hero klaim dua baris + Now di first viewport — ADR-032 / ADR-033 tanpa pita footer). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh; About tidak ikut. **ADR-032:** credibility + teaser dicabut. **ADR-033:** pita footer dicabut dari Home. **T-041** ✅ — sisa = restyle Q&A hero Home di subtask ini.
 - [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, **bukti AI setelah hero** — ADR-035; tanpa offers/proses). Copy tidak dipotong.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi rute, tema gelap yang di-ship, 320 / 375 / desktop.
 - [ ] **T-042.4** — Q&A + kode: Workflow (`/workflow` — offers, values, proses rest/active). Copy T-021.3 tidak dipotong.

@@ -50,3 +50,7 @@ Label nav M9: ID **Proyek** / EN **Projects**. Path katalog: `/[locale]/projects
 ### Update — 2026-09-07 (ADR-034)
 
 Chip nav **tidak** menyertakan Home. Nama di header = tautan Home; pekerjaan di samping nama bukan tautan.
+
+### Update — 2026-09-07 (ADR-035)
+
+Label chrome About = **Tentang / About** (`/about`). **Proses Kerja / How I Work** pindah ke route `/[locale]/workflow` (M14). Chip nav = Tentang / About · Proses Kerja / How I Work · Proyek / Projects.

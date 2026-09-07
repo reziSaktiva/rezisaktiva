@@ -101,14 +101,14 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 ### F4 — Hiring sinyal (SC4)
 
-1. Home positioning → About
+1. Home positioning → About (siapa + bukti AI); Workflow opsional (cara kerja)
 2. Ikuti GitHub (satelit) bila perlu bukti teknis
 3. Putuskan lanjut/skip **tanpa** mengubah situs jadi CV ATS
 4. Sukses: cukup sinyal; brand tetap product builder
 
 ### F5 — Klien soft (SC5)
 
-1. Home / About / Work index → Contact modal
+1. Home / About / Workflow / Work index → Contact modal
 2. Email (tanpa mencari harga)
 3. Sukses: outreach terkirim; ekspektasi diskusi
 4. Failure diterima: mencari pricing — salinan Contact mengarahkan ke percakapan (ADR-008)

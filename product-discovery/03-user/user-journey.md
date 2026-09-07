@@ -8,9 +8,11 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 
 # Overview
 
-**Keputusan scope journey:** R1 primer (Home → About/teaser/Work index → Contact) sebagai poros; hiring manager & calon klien mendapat jalur sekunder tipis pada permukaan yang sama. Journey R2 magnet (case detail) dicatat sebagai later, bukan Must peta ini.
+**Keputusan scope journey:** R1 primer (Home → About / Workflow / Work index → Contact) sebagai poros; hiring manager & calon klien mendapat jalur sekunder tipis pada permukaan yang sama. Journey R2 magnet (case detail) dicatat sebagai later, bukan Must peta ini.
 
 > **Update (2026-08-15/16, ADR-019/ADR-020/ADR-021/ADR-022):** Work index (M9) naik Must R1 — masuk surface set. Contact final sebagai modal global (ADR-019), bukan halaman. Theme toggle (ADR-021) dan Quick Info overlay (ADR-022) melengkapi chrome di semua stage.
+>
+> **Update (2026-09-07, ADR-032 / ADR-035):** Teaser Home retired. Evidence = bukti AI di About, cara kerja di Workflow, karya di Work index.
 
 ---
 
@@ -113,7 +115,7 @@ Titik kritis: **Orient → Evidence**. Jika gagal di sini, Act jarang terjadi (N
 Peluang untuk UX (bukan spesifikasi UI):
 
 1. **First-screen clarity** — jawaban “siapa & untuk siapa” tanpa scroll panjang
-2. **Bukti proporsional** — klaim AI di About + karya di Work index mengalahkan list stack; jangan duplikasi tech bingo
+2. **Bukti proporsional** — klaim AI di About + cara kerja di Workflow + karya di Work index mengalahkan list stack; jangan duplikasi tech bingo
 3. **About sebagai risk-reducer** — terutama untuk P2
 4. **Contact sebagai soft landing** — kurangi awkward; jangan sales desk
 5. **Secondary signals without rebrand** — P3 dapat sinyal tanpa mengubah Home jadi CV

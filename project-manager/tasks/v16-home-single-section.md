@@ -16,7 +16,7 @@ Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 (pindah apa adanya). Bukan
 | ---- | ----- | -------- |
 | Copy | Teks T-021.2 bukti + Contact footer | Lokasi bukti = About |
 | Overlay | Contact, Quick Info, sheet M10 dari tile Work | Sheet tidak lagi dari Home; footer Contact tidak di Home (ADR-033) |
-| Nav | Home / About / Projects + Contact button | Tidak |
+| Nav | Chip tanpa Home (ADR-034); saat T-044: About + Projects | **Lalu ADR-035:** chip Workflow (Proses Kerja / How I Work) |
 | Home | Wallpaper + klaim + Now | Tanpa section bukti & teaser |
 
 **Baca dulu:** ADR-032, ADR-033, ADR-010 (update), ADR-027 (update), `04-ux/information-architecture.md`, `04-ux/key-screen-patterns.md`, `home-page.tsx`, `about-page.tsx`, `work-page.tsx`.

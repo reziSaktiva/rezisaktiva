@@ -8,7 +8,7 @@
 | Type | Personal portfolio website |
 | Owner | Boss Rezi (Rezi Saktiva) |
 | Status | Active |
-| Last Updated | 2026-08-18 |
+| Last Updated | 2026-09-07 |
 
 > Dokumen ini Static Reference — tidak memuat fase/progress aktif. Lihat `PROJECT_STATE.md` untuk status terkini.
 
@@ -25,7 +25,7 @@ Detail lengkap visi, scope, dan audiens ada di baseline `../product-discovery/` 
 # Goals
 
 * Membuat pengunjung (founder/product owner, sekunder: hiring manager, calon klien) langsung paham positioning Rezi sebagai product builder dalam satu kunjungan singkat.
-* Menyajikan bukti kredibilitas (pengalaman fullstack, karya, cara kerja) tanpa basa-basi lewat Home, About, dan Work index.
+* Menyajikan bukti kredibilitas (pengalaman fullstack, karya, cara kerja) tanpa basa-basi lewat Home, About, Workflow, dan Work index.
 * Membuka jalur kontak natural (Contact modal) tanpa terasa hard-sell.
 
 Detail lengkap: `../product-discovery/01-business/product-vision.md` (ADR-002, ADR-009).

@@ -107,10 +107,10 @@ Periksa lintas dokumen dalam scope untuk kategori berikut:
    (Work index Must), ADR-024 (mockup HTML arsip), ADR-027 (M10 sheet overlay).
 4. **Terminologi/enum drift** — penyebutan berbeda untuk hal yang sama:
    pemilik keputusan (**Boss Rezi**, bukan gelar lain); persona **P1–P4** /
-   segmen **S1–S6** (bukan nama fiksi wajib); modul **M1–M13**; rute R1
-   (`/[locale]`, `/about`, `/work` — **bukan** `/contact` atau `/work/[slug]`
-   sebagai Must R1); istilah chrome / Quick Info / project sheet / locale
-   ID·EN.
+   segmen **S1–S6** (bukan nama fiksi wajib); modul **M1–M14** (M4 retired);
+   rute R1 (`/[locale]`, `/about`, `/workflow`, `/projects` — **bukan**
+   `/contact` atau `/work/[slug]` sebagai Must R1); istilah chrome / Quick Info /
+   project sheet / locale ID·EN.
 5. **Referensi mati/usang** — link atau sebutan ke file/section/komponen
    yang sudah dihapus, dipindah, atau digantikan (mis. `contact.html` yang
    sudah dihapus, Tailwind coexist padahal ADR-018 replace penuh, mockup

@@ -38,3 +38,7 @@ Paket keputusan Accepted yang diikat: ADR-010, ADR-011 (+ ADR-002, ADR-006, ADR-
 - Mengunci Hybrid penuh (opsi D, case wajib di MVP) — ditolak; sudah ditunda di ADR-010.
 - Baseline tanpa mengunci urutan R2 magnet — ditolak; mengaburkan komitmen magnet ringan ADR-007.
 - Product Baseline v1.0 seperti di atas — diterima.
+
+### Update — 2026-09-07 (ADR-020 / ADR-027 / ADR-032 / ADR-035)
+
+Surface hidup: Home, About, Workflow (`/workflow`, M14), Work index (M9). Contact = modal (ADR-019). M4 teaser Home retired. M10 = overlay sheet Must R1. Modul Must mencakup M9, M10, M13, M14. Dokumen `02-product/` sudah di-amandemen mengikuti ADR itu.

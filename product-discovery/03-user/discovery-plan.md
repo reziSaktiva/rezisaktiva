@@ -68,7 +68,7 @@ Bukan riset formal wajib (interview/survei sebagai gerbang baseline).
 | ID | Asumsi | Risiko jika salah | Mitigasi |
 | -- | ------ | ----------------- | -------- |
 | A1 | Dua archetipe primer setara (early founder & PO) membaca lapisan pesan yang sama | Pesan terlalu “indie” atau terlalu “korporat” | Salinan netral product-builder; teaser outcome, bukan tone tunggal |
-| A2 | Kunjungan singkat cukup untuk clarity jika Home + About + Contact koheren | Pengunjung tetap bingung tanpa case detail | Teaser karya di Home; magnet case di R2 (bukan blocker R1) |
+| A2 | Kunjungan singkat cukup untuk clarity jika Home + About + Contact koheren | Pengunjung tetap bingung tanpa case detail | Teaser karya di Home; magnet case di R2 (bukan blocker R1). **Update (ADR-032 / ADR-020 / ADR-035):** presence = Work index + sheet; Workflow = cara kerja; teaser Home retired |
 | A3 | Soft CTA (email/tautan) cukup untuk inbound berkualitas di R1 | Opportunity hilang karena friction form/booking | Could Have form/calendar di product; validasi setelah live |
 | A4 | Hiring manager / klien project terlayani oleh sinyal sekunder di permukaan yang sama | Mereka bounce karena “bukan CV developer” | Secondary journey tipis: sinyal fullstack + cara kerja tanpa rebrand |
 | A5 | Bilingual geo-aware mengurangi alienasi SEA vs non-SEA | Default bahasa salah → bounce | Detail di UX/Engineering; switcher selalu ada (ADR-002) |

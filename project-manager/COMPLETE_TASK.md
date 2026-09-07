@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- —
+### Changed
+- —
+### Fixed
+- Docs audit pasca ADR-032–035: sisa permukaan lama (teaser Home, About = Proses Kerja, tiga destinasi, Home = M1+M4, default ship light, inventaris T-042 About masih offers/proses). Baseline `02-product` / `03-user` / `04-ux` / `05-architecture`, catatan update ADR-012/014/019/020/022/025, indeks DECISIONS, Snapshot Milestone M14, `v15-visual-identity.md` cluster T-042, `PROJECT_OVERVIEW.md`, skill audit rute R1.
+
+## [2026-09-07]
+### Added
 - Route `/[locale]/workflow` (M14). Chip nav **Proses Kerja / How I Work**. **ADR-035**. **T-045.1–T-045.4**.
 ### Changed
 - `/about` = About pribadi (hero + bukti AI). Offers, approach, values, langkah proses pindah ke Workflow. Label About chrome = Tentang / About.

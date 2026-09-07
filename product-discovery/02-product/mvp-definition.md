@@ -30,7 +30,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 | Item | Keterangan |
 | ---- | ---------- |
-| **Home** | Positioning jelas (klaim + Now); arah ke About/Contact |
+| **Home** | Positioning jelas (klaim + Now); arah ke About / Workflow / Contact |
 | **About** | Narasi pribadi + klaim bukti AI (ADR-032). Label chrome: Tentang / About (ADR-035) |
 | **Workflow** | Cara kerja: offers, approach, values, langkah proses. Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
@@ -40,7 +40,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**) saat light hidup; hold T-038.2 = default dark, toggle tersembunyi |
 | **Quick Info panel (M13)** | Overlay global (tab kanan → drawer); **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
-| **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
+| **Chrome dasar** | Pita footer di About / Workflow / Work index (bukan Home, ADR-033), tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
 | **Destination hygiene** | URL stabil, meta dasar, situs layak dibagikan sebagai link utama |
 
 ---
@@ -105,14 +105,15 @@ MVP dianggap cukup jika:
 
 | Item | Status |
 | ---- | ------ |
-| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/ADR-020/ADR-021/ADR-022 |
+| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/020/021/022/027/032/033/034/035 |
 | MVP definition | **Baseline v1.0** (dokumen ini) |
 | Product Baseline | **v1.0** — ADR-012 |
 | Work index (M9) di MVP | Ya — Must R1 (override ADR-020) |
+| Workflow (M14) di MVP | Ya — Must R1 (ADR-035); route `/workflow` |
 | Case detail (M10) di MVP | Overlay sheet Must R1 (ADR-027); route `/work/[slug]` tidak |
 | Contact | Modal global, bukan halaman (ADR-019) |
 | Quick Info (M13) | Ya — Must R1 (ADR-022) |
-| Theme toggle | Ya — Must R1 (ADR-021), default ship light |
+| Theme toggle | Ya — Must R1 (ADR-021), default ship **dark** (light hold, T-038.2) |
 
 ---
 
@@ -129,5 +130,7 @@ MVP dianggap cukup jika:
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

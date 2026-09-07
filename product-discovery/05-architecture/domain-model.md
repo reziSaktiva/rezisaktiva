@@ -28,7 +28,7 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 
 ## In Scope
 
-* Entitas konten lean (halaman, locale, teaser, saluran kontak)
+* Entitas konten lean (halaman, locale, work item, saluran kontak)
 * Batas: apa yang **bukan** domain produk situs
 
 ## Out of Scope
@@ -73,6 +73,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 | M6 Chrome | Site chrome (termasuk theme toggle, ADR-021) |
 | M7 Meta | Share/meta per Page×Locale |
 | M9 Work index | Page katalog karya + Work item (Must R1, override ADR-020) |
+| M10 Project sheet | Overlay dari bawah; bukan Page (Must R1, ADR-027) |
 | M13 Quick Info | Quick Info overlay (Must R1, ADR-022) |
 
 ---
@@ -123,5 +124,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

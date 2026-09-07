@@ -176,5 +176,8 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 * `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
 * `../../project-manager/decisions/ADR-027-work-project-bottom-sheet-m10.md`
 * `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-033-home-without-footer.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

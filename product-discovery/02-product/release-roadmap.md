@@ -98,7 +98,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 **Exit R3:**
 
-1. Presence terasa “rumah brand”, bukan hanya tiga halaman cukup
+1. Presence terasa “rumah brand”, bukan hanya kerangka lean yang cukup
 2. Craft memperkuat cerita — tidak mengaburkan positioning
 3. Siap ritme update konten proporsional (**Phase 3 — Growth** arah)
 

@@ -103,7 +103,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 
 | Route (pola) | Nama | Modul | R1 |
 | ------------ | ---- | ----- | -- |
-| `/[id/en]/` | Home | M1 + M4 | Must |
+| `/[id/en]/` | Home | M1 | Must |
 | `/[id/en]/about` | About (label chrome: Tentang / About) | M2 | Must |
 | `/[id/en]/workflow` | Workflow (label chrome: Proses Kerja / How I Work) | M14 | **Must R1** (ADR-035) |
 | `/[id/en]/projects` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
@@ -207,5 +207,9 @@ Sebelum R1 dianggap siap live:
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-033-home-without-footer.md`
+* `../../project-manager/decisions/ADR-034-chrome-name-home-chip.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

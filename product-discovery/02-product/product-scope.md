@@ -45,7 +45,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 | Domain | Apa yang dicakup | Catatan |
 | ------ | ---------------- | ------- |
-| **Site chrome** | Nav, footer, ketersediaan soft (“open to…”) | Mendukung presence |
+| **Site chrome** | Nav, footer (bukan Home — ADR-033), ketersediaan soft (“open to…”) | Mendukung presence |
 | **Satellite links** | GitHub, LinkedIn, dll. sebagai tautan keluar | Melengkapi, bukan mengganti situs |
 | **Shareable basics** | Meta/SEO ringan agar URL layak jadi destination | Detail tool di Engineering |
 | **Magnet ringan (post-kerangka)** | Case/proses singkat, halaman Work/detail | Supporting → naik setelah MVP clarity |
@@ -57,7 +57,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 **Di dalam produk (R1 Hybrid lean):**
 
 * Situs publik multi-halaman lean: Home, About, Workflow (`/workflow`, M14), Work index (`/projects`, M9)
-* Section karya/teaser di Home
+* Home = hero + Now saja (bukan teaser karya — ADR-032)
 * Contact modal global (ADR-019) + Quick Info overlay (ADR-022) — bukan halaman terpisah
 * Theme toggle dark/light di chrome (ADR-021)
 * Soft CTA kontak (email dan/atau tautan langsung; tanpa pricing)

@@ -59,3 +59,7 @@ Pengecualian “Work case detail” di keputusan asli merujuk **halaman** `work-
 ### Update — 2026-09-03 (ADR-028)
 
 Primitf overlay Quick Info = shadcn `Sheet` `side="right"` (T-035), di-skin bentuk yang sama. Poin 5 (“overlay custom / bukan alasan pindah shadcn”) adalah jejak R1 (ADR-018/026); migrasi pasca-exit = [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).
+
+### Update — 2026-09-07 (ADR-035)
+
+Tampil di semua halaman R1 termasuk **Workflow** (`/workflow`). Permukaan rute = Home · About · Workflow · Work index + Contact modal. Label “About/Proses Kerja” di keputusan asli tidak lagi menempel di satu route.

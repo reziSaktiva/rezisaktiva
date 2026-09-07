@@ -96,7 +96,7 @@ Presence bukti karya = **M9 Work index** + **M10 project sheet**. ID M4 tidak di
 
 * Nav: Tentang / About, Proses Kerja / How I Work, Proyek (M9) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link; tanpa chip Home (ADR-034 / ADR-035)
 * **Toggle tema (dark/light)** di chrome — Must R1 (**ADR-021**) **saat kedua tema hidup**; update 2026-09-04: default ship dark, light hold, toggle tersembunyi; di mobile Contact tetap di luar hamburger
-* Footer: identitas singkat, satelit, legal ringan bila perlu
+* Footer: identitas singkat, satelit, legal ringan bila perlu — **kecuali Home** (ADR-033); pita ada di About, Workflow, Work index
 * Konsistensi soft availability di chrome (opsional)
 * Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)
 
@@ -141,7 +141,7 @@ M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, A
 
 # Module Design Principles
 
-1. **Satu pekerjaan per modul** — Home = clarity; About = narasi; Contact = path.
+1. **Satu pekerjaan per modul** — Home = clarity; About = narasi + bukti AI; Workflow = cara kerja; Contact = path.
 2. **Kurasi ketat** — teaser sedikit yang kuat > daftar panjang.
 3. **Soft by default** — Contact tidak berubah jadi sales page.
 4. **Bahasa sebagai lapisan** — bukan afterthought; konten inti dual.
@@ -173,5 +173,7 @@ Modul dianggap cukup terdefinisi jika:
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/decisions/ADR-023-cv-download-contact-modal.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
