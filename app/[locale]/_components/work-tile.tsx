@@ -53,6 +53,7 @@ export function WorkTile({
               ? "(max-width: 767px) 100vw, 1400px"
               : "(max-width: 767px) 100vw, 700px",
           )}
+          priority={featured}
         />
       </div>
       <div aria-hidden="true" className="home-work-tile-drip">

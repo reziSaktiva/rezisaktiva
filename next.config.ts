@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
   images: {
     // `workPhotoProps` and Unsplash `quality={90}` (default allowlist is only 75).
     qualities: [75, 90],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+    ],
   },
   async redirects() {
     return [

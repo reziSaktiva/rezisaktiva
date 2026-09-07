@@ -20,6 +20,15 @@ Format entri:
 ### Changed
 - —
 ### Fixed
+- `/[locale]/projects` 500: cover Unsplash ditolak `next/image`. `images.unsplash.com` ditambah ke `remotePatterns`; tile featured `priority`.
+- Hero Work/Projects: `padding-block-start` 5rem/6rem → token `--spacing-8` / `--spacing-10` (header sudah di atas konten, bukan overlay seperti Home).
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
 - H1 Home terpotong di tablet: layout dua sudut (baris 2 `max-width: 100% − 36rem`) baru dari 1200px; 768–1199 memakai pola mobile + padding kanan supaya tidak ketutup tab Quick info.
 
 ## [2026-09-07]

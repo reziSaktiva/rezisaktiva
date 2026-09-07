@@ -2185,13 +2185,13 @@ button.home-work-tile,
 }
 
 .work-hero {
-  padding-block-start: 5rem;
-  padding-block-end: 3rem;
+  padding-block-start: var(--spacing-8);
+  padding-block-end: var(--spacing-8);
 }
 
 @media (min-width: 768px) {
   .work-hero {
-    padding-block-start: 6rem;
+    padding-block-start: var(--spacing-10);
   }
 }
 
