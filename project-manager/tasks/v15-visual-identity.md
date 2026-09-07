@@ -15,7 +15,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 | Area | Tetap | Berganti |
 | ---- | ----- | -------- |
 | Copy / konten | `content/*` T-021, Now, katalog karya | Tidak |
-| IA / overlay **perilaku** | Contact modal (ADR-019), Quick Info kanan (ADR-022), sheet karya dari bawah (ADR-027), hamburger &lt;1024px (ADR-020), About + Workflow sebagai rute terpisah (ADR-035), pita Contact di About / Workflow / Work index **bukan** Home (ADR-025 / ADR-033) | Skin visual overlay/chrome |
+| IA / overlay **perilaku** | Contact modal (ADR-019), Quick Info kanan (ADR-022), sheet karya dari bawah (ADR-027), hamburger &lt;1024px (ADR-020), About section di Home (ADR-040), Workflow rute terpisah (ADR-035), pita Contact di semua rute termasuk Home (ADR-025 / ADR-041) | Skin visual overlay/chrome |
 | Stack | shadcn primitf yang sudah ada, Tailwind v4, Motion, Lenis, cookie `rz-theme`, anti-flash | Palet, tipe, mood, bahasa elevasi/chip |
 | Render | SSG + `content/` + `generateStaticParams`; `"use client"` hanya island | Tidak |
 | Clarity | UX1: first viewport tetap menjawab siapa & untuk siapa | Atmosfer membungkus klaim, tidak menelannya |
@@ -57,7 +57,7 @@ Ini **bukan** restyle diam-diam.
 T-038 kunci arah  →  T-039 token  →  T-040 chrome  →  T-041 overlay  →  T-042 halaman  →  T-043 gerak sistem + docs
 ```
 
-Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header di semua rute; pita footer di About / Workflow / Work index (bukan Home, ADR-033).
+Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header di semua rute; pita footer di Home / Workflow / Work index (ADR-041).
 
 ### Inventaris Q&A (cluster)
 
@@ -84,7 +84,7 @@ Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header di sem
 
 **T-042 — Halaman** (blok tetap; IA ADR-032 / ADR-035)
 
-- Home: hero h1 dua baris kiri-atas / kanan-bawah, lede lantai bawah (ADR-038 / T-051); **section About** `#about` (ADR-040); tanpa Now di hero; tanpa pita footer (ADR-033)
+- Home: hero h1 dua baris kiri-atas / kanan-bawah, lede lantai bawah (ADR-038 / T-051); **section About** `#about` (ADR-040); tanpa Now di hero; pita footer setelah About (ADR-041)
 - About: **section di Home** (bukan halaman) — Now + karya seni + caption (ADR-039); tanpa `#proof`
 - Workflow: offers, values, proses rest/active (`/workflow`)
 - Work: index + tile (klik → sheet yang sama)
@@ -188,7 +188,7 @@ Home / About / Workflow / Work; **tema gelap yang di-ship** (light di-hold — j
 
 ### Subtasks
 
-- [ ] **T-042.1** — Q&A + kode: Home (**satu section**, h1 atas + lede lantai bawah — ADR-038 / T-050; ADR-032 / ADR-033 tanpa pita footer, tanpa Now). Tanpa potret. Lede + tautan `/workflow`. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh. **2026-09-07 (setelah ADR-040):** wallpaper memudar saat scroll ke `#about`, muncul lagi saat kembali ke hero. **ADR-032:** credibility + teaser dicabut. **ADR-033:** pita footer dicabut dari Home. **ADR-036 / T-046:** copy kalimat h1. **ADR-037 / T-047:** Now ke About. **ADR-038 / T-048–T-051:** dua baris display kiri-atas / kanan-bawah (skala −2 tingkat; ID `yang mulus`) + CTA Workflow di lantai bawah. **T-041** ✅ — sisa = restyle Q&A hero Home di subtask ini.
+- [ ] **T-042.1** — Q&A + kode: Home (h1 atas + lede lantai bawah — ADR-038 / T-050; ADR-032 / ADR-041 pita footer setelah `#about`, tanpa Now). Tanpa potret. Lede + tautan `/workflow`. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh. **2026-09-07 (setelah ADR-040):** wallpaper memudar saat scroll ke `#about`, muncul lagi saat kembali ke hero. **ADR-032:** credibility + teaser dicabut. **ADR-041:** pita footer di Home. **ADR-036 / T-046:** copy kalimat h1. **ADR-037 / T-047:** Now ke About. **ADR-038 / T-048–T-051:** dua baris display kiri-atas / kanan-bawah (skala −2 tingkat; ID `yang mulus`) + CTA Workflow di lantai bawah. **T-041** ✅ — sisa = restyle Q&A hero Home di subtask ini.
 - [ ] **T-042.2** — Q&A + kode: About sebagai **section Home** (`#about` — ADR-040): Now, h2 clamp Home, lead penuh, karya seni + “This is not me” (ADR-039). Tanpa `#proof`. **Dikunci chat 2026-09-07** (hero); **2026-09-07** pindah ke Home.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi rute, tema gelap yang di-ship, 320 / 375 / desktop.
 - [ ] **T-042.4** — Q&A + kode: Workflow (`/workflow` — offers, values, proses rest/active). Copy T-021.3 tidak dipotong.

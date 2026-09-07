@@ -6,7 +6,7 @@ Home tanpa pita footer Contact
 
 ### Status
 
-Accepted
+Superseded (ADR-041)
 
 ### Date
 
@@ -33,3 +33,7 @@ Accepted
 
 - Kode: `SiteFooterSlot` di layout locale; `SiteFooter` tidak ikut SSG Home.
 - Docs: `04-ux/` (IA, key screens, nav), M1, ADR-025 / ADR-032 catatan. Task **T-044.6**.
+
+### Update — 2026-09-07 (ADR-041)
+
+Diganti: Home **merender** pita footer Contact lagi. `SiteFooterSlot` dicabut.

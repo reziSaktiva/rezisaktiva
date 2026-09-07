@@ -56,14 +56,15 @@ Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`. **Tidak ada
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship **dark**, light hold, toggle tersembunyi selama hold (T-038.2, 2026-09-04)
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
 6. **Project sheet (M10)** — overlay dari bawah dari tile Work index; bukan rute baru (**ADR-027**)
-7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu — **kecuali Home** (ADR-033). Ada di Workflow dan Work index.
+7. Footer: identitas singkat · pita Contact · satelit LinkedIn/GitHub · legal ringan — semua rute termasuk Home (ADR-041).
 8. Mobile (<1024px): nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
 
 ### Home (urutan konten)
 
 1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah; memudar saat scroll ke `#about`, kembali di hero. Bukan tile karya.
-2. **About** — section `#about` (ADR-040): Now, sapaan, lead, karya seni + caption. Bukan halaman terpisah. Tanpa `#proof`. Tanpa pita footer (ADR-033).
-3. **Arah soft** — ke Workflow dan/atau Contact lewat chrome (tombol Contact + modal).
+2. **About** — section `#about` (ADR-040): Now, sapaan, lead, karya seni + caption. Bukan halaman terpisah. Tanpa `#proof`.
+3. **Pita footer Contact** — setelah `#about` (ADR-041): heading + CTA modal + legal + satelit.
+4. **Arah soft** — ke Workflow lewat lede/chrome; Contact lewat chrome + pita footer.
 
 **Bukan di Home:** credibility line; work teaser. Cara kerja = Workflow. Karya = Work index.
 
@@ -97,7 +98,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | `/[id/en]/about` | Redirect ke `/[id/en]#about` | — | Redirect (ADR-040) |
 | `/[id/en]/workflow` | Workflow (label chrome: Proses Kerja / How I Work) | M14 | **Must R1** (ADR-035) |
 | `/[id/en]/projects` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
-| Chrome global | Nav + switcher + theme toggle; footer di Workflow + Work index (bukan Home, ADR-033) | M5, M6 | Must (toggle: ADR-021) |
+| Chrome global | Nav + switcher + theme toggle; footer pita Contact di semua rute termasuk Home (ADR-041) | M5, M6 | Must (toggle: ADR-021) |
 | Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
 | Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022) |
 | Overlay global | Project context sheet (bukan path) | M10 | Must (ADR-027); dari bawah; tile Work index |
@@ -198,7 +199,8 @@ Sebelum R1 dianggap siap live:
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
-* `../../project-manager/decisions/ADR-033-home-without-footer.md`
+* `../../project-manager/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
+* `../../project-manager/decisions/ADR-041-home-with-footer.md`
 * `../../project-manager/decisions/ADR-034-chrome-name-home-chip.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`

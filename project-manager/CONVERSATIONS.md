@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — Footer kembali di Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta tambahkan footer ke Home. Pita Contact yang sama dengan Workflow/Projects muncul setelah section About.
+**Key Decision/Insight:** ADR-041 supersede ADR-033. `SiteFooterSlot` dicabut.
+**Impact:** layout locale, IA, key screens, nav, M1/M6, T-053.
+
 ## [2026-09-07] — Wallpaper Home fade ke About
 **Phase:** Validation
 **Summary:** Boss Rezi minta wallpaper MP4 di Home memudar saat scroll ke section About, lalu muncul lagi saat scroll kembali ke hero.

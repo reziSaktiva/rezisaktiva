@@ -40,7 +40,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**) saat light hidup; hold T-038.2 = default dark, toggle tersembunyi |
 | **Quick Info panel (M13)** | Overlay global (tab kanan → drawer); **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
-| **Chrome dasar** | Pita footer di About / Workflow / Work index (bukan Home, ADR-033), tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
+| **Chrome dasar** | Pita footer di Home / Workflow / Work index (ADR-041), tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
 | **Destination hygiene** | URL stabil, meta dasar, situs layak dibagikan sebagai link utama |
 
 ---

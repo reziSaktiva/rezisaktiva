@@ -27,7 +27,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 **Isi inti:**
 
 * Hero / klaim positioning (h1 atas; lede lantai bawah; tautan Workflow di lede)
-* Soft arah ke About dan Contact (chrome; bukan pita footer — ADR-033)
+* Soft arah ke About dan Contact (chrome + pita footer setelah `#about` — ADR-041)
 
 **Bukan:** Now (itu M2 About, ADR-037), katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; cara kerja di M14; karya di M9).
 
@@ -96,7 +96,7 @@ Presence bukti karya = **M9 Work index** + **M10 project sheet**. ID M4 tidak di
 
 * Nav: Tentang / About, Proses Kerja / How I Work, Proyek (M9) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link; tanpa chip Home (ADR-034 / ADR-035)
 * **Toggle tema (dark/light)** di chrome — Must R1 (**ADR-021**) **saat kedua tema hidup**; update 2026-09-04: default ship dark, light hold, toggle tersembunyi; di mobile Contact tetap di luar hamburger
-* Footer: identitas singkat, satelit, legal ringan bila perlu — **kecuali Home** (ADR-033); pita ada di About, Workflow, Work index
+* Footer: identitas singkat, satelit, legal ringan, pita Contact di semua rute termasuk Home (ADR-041)
 * Konsistensi soft availability di chrome (opsional)
 * Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)
 

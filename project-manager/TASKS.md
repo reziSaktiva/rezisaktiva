@@ -4,7 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-052** — About = section Home ✅ (2026-09-07). Detail: [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md). **ADR-040**.
+1. **T-053** — Pita footer Contact di Home ✅ (2026-09-07). Detail: [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md). **ADR-041**.
+2. **T-052** — About = section Home ✅ (2026-09-07). Detail: [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md). **ADR-040**.
 2. **T-051** — H1 dua baris kiri-atas / kanan-bawah; copy ID mulus ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
 2. **T-050** — Lede di lantai bawah hero ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
 3. **T-049** — Lede di bawah h1; skala h1 −2 tingkat ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
@@ -12,7 +13,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 5. **T-047** — Lede Home + Now ke About ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-037**.
 6. **T-046** — Klaim hero Home wrapping ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-036**.
 7. **T-045** — About vs Workflow ✅ (2026-09-07). Detail: [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md). **ADR-035**.
-8. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**, **ADR-033** (Home tanpa footer).
+8. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**; **ADR-033** superseded **ADR-041**.
 9. **T-042.2** — About identitas visual ⏳ (hero dikunci ADR-039; About kini section Home, ADR-040). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 10. **T-041** — Overlay identitas visual ✅ (T-041.1–T-041.3, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 11. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.7, ADR-034). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
@@ -41,10 +42,10 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
 | v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
-| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-031, **ADR-032** Home hero-only, **ADR-033** tanpa footer Home, **ADR-035** About vs Workflow) |
-| v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032, ADR-033) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-031, **ADR-032** Home hero + About, **ADR-041** footer Home, **ADR-035** About vs Workflow) |
+| v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032; ADR-033 superseded ADR-041) |
 | v17 About vs Workflow | [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md) | T-045 | ✅ Done (ADR-035) |
-| v18 About section Home | [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md) | T-052 | ✅ Done (**ADR-040**) |
+| v18 About section Home | [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md) | T-052, T-053 | ✅ Done (**ADR-040**, **ADR-041**) |
 
 ## Aturan
 

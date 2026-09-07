@@ -45,7 +45,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020).
 
-**Footer = pita Contact (ADR-025, ADR-033):** pita terakhir di **About**, **Workflow**, dan **Work index** — heading besar dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. **Home tidak merender pita ini.** Tombol Kontak di header tetap.
+**Footer = pita Contact (ADR-025, ADR-041):** pita terakhir di **Home** (setelah `#about`), **Workflow**, dan **Work index** — heading besar dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. Tombol Kontak di header tetap.
 
 ---
 
@@ -55,13 +55,13 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 1. Klaim positioning: **product builder** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038; **tanpa potret**)
 2. Lede sempit di **lantai bawah** first viewport, tautan ke `/workflow`; wallpaper hero terbaca di tengah. Wallpaper memudar saat scroll ke `#about`, kembali saat scroll ke hero
-3. Satu arah soft (ke Workflow atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
+3. Satu arah soft (ke Workflow atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal + pita footer setelah About (ADR-041)
 
 **Home = hero + section About (ADR-040).** Hero 100svh. Now di `#about`. Tidak ada credibility line atau work teaser.
 
 **Tanpa potret di hero Home.** Karya seni di S2 `#about`. Jangan mengisi kekosongan hero dengan cutout wajah, blob, atau stock Unsplash.
 
-**Contact di Home (ADR-033):** tidak ada section `#contact-cta` dan tidak ada pita footer. Arah Contact = tombol chrome + modal.
+**Contact di Home (ADR-041):** tidak ada section Contact di tengah halaman. Pita footer `#contact-cta` setelah `#about`. Arah Contact = tombol chrome + modal + pita.
 
 **Anti-pattern:** hero yang hanya nama tanpa klaim; dual CTA agresif (“Hire me” + pricing); menumpuk katalog karya di Home.
 
@@ -75,8 +75,8 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Blok berurutan:**
 
-1. Section `#about` — **Now** (`#now`) + judul display (`h2`, clamp sama Home) + **karya seni viewport** + caption “This is not me”; lead penuh. **Tanpa** badge availability. **Tanpa** `#proof`. **Tanpa** pita Contact (Home, ADR-033)
-2. Soft CTA Contact lewat chrome (tombol header / modal), bukan section di About
+1. Section `#about` — **Now** (`#now`) + judul display (`h2`, clamp sama Home) + **karya seni viewport** + caption “This is not me”; lead penuh. **Tanpa** badge availability. **Tanpa** `#proof`.
+2. Soft CTA Contact lewat chrome (tombol header / modal) dan pita footer di layout Home (ADR-041), bukan section di dalam About
 
 **Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; menumpuk pipeline proses di About.
 
@@ -176,7 +176,8 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 * `../../project-manager/decisions/ADR-027-work-project-bottom-sheet-m10.md`
 * `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
-* `../../project-manager/decisions/ADR-033-home-without-footer.md`
+* `../../project-manager/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
+* `../../project-manager/decisions/ADR-041-home-with-footer.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
 * `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`

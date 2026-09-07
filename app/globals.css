@@ -1878,17 +1878,12 @@ button.home-work-tile,
   width: min(100%, calc(var(--about-portrait-height) * 634 / 1024));
   margin-inline: auto;
   overflow: hidden;
-}
-
-@media (min-width: 1024px) {
-  .about-portrait {
-    margin-inline: 0;
-  }
+  border: 1px solid var(--color-border);
 }
 
 .about-portrait img {
   object-fit: contain;
-  object-position: center top;
+  object-position: center;
 }
 
 .about-portrait-caption {
@@ -2123,6 +2118,7 @@ button.home-work-tile,
   padding-inline: var(--spacing-6);
   padding-block-start: 5rem;
   padding-block-end: var(--spacing-8);
+  background-color: var(--color-background-body);
 }
 
 @media (min-width: 768px) {

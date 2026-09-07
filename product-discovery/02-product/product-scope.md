@@ -45,7 +45,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 | Domain | Apa yang dicakup | Catatan |
 | ------ | ---------------- | ------- |
-| **Site chrome** | Nav, footer (bukan Home — ADR-033), ketersediaan soft (“open to…”) | Mendukung presence |
+| **Site chrome** | Nav, footer (semua rute — ADR-041), ketersediaan soft (“open to…”) | Mendukung presence |
 | **Satellite links** | GitHub, LinkedIn, dll. sebagai tautan keluar | Melengkapi, bukan mengganti situs |
 | **Shareable basics** | Meta/SEO ringan agar URL layak jadi destination | Detail tool di Engineering |
 | **Magnet ringan (post-kerangka)** | Case/proses singkat, halaman Work/detail | Supporting → naik setelah MVP clarity |

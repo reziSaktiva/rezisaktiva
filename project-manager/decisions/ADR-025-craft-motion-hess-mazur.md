@@ -20,7 +20,7 @@ Accepted
 4. **Fondasi gerak situs (sekali, semua halaman):**
    - Smooth-scroll inertia (Lenis, window scroll; AppShell `height="auto"`). **Pause** saat Contact modal atau Quick Info terbuka. **Off** jika `prefers-reduced-motion`. Bukan `scroll-behavior: smooth` native. Tanpa parallax berat (batas ADR-017 tetap).
    - Transisi halaman mengikuti ritme karolinahess.com (snapshot CSS, bukan View Transitions API — Next App Router sering timeout DOM update): halaman lama naik + scale 0.5 selama 1s; halaman baru masuk dari bawah 0.4s setelah delay 0.4s; easing `cubic-bezier(0.65, 0, 0.43, 1)`. Warna celah = `--color-background-body` tema, bukan palet Hess. Reduced-motion = ganti halaman instan. Chrome tetap (nav tidak ikut scale).
-5. **Contact menyatu footer** di About dan Work index: pita terakhir (heading dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada**) + baris legal/satelit. Section `#contact-cta` terpisah di tengah/akhir halaman dihapus. Tombol Kontak di header tetap (ADR-019). **Update (ADR-033):** Home **tidak** merender pita ini.
+5. **Contact menyatu footer** di semua rute: pita terakhir (heading dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada**) + baris legal/satelit. Section `#contact-cta` terpisah di tengah/akhir halaman dihapus. Tombol Kontak di header tetap (ADR-019). **Update (ADR-041):** Home merender pita ini lagi (ADR-033 superseded).
 6. **Home & Work tetap menaruh bukti di depan.** Urutan Home J1/J2 + teaser tidak digeser oleh 4 langkah proses penuh. Hover tile/CTA diperkuat; h1/section title ditarik ke ritme display yang lebih besar (token/`clamp`, bukan hex).
 7. Astryx tidak punya Lenis atau transisi halaman — lapisan custom diizinkan. Transisi halaman memakai token `--duration-page-*` / `--ease-page-transition` (bukan `--duration-medium`). Scroll-reveal yang sudah ada (`home-motion.tsx`) tetap.
 
@@ -54,4 +54,4 @@ Pola yang **tetap**: About sebagai halaman sendiri, rest/active, pita Contact, L
 
 ### Update — 2026-09-07 (ADR-032 / ADR-033 / ADR-035)
 
-Rest/active untuk offers/values/langkah proses hidup di **Workflow** (`/workflow`), bukan di About. About = narasi pribadi + bukti AI. Teaser Home (poin 6) **retired** (ADR-032). Pita Contact **tidak** di Home (ADR-033); tetap di About, Workflow, Work index.
+Rest/active untuk offers/values/langkah proses hidup di **Workflow** (`/workflow`), bukan di About. About = narasi pribadi + bukti AI. Teaser Home (poin 6) **retired** (ADR-032). Pita Contact di Home, Workflow, Work index (ADR-041; ADR-033 superseded).

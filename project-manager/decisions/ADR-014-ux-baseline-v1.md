@@ -41,4 +41,4 @@ Accepted
 
 ### Update — 2026-09-07 (ADR-019 / ADR-020 / ADR-027 / ADR-032 / ADR-033 / ADR-034 / ADR-035)
 
-IA hidup = empat destinasi konten (Home, About, Workflow, Work index) + overlay Contact / Quick Info / project sheet. Teaser Home retired. Chip nav tanpa Home; About vs Workflow terpisah. F7 = project sheet Must (bukan Later). Nav mobile hamburger <1024px. Footer pita Contact bukan di Home. Dokumen `04-ux/` sudah di-amandemen.
+IA hidup = tiga destinasi konten (Home termasuk `#about`, Workflow, Work index) + overlay Contact / Quick Info / project sheet. Teaser Home retired. Chip nav tanpa Home; About vs Workflow terpisah. F7 = project sheet Must (bukan Later). Nav mobile hamburger <1024px. Footer pita Contact di semua rute termasuk Home (ADR-041). Dokumen `04-ux/` sudah di-amandemen.

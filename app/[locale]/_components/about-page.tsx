@@ -30,7 +30,7 @@ export function AboutSection({ locale }: { locale: Locale }) {
           </Reveal>
         </div>
         <Reveal>
-          <div className="about-portrait-block flex flex-col gap-3">
+          <div className="about-portrait-block flex flex-col items-center gap-3">
             <div className="about-portrait">
               <NextImage
                 src={ABOUT_PORTRAIT_SRC}

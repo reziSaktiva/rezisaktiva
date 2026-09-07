@@ -28,6 +28,22 @@ Format entri:
 ### Changed
 - —
 ### Fixed
+- Karya seni About (`#about`) dipusatkan di tengah kolom (bukan rata kiri desktop).
+
+## [2026-09-07]
+### Added
+- **ADR-041** / **T-053** — pita footer Contact di Home (setelah `#about`); `SiteFooter` selalu di layout locale.
+### Changed
+- **ADR-033** superseded. Docs IA / key screens / nav / M1–M6 / TASKS selaras pita di semua rute.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
 - Overlay Next “Export AboutPage doesn't exist”: `app/[locale]/about/page.tsx` redirect ke `/{locale}#about` (ADR-040), tanpa impor `AboutPage`.
 
 ## [2026-09-07]

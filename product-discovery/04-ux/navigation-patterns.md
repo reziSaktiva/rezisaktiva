@@ -44,8 +44,8 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 
 | Area | Isi | Peran |
 | ---- | --- | ----- |
-| **In-page (Home)** | Arah soft lewat chrome (nav + tombol Contact) | Memperkuat next step tanpa section atau pita footer (ADR-033) |
-| **Footer** | Brand singkat · pita Contact · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer. **Tidak di Home** (ADR-033); ada di About, Workflow, Work index |
+| **In-page (Home)** | Arah soft lewat chrome (nav + tombol Contact) + pita footer setelah About | Memperkuat next step tanpa section Contact di tengah halaman (ADR-041) |
+| **Footer** | Brand singkat · pita Contact · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer. Ada di Home, Workflow, Work index (ADR-041) |
 | **Work index tiles** | Membuka project sheet (M10) | Overlay dari bawah (ADR-027); live/repo sekunder di dalam sheet |
 | **Quick info panel (M13)** | Tab tepi kanan → drawer: bio, Services, Tools, Proyek/Projects, Email, Links | Overlay global (bukan route). Tidak menggantikan Contact modal (ADR-019) atau footer satelit — **ADR-022** |
 | **Tidak ada** | Nav Work terpisah dari Proyek, Blog, Services sebagai halaman, Pricing, WA, Instagram | Out of scope R1 |
@@ -71,7 +71,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * Breakpoint **<1024px**: nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
 * **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019). **Toggle tema (ADR-021):** Must di luar hamburger **saat light hidup**; selama hold T-038.2 toggle **tidak** ditampilkan. Default ship **dark**.
 * ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
-* Footer satelit (pita Contact) ada di About / Workflow / Work index sebagai pelengkap, bukan pengganti Contact. **Home tidak merender pita ini** (ADR-033).
+* Footer satelit (pita Contact) ada di Home / Workflow / Work index sebagai pelengkap, bukan pengganti Contact (ADR-041).
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
 * **Komposisi panel hamburger** (kontrak visual mockup, 2026-08-20): satu lembar aksen kuning; **item nav halaman selebar panel** (state aktif = bar penuh, bukan pill selebar teks); **switcher ID/EN compact** (chip, tidak meregang penuh).
 * **Chrome satu baris** di ponsel: brand kiri; hamburger + tema + Contact kanan. Tidak wrap jadi dua baris. Lantai lebar **320px** (iPhone SE 1) wajib rapi; **375px** (SE 2/3) acuan ponsel utama.
@@ -101,7 +101,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 | Item | Status |
 | ---- | ------ |
-| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (hamburger); ADR-021 toggle; ADR-022 Quick info; ADR-034 tanpa chip Home; ADR-035 About vs Workflow; ADR-033 footer bukan di Home; acuan visual hidup = kode (ADR-024) |
+| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (hamburger); ADR-021 toggle; ADR-022 Quick info; ADR-034 tanpa chip Home; ADR-035 About vs Workflow; ADR-041 footer di semua rute; acuan visual hidup = kode (ADR-024) |
 
 ---
 
@@ -116,7 +116,8 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/decisions/ADR-033-home-without-footer.md`
+* `../../project-manager/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
+* `../../project-manager/decisions/ADR-041-home-with-footer.md`
 * `../../project-manager/decisions/ADR-034-chrome-name-home-chip.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
