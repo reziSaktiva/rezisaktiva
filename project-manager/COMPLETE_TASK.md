@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- **T-052.1–T-052.2** — About jadi section `#about` di Home; chip nav tetap; `/about` redirect. **ADR-040**.
+### Changed
+- Cabut `#proof` dan pita Contact dari About (Home tetap tanpa footer). JSON-LD tanpa ProfilePage. Sitemap tanpa URL `/about`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - **T-042.2** (hero) — karya seni `public/media/about-hero.jpg` setinggi viewport + caption “This is not me”; **ADR-039**.
 ### Changed
 - About: badge availability dicabut; lead satu paragraf (tanpa rest/active); copy ID/EN baru; h1 mengikuti clamp Home.

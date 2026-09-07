@@ -25,6 +25,18 @@ export function freezeWindowScrollAtTop(): void {
   document.body.scrollTop = 0;
 }
 
+export function scrollToPageId(id: string): void {
+  const target = document.getElementById(id);
+  if (!target) {
+    return;
+  }
+  if (lenisForTransition) {
+    lenisForTransition.scrollTo(target, { offset: 0 });
+    return;
+  }
+  target.scrollIntoView();
+}
+
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }

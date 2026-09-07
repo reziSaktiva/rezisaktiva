@@ -8,7 +8,7 @@ Dokumen ini menetapkan struktur informasi & halaman website portofolio **rezisak
 
 # Overview
 
-IA R1 = **empat halaman konten** (Home, About, Workflow, Work index) + **Contact, Quick Info, dan project sheet sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis). Home **tidak** punya section teaser atau credibility line (ADR-032). About = narasi pribadi; cara kerja = `/workflow` (ADR-035).
+IA R1 = **tiga halaman konten** (Home, Workflow, Work index) + **About sebagai section di Home** (`#about`, ADR-040) + **Contact, Quick Info, dan project sheet sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis). Home **tidak** punya teaser karya atau credibility line (ADR-032). About = narasi pribadi di Home; cara kerja = `/workflow` (ADR-035).
 
 > **Update (2026-08-26, ADR-027):** M10 Must R1 = overlay sheet dari bawah (bukan `/work/[slug]`). Tile Work index membuka sheet.
 
@@ -29,8 +29,8 @@ Locale sebagai **path param** `[id/en]` — nilai ∈ `{ id, en }` (bukan query 
 ```text
 /                         → redirect ke locale default (geo / preferensi)
 └── /[id/en]/
-    ├── /[id/en]/           → Home
-    ├── /[id/en]/about      → About (pribadi)
+    ├── /[id/en]/           → Home (hero + section About `#about`)
+    ├── /[id/en]/about      → redirect ke `/[id/en]#about` (ADR-040)
     ├── /[id/en]/workflow   → Workflow / Proses Kerja (ADR-035)
     └── /[id/en]/projects   → Work index (M9, Must R1 — ADR-020)
 
@@ -40,7 +40,7 @@ Overlay global (bukan route, tampil di atas halaman manapun):
     • Project sheet      → dibuka dari tile Work index (M10, ADR-027; dari bawah)
 ```
 
-Contoh konkret: `/id/`, `/id/about`, `/id/workflow`, `/en/projects`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). **Tidak ada** route `/projects/[slug]` di R1.
+Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). **Tidak ada** route `/projects/[slug]` di R1. `/about` hanya redirect.
 
 **Bukan R1 (Later / R2):** halaman case `/projects/[slug]`, blog, auth area.
 
@@ -51,32 +51,21 @@ Contoh konkret: `/id/`, `/id/about`, `/id/workflow`, `/en/projects`. **Tidak ada
 ### Lintas halaman (chrome)
 
 1. Identitas brand (nama / mark)
-2. Primary nav: **nama** (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · **Tentang / About** (`/about`) · **Proses Kerja / How I Work** (`/workflow`, ADR-035) · **Proyek / Projects** (M9, path `/projects`, ADR-020) sebagai chip; Contact sebagai tombol pembuka modal (ADR-019), bukan link. **Tidak ada chip Home.**
+2. Primary nav: **nama** (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · **Tentang / About** (`#about` di Home, ADR-040) · **Proses Kerja / How I Work** (`/workflow`, ADR-035) · **Proyek / Projects** (M9, path `/projects`, ADR-020) sebagai chip; Contact sebagai tombol pembuka modal (ADR-019), bukan link. **Tidak ada chip Home.**
 3. Language switcher (`ID` ↔ `EN`) → URL path sibling
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship **dark**, light hold, toggle tersembunyi selama hold (T-038.2, 2026-09-04)
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
 6. **Project sheet (M10)** — overlay dari bawah dari tile Work index; bukan rute baru (**ADR-027**)
-7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu — **kecuali Home** (ADR-033). Ada di About, Workflow, Work index.
+7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu — **kecuali Home** (ADR-033). Ada di Workflow dan Work index.
 8. Mobile (<1024px): nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
 
 ### Home (urutan konten)
 
-1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah. **Satu-satunya section Home** (ADR-032). Bukan tile karya. Foto hanya di About
-2. **Arah soft** — ke About, Workflow, dan/atau Contact lewat chrome (tombol Contact + modal). **Bukan** pita footer di Home (ADR-033)
+1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah. Bukan tile karya.
+2. **About** — section `#about` (ADR-040): Now, sapaan, lead, karya seni + caption. Bukan halaman terpisah. Tanpa `#proof`. Tanpa pita footer (ADR-033).
+3. **Arah soft** — ke Workflow dan/atau Contact lewat chrome (tombol Contact + modal).
 
-**Bukan di Home:** Now / status pekerjaan; credibility line; work teaser. Now = About. Bukti AI = About (setelah hero). Cara kerja = Workflow. Karya = Work index.
-
-### About
-
-Label chrome: **Tentang** (`id`) / **About** (`en`) — ADR-035; route `/[id/en]/about`.
-
-1. **Karya seni hero** (viewport, caption “This is not me” — **bukan** foto Rezi; ADR-039)
-2. **Now** — kicker + “saat ini di” + nama perusahaan (tautan) di hero About (`#now`, ADR-037)
-3. Sapaan + lead pribadi (satu paragraf, selalu terlihat — ADR-039)
-4. **Bukti AI** (klaim non-kartu, copy T-021.2) — section setelah hero (ADR-032)
-5. Soft arah ke Workflow / Contact / Work index lewat chrome + pita footer
-
-**Bukan di About:** offers, approach, values, langkah proses (itu Workflow).
+**Bukan di Home:** credibility line; work teaser. Cara kerja = Workflow. Karya = Work index.
 
 ### Workflow
 
@@ -104,11 +93,11 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 
 | Route (pola) | Nama | Modul | R1 |
 | ------------ | ---- | ----- | -- |
-| `/[id/en]/` | Home | M1 | Must |
-| `/[id/en]/about` | About (label chrome: Tentang / About) | M2 | Must |
+| `/[id/en]/` | Home (termasuk section About `#about`) | M1 + M2 | Must |
+| `/[id/en]/about` | Redirect ke `/[id/en]#about` | — | Redirect (ADR-040) |
 | `/[id/en]/workflow` | Workflow (label chrome: Proses Kerja / How I Work) | M14 | **Must R1** (ADR-035) |
 | `/[id/en]/projects` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
-| Chrome global | Nav + switcher + theme toggle; footer di About + Workflow + Work index (bukan Home, ADR-033) | M5, M6 | Must (toggle: ADR-021) |
+| Chrome global | Nav + switcher + theme toggle; footer di Workflow + Work index (bukan Home, ADR-033) | M5, M6 | Must (toggle: ADR-021) |
 | Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
 | Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022) |
 | Overlay global | Project context sheet (bukan path) | M10 | Must (ADR-027); dari bawah; tile Work index |
@@ -121,7 +110,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | Entry | Perilaku yang diharapkan |
 | ----- | ------------------------ |
 | URL bare domain `/` | Redirect ke `/id/...` atau `/en/...` sesuai aturan default di bawah |
-| Link langsung ber-locale (mis. `/id/about`, `/en/projects`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
+| Link langsung ber-locale (mis. `/id#about`, `/en/projects`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
 | Switcher | Pindah ke path sibling locale yang sama (Home↔Home, About↔About, dst.) |
 | Share URL | Prefer URL ber-locale agar penerima melihat bahasa yang sama (SC6) |
 | Satelit GitHub/LinkedIn (keluar) | Boleh; Contact & Home tetap destination utama |
@@ -142,9 +131,9 @@ Berlaku untuk memilih locale saat **masuk tanpa locale di URL** (terutama redire
 
 Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Engineering:
 
-1. Setiap halaman R1 (`Home`, `About`, `Workflow`, `Work index`) punya **title** dan **meta description** unik per locale (`id` / `en`), makna setara
+1. Setiap halaman R1 (`Home`, `Workflow`, `Work index`) punya **title** dan **meta description** unik per locale (`id` / `en`), makna setara
 2. **Open Graph** dasar (title, description, url kanonis ber-locale) agar URL layak dishare ke chat/tim
-3. URL yang dishare **ber-locale** (contoh `/id/about`); bare `/` hanya entry redirect — bukan URL share yang dianjurkan
+3. URL yang dishare **ber-locale** (contoh `/id#about`); bare `/` hanya entry redirect — bukan URL share yang dianjurkan
 4. Canonical per locale; jangan mengandalkan cookie untuk menentukan bahasa halaman yang dibuka via link langsung
 5. Detail tool (generator meta, sitemap) → Engineering; kontrak di atas wajib terpenuhi di R1
 
@@ -154,9 +143,9 @@ Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Enginee
 
 Sebelum R1 dianggap siap live:
 
-1. **Home** — hero positioning terisi (lede + klaim). Bukan syarat teaser kartu; Now di About
+1. **Home** — hero positioning terisi (lede + klaim) + section About (Now + lead)
 2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
-3. **About** — narasi pribadi + section bukti AI (bukan placeholder Lorem)
+3. **About** — section di Home (bukan halaman); narasi pribadi (bukan placeholder Lorem)
 4. **Workflow** — offers + approach/values + langkah proses (copy T-021.3)
 5. Jangan ship Home tanpa klaim positioning **atau** Contact tanpa Email — keduanya menutup J2/J3
 6. Tautan satelit eksternal yang mati → jangan ditampilkan (sembunyikan item) sampai URL diperbaiki
@@ -215,5 +204,6 @@ Sebelum R1 dianggap siap live:
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
 * `../../project-manager/decisions/ADR-037-home-lede-now-on-about.md`
 * `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

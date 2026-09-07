@@ -14,7 +14,7 @@ Accepted
 
 ### Decision
 
-1. **Halaman `/[locale]/about` adalah About pribadi (M2).** Isi: hero (sapaan, lead penuh, karya seni viewport + caption, workplace/Now) + klaim bukti AI (`#proof`, T-021.2 / ADR-032). **Tanpa** badge availability; **tanpa** rest/active di lead (ADR-039). Label chrome: **Tentang** (`id`) / **About** (`en`).
+1. **About pribadi (M2) adalah section `#about` di Home** (ADR-040). Isi: Now, sapaan, lead, karya seni + caption (ADR-039). **Bukan** route. Chip chrome: **Tentang** (`id`) / **About** (`en`) → `/{locale}#about`. `/[locale]/about` redirect ke hash itu. **Tanpa** `#proof`.
 2. **Isi cara kerja pindah ke route baru `/[locale]/workflow` (M14, Must R1).** Isi: offers (“yang bisa saya bantu”), approach, values, empat langkah proses. Label chrome: **Proses Kerja** (`id`) / **How I Work** (`en`) — label yang sebelumnya menempel di `/about`.
 3. **Chip nav** = Tentang / About · Proses Kerja / How I Work · Proyek / Projects. Tetap tanpa chip Home (ADR-034). Contact tetap tombol modal.
 4. **Copy T-021 tidak ditulis ulang** — hanya dipindah sesuai pemisahan di atas. Empat destinasi konten R1: Home, About, Workflow, Work index. Overlay tidak berubah.

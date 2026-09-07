@@ -2,6 +2,7 @@ import NextLink from "next/link";
 import { HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
 import { workflowHref } from "@/lib/site-url";
+import { AboutSection } from "./about-page";
 import { HomeHeroWallpaper } from "./home-hero-wallpaper";
 import { HeroWords, Reveal } from "./home-motion";
 
@@ -31,6 +32,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+      <AboutSection locale={locale} />
     </div>
   );
 }

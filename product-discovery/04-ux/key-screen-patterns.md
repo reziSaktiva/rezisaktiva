@@ -26,7 +26,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 | ------ | ----- | ---------- |
 | S0 Chrome | Global | J7, navigasi F1–F7 |
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
-| S2 About | `/[id/en]/about` | J4, E4 |
+| S2 About | `/[id/en]#about` (section Home) | J4, E4 |
 | S2b Workflow | `/[id/en]/workflow` | J4, E4 |
 | S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
 | S4 Work index + project sheet | `/[id/en]/projects` + overlay M10 (ADR-027) | J2 |
@@ -55,11 +55,11 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 1. Klaim positioning: **product builder** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038; **tanpa potret**)
 2. Lede sempit di **lantai bawah** first viewport, tautan ke `/workflow`; wallpaper hero terbaca di tengah
-3. Satu arah soft (ke About, Workflow, atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
+3. Satu arah soft (ke Workflow atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
 
-**Satu section saja (ADR-032).** Hero 100svh. **Now tidak di Home** (ADR-037). Tidak ada credibility line atau work teaser di bawah fold.
+**Home = hero + section About (ADR-040).** Hero 100svh. Now di `#about`. Tidak ada credibility line atau work teaser.
 
-**Tanpa potret di Home.** Foto diri hanya di S2 About. Jangan mengisi kekosongan dengan cutout wajah, blob, atau stock Unsplash.
+**Tanpa potret di hero Home.** Karya seni di S2 `#about`. Jangan mengisi kekosongan hero dengan cutout wajah, blob, atau stock Unsplash.
 
 **Contact di Home (ADR-033):** tidak ada section `#contact-cta` dan tidak ada pita footer. Arah Contact = tombol chrome + modal.
 
@@ -69,15 +69,14 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 ### S2 — About
 
-**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Route `/[id/en]/about`. Halaman **tidak digabung ke Home** (ADR-025). Cara kerja **bukan** di sini (S2b).
+**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Target: `/[id/en]#about` di Home (ADR-040). Bukan route. Cara kerja **bukan** di sini (S2b).
 
-**Pola rest / active (ADR-025):** **tidak** di hero About (ADR-039). Lead = satu paragraf selalu terlihat. Rest/active tetap di Workflow (S2b).
+**Pola rest / active (ADR-025):** **tidak** di section About (ADR-039). Lead = satu paragraf selalu terlihat. Rest/active tetap di Workflow (S2b).
 
 **Blok berurutan:**
 
-1. Hero — **Now** (`#now`, ADR-037) + h1 display (clamp sama Home, ADR-038/039) + **karya seni viewport** + caption “This is not me”; lead penuh selalu terlihat. **Tanpa** badge availability (ADR-039)
-2. **Bukti AI** — kicker + klaim display (copy T-021.2, pindah dari Home, ADR-032)
-3. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
+1. Section `#about` — **Now** (`#now`) + judul display (`h2`, clamp sama Home) + **karya seni viewport** + caption “This is not me”; lead penuh. **Tanpa** badge availability. **Tanpa** `#proof`. **Tanpa** pita Contact (Home, ADR-033)
+2. Soft CTA Contact lewat chrome (tombol header / modal), bukan section di About
 
 **Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; menumpuk pipeline proses di About.
 
@@ -181,5 +180,6 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
 * `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

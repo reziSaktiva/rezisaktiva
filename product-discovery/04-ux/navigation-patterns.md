@@ -28,7 +28,7 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 | ---- | ------ | ------- |
 | Brand / nama | `/[id/en]/` (Home) | Nama chrome `REZI SAKTIVA` font display; hanya nama yang tautan. Pekerjaan chrome `Web Engineer` di samping, bukan tautan (ADR-034) |
 | Home | `/[id/en]/` | **Tidak di chip** (ADR-034); destinasi = nama di header |
-| About | `/[id/en]/about` | Label chrome: **ID "Tentang"** / **EN "About"** (ADR-035) |
+| About | `/[id/en]#about` | Label chrome: **ID "Tentang"** / **EN "About"** (ADR-040; section Home) |
 | Workflow | `/[id/en]/workflow` | Label chrome: **ID "Proses Kerja"** / **EN "How I Work"** (ADR-035; label lama About) |
 | Proyek / Projects (Work index, M9) | `/[id/en]/projects` | Path 2026-09-01; `/work` redirect |
 | Contact | Tombol pembuka modal (ADR-019) | **Bukan link nav** (override ADR-020); selalu terlihat di luar hamburger, ≤1 ketukan dari halaman manapun |

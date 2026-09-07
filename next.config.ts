@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         destination: "/:locale/projects",
         permanent: true,
       },
+      {
+        source: "/:locale(id|en)/about",
+        destination: "/:locale#about",
+        permanent: true,
+      },
     ];
   },
 };

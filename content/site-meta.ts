@@ -3,11 +3,11 @@ import type { Locale } from "@/lib/locale";
 
 /**
  * Title + description destinasi R1. Dikunci T-021.7 (2026-08-28);
- * About vs Workflow dipisah ADR-035 (2026-09-07).
- * Contact = modal, tidak punya title halaman. OG/canonical tetap T-017.2.
+ * About vs Workflow dipisah ADR-035 (2026-09-07); About jadi section Home
+ * (ADR-040). Contact = modal, tidak punya title halaman.
  */
 
-export type SiteSurface = "home" | "about" | "workflow" | "work";
+export type SiteSurface = "home" | "workflow" | "work";
 
 export interface SurfaceMeta {
   title: string;
@@ -19,11 +19,6 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     home: {
       title: "rezisaktiva — Home",
       description: HOME_COPY.id.contactBody,
-    },
-    about: {
-      title: "rezisaktiva — Tentang",
-      description:
-        "Fokus saya bukan sekadar menulis baris kode, melainkan merancang arsitektur sistem dan efisiensi eksekusi.",
     },
     workflow: {
       title: "rezisaktiva — Proses Kerja",
@@ -40,11 +35,6 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     home: {
       title: "rezisaktiva — Home",
       description: HOME_COPY.en.contactBody,
-    },
-    about: {
-      title: "rezisaktiva — About",
-      description:
-        "Rather than just typing lines of code, my focus is on system architecture and execution efficiency.",
     },
     workflow: {
       title: "rezisaktiva — How I Work",

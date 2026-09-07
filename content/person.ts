@@ -4,7 +4,7 @@ import type { Locale } from "@/lib/locale";
  * Identitas yang sudah tampil di UI (T-029.1).
  * `name` = h1 About (`ABOUT_COPY.h1`), bukan nama legal yang belum tertulis.
  * `jobTitle` = frasa yang sama di bio Quick Info — bukan string baru.
- * `worksFor` = tempat kerja yang tampil di About (`#now`) dan Quick Info (bukan Home, ADR-037).
+ * `worksFor` = tempat kerja yang tampil di section About (`#now`) dan Quick Info.
  * Email / sameAs dari `content/data/email.json` + `links.json`. JSON-LD tidak ditulis di file ini.
  */
 

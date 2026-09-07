@@ -1,8 +1,8 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy About pribadi. Lead dikunci Boss Rezi 2026-09-07 (ADR-039).
- * Bukti AI = T-021.2. Cara kerja ada di `content/workflow.ts` (ADR-035).
+ * Copy section About di Home. Lead dikunci Boss Rezi 2026-09-07 (ADR-039).
+ * Cara kerja ada di `content/workflow.ts` (ADR-035).
  */
 
 export interface AboutCopy {
@@ -10,9 +10,6 @@ export interface AboutCopy {
   lead: string;
   portraitAlt: string;
   portraitCaption: string;
-  buktiLabel: string;
-  buktiEmphasis: string;
-  buktiRest: string;
 }
 
 export const ABOUT_PORTRAIT_SRC = "/media/about-hero.jpg";
@@ -24,10 +21,6 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     portraitAlt:
       "Karya seni: siluet di balik kaca buram, telapak tangan menekan permukaan — bukan potret Rezi",
     portraitCaption: "This is not me",
-    buktiLabel: "Bukti",
-    buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
-    buktiRest:
-      " AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.",
   },
   en: {
     h1: ["Hello,", "I'm", "Rezi."],
@@ -35,9 +28,5 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     portraitAlt:
       "Artwork: a silhouette behind frosted glass with a hand pressed to the surface — not a portrait of Rezi",
     portraitCaption: "This is not me",
-    buktiLabel: "Proof",
-    buktiEmphasis: "AI didn't take my job.",
-    buktiRest:
-      " It leveled me up — from developer to engineer of my own AI ecosystem.",
   },
 };

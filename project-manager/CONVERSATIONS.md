@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — About jadi section di Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta hapus proof + contact di About, pindahkan hero About ke Home, pertahankan chip About di nav. About bukan halaman.
+**Key Decision/Insight:** ADR-040 / T-052. `/about` redirect ke `#about`. Satu h1 di Home; judul About = h2.
+**Impact:** IA, nav, key screens, JSON-LD, sitemap.
+
 ## [2026-09-07] — About hero: artwork + lead penuh
 **Phase:** Validation
 **Summary:** Boss Rezi kunci hero About: hapus badge available; h1 = clamp Home; lead satu paragraf tanpa rest/active; ganti foto Unsplash dengan karya seni viewport + caption “This is not me”.

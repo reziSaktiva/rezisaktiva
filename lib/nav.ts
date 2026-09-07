@@ -3,9 +3,9 @@ import { projectsHref, workflowHref } from "@/lib/site-url";
 
 /**
  * Item nav chip R1 (About / Workflow / Proyek) per ADR-020 + ADR-034 +
- * ADR-035 — Home tidak di chip; nama brand adalah tautan Home. Contact
- * bukan link nav (ADR-019). `home` tetap di `NAV_LABELS` untuk breadcrumb
- * JSON-LD (T-029).
+ * ADR-035 + ADR-040 — Home tidak di chip; nama brand adalah tautan Home.
+ * About = `#about` di Home. Contact bukan link nav (ADR-019). `home` tetap
+ * di `NAV_LABELS` untuk breadcrumb JSON-LD (T-029).
  */
 export type NavKey = "home" | "about" | "workflow" | "work";
 export type NavChipKey = Exclude<NavKey, "home">;
@@ -16,13 +16,17 @@ export interface NavItemConfig {
 }
 
 export const NAV_ITEMS: NavItemConfig[] = [
-  { key: "about", href: (locale) => `/${locale}/about` },
+  { key: "about", href: (locale) => aboutHref(locale) },
   { key: "workflow", href: (locale) => workflowHref(locale) },
   { key: "work", href: (locale) => projectsHref(locale) },
 ];
 
 export function homeHref(locale: Locale): string {
   return `/${locale}`;
+}
+
+export function aboutHref(locale: Locale): string {
+  return `${homeHref(locale)}#about`;
 }
 
 export function isHomePath(pathname: string, locale: Locale): boolean {
@@ -70,14 +74,18 @@ export const SKIP_TO_CONTENT_LABEL: Record<Locale, string> = {
 };
 
 /**
- * Cocokkan pathname aktif ke item chip nav untuk state `isSelected`.
- * Prefix match (mis. `/id/projects` dan turunannya bila ada rute anak).
+ * Cocokkan pathname (+ hash untuk About) ke item chip nav.
+ * About = section `#about` di Home (ADR-040), bukan route.
  */
 export function isNavItemActive(
   pathname: string,
   locale: Locale,
   item: NavItemConfig,
+  hash = "",
 ): boolean {
+  if (item.key === "about") {
+    return isHomePath(pathname, locale) && hash === "#about";
+  }
   const href = item.href(locale);
   return pathname === href || pathname.startsWith(`${href}/`);
 }

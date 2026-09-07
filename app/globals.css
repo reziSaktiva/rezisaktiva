@@ -1669,6 +1669,7 @@ button.home-work-tile,
   display: flex;
   align-items: center;
   padding-block: var(--spacing-10);
+  scroll-margin-top: var(--appshell-header-height, 80px);
 }
 
 .about-hero-grid,

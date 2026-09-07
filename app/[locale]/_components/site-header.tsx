@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, type MouseEvent } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,7 @@ import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
 import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
+import { scrollToPageId } from "./smooth-scroll";
 
 /**
  * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
@@ -44,12 +45,23 @@ import { SlidingPillGroup } from "./sliding-pill-group";
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
+  const hash = useLocationHash();
   const isMobile = useMobileNavBreakpoint();
   const chipColorVars = useChipColorVars();
   const { open } = useContactModal();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileNavPath, setMobileNavPath] = useState(pathname);
   const mobileNavId = useId();
+
+  useEffect(() => {
+    if (!isHomePath(pathname, locale) || window.location.hash !== "#about") {
+      return;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      scrollToPageId("about");
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, locale]);
 
   if (mobileNavPath !== pathname) {
     setMobileNavPath(pathname);
@@ -84,7 +96,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
           layoutKey={pathname}
         >
           {NAV_ITEMS.map((item) => {
-            const selected = isNavItemActive(pathname, locale, item);
+            const selected = isNavItemActive(pathname, locale, item, hash);
             return (
               <Button
                 key={item.key}
@@ -95,7 +107,12 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 data-selected={selected ? "true" : undefined}
                 aria-current={selected ? "page" : undefined}
               >
-                <NextLink href={item.href(locale)}>
+                <NextLink
+                  href={item.href(locale)}
+                  onClick={(event) => {
+                    handleAboutNavClick(event, item.key, locale, pathname);
+                  }}
+                >
                   {NAV_LABELS[locale][item.key]}
                 </NextLink>
               </Button>
@@ -161,7 +178,12 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                   layoutKey={pathname}
                 >
                   {NAV_ITEMS.map((item) => {
-                    const selected = isNavItemActive(pathname, locale, item);
+                    const selected = isNavItemActive(
+                      pathname,
+                      locale,
+                      item,
+                      hash,
+                    );
                     return (
                       <Button
                         key={item.key}
@@ -172,7 +194,17 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                         aria-current={selected ? "page" : undefined}
                         onClick={() => setMobileNavOpen(false)}
                       >
-                        <NextLink href={item.href(locale)}>
+                        <NextLink
+                          href={item.href(locale)}
+                          onClick={(event) => {
+                            handleAboutNavClick(
+                              event,
+                              item.key,
+                              locale,
+                              pathname,
+                            );
+                          }}
+                        >
                           {NAV_LABELS[locale][item.key]}
                         </NextLink>
                       </Button>
@@ -202,6 +234,36 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
 
 /** Hamburger <1024px (ADR-020). Selaras `@media (min-width: 1024px)` desktop. */
 const MOBILE_NAV_QUERY = "(max-width: 1023px)";
+
+function useLocationHash(): string {
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    const sync = () => {
+      setHash(window.location.hash);
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
+
+  return hash;
+}
+
+function handleAboutNavClick(
+  event: MouseEvent<HTMLAnchorElement>,
+  key: string,
+  locale: Locale,
+  pathname: string,
+): void {
+  if (key !== "about" || !isHomePath(pathname, locale)) {
+    return;
+  }
+  event.preventDefault();
+  window.history.replaceState(null, "", `/${locale}#about`);
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+  scrollToPageId("about");
+}
 
 function useMobileNavBreakpoint(): boolean {
   const [isMobile, setIsMobile] = useState(false);

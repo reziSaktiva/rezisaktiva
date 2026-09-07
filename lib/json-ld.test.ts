@@ -11,7 +11,7 @@ import {
   type JsonLdNode,
 } from "./json-ld";
 
-function personFrom(surface: "home" | "about" | "workflow" | "work") {
+function personFrom(surface: "home" | "workflow" | "work") {
   const person = findNode(buildJsonLd("id", surface), "Person");
   expect(person).toBeDefined();
   return person as JsonLdNode;
@@ -19,7 +19,7 @@ function personFrom(surface: "home" | "about" | "workflow" | "work") {
 
 describe("buildJsonLd", () => {
   it("reads Person fields from content/, not literals in the graph builder", () => {
-    const person = personFrom("about");
+    const person = personFrom("home");
     expect(person.name).toBe(PERSON.name);
     expect(person.alternateName).toBe(PERSON.alternateName);
     expect(person.jobTitle).toBe(PERSON.jobTitle);
@@ -41,7 +41,7 @@ describe("buildJsonLd", () => {
   });
 
   it("omits Person.image because About artwork is not a portrait of Rezi", () => {
-    for (const surface of ["home", "about", "workflow", "work"] as const) {
+    for (const surface of ["home", "workflow", "work"] as const) {
       expect(personFrom(surface)).not.toHaveProperty("image");
     }
   });
@@ -56,22 +56,10 @@ describe("buildJsonLd", () => {
     expect(findNode(doc, "WebSite")?.name).toBe(PERSON.alternateName);
   });
 
-  it("builds About as ProfilePage with breadcrumbs and Person as mainEntity", () => {
-    const doc = buildJsonLd("id", "about");
-    const types = doc["@graph"].map((node) => node["@type"]);
-    expect(types).toEqual([
-      "Person",
-      "WebSite",
-      "ProfilePage",
-      "BreadcrumbList",
-    ]);
-    const page = findNode(doc, "ProfilePage");
-    expect(page?.mainEntity).toEqual({
-      "@id": findNode(doc, "Person")?.["@id"],
-    });
-    const crumbs = findNode(doc, "BreadcrumbList")
-      ?.itemListElement as JsonLdNode[];
-    expect(crumbs.map((item) => item.name)).toEqual(["Home", "Tentang"]);
+  it("does not emit ProfilePage now that About is a Home section", () => {
+    const doc = buildJsonLd("id", "home");
+    expect(findNode(doc, "ProfilePage")).toBeUndefined();
+    expect(findNode(doc, "WebPage")?.url).toBeDefined();
   });
 
   it("builds Workflow as WebPage with breadcrumbs", () => {

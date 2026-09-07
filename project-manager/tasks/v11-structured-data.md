@@ -30,10 +30,10 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | ---- | ------- | ------------ |
 | `WebSite` | Home (`/[locale]`) | `name` = brand `rezisaktiva`; `url` = `getSiteUrl()`; `inLanguage`; `publisher`/`author` → Person `@id` |
 | `Person` | Didefinisikan sekali, di-`@id`-kan; About memakai sebagai `mainEntity` | Lihat mapping di bawah |
-| `ProfilePage` | About saja | `mainEntity` = Person. Home **bukan** ProfilePage (bukan halaman bio murni — Google menolak homepage toko/campuran sebagai profil) |
+| `ProfilePage` | **Tidak dipakai** (ADR-040: About = section Home; Google menolak homepage campuran sebagai profil) | — |
 | `WebPage` | Home | `name`/`description`/`url` dari `SITE_META` + canonical T-017.2; `isPartOf` WebSite; `about` → Person `@id` |
 | `CollectionPage` | Work index | Sama pola WebPage, `mainEntity` = ItemList |
-| `BreadcrumbList` | About + Work | Label dari `NAV_LABELS`; URL dari `localePath` |
+| `BreadcrumbList` | Workflow + Work | Label dari `NAV_LABELS`; URL dari `localePath` |
 | `ItemList` + `CreativeWork` | Work index | Satu `ListItem` per `WORK_ITEMS`; `name`/`description`/`dateCreated` (tahun)/`url` bila `href` ada; `author` → Person `@id` |
 
 **Di luar paket (jangan ditambah di task ini):**

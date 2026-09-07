@@ -56,7 +56,7 @@ function personNode(locale: Locale): JsonLdNode {
     },
     description: QUICK_INFO_COPY[locale].bio,
     email: CONTACT_EMAIL,
-    url: pageUrl(locale, "about"),
+    url: pageUrl(locale, ""),
     sameAs: CONTACT_LINKS.map((link) => link.href),
     knowsAbout: [...QUICK_INFO_COPY[locale].services],
   };
@@ -87,22 +87,6 @@ function webPageNode(locale: Locale): JsonLdNode {
     inLanguage: locale,
     isPartOf: { "@id": websiteId() },
     about: { "@id": personId() },
-  };
-}
-
-function profilePageNode(locale: Locale): JsonLdNode {
-  const url = pageUrl(locale, "about");
-  const meta = SITE_META[locale].about;
-  return {
-    "@type": "ProfilePage",
-    "@id": url,
-    name: meta.title,
-    description: meta.description,
-    url,
-    inLanguage: locale,
-    isPartOf: { "@id": websiteId() },
-    about: { "@id": personId() },
-    mainEntity: { "@id": personId() },
   };
 }
 
@@ -139,11 +123,10 @@ function workflowPageNode(locale: Locale): JsonLdNode {
 
 function breadcrumbNode(
   locale: Locale,
-  leaf: "about" | "work" | "workflow",
+  leaf: "work" | "workflow",
 ): JsonLdNode {
   const homeUrl = pageUrl(locale, "");
-  const leafPath =
-    leaf === "work" ? PROJECTS_PATH : leaf === "workflow" ? WORKFLOW_PATH : leaf;
+  const leafPath = leaf === "work" ? PROJECTS_PATH : WORKFLOW_PATH;
   const leafUrl = pageUrl(locale, leafPath);
   return {
     "@type": "BreadcrumbList",
@@ -208,8 +191,6 @@ export function buildJsonLd(
 
   if (surface === "home") {
     graph.push(webPageNode(locale));
-  } else if (surface === "about") {
-    graph.push(profilePageNode(locale), breadcrumbNode(locale, "about"));
   } else if (surface === "workflow") {
     graph.push(
       workflowPageNode(locale),
