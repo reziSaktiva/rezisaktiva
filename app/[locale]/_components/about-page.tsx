@@ -11,7 +11,7 @@ export function AboutSection({ locale }: { locale: Locale }) {
   const copy = ABOUT_COPY[locale];
 
   return (
-    <section id="about" className="about-hero">
+    <section id="about" className="about-hero min-h-screen">
       <div className="about-hero-grid grid items-center">
         <div className="flex flex-col gap-4">
           <Reveal>

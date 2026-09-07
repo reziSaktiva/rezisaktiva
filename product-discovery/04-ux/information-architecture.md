@@ -61,7 +61,7 @@ Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`. **Tidak ada
 
 ### Home (urutan konten)
 
-1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah. Bukan tile karya.
+1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah; memudar saat scroll ke `#about`, kembali di hero. Bukan tile karya.
 2. **About** — section `#about` (ADR-040): Now, sapaan, lead, karya seni + caption. Bukan halaman terpisah. Tanpa `#proof`. Tanpa pita footer (ADR-033).
 3. **Arah soft** — ke Workflow dan/atau Contact lewat chrome (tombol Contact + modal).
 

@@ -16,6 +16,30 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- —
+### Changed
+- —
+### Fixed
+- Overlay Next “Export AboutPage doesn't exist”: `app/[locale]/about/page.tsx` redirect ke `/{locale}#about` (ADR-040), tanpa impor `AboutPage`.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Section About (`#about`) memakai `min-h-screen` / `min-height: 100svh` (bukan viewport minus header).
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- Wallpaper Home fade mengikuti scroll hero ↔ `#about` (**T-042.1**, chat).
+### Changed
+- `HomeHeroWallpaper` opacity terikat posisi About; video pause saat hilang. Lenis `scroll` dinotifikasi ke listener halaman.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - **T-052.1–T-052.2** — About jadi section `#about` di Home; chip nav tetap; `/about` redirect. **ADR-040**.
 ### Changed
 - Cabut `#proof` dan pita Contact dari About (Home tetap tanpa footer). JSON-LD tanpa ProfilePage. Sitemap tanpa URL `/about`.

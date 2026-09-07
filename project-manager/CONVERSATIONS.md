@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — Wallpaper Home fade ke About
+**Phase:** Validation
+**Summary:** Boss Rezi minta wallpaper MP4 di Home memudar saat scroll ke section About, lalu muncul lagi saat scroll kembali ke hero.
+**Key Decision/Insight:** Opacity terikat posisi `#about` (penuh di hero, hilang saat About sampai scroll-margin). Video pause saat opacity ~0.
+**Impact:** `home-hero-wallpaper.tsx`, `smooth-scroll.tsx`, `globals.css`, T-042.1, key screens / IA.
+
 ## [2026-09-07] — About jadi section di Home
 **Phase:** Validation
 **Summary:** Boss Rezi minta hapus proof + contact di About, pindahkan hero About ke Home, pertahankan chip About di nav. About bukan halaman.

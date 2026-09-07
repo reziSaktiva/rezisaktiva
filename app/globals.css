@@ -958,6 +958,7 @@ html::-webkit-scrollbar-button {
   background-image: url("/media/home-hero-live.jpg");
   background-size: cover;
   background-position: center;
+  will-change: opacity;
 }
 
 .home-page > :not(.home-hero-wallpaper) {
@@ -1664,8 +1665,8 @@ button.home-work-tile,
 }
 
 .about-hero {
-  min-height: calc(100svh - var(--appshell-header-height, 80px));
-  min-height: calc(100dvh - var(--appshell-header-height, 80px));
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-block: var(--spacing-10);

@@ -7,6 +7,23 @@ import { useReducedMotion } from "@/lib/motion";
 
 let lenisForTransition: Lenis | null = null;
 
+type PageScrollListener = () => void;
+const pageScrollListeners = new Set<PageScrollListener>();
+
+function notifyPageScroll(): void {
+  pageScrollListeners.forEach((listener) => {
+    listener();
+  });
+}
+
+/** Lenis frame + native scroll. Wallpaper Home ikut lerp, bukan hanya event native. */
+export function subscribePageScroll(listener: PageScrollListener): () => void {
+  pageScrollListeners.add(listener);
+  return () => {
+    pageScrollListeners.delete(listener);
+  };
+}
+
 export function readWindowScrollY(): number {
   if (lenisForTransition) {
     return lenisForTransition.scroll;
@@ -72,6 +89,7 @@ function OverlayLenisPause() {
     };
 
     sync();
+    lenis.on("scroll", notifyPageScroll);
     const observer = new MutationObserver(sync);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -79,6 +97,7 @@ function OverlayLenisPause() {
     });
     return () => {
       observer.disconnect();
+      lenis.off("scroll", notifyPageScroll);
       if (lenisForTransition === lenis) {
         lenisForTransition = null;
       }

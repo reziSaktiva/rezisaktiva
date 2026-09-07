@@ -54,7 +54,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 **Above the fold (wajib menang):**
 
 1. Klaim positioning: **product builder** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038; **tanpa potret**)
-2. Lede sempit di **lantai bawah** first viewport, tautan ke `/workflow`; wallpaper hero terbaca di tengah
+2. Lede sempit di **lantai bawah** first viewport, tautan ke `/workflow`; wallpaper hero terbaca di tengah. Wallpaper memudar saat scroll ke `#about`, kembali saat scroll ke hero
 3. Satu arah soft (ke Workflow atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
 
 **Home = hero + section About (ADR-040).** Hero 100svh. Now di `#about`. Tidak ada credibility line atau work teaser.
