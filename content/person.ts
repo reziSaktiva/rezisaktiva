@@ -18,6 +18,12 @@ export const PERSON = {
   },
 } as const;
 
+/** Label chrome kiri (ADR-034). Bukan h1 About / bio Quick Info. */
+export const PERSON_CHROME = {
+  name: "REZI SAKTIVA",
+  jobTitle: "Web Engineer",
+} as const;
+
 export const PERSON_WORKPLACE_COPY: Record<
   Locale,
   { prefix: string; newTab: string }

@@ -36,7 +36,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 ### S0 — Chrome
 
-**Blok:** brand · primary nav (About = label lokal **Proses Kerja** / **Process**, ADR-020) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
+**Blok:** nama (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · primary nav **tanpa Home** (About = label lokal **Proses Kerja** / **How I Work**, ADR-020) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
 
 **Theme toggle (ADR-021):** kontrol dark/light di chrome saat **kedua** tema hidup. Update 2026-09-04 / T-038.2: default ship **dark**; light di-hold; toggle **disembunyikan** sampai hold dicabut. Di mobile, Contact tetap di luar hamburger.
 

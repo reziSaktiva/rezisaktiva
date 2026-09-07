@@ -26,8 +26,8 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 
 | Item | Target | Catatan |
 | ---- | ------ | ------- |
-| Brand / nama | `/[id/en]/` (Home) | Selalu kembali ke Home locale aktif |
-| Home | `/[id/en]/` | Boleh disembunyikan sebagai label jika brand = Home; tetap satu destinasi |
+| Brand / nama | `/[id/en]/` (Home) | Nama chrome `REZI SAKTIVA` font display; hanya nama yang tautan. Pekerjaan chrome `Web Engineer` di samping, bukan tautan (ADR-034) |
+| Home | `/[id/en]/` | **Tidak di chip** (ADR-034); destinasi = nama di header |
 | About | `/[id/en]/about` | Label lokal di chrome: **ID "Proses Kerja"** / **EN "Process"** (ADR-020 poin 3). Route & nama modul tetap About (M2). |
 | Proyek / Projects (Work index, M9) | `/[id/en]/projects` | Path 2026-09-01; `/work` redirect |
 | Contact | Tombol pembuka modal (ADR-019) | **Bukan link nav** (override ADR-020); selalu terlihat di luar hamburger, ≤1 ketukan dari halaman manapun |
@@ -67,7 +67,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 > **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
 
-* Breakpoint **<1024px**: nav halaman (Home/About/Proyek) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
+* Breakpoint **<1024px**: nav halaman (About/Proyek, tanpa Home — ADR-034) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
 * **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019). **Toggle tema (ADR-021):** Must di luar hamburger **saat light hidup**; selama hold T-038.2 toggle **tidak** ditampilkan. Default ship **dark**.
 * ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
 * Footer satelit tetap ada sebagai pelengkap, bukan pengganti Contact.

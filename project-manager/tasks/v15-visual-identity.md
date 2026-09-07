@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.6). **T-041** ✅. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042…T-043** menunggu T-041. **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -146,7 +146,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ## T-040 — Chrome (setelah T-039)
 
-* **Status:** ✅ **Done** (2026-09-04) — T-040.1–T-040.6
+* **Status:** ✅ **Done** (2026-09-04) — T-040.1–T-040.6; **T-040.7** ✅ (2026-09-07, ADR-034)
 * **Domain:** Design / Engineering
 * **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah; selected = outline (ADR-031)
 * **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, class `.site-*` di `globals.css`
@@ -159,6 +159,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 - [x] **T-040.4** — Lembar hamburger: panel elevated + selected outline. Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04; selected di-update ADR-031.
 - [x] **T-040.5** — Pita footer ghost; CTA teks datar + panah buka modal Contact yang sama. Dikunci chat 2026-09-04. Verifikasi Home/About/Work, desktop + 375.
 - [x] **T-040.6** — Selected splatter unbounded (ADR-030) **dicabut 2026-09-07** (ADR-031). Canvas overlay dihapus.
+- [x] **T-040.7** — Nama header = font display + tautan Home; pekerjaan di samping (bukan tautan); chip tanpa Home (ADR-034).
 
 ---
 

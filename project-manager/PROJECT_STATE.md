@@ -76,7 +76,7 @@ Tidak ada yang terbuka. KI-001 (warna theme toggle) dan KI-002 (background light
 
 ## Recent Decisions (Ringkasan)
 
-ADR terbaru: **ADR-033** (Home tanpa pita footer). **ADR-032** (Home = satu section; bukti AI di About; teaser Home dicabut). **ADR-031** (selected chrome = outline darah + teks aksen; ADR-030 superseded). **ADR-029** tetap untuk identitas gothic-blood. ADR-028 tetap untuk stack shadcn + Tailwind. Indeks: [`DECISIONS.md`](DECISIONS.md).
+ADR terbaru: **ADR-034** (nama display + pekerjaan; chip tanpa Home). **ADR-033** (Home tanpa pita footer). **ADR-032** (Home = satu section; bukti AI di About; teaser Home dicabut). **ADR-031** (selected chrome = outline darah + teks aksen; ADR-030 superseded). **ADR-029** tetap untuk identitas gothic-blood. ADR-028 tetap untuk stack shadcn + Tailwind. Indeks: [`DECISIONS.md`](DECISIONS.md).
 
 ---
 

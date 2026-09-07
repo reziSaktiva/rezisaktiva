@@ -16,6 +16,22 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- —
+### Changed
+- Label chrome kiri: **REZI SAKTIVA** + **Web Engineer** (`PERSON_CHROME`). About / Quick Info / JSON-LD tetap `PERSON.name` / `PERSON.jobTitle`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-034** / **T-040.7** — Nama header pakai font display; pekerjaan di samping; chip nav tanpa Home.
+### Changed
+- Hanya nama yang tautan ke Home. `NAV_ITEMS` = About + Projects. IA / nav / key screens selaras.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - **ADR-033** / **T-044.6** — Home tidak merender pita footer Contact. About dan Projects tetap.
 ### Changed
 - Layout locale memakai `SiteFooterSlot`; IA / key screens / nav / M1 selaras ADR-033.

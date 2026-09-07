@@ -14,12 +14,15 @@ import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/locale";
+import { PERSON_CHROME } from "@/content/person";
 import {
   CONTACT_LABEL,
   MENU_LABEL,
   MENU_TOGGLE_LABEL,
   NAV_ITEMS,
   NAV_LABELS,
+  homeHref,
+  isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
 import { Magnetic } from "./home-motion";
@@ -28,14 +31,14 @@ import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
 
 /**
- * Site chrome — T-013 (ADR-020): nav Home/About/Proyek sebagai link,
- * Contact sebagai tombol pembuka modal (T-016, ADR-019).
+ * Site chrome — T-013 (ADR-020) + ADR-034: chip About/Proyek; nama = tautan
+ * Home (bukan chip Home). Contact = tombol modal (T-016, ADR-019).
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
  * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
- * T-040.1: wordmark grotesk + bar transparan; Contact/hamburger datar.
+ * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
@@ -62,9 +65,16 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
       aria-label="Main navigation"
       className={cn("site-top-nav", isMobile && "site-top-nav--compact")}
     >
-      <NextLink href={`/${locale}`} className="site-brand-heading">
-        rezisaktiva
-      </NextLink>
+      <div className="site-brand flex items-baseline gap-3">
+        <NextLink
+          href={homeHref(locale)}
+          className="site-brand-heading"
+          aria-current={isHomePath(pathname, locale) ? "page" : undefined}
+        >
+          {PERSON_CHROME.name}
+        </NextLink>
+        <span className="site-brand-role">{PERSON_CHROME.jobTitle}</span>
+      </div>
       {!isMobile ? (
         <SlidingPillGroup
           className="site-nav-chip"

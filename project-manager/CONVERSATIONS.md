@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — Label chrome REZI SAKTIVA / Web Engineer
+**Phase:** Validation
+**Summary:** Boss Rezi kunci teks header: nama `REZI SAKTIVA` (huruf besar), pekerjaan `Web Engineer`.
+**Key Decision/Insight:** Label chrome terpisah dari About/QI (`PERSON_CHROME`).
+**Impact:** `content/person.ts`, `site-header.tsx`, ADR-034.
+
+## [2026-09-07] — Nama display + cabut chip Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta font nama sama dengan judul, pekerjaan di samping nama, dan item Home dihapus dari chip nav. Hanya nama yang klik ke Home.
+**Key Decision/Insight:** ADR-034. Copy nama/pekerjaan dari `PERSON` (bukan string baru).
+**Impact:** `site-header.tsx`, `lib/nav.ts`, `globals.css`; T-040.7.
+
 ## [2026-09-07] — Home tanpa footer Contact
 **Phase:** Validation
 **Summary:** Boss Rezi minta pita footer Contact dihilangkan dari Home (tetap di About dan Projects).

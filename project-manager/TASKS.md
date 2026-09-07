@@ -7,7 +7,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 1. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**, **ADR-033** (Home tanpa footer).
 2. **T-042** — Halaman identitas visual ⏳ **berikutnya**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). Home = hero-only (ADR-032); tanpa pita footer (ADR-033). **ADR-029**, **ADR-031**.
 3. **T-041** — Overlay identitas visual ✅ (T-041.1–T-041.3, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
-4. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.6, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+4. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.7, ADR-034). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 5. **T-039** — Sistem token identitas visual ✅ (T-039.1–T-039.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 6. **T-031** — Metadata API: ikon, kartu share, identitas head ⏸️ **Deferred** sampai **T-043** (kulit v15 selesai). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 7. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
