@@ -27,18 +27,18 @@ Skala token CSS berbasis **4px** (`var(--spacing-*)` di `app/globals.css`). Util
 Ritme yang dipakai di kode produksi:
 
 * Internal rapat (ikon + teks, item list): `gap-2`
-* Kicker + judul: `gap-3` — `home-page.tsx`
+* Kicker + judul: `gap-3`
 * Isi satu section (kicker → body → grid): `gap-8` pada `flex flex-col` + `className="home-container"`
-* Section halaman: ritme viewport di CSS scoped (`.home-section`, `.about-section`) — `clamp()` / vw di class scoped, bukan di JSX
+* Section halaman: ritme viewport di CSS scoped (`.about-section`, `.work-hero`) — `clamp()` / vw di class scoped, bukan di JSX
 
 **Pakai ini**
 
 ```tsx
-<section className="home-section">
-  <div className="home-container flex flex-col gap-8">
+<section className="about-section">
+  <div className="flex flex-col gap-8">
     <div className="flex flex-col gap-3">
       <p className="home-kicker">{kicker}</p>
-      <h2 className="home-work-title">{title}</h2>
+      <h2 className="about-section-title">{title}</h2>
     </div>
   </div>
 </section>

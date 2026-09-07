@@ -1,16 +1,12 @@
 import { HOME_COPY } from "@/content/home";
 import { PERSON, PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
-import { projectsHref } from "@/lib/site-url";
 import { HomeHeroWallpaper } from "./home-hero-wallpaper";
 import { HeroWords, Reveal } from "./home-motion";
-import { HomeWorkAllLink } from "./home-work-all-link";
-import { HomeWorkTeasers } from "./home-work-teasers";
 import { ExternalSiteLink } from "./workplace-line";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
-  const workHref = projectsHref(locale);
 
   return (
     <div className="home-page flex flex-col">
@@ -36,34 +32,6 @@ export function HomePage({ locale }: { locale: Locale }) {
               </h2>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      <section className="home-section home-section--proof" id="credibility">
-        <div className="home-container flex flex-col gap-8">
-          <Reveal>
-            <p className="home-kicker">{copy.buktiLabel}</p>
-          </Reveal>
-          <Reveal>
-            <p className="home-proof-body">
-              {copy.buktiEmphasis}
-              {copy.buktiRest}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="home-section home-section--work" id="work">
-        <div className="home-container flex flex-col gap-8">
-          <Reveal axis="horizontal" className="home-work-head">
-            <div className="flex flex-col gap-3">
-              <p className="home-kicker">{copy.workLabel}</p>
-              <h2 className="home-work-title">{copy.workTitle}</h2>
-            </div>
-            <HomeWorkAllLink href={workHref} label={copy.workAll} />
-          </Reveal>
-
-          <HomeWorkTeasers locale={locale} teasers={copy.teasers} />
         </div>
       </section>
     </div>

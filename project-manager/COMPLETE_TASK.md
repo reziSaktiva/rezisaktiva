@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- **ADR-032** / **T-044.1–T-044.5** — Home satu section (hero + Now). Klaim bukti AI pindah ke About setelah hero. Teaser karya dicabut dari Home; Work index tidak dapat section baru. M4 retired.
+### Changed
+- IA / key screens / flows / M1–M4 / MVP: bukti bukan di Home. Sheet M10 hanya dari katalog. Copy T-021.2 tidak ditulis ulang.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - **ADR-031** — selected chrome = outline darah + teks aksen (nav, locale, hamburger).
 ### Changed
 - Cabut blood splatter viewport (ADR-030 superseded). Hapus `blood-splatter-layer.tsx`. Blob wine selected diganti border + font merah.

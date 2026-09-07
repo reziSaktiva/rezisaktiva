@@ -38,10 +38,10 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 
 | ID | Item | Alasan singkat |
 | -- | ---- | -------------- |
-| M1 | Home (identity + destination) | Pintu clarity: siapa / bukti ringkas / next step |
-| M2 | About (narrative) | Memperdalam trust untuk evaluasi founder/PO |
+| M1 | Home (identity + destination) | Pintu clarity: siapa / Now / next step (ADR-032) |
+| M2 | About (narrative) | Memperdalam trust; termasuk klaim bukti AI |
 | M3 | Contact (soft path) | Jalur inbound tanpa hard sell / harga |
-| M4 | Work teaser (section di Home) | Presence bukti tanpa arsitektur case |
+| M4 | Work teaser (section di Home) | **Retired** (ADR-032) — presence = M9 + M10 |
 | M5 | Language (bilingual geo-aware + switcher) | ADR-002; relevan SEA + pintu terbuka |
 | M6 | Site chrome & satellites | Nav lean + footer + tautan satelit + **toggle tema (ADR-021)** |
 | M7 | Destination meta (title/description/OG dasar) | URL layak jadi “link utama” |
@@ -57,7 +57,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | --------- | ---------- | -------------- |
 | Soft availability line | Satu kalimat terbuka kolaborasi/opportunity | Memperkuat soft presence |
 | Paritas makna ID/EN | Salinan setara, bukan dump mesin | Bilingual yang kredibel |
-| Teaser actionable | Highlight → Work index (lalu sheet M10), bukti live/repo di dalam sheet bila ada | ADR-027 |
+| **Teaser actionable** | Highlight → Work index (lalu sheet M10), bukti live/repo di dalam sheet bila ada | ADR-027 / ADR-032 (bukan teaser Home) |
 | Aksesibilitas dasar | Heading, kontras, fokus keyboard | Clarity juga berarti bisa dipakai |
 | Motion sebagai identitas visual | Scroll-triggered reveal, micro-interaction halus, easing hero (**ADR-017**) | Naik dari Could minimal; tetap tunduk batas clarity-first, bukan modul halaman baru |
 
@@ -100,7 +100,7 @@ Urutan pengerjaan disarankan (konten + surface), tetap dalam satu rilis MVP:
 | 1 | Clarity permukaan | M1 Home (+ klaim & next step) |
 | 2 | Soft path | M3 Contact |
 | 3 | Narrative | M2 About |
-| 4 | Presence bukti lean | M4 Work teaser |
+| 4 | Presence bukti lean | M9 Work index (M4 retired, ADR-032) |
 | 5 | Lintas halaman | M5 Language + M6 Chrome (termasuk toggle tema, ADR-021) + M13 Quick Info (ADR-022) |
 | 6 | Destination hygiene | M7 Meta |
 | 7 | Poles Should | Availability, paritas ID/EN, a11y dasar |

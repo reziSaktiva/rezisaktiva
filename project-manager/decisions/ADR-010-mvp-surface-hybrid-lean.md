@@ -27,6 +27,10 @@ Accepted
 - About + Contact sebagai halaman menjaga path evaluasi & inbound tanpa single-page yang sulit dishare per konteks.
 - Menghindari overbuild multi-page penuh + case wajib (opsi D) sebelum konten case siap.
 
+### Update — 2026-09-07 (ADR-032)
+
+Teaser karya **bukan** lagi section Home. Home = hero + Now saja. Bukti AI di About. Karya = Work index + sheet M10. Tiga destinasi konten Hybrid lean **tetap**. M4 retired.
+
 ### Alternatives Considered
 
 - **A Multi-page klasik** (Home / Work / About / Contact + detail case) — ditunda; lebih berat untuk MVP clarity.

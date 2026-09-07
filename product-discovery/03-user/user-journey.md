@@ -46,7 +46,7 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 | **Primary actor** | P1 & P2 (setara) |
 | **Secondary actor** | P3, P4 (tipis) |
 | **Horizon** | Satu kunjungan singkat → soft next step |
-| **Surface set** | Home, About, Work index, Contact modal, work teaser di Home, language switcher, theme toggle, Quick Info overlay |
+| **Surface set** | Home, About, Work index, Contact modal, language switcher, theme toggle, Quick Info overlay |
 | **North stars** | Clarity (NS-1) + inbound berkualitas (NS-2) |
 
 ---
@@ -74,7 +74,7 @@ Tanpa situs milik sendiri (hari ini):
 | ----- | ----------------- | ------- | ---- |
 | **Arrive** | Positioning langsung terbaca | Home (above fold) | J1 |
 | **Orient** | Paham product builder → fullstack → AI edge jujur | Home | J1, E2 |
-| **Evidence** | Credibility line (1 klaim non-kartu) + 1–3 work teaser; opsi ke About | Home | J2, J4 |
+| **Evidence** | Bukti AI di About; karya di Work index (sheet M10) | About, Work | J2, J4 |
 | **Deepen** (opsional) | Narasi & cara kerja | About | J4, E4 |
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |
@@ -113,7 +113,7 @@ Titik kritis: **Orient → Evidence**. Jika gagal di sini, Act jarang terjadi (N
 Peluang untuk UX (bukan spesifikasi UI):
 
 1. **First-screen clarity** — jawaban “siapa & untuk siapa” tanpa scroll panjang
-2. **Bukti proporsional** — credibility line + teaser outcome mengalahkan list stack; kedua blok tidak boleh menduplikasi isi
+2. **Bukti proporsional** — klaim AI di About + karya di Work index mengalahkan list stack; jangan duplikasi tech bingo
 3. **About sebagai risk-reducer** — terutama untuk P2
 4. **Contact sebagai soft landing** — kurangi awkward; jangan sales desk
 5. **Secondary signals without rebrand** — P3 dapat sinyal tanpa mengubah Home jadi CV

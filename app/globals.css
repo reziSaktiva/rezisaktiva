@@ -969,9 +969,6 @@ html::-webkit-scrollbar-button {
 .home-page:has(.home-hero-wallpaper) .home-hero-line,
 .home-page:has(.home-hero-wallpaper) .home-now-title,
 .home-page:has(.home-hero-wallpaper) .home-kicker,
-.home-page:has(.home-hero-wallpaper) .home-proof-body,
-.home-page:has(.home-hero-wallpaper) .home-work-title,
-.home-page:has(.home-hero-wallpaper) .home-cta-underline,
 body:has(.home-hero-wallpaper) .home-contact-title,
 body:has(.home-hero-wallpaper) .home-contact-body,
 body:has(.home-hero-wallpaper) .site-footer .home-kicker,
@@ -1036,20 +1033,6 @@ body:has(.home-hero-wallpaper) .site-footer-satellites a {
   padding-block-end: var(--spacing-4);
 }
 
-.home-section--proof {
-  padding-block: 7rem;
-}
-
-.home-section--work {
-  padding-block-end: var(--spacing-8);
-}
-
-@media (min-width: 768px) {
-  .home-section--proof {
-    padding-block: 9rem;
-  }
-}
-
 .home-now-title {
   margin: 0;
   font-family: var(--font-family-display);
@@ -1066,59 +1049,6 @@ body:has(.home-hero-wallpaper) .site-footer-satellites a {
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-}
-
-.home-proof-body {
-  margin: 0;
-  font-family: var(--font-family-display);
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
-  max-width: 56rem;
-}
-
-.home-work-title {
-  margin: 0;
-  font-family: var(--font-family-display);
-  font-size: clamp(1.75rem, 4.2vw, 3.25rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-}
-
-.home-work-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--spacing-6);
-}
-
-.home-cta-underline {
-  position: relative;
-  display: inline-block;
-  flex-shrink: 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-}
-
-.home-cta-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1.5px;
-  background: currentColor;
-  transform: scaleX(0.3);
-  transform-origin: left;
-  transition: transform var(--duration-medium) var(--ease-standard);
-  opacity: 0.4;
-}
-
-.home-cta-underline:hover::after {
-  transform: scaleX(1);
-  opacity: 1;
 }
 
 .home-work-reveal,
@@ -1528,7 +1458,6 @@ button.home-work-tile,
   .home-work-tile img,
   .home-work-tile-scrim,
   .home-work-tile-meta,
-  .home-cta-underline::after,
   .page-word,
   .about-offer-card,
   .avail-dot,
@@ -1948,6 +1877,15 @@ button.home-work-tile,
   .about-section {
     padding-block: 9rem;
   }
+}
+
+.about-proof-body {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  max-width: 56rem;
 }
 
 .about-section-title {
@@ -3026,12 +2964,6 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   .qi-tab {
     padding: 14px 10px !important;
     font-size: 11px !important;
-  }
-
-  .home-work-head {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.75rem !important;
   }
 }
 

@@ -25,7 +25,7 @@ Detail lengkap visi, scope, dan audiens ada di baseline `../product-discovery/` 
 # Goals
 
 * Membuat pengunjung (founder/product owner, sekunder: hiring manager, calon klien) langsung paham positioning Rezi sebagai product builder dalam satu kunjungan singkat.
-* Menyajikan bukti kredibilitas (pengalaman fullstack, karya, cara kerja) tanpa basa-basi lewat Home, About, Work index, dan work teaser.
+* Menyajikan bukti kredibilitas (pengalaman fullstack, karya, cara kerja) tanpa basa-basi lewat Home, About, dan Work index.
 * Membuka jalur kontak natural (Contact modal) tanpa terasa hard-sell.
 
 Detail lengkap: `../product-discovery/01-business/product-vision.md` (ADR-002, ADR-009).

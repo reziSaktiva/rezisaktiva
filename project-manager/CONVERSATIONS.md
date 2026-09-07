@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — Home satu section
+**Phase:** Validation
+**Summary:** Boss Rezi minta Home hanya satu section. Klaim bukti AI pindah ke About (setelah hero). Teaser proyek terpilih dihapus dari Home; halaman Proyek tidak perlu section baru karena katalog sudah ada.
+**Key Decision/Insight:** ADR-032. M4 retired. Copy T-021.2 tidak ditulis ulang — hanya pindah lokasi.
+**Impact:** `home-page.tsx`, `about-page.tsx`, `content/home.ts`, `content/about.ts`; hapus teaser components; `04-ux/` + `02-product/` + T-044 / T-042.1.
+
 ## [2026-09-07] — Selected chrome: outline, tanpa splatter
 **Phase:** Validation
 **Summary:** Boss Rezi minta blood splatter dicabut dari nav dan bahasa terpilih, dan bentuk selected (wine/blood) diganti border merah biasa + font merah.

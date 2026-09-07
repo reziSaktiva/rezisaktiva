@@ -42,8 +42,8 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. Masuk via URL (locale default atau link ber-locale)
 2. **Home** — baca first viewport (positioning)
-3. Skim **status pekerjaan (Now)** + **credibility line** (1 klaim non-kartu) + **work teaser** (1–3 kartu karya)
-4. Opsional: buka **About** atau **Work index** (`/projects`, M9) bila butuh detail lebih
+3. Skim **status pekerjaan (Now)** di hero
+4. Opsional: buka **About** (bukti AI + cara kerja) atau **Work index** (`/projects`, M9) bila butuh detail lebih
 5. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
 6. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
 7. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
@@ -55,8 +55,8 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 ### F2 — Evaluasi kolaborasi (SC2)
 
 1. Masuk Home (clarity)
-2. Ke **About** — cara berpikir / kolaborasi / AI edge jujur
-3. Kembali atau lanjut cek **teaser** outcome di Home / **Work index** (tile membuka sheet, F7)
+2. Ke **About** — cara berpikir / kolaborasi / AI edge jujur (termasuk klaim bukti AI)
+3. Lanjut cek **Work index** (tile membuka sheet, F7)
 4. **Contact modal** — Email primer (ADR-019)
 5. Sukses: cukup sinyal profesional + product thinking untuk outreach soft
 
@@ -87,8 +87,8 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 ### F7 — Buka project sheet (ADR-027)
 
-1. User di **Work index** (`/[locale]/projects`) **atau** di teaser Home
-2. Klik **tile karya** (bukan URL live/repo; tautan “Semua proyek” tetap ke index)
+1. User di **Work index** (`/[locale]/projects`)
+2. Klik **tile karya** (bukan URL live/repo)
 3. **Sheet dari bawah** terbuka: preview live (iframe) atau galeri, services, location or company, year, description
 4. Opsional: tautan live/repo **di dalam sheet** (tab baru); tutup sheet (Escape / scrim / kontrol tutup)
 5. Sukses: paham proyek apa dan bagaimana dikerjakan tanpa meninggalkan situs lebih dulu
@@ -108,7 +108,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 ### F5 — Klien soft (SC5)
 
-1. Home / teaser → Contact modal
+1. Home / About / Work index → Contact modal
 2. Email (tanpa mencari harga)
 3. Sukses: outreach terkirim; ekspektasi diskusi
 4. Failure diterima: mencari pricing — salinan Contact mengarahkan ke percakapan (ADR-008)

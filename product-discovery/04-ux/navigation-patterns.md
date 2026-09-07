@@ -43,9 +43,8 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 
 | Area | Isi | Peran |
 | ---- | --- | ----- |
-| **In-page (Home)** | Tautan teks/section ke About & Contact | Memperkuat arah soft tanpa menambah item nav |
+| **In-page (Home)** | Arah soft lewat chrome + pita footer | Memperkuat next step tanpa section tambahan |
 | **Footer** | Brand singkat · ulang About/Contact opsional · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer |
-| **Teaser cards (Home)** | Tautan ke Work index | Bukan langsung ke live/repo |
 | **Work index tiles** | Membuka project sheet (M10) | Overlay dari bawah (ADR-027); live/repo sekunder di dalam sheet |
 | **Quick info panel (M13)** | Tab tepi kanan → drawer: bio, Services, Tools, Proyek/Projects, Email, Links | Overlay global (bukan route). Tidak menggantikan Contact modal (ADR-019) atau footer satelit — **ADR-022** |
 | **Tidak ada** | Nav Work terpisah dari Proyek, Blog, Services sebagai halaman, Pricing, WA, Instagram | Out of scope R1 |

@@ -56,20 +56,13 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 2. **Now (status pekerjaan)** — di dalam hero, bawah klaim: kicker + “saat ini di” + nama perusahaan (tautan situs). Bukan item katalog karya; bukan pengganti foto
 3. Satu arah soft (ke About atau Contact) — tidak memaksa form; Contact = chrome + pita footer
 
-**Tanpa potret di Home.** Hero 100svh = klaim di atas + Now di bawah. Foto diri hanya di S2 About. Jangan mengisi kekosongan dengan cutout wajah, blob, atau stock Unsplash.
+**Satu section saja (ADR-032).** Hero 100svh = klaim di atas + Now di bawah. Tidak ada credibility line atau work teaser di bawah fold.
 
-**Di bawah fold / lanjut scroll:**
+**Tanpa potret di Home.** Foto diri hanya di S2 About. Jangan mengisi kekosongan dengan cutout wajah, blob, atau stock Unsplash.
 
-4. **Credibility line (bukti non-kartu)** — satu klaim singkat pengalaman/outcome (bukan grid, bukan list stack); mendukung hero
-5. **Work teaser (bukti karya)** — 1–3 kartu: nama · peran/outcome; klik membuka sheet (M10); **satu-satunya** blok karya di Home
-6. Penguat arah ke About (bukan 4 langkah proses penuh sebelum teaser)
-7. Availability line (Should, opsional)
+**Contact di Home (ADR-025):** tidak ada section `#contact-cta` terpisah. Arah Contact = pita footer (S0) + tombol chrome.
 
-**Contact di Home (ADR-025):** tidak ada section `#contact-cta` terpisah. Arah Contact = pita footer (S0) + tombol chrome. Hover tile teaser boleh diperkuat (scale/overlay).
-
-**Bedakan blok:** credibility line ≠ teaser. Jangan isi keduanya dengan daftar project/stack yang sama.
-
-**Anti-pattern:** hero yang hanya nama tanpa klaim; grid teaser berlebihan; dual CTA agresif (“Hire me” + pricing); duplikasi credibility + teaser sebagai tech bingo.
+**Anti-pattern:** hero yang hanya nama tanpa klaim; dual CTA agresif (“Hire me” + pricing); menumpuk katalog karya di Home.
 
 ---
 
@@ -82,10 +75,11 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 **Blok berurutan:**
 
 1. Hero — h1 display besar + **potret 4:5** (satu-satunya foto diri R1); lead: baris pertama terlihat, baris kedua on expand
-2. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
-3. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
-4. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`
-5. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
+2. **Bukti AI** — kicker + klaim display (copy T-021.2, pindah dari Home, ADR-032)
+3. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
+4. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
+5. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`
+6. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
 
 **Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; framing “developer for hire” yang menggeser brand; menumpuk seluruh body di rest.
 
@@ -109,7 +103,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 ### S4 — Work index + project sheet
 
-**Work index (`/projects`):** katalog tile (M9). **Klik tile** (Work index **atau** teaser Home) membuka **project sheet dari bawah** (M10, ADR-027) — live preview (iframe) atau galeri, services, location or company, year, description. Live/repo tautan hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke index.
+**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027) — live preview (iframe) atau galeri, services, location or company, year, description. Live/repo tautan hanya di dalam sheet. Home **tidak** punya teaser karya (ADR-032).
 
 **Komponen:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. Astryx `BottomSheet` dicoba dulu (T-026.2) lalu diganti overlay custom karena tidak ada prop lebar penuh; overlay custom itu diganti `Drawer` saat migrasi. Bukan `/work/[slug]` di R1.
 
@@ -117,9 +111,9 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 # Responsive Considerations
 
-* **Desktop (≥1024px):** hierarki vertikal jelas; nav horizontal; teaser 1–3 dalam satu baris atau stack rapi.
-* **Mobile (<1024px):** first viewport tetap memuat klaim inti tanpa mengandalkan hover; teaser stack vertikal; Contact Email tetap paling menonjol di modal.
-* **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris (mis. “Membangun” / “produk.”) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work teaser: judul + tautan “lihat semua” boleh **stack** (bukan dipaksa satu baris); tile featured **lebih tinggi** daripada strip 16:8. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
+* **Desktop (≥1024px):** hierarki vertikal jelas; nav horizontal; Work index tile dalam grid.
+* **Mobile (<1024px):** first viewport tetap memuat klaim inti tanpa mengandalkan hover; Work index stack vertikal; Contact Email tetap paling menonjol di modal.
+* **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris (mis. “Membangun” / “produk.”) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work index tile boleh stack. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
 * **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
 * Panjang salinan ID/EN boleh beda, **makna setara**.
 * Acuan visual: **kode produksi** (`app/`, token `app/globals.css`, shadcn + Tailwind — ADR-024 / ADR-028). `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
@@ -129,7 +123,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 # Success Criteria
 
 * S1 first viewport lulus uji “siapa & untuk siapa” tanpa scroll panjang
-* S1 membedakan credibility line (non-kartu) vs work teaser (kartu karya); tidak duplikasi tech bingo
+* S1 = hero saja; bukti AI di S2; karya di S4 (ADR-032)
 * S3 Email jelas sebagai primer; satelit terbatas LinkedIn + GitHub
 * S0 memungkinkan F3 (ganti bahasa) dari setiap screen
 * Meta/share & content readiness di `information-architecture.md` terpenuhi sebelum live

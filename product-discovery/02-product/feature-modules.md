@@ -8,7 +8,7 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman inti + **teaser karya di Home** + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). M10 di R1 = overlay (ADR-027), bukan halaman case.
+Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman inti + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + Now (ADR-032). M10 di R1 = overlay (ADR-027), bukan halaman case.
 
 > **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026) — bukan route `/work/[slug]`.
 >
@@ -22,17 +22,15 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 
 ## M1 — Home (Identity & Destination)
 
-**Tujuan:** First impression + clarity: siapa Rezi, bukti ringkas, next step.
+**Tujuan:** First impression + clarity: siapa Rezi, next step.
 
 **Isi inti:**
 
 * Hero / klaim positioning (product builder + fullstack + AI edge)
 * Section **Now** — status pekerjaan saat ini (bukan katalog karya)
-* Bukti singkat (highlight pengalaman atau outcome)
-* Section **Work teaser** (1–3 item)
-* Soft arah ke About dan Contact
+* Soft arah ke About dan Contact (chrome + pita footer)
 
-**Bukan:** katalog lengkap, blog feed, pricing.
+**Bukan:** katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; karya di M9).
 
 ---
 
@@ -45,6 +43,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 **Isi inti:**
 
 * Narasi product builder (ide → live)
+* Klaim **bukti AI** (section setelah hero, copy T-021.2 — ADR-032)
 * Fondasi fullstack (~konteks pengalaman)
 * AI sebagai edge (jujur, bukan specialist murni)
 * Apa yang dicari / cara kerja tingkat tinggi (tanpa essay panjang)
@@ -69,17 +68,11 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 
 ---
 
-## M4 — Work Teaser (Home section)
+## M4 — Work Teaser (retired)
 
-**Tujuan:** Presence bukti karya tanpa arsitektur case penuh.
+**Status:** **Retired** (ADR-032, 2026-09-07). Bukan section Home lagi.
 
-**Isi inti:**
-
-* Kartu singkat: nama, peran/outcome
-* Kurasi ketat (kualitas > jumlah)
-* Klik tile membuka project sheet (M10); katalog lengkap via “Semua proyek” (M9)
-
-**Catatan:** Ini modul konten di dalam M1, dipisah agar prioritas & roadmap jelas. Halaman katalog terpisah ada di M9 Work index (Must R1, override ADR-020) — M4 tetap section teaser di Home, bukan pengganti M9.
+Presence bukti karya = **M9 Work index** + **M10 project sheet**. ID M4 tidak didaur ulang.
 
 ---
 
@@ -120,7 +113,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
 | **M8 — Contact form / booking** | Alternatif jalur kontak | Could — bukan syarat MVP |
 | **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
-| **M10 — Case / process detail** | Overlay dari bawah (bukan route): preview live (iframe) atau galeri, services, location or company, year, description; tile Work index **dan** teaser Home membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026) |
+| **M10 — Case / process detail** | Overlay dari bawah (bukan route): preview live (iframe) atau galeri, services, location or company, year, description; tile Work index membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026; teaser Home dicabut ADR-032) |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
 | **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
@@ -132,8 +125,6 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 ```text
 M5 Language ─── wraps ───► M1 Home, M2 About, M3 Contact, M6 Chrome, M9 Work index
                               │
-                              ├── contains ► M4 Work Teaser ── klik tile ──► M10
-                              │
                               └── CTA soft ► M3 Contact
 
 M6 Chrome ── includes ► Theme toggle (ADR-021)
@@ -142,8 +133,8 @@ M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick In
 M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
 ```
 
-* M1 adalah pintu destination; M2 memperdalam trust; M3 menutup soft path.
-* M4 memberi sinyal bukti di permukaan tanpa memblok ship.
+* M1 adalah pintu destination (hero + Now); M2 memperdalam trust (termasuk bukti AI); M3 menutup soft path.
+* M4 retired (ADR-032); bukti karya = M9 + M10.
 * M9 Must R1 (ADR-020); M10 overlay sheet Must R1 (ADR-027); halaman `/work/[slug]` bukan R1.
 * M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).
 

@@ -51,7 +51,7 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M4 Work teaser, M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022) |
+| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020; M4 teaser Home retired ADR-032), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022) |
 | Should | Availability line, paritas ID/EN, teaser actionable, a11y dasar |
 | Bukan | Route `/work/[slug]`, blog, CMS, pricing |
 

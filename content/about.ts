@@ -6,6 +6,8 @@ import type { Locale } from "@/lib/locale";
  * pipeline discovery → arsitektur → build → ship, keputusan terdokumentasi
  * via ADR. ID = teks final dari Boss Rezi; EN = adaptasi makna, bukan
  * terjemahan kata-per-kata.
+ *
+ * Klaim bukti AI (T-021.2) pindah ke sini dari Home (ADR-032).
  */
 
 export interface AboutOffer {
@@ -27,6 +29,9 @@ export interface AboutCopy {
   availability: string;
   availabilityBadge: string;
   portraitAlt: string;
+  buktiLabel: string;
+  buktiEmphasis: string;
+  buktiRest: string;
   helpTitle: string;
   offers: readonly AboutOffer[];
   approachLabel: string;
@@ -54,6 +59,10 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
       "Terbuka untuk proyek terpilih dalam beberapa bulan ke depan.",
     availabilityBadge: "Terbuka untuk proyek baru",
     portraitAlt: "Placeholder — ganti dengan foto pribadi Rezi",
+    buktiLabel: "Bukti",
+    buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
+    buktiRest:
+      " AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.",
     helpTitle: "Yang bisa saya bantu",
     offers: [
       {
@@ -118,6 +127,10 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     availability: "Open to selected projects in the coming months.",
     availabilityBadge: "Available for new projects",
     portraitAlt: "Placeholder — replace with Rezi’s photo",
+    buktiLabel: "Proof",
+    buktiEmphasis: "AI didn't take my job.",
+    buktiRest:
+      " It leveled me up — from developer to engineer of my own AI ecosystem.",
     helpTitle: "I can help you with",
     offers: [
       {

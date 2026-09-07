@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  *
  * `href` (internal, via NextLink) — tautan katalog, mis. “Semua proyek”.
  *
- * `onSelect` — klik tile membuka project sheet (Home teaser + Work index).
+ * `onSelect` — klik tile membuka project sheet (Work index).
  *
  * Caption + scrim: CSS hover/focus desktop; selalu terlihat jika
  * `hover: none` (ponsel). Hover desktop = blood drip terkurung di tile

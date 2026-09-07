@@ -84,8 +84,8 @@ Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header/footer
 
 **T-042 — Halaman** (blok tetap)
 
-- Home: hero klaim + Now, credibility, teaser
-- About: hero + potret 4:5, offers, values, proses rest/active
+- Home: hero klaim + Now (**satu section**, ADR-032)
+- About: hero + potret 4:5, **bukti AI**, offers, values, proses rest/active
 - Work: index + tile (klik → sheet yang sama)
 
 **T-043 — Sistem**
@@ -182,12 +182,12 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 * **Status:** ⏳ Open — gerbang **T-041.3** ✅ + Q&A per halaman
 * **Domain:** Design / Engineering
 * **Output:** Home / About / Work memakai kulit baru; **blok dan copy sama**
-* **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `about-offer-grid.tsx`, `about-process.tsx`, `about-rest-active.tsx`, `work-page.tsx`, `work-tile.tsx`, `home-work-teasers.tsx`
+* **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `about-offer-grid.tsx`, `about-process.tsx`, `about-rest-active.tsx`, `work-page.tsx`, `work-tile.tsx`
 
 ### Subtasks
 
-- [ ] **T-042.1** — Q&A + kode: Home (hero klaim dua baris + Now di first viewport, credibility, teaser). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` sepanjang Home (video tembus sampai footer); veil tidak fade ke body penuh; About tidak ikut. Sisa restyle blok Home tetap menunggu T-041.
-- [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, offers, values, proses rest/active). Copy tidak dipotong.
+- [ ] **T-042.1** — Q&A + kode: Home (**satu section**, hero klaim dua baris + Now di first viewport — ADR-032). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` sepanjang Home (video tembus sampai footer); veil tidak fade ke body penuh; About tidak ikut. **ADR-032:** credibility + teaser dicabut dari Home — restyle blok itu tidak lagi berlaku. Sisa restyle hero Home tetap menunggu T-041 bila belum.
+- [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, **bukti AI setelah hero**, offers, values, proses rest/active). Copy tidak dipotong.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi tiga rute, tema gelap yang di-ship, 320 / 375 / desktop.
 
 ---

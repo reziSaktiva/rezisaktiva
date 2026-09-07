@@ -8,7 +8,7 @@ Dokumen ini menetapkan struktur informasi & halaman website portofolio **rezisak
 
 # Overview
 
-IA R1 = **tiga halaman konten** (Home, About, Work index) + **section teaser di Home** + **Contact, Quick Info, dan project sheet sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis).
+IA R1 = **tiga halaman konten** (Home, About, Work index) + **Contact, Quick Info, dan project sheet sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis). Home **tidak** punya section teaser atau credibility line (ADR-032).
 
 > **Update (2026-08-26, ADR-027):** M10 Must R1 = overlay sheet dari bawah (bukan `/work/[slug]`). Tile Work index membuka sheet.
 
@@ -60,24 +60,22 @@ Contoh konkret: `/id/`, `/id/about`, `/en/projects`. **Tidak ada** route `/conta
 
 ### Home (urutan konten)
 
-1. **Hero / first viewport** — klaim tipografi (dua baris) **tanpa potret** + **Now** (status pekerjaan: kicker + nama perusahaan tautan). Bukan tile karya. Foto hanya di About
-2. **Credibility line (bukti non-kartu)** — **satu** klaim singkat pengalaman/outcome (bukan grid, bukan list stack). Contoh bentuk: “~6 tahun fullstack · shipped produk live” — mendukung hero, **bukan** menggantikan teaser
-3. **Work teaser (bukti karya)** — 1–3 kartu kurasi: nama · peran/outcome; klik tile membuka project sheet (M10); tautan “Semua proyek” ke Work index (bukan langsung live/repo)
-4. **Arah soft** — ke About dan/atau Contact
-5. **Availability line** (Should, opsional)
+1. **Hero / first viewport** — klaim tipografi (dua baris) **tanpa potret** + **Now** (status pekerjaan: kicker + nama perusahaan tautan). **Satu-satunya section Home** (ADR-032). Bukan tile karya. Foto hanya di About
+2. **Arah soft** — ke About dan/atau Contact lewat chrome + pita footer (bukan section tambahan)
 
-**Aturan beda blok:** credibility line = sinyal kredibel 1 baris; work teaser = bukti karya terkurasi. Anti-pattern: dua blok yang sama-sama menumpuk tech stack / highlight identik.
+**Bukan di Home:** credibility line; work teaser. Bukti AI = About (setelah hero). Karya = Work index.
 
 ### About
 
 Label chrome: **Proses Kerja** (`id`) / **Process** (`en`) — ADR-020; route tetap `/[id/en]/about`.
 
 1. **Potret diri** (satu-satunya permukaan R1 yang menampilkan foto Rezi)
-2. Narasi product builder (ide → live)
-3. Fondasi fullstack (konteks pengalaman)
-4. AI edge jujur
-5. Cara kerja / apa yang dicari (tingkat tinggi)
-6. Soft arah ke Contact / kembali ke teaser Home
+2. **Bukti AI** (klaim non-kartu, copy T-021.2) — section setelah hero (ADR-032)
+3. Narasi product builder (ide → live)
+4. Fondasi fullstack (konteks pengalaman)
+5. AI edge jujur
+6. Cara kerja / apa yang dicari (tingkat tinggi)
+7. Soft arah ke Contact / Work index
 
 ### Contact (modal global, ADR-019 — bukan halaman/route)
 
@@ -144,23 +142,23 @@ Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Enginee
 
 Sebelum R1 dianggap siap live:
 
-1. **Home** — hero positioning terisi; **minimal 1** work teaser kartu (ideal 1–3); credibility line boleh singkat tapi tidak boleh diganti list stack
+1. **Home** — hero positioning terisi (klaim + Now). Bukan syarat teaser kartu
 2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
-3. **About** — narasi product builder minimal ada (bukan placeholder Lorem)
-4. Jangan ship Home tanpa teaser **atau** Contact tanpa Email — keduanya menutup J2/J3
-5. Tautan satelit/teaser eksternal yang mati → jangan ditampilkan (sembunyikan item) sampai URL diperbaiki
+3. **About** — narasi product builder minimal ada (bukan placeholder Lorem) + section bukti AI
+4. Jangan ship Home tanpa klaim positioning **atau** Contact tanpa Email — keduanya menutup J2/J3
+5. Tautan satelit eksternal yang mati → jangan ditampilkan (sembunyikan item) sampai URL diperbaiki
 
 ---
 
 # Success Criteria
 
 * Site map hanya tiga destinasi konten R1 (Home, About, Work index) + locale mirror; Contact & Quick Info overlay global (bukan destinasi konten baru)
-* Hierarki Home memenangkan clarity di first viewport; credibility line ≠ work teaser
+* Hierarki Home memenangkan clarity di first viewport; bukti AI di About; karya di Work index (ADR-032)
 * Contact Email = primer; LinkedIn/GitHub satelit; tanpa WA/IG
 * Path prefix shareable dan konsisten untuk kedua bahasa
 * Meta/share acceptance di atas terpenuhi (title/description/OG per locale)
 * Tidak ada IA terpisah untuk P3/P4
-* Content readiness: tidak ship tanpa teaser Home + Email Contact
+* Content readiness: tidak ship tanpa klaim Home + Email Contact
 
 ---
 
@@ -180,7 +178,7 @@ Sebelum R1 dianggap siap live:
 | Information Architecture | **Baseline v1.0** (dokumen ini) |
 | Locale URL | Path prefix `/id` & `/en` |
 | Soft CTA Contact | Email primer; LinkedIn/GitHub satelit; tanpa WA/IG |
-| Home evidence | Credibility line (non-kartu) ≠ work teaser (kartu) |
+| Home evidence | Klaim + Now di Home; bukti AI di About; karya di Work index (ADR-032) |
 | Meta / content readiness | Acceptance R1 di dokumen ini |
 
 ---

@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
 # Overview
 
-MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, dan Work index (`/work`, override ADR-020); teaser karya di Home; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
+MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, dan Work index (`/projects`, override ADR-020); Home = hero + Now (ADR-032); Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
 
 Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial. Magnet ringan (case/proses singkat) **direncanakan segera setelah** kerangka ini hidup — bukan blocker ship pertama.
 
@@ -19,7 +19,7 @@ Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial.
 1. Satu URL resmi yang Rezi bisa tunjuk sebagai rumah identitas profesional
 2. Founder/PO paham: Rezi = product builder (fullstack + AI edge) dalam kunjungan singkat
 3. Soft path kontak siap dipakai (tanpa hard sell / harga)
-4. Presence cukup (bukan CV online kosong) lewat About + teaser karya
+4. Presence cukup (bukan CV online kosong) lewat About + Work index
 5. Fondasi bilingual siap; detail deteksi geo dikunci di UX/Engineering
 
 Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`success-metrics.md`).
@@ -30,11 +30,10 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 | Item | Keterangan |
 | ---- | ---------- |
-| **Home** | Positioning jelas; bukti ringkas; teaser karya; arah ke About/Contact |
-| **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur. Label chrome: Proses Kerja / Process (ADR-020) |
+| **Home** | Positioning jelas (klaim + Now); arah ke About/Contact |
+| **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur + klaim bukti AI (ADR-032). Label chrome: Proses Kerja / Process (ADR-020) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
-| **Work teaser (di Home)** | 1–3 highlight karya/outcome singkat (bukan halaman detail) |
-| **Work index (M9)** | Halaman katalog karya `/[locale]/work` — Must R1 (ADR-020) |
+| **Work index (M9)** | Halaman katalog karya `/[locale]/projects` — Must R1 (ADR-020). Presence bukti karya (M4 teaser Home retired, ADR-032) |
 | **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |
 | **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
 | **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**) saat light hidup; hold T-038.2 = default dark, toggle tersembunyi |
@@ -51,7 +50,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | ---- | ---------- |
 | **Availability line** | Satu kalimat soft (“open to collaboration / opportunities”) di Home atau Contact |
 | **Konsistensi pesan** | Salinan ID/EN setara makna (bukan machine-dump) |
-| **Teaser yang actionable** | Highlight mengarah ke bukti (repo/live) tanpa halaman case dulu |
+| **Karya yang actionable** | Tile Work index membuka sheet M10; live/repo di dalam sheet |
 | **Aksesibilitas dasar** | Hierarki heading, kontras wajar, fokus keyboard — detail di UX |
 | **Motion sebagai identitas visual** | Scroll-triggered reveal, micro-interaction halus, easing hero — bagian identitas R1 dengan batas clarity-first (**ADR-017**), bukan sekadar Could minimal |
 

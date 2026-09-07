@@ -73,6 +73,20 @@ export function AboutPage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      <section className="about-section" id="proof">
+        <div className="flex flex-col gap-8">
+          <Reveal>
+            <p className="home-kicker">{copy.buktiLabel}</p>
+          </Reveal>
+          <Reveal>
+            <p className="about-proof-body">
+              {copy.buktiEmphasis}
+              {copy.buktiRest}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="about-section">
         <div className="flex flex-col gap-8">
           <Reveal>

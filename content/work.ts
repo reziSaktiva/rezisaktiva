@@ -6,9 +6,8 @@ import projects from "./data/projects.json";
  * `content/data/projects.json` — dikunci T-021.5 dari resume, jangan dikarang.
  *
  * `href` = tautan keluar (live diutamakan, fallback repo). `undefined` =
- * tanpa tautan. Di Work index dan teaser Home, tile membuka sheet M10 (T-026);
- * live/repo hanya di dalam sheet. Tautan “Semua proyek” di Home tetap ke
- * `/[locale]/projects`.
+ * tanpa tautan. Di Work index, tile membuka sheet M10 (T-026);
+ * live/repo hanya di dalam sheet.
  *
  * Sembunyikan karya: tambah id ke `hiddenIds` di JSON (data tetap tersimpan).
  */
@@ -49,9 +48,6 @@ function toWorkItem(
   }
   return row;
 }
-
-/** Urutan teaser Home (tile pertama = featured penuh lebar). */
-export const HOME_TEASER_IDS: readonly string[] = projects.homeTeaserIds;
 
 export const PROJECTS_CATALOG = projects.items;
 
