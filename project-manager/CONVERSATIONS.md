@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — Selected chrome: outline, tanpa splatter
+**Phase:** Validation
+**Summary:** Boss Rezi minta blood splatter dicabut dari nav dan bahasa terpilih, dan bentuk selected (wine/blood) diganti border merah biasa + font merah.
+**Key Decision/Insight:** ADR-031 mengganti ADR-030. Penanda aktif = outline token darah, bukan percikan halaman dan bukan bercak 3D.
+**Impact:** `globals.css`, `layout.tsx`, hapus `blood-splatter-layer.tsx`; ADR-029/030/031; T-038.3 / T-040.6.
+
+## [2026-09-07] — Wallpaper Home tetap di viewport
+**Phase:** Validation
+**Summary:** Boss Rezi minta latar video Home tidak ikut scroll, dan tembus sampai bawah halaman (bukan tertutup seksi Bukti/teaser/footer).
+**Key Decision/Insight:** Wallpaper `position: fixed` di luar `.home-hero`; veil tetap wash token tanpa fade ke warna body 100%. Konten Home + footer di atas wallpaper; About tidak memakai lapisan ini.
+**Impact:** `home-page.tsx`, `home-hero-wallpaper.tsx`, `globals.css`; catatan T-042.1.
+
 ## [2026-09-04] — T-041.3 project sheet elevated
 **Phase:** Validation
 **Summary:** Boss Rezi kunci Drawer karya = elevated `#141418` seperti Contact/QI; radius atas 1.15rem; close ghost. Bukan ghost kanvas, bukan lebih tinggi.

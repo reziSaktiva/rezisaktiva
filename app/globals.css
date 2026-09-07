@@ -12,7 +12,8 @@
  * Warna/layout chrome tetap di wrapper (`.site-*`).
  *
  * `--chip-bg` — nampan grup (T-038.3 dihilangkan; token = elevated, bukan kuning).
- * `--chrome-pill-bg`/`--chrome-pill-fg` — selected (bercak darah T-038.3).
+ * `--chrome-pill-bg`/`--chrome-pill-fg` — sisa token bercak (ADR-030, superseded).
+ * Selected hidup = outline + teks aksen (ADR-031).
  * Nilai pill runtime: `useChipColorVars()`; fallback di `:root` harus sama.
  *
  * LIGHT HOLD (T-038.2) — arsip palet krem/kuning, JANGAN HAPUS:
@@ -469,7 +470,7 @@ html::-webkit-scrollbar-button {
   transition: none !important;
 }
 
-/* Nav halaman (desktop) — tanpa nampan; selected = bercak darah 3D (T-038.3 / T-040.2). */
+/* Nav halaman (desktop) — tanpa nampan; selected = outline darah (ADR-031). */
 .site-nav-chip {
   position: relative;
   overflow: visible;
@@ -479,16 +480,9 @@ html::-webkit-scrollbar-button {
   padding: var(--spacing-2);
 }
 .site-nav-chip .site-pill-indicator,
-.site-locale-switch-host .site-pill-indicator {
-  border-radius: 62% 38% 58% 42% / 48% 55% 45% 52%;
-  scale: 1.12 1.28;
-  box-shadow: var(--elev-3d);
-  transition:
-    translate 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    width 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    height 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    scale 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 200ms ease;
+.site-locale-switch-host .site-pill-indicator,
+.site-mobile-nav-chip .site-pill-indicator {
+  display: none;
 }
 .site-nav-chip .site-nav-item {
   position: relative;
@@ -497,14 +491,17 @@ html::-webkit-scrollbar-button {
   min-height: 0;
   background-color: transparent;
   color: var(--chip-fg);
-  border-radius: 16px;
+  border-radius: 0.375rem;
   font-weight: 500;
   text-decoration: none;
   padding-block: var(--spacing-1-5);
   padding-inline: var(--spacing-3);
   box-shadow: none;
   transform: none;
-  transition: color 200ms ease;
+  border: 1px solid transparent;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
 }
 .site-nav-chip .site-nav-item:hover,
 .site-nav-chip .site-nav-item:focus,
@@ -516,10 +513,14 @@ html::-webkit-scrollbar-button {
   box-shadow: none;
   transform: none;
 }
-.site-nav-chip .site-nav-item[data-selected],
-.site-nav-chip .site-nav-item.is-pill-on {
-  background-color: transparent;
-  color: var(--chrome-pill-fg);
+.site-nav-chip .site-nav-item:hover:not([data-selected]),
+.site-nav-chip .site-nav-item:focus-visible:not([data-selected]) {
+  color: var(--color-accent-muted);
+}
+
+.site-nav-chip .site-nav-item[data-selected] {
+  color: var(--color-text-accent);
+  border-color: var(--color-accent);
 }
 
 /*
@@ -565,18 +566,6 @@ html::-webkit-scrollbar-button {
   padding: var(--spacing-1);
 }
 
-.site-mobile-nav-chip .site-pill-indicator {
-  border-radius: 62% 38% 58% 42% / 48% 55% 45% 52%;
-  scale: 1.04 1.22;
-  box-shadow: var(--elev-3d);
-  transition:
-    translate 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    width 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    height 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    scale 320ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 200ms ease;
-}
-
 .site-mobile-nav-chip .site-mobile-nav-item {
   position: relative;
   z-index: 1;
@@ -585,7 +574,7 @@ html::-webkit-scrollbar-button {
   justify-content: flex-start;
   background-color: transparent;
   color: var(--chip-fg);
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 500;
   padding-block: 0.65rem;
@@ -594,10 +583,13 @@ html::-webkit-scrollbar-button {
   text-decoration: none;
   box-shadow: none;
   transform: none;
-  transition: color 200ms ease;
+  border: 1px solid transparent;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
 }
 
-.site-mobile-nav-chip .site-mobile-nav-item:hover:not([data-selected]):not(.is-pill-on),
+.site-mobile-nav-chip .site-mobile-nav-item:hover:not([data-selected]),
 .site-mobile-nav-chip .site-mobile-nav-item:focus-visible:not([data-selected]) {
   color: var(--color-accent-muted);
 }
@@ -618,10 +610,9 @@ html::-webkit-scrollbar-button {
   outline-offset: 2px;
 }
 
-.site-mobile-nav-chip .site-mobile-nav-item[data-selected],
-.site-mobile-nav-chip .site-mobile-nav-item.is-pill-on {
-  background-color: transparent;
-  color: var(--chrome-pill-fg);
+.site-mobile-nav-chip .site-mobile-nav-item[data-selected] {
+  color: var(--color-text-accent);
+  border-color: var(--color-accent);
 }
 
 .site-locale-switch-host--menu {
@@ -666,16 +657,17 @@ html::-webkit-scrollbar-button {
   min-width: 0;
   background-color: transparent;
   color: var(--chip-fg);
-  border-radius: 16px;
+  border-radius: 0.375rem;
   padding-block: var(--spacing-0-5);
   padding-inline: var(--spacing-2);
-  transition: color 200ms ease;
+  border: 1px solid transparent;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
 }
 /*
- * ToggleGroupItem punya fill muted + ring fokus. Itu muncul bersamaan
- * dengan `.site-pill-indicator` — residual di bahasa yang terpilih saat
- * hover bahasa lain. Dilawan eksplisit (termasuk :hover / data-state).
- * Jangan sentuh `.site-nav-chip`.
+ * ToggleGroupItem punya fill muted + ring fokus. Dilawan eksplisit
+ * (termasuk :hover / data-state). Jangan sentuh `.site-nav-chip`.
  */
 .site-locale-switch .site-locale-switch-item,
 .site-locale-switch .site-locale-switch-item:hover,
@@ -690,10 +682,14 @@ html::-webkit-scrollbar-button {
   background-image: none !important;
   box-shadow: none !important;
 }
+.site-locale-switch .site-locale-switch-item:hover:not([data-selected]):not([data-state="on"]) {
+  color: var(--color-accent-muted);
+}
+
 .site-locale-switch .site-locale-switch-item[data-selected],
-.site-locale-switch .site-locale-switch-item[data-state="on"],
-.site-locale-switch .site-locale-switch-item.is-pill-on {
-  color: var(--chrome-pill-fg);
+.site-locale-switch .site-locale-switch-item[data-state="on"] {
+  color: var(--color-text-accent) !important;
+  border-color: var(--color-accent) !important;
 }
 
 /*
@@ -901,33 +897,6 @@ html::-webkit-scrollbar-button {
   background-color: transparent;
 }
 
-/*
- * T-040.6 / ADR-030 — percikan selected ke viewport. Di bawah header
- * (teks tetap terbaca lewat bar transparan) dan di atas isi halaman.
- * Overlay Contact/QI/sheet/cursor di atas ini.
- */
-.site-blood-splatter {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.site-blood-splatter canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-blood-splatter {
-    display: none;
-  }
-}
-
 .home-page {
   font-family: var(--font-family-body);
   width: 100%;
@@ -962,7 +931,7 @@ html::-webkit-scrollbar-button {
 }
 
 .home-hero-wallpaper {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
@@ -971,6 +940,11 @@ html::-webkit-scrollbar-button {
   background-image: url("/media/home-hero-live.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.home-page > :not(.home-hero-wallpaper) {
+  position: relative;
+  z-index: 1;
 }
 
 .home-hero-wallpaper-video {
@@ -986,16 +960,23 @@ html::-webkit-scrollbar-button {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--color-background-body) 42%, transparent) 0%,
-    color-mix(in srgb, var(--color-background-body) 22%, transparent) 38%,
-    color-mix(in srgb, var(--color-background-body) 48%, transparent) 72%,
-    var(--color-background-body) 100%
+    color-mix(in srgb, var(--color-background-body) 38%, transparent) 0%,
+    color-mix(in srgb, var(--color-background-body) 22%, transparent) 42%,
+    color-mix(in srgb, var(--color-background-body) 36%, transparent) 100%
   );
 }
 
-.home-hero:has(.home-hero-wallpaper) .home-hero-line,
-.home-hero:has(.home-hero-wallpaper) .home-now-title,
-.home-hero:has(.home-hero-wallpaper) .home-kicker {
+.home-page:has(.home-hero-wallpaper) .home-hero-line,
+.home-page:has(.home-hero-wallpaper) .home-now-title,
+.home-page:has(.home-hero-wallpaper) .home-kicker,
+.home-page:has(.home-hero-wallpaper) .home-proof-body,
+.home-page:has(.home-hero-wallpaper) .home-work-title,
+.home-page:has(.home-hero-wallpaper) .home-cta-underline,
+body:has(.home-hero-wallpaper) .home-contact-title,
+body:has(.home-hero-wallpaper) .home-contact-body,
+body:has(.home-hero-wallpaper) .site-footer .home-kicker,
+body:has(.home-hero-wallpaper) .site-footer-legal-copy,
+body:has(.home-hero-wallpaper) .site-footer-satellites a {
   text-shadow: 0 0.06em 0.45em
     color-mix(in srgb, var(--color-background-body) 78%, transparent);
 }
@@ -2156,6 +2137,8 @@ button.home-work-tile,
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1400px;
   margin-inline: auto;

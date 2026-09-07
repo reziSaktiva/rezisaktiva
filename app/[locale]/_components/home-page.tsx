@@ -14,8 +14,8 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <div className="home-page flex flex-col">
+      <HomeHeroWallpaper />
       <section className="home-hero" id="hero">
-        <HomeHeroWallpaper />
         <div className="home-hero-inner flex flex-col justify-between">
           <h1 className="home-hero-heading">
             <HeroWords lines={copy.h1} />

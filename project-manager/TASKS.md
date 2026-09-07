@@ -4,7 +4,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-042** — Halaman identitas visual (setelah T-041 ✅) ⏳ **prioritas**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). **ADR-029**, **ADR-030**.
+1. **T-042** — Halaman identitas visual (setelah T-041 ✅) ⏳ **prioritas**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). **ADR-029**, **ADR-031**.
 2. **T-041** — Overlay identitas visual ✅ (T-041.1–T-041.3, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 3. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.6, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 4. **T-039** — Sistem token identitas visual ✅ (T-039.1–T-039.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
@@ -32,7 +32,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
 | v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
-| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-030) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-031) |
 
 ## Aturan
 

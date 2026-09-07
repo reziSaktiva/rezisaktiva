@@ -21,7 +21,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan
 | Clarity | UX1: first viewport tetap menjawab siapa & untuk siapa | Atmosfer membungkus klaim, tidak menelannya |
 | Acuan visual | Bukan `design-mockups/` | Kode `app/` **sebelum** gelombang ini + arahan yang dikunci di chat per permukaan |
 
-**Bukan gore medis / mall-goth / chaos acak** — dikunci **T-038.1**. Darah di permukaan umum = material/aksen (wine / clot / arterial). **Pengecualian selected chrome:** splatter yang mengalir ke halaman (**ADR-030**, T-040.6).
+**Bukan gore medis / mall-goth / chaos acak** — dikunci **T-038.1**. Darah di permukaan umum = material/aksen (wine / clot / arterial). Selected chrome = outline + teks aksen (**ADR-031**). Splatter viewport **tidak dipakai** (ADR-030 superseded).
 
 ---
 
@@ -45,7 +45,7 @@ Ini **bukan** restyle diam-diam.
 | **Absurdism** | Portofolio yang menolak tropes “SaaS landing”; deadpan; satu objek/perilaku yang *salah dengan sengaja* | Meme, glitch acak, lelucon Comic Sans |
 | **Surrealism** | Skala/justaposisi seperti mimpi yang diam; satu uncanny, bukan kolase | AI sludge, mata mengambang di mana-mana |
 | **Gothic Art** | Vertikalitas, kontras tinggi, geometri lancip/travee sebagai struktur — jejak katedral & naskah, bukan stiker | Hot Topic, Halloween, vampir klise |
-| **Dark and blood** | Kanvas rendah-cahaya; **satu** aksen darah (wine / clot / arterial) mengganti kuning chip; selected chrome = splatter (ADR-030) | Gore medis, NSFW, mall-goth; splatter di permukaan selain selected |
+| **Dark and blood** | Kanvas rendah-cahaya; **satu** aksen darah (wine / clot / arterial) mengganti kuning chip; selected chrome = outline (ADR-031) | Gore medis, NSFW, mall-goth; splatter di permukaan manapun |
 
 **Light mode (T-038.2):** **hold** — jangan hapus. Token light lama di-comment di T-039 (arsip). Bukan invert. Skin light gothic (vellum) **bukan** v15. Default ship = **dark**. Toggle chrome **disembunyikan** selama hold.
 
@@ -112,10 +112,10 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ### Subtasks
 
-- [x] **T-038.1** — Pembacaan absurdism / surrealism / Gothic Art / dark-and-blood **diterima** (tabel di atas, 2026-09-04). Dilarang: gore medis, mall-goth, chaos, NSFW. Splatter **hanya** selected chrome (ADR-030, 2026-09-04).
+- [x] **T-038.1** — Pembacaan absurdism / surrealism / Gothic Art / dark-and-blood **diterima** (tabel di atas, 2026-09-04). Dilarang: gore medis, mall-goth, chaos, NSFW. **2026-09-07 (ADR-031):** splatter tidak dipakai; selected = outline.
 - [x] **T-038.2** — Default ship **dark**. Light **hold**: comment/arsip di T-039, jangan hapus, jangan invert. Toggle chrome **disembunyikan** selama hold (`theme-toggle.tsx` + cookie tetap). ADR-021 di-update 2026-09-04.
 - [x] **T-038.3** — Bahasa chrome + transisi. **Cakupan:** satu keluarga — bukan tile/About.
-  - **Selected (bukan tombol):** **bercak darah** 3D sebagai luka di label + **splatter mengalir ke halaman** (ADR-030 / T-040.6). Hanya penanda item aktif (nav + switcher). Mengikuti area label untuk luka; percikan tidak dibatasi chrome.
+  - **Selected (bukan tombol):** **outline 1px darah + teks aksen** (ADR-031, 2026-09-07). Bukan bercak 3D, bukan splatter. Hanya penanda item aktif (nav + switcher + hamburger).
   - **Container** nampan kuning **dihilangkan**.
   - **Tombol** (Contact header/footer, kirim modal, hamburger): **polos/datar** — teks atau isi gelap + aksen darah tipis di hover/focus. Tanpa 3D, tanpa bercak.
   - Lembar hamburger = panel tetap, bukan lembar kuning (T-040.4).
@@ -148,17 +148,17 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 * **Status:** ✅ **Done** (2026-09-04) — T-040.1–T-040.6
 * **Domain:** Design / Engineering
-* **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah; selected = splatter (ADR-030)
-* **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, `blood-splatter-layer.tsx`, class `.site-*` di `globals.css`
+* **Output:** header, hamburger, footer pita memakai token baru; job chrome tidak berubah; selected = outline (ADR-031)
+* **Baca dulu tambahan:** `site-header.tsx`, `site-footer.tsx`, `site-footer-cta.tsx`, `theme-toggle.tsx`, `locale-switcher.tsx`, `sliding-pill-group.tsx`, class `.site-*` di `globals.css`
 
 ### Subtasks
 
 - [x] **T-040.1** — Wordmark grotesk + tracking; bar transparan; Contact/hamburger datar. Dikunci chat 2026-09-04 (ghost overlay).
-- [x] **T-040.2** — Nav halaman desktop: nampan hilang; selected = bercak darah 3D (bukan pill). Dikunci chat 2026-09-04.
-- [x] **T-040.3** — Locale switcher sama bahasa nav: tanpa nampan; selected = bercak 3D. Theme toggle tetap tidak tampil (hold T-038.2).
-- [x] **T-040.4** — Lembar hamburger: panel elevated + selected bar stain. Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04.
+- [x] **T-040.2** — Nav halaman desktop: nampan hilang; selected = outline darah + teks aksen (ADR-031, 2026-09-07; sebelumnya bercak 3D).
+- [x] **T-040.3** — Locale switcher sama bahasa nav: tanpa nampan; selected = outline. Theme toggle tetap tidak tampil (hold T-038.2).
+- [x] **T-040.4** — Lembar hamburger: panel elevated + selected outline. Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04; selected di-update ADR-031.
 - [x] **T-040.5** — Pita footer ghost; CTA teks datar + panah buka modal Contact yang sama. Dikunci chat 2026-09-04. Verifikasi Home/About/Work, desktop + 375.
-- [x] **T-040.6** — Selected = blood splatter mengalir unbounded (ADR-030). Luka 3D di label tetap. Reduced-motion = tanpa percikan. Dikunci chat 2026-09-04.
+- [x] **T-040.6** — Selected splatter unbounded (ADR-030) **dicabut 2026-09-07** (ADR-031). Canvas overlay dihapus.
 
 ---
 
@@ -186,7 +186,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ### Subtasks
 
-- [ ] **T-042.1** — Q&A + kode: Home (hero klaim dua baris + Now di first viewport, credibility, teaser). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` di `.home-hero` + veil token agar klaim tetap terbaca. Sisa restyle blok Home tetap menunggu T-041.
+- [ ] **T-042.1** — Q&A + kode: Home (hero klaim dua baris + Now di first viewport, credibility, teaser). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` sepanjang Home (video tembus sampai footer); veil tidak fade ke body penuh; About tidak ikut. Sisa restyle blok Home tetap menunggu T-041.
 - [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, offers, values, proses rest/active). Copy tidak dipotong.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi tiga rute, tema gelap yang di-ship, 320 / 375 / desktop.
 

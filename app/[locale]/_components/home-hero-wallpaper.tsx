@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/lib/motion";
 
 /**
- * Live wallpaper di hero Home. Poster selalu ada (CSS).
- * Video dipasang setelah mount supaya tidak hydration-mismatch
- * (`useReducedMotion` beda di SSR vs klien).
+ * Live wallpaper Home, nempel di viewport sepanjang halaman (T-042.1).
+ * Poster selalu ada (CSS). Video dipasang setelah mount supaya tidak
+ * hydration-mismatch (`useReducedMotion` beda di SSR vs klien).
  */
 export function HomeHeroWallpaper() {
   const reduceMotion = useReducedMotion();

@@ -6,7 +6,7 @@ Selected chrome: blood splatter yang mengalir ke seluruh halaman (pengecualian T
 
 ### Status
 
-Accepted
+Superseded (ADR-031)
 
 ### Date
 
@@ -36,3 +36,4 @@ Accepted
 - Implementasi: **T-040.6** (`blood-splatter-layer.tsx`, `globals.css`).
 - Update catatan T-038.1 / T-038.3 di [`tasks/v15-visual-identity.md`](../tasks/v15-visual-identity.md).
 - ADR-029 poin 1 & 4: splatter tetap dilarang **kecuali** selected chrome per ADR ini.
+- **2026-09-07:** diganti [ADR-031](ADR-031-selected-chrome-outline.md) — selected = outline + teks aksen; splatter dicabut.

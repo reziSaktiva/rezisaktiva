@@ -14,6 +14,16 @@ Format entri:
 - ...
 ```
 
+## [2026-09-07]
+### Added
+- **ADR-031** — selected chrome = outline darah + teks aksen (nav, locale, hamburger).
+### Changed
+- Cabut blood splatter viewport (ADR-030 superseded). Hapus `blood-splatter-layer.tsx`. Blob wine selected diganti border + font merah.
+
+## [2026-09-07]
+### Changed
+- **T-042.1** Wallpaper Home nempel di viewport sepanjang halaman (video tembus sampai footer). Veil tidak lagi fade ke warna body penuh. About tidak ikut.
+
 ## [2026-09-04]
 ### Changed
 - Hover drip: kembalikan lidah halus versi sebelumnya (tanpa polygon/miring/rambut); tetap tanpa bulatan ujung (radius kecil, bukan oval).

@@ -36,7 +36,7 @@ import { SlidingPillGroup } from "./sliding-pill-group";
  * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1: wordmark grotesk + bar transparan; Contact/hamburger datar.
- * T-040.4: lembar hamburger = panel elevated + selected bar stain.
+ * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
