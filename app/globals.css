@@ -1022,10 +1022,11 @@ html::-webkit-scrollbar-button {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   pointer-events: none;
-  padding-inline: var(--spacing-6);
+  padding-inline-start: var(--spacing-6);
+  padding-inline-end: calc(var(--spacing-6) + 2.75rem);
   padding-block-start: 6rem;
   padding-block-end: var(--spacing-10);
   font-family: var(--font-family-display);
@@ -1036,7 +1037,8 @@ html::-webkit-scrollbar-button {
 
 @media (min-width: 768px) {
   .home-hero-heading {
-    padding-inline: var(--spacing-10);
+    padding-inline-start: var(--spacing-10);
+    padding-inline-end: calc(var(--spacing-10) + 2.75rem);
   }
 }
 
@@ -1077,13 +1079,29 @@ html::-webkit-scrollbar-button {
 }
 
 .home-hero-line:not(.home-hero-line-2) {
-  max-width: 70%;
+  max-width: 100%;
 }
 
 .home-hero-line-2 {
   align-self: flex-end;
-  max-width: calc(100% - 36rem - var(--spacing-8));
+  max-width: 100%;
   text-align: right;
+}
+
+/* Dua sudut kiri-atas / kanan-bawah hanya jika sisa lebar cukup
+   di kanan lede (36rem). Tablet 768–1199 memakai pola mobile. */
+@media (min-width: 1200px) {
+  .home-hero-heading {
+    justify-content: space-between;
+  }
+
+  .home-hero-line:not(.home-hero-line-2) {
+    max-width: 70%;
+  }
+
+  .home-hero-line-2 {
+    max-width: calc(100% - 36rem - var(--spacing-8));
+  }
 }
 
 .home-work-reveal,
@@ -1465,9 +1483,6 @@ button.home-work-tile,
     font-size: clamp(1.85rem, 8.7vw, 2.75rem);
     line-height: 0.95;
     letter-spacing: -0.03em;
-  }
-  .home-hero-heading {
-    justify-content: flex-start;
   }
   .home-hero-line-2 {
     max-width: 100%;

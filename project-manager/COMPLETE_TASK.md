@@ -20,6 +20,14 @@ Format entri:
 ### Changed
 - —
 ### Fixed
+- H1 Home terpotong di tablet: layout dua sudut (baris 2 `max-width: 100% − 36rem`) baru dari 1200px; 768–1199 memakai pola mobile + padding kanan supaya tidak ketutup tab Quick info.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
 - Overlay Next “Export AboutPage doesn't exist”: `app/[locale]/about/page.tsx` redirect ke `/{locale}#about` (ADR-040), tanpa impor `AboutPage`.
 
 ## [2026-09-07]
