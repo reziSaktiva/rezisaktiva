@@ -17,7 +17,7 @@ Accepted
 1. **Home** hanya **satu section**: hero klaim dua baris + **Now** (status pekerjaan). Bukan scroll multi-blok. Wallpaper hero (bila ada) tetap di permukaan ini.
 2. **Klaim bukti AI** (copy T-021.2 “Bukti / Proof”) pindah ke **About** sebagai **section baru setelah hero**, sebelum offers. Copy tidak ditulis ulang.
 3. **Teaser karya di Home dicabut.** Katalog + sheet M10 tetap di `/[locale]/projects`. Tidak ada section “Proyek terpilih” baru di Work index — item yang dulu jadi teaser sudah ada di katalog.
-4. **M4 (Work teaser sebagai section Home) retired.** Presence bukti karya = **M9 + M10**. Nav chrome (Home / About / Projects) + Contact modal + Quick Info + pita footer **tidak berubah**.
+4. **M4 (Work teaser sebagai section Home) retired.** Presence bukti karya = **M9 + M10**. Nav chrome (Home / About / Projects) + Contact modal + Quick Info **tidak berubah**. **Update (ADR-033):** pita footer **tidak** di Home; About + Work index tetap.
 
 Ini **override** bagian Hybrid lean yang menempatkan teaser + credibility line di Home (ADR-010, ADR-014 IA, ADR-027 poin teaser Home). Tiga destinasi konten R1 tetap.
 

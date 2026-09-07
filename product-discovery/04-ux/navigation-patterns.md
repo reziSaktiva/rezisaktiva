@@ -43,7 +43,7 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 
 | Area | Isi | Peran |
 | ---- | --- | ----- |
-| **In-page (Home)** | Arah soft lewat chrome + pita footer | Memperkuat next step tanpa section tambahan |
+| **In-page (Home)** | Arah soft lewat chrome (nav + tombol Contact) | Memperkuat next step tanpa section atau pita footer (ADR-033) |
 | **Footer** | Brand singkat · ulang About/Contact opsional · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer |
 | **Work index tiles** | Membuka project sheet (M10) | Overlay dari bawah (ADR-027); live/repo sekunder di dalam sheet |
 | **Quick info panel (M13)** | Tab tepi kanan → drawer: bio, Services, Tools, Proyek/Projects, Email, Links | Overlay global (bukan route). Tidak menggantikan Contact modal (ADR-019) atau footer satelit — **ADR-022** |

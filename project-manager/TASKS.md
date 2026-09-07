@@ -4,8 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**.
-2. **T-042** — Halaman identitas visual ⏳ **berikutnya**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). Home = hero-only (ADR-032). **ADR-029**, **ADR-031**.
+1. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**, **ADR-033** (Home tanpa footer).
+2. **T-042** — Halaman identitas visual ⏳ **berikutnya**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). Home = hero-only (ADR-032); tanpa pita footer (ADR-033). **ADR-029**, **ADR-031**.
 3. **T-041** — Overlay identitas visual ✅ (T-041.1–T-041.3, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 4. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.6, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 5. **T-039** — Sistem token identitas visual ✅ (T-039.1–T-039.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
@@ -33,8 +33,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
 | v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
-| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-031, **ADR-032** Home hero-only) |
-| v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-031, **ADR-032** Home hero-only, **ADR-033** tanpa footer Home) |
+| v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032, ADR-033) |
 
 ## Aturan
 

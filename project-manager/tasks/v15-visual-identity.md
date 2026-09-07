@@ -186,7 +186,7 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 ### Subtasks
 
-- [ ] **T-042.1** — Q&A + kode: Home (**satu section**, hero klaim dua baris + Now di first viewport — ADR-032). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` sepanjang Home (video tembus sampai footer); veil tidak fade ke body penuh; About tidak ikut. **ADR-032:** credibility + teaser dicabut dari Home — restyle blok itu tidak lagi berlaku. Sisa restyle hero Home tetap menunggu T-041 bila belum.
+- [ ] **T-042.1** — Q&A + kode: Home (**satu section**, hero klaim dua baris + Now di first viewport — ADR-032 / ADR-033 tanpa pita footer). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh; About tidak ikut. **ADR-032:** credibility + teaser dicabut. **ADR-033:** pita footer dicabut dari Home. Sisa restyle hero Home tetap menunggu T-041 bila belum.
 - [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, **bukti AI setelah hero**, offers, values, proses rest/active). Copy tidak dipotong.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi tiga rute, tema gelap yang di-ship, 320 / 375 / desktop.
 

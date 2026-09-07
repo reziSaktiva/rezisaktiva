@@ -15,11 +15,11 @@ Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 (pindah apa adanya). Bukan
 | Area | Tetap | Berganti |
 | ---- | ----- | -------- |
 | Copy | Teks T-021.2 bukti + Contact footer | Lokasi bukti = About |
-| Overlay | Contact, Quick Info, sheet M10 dari tile Work | Sheet tidak lagi dari Home |
+| Overlay | Contact, Quick Info, sheet M10 dari tile Work | Sheet tidak lagi dari Home; footer Contact tidak di Home (ADR-033) |
 | Nav | Home / About / Projects + Contact button | Tidak |
 | Home | Wallpaper + klaim + Now | Tanpa section bukti & teaser |
 
-**Baca dulu:** ADR-032, ADR-010 (update), ADR-027 (update), `04-ux/information-architecture.md`, `04-ux/key-screen-patterns.md`, `home-page.tsx`, `about-page.tsx`, `work-page.tsx`.
+**Baca dulu:** ADR-032, ADR-033, ADR-010 (update), ADR-027 (update), `04-ux/information-architecture.md`, `04-ux/key-screen-patterns.md`, `home-page.tsx`, `about-page.tsx`, `work-page.tsx`.
 
 ---
 
@@ -27,12 +27,13 @@ Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 (pindah apa adanya). Bukan
 
 * **Status:** ✅ **Done** (2026-09-07)
 * **Domain:** Product / UX / Engineering
-* **Output:** Home hero-only; About punya `#proof`; teaser Home + `homeTeaserIds` hilang; docs IA selaras ADR-032
+* **Output:** Home hero-only; About punya `#proof`; teaser Home + `homeTeaserIds` hilang; Home tanpa pita footer (ADR-033); docs IA selaras ADR-032 / ADR-033
 
 ### Subtasks
 
 - [x] **T-044.1** — ADR-032 + indeks DECISIONS; catatan update ADR-010 / ADR-027. IA, key screens, flows, nav, M1/M4, MVP, journey, domain.
-- [x] **T-044.2** — Home hanya `#hero` (klaim + Now). Hapus `#credibility` dan `#work` dari `home-page.tsx`. Copy bukti/teaser keluar dari `content/home.ts` (Contact footer tetap).
+- [x] **T-044.2** — Home hanya `#hero` (klaim + Now). Hapus `#credibility` dan `#work` dari `home-page.tsx`. Copy bukti/teaser keluar dari `content/home.ts`.
 - [x] **T-044.3** — Section bukti AI di About setelah hero (`#proof`); copy T-021.2 pindah ke `content/about.ts`.
 - [x] **T-044.4** — Hapus `home-work-teasers.tsx`, `home-work-all-link.tsx`, `homeTeaserIds`. CSS proof/teaser Home yang tidak terpakai. Sheet M10 hanya dari Work index.
 - [x] **T-044.5** — Verifikasi browser: Home (satu section), About (bukti setelah hero), Projects (katalog + sheet).
+- [x] **T-044.6** — Home tanpa pita footer Contact (ADR-033). About + Projects tetap.

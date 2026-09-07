@@ -55,13 +55,13 @@ Contoh konkret: `/id/`, `/id/about`, `/en/projects`. **Tidak ada** route `/conta
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship **dark**, light hold, toggle tersembunyi selama hold (T-038.2, 2026-09-04)
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
 6. **Project sheet (M10)** — overlay dari bawah dari tile Work index; bukan rute baru (**ADR-027**)
-7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu
+7. Footer: identitas singkat · satelit LinkedIn/GitHub · legal ringan bila perlu — **kecuali Home** (ADR-033)
 8. Mobile (<1024px): nav halaman + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
 
 ### Home (urutan konten)
 
 1. **Hero / first viewport** — klaim tipografi (dua baris) **tanpa potret** + **Now** (status pekerjaan: kicker + nama perusahaan tautan). **Satu-satunya section Home** (ADR-032). Bukan tile karya. Foto hanya di About
-2. **Arah soft** — ke About dan/atau Contact lewat chrome + pita footer (bukan section tambahan)
+2. **Arah soft** — ke About dan/atau Contact lewat chrome (tombol Contact + modal). **Bukan** pita footer di Home (ADR-033)
 
 **Bukan di Home:** credibility line; work teaser. Bukti AI = About (setelah hero). Karya = Work index.
 
@@ -96,7 +96,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | `/[id/en]/` | Home | M1 + M4 | Must |
 | `/[id/en]/about` | About (label chrome: Proses Kerja / Process) | M2 | Must |
 | `/[id/en]/projects` | Work index (katalog) | M9 | **Must R1** (ADR-020) |
-| Chrome global | Nav + switcher + footer + theme toggle | M5, M6 | Must (toggle: ADR-021) |
+| Chrome global | Nav + switcher + theme toggle; footer di About + Work index (bukan Home, ADR-033) | M5, M6 | Must (toggle: ADR-021) |
 | Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
 | Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022) |
 | Overlay global | Project context sheet (bukan path) | M10 | Must (ADR-027); dari bawah; tile Work index |

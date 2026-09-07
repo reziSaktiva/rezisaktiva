@@ -28,7 +28,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 
 * Hero / klaim positioning (product builder + fullstack + AI edge)
 * Section **Now** — status pekerjaan saat ini (bukan katalog karya)
-* Soft arah ke About dan Contact (chrome + pita footer)
+* Soft arah ke About dan Contact (chrome; bukan pita footer — ADR-033)
 
 **Bukan:** katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; karya di M9).
 

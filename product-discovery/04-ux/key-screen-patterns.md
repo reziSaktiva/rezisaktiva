@@ -44,7 +44,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020).
 
-**Footer = pita Contact (ADR-025):** satu pita terakhir di semua rute — heading besar dari copy yang sudah dikunci + tombol 3D yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. Bukan garis “halaman vs footer” yang terpisah. Tombol Kontak di header tetap.
+**Footer = pita Contact (ADR-025, ADR-033):** pita terakhir di **About** dan **Work index** — heading besar dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. **Home tidak merender pita ini.** Tombol Kontak di header tetap.
 
 ---
 
@@ -54,13 +54,13 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 1. Klaim positioning: **product builder** (tipografi dua baris; **tanpa potret**)
 2. **Now (status pekerjaan)** — di dalam hero, bawah klaim: kicker + “saat ini di” + nama perusahaan (tautan situs). Bukan item katalog karya; bukan pengganti foto
-3. Satu arah soft (ke About atau Contact) — tidak memaksa form; Contact = chrome + pita footer
+3. Satu arah soft (ke About atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
 
 **Satu section saja (ADR-032).** Hero 100svh = klaim di atas + Now di bawah. Tidak ada credibility line atau work teaser di bawah fold.
 
 **Tanpa potret di Home.** Foto diri hanya di S2 About. Jangan mengisi kekosongan dengan cutout wajah, blob, atau stock Unsplash.
 
-**Contact di Home (ADR-025):** tidak ada section `#contact-cta` terpisah. Arah Contact = pita footer (S0) + tombol chrome.
+**Contact di Home (ADR-033):** tidak ada section `#contact-cta` dan tidak ada pita footer. Arah Contact = tombol chrome + modal.
 
 **Anti-pattern:** hero yang hanya nama tanpa klaim; dual CTA agresif (“Hire me” + pricing); menumpuk katalog karya di Home.
 

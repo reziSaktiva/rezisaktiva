@@ -968,12 +968,7 @@ html::-webkit-scrollbar-button {
 
 .home-page:has(.home-hero-wallpaper) .home-hero-line,
 .home-page:has(.home-hero-wallpaper) .home-now-title,
-.home-page:has(.home-hero-wallpaper) .home-kicker,
-body:has(.home-hero-wallpaper) .home-contact-title,
-body:has(.home-hero-wallpaper) .home-contact-body,
-body:has(.home-hero-wallpaper) .site-footer .home-kicker,
-body:has(.home-hero-wallpaper) .site-footer-legal-copy,
-body:has(.home-hero-wallpaper) .site-footer-satellites a {
+.home-page:has(.home-hero-wallpaper) .home-kicker {
   text-shadow: 0 0.06em 0.45em
     color-mix(in srgb, var(--color-background-body) 78%, transparent);
 }

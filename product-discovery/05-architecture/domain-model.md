@@ -49,7 +49,7 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 | **Credibility line** | Satu klaim non-kartu (bukti AI) | Di About, bukan Home (ADR-032) |
 | **Work item** | Kartu katalog: nama · outcome · tautan bukti opsional | Work index; bukan case detail |
 | **Contact channel** | Modal global (ADR-019), bukan Page; Email primer + form ringan opsional; LinkedIn/GitHub satelit | Tanpa backend form/WA/IG R1 |
-| **Site chrome** | Nav, switcher, footer, theme toggle (ADR-021) | Global |
+| **Site chrome** | Nav, switcher, footer, theme toggle (ADR-021) | Global; footer tidak di Home (ADR-033) |
 | **Quick Info overlay** | Drawer glanceable (bio, Services, Tools, Works, Email, Links) | Bukan Page — M13, ADR-022 |
 
 Tidak ada “Customer”, “Order”, “Session user”, atau “Workspace”.

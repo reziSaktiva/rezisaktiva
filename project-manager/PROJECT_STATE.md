@@ -3,11 +3,11 @@
 ## Snapshot
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
-* **Active Mode:** Validation — **T-044** ✅; **prioritas T-042** halaman (Home = hero-only, ADR-032); **T-041** ✅; **T-040** ✅ (selected = outline ADR-031); **T-039** ✅; **T-038** ✅; **T-043** setelah T-042; **T-031** ⏸️ sampai gelombang v15 (token sudah); **T-032…T-037** ✅; T-023 bila aset CV Inggris siap; bukan R2 tanpa ADR
+* **Active Mode:** Validation — **T-044** ✅; **prioritas T-042** halaman (Home = hero-only, ADR-032 / tanpa footer, ADR-033); **T-041** ✅; **T-040** ✅ (selected = outline ADR-031); **T-039** ✅; **T-038** ✅; **T-043** setelah T-042; **T-031** ⏸️ sampai gelombang v15 (token sudah); **T-032…T-037** ✅; T-023 bila aset CV Inggris siap; bukan R2 tanpa ADR
 * **Top Next Tasks:** **T-042** ⏳; **T-043** ⏳; **T-044** ✅; **T-041** ✅; **T-040** ✅; **T-039** ✅; **T-038** ✅; **T-031** ⏸️; **T-023** ⏸️; **T-032…T-037** ✅ — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (✅ Done — **T-028** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — **T-021** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris) + `tasks/v11-structured-data.md` (✅ Done — **T-029**) + `tasks/v12-seo.md` (✅ Done — **T-030**) + `tasks/v13-metadata.md` (⏸️ Deferred — **T-031** tunggu T-043) + `tasks/v14-shadcn-tailwind.md` (✅ Done — **T-032…T-037**, ADR-028) + `tasks/v15-visual-identity.md` (⏳ Open — **T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042…T-043** ⏳; ADR-029, ADR-031) + `tasks/v16-home-single-section.md` (✅ Done — **T-044**, ADR-032)
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v01-product-discovery.md` (✅ Done) + `tasks/v02-bootstrap.md` (✅ Done) + `tasks/v03-development-r1.md` (✅ Done — **T-028** ✅) + `tasks/v10-page-copy.md` (⏳ In Progress — **T-021** ✅; **T-023** ⏸️ Deferred menunggu CV Inggris) + `tasks/v11-structured-data.md` (✅ Done — **T-029**) + `tasks/v12-seo.md` (✅ Done — **T-030**) + `tasks/v13-metadata.md` (⏸️ Deferred — **T-031** tunggu T-043) + `tasks/v14-shadcn-tailwind.md` (✅ Done — **T-032…T-037**, ADR-028) + `tasks/v15-visual-identity.md` (⏳ Open — **T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042…T-043** ⏳; ADR-029, ADR-031) + `tasks/v16-home-single-section.md` (✅ Done — **T-044**, ADR-032, **ADR-033**)
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -51,7 +51,7 @@
 Diizinkan:
 
 * Bug / regresi pada permukaan R1 yang sudah live
-* **T-038…T-043** identitas visual (kulit saja, ADR-029) — Q&A per permukaan lalu kode; **bukan** tulis ulang copy; IA Home mengikuti **ADR-032** (hero-only)
+* **T-038…T-043** identitas visual (kulit saja, ADR-029) — Q&A per permukaan lalu kode; **bukan** tulis ulang copy; IA Home mengikuti **ADR-032** (hero-only) dan **ADR-033** (tanpa pita footer)
 * Polish R1 yang tidak menambah halaman (a11y, paritas); T-023 saat CV Inggris siap
 * **T-031** metadata **setelah T-043** (ikon/OG/`themeColor` ikut kulit baru; token T-039 sudah)
 * Diskusi R2 (halaman case `/work/[slug]`) — implementasi butuh ADR
@@ -76,7 +76,7 @@ Tidak ada yang terbuka. KI-001 (warna theme toggle) dan KI-002 (background light
 
 ## Recent Decisions (Ringkasan)
 
-ADR terbaru: **ADR-032** (Home = satu section; bukti AI di About; teaser Home dicabut). **ADR-031** (selected chrome = outline darah + teks aksen; ADR-030 superseded). **ADR-029** tetap untuk identitas gothic-blood. ADR-028 tetap untuk stack shadcn + Tailwind. Indeks: [`DECISIONS.md`](DECISIONS.md).
+ADR terbaru: **ADR-033** (Home tanpa pita footer). **ADR-032** (Home = satu section; bukti AI di About; teaser Home dicabut). **ADR-031** (selected chrome = outline darah + teks aksen; ADR-030 superseded). **ADR-029** tetap untuk identitas gothic-blood. ADR-028 tetap untuk stack shadcn + Tailwind. Indeks: [`DECISIONS.md`](DECISIONS.md).
 
 ---
 

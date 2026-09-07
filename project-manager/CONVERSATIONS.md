@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — Home tanpa footer Contact
+**Phase:** Validation
+**Summary:** Boss Rezi minta pita footer Contact dihilangkan dari Home (tetap di About dan Projects).
+**Key Decision/Insight:** ADR-033. Contact di Home hanya tombol chrome + modal.
+**Impact:** `site-footer-slot.tsx`, layout locale, `04-ux/`, T-044.6 / T-042.1.
+
 ## [2026-09-07] — Home satu section
 **Phase:** Validation
 **Summary:** Boss Rezi minta Home hanya satu section. Klaim bukti AI pindah ke About (setelah hero). Teaser proyek terpilih dihapus dari Home; halaman Proyek tidak perlu section baru karena katalog sudah ada.

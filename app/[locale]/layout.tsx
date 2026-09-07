@@ -7,6 +7,7 @@ import { MotionRuntime } from "./_components/motion-runtime";
 import { QuickInfo } from "./_components/quick-info";
 import { SiteChrome } from "./_components/site-chrome";
 import { SiteFooter } from "./_components/site-footer";
+import { SiteFooterSlot } from "./_components/site-footer-slot";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -26,7 +27,9 @@ export default async function LocaleLayout({
     <ContactModalProvider>
       <MotionRuntime>
         <SiteChrome locale={locale}>{children}</SiteChrome>
-        <SiteFooter locale={locale} />
+        <SiteFooterSlot>
+          <SiteFooter locale={locale} />
+        </SiteFooterSlot>
         <ContactModal locale={locale} />
         <QuickInfo locale={locale} />
         <CursorRing />

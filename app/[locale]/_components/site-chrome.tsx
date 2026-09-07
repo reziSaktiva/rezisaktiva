@@ -24,7 +24,7 @@ function SiteSkipLink({ locale }: { locale: Locale }) {
 
 /**
  * Pengganti AppShell (T-033.1): header sticky transparan + `<main>`.
- * Footer tetap sibling di layout locale. Nav desktop/mobile di
+ * Footer sibling di layout locale kecuali Home (ADR-033). Nav desktop/mobile di
  * `SiteTopNav` (T-033.2–T-033.3) tanpa konteks Astryx.
  */
 export function SiteChrome({

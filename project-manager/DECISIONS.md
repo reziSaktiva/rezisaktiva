@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-033 | Home tanpa pita footer Contact | Accepted | 2026-09-07 | Override ADR-025/032 untuk Home saja; About + Projects tetap punya pita | [ADR-033](decisions/ADR-033-home-without-footer.md) |
 | ADR-032 | Home = satu section; bukti AI di About; karya hanya di Work index | Accepted | 2026-09-07 | Cabut teaser + credibility dari Home; M4 retired; sheet M10 tetap dari katalog | [ADR-032](decisions/ADR-032-home-single-section.md) |
 | ADR-031 | Selected chrome = outline darah + teks aksen | Accepted | 2026-09-07 | Mengganti splatter ADR-030; nav/locale/hamburger terpilih = border + font merah; tanpa canvas percikan | [ADR-031](decisions/ADR-031-selected-chrome-outline.md) |
 | ADR-030 | Selected chrome = blood splatter unbounded | Superseded (ADR-031) | 2026-09-04 | Pengecualian T-038.1 dicabut 2026-09-07; percik/alir ke halaman tidak lagi dipakai | [ADR-030](decisions/ADR-030-selected-blood-splatter.md) |
