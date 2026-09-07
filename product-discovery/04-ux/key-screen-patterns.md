@@ -53,11 +53,11 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Above the fold (wajib menang):**
 
-1. Klaim positioning: **product builder** (tipografi dua baris; **tanpa potret**)
-2. **Now (status pekerjaan)** — di dalam hero, bawah klaim: kicker + “saat ini di” + nama perusahaan (tautan situs). Bukan item katalog karya; bukan pengganti foto
-3. Satu arah soft (ke About atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
+1. Klaim positioning: **product builder** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038; **tanpa potret**)
+2. Lede sempit di **lantai bawah** first viewport, tautan ke `/workflow`; wallpaper hero terbaca di tengah
+3. Satu arah soft (ke About, Workflow, atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal (bukan pita footer, ADR-033)
 
-**Satu section saja (ADR-032).** Hero 100svh = klaim di atas + Now di bawah. Tidak ada credibility line atau work teaser di bawah fold.
+**Satu section saja (ADR-032).** Hero 100svh. **Now tidak di Home** (ADR-037). Tidak ada credibility line atau work teaser di bawah fold.
 
 **Tanpa potret di Home.** Foto diri hanya di S2 About. Jangan mengisi kekosongan dengan cutout wajah, blob, atau stock Unsplash.
 
@@ -75,7 +75,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Blok berurutan:**
 
-1. Hero — h1 display besar + **potret 4:5** (satu-satunya foto diri R1); lead: baris pertama terlihat, baris kedua on expand
+1. Hero — availability + **Now** (`#now`, ADR-037) + h1 display besar + **potret 4:5** (satu-satunya foto diri R1); lead: baris pertama terlihat, baris kedua on expand
 2. **Bukti AI** — kicker + klaim display (copy T-021.2, pindah dari Home, ADR-032)
 3. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
 
@@ -127,7 +127,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 * **Desktop (≥1024px):** hierarki vertikal jelas; nav horizontal; Work index tile dalam grid.
 * **Mobile (<1024px):** first viewport tetap memuat klaim inti tanpa mengandalkan hover; Work index stack vertikal; Contact Email tetap paling menonjol di modal.
-* **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris (mis. “Membangun” / “produk.”) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work index tile boleh stack. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
+* **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris display (ADR-038) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work index tile boleh stack. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
 * **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
 * Panjang salinan ID/EN boleh beda, **makna setara**.
 * Acuan visual: **kode produksi** (`app/`, token `app/globals.css`, shadcn + Tailwind — ADR-024 / ADR-028). `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
@@ -179,5 +179,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
 * `../../project-manager/decisions/ADR-033-home-without-footer.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
+* `../../project-manager/decisions/ADR-037-home-lede-now-on-about.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

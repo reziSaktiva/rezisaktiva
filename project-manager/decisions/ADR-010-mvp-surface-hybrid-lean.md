@@ -29,7 +29,7 @@ Accepted
 
 ### Update — 2026-09-07 (ADR-032)
 
-Teaser karya **bukan** lagi section Home. Home = hero + Now saja. Bukti AI di About. Karya = Work index + sheet M10. M4 retired.
+Teaser karya **bukan** lagi section Home. Home = hero lede + klaim (ADR-037). Now di About. Bukti AI di About. Karya = Work index + sheet M10. M4 retired.
 
 ### Update — 2026-09-07 (ADR-035)
 

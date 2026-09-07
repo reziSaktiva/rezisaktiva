@@ -38,7 +38,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 
 | ID | Item | Alasan singkat |
 | -- | ---- | -------------- |
-| M1 | Home (identity + destination) | Pintu clarity: siapa / Now / next step (ADR-032) |
+| M1 | Home (identity + destination) | Pintu clarity: lede / klaim / next step (ADR-032 / ADR-037) |
 | M2 | About (narrative) | Siapa Rezi + klaim bukti AI |
 | M14 | Workflow | Cara kerja (offers, approach, values, langkah) |
 | M3 | Contact (soft path) | Jalur inbound tanpa hard sell / harga |

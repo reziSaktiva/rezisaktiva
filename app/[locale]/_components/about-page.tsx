@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { ABOUT_COPY, ABOUT_PORTRAIT_SRC } from "@/content/about";
+import { PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
 import { RestActive } from "./about-rest-active";
 import { Reveal, WordReveal } from "./home-motion";
@@ -28,7 +29,12 @@ export function AboutPage({ locale }: { locale: Locale }) {
               </Badge>
             </Reveal>
             <Reveal>
-              <WorkplaceLine locale={locale} className="about-workplace" />
+              <div id="now" className="flex flex-col gap-2">
+                <p className="home-kicker">
+                  {PERSON_WORKPLACE_COPY[locale].kicker}
+                </p>
+                <WorkplaceLine locale={locale} className="about-workplace" />
+              </div>
             </Reveal>
             <h1 className="about-h1">
               <WordReveal words={copy.h1} />

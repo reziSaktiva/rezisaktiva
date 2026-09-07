@@ -1,14 +1,15 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy Home. Dikunci T-021.2 (h1 / Now / contact 2026-08-20).
- * Bukti AI pindah ke About; teaser karya dicabut (ADR-032).
- * Contact tetap dipakai pita footer.
+ * Copy Home. Klaim + dua baris display ADR-038 / T-051.
+ * Lede + tautan Workflow ADR-037 / ADR-038. Now bukan di Home.
+ * Contact footer tetap T-021.2.
  */
 
 export interface HomeCopy {
+  lede: string;
+  ledeCta: string;
   h1: [string, string];
-  nowLabel: string;
   contactLabel: string;
   contactTitle: string;
   contactBody: string;
@@ -17,8 +18,12 @@ export interface HomeCopy {
 
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
-    h1: ["Ceritamu", "lewat produk."],
-    nowLabel: "Sekarang",
+    lede: "Adaptabilitas adalah skill utama bagi seorang developer. Mengadopsi AI agents memungkinkan saya fokus ke arsitektur tingkat tinggi dan merealisasikan produk digital rumit dengan jauh lebih cepat.",
+    ledeCta: "Lihat cara saya bekerja",
+    h1: [
+      "Saya mengubah ide kompleks",
+      "menjadi produk digital yang mulus.",
+    ],
     contactLabel: "Contact",
     contactTitle: "Ada project?",
     contactBody:
@@ -26,8 +31,9 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     contactCta: "Hubungi saya",
   },
   en: {
-    h1: ["Your story,", "in the product."],
-    nowLabel: "Now",
+    lede: "Adaptability is the ultimate developer skill. Embracing AI agents allowed me to focus on high-level architecture and bring complex digital products to life faster.",
+    ledeCta: "See how I work",
+    h1: ["I transform complex ideas", "into seamless digital products."],
     contactLabel: "Contact",
     contactTitle: "Got a project?",
     contactBody: "Tell me what you're building. If it's a fit, we go from there.",

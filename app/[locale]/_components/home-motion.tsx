@@ -112,7 +112,7 @@ export function WordReveal({
 }
 
 /**
- * Word reveal hero — mockup `runWordReveal()` (120ms + i * 80ms).
+ * Word reveal hero — dua baris display (ADR-038). Tween token sebelumnya.
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
   return (

@@ -64,8 +64,8 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 
 | Modul | Konsep domain lean |
 | ----- | ------------------ |
-| M1 Home | Identity claim, Now, arah soft (ADR-032) |
-| M2 About | Narrative + credibility line |
+| M1 Home | Identity claim + lede, arah soft (ADR-032 / ADR-037) |
+| M2 About | Narrative + Now + bukti AI (ADR-037) |
 | M14 Workflow | How-I-work (offers, approach, values, steps) |
 | M3 Contact | Contact channel (modal overlay) |
 | M4 Work teaser | Retired (ADR-032) |

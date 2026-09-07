@@ -4,6 +4,9 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-038 | Home h1 dua baris display + tautan Workflow | Accepted | 2026-09-07 | Dua baris kiri-atas / kanan-bawah; ID `yang mulus`; lede lantai bawah; CTA `/workflow` | [ADR-038](decisions/ADR-038-home-hero-two-line-workflow-link.md) |
+| ADR-037 | Now ke About; Home lede di atas h1 | Accepted | 2026-09-07 | Cabut Now dari Home; kluster kiri-bawah; wallpaper lebih terbuka | [ADR-037](decisions/ADR-037-home-lede-now-on-about.md) |
+| ADR-036 | Home h1 = kalimat wrapping | Superseded (ADR-038) | 2026-09-07 | Copy kalimat tetap; bentuk wrapping diganti dua baris display | [ADR-036](decisions/ADR-036-home-hero-wrapping-claim.md) |
 | ADR-035 | Pisah About pribadi dan Workflow; route `/workflow` | Accepted | 2026-09-07 | About = siapa; Workflow = cara kerja; chip tiga item | [ADR-035](decisions/ADR-035-about-workflow-split.md) |
 | ADR-034 | Chrome: nama display + pekerjaan; Home tidak di chip nav | Accepted | 2026-09-07 | Nama = tautan Home; chip = About + Workflow + Projects (ADR-035) | [ADR-034](decisions/ADR-034-chrome-name-home-chip.md) |
 | ADR-033 | Home tanpa pita footer Contact | Accepted | 2026-09-07 | Override ADR-025/032 untuk Home saja; About + Projects tetap punya pita | [ADR-033](decisions/ADR-033-home-without-footer.md) |

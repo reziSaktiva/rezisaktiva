@@ -14,6 +14,42 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — H1 dua baris kiri-atas / kanan-bawah
+**Phase:** Validation
+**Summary:** Boss Rezi minta h1 seperti pola display awal (baris 1 kiri atas, baris 2 kanan bawah), ukuran tetap, lede tidak digeser. Copy ID baris 2 jadi “menjadi produk digital yang mulus.”
+**Key Decision/Insight:** ADR-038 / T-051. EN tidak berubah.
+**Impact:** `content/home.ts`, `.home-hero-line`, ADR-038, IA/key screens.
+
+## [2026-09-07] — Lede di lantai bawah hero
+**Phase:** Validation
+**Summary:** Boss Rezi pindahkan deskripsi Home ke paling bawah viewport, terpisah dari h1.
+**Key Decision/Insight:** ADR-038 / T-050. `justify-between`: h1 atas, lede lantai bawah; wallpaper di tengah.
+**Impact:** `home-page.tsx`, `globals.css`, ADR-038, IA/key screens, T-042.1.
+
+## [2026-09-07] — Lede di bawah h1; skala −2
+**Phase:** Validation
+**Summary:** Boss Rezi pindahkan deskripsi ke bawah h1 dan minta ukuran h1 turun dua tingkat dari clamp raksasa.
+**Key Decision/Insight:** ADR-038 update / T-049. Desktop max ~6.75rem (dari 10.5rem).
+**Impact:** `home-page.tsx`, `globals.css`, IA / key screens.
+
+## [2026-09-07] — H1 dua baris + tautan Workflow
+**Phase:** Validation
+**Summary:** Boss Rezi reverse h1 ke dua baris display raksasa (baris 2 rata kanan) dan minta tautan ajakan cara kerja di deskripsi menuju `/workflow`.
+**Key Decision/Insight:** ADR-038 / T-048. Copy kalimat ADR-036 tetap; wrapping superseded. CTA ID “Lihat cara saya bekerja” / EN “See how I work”.
+**Impact:** `content/home.ts`, `home-page.tsx`, `home-motion.tsx`, `globals.css`, T-042.1.
+
+## [2026-09-07] — Lede Home + Now ke About
+**Phase:** Validation
+**Summary:** Boss Rezi pindahkan currently work ke About, tambah deskripsi di atas h1 Home, h1 lebih besar, teks tidak menutup wallpaper.
+**Key Decision/Insight:** ADR-037 / T-047. About sudah punya WorkplaceLine; Home Now dicabut; lede baru ID/EN.
+**Impact:** `home-page.tsx`, `about-page.tsx`, `content/home.ts`, `04-ux/` / `02-product/`, T-042.1–T-042.2.
+
+## [2026-09-07] — Klaim hero Home baru
+**Phase:** Validation
+**Summary:** Boss Rezi ganti h1 Home jadi kalimat penuh ID/EN; bentuk = wrap, bukan dua baris display pendek. Now tidak diubah.
+**Key Decision/Insight:** ADR-036 / T-046. Bukan reopen T-021.
+**Impact:** `content/home.ts`, `home-motion.tsx`, `globals.css`, `04-ux/` hero Home, T-042.1.
+
 ## [2026-09-07] — About vs Workflow
 **Phase:** Validation
 **Summary:** Boss Rezi minta halaman `/about` yang ada menjadi `/workflow`, lalu About baru untuk diri pribadi. Section cara kerja dipisah dari narasi personal.

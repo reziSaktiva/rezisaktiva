@@ -37,7 +37,7 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
 
 ## T-021 — Kunci copy R1 (diskusi)
 
-* **Status:** ✅ Done (T-021.1–T-021.7, 2026-08-28)
+* **Status:** ✅ Done (T-021.1–T-021.7, 2026-08-28). **h1 Home diganti ADR-036 / T-046** (bukan reopen ID ini).
 * **Domain:** Product / Content
 * **Output:** copy terkunci per permukaan, ID+EN, di `content/`
 * **Urutan usulan:** Home (T-021.2) dulu — selaras fokus T-014 — lalu chrome bersama, About, Contact, Work index, Quick Info, meta.
@@ -50,6 +50,7 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
 - [x] **T-021.2** — Home: `h1` (judul), bukti/credibility, blok karya terpilih (label, judul seksi, CTA “lihat semua”), 1–3 item teaser (nama · peran/outcome), seksi contact (label, judul, body, CTA). Slot: `home.*`. Item teaser selaras daftar T-021.5. Tulis ke `content/home.ts` (UI Home sudah terpasang di T-014).
   * ✅ **Selesai (2026-08-28):** `h1`, Bukti, seksi karya, Contact terkunci 2026-08-20. Teaser dikunci Boss Rezi: **Social Media Management Platform · Cook It Real Good · SMC Auction** (bukan 3 item pertama katalog). Nama/outcome tetap dari `WORK_ITEMS` (T-021.5), urutan `HOME_TEASER_IDS` di `content/home.ts`.
   * ✅ **Update (2026-09-01):** Teaser Home: SMMP · Cook It Real Good · **Minerank** (`homeTeaserIds` di `content/data/projects.json`). SMC Auction tidak lagi item terpisah.
+  * ✅ **Update (2026-09-07, ADR-036):** `h1` baru (kalimat wrapping). Bukan reopen T-021.2 — lihat **T-046**.
 - [x] **T-021.3** — About / Proses Kerja: `h1`, lead, fullstack, AI, chip, “yang bisa saya bantu”, approach, values, langkah proses, note, CTA. Slot: `about.*`, `section.process`. Tulis ke `content/` (layout: T-015.2).
   * ✅ **Selesai (2026-08-20):** Copy ditulis ulang total (bukan salinan mockup lagi) — teks final dari Boss Rezi, menonjolkan cara kerja spesifik: orkestrasi tim AI subagent lewat pipeline discovery → arsitektur → build → ship, keputusan terdokumentasi via ADR (bukan klaim generik "AI accelerator"). Offer AI diganti judul "AI & Orchestration". EN = adaptasi makna, bukan terjemahan literal. Diverifikasi tampil benar di `/id/about` dan `/en/about`.
 - [x] **T-021.4** — Contact modal: judul, lead, email + note, availability, label form (email/pesan/placeholder/submit/sent), detail kontak, salin email, sosial, tutup. Slot: `contact.*` (bukan route `/contact`). Email nyata + URL LinkedIn/GitHub. Tulis ke `content/` (layout: T-016.2).
@@ -62,6 +63,91 @@ Pekerjaan ini **diskusi dengan Boss Rezi**, bukan AI mengarang sendiri lalu “s
   * ✅ **Update (2026-09-03):** Tools: Astryx diganti **shadcn/ui** (stack ADR-028). Slot lain tidak berubah.
 - [x] **T-021.7** — Meta destinasi: `title` + `description` per permukaan R1 (Home, About, Work index) per locale; Contact = modal jadi tidak punya title halaman. Slot mockup: `title.home`, `title.about`, `title.work`. Tulis ke `content/` / metadata UI (OG/canonical tetap T-017.2).
   * ✅ **Selesai (2026-08-28):** Title Home `rezisaktiva — Home`; About `… — Proses Kerja` / `… — How I Work`; Work `… — Proyek` / `… — Projects` (bukan Karya/Work). Description Home = CTA Contact; About = draf orkestrasi pendek yang sudah ada; Work = framing Proyek/Projects (makna lead T-021.5).
+
+---
+
+## T-046 — Klaim hero Home baru (wrapping)
+
+* **Status:** ✅ Done (2026-09-07)
+* **Domain:** Product / Content / UX
+* **Keputusan:** [ADR-036](../decisions/ADR-036-home-hero-wrapping-claim.md)
+* **Output:** `HOME_COPY.h1` ID+EN terkunci; `HeroWords` satu blok wrap; Now tidak diubah.
+
+### Subtasks
+
+- [x] **T-046.1** — Kunci wording Boss Rezi + ADR-036. ID/EN apa adanya (bukan disejajarkan kata-per-kata).
+- [x] **T-046.2** — Tulis `content/home.ts`; `HeroWords` + CSS wrap; cabut `.home-hero-line-2`. Verifikasi ID/EN + mobile 320.
+- [x] **T-046.3** — IA / key screens / T-042.1 / indeks ADR. Jangan daur ulang T-021.
+
+---
+
+## T-047 — Lede Home + Now ke About
+
+* **Status:** ✅ Done (2026-09-07)
+* **Domain:** Product / Content / UX
+* **Keputusan:** [ADR-037](../decisions/ADR-037-home-lede-now-on-about.md)
+* **Output:** lede ID+EN di atas h1; Now dicabut dari Home; `#now` di About; kluster hero tidak menutup wallpaper.
+
+### Subtasks
+
+- [x] **T-047.1** — Kunci lede Boss Rezi + ADR-037. Now bukan reopen T-021.
+- [x] **T-047.2** — `content/home.ts` lede; Home tanpa Now; About `#now` + kicker; CSS kluster + veil.
+- [x] **T-047.3** — IA / M1–M2 / key screens / T-042.1–T-042.2 / indeks ADR. Verifikasi Home + About, ID/EN, 320px.
+
+---
+
+## T-048 — H1 dua baris display + tautan Workflow di lede
+
+* **Status:** ✅ Done (2026-09-07)
+* **Domain:** Product / Content / UX
+* **Keputusan:** [ADR-038](../decisions/ADR-038-home-hero-two-line-workflow-link.md)
+* **Output:** `h1` dua baris raksasa (baris 2 kanan); `ledeCta` → `/workflow`; bentuk wrapping ADR-036 superseded.
+
+### Subtasks
+
+- [x] **T-048.1** — ADR-038. Potongan baris + teks tautan dikunci dari arahan Boss Rezi.
+- [x] **T-048.2** — `HOME_COPY.h1` tuple; `HeroWords` + `.home-hero-line-2`; lede `NextLink` `workflowHref`.
+- [x] **T-048.3** — IA / key screens / T-042.1. Verifikasi ID/EN, klik tautan ke Workflow, 320px.
+
+---
+
+## T-049 — Lede di bawah h1; skala h1 −2 tingkat
+
+* **Status:** ✅ Done (2026-09-07)
+* **Domain:** Product / UX
+* **Keputusan:** update [ADR-038](../decisions/ADR-038-home-hero-two-line-workflow-link.md)
+* **Output:** urutan h1 → lede; clamp h1 dua tingkat lebih kecil.
+
+### Subtasks
+
+- [x] **T-049.1** — Pindah lede ke bawah h1; turunkan clamp desktop/mobile dua tingkat (~÷1.25²).
+- [x] **T-049.2** — IA / key screens / T-042.1. Verifikasi Home ID/EN + tautan Workflow.
+
+---
+
+## T-050 — Lede di lantai bawah hero
+
+* **Status:** ✅ Done (2026-09-07)
+* **Domain:** UX
+* **Keputusan:** update [ADR-038](../decisions/ADR-038-home-hero-two-line-workflow-link.md)
+* **Output:** `justify-between` — h1 atas, lede paling bawah; veil atas+bawah.
+
+### Subtasks
+
+- [x] **T-050.1** — Pindah lede ke lantai bawah first viewport. Verifikasi Home.
+
+---
+
+## T-051 — H1 dua baris display kiri-atas / kanan-bawah; copy ID mulus
+
+* **Status:** ✅ Done (2026-09-07)
+* **Domain:** Product / UX
+* **Keputusan:** update [ADR-038](../decisions/ADR-038-home-hero-two-line-workflow-link.md)
+* **Output:** dua baris display (ukuran clamp T-049); ID baris 2 `menjadi produk digital yang mulus.`; lede tetap lantai bawah.
+
+### Subtasks
+
+- [x] **T-051.1** — Kunci copy + bentuk kiri-atas / kanan-bawah. Verifikasi Home ID/EN; lede tidak digeser.
 
 ---
 

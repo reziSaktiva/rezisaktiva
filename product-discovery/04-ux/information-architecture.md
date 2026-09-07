@@ -61,19 +61,20 @@ Contoh konkret: `/id/`, `/id/about`, `/id/workflow`, `/en/projects`. **Tidak ada
 
 ### Home (urutan konten)
 
-1. **Hero / first viewport** — klaim tipografi (dua baris) **tanpa potret** + **Now** (status pekerjaan: kicker + nama perusahaan tautan). **Satu-satunya section Home** (ADR-032). Bukan tile karya. Foto hanya di About
+1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah. **Satu-satunya section Home** (ADR-032). Bukan tile karya. Foto hanya di About
 2. **Arah soft** — ke About, Workflow, dan/atau Contact lewat chrome (tombol Contact + modal). **Bukan** pita footer di Home (ADR-033)
 
-**Bukan di Home:** credibility line; work teaser. Bukti AI = About (setelah hero). Cara kerja = Workflow. Karya = Work index.
+**Bukan di Home:** Now / status pekerjaan; credibility line; work teaser. Now = About. Bukti AI = About (setelah hero). Cara kerja = Workflow. Karya = Work index.
 
 ### About
 
 Label chrome: **Tentang** (`id`) / **About** (`en`) — ADR-035; route `/[id/en]/about`.
 
 1. **Potret diri** (satu-satunya permukaan R1 yang menampilkan foto Rezi)
-2. Sapaan + lead pribadi (siapa Rezi; pengalaman)
-3. **Bukti AI** (klaim non-kartu, copy T-021.2) — section setelah hero (ADR-032)
-4. Soft arah ke Workflow / Contact / Work index lewat chrome + pita footer
+2. **Now** — kicker + “saat ini di” + nama perusahaan (tautan) di hero About (`#now`, ADR-037)
+3. Sapaan + lead pribadi (siapa Rezi; pengalaman)
+4. **Bukti AI** (klaim non-kartu, copy T-021.2) — section setelah hero (ADR-032)
+5. Soft arah ke Workflow / Contact / Work index lewat chrome + pita footer
 
 **Bukan di About:** offers, approach, values, langkah proses (itu Workflow).
 
@@ -153,7 +154,7 @@ Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Enginee
 
 Sebelum R1 dianggap siap live:
 
-1. **Home** — hero positioning terisi (klaim + Now). Bukan syarat teaser kartu
+1. **Home** — hero positioning terisi (lede + klaim). Bukan syarat teaser kartu; Now di About
 2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
 3. **About** — narasi pribadi + section bukti AI (bukan placeholder Lorem)
 4. **Workflow** — offers + approach/values + langkah proses (copy T-021.3)
@@ -190,7 +191,7 @@ Sebelum R1 dianggap siap live:
 | Information Architecture | **Baseline v1.0** (dokumen ini) |
 | Locale URL | Path prefix `/id` & `/en` |
 | Soft CTA Contact | Email primer; LinkedIn/GitHub satelit; tanpa WA/IG |
-| Home evidence | Klaim + Now di Home; bukti AI di About; cara kerja di Workflow; karya di Work index (ADR-032, ADR-035) |
+| Home evidence | Lede + klaim di Home; Now + bukti AI di About; cara kerja di Workflow; karya di Work index (ADR-032, ADR-035, ADR-037) |
 | Meta / content readiness | Acceptance R1 di dokumen ini |
 
 ---
@@ -211,5 +212,7 @@ Sebelum R1 dianggap siap live:
 * `../../project-manager/decisions/ADR-033-home-without-footer.md`
 * `../../project-manager/decisions/ADR-034-chrome-name-home-chip.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
+* `../../project-manager/decisions/ADR-037-home-lede-now-on-about.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

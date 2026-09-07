@@ -8,7 +8,7 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebagai halaman inti + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + Now (ADR-032). Cara kerja = M14 `/workflow` (ADR-035). M10 di R1 = overlay (ADR-027), bukan halaman case.
+Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebagai halaman inti + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = h1 atas, lede lantai bawah (ADR-032 / ADR-038). Now = About. Cara kerja = M14 `/workflow` (ADR-035). M10 di R1 = overlay (ADR-027), bukan halaman case.
 
 > **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026) — bukan route `/work/[slug]`.
 >
@@ -26,11 +26,10 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 
 **Isi inti:**
 
-* Hero / klaim positioning (product builder + fullstack + AI edge)
-* Section **Now** — status pekerjaan saat ini (bukan katalog karya)
+* Hero / klaim positioning (h1 atas; lede lantai bawah; tautan Workflow di lede)
 * Soft arah ke About dan Contact (chrome; bukan pita footer — ADR-033)
 
-**Bukan:** katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; cara kerja di M14; karya di M9).
+**Bukan:** Now (itu M2 About, ADR-037), katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; cara kerja di M14; karya di M9).
 
 ---
 
@@ -43,6 +42,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 **Isi inti:**
 
 * Sapaan + potret + lead pribadi
+* **Now** — status pekerjaan saat ini (kicker + tautan perusahaan, ADR-037)
 * Klaim **bukti AI** (section setelah hero, copy T-021.2 — ADR-032)
 * Konteks pengalaman (di dalam lead, bukan CV kronologis)
 
@@ -132,7 +132,7 @@ M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick In
 M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
 ```
 
-* M1 adalah pintu destination (hero + Now); M2 memperdalam siapa + bukti AI; M14 memperdalam cara kerja; M3 menutup soft path.
+* M1 adalah pintu destination (lede + klaim); M2 memperdalam siapa + Now + bukti AI; M14 memperdalam cara kerja; M3 menutup soft path.
 * M4 retired (ADR-032); bukti karya = M9 + M10.
 * M9 Must R1 (ADR-020); M10 overlay sheet Must R1 (ADR-027); halaman `/work/[slug]` bukan R1.
 * M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).

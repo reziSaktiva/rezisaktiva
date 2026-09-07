@@ -10,7 +10,7 @@ Dokumen ini menetapkan batas dan domain produk website portofolio pribadi **rezi
 
 **rezisaktiva** adalah situs portofolio publik yang berfungsi sebagai **satu rumah digital** untuk identitas product builder Rezi Saktiva: cerita jelas, bukti kredibel, dan jalur kontak soft.
 
-Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, **Workflow** (`/workflow`, ADR-035), dan **Work index** (`/projects`). Home = hero + Now saja (ADR-032). **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
+Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, **Workflow** (`/workflow`, ADR-035), dan **Work index** (`/projects`). Home = h1 atas, lede lantai bawah (ADR-032 / ADR-038). Now di About. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
 
 Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
@@ -57,7 +57,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 **Di dalam produk (R1 Hybrid lean):**
 
 * Situs publik multi-halaman lean: Home, About, Workflow (`/workflow`, M14), Work index (`/projects`, M9)
-* Home = hero + Now saja (bukan teaser karya — ADR-032)
+* Home = h1 atas, lede lantai bawah (bukan Now, bukan teaser karya — ADR-032 / ADR-038)
 * Contact modal global (ADR-019) + Quick Info overlay (ADR-022) — bukan halaman terpisah
 * Theme toggle dark/light di chrome (ADR-021)
 * Soft CTA kontak (email dan/atau tautan langsung; tanpa pricing)

@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
 # Overview
 
-MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, Workflow (`/workflow`, ADR-035), dan Work index (`/projects`, override ADR-020); Home = hero + Now (ADR-032); Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
+MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, Workflow (`/workflow`, ADR-035), dan Work index (`/projects`, override ADR-020); Home = h1 atas, lede lantai bawah (ADR-032 / ADR-038); Now di About; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
 
 Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial. Magnet ringan (case/proses singkat) **direncanakan segera setelah** kerangka ini hidup — bukan blocker ship pertama.
 
@@ -30,7 +30,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 | Item | Keterangan |
 | ---- | ---------- |
-| **Home** | Positioning jelas (klaim + Now); arah ke About / Workflow / Contact |
+| **Home** | Positioning jelas (lede + klaim); arah ke About / Workflow / Contact |
 | **About** | Narasi pribadi + klaim bukti AI (ADR-032). Label chrome: Tentang / About (ADR-035) |
 | **Workflow** | Cara kerja: offers, approach, values, langkah proses. Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |

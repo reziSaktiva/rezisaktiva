@@ -4,23 +4,29 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-045** — About vs Workflow ✅ (2026-09-07). Detail: [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md). **ADR-035**.
-2. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**, **ADR-033** (Home tanpa footer).
-3. **T-042** — Halaman identitas visual ⏳ **berikutnya**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). Home = hero-only (ADR-032); tanpa pita footer (ADR-033); About vs Workflow (ADR-035). **ADR-029**, **ADR-031**.
-4. **T-041** — Overlay identitas visual ✅ (T-041.1–T-041.3, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
-5. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.7, ADR-034). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
-6. **T-039** — Sistem token identitas visual ✅ (T-039.1–T-039.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
-7. **T-031** — Metadata API: ikon, kartu share, identitas head ⏸️ **Deferred** sampai **T-043** (kulit v15 selesai). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
-8. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
-9. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
-10. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
-11. **T-029** — JSON-LD schema.org dari `content/` ✅ (T-029.1–T-029.4, 2026-08-31). Detail: [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
-12. **T-028** — rapikan `app/` ✅ (T-028.1–T-028.4, 2026-08-31). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-13. **T-018** — exit R1 ✅ (2026-08-31). Validation aktif. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-14. **T-027** — playbook disiplin kode ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-15. **T-026** — project context sheet (M10) ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
-16. **T-021** — copy R1 ✅. **T-022** ✅. **T-024** ✅. **T-025** ✅.
-17. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
+1. **T-051** — H1 dua baris kiri-atas / kanan-bawah; copy ID mulus ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
+2. **T-050** — Lede di lantai bawah hero ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
+3. **T-049** — Lede di bawah h1; skala h1 −2 tingkat ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
+4. **T-048** — H1 dua baris + tautan Workflow ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
+5. **T-047** — Lede Home + Now ke About ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-037**.
+6. **T-046** — Klaim hero Home wrapping ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-036**.
+7. **T-045** — About vs Workflow ✅ (2026-09-07). Detail: [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md). **ADR-035**.
+8. **T-044** — Home satu section (IA lean) ✅ (2026-09-07). Detail: [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md). **ADR-032**, **ADR-033** (Home tanpa footer).
+9. **T-042** — Halaman identitas visual ⏳ **berikutnya**. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). Home = h1 dua baris kiri-atas / kanan-bawah, lede lantai bawah (ADR-038); tanpa pita footer (ADR-033); About vs Workflow (ADR-035). **ADR-029**, **ADR-031**.
+10. **T-041** — Overlay identitas visual ✅ (T-041.1–T-041.3, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+11. **T-040** — Chrome identitas visual ✅ (T-040.1–T-040.7, ADR-034). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+12. **T-039** — Sistem token identitas visual ✅ (T-039.1–T-039.5, 2026-09-04). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+12. **T-031** — Metadata API: ikon, kartu share, identitas head ⏸️ **Deferred** sampai **T-043** (kulit v15 selesai). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+13. **T-032 … T-037** — Migrasi Astryx → shadcn/ui + Tailwind v4 ✅ **Done** (ADR-028; **T-037.7** 2026-09-03). Detail: [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md).
+14. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
+15. **T-030** — SEO R1 (sitemap/robots/lang, CWV ukur, hygiene on-page, ops GSC) ✅ (T-030.1–T-030.4, 2026-08-31). Detail: [`tasks/v12-seo.md`](tasks/v12-seo.md).
+16. **T-029** — JSON-LD schema.org dari `content/` ✅ (T-029.1–T-029.4, 2026-08-31). Detail: [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
+17. **T-028** — rapikan `app/` ✅ (T-028.1–T-028.4, 2026-08-31). Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+18. **T-018** — exit R1 ✅ (2026-08-31). Validation aktif. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+19. **T-027** — playbook disiplin kode ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+20. **T-026** — project context sheet (M10) ✅. Detail: [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md).
+21. **T-021** — copy R1 ✅. **T-022** ✅. **T-024** ✅. **T-025** ✅. **T-046** ✅. **T-047** ✅. **T-048** ✅. **T-049** ✅. **T-050** ✅. **T-051** ✅.
+22. **KI-001 / KI-002** tertutup (tema `rezisaktiva` = mockup `shared.css`).
 
 ## Indeks release
 
@@ -29,7 +35,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v0.1 Product Discovery | [`tasks/v01-product-discovery.md`](tasks/v01-product-discovery.md) | T-001 … T-007 | ✅ Done |
 | v0.2 Repository & Bootstrap | [`tasks/v02-bootstrap.md`](tasks/v02-bootstrap.md) | T-008 … T-012 | ✅ Done |
 | v0.3 Development R1 | [`tasks/v03-development-r1.md`](tasks/v03-development-r1.md) | T-013 … T-020, T-022, T-024–T-028 | ✅ Done |
-| v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023 | ⏳ In Progress (**T-021** ✅; **T-023** ⏸️ Deferred) |
+| v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023, T-046–T-051 | ⏳ In Progress (**T-021** ✅; **T-046…T-051** ✅; **T-023** ⏸️ Deferred) |
 | v11 Structured data | [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md) | T-029 | ✅ Done |
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
 | v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |

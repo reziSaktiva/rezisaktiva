@@ -41,12 +41,11 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 ### F1 — Evaluasi fit cepat (SC1)
 
 1. Masuk via URL (locale default atau link ber-locale)
-2. **Home** — baca first viewport (positioning)
-3. Skim **status pekerjaan (Now)** di hero
-4. Opsional: buka **About** (siapa + bukti AI) atau **Workflow** (cara kerja) atau **Work index** (`/projects`, M9) bila butuh detail lebih
-5. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
-6. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
-7. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
+2. **Home** — baca first viewport (lede + klaim)
+3. Opsional: buka **About** (Now + siapa + bukti AI) atau **Workflow** (cara kerja) atau **Work index** (`/projects`, M9) bila butuh detail lebih
+4. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
+5. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
+6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
 
 **Failure modes:** Home = daftar stack; Contact tersembunyi; tidak ada Email jelas.
 
@@ -55,7 +54,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 ### F2 — Evaluasi kolaborasi (SC2)
 
 1. Masuk Home (clarity)
-2. Ke **About** — siapa Rezi + klaim bukti AI; lanjut **Workflow** bila butuh cara kerja / kolaborasi
+2. Ke **About** — Now + siapa Rezi + klaim bukti AI; lanjut **Workflow** bila butuh cara kerja / kolaborasi
 3. Lanjut cek **Work index** (tile membuka sheet, F7)
 4. **Contact modal** — Email primer (ADR-019)
 5. Sukses: cukup sinyal profesional + product thinking untuk outreach soft

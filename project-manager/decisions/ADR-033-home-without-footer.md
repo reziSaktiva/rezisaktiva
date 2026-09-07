@@ -22,7 +22,7 @@ Accepted
 ### Reason
 
 - Boss Rezi mengunci (2026-09-07): hilangkan footer Contact di Home. Halaman Home tidak boleh scroll ke pita “Get in touch”.
-- Selaras Home = satu section / first viewport (ADR-032): hero klaim + Now, tanpa blok tambahan.
+- Selaras Home = satu section / first viewport (ADR-032 / ADR-037): lede + h1, tanpa Now, tanpa blok tambahan.
 
 ### Alternatives Considered
 

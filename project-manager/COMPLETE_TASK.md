@@ -16,6 +16,54 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- **T-051.1** — h1 dua baris display kiri-atas / kanan-bawah; copy ID `yang mulus`.
+### Changed
+- Clamp h1 tidak diubah. Lede tetap lantai bawah.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-050.1** — lede Home di lantai bawah first viewport.
+### Changed
+- Hero: h1 atas, deskripsi + tautan Workflow di paling bawah (`justify-between`); veil atas+bawah.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-049.1–T-049.2** — lede di bawah h1; skala h1 dua tingkat lebih kecil.
+### Changed
+- Urutan hero Home: h1 lalu deskripsi + tautan Workflow. Clamp desktop max `6.75rem` (dari `10.5rem`).
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-038** — h1 Home dua baris display + tautan Workflow di lede. **T-048.1–T-048.3**.
+### Changed
+- `HeroWords` kembali dua baris; `.home-hero-line-2` rata kanan. Lede CTA `ledeCta` → `/workflow`. ADR-036 bentuk wrapping superseded.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-037** — Now ke About; lede di atas h1 Home. **T-047.1–T-047.3**.
+### Changed
+- Home: kluster kiri-bawah (lede body + h1 display); veil ke zona teks. About: kicker Now + `#now`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-036** — h1 Home kalimat wrapping. **T-046.1–T-046.3**.
+### Changed
+- Copy hero ID/EN di `content/home.ts`. `HeroWords` satu blok; `.home-hero-line-2` dicabut. IA / key screens / T-042.1 mengikuti wrap.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - —
 ### Changed
 - —

@@ -978,14 +978,17 @@ html::-webkit-scrollbar-button {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--color-background-body) 38%, transparent) 0%,
-    color-mix(in srgb, var(--color-background-body) 22%, transparent) 42%,
-    color-mix(in srgb, var(--color-background-body) 36%, transparent) 100%
+    color-mix(in srgb, var(--color-background-body) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-background-body) 22%, transparent) 22%,
+    transparent 40%,
+    transparent 58%,
+    color-mix(in srgb, var(--color-background-body) 22%, transparent) 78%,
+    color-mix(in srgb, var(--color-background-body) 72%, transparent) 100%
   );
 }
 
 .home-page:has(.home-hero-wallpaper) .home-hero-line,
-.home-page:has(.home-hero-wallpaper) .home-now-title,
+.home-page:has(.home-hero-wallpaper) .home-hero-lede,
 .home-page:has(.home-hero-wallpaper) .home-kicker {
   text-shadow: 0 0.06em 0.45em
     color-mix(in srgb, var(--color-background-body) 78%, transparent);
@@ -1013,55 +1016,73 @@ html::-webkit-scrollbar-button {
 }
 
 .home-hero-heading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  padding-block-start: var(--spacing-6);
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  padding-inline: var(--spacing-6);
+  padding-block-start: 6rem;
+  padding-block-end: var(--spacing-10);
   font-family: var(--font-family-display);
   margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .home-hero-heading {
-    padding-block-start: var(--spacing-8);
+    padding-inline: var(--spacing-10);
   }
+}
+
+.home-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 36rem;
+}
+
+.home-hero-lede {
+  margin: 0;
+  max-width: 36rem;
+  font-family: var(--font-family-body);
+  font-size: clamp(0.95rem, 1.05vw + 0.7rem, 1.125rem);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--color-text-secondary);
+}
+
+.home-hero-lede-link {
+  color: var(--color-text-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  font: inherit;
 }
 
 .home-hero-line {
   display: block;
   width: 100%;
   font-family: var(--font-family-display);
-  font-size: clamp(4.25rem, 14.5vw, 10.5rem);
+  font-size: clamp(2.75rem, 9.25vw, 6.75rem);
   line-height: 0.95;
   letter-spacing: 0.01em;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
 }
 
+.home-hero-line:not(.home-hero-line-2) {
+  max-width: 70%;
+}
+
 .home-hero-line-2 {
+  align-self: flex-end;
+  max-width: calc(100% - 36rem - var(--spacing-8));
   text-align: right;
-  padding-right: 2vw;
-}
-
-.home-hero-now {
-  padding-block-end: var(--spacing-4);
-}
-
-.home-now-title {
-  margin: 0;
-  font-family: var(--font-family-display);
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
-  max-width: 56rem;
-}
-
-.home-now-title a {
-  font-size: inherit !important;
-  font-family: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
 }
 
 .home-work-reveal,
@@ -1435,14 +1456,21 @@ button.home-work-tile,
     min-height: 100svh;
     min-height: 100dvh;
   }
+  .home-hero-lede {
+    font-size: clamp(0.875rem, 3.4vw, 1rem);
+    line-height: 1.5;
+  }
   .home-hero-line {
-    font-size: clamp(2.6rem, 13.6vw, 4.25rem);
-    line-height: 0.92;
-    letter-spacing: -0.045em;
+    font-size: clamp(1.85rem, 8.7vw, 2.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .home-hero-heading {
+    justify-content: flex-start;
   }
   .home-hero-line-2 {
-    text-align: left;
-    padding-right: 2.75rem;
+    max-width: 100%;
+    text-align: right;
   }
   .home-work-tile-meta {
     padding: 1rem 1rem 0.9rem;
@@ -2994,9 +3022,13 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
     font-size: var(--font-size-2xs);
   }
 
+  .home-hero-lede {
+    font-size: clamp(0.8125rem, 3.2vw, 0.9375rem);
+  }
+
   .home-hero-line {
-    font-size: clamp(2.35rem, 12.4vw, 3.15rem);
-    line-height: 0.94;
+    font-size: clamp(1.65rem, 8vw, 2.15rem);
+    line-height: 0.96;
   }
 
   .qi-tab {
