@@ -14,6 +14,9 @@ describe("r1PageUrls", () => {
     expect(entries.some((entry) => entry.url.endsWith("/en/projects"))).toBe(
       true,
     );
+    expect(entries.some((entry) => entry.url.endsWith("/en/workflow"))).toBe(
+      true,
+    );
     expect(
       entries.some((entry) => /\/(id|en)\/work(\/|$)/.test(entry.url)),
     ).toBe(false);

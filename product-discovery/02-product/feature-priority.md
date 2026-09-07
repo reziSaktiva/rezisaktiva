@@ -15,7 +15,7 @@ Prioritas mengikuti urutan investasi **clarity → presence → craft** (ADR-006
 * **Could** = nilai tambah jika kapasitas/konten memungkinkan
 * **Won't (current release)** = magnet penuh, media, sales, atau sistem berat — dijadwalkan belakangan atau ditolak untuk arah produk
 
-ID modul merujuk `feature-modules.md` (M1–M13).
+ID modul merujuk `feature-modules.md` (M1–M14).
 
 ---
 
@@ -39,7 +39,8 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | ID | Item | Alasan singkat |
 | -- | ---- | -------------- |
 | M1 | Home (identity + destination) | Pintu clarity: siapa / Now / next step (ADR-032) |
-| M2 | About (narrative) | Memperdalam trust; termasuk klaim bukti AI |
+| M2 | About (narrative) | Siapa Rezi + klaim bukti AI |
+| M14 | Workflow | Cara kerja (offers, approach, values, langkah) |
 | M3 | Contact (soft path) | Jalur inbound tanpa hard sell / harga |
 | M4 | Work teaser (section di Home) | **Retired** (ADR-032) — presence = M9 + M10 |
 | M5 | Language (bilingual geo-aware + switcher) | ADR-002; relevan SEA + pintu terbuka |

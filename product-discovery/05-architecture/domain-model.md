@@ -43,7 +43,7 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 
 | Konsep | Arti di R1 | Catatan |
 | ------ | ---------- | ------- |
-| **Page** | Home, About, Work index (per locale) | Surface IA; Work index Must R1 via override ADR-020 |
+| **Page** | Home, About, Workflow, Work index (per locale) | Surface IA; Workflow Must R1 via ADR-035; Work index via ADR-020 |
 | **Locale** | `id` \| `en` | Path prefix; makna salinan setara |
 | **Identity claim** | Positioning product builder (+ fullstack + AI edge) | First viewport Home |
 | **Credibility line** | Satu klaim non-kartu (bukti AI) | Di About, bukan Home (ADR-032) |
@@ -66,6 +66,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 | ----- | ------------------ |
 | M1 Home | Identity claim, Now, arah soft (ADR-032) |
 | M2 About | Narrative + credibility line |
+| M14 Workflow | How-I-work (offers, approach, values, steps) |
 | M3 Contact | Contact channel (modal overlay) |
 | M4 Work teaser | Retired (ADR-032) |
 | M5 Language | Locale |

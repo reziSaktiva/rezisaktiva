@@ -15,7 +15,7 @@ Accepted
 ### Decision
 
 1. **Home** (`/[locale]/`) **tidak** merender pita footer Contact (`footer#contact-cta` / `.site-footer`).
-2. **About** dan **Work index** tetap menampilkan pita itu (heading + CTA modal + legal + satelit LinkedIn/GitHub) — ADR-025 tetap untuk rute itu.
+2. **About**, **Workflow**, dan **Work index** tetap menampilkan pita itu (heading + CTA modal + legal + satelit LinkedIn/GitHub) — ADR-025 tetap untuk rute itu. **Update (ADR-035):** Workflow = `/[locale]/workflow`.
 3. Arah Contact di Home = tombol chrome + modal (ADR-019) dan Quick Info (ADR-022). Bukan pita di bawah fold.
 4. Ini **override** ADR-025 poin 5 (“semua rute”) dan ADR-032 poin 4 (“pita footer tidak berubah”) **hanya untuk permukaan Home**.
 

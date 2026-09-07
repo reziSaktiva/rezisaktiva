@@ -10,7 +10,7 @@ Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** —
 
 Strategi rilis: **bertahap menurut clarity → presence → craft** (ADR-006), dengan growth **destination + magnet ringan** (ADR-007).
 
-* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Work index (M9) + **project sheet overlay (M10, ADR-027)** + teaser + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
+* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Workflow (M14, ADR-035) / Work index (M9) + **project sheet overlay (M10, ADR-027)** + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
 * **R2 — Magnet lanjutan** = halaman case `/work/[slug]` atau pendalaman sheet jika ADR baru; Work index + overlay M10 sudah live sejak R1
 * **R3 — Presence & craft** = poles pengalaman, Could terpilih (motion, form bila perlu)
 
@@ -51,7 +51,7 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020; M4 teaser Home retired ADR-032), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022) |
+| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020; M4 teaser Home retired ADR-032), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022), **M14 Workflow** (ADR-035) |
 | Should | Availability line, paritas ID/EN, teaser actionable, a11y dasar |
 | Bukan | Route `/work/[slug]`, blog, CMS, pricing |
 

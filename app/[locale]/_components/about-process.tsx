@@ -7,7 +7,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import type { AboutStep } from "@/content/about";
+import type { WorkflowStep } from "@/content/workflow";
 import { cn } from "@/lib/utils";
 import { BuildIcon, DesignIcon, DiscoverIcon, ShipIcon } from "./overlay-icons";
 
@@ -18,7 +18,7 @@ const STEP_ICONS: readonly ComponentType<SVGProps<SVGSVGElement>>[] = [
   ShipIcon,
 ];
 
-export function AboutProcess({ steps }: { steps: readonly AboutStep[] }) {
+export function AboutProcess({ steps }: { steps: readonly WorkflowStep[] }) {
   const [openValue, setOpenValue] = useState("01");
 
   return (

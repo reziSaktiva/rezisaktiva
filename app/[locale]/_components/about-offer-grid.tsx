@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentType, SVGProps } from "react";
-import type { AboutOffer } from "@/content/about";
+import type { WorkflowOffer } from "@/content/workflow";
 import { RestActiveCard } from "./about-rest-active";
 import { Reveal } from "./home-motion";
 import { LayersIcon, ProductIcon, SparkleIcon } from "./overlay-icons";
@@ -12,7 +12,11 @@ const OFFER_ICONS: readonly ComponentType<SVGProps<SVGSVGElement>>[] = [
   SparkleIcon,
 ];
 
-export function AboutOfferGrid({ offers }: { offers: readonly AboutOffer[] }) {
+export function AboutOfferGrid({
+  offers,
+}: {
+  offers: readonly WorkflowOffer[];
+}) {
   return (
     <div className="about-offer-grid grid gap-4">
       {offers.map((offer, index) => {

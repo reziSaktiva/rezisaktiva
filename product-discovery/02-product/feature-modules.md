@@ -8,7 +8,7 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman inti + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + Now (ADR-032). M10 di R1 = overlay (ADR-027), bukan halaman case.
+Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebagai halaman inti + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + Now (ADR-032). Cara kerja = M14 `/workflow` (ADR-035). M10 di R1 = overlay (ADR-027), bukan halaman case.
 
 > **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026) — bukan route `/work/[slug]`.
 >
@@ -30,25 +30,23 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Work index** sebagai halaman
 * Section **Now** — status pekerjaan saat ini (bukan katalog karya)
 * Soft arah ke About dan Contact (chrome; bukan pita footer — ADR-033)
 
-**Bukan:** katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; karya di M9).
+**Bukan:** katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; cara kerja di M14; karya di M9).
 
 ---
 
 ## M2 — About (Narrative)
 
-**Tujuan:** Memperdalam cerita agar founder/PO percaya fit kolaborasi.
+**Tujuan:** Memperdalam cerita siapa Rezi agar founder/PO percaya fit kolaborasi.
 
-**Label chrome:** ID **"Proses Kerja"** / EN **"Process"** (ADR-020). Route tetap `/[locale]/about`; ID modul tetap M2.
+**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Route `/[locale]/about`; ID modul tetap M2.
 
 **Isi inti:**
 
-* Narasi product builder (ide → live)
+* Sapaan + potret + lead pribadi
 * Klaim **bukti AI** (section setelah hero, copy T-021.2 — ADR-032)
-* Fondasi fullstack (~konteks pengalaman)
-* AI sebagai edge (jujur, bukan specialist murni)
-* Apa yang dicari / cara kerja tingkat tinggi (tanpa essay panjang)
+* Konteks pengalaman (di dalam lead, bukan CV kronologis)
 
-**Bukan:** CV kronologis penuh sebagai satu-satunya bentuk; itu boleh ringkas sebagai pendukung.
+**Bukan:** offers, approach, values, langkah proses — itu **M14 Workflow**.
 
 ---
 
@@ -96,7 +94,7 @@ Presence bukti karya = **M9 Work index** + **M10 project sheet**. ID M4 tidak di
 
 **Isi inti:**
 
-* Nav: Home, About (label lokal Proses Kerja / Process), Karya (M9, override ADR-020) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link
+* Nav: Tentang / About, Proses Kerja / How I Work, Proyek (M9) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link; tanpa chip Home (ADR-034 / ADR-035)
 * **Toggle tema (dark/light)** di chrome — Must R1 (**ADR-021**) **saat kedua tema hidup**; update 2026-09-04: default ship dark, light hold, toggle tersembunyi; di mobile Contact tetap di luar hamburger
 * Footer: identitas singkat, satelit, legal ringan bila perlu
 * Konsistensi soft availability di chrome (opsional)
@@ -117,13 +115,14 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
 | **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
+| **M14 — Workflow** | Halaman cara kerja: offers, approach, values, empat langkah proses. Route `/[locale]/workflow`. Label chrome Proses Kerja / How I Work | **Must R1** (ADR-035) |
 
 ---
 
 # Module Relationships
 
 ```text
-M5 Language ─── wraps ───► M1 Home, M2 About, M3 Contact, M6 Chrome, M9 Work index
+M5 Language ─── wraps ───► M1 Home, M2 About, M14 Workflow, M3 Contact, M6 Chrome, M9 Work index
                               │
                               └── CTA soft ► M3 Contact
 
@@ -133,7 +132,7 @@ M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick In
 M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
 ```
 
-* M1 adalah pintu destination (hero + Now); M2 memperdalam trust (termasuk bukti AI); M3 menutup soft path.
+* M1 adalah pintu destination (hero + Now); M2 memperdalam siapa + bukti AI; M14 memperdalam cara kerja; M3 menutup soft path.
 * M4 retired (ADR-032); bukti karya = M9 + M10.
 * M9 Must R1 (ADR-020); M10 overlay sheet Must R1 (ADR-027); halaman `/work/[slug]` bukan R1.
 * M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).
@@ -156,7 +155,7 @@ M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, A
 
 Modul dianggap cukup terdefinisi jika:
 
-1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M10 + M13
+1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M10 + M13 + M14
 2. M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); M13 overlay Must R1 (ADR-022)
 3. Tidak ada modul yang bertentangan dengan brand primer / no-pricing
 4. Siap dipecah ke MoSCoW di `feature-priority.md` dan rilis di `release-roadmap.md`

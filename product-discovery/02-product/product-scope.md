@@ -10,7 +10,7 @@ Dokumen ini menetapkan batas dan domain produk website portofolio pribadi **rezi
 
 **rezisaktiva** adalah situs portofolio publik yang berfungsi sebagai **satu rumah digital** untuk identitas product builder Rezi Saktiva: cerita jelas, bukti kredibel, dan jalur kontak soft.
 
-Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, dan **Work index** (`/projects`). Home = hero + Now saja (ADR-032). **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
+Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, **Workflow** (`/workflow`, ADR-035), dan **Work index** (`/projects`). Home = hero + Now saja (ADR-032). **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
 
 Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
@@ -33,7 +33,8 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 | Domain | Apa yang dicakup | Peran di MVP |
 | ------ | ---------------- | ------------ |
 | **Identity & positioning** | Klaim product builder + fullstack + AI edge di permukaan | Inti — Home |
-| **Narrative / About** | Cerita, cara berpikir, konteks pengalaman | Inti — About |
+| **Narrative / About** | Cerita pribadi, bukti AI | Inti — About |
+| **Workflow** | Cara kerja: offers, approach, values, langkah | Inti — Workflow |
 | **Work presence** | Work index (`/projects`, M9) + **project sheet overlay (M10, ADR-027)** | Inti — index + sheet |
 | **Soft contact** | Jalur menghubungi yang jelas, tidak agresif, via modal global (ADR-019) | Inti — Contact modal |
 | **Language** | Pengalaman bilingual geo-aware + switcher | Inti lintas halaman |
@@ -55,7 +56,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 **Di dalam produk (R1 Hybrid lean):**
 
-* Situs publik multi-halaman lean: Home, About, Work index (`/projects`, M9)
+* Situs publik multi-halaman lean: Home, About, Workflow (`/workflow`, M14), Work index (`/projects`, M9)
 * Section karya/teaser di Home
 * Contact modal global (ADR-019) + Quick Info overlay (ADR-022) — bukan halaman terpisah
 * Theme toggle dark/light di chrome (ADR-021)
@@ -94,7 +95,7 @@ Detail case dan form lanjut masuk `mvp-definition.md` (Should/Could) dan roadmap
 
 Scope dianggap mengarah benar jika:
 
-1. Founder/PO bisa evaluasi dasar lewat Home + About + Work index + Contact modal tanpa merakit cerita dari GitHub/CV
+1. Founder/PO bisa evaluasi dasar lewat Home + About + Workflow + Work index + Contact modal tanpa merakit cerita dari GitHub/CV
 2. Homepage menjawab siapa / bukti ringkas / next step (selaras dual north star)
 3. Karya terasa hadir (teaser di Home + katalog Work index) tanpa memaksa arsitektur detail case penuh di MVP
 4. Soft path kontak jelas (modal, ADR-019); tidak ada harga atau hard sell

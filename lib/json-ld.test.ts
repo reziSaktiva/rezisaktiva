@@ -11,7 +11,7 @@ import {
   type JsonLdNode,
 } from "./json-ld";
 
-function personFrom(surface: "home" | "about" | "work") {
+function personFrom(surface: "home" | "about" | "workflow" | "work") {
   const person = findNode(buildJsonLd("id", surface), "Person");
   expect(person).toBeDefined();
   return person as JsonLdNode;
@@ -41,7 +41,7 @@ describe("buildJsonLd", () => {
   });
 
   it("omits Person.image while portraits are still placeholders", () => {
-    for (const surface of ["home", "about", "work"] as const) {
+    for (const surface of ["home", "about", "workflow", "work"] as const) {
       expect(personFrom(surface)).not.toHaveProperty("image");
     }
   });
@@ -69,6 +69,17 @@ describe("buildJsonLd", () => {
     expect(page?.mainEntity).toEqual({
       "@id": findNode(doc, "Person")?.["@id"],
     });
+    const crumbs = findNode(doc, "BreadcrumbList")
+      ?.itemListElement as JsonLdNode[];
+    expect(crumbs.map((item) => item.name)).toEqual(["Home", "Tentang"]);
+  });
+
+  it("builds Workflow as WebPage with breadcrumbs", () => {
+    const doc = buildJsonLd("id", "workflow");
+    const types = doc["@graph"].map((node) => node["@type"]);
+    expect(types).toEqual(["Person", "WebSite", "WebPage", "BreadcrumbList"]);
+    const page = findNode(doc, "WebPage");
+    expect(page?.name).toBe(SITE_META.id.workflow.title);
     const crumbs = findNode(doc, "BreadcrumbList")
       ?.itemListElement as JsonLdNode[];
     expect(crumbs.map((item) => item.name)).toEqual(["Home", "Proses Kerja"]);

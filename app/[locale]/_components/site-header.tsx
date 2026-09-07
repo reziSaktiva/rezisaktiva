@@ -31,8 +31,9 @@ import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
 
 /**
- * Site chrome — T-013 (ADR-020) + ADR-034: chip About/Proyek; nama = tautan
- * Home (bukan chip Home). Contact = tombol modal (T-016, ADR-019).
+ * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
+ * Proses Kerja / Proyek; nama = tautan Home (bukan chip Home). Contact =
+ * tombol modal (T-016, ADR-019).
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *

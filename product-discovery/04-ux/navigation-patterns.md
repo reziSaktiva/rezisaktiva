@@ -28,7 +28,8 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 | ---- | ------ | ------- |
 | Brand / nama | `/[id/en]/` (Home) | Nama chrome `REZI SAKTIVA` font display; hanya nama yang tautan. Pekerjaan chrome `Web Engineer` di samping, bukan tautan (ADR-034) |
 | Home | `/[id/en]/` | **Tidak di chip** (ADR-034); destinasi = nama di header |
-| About | `/[id/en]/about` | Label lokal di chrome: **ID "Proses Kerja"** / **EN "Process"** (ADR-020 poin 3). Route & nama modul tetap About (M2). |
+| About | `/[id/en]/about` | Label chrome: **ID "Tentang"** / **EN "About"** (ADR-035) |
+| Workflow | `/[id/en]/workflow` | Label chrome: **ID "Proses Kerja"** / **EN "How I Work"** (ADR-035; label lama About) |
 | Proyek / Projects (Work index, M9) | `/[id/en]/projects` | Path 2026-09-01; `/work` redirect |
 | Contact | Tombol pembuka modal (ADR-019) | **Bukan link nav** (override ADR-020); selalu terlihat di luar hamburger, ≤1 ketukan dari halaman manapun |
 | Language switcher | Sibling path locale | Label jelas `ID` / `EN` (atau setara); selalu terlihat; satu ketukan |
@@ -67,7 +68,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 > **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
 
-* Breakpoint **<1024px**: nav halaman (About/Proyek, tanpa Home — ADR-034) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
+* Breakpoint **<1024px**: nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
 * **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019). **Toggle tema (ADR-021):** Must di luar hamburger **saat light hidup**; selama hold T-038.2 toggle **tidak** ditampilkan. Default ship **dark**.
 * ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
 * Footer satelit tetap ada sebagai pelengkap, bukan pengganti Contact.
@@ -81,7 +82,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 # Success Criteria
 
 * Contact bisa dicapai **≤ satu ketukan** dari halaman mana pun (desktop & mobile) — tombol selalu di luar hamburger
-* Home / About / Proyek ≤1 ketukan di desktop; di mobile (<1024px) boleh lewat hamburger (1 ketukan buka menu + 1 ketukan item — override ADR-020)
+* Home / About / Workflow / Proyek ≤1 ketukan di desktop; di mobile (<1024px) boleh lewat hamburger (1 ketukan buka menu + 1 ketukan item — override ADR-020)
 * Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020) sebagai chip compact, bukan full-width
 * Panel hamburger: item halaman full-width; halaman aktif tertandai sebagai bar penuh
 * Footer tidak menggantikan peran Contact

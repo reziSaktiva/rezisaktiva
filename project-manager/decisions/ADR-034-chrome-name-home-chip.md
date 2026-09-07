@@ -16,7 +16,7 @@ Accepted
 
 1. **Identitas kiri header** menampilkan **nama** (`PERSON_CHROME.name` = `REZI SAKTIVA`) dengan **font display yang sama keluarga judul halaman**, lalu **pekerjaan** (`PERSON_CHROME.jobTitle` = `Web Engineer`) di sampingnya dengan font body. Bukan wordmark grotesk lowercase `rezisaktiva` (override T-040.1). Bukan `PERSON.name` / `PERSON.jobTitle` (itu About + Quick Info / JSON-LD).
 2. **Hanya nama yang tautan** ke Home (`/[locale]/`). Pekerjaan bukan tautan dan bukan bagian hit-area nama.
-3. **Chip nav halaman** = About (Proses Kerja / How I Work) + Proyek / Projects. **Tidak ada item Home** di pill desktop maupun hamburger. Destinasi Home tetap ada lewat nama (selaras opsi `navigation-patterns.md`: label Home boleh disembunyikan jika brand = Home).
+3. **Chip nav halaman** = About + Workflow + Proyek / Projects. **Tidak ada item Home** di pill desktop maupun hamburger. Destinasi Home tetap ada lewat nama (selaras opsi `navigation-patterns.md`: label Home boleh disembunyikan jika brand = Home). **Update (ADR-035):** About = Tentang / About (`/about`); Workflow = Proses Kerja / How I Work (`/workflow`).
 4. Breadcrumb JSON-LD tetap memakai label Home di `NAV_LABELS` (bukan chip UI).
 
 ### Reason

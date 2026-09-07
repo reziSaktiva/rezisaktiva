@@ -1,13 +1,13 @@
 import type { Locale } from "@/lib/locale";
-import { projectsHref } from "@/lib/site-url";
+import { projectsHref, workflowHref } from "@/lib/site-url";
 
 /**
- * Item nav chip R1 (About / Proyek) per ADR-020 + ADR-034 — Home tidak
- * di chip; nama brand adalah tautan Home. Contact bukan link nav
- * (ADR-019). Label Proyek/Projects; path `/projects`.
- * `home` tetap di `NAV_LABELS` untuk breadcrumb JSON-LD (T-029).
+ * Item nav chip R1 (About / Workflow / Proyek) per ADR-020 + ADR-034 +
+ * ADR-035 — Home tidak di chip; nama brand adalah tautan Home. Contact
+ * bukan link nav (ADR-019). `home` tetap di `NAV_LABELS` untuk breadcrumb
+ * JSON-LD (T-029).
  */
-export type NavKey = "home" | "about" | "work";
+export type NavKey = "home" | "about" | "workflow" | "work";
 export type NavChipKey = Exclude<NavKey, "home">;
 
 export interface NavItemConfig {
@@ -17,6 +17,7 @@ export interface NavItemConfig {
 
 export const NAV_ITEMS: NavItemConfig[] = [
   { key: "about", href: (locale) => `/${locale}/about` },
+  { key: "workflow", href: (locale) => workflowHref(locale) },
   { key: "work", href: (locale) => projectsHref(locale) },
 ];
 
@@ -32,12 +33,14 @@ export function isHomePath(pathname: string, locale: Locale): boolean {
 export const NAV_LABELS: Record<Locale, Record<NavKey, string>> = {
   id: {
     home: "Home",
-    about: "Proses Kerja",
+    about: "Tentang",
+    workflow: "Proses Kerja",
     work: "Proyek",
   },
   en: {
     home: "Home",
-    about: "How I Work",
+    about: "About",
+    workflow: "How I Work",
     work: "Projects",
   },
 };

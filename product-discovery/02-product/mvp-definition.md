@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
 # Overview
 
-MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, dan Work index (`/projects`, override ADR-020); Home = hero + Now (ADR-032); Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
+MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, Workflow (`/workflow`, ADR-035), dan Work index (`/projects`, override ADR-020); Home = hero + Now (ADR-032); Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
 
 Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial. Magnet ringan (case/proses singkat) **direncanakan segera setelah** kerangka ini hidup — bukan blocker ship pertama.
 
@@ -31,11 +31,12 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | Item | Keterangan |
 | ---- | ---------- |
 | **Home** | Positioning jelas (klaim + Now); arah ke About/Contact |
-| **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur + klaim bukti AI (ADR-032). Label chrome: Proses Kerja / Process (ADR-020) |
+| **About** | Narasi pribadi + klaim bukti AI (ADR-032). Label chrome: Tentang / About (ADR-035) |
+| **Workflow** | Cara kerja: offers, approach, values, langkah proses. Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work index (M9)** | Halaman katalog karya `/[locale]/projects` — Must R1 (ADR-020). Presence bukti karya (M4 teaser Home retired, ADR-032) |
 | **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |
-| **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
+| **Navigasi** | Tentang / About · Proses Kerja / How I Work · Proyek (M9) sebagai chip; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; tanpa chip Home (ADR-034); mobile <1024px pakai hamburger (override ADR-020) |
 | **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**) saat light hidup; hold T-038.2 = default dark, toggle tersembunyi |
 | **Quick Info panel (M13)** | Overlay global (tab kanan → drawer); **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |

@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — About vs Workflow
+**Phase:** Validation
+**Summary:** Boss Rezi minta halaman `/about` yang ada menjadi `/workflow`, lalu About baru untuk diri pribadi. Section cara kerja dipisah dari narasi personal.
+**Key Decision/Insight:** ADR-035. Copy T-021 tidak ditulis ulang; hanya pindah lokasi.
+**Impact:** `about-page.tsx`, `workflow-page.tsx`, `lib/nav.ts`, `04-ux/`, M14, T-045 / T-042.2 / T-042.4.
+
 ## [2026-09-07] — Label chrome REZI SAKTIVA / Web Engineer
 **Phase:** Validation
 **Summary:** Boss Rezi kunci teks header: nama `REZI SAKTIVA` (huruf besar), pekerjaan `Web Engineer`.

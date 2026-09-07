@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- Route `/[locale]/workflow` (M14). Chip nav **Proses Kerja / How I Work**. **ADR-035**. **T-045.1–T-045.4**.
+### Changed
+- `/about` = About pribadi (hero + bukti AI). Offers, approach, values, langkah proses pindah ke Workflow. Label About chrome = Tentang / About.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - —
 ### Changed
 - Label chrome kiri: **REZI SAKTIVA** + **Web Engineer** (`PERSON_CHROME`). About / Quick Info / JSON-LD tetap `PERSON.name` / `PERSON.jobTitle`.

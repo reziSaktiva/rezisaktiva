@@ -46,7 +46,7 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 | **Primary actor** | P1 & P2 (setara) |
 | **Secondary actor** | P3, P4 (tipis) |
 | **Horizon** | Satu kunjungan singkat → soft next step |
-| **Surface set** | Home, About, Work index, Contact modal, language switcher, theme toggle, Quick Info overlay |
+| **Surface set** | Home, About, Workflow, Work index, Contact modal, language switcher, theme toggle, Quick Info overlay |
 | **North stars** | Clarity (NS-1) + inbound berkualitas (NS-2) |
 
 ---
@@ -74,8 +74,8 @@ Tanpa situs milik sendiri (hari ini):
 | ----- | ----------------- | ------- | ---- |
 | **Arrive** | Positioning langsung terbaca | Home (above fold) | J1 |
 | **Orient** | Paham product builder → fullstack → AI edge jujur | Home | J1, E2 |
-| **Evidence** | Bukti AI di About; karya di Work index (sheet M10) | About, Work | J2, J4 |
-| **Deepen** (opsional) | Narasi & cara kerja | About | J4, E4 |
+| **Evidence** | Bukti AI di About; cara kerja di Workflow; karya di Work index (sheet M10) | About, Workflow, Work | J2, J4 |
+| **Deepen** (opsional) | Narasi pribadi & cara kerja | About, Workflow | J4, E4 |
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |
 | **Act** | Soft CTA (email / tautan) via Contact modal | Contact (overlay, ADR-019) | J3 |

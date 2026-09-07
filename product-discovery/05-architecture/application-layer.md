@@ -12,7 +12,7 @@ R1 memakai **Static-first (SSG)**: halaman digenerate saat build dari konten di 
 
 Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sini hanya kontrak perilaku.
 
-> **Update (2026-08-15/16, ADR-019/ADR-020):** Route halaman R1 = Home, About, Work index (`/projects`, M9); Contact **bukan** route — modal global yang dibuka dari chrome (ADR-019), termasuk form client-side singkat (email + message) tanpa backend wajib.
+> **Update (2026-08-15/16, ADR-019/ADR-020; 2026-09-07, ADR-035):** Route halaman R1 = Home, About, Workflow (`/workflow`, M14), Work index (`/projects`, M9); Contact **bukan** route — modal global yang dibuka dari chrome (ADR-019), termasuk form client-side singkat (email + message) tanpa backend wajib.
 
 ---
 
@@ -42,7 +42,7 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 
 | Entry | Perilaku |
 | ----- | -------- |
-| `/[id\|en]/`, `/[id\|en]/about`, `/[id\|en]/projects` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/about`, `/en/projects`) |
+| `/[id\|en]/`, `/[id\|en]/about`, `/[id\|en]/workflow`, `/[id\|en]/projects` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/about`, `/id/workflow`, `/en/projects`) |
 | `/` atau URL tanpa locale | Redirect ke locale default (geo → browser → preferensi setelah switcher) per ADR-014 |
 | Contact modal (tombol di chrome) | Overlay client-side; bukan route/page baru (ADR-019) |
 | Quick Info drawer (tab tepi kanan) | Overlay client-side; bukan route/page baru (ADR-022) |

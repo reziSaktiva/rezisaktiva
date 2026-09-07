@@ -5,7 +5,12 @@ import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { WORK_ITEMS } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 import { NAV_LABELS } from "@/lib/nav";
-import { getSiteUrl, localePath, PROJECTS_PATH } from "@/lib/site-url";
+import {
+  getSiteUrl,
+  localePath,
+  PROJECTS_PATH,
+  WORKFLOW_PATH,
+} from "@/lib/site-url";
 
 export type JsonLdSurface = SiteSurface;
 
@@ -117,9 +122,28 @@ function collectionPageNode(locale: Locale): JsonLdNode {
   };
 }
 
-function breadcrumbNode(locale: Locale, leaf: "about" | "work"): JsonLdNode {
+function workflowPageNode(locale: Locale): JsonLdNode {
+  const url = pageUrl(locale, WORKFLOW_PATH);
+  const meta = SITE_META[locale].workflow;
+  return {
+    "@type": "WebPage",
+    "@id": url,
+    name: meta.title,
+    description: meta.description,
+    url,
+    inLanguage: locale,
+    isPartOf: { "@id": websiteId() },
+    about: { "@id": personId() },
+  };
+}
+
+function breadcrumbNode(
+  locale: Locale,
+  leaf: "about" | "work" | "workflow",
+): JsonLdNode {
   const homeUrl = pageUrl(locale, "");
-  const leafPath = leaf === "work" ? PROJECTS_PATH : leaf;
+  const leafPath =
+    leaf === "work" ? PROJECTS_PATH : leaf === "workflow" ? WORKFLOW_PATH : leaf;
   const leafUrl = pageUrl(locale, leafPath);
   return {
     "@type": "BreadcrumbList",
@@ -186,6 +210,11 @@ export function buildJsonLd(
     graph.push(webPageNode(locale));
   } else if (surface === "about") {
     graph.push(profilePageNode(locale), breadcrumbNode(locale, "about"));
+  } else if (surface === "workflow") {
+    graph.push(
+      workflowPageNode(locale),
+      breadcrumbNode(locale, "workflow"),
+    );
   } else {
     graph.push(
       collectionPageNode(locale),

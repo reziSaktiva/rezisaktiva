@@ -29,7 +29,11 @@ Accepted
 
 ### Update — 2026-09-07 (ADR-032)
 
-Teaser karya **bukan** lagi section Home. Home = hero + Now saja. Bukti AI di About. Karya = Work index + sheet M10. Tiga destinasi konten Hybrid lean **tetap**. M4 retired.
+Teaser karya **bukan** lagi section Home. Home = hero + Now saja. Bukti AI di About. Karya = Work index + sheet M10. M4 retired.
+
+### Update — 2026-09-07 (ADR-035)
+
+Destinasi konten R1 = **Home, About, Workflow, Work index**. About = narasi pribadi + bukti AI. Cara kerja = `/[locale]/workflow` (M14).
 
 ### Alternatives Considered
 

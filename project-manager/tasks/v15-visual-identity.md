@@ -182,20 +182,21 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 
 * **Status:** ⏳ Open — gerbang **T-041.3** ✅ + Q&A per halaman
 * **Domain:** Design / Engineering
-* **Output:** Home / About / Work memakai kulit baru; **blok dan copy sama**
-* **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `about-offer-grid.tsx`, `about-process.tsx`, `about-rest-active.tsx`, `work-page.tsx`, `work-tile.tsx`
+* **Output:** Home / About / Workflow / Work memakai kulit baru; **blok dan copy sama**
+* **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `workflow-page.tsx`, `about-offer-grid.tsx`, `about-process.tsx`, `about-rest-active.tsx`, `work-page.tsx`, `work-tile.tsx`
 
 ### Subtasks
 
 - [ ] **T-042.1** — Q&A + kode: Home (**satu section**, hero klaim dua baris + Now di first viewport — ADR-032 / ADR-033 tanpa pita footer). Tanpa potret. Tanpa menambah blok. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh; About tidak ikut. **ADR-032:** credibility + teaser dicabut. **ADR-033:** pita footer dicabut dari Home. Sisa restyle hero Home tetap menunggu T-041 bila belum.
-- [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, **bukti AI setelah hero**, offers, values, proses rest/active). Copy tidak dipotong.
-- [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi tiga rute, tema gelap yang di-ship, 320 / 375 / desktop.
+- [ ] **T-042.2** — Q&A + kode: About (h1 + potret 4:5, **bukti AI setelah hero** — ADR-035; tanpa offers/proses). Copy tidak dipotong.
+- [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi rute, tema gelap yang di-ship, 320 / 375 / desktop.
+- [ ] **T-042.4** — Q&A + kode: Workflow (`/workflow` — offers, values, proses rest/active). Copy T-021.3 tidak dipotong.
 
 ---
 
 ## T-043 — Gerak sistem, a11y, docs (setelah T-042)
 
-* **Status:** ⏳ Open — gerbang **T-042.3**
+* **Status:** ⏳ Open — gerbang **T-042.4**
 * **Domain:** Design / Engineering / Documentation
 * **Output:** gerak sistem selaras T-038.3; docs/rule tidak lagi mewajibkan pill kuning sebagai identitas; a11y kontras + reduced-motion
 
@@ -204,4 +205,4 @@ Home / About / Work; **tema gelap yang di-ship** (light di-hold — jangan QA du
 - [ ] **T-043.1** — Kode transisi halaman: **hard cut + stutter frame** (T-038.3). Pause overlay tetap. Reduced-motion = instan. Jangan View Transitions API. Jangan clip video. Durasi pendek (UX1). Lenis tetap.
 - [ ] **T-043.2** — Scrollbar, fokus keyboard, cursor: token baru, kontras, target sentuh 320px. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit):** cursor desktop = pisau berdarah (`/cursors/bloody-knife.png`); native cursor disembunyikan; reduced-motion / sentuh = kursor sistem. Pisau tetap terlihat di atas overlay (Contact/QI/sheet) — bukan diganti X. Sisa scrollbar/fokus tetap di subtask ini.
 - [ ] **T-043.3** — Docs: `design-tokens.md` (bila drift), `code-discipline.md`, `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` (hapus “pill kuning” sebagai kontrak identitas). `04-ux/` hanya jika kalimat masih mengunci kuning sebagai Must visual — bukan rewrite prinsip.
-- [ ] **T-043.4** — Verifikasi penuh R1 (tiga rute × tema yang hidup × overlay × reduced-motion). Update Snapshot: v15 Done. **T-031** kembali antrian bila masih ⏸️.
+- [ ] **T-043.4** — Verifikasi penuh R1 (empat rute × tema yang hidup × overlay × reduced-motion). Update Snapshot: v15 Done. **T-031** kembali antrian bila masih ⏸️.

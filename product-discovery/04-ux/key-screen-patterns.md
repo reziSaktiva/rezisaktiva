@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan pola layar kunci (blok konten & hierarki) untuk R1 �
 
 # Overview
 
-Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Kerja / How I Work), **Contact** (modal), **Work index + project sheet** (S4, ADR-027). Pola mendukung F1–F7 dan prinsip UX1–UX7.
+Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contact** (modal), **Work index + project sheet** (S4, ADR-027). Pola mendukung F1–F7 dan prinsip UX1–UX7.
 
 ---
 
@@ -27,6 +27,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 | S0 Chrome | Global | J7, navigasi F1–F7 |
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
 | S2 About | `/[id/en]/about` | J4, E4 |
+| S2b Workflow | `/[id/en]/workflow` | J4, E4 |
 | S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
 | S4 Work index + project sheet | `/[id/en]/projects` + overlay M10 (ADR-027) | J2 |
 
@@ -36,7 +37,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 ### S0 — Chrome
 
-**Blok:** nama (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · primary nav **tanpa Home** (About = label lokal **Proses Kerja** / **How I Work**, ADR-020) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
+**Blok:** nama (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · primary nav **tanpa Home** (Tentang / About, Proses Kerja / How I Work, Proyek / Projects — ADR-035) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
 
 **Theme toggle (ADR-021):** kontrol dark/light di chrome saat **kedua** tema hidup. Update 2026-09-04 / T-038.2: default ship **dark**; light di-hold; toggle **disembunyikan** sampai hold dicabut. Di mobile, Contact tetap di luar hamburger.
 
@@ -44,7 +45,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 **Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020).
 
-**Footer = pita Contact (ADR-025, ADR-033):** pita terakhir di **About** dan **Work index** — heading besar dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. **Home tidak merender pita ini.** Tombol Kontak di header tetap.
+**Footer = pita Contact (ADR-025, ADR-033):** pita terakhir di **About**, **Workflow**, dan **Work index** — heading besar dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. **Home tidak merender pita ini.** Tombol Kontak di header tetap.
 
 ---
 
@@ -68,20 +69,33 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 
 ### S2 — About
 
-**Label chrome:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-020 + kunci T-021.1). Route tetap `/[id/en]/about`; nama modul tetap M2 About. Halaman **tidak digabung ke Home** (ADR-025).
+**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Route `/[id/en]/about`. Halaman **tidak digabung ke Home** (ADR-025). Cara kerja **bukan** di sini (S2b).
 
-**Pola rest / active (ADR-025):** rest menampilkan judul/nomor/display; body copy T-021.3 muncul saat item aktif — hover + focus keyboard di desktop, **klik di mobile** (hover saja gagal di sentuh). Copy tidak dipotong dan tidak ditulis ulang.
+**Pola rest / active (ADR-025):** lead baris kedua on expand (hover + focus desktop, klik mobile).
 
 **Blok berurutan:**
 
 1. Hero — h1 display besar + **potret 4:5** (satu-satunya foto diri R1); lead: baris pertama terlihat, baris kedua on expand
 2. **Bukti AI** — kicker + klaim display (copy T-021.2, pindah dari Home, ADR-032)
-3. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
-4. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
-5. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`
-6. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
+3. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
 
-**Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; framing “developer for hire” yang menggeser brand; menumpuk seluruh body di rest.
+**Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; menumpuk pipeline proses di About.
+
+### S2b — Workflow
+
+**Label chrome:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-035). Route `/[id/en]/workflow`. Copy T-021.3 **tidak ditulis ulang**.
+
+**Pola rest / active (ADR-025):** rest menampilkan judul/nomor/display; body muncul saat item aktif — hover + focus keyboard di desktop, **klik di mobile**.
+
+**Blok berurutan:**
+
+1. Hero — judul proses + catatan
+2. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
+3. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
+4. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`
+5. Soft CTA Contact **bukan** section terpisah — pita footer (S0)
+
+**Anti-pattern:** framing “developer for hire” yang menggeser brand; menumpuk seluruh body di rest.
 
 ---
 
@@ -123,7 +137,7 @@ Lima permukaan R1: **Chrome** (S0), **Home**, **About** (label chrome: Proses Ke
 # Success Criteria
 
 * S1 first viewport lulus uji “siapa & untuk siapa” tanpa scroll panjang
-* S1 = hero saja; bukti AI di S2; karya di S4 (ADR-032)
+* S1 = hero saja; bukti AI di S2; cara kerja di S2b; karya di S4 (ADR-032, ADR-035)
 * S3 Email jelas sebagai primer; satelit terbatas LinkedIn + GitHub
 * S0 memungkinkan F3 (ganti bahasa) dari setiap screen
 * Meta/share & content readiness di `information-architecture.md` terpenuhi sebelum live
