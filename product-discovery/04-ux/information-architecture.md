@@ -70,9 +70,9 @@ Contoh konkret: `/id/`, `/id/about`, `/id/workflow`, `/en/projects`. **Tidak ada
 
 Label chrome: **Tentang** (`id`) / **About** (`en`) — ADR-035; route `/[id/en]/about`.
 
-1. **Potret diri** (satu-satunya permukaan R1 yang menampilkan foto Rezi)
+1. **Karya seni hero** (viewport, caption “This is not me” — **bukan** foto Rezi; ADR-039)
 2. **Now** — kicker + “saat ini di” + nama perusahaan (tautan) di hero About (`#now`, ADR-037)
-3. Sapaan + lead pribadi (siapa Rezi; pengalaman)
+3. Sapaan + lead pribadi (satu paragraf, selalu terlihat — ADR-039)
 4. **Bukti AI** (klaim non-kartu, copy T-021.2) — section setelah hero (ADR-032)
 5. Soft arah ke Workflow / Contact / Work index lewat chrome + pita footer
 
@@ -214,5 +214,6 @@ Sebelum R1 dianggap siap live:
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
 * `../../project-manager/decisions/ADR-037-home-lede-now-on-about.md`
+* `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

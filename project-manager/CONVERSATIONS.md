@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-07] — About hero: artwork + lead penuh
+**Phase:** Validation
+**Summary:** Boss Rezi kunci hero About: hapus badge available; h1 = clamp Home; lead satu paragraf tanpa rest/active; ganti foto Unsplash dengan karya seni viewport + caption “This is not me”.
+**Key Decision/Insight:** ADR-039 / T-042.2 (hero). Copy ID+EN dikunci di chat. `Person.image` tetap kosong.
+**Impact:** `content/about.ts`, `about-page.tsx`, `globals.css`, `public/media/about-hero.jpg`, IA / key screens.
+
+## [2026-09-07] — Fokus ke halaman About
+**Phase:** Validation
+**Summary:** Boss Rezi mengalihkan fokus dari Home ke About. Kerja = **T-042.2** (Q&A kulit lalu kode). IA tetap: hero + Now + potret 4:5 + bukti AI; tanpa offers/proses.
+**Key Decision/Insight:** Copy T-021 tidak dipotong. Home **T-042.1** tetap terbuka; Workflow/Work setelah About.
+**Impact:** `TASKS.md` Fokus; `PROJECT_STATE.md` Current Focus.
+
 ## [2026-09-07] — H1 dua baris kiri-atas / kanan-bawah
 **Phase:** Validation
 **Summary:** Boss Rezi minta h1 seperti pola display awal (baris 1 kiri atas, baris 2 kanan bawah), ukuran tetap, lede tidak digeser. Copy ID baris 2 jadi “menjadi produk digital yang mulus.”

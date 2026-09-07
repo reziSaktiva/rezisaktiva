@@ -40,7 +40,7 @@ describe("buildJsonLd", () => {
     expect(en?.description).not.toBe(QUICK_INFO_COPY.id.bio);
   });
 
-  it("omits Person.image while portraits are still placeholders", () => {
+  it("omits Person.image because About artwork is not a portrait of Rezi", () => {
     for (const surface of ["home", "about", "workflow", "work"] as const) {
       expect(personFrom(surface)).not.toHaveProperty("image");
     }

@@ -1,5 +1,4 @@
 import { HOME_COPY } from "@/content/home";
-import { ABOUT_COPY } from "@/content/about";
 import type { Locale } from "@/lib/locale";
 
 /**
@@ -23,7 +22,8 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     },
     about: {
       title: "rezisaktiva — Tentang",
-      description: ABOUT_COPY.id.lead1,
+      description:
+        "Fokus saya bukan sekadar menulis baris kode, melainkan merancang arsitektur sistem dan efisiensi eksekusi.",
     },
     workflow: {
       title: "rezisaktiva — Proses Kerja",
@@ -43,7 +43,8 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     },
     about: {
       title: "rezisaktiva — About",
-      description: ABOUT_COPY.en.lead1,
+      description:
+        "Rather than just typing lines of code, my focus is on system architecture and execution efficiency.",
     },
     workflow: {
       title: "rezisaktiva — How I Work",

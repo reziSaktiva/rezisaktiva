@@ -15,7 +15,7 @@ Accepted
 ### Decision
 
 1. **Naikkan kadar craft R1** dengan meniru ritme layout, tipe oversized, interaksi rest/active, dan transisi dari [karolinahess.com](https://karolinahess.com/about) serta [mazurbartek.com](https://mazurbartek.com/) — **bukan** palet cream/terracotta, bukan spectacle Framer, bukan playground tanpa bukti karya.
-2. **About tetap halaman sendiri** (`/[locale]/about`, modul M2). Usul memindahkan seluruh isi ke Home lalu menghapus Proses Kerja **tidak dilanjut**. Copy T-021.3 **tidak ditulis ulang**; teks panjang diakali di rest: judul/nomor besar terlihat; body muncul lewat hover (desktop/keyboard) atau klik (mobile).
+2. **About tetap halaman sendiri** (`/[locale]/about`, modul M2). Copy cara kerja di Workflow **tidak ditulis ulang**. **Update (ADR-039):** lead About = satu paragraf selalu terlihat (bukan rest/active). Rest/active tetap untuk offers/values/proses di Workflow.
 3. **Warna, tema `rezisaktiva`, elevasi 3D chrome, Contact modal, dan Quick Info dipertahankan.** Chrome 3D (`--elev-3d`, pill nav, tombol) tidak diubah di pass ini kecuali regresi.
 4. **Fondasi gerak situs (sekali, semua halaman):**
    - Smooth-scroll inertia (Lenis, window scroll; AppShell `height="auto"`). **Pause** saat Contact modal atau Quick Info terbuka. **Off** jika `prefers-reduced-motion`. Bukan `scroll-behavior: smooth` native. Tanpa parallax berat (batas ADR-017 tetap).

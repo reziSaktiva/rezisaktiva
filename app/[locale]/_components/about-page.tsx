@@ -1,13 +1,9 @@
 import NextImage from "next/image";
-import { ChevronDown } from "lucide-react";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Badge } from "@/components/ui/badge";
 import { ABOUT_COPY, ABOUT_PORTRAIT_SRC } from "@/content/about";
 import { PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
-import { RestActive } from "./about-rest-active";
 import { Reveal, WordReveal } from "./home-motion";
-import { StatusDot } from "./status-dot";
+import { ArrowUpIcon } from "./overlay-icons";
 import { WorkplaceLine } from "./workplace-line";
 
 export function AboutPage({ locale }: { locale: Locale }) {
@@ -18,16 +14,6 @@ export function AboutPage({ locale }: { locale: Locale }) {
       <section className="about-hero">
         <div className="about-hero-grid grid items-center">
           <div className="flex flex-col gap-4">
-            <Reveal>
-              <Badge className="about-availability-badge">
-                <StatusDot
-                  label={copy.availabilityBadge}
-                  isPulsing
-                  aria-hidden
-                />
-                {copy.availabilityBadge}
-              </Badge>
-            </Reveal>
             <Reveal>
               <div id="now" className="flex flex-col gap-2">
                 <p className="home-kicker">
@@ -40,31 +26,26 @@ export function AboutPage({ locale }: { locale: Locale }) {
               <WordReveal words={copy.h1} />
             </h1>
             <Reveal>
-              <RestActive
-                className="about-lead"
-                label={copy.lead2}
-                rest={
-                  <div className="flex flex-col gap-3">
-                    <p className="about-lead-rest">{copy.lead1}</p>
-                    <span className="about-lead-more flex" aria-hidden="true">
-                      <ChevronDown size={16} />
-                    </span>
-                  </div>
-                }
-                active={<p>{copy.lead2}</p>}
-              />
+              <p className="about-lead">{copy.lead}</p>
             </Reveal>
           </div>
           <Reveal>
-            <AspectRatio ratio={4 / 5} className="about-portrait">
-              <NextImage
-                src={ABOUT_PORTRAIT_SRC}
-                alt={copy.portraitAlt}
-                fill
-                sizes="(max-width: 1023px) 90vw, 45vw"
-                priority
-              />
-            </AspectRatio>
+            <div className="about-portrait-block flex flex-col gap-3">
+              <div className="about-portrait">
+                <NextImage
+                  src={ABOUT_PORTRAIT_SRC}
+                  alt={copy.portraitAlt}
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 40vw"
+                  quality={90}
+                  priority
+                />
+              </div>
+              <p className="about-portrait-caption">
+                <ArrowUpIcon className="about-portrait-arrow" />
+                {copy.portraitCaption}
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>

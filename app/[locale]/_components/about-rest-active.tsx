@@ -108,36 +108,6 @@ function useRestActiveControl(label: string): RestActiveControl {
   };
 }
 
-export function RestActive({
-  rest,
-  active,
-  className,
-  label,
-}: {
-  rest: ReactNode;
-  active: ReactNode;
-  className?: string;
-  label: string;
-}) {
-  const { panelId, isActive, controlProps } = useRestActiveControl(label);
-
-  return (
-    <div
-      className={cn(
-        "about-rest-active flex flex-col gap-3",
-        isActive && "is-active",
-        className,
-      )}
-      {...controlProps}
-    >
-      {rest}
-      <div id={panelId} className="about-rest-active-panel">
-        {active}
-      </div>
-    </div>
-  );
-}
-
 export function RestActiveCard({
   rest,
   active,

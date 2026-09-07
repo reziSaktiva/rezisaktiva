@@ -16,6 +16,14 @@ Format entri:
 
 ## [2026-09-07]
 ### Added
+- **T-042.2** (hero) — karya seni `public/media/about-hero.jpg` setinggi viewport + caption “This is not me”; **ADR-039**.
+### Changed
+- About: badge availability dicabut; lead satu paragraf (tanpa rest/active); copy ID/EN baru; h1 mengikuti clamp Home.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
 - **T-051.1** — h1 dua baris display kiri-atas / kanan-bawah; copy ID `yang mulus`.
 ### Changed
 - Clamp h1 tidak diubah. Lede tetap lantai bawah.

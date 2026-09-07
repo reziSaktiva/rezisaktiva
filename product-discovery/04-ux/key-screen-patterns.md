@@ -71,11 +71,11 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Route `/[id/en]/about`. Halaman **tidak digabung ke Home** (ADR-025). Cara kerja **bukan** di sini (S2b).
 
-**Pola rest / active (ADR-025):** lead baris kedua on expand (hover + focus desktop, klik mobile).
+**Pola rest / active (ADR-025):** **tidak** di hero About (ADR-039). Lead = satu paragraf selalu terlihat. Rest/active tetap di Workflow (S2b).
 
 **Blok berurutan:**
 
-1. Hero — availability + **Now** (`#now`, ADR-037) + h1 display besar + **potret 4:5** (satu-satunya foto diri R1); lead: baris pertama terlihat, baris kedua on expand
+1. Hero — **Now** (`#now`, ADR-037) + h1 display (clamp sama Home, ADR-038/039) + **karya seni viewport** + caption “This is not me”; lead penuh selalu terlihat. **Tanpa** badge availability (ADR-039)
 2. **Bukti AI** — kicker + klaim display (copy T-021.2, pindah dari Home, ADR-032)
 3. Soft CTA Contact **bukan** section terpisah — pindah ke pita footer (S0)
 
@@ -180,6 +180,6 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 * `../../project-manager/decisions/ADR-033-home-without-footer.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
-* `../../project-manager/decisions/ADR-037-home-lede-now-on-about.md`
+* `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
