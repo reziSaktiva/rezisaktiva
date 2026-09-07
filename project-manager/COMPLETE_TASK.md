@@ -18,6 +18,14 @@ Format entri:
 ### Added
 - —
 ### Changed
+- Fade wallpaper Home: jarak fade diukur dari layout `#about` (resize), bukan `getBoundingClientRect` di setiap frame Lenis; layer `visibility: hidden` saat sudah hilang; cabut `will-change: opacity`.
+### Fixed
+- Home mentok di bawah setelah fade wallpaper ke About: scroll ke atas tersangkut karena baca layout + tulis opacity tiap frame Lenis.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
 - —
 ### Fixed
 - `/[locale]/projects` 500: cover Unsplash ditolak `next/image`. `images.unsplash.com` ditambah ke `remotePatterns`; tile featured `priority`.

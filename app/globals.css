@@ -958,7 +958,6 @@ html::-webkit-scrollbar-button {
   background-image: url("/media/home-hero-live.jpg");
   background-size: cover;
   background-position: center;
-  will-change: opacity;
 }
 
 .home-page > :not(.home-hero-wallpaper) {
