@@ -16,6 +16,19 @@ Format entri:
 
 ## [2026-09-08]
 ### Changed
+- **T-042.3** ✅: tile Work = pelat museum (dikunci chat). Mat + hairline luar seperti About; grid `gap-6`; drip hover tetap di dalam plate; klik tile tetap membuka sheet.
+- **T-042** parent ✅. Gerbang **T-043** terbuka.
+
+## [2026-09-08]
+### Changed
+- **T-042.2** ✅: section About = pelat museum (dikunci chat). Karya seni bingkai ganda (mat + hairline luar); caption “This is not me” jadi label terpusat dengan tracking; kolom Now/h2/lead tidak diubah.
+
+## [2026-09-08]
+### Changed
+- **T-042.1** ✅: restyle hero Home = polish saja (dikunci chat). Veil lebih pekat di zona h1/lede, wallpaper tengah tetap terbuka; lede lebih dekat vellum; tautan Workflow lebih kontras + hover/focus. Komposisi dua baris + MP4 + fade ke `#about` tidak diubah.
+
+## [2026-09-08]
+### Changed
 - **T-054** debu katedral: setiap mote mendapat glow radial, starburst aperture 4 arah, dan flare anamorphic horizontal (optik kamera). Twinkle tetap di-pause oleh overlay lock / reduced-motion.
 
 ## [2026-09-08]

@@ -18,6 +18,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-08] — T-042.3 tile Work = pelat
+**Phase:** Validation
+**Summary:** Q&A kulit Work index: Boss Rezi memilih semua tile sebagai pelat museum, bukan polish/arsip/featured-only.
+**Key Decision/Insight:** Bingkai ganda seperti About; blood drip tetap terkurung di dalam plate; job klik → sheet tidak berubah.
+**Impact:** `.home-work-tile` / `.home-work-grid` di `globals.css`; T-042.3 + parent T-042 Done.
+
+## [2026-09-08] — T-042.2 pelat museum About
+**Phase:** Validation
+**Summary:** Q&A kulit `#about`: Boss Rezi memilih pelat museum, bukan polish/bleed/stack-art-first.
+**Key Decision/Insight:** Karya seni = plate (bingkai ganda + caption sebagai label). Kolom teks kiri tetap. Copy ADR-039 tidak diubah.
+**Impact:** `about-page.tsx`, `.about-portrait*` di `globals.css`; T-042.2 Done.
+
+## [2026-09-08] — T-042.1 polish hero Home
+**Phase:** Validation
+**Summary:** Sisa T-042.1 = restyle Q&A. Boss Rezi mengunci polish saja: tanpa motif katedral/naskah/darah-sebagai-tipe baru.
+**Key Decision/Insight:** Komposisi tetap (MP4 fixed, dua sudut h1, lede + tautan Workflow). Kerja = veil + kontras lede/tautan supaya klaim tetap scan (UX1).
+**Impact:** `app/globals.css` (`.home-hero-wallpaper-veil`, `.home-hero-lede`, `.home-hero-lede-link`); T-042.1 Done.
+
 ## [2026-09-08] — Optik mote: glow + starburst + flare
 **Phase:** Validation
 **Summary:** Boss Rezi minta setiap abu di `/workflow` dapat glow, starburst, dan lens flare yang rapi dan terasa nyata.
