@@ -3,11 +3,11 @@
 ## Snapshot
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
-* **Active Mode:** Validation — **T-042.4** ✅ Workflow decision-driven (ADR-042); wallpaper bitmap Workflow **dicabut**; **T-054** ⏳ latar hidup Motion; **T-053** ✅ pita footer Home (ADR-041); **T-052** ✅ About = section Home (ADR-040); **T-042.1–T-042.3** ⏳; **T-043** setelah T-042; **T-031** ⏸️; bukan R2 tanpa ADR
-* **Top Next Tasks:** **T-042.1–T-042.3** ⏳; **T-043** ⏳; **T-054** ⏳ (latar hidup Workflow) — lihat [`TASKS.md`](TASKS.md)
+* **Active Mode:** Validation — **T-042.4** ✅ Workflow decision-driven (ADR-042); wallpaper bitmap Workflow **dicabut**; **T-054.1–T-054.3** ✅ debu katedral wallpaper (gerbang + filigree dicabut); **T-054.4** ⏳; **T-053** ✅ pita footer Home (ADR-041); **T-052** ✅ About = section Home (ADR-040); **T-042.1–T-042.3** ⏳; **T-043** setelah T-042; **T-031** ⏸️; bukan R2 tanpa ADR
+* **Top Next Tasks:** **T-042.1–T-042.3** ⏳; **T-043** ⏳; **T-054.4** ⏳ (verifikasi Cathedral Breath) — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
-* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v18-about-home-section.md` (**T-052** ✅, **T-053** ✅) + `tasks/v19-workflow-living-background.md` (**T-054** ⏳); rilis v01–v17 tetap di `TASKS.md`
+* **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v18-about-home-section.md` (**T-052** ✅, **T-053** ✅) + `tasks/v19-workflow-living-background.md` (**T-054.1–T-054.3** ✅, **T-054.4** ⏳); rilis v01–v17 tetap di `TASKS.md`
 * Detail phase/mode ada di section di bawah. Riwayat completed/ADR: lihat `COMPLETE_TASK.md` (⚠️ jangan dibaca AI kecuali diperintah) / `DECISIONS.md`.
 
 ---
@@ -38,7 +38,7 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean terkirim di kode: Home (hero + `#about`), Workflow, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, copy T-021 (isi `/workflow` = ADR-042). Acuan visual: kode produksi (ADR-024).
-* Fase aktif: **Validation**. **T-042.4** ✅ Workflow decision-driven (**ADR-042**); wallpaper bitmap di `/workflow` **dicabut**. **T-054** ⏳ latar hidup Motion (bukan video). **T-053** ✅ pita footer di Home (ADR-041). **T-052** ✅ About = section `#about` di Home (ADR-040). **T-042.1–T-042.3** ⏳. **T-043** setelah T-042. **T-031** ⏸️.
+* Fase aktif: **Validation**. **T-042.4** ✅ Workflow decision-driven (**ADR-042**); wallpaper bitmap di `/workflow` **dicabut**. **T-054.1–T-054.3** ✅ debu katedral mote individual `fixed` (gerbang + filigree dicabut); **T-054.4** ⏳. **T-053** ✅ pita footer di Home (ADR-041). **T-052** ✅ About = section `#about` di Home (ADR-040). **T-042.1–T-042.3** ⏳. **T-043** setelah T-042. **T-031** ⏸️.
 * **Copy R1:** **T-021.1–T-021.7 ✅**. **T-046…T-051** ✅. **Isi `/workflow` di-supersede ADR-042** (bukan offers/values/accordion T-021.3). Home tanpa potret. Foto About masih placeholder Unsplash (bukan blocker exit).
 * **Catatan engineering:** gap StyleX/Turbopack (T-013.4) ditutup dengan cabut Astryx. Rilis v14 **T-037.7** ✅. **T-038** ✅. **T-039** ✅. **T-040** ✅. **T-041** ✅. **T-044** ✅. Berikutnya **T-042.1–T-042.3**; **T-031** setelah T-043.
 
@@ -51,7 +51,7 @@
 Diizinkan:
 
 * Bug / regresi pada permukaan R1 yang sudah live
-* **T-038…T-043** identitas visual (kulit saja, ADR-029) — Q&A per permukaan lalu kode; **bukan** tulis ulang copy kecuali **T-046…T-048** dan **isi `/workflow` (ADR-042)**; IA Home mengikuti **ADR-032** + **ADR-037** + **ADR-038** (lede + h1 dua baris, Now di About) dan **ADR-041** (pita footer di Home setelah `#about`); About vs Workflow mengikuti **ADR-035**; permukaan Workflow mengikuti **ADR-042**; latar hidup Workflow = **T-054** (bukan MP4)
+* **T-038…T-043** identitas visual (kulit saja, ADR-029) — Q&A per permukaan lalu kode; **bukan** tulis ulang copy kecuali **T-046…T-048** dan **isi `/workflow` (ADR-042)**; IA Home mengikuti **ADR-032** + **ADR-037** + **ADR-038** (lede + h1 dua baris, Now di About) dan **ADR-041** (pita footer di Home setelah `#about`); About vs Workflow mengikuti **ADR-035**; permukaan Workflow mengikuti **ADR-042**; latar hidup Workflow = **T-054** (Cathedral Breath, ikut dokumen; bukan MP4)
 * Polish R1 yang tidak menambah halaman (a11y, paritas); T-023 saat CV Inggris siap
 * **T-031** metadata **setelah T-043** (ikon/OG/`themeColor` ikut kulit baru; token T-039 sudah)
 * Diskusi R2 (halaman case `/work/[slug]`) — implementasi butuh ADR

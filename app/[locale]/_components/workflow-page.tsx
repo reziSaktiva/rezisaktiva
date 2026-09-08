@@ -2,6 +2,7 @@ import { WORKFLOW_COPY } from "@/content/workflow";
 import type { Locale } from "@/lib/locale";
 import { Reveal } from "./home-motion";
 import { WorkflowAdrVault } from "./workflow-adr-vault";
+import { WorkflowCathedralBreathBackground } from "./workflow-cathedral-breath-background";
 import { WorkflowHero } from "./workflow-hero";
 import { WorkflowPipeline } from "./workflow-pipeline";
 import { WorkflowPrinciples } from "./workflow-principles";
@@ -11,6 +12,7 @@ export function WorkflowPage({ locale }: { locale: Locale }) {
 
   return (
     <div className="about-page wf-page flex flex-col">
+      <WorkflowCathedralBreathBackground />
       <WorkflowHero copy={copy} />
       <WorkflowPrinciples copy={copy} />
       <WorkflowPipeline copy={copy} />

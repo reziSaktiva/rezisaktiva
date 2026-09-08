@@ -14,6 +14,45 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+---
+
+---
+
+## [2026-09-08] — Workflow latar = debu saja
+**Phase:** Validation
+**Summary:** Boss Rezi mencabut gerbang cathedral dan bunga filigree. Yang tersisa = debu mote individual `position: fixed`.
+**Key Decision/Insight:** Motif tracery/filigree tidak dilanjutkan; debu wallpaper tetap.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, S2b, v19.
+
+## [2026-09-08] — Cathedral Breath dikunci ulang (satu gerbang, debu wallpaper)
+**Phase:** Validation
+**Summary:** Boss Rezi menolak hasil T-054.2/T-054.3: dua cathedral, debu berkelompok terlalu terang, filigree hanya di atas. Arah baru = satu gerbang di zona Operating System–Pipeline; debu individual `position: fixed` seperti wallpaper Home, warna samar; bunga filigree 1–2 per section, samar.
+**Key Decision/Insight:** Debu boleh `fixed` (pengecualian vs kunci T-054.1 sebelumnya); tracery + filigree tetap ikut dokumen. Bukan dua gerbang, bukan kelompok mote.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, S2b, v19; sisa **T-054.4**.
+
+## [2026-09-08] — Cathedral Breath diperkaya (debu tidak kelihatan)
+**Phase:** Validation
+**Summary:** Boss Rezi menolak hasil T-054.2 yang terlalu tipis. Debu sebelumnya 6 titik kecil di balik veil. Sekarang mote di atas veil, filigree lebih padat, sinar lancip, percikan halus.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, pipeline tembus.
+
+## [2026-09-08] — T-054.2 / T-054.3 Cathedral Breath live
+**Phase:** Validation
+**Summary:** Island latar Workflow dipasang: filigree bernapas + debu katedral ikut tinggi dokumen. Loop berhenti saat reduced-motion atau overlay Contact/Quick Info mengunci Lenis.
+**Key Decision/Insight:** Frame diam = elemen biasa + opacity CSS, bukan `animate` Motion yang di-reset `MotionConfig` ke opacity 1.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-*` di `globals.css`, S2b; sisa **T-054.4**.
+
+## [2026-09-08] — T-054.1 dikunci ulang sebagai Cathedral Breath
+**Phase:** Validation
+**Summary:** Boss Rezi membuka ulang Q&A motif T-054.1 dan memilih gabungan filigree SVG bernapas + debu katedral. Penempelan tetap ikut dokumen sampai sebelum footer.
+**Key Decision/Insight:** Nama arah = **Cathedral Breath**. Filigree/tracery menjadi bentuk utama; debu hanya tekstur pendukung berkelompok agar tidak menjadi particle soup atau membebani mobile. Island kabut wine sebelumnya tidak dilanjutkan.
+**Impact:** `tasks/v19-workflow-living-background.md`, `TASKS.md`, S2b, Snapshot; implementasi baru dimulai di **T-054.2**.
+
+## [2026-09-08] — T-054.1 kunci kabut wine + ikut dokumen
+**Phase:** Validation
+**Summary:** Q&A satu cluster untuk latar hidup `/workflow`. Motif = kabut wine pelan (blob/veil token). Penempelan = ikut tinggi `.wf-page` dan scroll, bukan `position: fixed` seperti Home, bukan hanya hero.
+**Key Decision/Insight:** Rasa “loop video” dari Motion di lapisan UI, bukan MP4/foto. Island berikutnya `workflow-wine-fog-background.tsx` (T-054.2). Footer Contact tetap tanpa kabut.
+**Impact:** `tasks/v19-workflow-living-background.md`, `TASKS.md`, S2b, Snapshot; kode di T-054.2.
+
 ## [2026-09-08] — Wallpaper Workflow dicabut; T-054 latar hidup
 **Phase:** Validation
 **Summary:** Percobaan wallpaper bitmap di `/workflow` tetap blur. Boss Rezi minta cabut semua wallpaper, lalu buat task latar hidup seperti video loop tetapi dari komponen asli + Motion (bukan `<video>`).

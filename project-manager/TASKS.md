@@ -8,7 +8,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 1. **T-042.1–T-042.3** — kulit Home / About section / Work index ⏳. Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). About = section Home (**ADR-040**).
 2. **T-043** — pass seluruh situs ⏳ (setelah T-042). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
-3. **T-054** — Latar hidup Motion di `/workflow` ⏳ (Q&A dulu; **bukan** foto/video). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
+3. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
 4. **T-031** — Metadata API ⏸️ **Deferred** sampai **T-043**. Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 5. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 

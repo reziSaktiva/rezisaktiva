@@ -15,6 +15,38 @@ Format entri:
 ```
 
 ## [2026-09-08]
+### Changed
+- **T-054** dikunci ulang: gerbang cathedral dan bunga filigree **dicabut**. Latar `/workflow` = debu mote individual `position: fixed` saja.
+
+## [2026-09-08]
+### Changed
+- **T-054.2 / T-054.3** dikunci ulang setelah review Boss Rezi: satu gerbang cathedral di zona Operating System–Pipeline (gerbang hero-filling dicabut); debu katedral jadi mote individual `position: fixed` (wallpaper, warna samar, bukan kelompok terang); bunga filigree 1–2 per section, samar.
+### Fixed
+- SVG filigree tidak lagi `preserveAspectRatio="none"` (bunga sempat ter-stretch oval besar di hero).
+
+## [2026-09-08]
+### Changed
+- Cathedral Breath: bunga filigree 8 kelopak (isi + garis) dipasang di rose window dan sebagai lapisan terpisah di atas veil; gerak abu dipercepat (~5.5–7.2s, loop, jarak naik lebih jauh).
+
+## [2026-09-08]
+### Changed
+- Cathedral Breath diperkaya setelah review Boss Rezi: filigree lebih padat, sinar lancip, debu katedral di **atas** veil (bukan tertutup), kelompok mote + percikan kecil, pipeline tembus latar.
+
+## [2026-09-08]
+### Added
+- **T-054.2** ✅ island `workflow-cathedral-breath-background.tsx`: tracery SVG bernapas + tiga kelompok debu (loop `transform`/`opacity`, `repeatType: mirror`); veil token; `position: absolute` di `.wf-page` (bukan fixed); di belakang navbar, berakhir sebelum footer.
+### Changed
+- **T-054.3** ✅: `useReducedMotion` dan overlay lock (`ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`) memakai frame diam (div + opacity CSS), bukan loop Motion.
+
+## [2026-09-08]
+### Changed
+- **T-054.1** ✅ dikunci ulang sebagai **Cathedral Breath**: filigree SVG bernapas + debu katedral pendukung, ikut dokumen sampai sebelum footer. Keputusan kabut wine sebelumnya di-supersede; island baru masuk **T-054.2**.
+
+## [2026-09-08]
+### Changed
+- **T-054.1** ✅ — motif **kabut wine pelan**; penempelan **ikut dokumen** (bukan fixed Home). Island `workflow-wine-fog-background.tsx` = **T-054.2**.
+
+## [2026-09-08]
 ### Added
 - **T-054** — task latar hidup Motion di `/workflow` (bukan foto/video). `tasks/v19-workflow-living-background.md`.
 ### Changed
