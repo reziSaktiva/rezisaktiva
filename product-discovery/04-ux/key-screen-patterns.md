@@ -86,7 +86,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Interaksi:** tab perbandingan Chaos vs Decision-Driven (`AnimatePresence`); kartu prinsip hover + `whileInView`; pipeline selalu terbaca (Human Lead vs AI); vault klik sampel ADR. **Bukan** rest/active accordion. Reduced-motion dihormati.
 
-**Kulit:** kanvas token (tanpa wallpaper bitmap). Latar hidup = **debu katedral** mote individual `position: fixed` (wallpaper, warna samar). Gerbang tracery dan bunga filigree **dicabut** (**T-054.1–T-054.3** ✅, dikunci ulang chat 2026-09-08). Reduced-motion / overlay lock = frame diam. Verifikasi penuh = **T-054.4**.
+**Kulit:** kanvas token (tanpa wallpaper bitmap). Latar hidup = **debu katedral** mote individual `position: fixed` (wallpaper). Setiap mote punya glow lembut, starburst aperture 4 arah, dan flare anamorphic horizontal (optik kamera, bukan stiker bintang). Gerbang tracery dan bunga filigree **dicabut** (**T-054.1–T-054.3** ✅, dikunci ulang chat 2026-09-08; optik mote 2026-09-08). Reduced-motion / overlay lock = frame diam. Verifikasi penuh = **T-054.4**.
 
 **Blok berurutan:**
 

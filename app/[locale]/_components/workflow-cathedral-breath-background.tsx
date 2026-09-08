@@ -120,6 +120,7 @@ const DUST_MOTES = [
 /**
  * Latar hidup Workflow (T-054.2 / T-054.3): debu katedral saja,
  * nempel viewport seperti wallpaper Home. Gerbang dan filigree dicabut.
+ * Setiap mote: glow + starburst aperture + flare anamorphic (optik kamera).
  */
 export function WorkflowCathedralBreathBackground() {
   return (
@@ -129,16 +130,102 @@ export function WorkflowCathedralBreathBackground() {
         viewBox="0 0 1920 1080"
         preserveAspectRatio="xMidYMid slice"
         fill="currentColor"
+        overflow="visible"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <defs>
+          <radialGradient
+            id="wf-cathedral-mote-glow"
+            cx="50%"
+            cy="50%"
+            r="50%"
+          >
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.88" />
+            <stop offset="16%" stopColor="currentColor" stopOpacity="0.34" />
+            <stop offset="42%" stopColor="currentColor" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient
+            id="wf-cathedral-mote-glow-wine"
+            cx="50%"
+            cy="50%"
+            r="50%"
+          >
+            <stop
+              offset="0%"
+              stopColor="var(--color-accent-muted)"
+              stopOpacity="0"
+            />
+            <stop
+              offset="38%"
+              stopColor="var(--color-accent-muted)"
+              stopOpacity="0.16"
+            />
+            <stop
+              offset="100%"
+              stopColor="var(--color-accent-muted)"
+              stopOpacity="0"
+            />
+          </radialGradient>
+          <linearGradient
+            id="wf-cathedral-mote-flare"
+            x1="0%"
+            y1="50%"
+            x2="100%"
+            y2="50%"
+          >
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
+            <stop offset="32%" stopColor="currentColor" stopOpacity="0.14" />
+            <stop offset="50%" stopColor="currentColor" stopOpacity="0.72" />
+            <stop offset="68%" stopColor="currentColor" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient
+            id="wf-cathedral-mote-flare-core"
+            x1="0%"
+            y1="50%"
+            x2="100%"
+            y2="50%"
+          >
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
+            <stop offset="38%" stopColor="currentColor" stopOpacity="0.22" />
+            <stop offset="50%" stopColor="currentColor" stopOpacity="0.9" />
+            <stop offset="62%" stopColor="currentColor" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </linearGradient>
+          <g id="wf-cathedral-mote-spark">
+            <circle r="9.2" fill="url(#wf-cathedral-mote-glow-wine)" />
+            <circle r="7.1" fill="url(#wf-cathedral-mote-glow)" />
+            <ellipse
+              rx="28"
+              ry="1.15"
+              fill="url(#wf-cathedral-mote-flare)"
+            />
+            <ellipse
+              rx="13.5"
+              ry="1.7"
+              fill="url(#wf-cathedral-mote-flare-core)"
+            />
+            <ellipse rx="1.25" ry="13.6" opacity="0.34" />
+            <ellipse rx="0.4" ry="11.8" opacity="0.7" />
+            <ellipse rx="11.6" ry="1.05" opacity="0.28" />
+            <ellipse rx="9.4" ry="0.38" opacity="0.7" />
+            <g opacity="0.16">
+              <ellipse rx="0.4" ry="7.2" transform="rotate(45)" />
+              <ellipse rx="0.4" ry="7.2" transform="rotate(-45)" />
+            </g>
+            <circle r="1.15" />
+            <circle className="wf-cathedral-core" r="0.42" />
+          </g>
+        </defs>
         {DUST_MOTES.map(([x, y, r], index) => (
-          <circle
-            key={`${x}-${y}-${r}-${index}`}
-            className="wf-cathedral-mote"
-            cx={x}
-            cy={y}
-            r={r * 1.15}
-          />
+          <g key={`${x}-${y}-${r}-${index}`} className="wf-cathedral-mote">
+            <g transform={`translate(${x} ${y}) scale(${r * 1.15})`}>
+              <g className="wf-cathedral-optics">
+                <use href="#wf-cathedral-mote-spark" />
+              </g>
+            </g>
+          </g>
         ))}
       </svg>
     </div>

@@ -18,6 +18,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-08] — Optik mote: glow + starburst + flare
+**Phase:** Validation
+**Summary:** Boss Rezi minta setiap abu di `/workflow` dapat glow, starburst, dan lens flare yang rapi dan terasa nyata.
+**Key Decision/Insight:** Bukan stiker bintang. Glow radial, jarum aperture 4 arah (kamera), flare anamorphic selalu horizontal. Twinkle pelan; overlay/reduced-motion tetap menjeda.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, S2b.
+
 ## [2026-09-08] — Workflow latar = debu saja
 **Phase:** Validation
 **Summary:** Boss Rezi mencabut gerbang cathedral dan bunga filigree. Yang tersisa = debu mote individual `position: fixed`.

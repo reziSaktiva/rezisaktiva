@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-09-08]
 ### Changed
+- **T-054** debu katedral: setiap mote mendapat glow radial, starburst aperture 4 arah, dan flare anamorphic horizontal (optik kamera). Twinkle tetap di-pause oleh overlay lock / reduced-motion.
+
+## [2026-09-08]
+### Changed
 - **T-054** dikunci ulang: gerbang cathedral dan bunga filigree **dicabut**. Latar `/workflow` = debu mote individual `position: fixed` saja.
 
 ## [2026-09-08]
