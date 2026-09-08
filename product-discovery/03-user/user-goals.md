@@ -56,7 +56,7 @@ Selaras dual north star: session goal clarity mendukung NS-1; soft next step men
 | ----- | ---- |
 | Outcome | Menemukan builder yang bisa ownership sampai live |
 | Session | Pahami Rezi = product builder; lihat bukti ship ringkas; siap kontak |
-| Moment | Home clarity + teaser outcome; Contact satu langkah |
+| Moment | Home clarity + Work index / sheet; Contact satu langkah |
 
 ### P2 — Product owner
 
@@ -64,7 +64,7 @@ Selaras dual north star: session goal clarity mendukung NS-1; soft next step men
 | ----- | ---- |
 | Outcome | Menemukan builder yang kredibel untuk inisiatif & kolaborasi |
 | Session | Nilai product thinking + profesionalisme; kurangi risiko outreach |
-| Moment | About/cara kerja; teaser yang actionable; soft CTA |
+| Moment | About `#about` / Workflow; tile Work yang actionable; soft CTA |
 
 ### P3 — Hiring manager / tech lead
 
@@ -89,7 +89,7 @@ Selaras dual north star: session goal clarity mendukung NS-1; soft next step men
 | Pola | Deskripsi | Implikasi situs |
 | ---- | --------- | --------------- |
 | **Fast filter** | Buang yang tidak relevan dalam detik–menit | Positioning di atas fold Home |
-| **Risk reduction** | Cari bukti sebelum “mengganggu” orang | Teaser + About sebelum Contact |
+| **Risk reduction** | Cari bukti sebelum “mengganggu” orang | Work index / sheet + About sebelum Contact |
 | **Narrative coherence** | Gabungkan potongan jadi satu cerita | Satu rumah digital; satelit sekunder |
 | **Low-pressure next step** | Mau jalur kontak tanpa sales | Soft CTA; no pricing |
 | **Language comfort** | Ingin default yang pas geo | Bilingual geo-aware + switcher |

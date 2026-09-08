@@ -43,4 +43,4 @@ Accepted
 
 ### Update — 2026-09-07 (ADR-035)
 
-Permukaan yang membuka modal: Home, About, **Workflow** (`/workflow`), Work index. Label chrome About = Tentang / About; Proses Kerja / How I Work menempel di `/workflow`, bukan `/about`.
+Permukaan yang membuka modal: Home (termasuk `#about`), **Workflow** (`/workflow`), Work index. Label chrome About = Tentang / About (`#about`); Proses Kerja / How I Work menempel di `/workflow`.

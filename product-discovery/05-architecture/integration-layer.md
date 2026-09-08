@@ -28,7 +28,7 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 | **LinkedIn** | Tautan keluar | Must (satelit) | Bukan OAuth |
 | **GitHub** | Tautan keluar | Must (satelit) | Bukti teknis; satelit |
 | **Geo / locale redirect** | Edge atau hosting | Must fondasi | Aturan UX ADR-014; vendor di Eng |
-| **Teaser bukti (repo/live)** | Tautan keluar | Should | Dari kartu teaser |
+| **Bukti karya (repo/live)** | Tautan keluar | Should | Dari sheet M10, bukan teaser Home (ADR-032) |
 | **Analytics ringan** | Pihak ketiga opsional | Could | Privacy-aware; bukan SoT persona |
 | Form modal client-side | Client-side (email + message) | Must (dalam Contact modal, ADR-019) | Tanpa backend wajib; bisa mailto atau submit ringan |
 | Form backend berat / calendar | — | Out R1 | Could produk; butuh ADR bila Must |
@@ -51,7 +51,7 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 | Kasus | Respons |
 | ----- | ------- |
 | Mailto tidak tersedia | Alamat email terlihat & bisa disalin |
-| Tautan satelit/teaser mati | Jangan tampilkan item sampai URL diperbaiki (content readiness) |
+| Tautan satelit/sheet mati | Jangan tampilkan item sampai URL diperbaiki (content readiness) |
 | Geo deteksi gagal | Fallback `Accept-Language` → lalu `en` bila tidak ada sinyal ID (ADR-014) |
 | Analytics gagal/diblokir | Situs tetap berfungsi penuh tanpa analytics |
 

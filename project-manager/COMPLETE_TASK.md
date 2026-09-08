@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-08]
+### Fixed
+- Audit konsistensi dokumen vs web hidup (ADR-040 / ADR-041 / ADR-042): baseline `product-discovery/` (About = section Home, Workflow decision-driven, tanpa `#proof` / teaser Home / rest-active accordion); indeks + Update ADR; Fokus `TASKS.md` + Baca dulu v15; catatan superseded di T-021.3 / T-045 / T-044 / v11 / v12 / v14. Pola kerja awal (PD vs PM, Documentation First, Living vs Static) tidak diubah. Folder `context/` tidak ada — dilewati.
+
+## [2026-09-08]
 ### Added
 - **ADR-042** — halaman `/workflow` decision-driven (hero + tab Chaos vs Decision-Driven, lima prinsip, pipeline Human vs AI, ADR Vault). Primitf shadcn `Tabs`, `ScrollArea`, `Tooltip`.
 - Island `workflow-hero.tsx`, `workflow-principles.tsx`, `workflow-pipeline.tsx`, `workflow-adr-vault.tsx`.

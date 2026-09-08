@@ -42,7 +42,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 1. Masuk via URL (locale default atau link ber-locale)
 2. **Home** — baca first viewport (lede + klaim)
-3. Opsional: buka **About** (Now + siapa + bukti AI) atau **Workflow** (cara kerja) atau **Work index** (`/projects`, M9) bila butuh detail lebih
+3. Opsional: scroll **About** (`#about` — Now + siapa + lead/artwork) atau buka **Workflow** (prinsip / pipeline / ADR Vault, ADR-042) atau **Work index** (`/projects`, M9) bila butuh detail lebih
 4. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
 5. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
 6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
@@ -54,7 +54,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 ### F2 — Evaluasi kolaborasi (SC2)
 
 1. Masuk Home (clarity)
-2. Ke **About** — Now + siapa Rezi + klaim bukti AI; lanjut **Workflow** bila butuh cara kerja / kolaborasi
+2. Ke **About** (`#about`) — Now + siapa Rezi + lead/artwork; lanjut **Workflow** (ADR-042) bila butuh cara kerja / kolaborasi
 3. Lanjut cek **Work index** (tile membuka sheet, F7)
 4. **Contact modal** — Email primer (ADR-019)
 5. Sukses: cukup sinyal profesional + product thinking untuk outreach soft
@@ -100,7 +100,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 ### F4 — Hiring sinyal (SC4)
 
-1. Home positioning → About (siapa + bukti AI); Workflow opsional (cara kerja)
+1. Home positioning → About (`#about`, siapa); Workflow (cara kerja, ADR-042)
 2. Ikuti GitHub (satelit) bila perlu bukti teknis
 3. Putuskan lanjut/skip **tanpa** mengubah situs jadi CV ATS
 4. Sukses: cukup sinyal; brand tetap product builder
@@ -152,5 +152,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

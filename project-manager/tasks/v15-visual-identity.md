@@ -14,7 +14,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 **kecu
 
 | Area | Tetap | Berganti |
 | ---- | ----- | -------- |
-| Copy / konten | `content/*` T-021, Now, katalog karya | Tidak |
+| Copy / konten | `content/*` T-021 kecuali isi `/workflow` (**ADR-042**); Now; katalog karya | Kulit, bukan tulis ulang Home/About |
 | IA / overlay **perilaku** | Contact modal (ADR-019), Quick Info kanan (ADR-022), sheet karya dari bawah (ADR-027), hamburger &lt;1024px (ADR-020), About section di Home (ADR-040), Workflow rute terpisah (ADR-035), pita Contact di semua rute termasuk Home (ADR-025 / ADR-041) | Skin visual overlay/chrome |
 | Stack | shadcn primitf yang sudah ada, Tailwind v4, Motion, Lenis, cookie `rz-theme`, anti-flash | Palet, tipe, mood, bahasa elevasi/chip |
 | Render | SSG + `content/` + `generateStaticParams`; `"use client"` hanya island | Tidak |
@@ -100,7 +100,7 @@ Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header di sem
 
 Home / About / Workflow / Work; **tema gelap yang di-ship** (light di-hold — jangan QA dual-theme untuk kulit baru); 320px + 375px + desktop ≥1024px; overlay Contact + Quick Info + project sheet; reduced-motion. Bukan satu screenshot. Bandingkan vs kode **sebelum** perubahan + arahan yang dikunci — bukan mockup HTML.
 
-**Baca dulu (semua parent):** ADR-029, ADR-024, ADR-028 (stack), ADR-021 (sampai T-038.2), ADR-019/022/027, ADR-032/033/035, `04-ux/key-screen-patterns.md`, `06-engineering/design-tokens.md`, `app/globals.css`, `.cursor/rules/shadcn.mdc`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`.
+**Baca dulu (semua parent):** ADR-029, ADR-024, ADR-028 (stack), ADR-021 (sampai T-038.2), ADR-019/022/027, ADR-032 / **ADR-040** / **ADR-041** / **ADR-042** (ADR-033 superseded), `04-ux/key-screen-patterns.md`, `06-engineering/design-tokens.md`, `app/globals.css`, `.cursor/rules/shadcn.mdc`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`.
 
 ---
 

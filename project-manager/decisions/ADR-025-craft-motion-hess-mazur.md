@@ -21,7 +21,7 @@ Accepted
    - Smooth-scroll inertia (Lenis, window scroll; AppShell `height="auto"`). **Pause** saat Contact modal atau Quick Info terbuka. **Off** jika `prefers-reduced-motion`. Bukan `scroll-behavior: smooth` native. Tanpa parallax berat (batas ADR-017 tetap).
    - Transisi halaman mengikuti ritme karolinahess.com (snapshot CSS, bukan View Transitions API — Next App Router sering timeout DOM update): halaman lama naik + scale 0.5 selama 1s; halaman baru masuk dari bawah 0.4s setelah delay 0.4s; easing `cubic-bezier(0.65, 0, 0.43, 1)`. Warna celah = `--color-background-body` tema, bukan palet Hess. Reduced-motion = ganti halaman instan. Chrome tetap (nav tidak ikut scale).
 5. **Contact menyatu footer** di semua rute: pita terakhir (heading dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada**) + baris legal/satelit. Section `#contact-cta` terpisah di tengah/akhir halaman dihapus. Tombol Kontak di header tetap (ADR-019). **Update (ADR-041):** Home merender pita ini lagi (ADR-033 superseded).
-6. **Home & Work tetap menaruh bukti di depan.** Urutan Home J1/J2 + teaser tidak digeser oleh 4 langkah proses penuh. Hover tile/CTA diperkuat; h1/section title ditarik ke ritme display yang lebih besar (token/`clamp`, bukan hex).
+6. **Home & Work menaruh bukti di depan pada pass 2026-08-24.** Teaser Home **retired** ADR-032; `#proof` **dicabut** ADR-040. Hover tile/CTA diperkuat; h1/section title ditarik ke ritme display yang lebih besar (token/`clamp`, bukan hex).
 7. Astryx tidak punya Lenis atau transisi halaman — lapisan custom diizinkan. Transisi halaman memakai token `--duration-page-*` / `--ease-page-transition` (bukan `--duration-medium`). Scroll-reveal yang sudah ada (`home-motion.tsx`) tetap.
 
 Ini **perluasan material vs ADR-017** (kadar craft + dua teknik baru: inertia scroll dan page overlay), bukan selip ke T-021/T-024.
@@ -34,7 +34,7 @@ Ini **perluasan material vs ADR-017** (kadar craft + dua teknik baru: inertia sc
 
 ### Alternatives Considered
 
-- Pindah seluruh About ke Home dan hapus rute Proses Kerja — ditolak; menabrak job Home (J1/J2) dan J4 sebagai deepen opsional.
+- Pindah seluruh About ke Home dan hapus rute Proses Kerja — ditolak 2026-08-24. **Kemudian ADR-040** memindah About ke Home **tanpa** menghapus rute Workflow.
 - Tulis ulang / potong copy T-021 supaya “muat” di rest — ditolak; panjang diakali lewat rest/active.
 - Tiru palet Hess atau spectacle Framer — ditolak; tema `rezisaktiva` + batas clarity ADR-017.
 - Hanya `scroll-behavior: smooth` CSS — ditolak; bukan ritme inersia yang diacu dari Mazur.
@@ -50,7 +50,7 @@ Ini **perluasan material vs ADR-017** (kadar craft + dua teknik baru: inertia sc
 
 ### Update — 2026-09-04 (ADR-029)
 
-Pola yang **tetap**: About sebagai halaman sendiri, rest/active, pita Contact, Lenis, reduced-motion, bukti karya di Home/Work. Bahasa visual yang **tidak lagi wajib**: palet lama, chrome 3D kuning, transisi halaman wajib meniru ritme Hess 1s/0.4s — nasib konkret dikunci di **T-038.3**. Identitas visual baru = [ADR-029](ADR-029-visual-identity-gothic-blood.md).
+Pola yang **saat itu tetap**: About sebagai halaman sendiri, rest/active, pita Contact, Lenis, reduced-motion. **Kemudian:** About = section Home (ADR-040); rest/active Workflow dicabut (ADR-042). Bahasa visual yang **tidak lagi wajib**: palet lama, chrome 3D kuning, transisi halaman wajib meniru ritme Hess 1s/0.4s — nasib konkret dikunci di **T-038.3**. Identitas visual baru = [ADR-029](ADR-029-visual-identity-gothic-blood.md).
 
 ### Update — 2026-09-07 (ADR-032 / ADR-033 / ADR-035)
 

@@ -62,4 +62,4 @@ Primitf overlay Quick Info = shadcn `Sheet` `side="right"` (T-035), di-skin bent
 
 ### Update — 2026-09-07 (ADR-035)
 
-Tampil di semua halaman R1 termasuk **Workflow** (`/workflow`). Permukaan rute = Home · About · Workflow · Work index + Contact modal. Label “About/Proses Kerja” di keputusan asli tidak lagi menempel di satu route.
+Tampil di semua halaman R1 termasuk **Workflow** (`/workflow`) dan Home `#about`. Permukaan rute = Home (termasuk section About) · Workflow · Work index + Contact modal.

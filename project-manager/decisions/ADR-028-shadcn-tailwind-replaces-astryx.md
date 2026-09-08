@@ -60,6 +60,10 @@ Accepted
 - Saat T-037: update `product-discovery/06-engineering/` (tokens, dependency, code-discipline, README), `ARCHITECTURE_OVERVIEW.md`, `AGENTS.md`, `.cursor/rules/`.
 - Compiler StyleX (catatan T-013.4 / T-027) **tidak dikerjakan** — gap ditutup dengan cabut Astryx.
 
+### Update — 2026-09-04 (ADR-021 / T-038.2)
+
+Poin 5 **“Default ship = light”** **tidak lagi mengikat**. Default ship = **dark**; light di-hold; toggle tersembunyi selama hold. Cookie `rz-theme` + `html.dark` tetap.
+
 ### Update — 2026-09-04 (ADR-029)
 
 Poin 2 **“bukan redesain / bentuk visual tetap”** **tidak lagi mengikat**. Identitas visual R1 migrasi ke absurdism / surrealism / Gothic Art / dark-blood (**ADR-029**). Keputusan stack (shadcn + Tailwind v4, Motion, `html.dark`, cookie `rz-theme`) **tetap**.

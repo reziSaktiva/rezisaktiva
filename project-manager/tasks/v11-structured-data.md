@@ -58,7 +58,7 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | `description` | `QUICK_INFO_COPY[locale].bio` |
 | `email` | `CONTACT_EMAIL` |
 | `sameAs` | `CONTACT_LINKS` (`content/data/links.json`) |
-| `url` | Canonical About (`localePath(locale, "about")`) — halaman profil |
+| `url` | Canonical Home (`pageUrl(locale, "")`) — About bukan halaman profil (ADR-040) |
 | `knowsAbout` | `QUICK_INFO_COPY[locale].services` |
 | `worksFor` | Nested `Organization` dari `PERSON.worksFor` (nama + URL situs perusahaan). Bukan graph Organization untuk situs ini — situs tetap pribadi. |
 | `image` | Kosong sampai foto nyata |
@@ -82,3 +82,5 @@ Item Work tanpa `href`: **jangan** mengarang URL; omit `url`.
 - [x] **T-029.2** — Builder `lib/` (mis. `lib/json-ld.ts`) yang menerima `locale` + surface (`home` \| `about` \| `work`) dan mengembalikan `@graph` sesuai paket. Hanya impor `content/` + `getSiteUrl` / `localePath` + `NAV_LABELS` + `SITE_META` / `WORK_ITEMS`. Tanpa literal copy.
 - [x] **T-029.3** — Pasang di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Satu `<script type="application/ld+json">` per halaman. Contact modal / Quick Info / sheet **tidak** punya graph sendiri.
 - [x] **T-029.4** — Verifikasi: (1) ubah satu string di `content/` → JSON-LD ikut (tes unit atau setara); (2) item tanpa `href` tanpa `url`; (3) tidak ada `Person.image` placeholder; (4) cek Rich Results Test / validator schema.org pada URL lokal atau preview — catat hasil di COMPLETE_TASK, bukan screenshot wajib.
+
+> **Update (2026-09-08, ADR-040):** Surface JSON-LD = `home` \| `workflow` \| `work`. Mount di Home / Workflow / Work index. `about/page.tsx` = redirect, tanpa graph. `Person.url` = Home.

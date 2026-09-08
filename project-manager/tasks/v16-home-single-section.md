@@ -8,6 +8,8 @@ Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 (pindah apa adanya). Bukan
 
 **Status rilis:** ✅ **Done** (2026-09-07). **T-044** ✅. **T-042** tetap antrian kulit halaman.
 
+> **Update (2026-09-08):** Home tanpa pita footer (**ADR-033** / T-044.6) **superseded ADR-041 / T-053**. About section di Home = **ADR-040**. `#proof` dicabut. Baca dulu: ADR-032 + ADR-040 + ADR-041.
+
 ---
 
 ## Kontrak

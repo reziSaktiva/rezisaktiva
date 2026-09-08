@@ -18,7 +18,7 @@ Accepted
 2. **Home hero** = deskripsi (lede) **di atas** `h1`, lalu klaim wrapping (ADR-036). Lede = copy dikunci Boss Rezi (adaptabilitas / AI agents). `h1` lebih besar dari lede.
 3. **Layout:** satu kluster kiri-bawah, lebar terbatas, `justify-end`. Veil lebih kuat di zona teks; bagian atas/kanan wallpaper lebih terbuka.
 
-Ini **override** ADR-032 poin Home = klaim + Now.
+Ini **override** ADR-032 poin Home = klaim + Now. **Update (ADR-038):** bentuk lede pindah ke **lantai bawah** first viewport; h1 dua baris display. Poin 1 (Now di About) tetap.
 
 ### Reason
 

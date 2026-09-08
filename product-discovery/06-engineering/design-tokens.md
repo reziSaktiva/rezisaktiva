@@ -98,7 +98,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 | Domain | Keputusan R1 |
 | ------ | ------------ |
 | Spacing | Skala token 4px di `globals.css` (`--spacing-*`) + Tailwind `gap-*`; konsisten ritme section |
-| Radius | Sedang untuk teaser/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
+| Radius | Sedang untuk chip/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
 | Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Selected nav/switcher/hamburger:** border 1px `--color-accent` + teks `--color-text-accent` (ADR-031). **Tombol chrome** (Contact header/footer, hamburger): datar (T-038.3 / T-040.1 / T-040.5). |
 | Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = kode produksi (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
@@ -130,7 +130,7 @@ Toggle UI Must saat light hidup (ADR-021). **Dark sebagai default ship** dikunci
 | Tingkat | R1 |
 | ------- | --- |
 | Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
-| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/teaser, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman Hess (exit 1s scale+naik, enter 0.4s dari bawah setelah 0.4s, easing `.65,0,.43,1`); pola rest = judul, active = body |
+| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/tile, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025 / ADR-042):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman Hess (exit 1s scale+naik, enter 0.4s dari bawah setelah 0.4s, easing `.65,0,.43,1`). Pola rest/active accordion **bukan** permukaan Workflow/About lagi |
 | Pause | Lenis **berhenti** saat Contact modal (`html.ct-lock`) atau Quick Info (`html.qi-lock`) terbuka, supaya overlay tidak bergeser bersama inersia |
 | Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; transisi halaman instan (tanpa overlay); playable yang sudah ada tetap hormati media query yang sama |
 | Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya; overlay transisi yang tetap `pointer-events: auto` setelah selesai |
@@ -172,8 +172,8 @@ Nilai hex kanvas/aksen R1 dikunci di `globals.css` (asal historis: mockup `share
 | --------- | ------- |
 | Styling | **shadcn/ui + Tailwind CSS v4** — menggantikan Astryx + StyleX (**ADR-028**; ADR-018 superseded) |
 | Theme | Token di `app/globals.css` (`:root` / `.dark`); palet rezisaktiva (asal historis: arsip `shared.css`) |
-| Tema default | **Light** |
-| Dark | Class `html.dark` + cookie `rz-theme`; toggle UI = **Must R1 (ADR-021)**; default tetap light |
+| Tema default | **Dark** (T-038.2 / ADR-021 update 2026-09-04); light di-hold |
+| Dark | Class `html.dark` + cookie `rz-theme`; toggle UI = **Must R1 (ADR-021) saat light hidup**; selama hold toggle tersembunyi |
 | Nilai visual | Kanvas + aksen di `globals.css` (SoT hidup = kode produksi, ADR-024) |
 | Motion | Bagian identitas visual (ADR-017), hierarchy-first; `motion/react` + Lenis + page overlay (ADR-025) |
 | Native scrollbar | `--rz-scrollbar-*` di `app/globals.css`, bukan `--color-*` di `:root` |
@@ -185,7 +185,7 @@ Nilai hex kanvas/aksen R1 dikunci di `globals.css` (asal historis: mockup `share
 # Success Criteria
 
 1. Komponen tidak menghambur hex yang tidak ter-tokenisasi
-2. Light default jelas; menambah toggle dark tidak memaksa rewrite token
+2. Dark default jelas; menambah light tidak memaksa rewrite token (light = hold)
 3. Visual mendukung clarity & soft Contact — bukan template ungu generik
 
 ---

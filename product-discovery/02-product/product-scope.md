@@ -10,7 +10,7 @@ Dokumen ini menetapkan batas dan domain produk website portofolio pribadi **rezi
 
 **rezisaktiva** adalah situs portofolio publik yang berfungsi sebagai **satu rumah digital** untuk identitas product builder Rezi Saktiva: cerita jelas, bukti kredibel, dan jalur kontak soft.
 
-Struktur permukaan R1: **Hybrid lean** — halaman **Home**, **About**, **Workflow** (`/workflow`, ADR-035), dan **Work index** (`/projects`). Home = h1 atas, lede lantai bawah (ADR-032 / ADR-038). Now di About. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
+Struktur permukaan R1: **Hybrid lean** — tiga halaman **Home** (hero + section About `#about`, ADR-040), **Workflow** (`/workflow`, ADR-035 / ADR-042), dan **Work index** (`/projects`). Home = h1 atas, lede lantai bawah, pita footer (ADR-038 / ADR-041). Now di About. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
 
 Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
@@ -33,7 +33,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 | Domain | Apa yang dicakup | Peran di MVP |
 | ------ | ---------------- | ------------ |
 | **Identity & positioning** | Klaim product builder + fullstack + AI edge di permukaan | Inti — Home |
-| **Narrative / About** | Cerita pribadi, bukti AI | Inti — About |
+| **Narrative / About** | Cerita pribadi (Now, lead, artwork) | Inti — section `#about` di Home (ADR-040) |
 | **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042) | Inti — Workflow |
 | **Work presence** | Work index (`/projects`, M9) + **project sheet overlay (M10, ADR-027)** | Inti — index + sheet |
 | **Soft contact** | Jalur menghubungi yang jelas, tidak agresif, via modal global (ADR-019) | Inti — Contact modal |
@@ -56,7 +56,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 **Di dalam produk (R1 Hybrid lean):**
 
-* Situs publik multi-halaman lean: Home, About, Workflow (`/workflow`, M14), Work index (`/projects`, M9)
+* Situs publik lean: Home (termasuk `#about`), Workflow (`/workflow`, M14), Work index (`/projects`, M9); `/about` hanya redirect
 * Home = h1 atas, lede lantai bawah (bukan Now, bukan teaser karya — ADR-032 / ADR-038)
 * Contact modal global (ADR-019) + Quick Info overlay (ADR-022) — bukan halaman terpisah
 * Theme toggle dark/light di chrome (ADR-021)
@@ -97,9 +97,9 @@ Scope dianggap mengarah benar jika:
 
 1. Founder/PO bisa evaluasi dasar lewat Home + About + Workflow + Work index + Contact modal tanpa merakit cerita dari GitHub/CV
 2. Homepage menjawab siapa / bukti ringkas / next step (selaras dual north star)
-3. Karya terasa hadir (teaser di Home + katalog Work index) tanpa memaksa arsitektur detail case penuh di MVP
+3. Karya terasa hadir (katalog Work index + sheet M10) tanpa memaksa arsitektur detail case penuh di MVP
 4. Soft path kontak jelas (modal, ADR-019); tidak ada harga atau hard sell
-5. Batas di dokumen ini konsisten dengan ADR-002, ADR-006, ADR-007, ADR-010, dan override ADR-019/ADR-020/ADR-021/ADR-022
+5. Batas di dokumen ini konsisten dengan ADR-002, ADR-006, ADR-007, ADR-010, dan override ADR-019/020/021/022/032/035/040/041/042
 
 ---
 
@@ -116,5 +116,8 @@ Scope dianggap mengarah benar jika:
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md` — Work index Must R1
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md` — theme toggle Must R1
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md` — Quick Info panel Must R1
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md` — About = section Home
+* `../../project-manager/decisions/ADR-041-home-with-footer.md` — pita footer di Home
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md` — isi Workflow
 * `../../project-manager/PROJECT_STATE.md` — status project
 * `../../project-manager/DECISIONS.md` — indeks ADR

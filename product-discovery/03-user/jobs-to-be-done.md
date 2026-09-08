@@ -64,7 +64,7 @@ Setiap job punya: ID, persona utama, prioritas R1 (Must / Should / Later).
 | E1 | Merasa tidak “mengganggu” saat outreach | Soft CTA, availability line opsional |
 | E2 | Merasa evaluasi fair — tidak di-hype AI / stack kosong | Honest AI edge; bukti proporsional |
 | E3 | Merasa Rezi “untuk orang seperti saya” (founder/PO SEA) | Relevansi lokal tanpa menutup pintu |
-| E4 | Mengurangi takut salah hire / salah ajak kolaborasi | Teaser outcome + About |
+| E4 | Mengurangi takut salah hire / salah ajak kolaborasi | Work index/sheet + About section |
 
 ---
 

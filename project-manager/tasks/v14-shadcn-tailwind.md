@@ -70,6 +70,8 @@ Jangan pasang `Sidebar`. Jangan ganti Drawer jadi halaman `/work/[slug]`.
 
 `app/[locale]/layout.tsx`, `app/page.tsx`, `app/_components/theme-mode-provider.tsx`, `app/[locale]/_components/`: `site-header`, `site-footer`, `site-footer-cta`, `locale-switcher`, `theme-toggle`, `sliding-pill-group`, `contact-modal`, `quick-info`, `project-sheet`, `project-sheet-media`, `home-page`, `home-motion`, `home-work-teasers`, `home-work-all-link`, `work-page`, `work-index-client`, `work-tile`, `about-page`, `about-offer-grid`, `about-process`, `about-rest-active`, `workplace-line`. Plus `lib/astryx-theme.ts`, `theme/rezisaktiva.d.ts`, `theme/astryx-theme.css`.
 
+> Daftar 2026-09-01. Setelah itu: teasers dicabut ADR-032; `about-offer-grid` / `about-process` / `about-rest-active` dicabut ADR-042. `about-page.tsx` sekarang `AboutSection` di Home.
+
 ### Yang tidak di-install (bukan kebutuhan R1)
 
 `Sidebar`, `Chart`, `Command`, `Sonner`/`toast`, `Calendar`, `Table`, `Resizable`, `Carousel`, `NavigationMenu` (chrome sudah custom), `Accordion` (pakai Collapsible yang sudah ada). Toast tidak ada di produk.

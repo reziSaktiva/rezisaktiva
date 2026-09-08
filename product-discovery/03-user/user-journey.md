@@ -12,7 +12,9 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 
 > **Update (2026-08-15/16, ADR-019/ADR-020/ADR-021/ADR-022):** Work index (M9) naik Must R1 — masuk surface set. Contact final sebagai modal global (ADR-019), bukan halaman. Theme toggle (ADR-021) dan Quick Info overlay (ADR-022) melengkapi chrome di semua stage.
 >
-> **Update (2026-09-07, ADR-032 / ADR-035):** Teaser Home retired. Evidence = bukti AI di About, cara kerja di Workflow, karya di Work index.
+> **Update (2026-09-07, ADR-032 / ADR-035):** Teaser Home retired. Presence karya = Work index + sheet.
+>
+> **Update (2026-09-08, ADR-040 / ADR-042):** About = section `#about` di Home (tanpa `#proof`). Workflow = lima blok decision-driven, bukan offers/accordion.
 
 ---
 
@@ -76,7 +78,7 @@ Tanpa situs milik sendiri (hari ini):
 | ----- | ----------------- | ------- | ---- |
 | **Arrive** | Positioning langsung terbaca | Home (above fold) | J1 |
 | **Orient** | Paham product builder → fullstack → AI edge jujur | Home | J1, E2 |
-| **Evidence** | Bukti AI di About; cara kerja di Workflow; karya di Work index (sheet M10) | About, Workflow, Work | J2, J4 |
+| **Evidence** | Siapa di About (`#about`); cara kerja di Workflow (ADR-042); karya di Work index (sheet M10) | Home `#about`, Workflow, Work | J2, J4 |
 | **Deepen** (opsional) | Narasi pribadi & cara kerja | About, Workflow | J4, E4 |
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |

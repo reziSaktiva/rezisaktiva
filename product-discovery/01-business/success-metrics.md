@@ -43,7 +43,7 @@ Selaras: visi Success Definition (`product-vision.md`), growth “bukan vanity t
 | Sinyal | Cara mengukur (praktis) | Catatan |
 | ------ | ----------------------- | ------- |
 | Recall spontan | Feedback teman/peer/ICP: “Rezi itu apa?” setelah lihat situs | Kualitatif; cukup 3–5 orang relevan di fase awal |
-| Clarity self-check | Rezi + reviewer: apakah Home (siapa) + About (bukti/cara kerja) + Work (karya) menjawab next step dalam ~1 kunjungan | Checklist singkat, bukan survei berat |
+| Clarity self-check | Rezi + reviewer: apakah Home (siapa + About section) + Workflow (cara kerja) + Work index (karya) menjawab next step dalam ~1 kunjungan | Checklist singkat, bukan survei berat |
 | Konsistensi pesan | Pesan di situs selaras dengan cara Rezi bicara di luar (chat, interview) | Selaras Success Definition visi |
 
 **Leading (sebelum banyak traffic):** struktur clarity hidup (siapa, bukti, soft CTA); bahasa bilingual geo-aware sesuai ADR-002 (detail UX/Engineering).

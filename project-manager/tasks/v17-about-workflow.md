@@ -8,6 +8,8 @@ Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 (pindah apa adanya). Bukan
 
 **Status rilis:** ✅ **Done** (2026-09-07). **T-045** ✅.
 
+> **Update (2026-09-08):** Kontrak T-045 sebagian **superseded**. About bukan halaman (ADR-040 / T-052). Isi `/workflow` bukan offers/accordion (ADR-042 / T-042.4). Baca dulu: ADR-035 + ADR-040 + ADR-042.
+
 ---
 
 ## Kontrak

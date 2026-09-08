@@ -52,7 +52,7 @@ Topik berikut tidak dibahas di sini:
 
 **UX Baseline v1.0 sudah ditetapkan** (ADR-014, 2026-08-10). Seluruh dokumen di folder ini terisi dan disepakati.
 
-Acuan fase: prinsip UX1–UX7; IA empat destinasi (Home, About, Workflow, Work index) + path locale; flows F1–F7 (F7 = project sheet Must, ADR-027); Contact Email primer.
+Acuan fase: prinsip UX1–UX7; IA tiga halaman (Home termasuk `#about`, Workflow, Work index) + path locale; flows F1–F7 (F7 = project sheet Must, ADR-027); Contact Email primer.
 
 Langkah berikutnya (historis fase): lanjut **Phase 5 — Architecture** di `../05-architecture/`. Status fase aktif ada di `PROJECT_STATE.md`.
 

@@ -20,7 +20,7 @@ Accepted
    - EN: *Rather than just typing lines of code… every feature I build.*
    - ID: *Fokus saya bukan sekadar menulis baris kode… setiap fitur yang saya bangun.*
 4. **Gambar hero** = karya seni lokal `public/media/about-hero.jpg` (bukan Unsplash, bukan foto Rezi). Tinggi mengikuti viewport pengguna; rasio mengikuti aset (saat ini 634×1024); `object-fit: contain`. Caption di bawah, locale-invariant: **This is not me**, plus panah ke gambar. `Person.image` JSON-LD **tetap tidak diisi**.
-5. **Skala h1 About** mengikuti clamp h1 Home (ADR-038 / T-049): desktop `clamp(2.75rem, 9.25vw, 6.75rem)`; mobile `clamp(1.85rem, 8.7vw, 2.75rem)`.
+5. **Skala judul About** mengikuti clamp h1 Home (ADR-038 / T-049): desktop `clamp(2.75rem, 9.25vw, 6.75rem)`; mobile `clamp(1.85rem, 8.7vw, 2.75rem)`. **Update (ADR-040):** elemen ini = `h2` di section Home (satu `h1` tetap di hero).
 
 Ini **override** ketersediaan badge + rest/active lead di About (ADR-025 / key screens S2) dan “satu-satunya foto diri R1” (IA About).
 

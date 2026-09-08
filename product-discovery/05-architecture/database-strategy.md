@@ -36,7 +36,7 @@ SoT konten: **file di repository** (Markdown/MDX atau setara — dikunci di Engi
 # Schema / Content Model
 
 **N/A database schema.**  
-Model konten lean ada di `domain-model.md` (Page, Locale, teaser, channel) — diwujudkan sebagai file/frontmatter, bukan tabel.
+Model konten lean ada di `domain-model.md` (Page, Locale, work item, channel) — diwujudkan sebagai file/frontmatter, bukan tabel.
 
 ---
 

@@ -112,7 +112,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | ----- | ------------------------ |
 | URL bare domain `/` | Redirect ke `/id/...` atau `/en/...` sesuai aturan default di bawah |
 | Link langsung ber-locale (mis. `/id#about`, `/en/projects`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
-| Switcher | Pindah ke path sibling locale yang sama (Home↔Home, About↔About, dst.) |
+| Switcher | Pindah ke path sibling locale yang sama (Home↔Home termasuk hash `#about`, Workflow↔Workflow, Work index↔Work index) |
 | Share URL | Prefer URL ber-locale agar penerima melihat bahasa yang sama (SC6) |
 | Satelit GitHub/LinkedIn (keluar) | Boleh; Contact & Home tetap destination utama |
 
@@ -155,8 +155,8 @@ Sebelum R1 dianggap siap live:
 
 # Success Criteria
 
-* Site map empat destinasi konten R1 (Home, About, Workflow, Work index) + locale mirror; Contact & Quick Info overlay global (bukan destinasi konten baru)
-* Hierarki Home memenangkan clarity di first viewport; bukti AI di About; cara kerja di Workflow; karya di Work index (ADR-032, ADR-035)
+* Site map tiga halaman konten R1 (Home termasuk `#about`, Workflow, Work index) + locale mirror; Contact & Quick Info overlay global (bukan destinasi konten baru)
+* Hierarki Home memenangkan clarity di first viewport; siapa di About (`#about`); cara kerja di Workflow (ADR-042); karya di Work index (ADR-032, ADR-035, ADR-040)
 * Contact Email = primer; LinkedIn/GitHub satelit; tanpa WA/IG
 * Path prefix shareable dan konsisten untuk kedua bahasa
 * Meta/share acceptance di atas terpenuhi (title/description/OG per locale)
@@ -181,7 +181,7 @@ Sebelum R1 dianggap siap live:
 | Information Architecture | **Baseline v1.0** (dokumen ini) |
 | Locale URL | Path prefix `/id` & `/en` |
 | Soft CTA Contact | Email primer; LinkedIn/GitHub satelit; tanpa WA/IG |
-| Home evidence | Lede + klaim di Home; Now + bukti AI di About; cara kerja di Workflow; karya di Work index (ADR-032, ADR-035, ADR-037) |
+| Home evidence | Lede + klaim di Home; Now + narasi di `#about`; cara kerja di Workflow (ADR-042); karya di Work index (ADR-032, ADR-035, ADR-037, ADR-040) |
 | Meta / content readiness | Acceptance R1 di dokumen ini |
 
 ---

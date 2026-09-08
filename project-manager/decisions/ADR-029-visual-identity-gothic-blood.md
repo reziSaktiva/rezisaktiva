@@ -43,7 +43,7 @@ Accepted
 
 - Backlog: [`tasks/v15-visual-identity.md`](../tasks/v15-visual-identity.md) (**T-038** … **T-043**).
 - ADR-028: stack tetap; poin 2 “bentuk visual tetap” **diganti** oleh ADR ini. Update singkat di file ADR-028.
-- ADR-025: pola UX yang tetap (About halaman sendiri, rest/active, pita Contact, Lenis, reduced-motion). Bahasa visual chrome 3D + palet lama **tidak** lagi diwajibkan.
+- ADR-025: pola UX yang tetap saat itu (About halaman sendiri, rest/active, pita Contact, Lenis, reduced-motion). **Kemudian:** About = section Home (ADR-040); rest/active Workflow dicabut (ADR-042). Bahasa visual chrome 3D + palet lama **tidak** lagi diwajibkan.
 - ADR-006 / acuan Hess–Mazur: tetap sah sebagai *ritme* layout yang sudah jadi pola UX; **bukan** acuan palet atau chrome kuning.
 - ADR-021: di-update 2026-09-04 (dark-first + light hold + toggle tersembunyi).
 - `product-discovery/06-engineering/design-tokens.md` + `app/globals.css` di **T-039**. Rule `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` (sebutan pill kuning) di **T-043**.

@@ -8,13 +8,15 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebagai halaman inti + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = h1 atas, lede lantai bawah (ADR-032 / ADR-038). Now = About. Cara kerja = M14 `/workflow` (ADR-035). M10 di R1 = overlay (ADR-027), bukan halaman case.
+Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work index) + **About sebagai section `#about` di Home** (ADR-040) + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + `#about` + pita footer (ADR-038 / ADR-040 / ADR-041). Now = About. Cara kerja = M14 `/workflow` (ADR-035; isi ADR-042). M10 di R1 = overlay (ADR-027), bukan halaman case.
 
 > **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026) — bukan route `/work/[slug]`.
 >
 > **Update (2026-08-16):** M6 menyertakan toggle tema Must R1 (**ADR-021**). Modul baru **M13 — Quick Info panel** (**ADR-022**) — overlay global, bukan halaman.
 >
-> **Update (2026-08-21):** M3 (Contact) akan menambah tautan unduh CV/Portofolio di dalam modal yang sudah ada (**ADR-023**) — bukan route baru, bukan pengganti email. **Implementasi ditunda** (⏸️ **T-023**) menunggu CV versi Inggris.
+> **Update (2026-08-21):** M3 (Contact) akan menambah tautan unduh CV/Portofolio di dalam modal yang sudah ada (**ADR-023**) — bukan route baru, bukan pengganti email. Diterima, belum di-ship sampai CV versi Inggris siap (lihat `PROJECT_STATE.md` / `TASKS.md`).
+>
+> **Update (2026-09-08, ADR-040 / ADR-042):** M2 = section Home, bukan halaman. `/about` redirect. `#proof` dicabut. Isi `/workflow` = lima blok decision-driven.
 
 ---
 
@@ -29,7 +31,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 * Hero / klaim positioning (h1 atas; lede lantai bawah; tautan Workflow di lede)
 * Soft arah ke About dan Contact (chrome + pita footer setelah `#about` — ADR-041)
 
-**Bukan:** Now (itu M2 About, ADR-037), katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — bukti AI di M2; cara kerja di M14; karya di M9).
+**Bukan:** Now (itu M2 About, ADR-037), katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — siapa di M2; cara kerja di M14; karya di M9). `#proof` dicabut ADR-040.
 
 ---
 
@@ -37,16 +39,16 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 
 **Tujuan:** Memperdalam cerita siapa Rezi agar founder/PO percaya fit kolaborasi.
 
-**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Route `/[locale]/about`; ID modul tetap M2.
+**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Chip mengarah ke `/{locale}#about` di Home; `/[locale]/about` redirect (ADR-040). ID modul tetap M2.
 
 **Isi inti:**
 
-* Sapaan + potret + lead pribadi
 * **Now** — status pekerjaan saat ini (kicker + tautan perusahaan, ADR-037)
-* Klaim **bukti AI** (section setelah hero, copy T-021.2 — ADR-032)
+* Sapaan (`h2`) + lead pribadi satu paragraf (ADR-039)
+* Karya seni viewport + caption “This is not me”
 * Konteks pengalaman (di dalam lead, bukan CV kronologis)
 
-**Bukan:** cara kerja (itu **M14 Workflow**, ADR-042).
+**Bukan:** `#proof` / klaim bukti AI sebagai section (ADR-040); cara kerja (itu **M14 Workflow**, ADR-042).
 
 ---
 
@@ -60,7 +62,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 * Jalur primer: email dan/atau tautan langsung
 * Tautan satelit (LinkedIn, GitHub, dll.)
 * Opsional: availability line
-* Tautan unduh CV/Portofolio (PDF) — keputusan diterima **ADR-023** (2026-08-21), di luar draf mockup awal; **implementasi ditunda** ke **T-023**, menunggu CV versi Inggris (paritas ID/EN)
+* Tautan unduh CV/Portofolio (PDF) — keputusan diterima **ADR-023** (2026-08-21), di luar draf mockup awal; belum di-ship sampai CV versi Inggris siap (paritas ID/EN)
 
 **Bukan (MVP):** form berbackend, CRM, calendar wajib, rate card.
 
@@ -132,7 +134,7 @@ M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick In
 M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
 ```
 
-* M1 adalah pintu destination (lede + klaim); M2 memperdalam siapa + Now + bukti AI; M14 memperdalam cara kerja; M3 menutup soft path.
+* M1 adalah pintu destination (lede + klaim); M2 memperdalam siapa + Now + lead/artwork; M14 memperdalam cara kerja; M3 menutup soft path.
 * M4 retired (ADR-032); bukti karya = M9 + M10.
 * M9 Must R1 (ADR-020); M10 overlay sheet Must R1 (ADR-027); halaman `/work/[slug]` bukan R1.
 * M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).
@@ -141,7 +143,7 @@ M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, A
 
 # Module Design Principles
 
-1. **Satu pekerjaan per modul** — Home = clarity; About = narasi + bukti AI; Workflow = cara kerja; Contact = path.
+1. **Satu pekerjaan per modul** — Home = clarity; About = narasi pribadi; Workflow = cara kerja; Contact = path.
 2. **Kurasi ketat** — teaser sedikit yang kuat > daftar panjang.
 3. **Soft by default** — Contact tidak berubah jadi sales page.
 4. **Bahasa sebagai lapisan** — bukan afterthought; konten inti dual.
@@ -175,5 +177,8 @@ Modul dianggap cukup terdefinisi jika:
 * `../../project-manager/decisions/ADR-023-cv-download-contact-modal.md`
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-041-home-with-footer.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

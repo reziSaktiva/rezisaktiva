@@ -26,7 +26,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 | -- | ------- | --------- |
 | **UX1** | **Clarity first** | First viewport menjawab “siapa & untuk siapa”; tidak menunda positioning ke bawah fold |
 | **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About / Workflow / Work index, bukan mode Home terpisah |
-| **UX3** | **Lean surface** | Home / About / Workflow / Work index sebagai *halaman*; jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal ADR-019, Quick info ADR-022) **bukan** halaman baru |
+| **UX3** | **Lean surface** | Home (termasuk section About), Workflow, Work index sebagai *halaman*; About bukan route (ADR-040). Jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal ADR-019, Quick info ADR-022) **bukan** halaman baru |
 | **UX4** | **Presence tanpa katalog case** | Bukti karya = Work index + sheet M10 (M4 teaser Home retired, ADR-032); halaman case `/work/[slug]` = Later R2 |
 | **UX5** | **Soft path** | Contact first-class (modal, ADR-019); Email primer; LinkedIn & GitHub satelit; tanpa harga, WA/IG di R1; form singkat opsional (bukan syarat wajib) |
 | **UX6** | **Bahasa adalah journey** | Geo-default + path prefix `/id` & `/en` + switcher selalu ada; makna ID/EN setara |
@@ -38,7 +38,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 1. **Hierarchy pesan:** product builder → fullstack sebagai bukti → AI sebagai edge jujur.
 2. **Salinan singkat:** cukup untuk evaluasi cepat; About memperdalam, bukan essay panjang.
-3. **Teaser actionable:** nama + peran/outcome + tautan bukti eksternal bila ada; bukan stub kosong. Credibility line di Home = 1 klaim non-kartu — **bukan** daftar project kedua.
+3. **Karya actionable:** tile Work index membuka sheet M10; live/repo di dalam sheet. Home **tanpa** teaser dan **tanpa** credibility line (ADR-032 / ADR-040).
 4. **Contact tenang:** ajakan soft + konteks kapan relevan; ekspektasi = percakapan, bukan checkout.
 5. **Availability (Should):** satu kalimat soft opsional; jangan hard “hire me now”.
 6. **Secondary tipis:** hiring/klien menemukan sinyal di permukaan yang sama — tanpa job board / pricing.

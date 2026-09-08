@@ -33,7 +33,11 @@ Teaser karya **bukan** lagi section Home. Home = hero lede + klaim (ADR-037). No
 
 ### Update — 2026-09-07 (ADR-035)
 
-Destinasi konten R1 = **Home, About, Workflow, Work index**. About = narasi pribadi + bukti AI. Cara kerja = `/[locale]/workflow` (M14).
+Cara kerja = `/[locale]/workflow` (M14). Chip About tetap.
+
+### Update — 2026-09-08 (ADR-040 / ADR-042)
+
+About **bukan** halaman: section `#about` di Home; `/about` redirect; tanpa `#proof`. Halaman R1 = Home, Workflow, Work index. Isi Workflow = decision-driven (bukan offers/accordion).
 
 ### Alternatives Considered
 

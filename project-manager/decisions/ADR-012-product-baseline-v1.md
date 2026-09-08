@@ -41,4 +41,4 @@ Paket keputusan Accepted yang diikat: ADR-010, ADR-011 (+ ADR-002, ADR-006, ADR-
 
 ### Update — 2026-09-07 (ADR-020 / ADR-027 / ADR-032 / ADR-035)
 
-Surface hidup: Home, About, Workflow (`/workflow`, M14), Work index (M9). Contact = modal (ADR-019). M4 teaser Home retired. M10 = overlay sheet Must R1. Modul Must mencakup M9, M10, M13, M14. Dokumen `02-product/` sudah di-amandemen mengikuti ADR itu.
+Surface hidup: Home (hero + `#about`, ADR-040), Workflow (`/workflow`, M14, isi ADR-042), Work index (M9). Contact = modal (ADR-019). M4 teaser Home retired. M10 = overlay sheet Must R1. Modul Must mencakup M9, M10, M13, M14. Dokumen `02-product/` sudah di-amandemen mengikuti ADR itu.

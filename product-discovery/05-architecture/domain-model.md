@@ -43,10 +43,9 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 
 | Konsep | Arti di R1 | Catatan |
 | ------ | ---------- | ------- |
-| **Page** | Home, About, Workflow, Work index (per locale) | Surface IA; Workflow Must R1 via ADR-035; Work index via ADR-020 |
+| **Page** | Home (memuat section About), Workflow, Work index (per locale) | Surface IA; About bukan Page (ADR-040); Workflow Must R1 via ADR-035 / ADR-042; Work index via ADR-020 |
 | **Locale** | `id` \| `en` | Path prefix; makna salinan setara |
 | **Identity claim** | Positioning product builder (+ fullstack + AI edge) | First viewport Home |
-| **Credibility line** | Satu klaim non-kartu (bukti AI) | Di About, bukan Home (ADR-032) |
 | **Work item** | Kartu katalog: nama · outcome · tautan bukti opsional | Work index; bukan case detail |
 | **Contact channel** | Modal global (ADR-019), bukan Page; Email primer + form ringan opsional; LinkedIn/GitHub satelit | Tanpa backend form/WA/IG R1 |
 | **Site chrome** | Nav, switcher, footer, theme toggle (ADR-021) | Global; footer di semua rute termasuk Home (ADR-041) |
@@ -65,7 +64,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 | Modul | Konsep domain lean |
 | ----- | ------------------ |
 | M1 Home | Identity claim + lede, arah soft (ADR-032 / ADR-037) |
-| M2 About | Narrative + Now + bukti AI (ADR-037) |
+| M2 About | Narrative + Now + lead/artwork (section Home, ADR-040); tanpa `#proof` |
 | M14 Workflow | How-I-work (prinsip, pipeline Human/AI, ADR Vault — ADR-042) |
 | M3 Contact | Contact channel (modal overlay) |
 | M4 Work teaser | Retired (ADR-032) |
@@ -126,5 +125,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

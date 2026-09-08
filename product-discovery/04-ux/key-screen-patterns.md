@@ -71,7 +71,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Target: `/[id/en]#about` di Home (ADR-040). Bukan route. Cara kerja **bukan** di sini (S2b).
 
-**Pola rest / active (ADR-025):** **tidak** di section About (ADR-039). Lead = satu paragraf selalu terlihat. Rest/active tetap di Workflow (S2b).
+**Pola rest / active (ADR-025):** **tidak** di section About (ADR-039) dan **tidak** di Workflow (ADR-042). Lead = satu paragraf selalu terlihat.
 
 **Blok berurutan:**
 
@@ -126,7 +126,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 * **Desktop (≥1024px):** hierarki vertikal jelas; nav horizontal; Work index tile dalam grid.
 * **Mobile (<1024px):** first viewport tetap memuat klaim inti tanpa mengandalkan hover; Work index stack vertikal; Contact Email tetap paling menonjol di modal.
-* **Ponsel sempit (kontrak mockup, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris display (ADR-038) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work index tile boleh stack. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero.
+* **Ponsel sempit (komposisi chrome produksi, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris display (ADR-038) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work index tile boleh stack. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero. Acuan visual = kode produksi (ADR-024); `design-mockups/` arsip.
 * **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
 * Panjang salinan ID/EN boleh beda, **makna setara**.
 * Acuan visual: **kode produksi** (`app/`, token `app/globals.css`, shadcn + Tailwind — ADR-024 / ADR-028). `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
@@ -136,7 +136,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 # Success Criteria
 
 * S1 first viewport lulus uji “siapa & untuk siapa” tanpa scroll panjang
-* S1 = hero saja; bukti AI di S2; cara kerja di S2b; karya di S4 (ADR-032, ADR-035)
+* S1 = hero + `#about`; narasi di S2; cara kerja di S2b (ADR-042); karya di S4 (ADR-032, ADR-035, ADR-040). Tanpa `#proof`.
 * S3 Email jelas sebagai primer; satelit terbatas LinkedIn + GitHub
 * S0 memungkinkan F3 (ganti bahasa) dari setiap screen
 * Meta/share & content readiness di `information-architecture.md` terpenuhi sebelum live

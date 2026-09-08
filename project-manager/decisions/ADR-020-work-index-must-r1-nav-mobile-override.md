@@ -53,4 +53,4 @@ Chip nav **tidak** menyertakan Home. Nama di header = tautan Home; pekerjaan di 
 
 ### Update — 2026-09-07 (ADR-035)
 
-Label chrome About = **Tentang / About** (`/about`). **Proses Kerja / How I Work** pindah ke route `/[locale]/workflow` (M14). Chip nav = Tentang / About · Proses Kerja / How I Work · Proyek / Projects.
+Label chrome About = **Tentang / About** (`/{locale}#about`, ADR-040). **Proses Kerja / How I Work** pindah ke route `/[locale]/workflow` (M14). Chip nav = Tentang / About · Proses Kerja / How I Work · Proyek / Projects.

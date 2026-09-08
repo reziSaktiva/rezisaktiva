@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
 # Overview
 
-MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, Workflow (`/workflow`, ADR-035), dan Work index (`/projects`, override ADR-020); Home = h1 atas, lede lantai bawah (ADR-032 / ADR-038); Now di About; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
+MVP = **kerangka clarity yang layak dijadikan destination**: tiga halaman — Home (hero + section About `#about`, ADR-040), Workflow (`/workflow`, ADR-035 / ADR-042), dan Work index (`/projects`, override ADR-020); Home = h1 atas, lede lantai bawah, pita footer (ADR-038 / ADR-041); Now di About; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
 
 Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial. Magnet ringan (case/proses singkat) **direncanakan segera setelah** kerangka ini hidup — bukan blocker ship pertama.
 
@@ -30,8 +30,8 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 | Item | Keterangan |
 | ---- | ---------- |
-| **Home** | Positioning jelas (lede + klaim); arah ke About / Workflow / Contact |
-| **About** | Narasi pribadi + klaim bukti AI (ADR-032). Label chrome: Tentang / About (ADR-035) |
+| **Home** | Positioning jelas (lede + klaim) + section About `#about` + pita footer; arah ke Workflow / Contact |
+| **About** | Section Home (bukan halaman): Now + sapaan + lead + artwork (ADR-040 / ADR-039). Chip chrome: Tentang / About (ADR-035). `/about` redirect. Tanpa `#proof` |
 | **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042). Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work index (M9)** | Halaman katalog karya `/[locale]/projects` — Must R1 (ADR-020). Presence bukti karya (M4 teaser Home retired, ADR-032) |
@@ -105,7 +105,7 @@ MVP dianggap cukup jika:
 
 | Item | Status |
 | ---- | ------ |
-| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/020/021/022/027/032/033/034/035 |
+| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/020/021/022/027/032/034/035/040/041/042 (ADR-033 superseded ADR-041) |
 | MVP definition | **Baseline v1.0** (dokumen ini) |
 | Product Baseline | **v1.0** — ADR-012 |
 | Work index (M9) di MVP | Ya — Must R1 (override ADR-020) |
@@ -132,5 +132,8 @@ MVP dianggap cukup jika:
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-041-home-with-footer.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
