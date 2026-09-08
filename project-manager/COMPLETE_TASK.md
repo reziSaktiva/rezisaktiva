@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-09-08]
 ### Changed
+- **T-043.1** ✅: transisi halaman = hard cut + stutter frame (T-038.3). Clone exit = offset diskrit ~0.2s; cut ke halaman baru + stutter ~0.16s. Bukan Hess scale, bukan RGB/VHS, bukan View Transitions. Reduced-motion = instan. Lenis + pause overlay + scrollbar track (`page-vt-lock`) tetap.
+
+## [2026-09-08]
+### Changed
 - **T-042.3** ✅: tile Work = pelat museum (dikunci chat). Mat + hairline luar seperti About; grid `gap-6`; drip hover tetap di dalam plate; klik tile tetap membuka sheet.
 - **T-042** parent ✅. Gerbang **T-043** terbuka.
 

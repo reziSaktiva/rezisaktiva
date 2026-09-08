@@ -18,6 +18,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-08] — T-043.1 hard cut + stutter
+**Phase:** Validation
+**Summary:** Transisi halaman Hess (scale + slide 1s) diganti hard cut + beberapa frame tersentak, sesuai kunci T-038.3.
+**Key Decision/Insight:** Glitch = jump diskrit tanpa warna/RGB/VHS. Durasi ~0.36s agar UX1 tidak tertunda. Chrome header tetap; Lenis pause selama `page-vt-lock`.
+**Impact:** `page-transition.tsx`, `globals.css` (`.page-vt-*`), ADR-025 update, `design-tokens.md` §Motion; T-043.1 Done.
+
 ## [2026-09-08] — T-042.3 tile Work = pelat
 **Phase:** Validation
 **Summary:** Q&A kulit Work index: Boss Rezi memilih semua tile sebagai pelat museum, bukan polish/arsip/featured-only.

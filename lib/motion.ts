@@ -14,8 +14,6 @@ export {
 
 /** `--ease-standard` di `app/globals.css`: cubic-bezier(0.24, 1, 0.4, 1). */
 export const EASE_STANDARD = [0.24, 1, 0.4, 1] as const;
-/** Hess page-vt — `--ease-page-transition`. */
-export const EASE_PAGE_TRANSITION = [0.65, 0, 0.43, 1] as const;
 
 export type CubicBezierEase = readonly [number, number, number, number];
 

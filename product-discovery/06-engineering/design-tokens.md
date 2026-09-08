@@ -125,17 +125,19 @@ Toggle UI Must saat light hidup (ADR-021). **Dark sebagai default ship** dikunci
 
 > Diperbarui **ADR-017** (2026-08-12): motion naik peran menjadi **bagian identitas visual R1**, bukan sekadar Could minimal — dengan clarity tetap prioritas tertinggi.
 >
-> Diperbarui **ADR-025** (2026-08-24): kadar craft naik (Hess/Mazur: ritme + gerak, bukan palet). Lenis + transisi halaman diizinkan sebagai lapisan custom. Ritme transisi halaman memakai token khusus (`--duration-page-exit` / `--duration-page-enter` / `--delay-page-enter` / `--ease-page-transition`) — bukan `--duration-medium` (terlalu pendek untuk efek Hess).
+> Diperbarui **ADR-025** (2026-08-24): kadar craft naik (Hess/Mazur: ritme + gerak, bukan palet). Lenis + transisi halaman diizinkan sebagai lapisan custom. Ritme transisi halaman memakai token khusus (`--duration-page-exit` / `--duration-page-enter` / `--delay-page-enter`) — bukan `--duration-medium`.
+>
+> Diperbarui **T-043.1** (2026-09-08): transisi halaman = hard cut + stutter frame (T-038.3). Bukan Hess scale 1s, bukan RGB/VHS, bukan View Transitions API. Durasi pendek (UX1). `--ease-page-transition` tetap untuk overlay sheet.
 
 | Tingkat | R1 |
 | ------- | --- |
 | Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
-| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/tile, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025 / ADR-042):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman Hess (exit 1s scale+naik, enter 0.4s dari bawah setelah 0.4s, easing `.65,0,.43,1`). Pola rest/active accordion **bukan** permukaan Workflow/About lagi |
+| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/tile, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025 / ADR-042 / T-043.1):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman hard cut + stutter frame (exit ~0.2s, enter ~0.16s, steps — bukan Hess scale). Pola rest/active accordion **bukan** permukaan Workflow/About lagi |
 | Pause | Lenis **berhenti** saat Contact modal (`html.ct-lock`) atau Quick Info (`html.qi-lock`) terbuka, supaya overlay tidak bergeser bersama inersia |
 | Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; transisi halaman instan (tanpa overlay); playable yang sudah ada tetap hormati media query yang sama |
 | Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya; overlay transisi yang tetap `pointer-events: auto` setelah selesai |
 
-Hormati `prefers-reduced-motion`. Gerak identitas = paket `motion` (`motion/react`). Lenis + page wipe tetap CSS/hook custom — bukan domain Motion, bukan View Transitions API.
+Hormati `prefers-reduced-motion`. Gerak identitas = paket `motion` (`motion/react`). Lenis + page stutter tetap CSS/hook custom — bukan domain Motion, bukan View Transitions API.
 
 ---
 

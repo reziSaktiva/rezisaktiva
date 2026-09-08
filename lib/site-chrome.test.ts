@@ -40,4 +40,13 @@ describe("craft tokens after Astryx removal", () => {
       ),
     ).toBe(false);
   });
+
+  it("uses hard-cut stutter tokens instead of Hess scale (T-043.1)", () => {
+    expect(globalsCss.includes("--duration-page-exit: 0.2s;")).toBe(true);
+    expect(globalsCss.includes("--duration-page-enter: 0.16s;")).toBe(true);
+    expect(globalsCss.includes("@keyframes page-vt-stutter-exit")).toBe(true);
+    expect(globalsCss.includes("@keyframes page-vt-stutter-enter")).toBe(true);
+    expect(globalsCss.includes("@keyframes page-vt-enter")).toBe(false);
+    expect(globalsCss.includes("scale(0.5)")).toBe(false);
+  });
 });

@@ -27,11 +27,19 @@
   --chip-fg: #e8e4dc;
   --chrome-pill-bg: #6b1c23;
   --chrome-pill-fg: #e8e4dc;
-  /* Ritme transisi halaman karolinahess.com — bukan --duration-medium. */
-  --duration-page-exit: 1s;
-  --duration-page-enter: 0.4s;
-  --delay-page-enter: 0.4s;
+  /*
+   * Transisi halaman T-043.1: hard cut + stutter frame (bukan Hess 1s/0.4s).
+   * `--ease-page-transition` tetap untuk overlay sheet; stutter pakai steps.
+   */
+  --duration-page-exit: 0.2s;
+  --duration-page-enter: 0.16s;
+  --delay-page-enter: 0.2s;
   --ease-page-transition: cubic-bezier(0.65, 0, 0.43, 1);
+  --page-stutter-1: 0.5rem;
+  --page-stutter-2: 0.7rem;
+  --page-stutter-3: 0.35rem;
+  --page-stutter-4: 0.2rem;
+  --page-stutter-5: 0.1rem;
   /* Overlay Dialog/Sheet/Drawer (T-036.3) — tween, bukan bounce. */
   --duration-ct-scrim: 0.35s;
   --duration-ct-panel-opacity: 0.3s;
@@ -3257,18 +3265,19 @@ html.ct-lock .qi-tab {
 }
 
 /*
- * Transisi halaman = snapshot CSS (ritme karolinahess.com).
- * Live page diparkir di bawah viewport sampai enter — tampil lebih dulu
- * = kedip. Selector live tidak boleh mengenai clone.
+ * Transisi halaman T-043.1 = snapshot CSS, hard cut + stutter frame
+ * (T-038.3). Bukan Hess scale, bukan RGB/VHS, bukan View Transitions API.
+ * Live page diparkir (visibility) sampai cut — tampil lebih dulu = kedip.
+ * Selector live tidak boleh mengenai clone.
  *
  * T-025.8: Lenis.stop() menambah .lenis-stopped { overflow: clip } dan
  * menelan scrollbar track. Tetap tampilkan track (overflow-y: scroll);
  * wheel tetap diblokir Lenis. Jangan overflow: hidden pada html/body.
  * Specificity harus mengalahkan `.lenis.lenis-stopped` (3 class).
  *
- * T-025.10: parkir live pakai visibility:hidden + 100dvh. translateY(100vh)
- * relatif ke dokumen — kalau user sudah scroll di mobile, halaman baru
- * nyembul di viewport. Scroll di-reset ke 0 setelah clone (JS).
+ * T-025.10: clone selalu `translateY(-scrollY)`; reset Lenis+window ke 0
+ * setelah snapshot. Parkir live = visibility saja (bukan 100dvh) supaya
+ * hard cut tidak slide dari bawah.
  * Selector `.site-chrome-main` dan `.site-footer` harus
  * `:not(.page-vt-clone *)` — clone menghapus `id` tapi menyimpan class;
  * tanpa pengecualian, snapshot exit ikut di-park (P2 PR #46 + review PR #67).
@@ -3301,17 +3310,51 @@ html.lenis.page-vt-lock.lenis-stopped {
   visibility: hidden !important;
 }
 
-@keyframes page-vt-enter {
-  from {
-    transform: translateY(100vh);
-    transform: translateY(100dvh);
+/*
+ * Discrete holds (steps(1) antar keyframe) — jump horror, bukan tween.
+ * Offset tidak simetris supaya terasa skip film, bukan shake library.
+ */
+@keyframes page-vt-stutter-exit {
+  0% {
+    transform: translate3d(0, 0, 0);
   }
+  20% {
+    transform: translate3d(var(--page-stutter-1), calc(var(--page-stutter-4) * -1), 0);
+  }
+  40% {
+    transform: translate3d(calc(var(--page-stutter-2) * -1), var(--page-stutter-4), 0);
+  }
+  60% {
+    transform: translate3d(var(--page-stutter-3), var(--page-stutter-4), 0);
+  }
+  80%,
+  100% {
+    transform: translate3d(calc(var(--page-stutter-4) * -1), calc(var(--page-stutter-5) * -1), 0);
+  }
+}
+
+@keyframes page-vt-stutter-enter {
+  0% {
+    transform: translate3d(calc(var(--page-stutter-1) * -1), var(--page-stutter-4), 0);
+  }
+  25% {
+    transform: translate3d(var(--page-stutter-3), calc(var(--page-stutter-4) * -1), 0);
+  }
+  50% {
+    transform: translate3d(calc(var(--page-stutter-4) * -1), var(--page-stutter-5), 0);
+  }
+  75%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.page-vt-clone.page-vt-stutter-exit {
+  animation: page-vt-stutter-exit var(--duration-page-exit) steps(1, end) both;
 }
 
 html.page-vt-lock:not(.page-vt-entering) .site-chrome-main:not(.page-vt-clone *),
 html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
-  transform: translateY(100vh);
-  transform: translateY(100dvh);
   visibility: hidden;
   pointer-events: none;
 }
@@ -3319,12 +3362,13 @@ html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *) {
 html.page-vt-entering .site-chrome-main:not(.page-vt-clone *),
 html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   visibility: visible;
-  animation: page-vt-enter var(--duration-page-enter) var(--ease-page-transition)
-    both;
+  animation: page-vt-stutter-enter var(--duration-page-enter) steps(1, end) both;
   backface-visibility: hidden;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .page-vt-clone.page-vt-stutter-exit,
   html.page-vt-lock:not(.page-vt-entering) .site-chrome-main:not(.page-vt-clone *),
   html.page-vt-lock:not(.page-vt-entering) .site-footer:not(.page-vt-clone *),
   html.page-vt-entering .site-chrome-main:not(.page-vt-clone *),

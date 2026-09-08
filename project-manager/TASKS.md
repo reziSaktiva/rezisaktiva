@@ -6,14 +6,15 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-1. **T-043** — pass seluruh situs ⏳ (gerbang T-042 ✅). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+1. **T-043** — pass seluruh situs ⏳ (**T-043.1** ✅ hard-cut stutter; berikutnya **T-043.2**). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
 2. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
 3. **T-031** — Metadata API ⏸️ **Deferred** sampai **T-043**. Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 
 **Baru selesai**
 
-6. **T-042** — halaman identitas visual ✅ (2026-09-08). **T-042.1–T-042.4**.
+6. **T-043.1** — transisi halaman hard cut + stutter ✅ (2026-09-08).
+7. **T-042** — halaman identitas visual ✅ (2026-09-08). **T-042.1–T-042.4**.
 7. **T-042.3** — tile Work = pelat museum ✅ (2026-09-08). Drip hover tetap di dalam plate.
 8. **T-042.2** — pelat museum About ✅ (2026-09-08). Bingkai ganda + caption label.
 9. **T-042.1** — polish hero Home ✅ (2026-09-08). Veil + kontras lede/tautan; tanpa motif baru.

@@ -59,3 +59,7 @@ Rest/active untuk offers/values/langkah proses sempat hidup di **Workflow** (`/w
 ### Update — 2026-09-08 (ADR-042)
 
 Permukaan `/workflow` diganti decision-driven (hero + tab, lima prinsip, pipeline Human vs AI, ADR Vault). Rest/active offers/values/proses **tidak lagi** dipakai di Workflow. Copy T-021.3 di rute itu di-supersede.
+
+### Update — 2026-09-08 (T-043.1)
+
+Transisi halaman produksi = **hard cut + stutter frame** (dikunci T-038.3). Snapshot CSS tetap (bukan View Transitions API). Halaman lama: beberapa frame offset diskrit (`steps(1)`), lalu cut. Halaman baru: stutter pendek lalu diam. Tanpa scale Hess, tanpa RGB/VHS, tanpa clip video. Reduced-motion = instan. Lenis + pause overlay (`ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`) tetap. Token: `--duration-page-exit` 0.2s · `--delay-page-enter` 0.2s · `--duration-page-enter` 0.16s.

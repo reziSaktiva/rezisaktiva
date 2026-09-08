@@ -3,8 +3,8 @@
 ## Snapshot
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
-* **Active Mode:** Validation — **T-042** ✅ (halaman: polish Home, pelat About, pelat Work, Workflow ADR-042); **T-043** ⏳ gerak sistem + docs; wallpaper bitmap Workflow **dicabut**; **T-054.1–T-054.3** ✅ debu katedral wallpaper (gerbang + filigree dicabut); **T-054.4** ⏳; **T-053** ✅ pita footer Home (ADR-041); **T-052** ✅ About = section Home (ADR-040); **T-031** ⏸️; bukan R2 tanpa ADR
-* **Top Next Tasks:** **T-043** ⏳; **T-054.4** ⏳ (verifikasi Cathedral Breath) — lihat [`TASKS.md`](TASKS.md)
+* **Active Mode:** Validation — **T-042** ✅ (halaman: polish Home, pelat About, pelat Work, Workflow ADR-042); **T-043** ⏳ (**T-043.1** ✅ hard-cut stutter; berikutnya T-043.2); wallpaper bitmap Workflow **dicabut**; **T-054.1–T-054.3** ✅ debu katedral wallpaper (gerbang + filigree dicabut); **T-054.4** ⏳; **T-053** ✅ pita footer Home (ADR-041); **T-052** ✅ About = section Home (ADR-040); **T-031** ⏸️; bukan R2 tanpa ADR
+* **Top Next Tasks:** **T-043.2** ⏳; **T-054.4** ⏳ (verifikasi Cathedral Breath) — lihat [`TASKS.md`](TASKS.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + `tasks/v18-about-home-section.md` (**T-052** ✅, **T-053** ✅) + `tasks/v19-workflow-living-background.md` (**T-054.1–T-054.3** ✅, **T-054.4** ⏳); rilis v01–v17 tetap di `TASKS.md`
@@ -38,9 +38,9 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/v02-bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean terkirim di kode: Home (hero + `#about`), Workflow, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, copy T-021 (isi `/workflow` = ADR-042). Acuan visual: kode produksi (ADR-024).
-* Fase aktif: **Validation**. **T-042** ✅ halaman (Home polish, About pelat, Work pelat, Workflow ADR-042). **T-043** ⏳. Wallpaper bitmap di `/workflow` **dicabut**. **T-054.1–T-054.3** ✅ debu katedral mote individual `fixed` (gerbang + filigree dicabut); **T-054.4** ⏳. **T-053** ✅ pita footer di Home (ADR-041). **T-052** ✅ About = section `#about` di Home (ADR-040). **T-031** ⏸️.
+* Fase aktif: **Validation**. **T-042** ✅ halaman (Home polish, About pelat, Work pelat, Workflow ADR-042). **T-043** ⏳ (**T-043.1** ✅). Wallpaper bitmap di `/workflow` **dicabut**. **T-054.1–T-054.3** ✅ debu katedral mote individual `fixed` (gerbang + filigree dicabut); **T-054.4** ⏳. **T-053** ✅ pita footer di Home (ADR-041). **T-052** ✅ About = section `#about` di Home (ADR-040). **T-031** ⏸️.
 * **Copy R1:** **T-021.1–T-021.7 ✅**. **T-046…T-051** ✅. **Isi `/workflow` di-supersede ADR-042** (bukan offers/values/accordion T-021.3). Home tanpa potret. Foto About masih placeholder Unsplash (bukan blocker exit).
-* **Catatan engineering:** gap StyleX/Turbopack (T-013.4) ditutup dengan cabut Astryx. Rilis v14 **T-037.7** ✅. **T-038** ✅. **T-039** ✅. **T-040** ✅. **T-041** ✅. **T-044** ✅. Berikutnya **T-043**; **T-031** setelah T-043.
+* **Catatan engineering:** gap StyleX/Turbopack (T-013.4) ditutup dengan cabut Astryx. Rilis v14 **T-037.7** ✅. **T-038** ✅. **T-039** ✅. **T-040** ✅. **T-041** ✅. **T-044** ✅. Berikutnya **T-043.2**; **T-031** setelah T-043.
 
 ---
 
