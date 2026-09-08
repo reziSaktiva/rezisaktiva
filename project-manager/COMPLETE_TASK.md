@@ -18,6 +18,30 @@ Format entri:
 ### Added
 - —
 ### Changed
+- **T-042.4** (sebagian): urutan `/workflow` = proses 4 langkah → approach/values → offers (“Yang bisa saya bantu”).
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): accordion proses di `/workflow` terbuka saat hover (desktop) dan klik; `.about-process-copy` `--font-size-sm` → `--font-size-md`.
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): kartu Product/offers dan Values di `/workflow` selalu menampilkan deskripsi (cabut rest/active/`about-rest-active.tsx`); `.about-card-body` `--font-size-sm` → `--font-size-md`.
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
 - Frame karya seni About: rasio mengikuti aset (634×1024) lewat `aspect-ratio`, tinggi mengecil bila kolom lebih sempit; border `4px` (`--spacing-1`).
 ### Fixed
 - Letterbox atas/bawah di dalam border potret About: tinggi frame sebelumnya tetap viewport meski lebar kolom terpotong.

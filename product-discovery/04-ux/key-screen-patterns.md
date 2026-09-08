@@ -89,9 +89,9 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 **Blok berurutan:**
 
 1. Hero — judul proses + catatan
-2. Offers — kartu bernomor oversized + ikon; title selalu terlihat; `body` hanya saat aktif
-3. Approach / Values — kicker + judul quote besar; kalimat penjelas hanya saat item aktif
-4. Proses 4 langkah — baris satu-terbuka + watermark angka; rest = nomor + judul; active = paragraf `body`
+2. Proses 4 langkah — baris satu-terbuka + watermark angka; hover (desktop) + klik; paragraf `body` saat terbuka
+3. Approach / Values — kicker + judul quote; kartu values menampilkan judul + `body`
+4. Offers — kartu bernomor oversized + ikon; title dan `body` selalu terlihat
 5. Soft CTA Contact **bukan** section terpisah — pita footer (S0)
 
 **Anti-pattern:** framing “developer for hire” yang menggeser brand; menumpuk seluruh body di rest.

@@ -1,8 +1,8 @@
 import { WORKFLOW_COPY } from "@/content/workflow";
 import type { Locale } from "@/lib/locale";
+import { Card } from "@/components/ui/card";
 import { AboutOfferGrid } from "./about-offer-grid";
 import { AboutProcess } from "./about-process";
-import { RestActiveCard } from "./about-rest-active";
 import { Reveal, WordReveal } from "./home-motion";
 
 function splitQuotedValue(value: string): { heading: string; body: string } {
@@ -31,10 +31,7 @@ export function WorkflowPage({ locale }: { locale: Locale }) {
 
       <section className="about-section">
         <div className="flex flex-col gap-8">
-          <Reveal>
-            <h2 className="about-section-title">{copy.helpTitle}</h2>
-          </Reveal>
-          <AboutOfferGrid offers={copy.offers} />
+          <AboutProcess steps={copy.steps} />
         </div>
       </section>
 
@@ -57,15 +54,12 @@ export function WorkflowPage({ locale }: { locale: Locale }) {
                 const { heading, body } = splitQuotedValue(value);
                 return (
                   <Reveal key={value}>
-                    <RestActiveCard
-                      variant="muted"
-                      className="about-value-card"
-                      label={heading}
-                      rest={<h3 className="about-value-title">{heading}</h3>}
-                      active={
-                        body ? <p className="about-card-body">{body}</p> : null
-                      }
-                    />
+                    <Card className="about-value-card gap-3 border-0 bg-muted p-6 text-base text-foreground shadow-none ring-0">
+                      <div className="flex flex-col gap-3">
+                        <h3 className="about-value-title">{heading}</h3>
+                        {body ? <p className="about-card-body">{body}</p> : null}
+                      </div>
+                    </Card>
                   </Reveal>
                 );
               })}
@@ -76,7 +70,10 @@ export function WorkflowPage({ locale }: { locale: Locale }) {
 
       <section className="about-section">
         <div className="flex flex-col gap-8">
-          <AboutProcess steps={copy.steps} />
+          <Reveal>
+            <h2 className="about-section-title">{copy.helpTitle}</h2>
+          </Reveal>
+          <AboutOfferGrid offers={copy.offers} />
         </div>
       </section>
     </div>

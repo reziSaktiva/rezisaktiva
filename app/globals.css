@@ -1814,52 +1814,6 @@ button.home-work-tile,
   }
 }
 
-/* Rest/active (T-025.4): body hidden until hover/focus or click. */
-.about-rest-active-panel {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition:
-    max-height var(--duration-medium) var(--ease-standard),
-    opacity var(--duration-medium) var(--ease-standard);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .about-rest-active:hover .about-rest-active-panel,
-  .about-rest-active:focus-within .about-rest-active-panel {
-    max-height: 24rem;
-    opacity: 1;
-  }
-}
-
-.about-rest-active.is-active .about-rest-active-panel {
-  max-height: 24rem;
-  opacity: 1;
-}
-
-.about-rest-active[role="button"] {
-  cursor: pointer;
-}
-
-.about-rest-active[role="button"]:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-  border-radius: var(--radius-md);
-}
-
-.about-offer-card[role="button"]:focus-visible,
-.about-value-card[role="button"]:focus-visible {
-  outline-offset: -3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-rest-active-panel {
-    max-height: none;
-    opacity: 1;
-    transition: none;
-  }
-}
-
 .about-portrait-block {
   width: 100%;
   min-width: 0;
@@ -1993,7 +1947,8 @@ button.home-work-tile,
 .about-card-body {
   margin: 0;
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
+  line-height: 1.55;
 }
 
 .about-values-band {
@@ -2106,7 +2061,8 @@ button.home-work-tile,
   max-width: 40rem;
   margin: 0;
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
+  line-height: 1.55;
 }
 
 .site-footer {

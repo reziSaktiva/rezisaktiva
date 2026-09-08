@@ -147,7 +147,7 @@ Sebelum R1 dianggap siap live:
 1. **Home** — hero positioning terisi (lede + klaim) + section About (Now + lead)
 2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
 3. **About** — section di Home (bukan halaman); narasi pribadi (bukan placeholder Lorem)
-4. **Workflow** — offers + approach/values + langkah proses (copy T-021.3)
+4. **Workflow** — langkah proses + approach/values + offers (copy T-021.3)
 5. Jangan ship Home tanpa klaim positioning **atau** Contact tanpa Email — keduanya menutup J2/J3
 6. Tautan satelit eksternal yang mati → jangan ditampilkan (sembunyikan item) sampai URL diperbaiki
 

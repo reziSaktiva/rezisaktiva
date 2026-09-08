@@ -1,6 +1,11 @@
 "use client";
 
-import { useState, type ComponentType, type SVGProps } from "react";
+import {
+  useEffect,
+  useState,
+  type ComponentType,
+  type SVGProps,
+} from "react";
 import { ChevronDown } from "lucide-react";
 import {
   Collapsible,
@@ -18,8 +23,31 @@ const STEP_ICONS: readonly ComponentType<SVGProps<SVGSVGElement>>[] = [
   ShipIcon,
 ];
 
+function hasFineHover(): boolean {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
 export function AboutProcess({ steps }: { steps: readonly WorkflowStep[] }) {
-  const [openValue, setOpenValue] = useState("01");
+  const [pinnedValue, setPinnedValue] = useState("01");
+  const [hoveredValue, setHoveredValue] = useState<string | null>(null);
+  const [hoverOpens, setHoverOpens] = useState(false);
+
+  useEffect(() => {
+    const sync = () => {
+      setHoverOpens(hasFineHover());
+      if (!hasFineHover()) {
+        setHoveredValue(null);
+      }
+    };
+    sync();
+    const hoverMq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    hoverMq.addEventListener("change", sync);
+    return () => {
+      hoverMq.removeEventListener("change", sync);
+    };
+  }, []);
+
+  const openValue = hoveredValue ?? pinnedValue;
 
   return (
     <div className="about-process-group flex flex-col">
@@ -27,19 +55,33 @@ export function AboutProcess({ steps }: { steps: readonly WorkflowStep[] }) {
         const StepIcon = STEP_ICONS[index] ?? DiscoverIcon;
         const isOpen = openValue === step.num;
         return (
-          <Collapsible
+          <div
             key={step.num}
-            open={isOpen}
-            onOpenChange={(next) => {
-              setOpenValue((current) => {
-                if (next) {
-                  return step.num;
-                }
-                return current === step.num ? "" : current;
-              });
-            }}
             className="about-process-item border-border border-t first:border-t-0"
+            onPointerEnter={(event) => {
+              if (hoverOpens && event.pointerType === "mouse") {
+                setHoveredValue(step.num);
+              }
+            }}
+            onPointerLeave={(event) => {
+              if (hoverOpens && event.pointerType === "mouse") {
+                setHoveredValue((current) =>
+                  current === step.num ? null : current,
+                );
+              }
+            }}
           >
+            <Collapsible
+              open={isOpen}
+              onOpenChange={(next) => {
+                setPinnedValue((current) => {
+                  if (next) {
+                    return step.num;
+                  }
+                  return current === step.num ? "" : current;
+                });
+              }}
+            >
             <CollapsibleTrigger className="about-process-trigger flex items-center justify-between gap-4 py-3">
               <span className="flex items-center gap-4">
                 <StepIcon className="about-process-icon" />
@@ -62,7 +104,8 @@ export function AboutProcess({ steps }: { steps: readonly WorkflowStep[] }) {
                 <p className="about-process-copy">{step.body}</p>
               </div>
             </CollapsibleContent>
-          </Collapsible>
+            </Collapsible>
+          </div>
         );
       })}
     </div>
