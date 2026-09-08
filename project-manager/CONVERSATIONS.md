@@ -14,6 +14,30 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-08] — Wallpaper Workflow dicabut; T-054 latar hidup
+**Phase:** Validation
+**Summary:** Percobaan wallpaper bitmap di `/workflow` tetap blur. Boss Rezi minta cabut semua wallpaper, lalu buat task latar hidup seperti video loop tetapi dari komponen asli + Motion (bukan `<video>`).
+**Key Decision/Insight:** Bitmap/foto/damask di rute ini ditolak. Berikutnya T-054.1 Q&A motif, baru island. Home MP4 tidak jadi acuan aset Workflow.
+**Impact:** `workflow-page.tsx`, `globals.css`, hapus `workflow-wallpaper.tsx` + `public/media/workflow-wallpaper.*`; TASKS / PROJECT_STATE / key screens S2b; `tasks/v19-workflow-living-background.md`.
+
+## [2026-09-08] — Wallpaper Workflow diganti + fixed
+**Phase:** Validation
+**Summary:** Boss Rezi ganti aset wallpaper `/workflow` (masih blur) dan minta perilaku scroll sama Home: `position: fixed`. Footer tetap tanpa wallpaper.
+**Key Decision/Insight:** Island `WorkflowWallpaper` nempel viewport; opacity memudar saat `#contact-cta` masuk layar (pola fade Home ke `#about`).
+**Impact:** `workflow-wallpaper.tsx`, `globals.css`, `public/media/workflow-wallpaper.*`, key screens S2b, T-042.4.
+
+## [2026-09-08] — Wallpaper Workflow tajam + di belakang navbar
+**Phase:** Validation
+**Summary:** Boss Rezi minta kualitas wallpaper `/workflow` dipertajam, dan layer merembes ke belakang navbar seperti Home. Footer tetap tanpa wallpaper.
+**Key Decision/Insight:** Aset di-upscale 4× (2304×4096, WebP + JPEG). `.wf-page` memakai negatif margin header (bukan `position: fixed`).
+**Impact:** `workflow-page.tsx`, `globals.css`, `public/media/workflow-wallpaper.*`, key screens S2b, T-042.4.
+
+## [2026-09-08] — Wallpaper Workflow ikut scroll
+**Phase:** Validation
+**Summary:** Boss Rezi minta wallpaper portrait (tangan atas/bawah + kupu-kupu) sebagai background `/workflow`. Gambar ikut scroll bersama halaman dan terbagi per section, bukan nempel viewport seperti Home.
+**Key Decision/Insight:** Satu aset `public/media/workflow-wallpaper.jpg` di-stretch tinggi `.wf-page` (`object-fit: cover`, `object-position: center top`). Bukan `position: fixed`.
+**Impact:** `workflow-page.tsx`, `globals.css` (`.wf-*`), key screens S2b, T-042.4.
+
 ## [2026-09-07] — Footer kembali di Home
 **Phase:** Validation
 **Summary:** Boss Rezi minta tambahkan footer ke Home. Pita Contact yang sama dengan Workflow/Projects muncul setelah section About.

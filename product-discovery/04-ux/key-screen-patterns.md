@@ -86,6 +86,8 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 **Interaksi:** tab perbandingan Chaos vs Decision-Driven (`AnimatePresence`); kartu prinsip hover + `whileInView`; pipeline selalu terbaca (Human Lead vs AI); vault klik sampel ADR. **Bukan** rest/active accordion. Reduced-motion dihormati.
 
+**Kulit:** kanvas token (tanpa wallpaper bitmap). Latar hidup Motion = **T-054** (belum).
+
 **Blok berurutan:**
 
 1. Hero — klaim dua baris + lede + tab *Chat Chaos* / *Decision-Driven Way*

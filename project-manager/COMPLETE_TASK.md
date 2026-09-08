@@ -15,6 +15,27 @@ Format entri:
 ```
 
 ## [2026-09-08]
+### Added
+- **T-054** — task latar hidup Motion di `/workflow` (bukan foto/video). `tasks/v19-workflow-living-background.md`.
+### Changed
+- Cabut wallpaper bitmap Workflow (`WorkflowWallpaper`, `public/media/workflow-wallpaper.*`, CSS `.wf-page-wallpaper*`); kartu/panel kembali permukaan token utuh.
+
+## [2026-09-08]
+### Changed
+- Wallpaper `/workflow` diganti aset baru; `position: fixed` seperti Home; memudar saat pita footer masuk layar (T-042.4).
+
+## [2026-09-08]
+### Changed
+- Wallpaper Workflow 4× (2304×4096 WebP + JPEG) supaya tidak blur saat di-stretch sepanjang halaman (T-042.4).
+- `.wf-page` ditarik ke belakang navbar transparan (pola negatif margin Home); pita footer tetap tanpa wallpaper.
+
+## [2026-09-08]
+### Added
+- Wallpaper halaman Workflow: `public/media/workflow-wallpaper.jpg` di `.wf-page` — gambar setinggi seluruh halaman, ikut scroll, potongan vertikal mengikuti lima blok (T-042.4).
+### Changed
+- Permukaan `.wf-*` (pipeline band, kartu, compare, vault) sedikit tembus supaya wallpaper terbaca; veil + text-shadow agar klaim tetap kontras.
+
+## [2026-09-08]
 ### Fixed
 - Audit konsistensi dokumen vs web hidup (ADR-040 / ADR-041 / ADR-042): baseline `product-discovery/` (About = section Home, Workflow decision-driven, tanpa `#proof` / teaser Home / rest-active accordion); indeks + Update ADR; Fokus `TASKS.md` + Baca dulu v15; catatan superseded di T-021.3 / T-045 / T-044 / v11 / v12 / v14. Pola kerja awal (PD vs PM, Documentation First, Living vs Static) tidak diubah. Folder `context/` tidak ada — dilewati.
 
