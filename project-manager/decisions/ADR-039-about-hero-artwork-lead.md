@@ -15,7 +15,7 @@ Accepted
 ### Decision
 
 1. **Badge availability dihapus** dari hero About. Sinyal availability tetap di Contact modal (copy Contact tidak berubah).
-2. **Lead selalu terlihat** sebagai satu paragraf. Pola rest/active (carousel expand) **tidak dipakai** di hero About. Rest/active tetap di Workflow (offers / values / proses).
+2. **Lead selalu terlihat** sebagai satu paragraf. Pola rest/active (carousel expand) **tidak dipakai** di hero About. Rest/active Workflow **dicabut ADR-042**.
 3. **Copy lead dikunci** (mengganti dua blok T-021.3 `lead1`/`lead2`):
    - EN: *Rather than just typing lines of code… every feature I build.*
    - ID: *Fokus saya bukan sekadar menulis baris kode… setiap fitur yang saya bangun.*

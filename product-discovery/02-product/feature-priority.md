@@ -40,7 +40,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | -- | ---- | -------------- |
 | M1 | Home (identity + destination) | Pintu clarity: lede / klaim / next step (ADR-032 / ADR-037) |
 | M2 | About (narrative) | Siapa Rezi + klaim bukti AI |
-| M14 | Workflow | Cara kerja (offers, approach, values, langkah) |
+| M14 | Workflow | Cara kerja (prinsip, pipeline Human/AI, ADR Vault — ADR-042) |
 | M3 | Contact (soft path) | Jalur inbound tanpa hard sell / harga |
 | M4 | Work teaser (section di Home) | **Retired** (ADR-032) — presence = M9 + M10 |
 | M5 | Language (bilingual geo-aware + switcher) | ADR-002; relevan SEA + pintu terbuka |

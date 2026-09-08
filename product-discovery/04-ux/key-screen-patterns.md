@@ -82,19 +82,19 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 ### S2b — Workflow
 
-**Label chrome:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-035). Route `/[id/en]/workflow`. Copy T-021.3 **tidak ditulis ulang**.
+**Label chrome:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-035). Route `/[id/en]/workflow`. Isi **ADR-042** (supersede copy T-021.3 di rute ini).
 
-**Pola rest / active (ADR-025):** rest menampilkan judul/nomor/display; body muncul saat item aktif — hover + focus keyboard di desktop, **klik di mobile**.
+**Interaksi:** tab perbandingan Chaos vs Decision-Driven (`AnimatePresence`); kartu prinsip hover + `whileInView`; pipeline selalu terbaca (Human Lead vs AI); vault klik sampel ADR. **Bukan** rest/active accordion. Reduced-motion dihormati.
 
 **Blok berurutan:**
 
-1. Hero — judul proses + catatan
-2. Proses 4 langkah — baris satu-terbuka + watermark angka; hover (desktop) + klik; paragraf `body` saat terbuka
-3. Approach / Values — kicker + judul quote; kartu values menampilkan judul + `body`
-4. Offers — kartu bernomor oversized + ikon; title dan `body` selalu terlihat
-5. Soft CTA Contact **bukan** section terpisah — pita footer (S0)
+1. Hero — klaim dua baris + lede + tab *Chat Chaos* / *Decision-Driven Way*
+2. Lima prinsip — bento/kartu (Doc-First, Honest MVP, Decision Logs, Human Lead + AI, Production Truth)
+3. Pipeline Discover → Design → Build → Ship — peran manusia vs AI di setiap langkah
+4. ADR Vault — tiga sampel nyata (ADR-001 / ADR-012 / ADR-024): Status, Context, Decision, Alternatives
+5. Penutup ringkas; soft CTA Contact **bukan** section terpisah — pita footer (S0)
 
-**Anti-pattern:** framing “developer for hire” yang menggeser brand; menumpuk seluruh body di rest.
+**Anti-pattern:** framing “developer for hire” yang menggeser brand; CTA Contact duplikat di atas footer; ADR fiktif yang tidak ada di `decisions/`.
 
 ---
 
@@ -182,5 +182,6 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 * `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
 * `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
 * `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

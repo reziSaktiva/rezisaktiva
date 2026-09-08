@@ -34,7 +34,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 | ------ | ---------------- | ------------ |
 | **Identity & positioning** | Klaim product builder + fullstack + AI edge di permukaan | Inti — Home |
 | **Narrative / About** | Cerita pribadi, bukti AI | Inti — About |
-| **Workflow** | Cara kerja: offers, approach, values, langkah | Inti — Workflow |
+| **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042) | Inti — Workflow |
 | **Work presence** | Work index (`/projects`, M9) + **project sheet overlay (M10, ADR-027)** | Inti — index + sheet |
 | **Soft contact** | Jalur menghubungi yang jelas, tidak agresif, via modal global (ADR-019) | Inti — Contact modal |
 | **Language** | Pengalaman bilingual geo-aware + switcher | Inti lintas halaman |

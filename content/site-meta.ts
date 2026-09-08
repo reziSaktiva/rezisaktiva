@@ -23,7 +23,7 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     workflow: {
       title: "rezisaktiva — Proses Kerja",
       description:
-        "Fullstack developer yang mengorkestrasi tim AI subagent — dari discovery, arsitektur, sampai deployment produk.",
+        "AI mengeksekusi kode; saya mengunci keputusan. Metode kerja doc-first, ADR tertulis, dan orkestrasi AI paralel.",
     },
     work: {
       title: "rezisaktiva — Proyek",
@@ -39,7 +39,7 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     workflow: {
       title: "rezisaktiva — How I Work",
       description:
-        "A fullstack developer orchestrating AI subagent teams — from discovery and architecture to deployment.",
+        "AI executes the code; I drive the decisions. Doc-first method, written ADRs, and parallel AI orchestration.",
     },
     work: {
       title: "rezisaktiva — Projects",

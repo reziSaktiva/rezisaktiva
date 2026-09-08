@@ -16,6 +16,16 @@ Format entri:
 
 ## [2026-09-08]
 ### Added
+- **ADR-042** — halaman `/workflow` decision-driven (hero + tab Chaos vs Decision-Driven, lima prinsip, pipeline Human vs AI, ADR Vault). Primitf shadcn `Tabs`, `ScrollArea`, `Tooltip`.
+- Island `workflow-hero.tsx`, `workflow-principles.tsx`, `workflow-pipeline.tsx`, `workflow-adr-vault.tsx`.
+### Changed
+- **T-042.4** ✅: `content/workflow.ts` + `workflow-page.tsx` mengikuti ADR-042; copy T-021.3 di rute ini di-supersede. Offers/values/accordion dicabut (`about-offer-grid.tsx`, `about-process.tsx`). CTA Contact tetap pita footer (ADR-041).
+- Docs S2b / M14 / IA / MVP + catatan ADR-025 / ADR-035 / ADR-039.
+### Fixed
+- CLI shadcn sempat menambah paket `cn` yang salah; impor primitf baru memakai `@/lib/utils`.
+
+## [2026-09-08]
+### Added
 - —
 ### Changed
 - **T-042.4** (sebagian): urutan `/workflow` = proses 4 langkah → approach/values → offers (“Yang bisa saya bantu”).

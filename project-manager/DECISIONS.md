@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-042 | Halaman Workflow = decision-driven | Accepted | 2026-09-08 | Supersede isi T-021.3 di `/workflow`; lima section; rest/active dicabut | [ADR-042](decisions/ADR-042-workflow-decision-driven-page.md) |
 | ADR-041 | Home merender pita footer Contact | Accepted | 2026-09-07 | Supersede ADR-033; pita sama di semua rute termasuk Home | [ADR-041](decisions/ADR-041-home-with-footer.md) |
 | ADR-040 | About bukan halaman; section `#about` di Home | Accepted | 2026-09-07 | Chip nav tetap; `/about` redirect; tanpa proof; pita Contact di Home (ADR-041) | [ADR-040](decisions/ADR-040-about-as-home-section.md) |
 | ADR-039 | About hero: lead penuh, tanpa availability, karya seni viewport + caption | Accepted | 2026-09-07 | Hapus badge + rest/active lead; copy baru; artwork + “This is not me”; h1 = clamp Home | [ADR-039](decisions/ADR-039-about-hero-artwork-lead.md) |

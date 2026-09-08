@@ -4,7 +4,8 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 ## Fokus sekarang
 
-1. **T-053** — Pita footer Contact di Home ✅ (2026-09-07). Detail: [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md). **ADR-041**.
+1. **T-042.4** — Workflow decision-driven ✅ (2026-09-08). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md). **ADR-042**.
+2. **T-053** — Pita footer Contact di Home ✅ (2026-09-07). Detail: [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md). **ADR-041**.
 2. **T-052** — About = section Home ✅ (2026-09-07). Detail: [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md). **ADR-040**.
 2. **T-051** — H1 dua baris kiri-atas / kanan-bawah; copy ID mulus ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
 2. **T-050** — Lede di lantai bawah hero ✅ (2026-09-07). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md). **ADR-038**.
@@ -42,7 +43,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
 | v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
-| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** berikutnya; ADR-029, ADR-031, **ADR-032** Home hero + About, **ADR-041** footer Home, **ADR-035** About vs Workflow) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042.4** ✅ ADR-042; **T-042.1–T-042.3** ⏳; ADR-029, ADR-031, **ADR-032** Home hero + About, **ADR-041** footer Home, **ADR-035** About vs Workflow) |
 | v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032; ADR-033 superseded ADR-041) |
 | v17 About vs Workflow | [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md) | T-045 | ✅ Done (ADR-035) |
 | v18 About section Home | [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md) | T-052, T-053 | ✅ Done (**ADR-040**, **ADR-041**) |

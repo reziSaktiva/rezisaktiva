@@ -70,13 +70,13 @@ Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`. **Tidak ada
 
 ### Workflow
 
-Label chrome: **Proses Kerja** (`id`) / **How I Work** (`en`) — ADR-035; route `/[id/en]/workflow`.
+Label chrome: **Proses Kerja** (`id`) / **How I Work** (`en`) — ADR-035; route `/[id/en]/workflow`. Isi **ADR-042**.
 
-1. Judul + catatan proses (copy T-021.3)
-2. Offers / yang bisa dibantu
-3. Approach + values
-4. Empat langkah (Discover → Design → Build → Ship & Iterate)
-5. Soft arah ke Contact / Work index lewat chrome + pita footer
+1. Hero — klaim dua baris + lede + tab Chaos vs Decision-Driven
+2. Lima prinsip kerja
+3. Pipeline Discover → Design → Build → Ship (Human Lead vs AI)
+4. ADR Vault (sampel nyata)
+5. Soft arah ke Contact lewat pita footer (bukan section Contact)
 
 ### Contact (modal global, ADR-019 — bukan halaman/route)
 
@@ -147,7 +147,7 @@ Sebelum R1 dianggap siap live:
 1. **Home** — hero positioning terisi (lede + klaim) + section About (Now + lead)
 2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
 3. **About** — section di Home (bukan halaman); narasi pribadi (bukan placeholder Lorem)
-4. **Workflow** — langkah proses + approach/values + offers (copy T-021.3)
+4. **Workflow** — hero + prinsip + pipeline Human/AI + ADR Vault (ADR-042)
 5. Jangan ship Home tanpa klaim positioning **atau** Contact tanpa Email — keduanya menutup J2/J3
 6. Tautan satelit eksternal yang mati → jangan ditampilkan (sembunyikan item) sampai URL diperbaiki
 
@@ -207,5 +207,6 @@ Sebelum R1 dianggap siap live:
 * `../../project-manager/decisions/ADR-037-home-lede-now-on-about.md`
 * `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
 * `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

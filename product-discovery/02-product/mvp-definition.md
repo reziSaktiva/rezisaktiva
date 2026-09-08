@@ -32,7 +32,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | ---- | ---------- |
 | **Home** | Positioning jelas (lede + klaim); arah ke About / Workflow / Contact |
 | **About** | Narasi pribadi + klaim bukti AI (ADR-032). Label chrome: Tentang / About (ADR-035) |
-| **Workflow** | Cara kerja: offers, approach, values, langkah proses. Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
+| **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042). Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
 | **Work index (M9)** | Halaman katalog karya `/[locale]/projects` — Must R1 (ADR-020). Presence bukti karya (M4 teaser Home retired, ADR-032) |
 | **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |

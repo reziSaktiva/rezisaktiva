@@ -15,7 +15,7 @@ Accepted
 ### Decision
 
 1. **Naikkan kadar craft R1** dengan meniru ritme layout, tipe oversized, interaksi rest/active, dan transisi dari [karolinahess.com](https://karolinahess.com/about) serta [mazurbartek.com](https://mazurbartek.com/) — **bukan** palet cream/terracotta, bukan spectacle Framer, bukan playground tanpa bukti karya.
-2. **About adalah section `#about` di Home** (ADR-040; override halaman `/about`). Copy cara kerja di Workflow **tidak ditulis ulang**. Lead About = satu paragraf (ADR-039). Rest/active tetap untuk offers/values/proses di Workflow.
+2. **About adalah section `#about` di Home** (ADR-040; override halaman `/about`). Copy cara kerja di Workflow **lalu di-supersede ADR-042**. Lead About = satu paragraf (ADR-039). Rest/active offers/values/proses di Workflow **dicabut ADR-042**.
 3. **Warna, tema `rezisaktiva`, elevasi 3D chrome, Contact modal, dan Quick Info dipertahankan.** Chrome 3D (`--elev-3d`, pill nav, tombol) tidak diubah di pass ini kecuali regresi.
 4. **Fondasi gerak situs (sekali, semua halaman):**
    - Smooth-scroll inertia (Lenis, window scroll; AppShell `height="auto"`). **Pause** saat Contact modal atau Quick Info terbuka. **Off** jika `prefers-reduced-motion`. Bukan `scroll-behavior: smooth` native. Tanpa parallax berat (batas ADR-017 tetap).
@@ -54,4 +54,8 @@ Pola yang **tetap**: About sebagai halaman sendiri, rest/active, pita Contact, L
 
 ### Update — 2026-09-07 (ADR-032 / ADR-033 / ADR-035)
 
-Rest/active untuk offers/values/langkah proses hidup di **Workflow** (`/workflow`), bukan di About. About = narasi pribadi + bukti AI. Teaser Home (poin 6) **retired** (ADR-032). Pita Contact di Home, Workflow, Work index (ADR-041; ADR-033 superseded).
+Rest/active untuk offers/values/langkah proses sempat hidup di **Workflow** (`/workflow`), bukan di About. About = narasi pribadi. Teaser Home (poin 6) **retired** (ADR-032). Pita Contact di Home, Workflow, Work index (ADR-041; ADR-033 superseded).
+
+### Update — 2026-09-08 (ADR-042)
+
+Permukaan `/workflow` diganti decision-driven (hero + tab, lima prinsip, pipeline Human vs AI, ADR Vault). Rest/active offers/values/proses **tidak lagi** dipakai di Workflow. Copy T-021.3 di rute itu di-supersede.

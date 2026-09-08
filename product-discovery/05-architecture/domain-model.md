@@ -66,7 +66,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 | ----- | ------------------ |
 | M1 Home | Identity claim + lede, arah soft (ADR-032 / ADR-037) |
 | M2 About | Narrative + Now + bukti AI (ADR-037) |
-| M14 Workflow | How-I-work (offers, approach, values, steps) |
+| M14 Workflow | How-I-work (prinsip, pipeline Human/AI, ADR Vault — ADR-042) |
 | M3 Contact | Contact channel (modal overlay) |
 | M4 Work teaser | Retired (ADR-032) |
 | M5 Language | Locale |

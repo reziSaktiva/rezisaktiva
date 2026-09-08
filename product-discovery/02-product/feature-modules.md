@@ -46,7 +46,7 @@ Modul disusun mengikuti Hybrid lean: **Home, About, Workflow, Work index** sebag
 * Klaim **bukti AI** (section setelah hero, copy T-021.2 — ADR-032)
 * Konteks pengalaman (di dalam lead, bukan CV kronologis)
 
-**Bukan:** offers, approach, values, langkah proses — itu **M14 Workflow**.
+**Bukan:** cara kerja (itu **M14 Workflow**, ADR-042).
 
 ---
 
@@ -115,7 +115,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
 | **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
-| **M14 — Workflow** | Halaman cara kerja: offers, approach, values, empat langkah proses. Route `/[locale]/workflow`. Label chrome Proses Kerja / How I Work | **Must R1** (ADR-035) |
+| **M14 — Workflow** | Halaman cara kerja: hero + tab perbandingan, lima prinsip, pipeline Human vs AI, ADR Vault. Route `/[locale]/workflow`. Label chrome Proses Kerja / How I Work | **Must R1** (ADR-035, isi **ADR-042**) |
 
 ---
 

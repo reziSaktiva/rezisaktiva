@@ -2,11 +2,11 @@
 
 File task **tersendiri**. Keputusan material: **[ADR-029](../decisions/ADR-029-visual-identity-gothic-blood.md)**.
 
-Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021. Bukan ubah IA atau perilaku overlay. Bukan ganti stack (shadcn + Tailwind v4 tetap, ADR-028). Bukan mockup HTML (ADR-024).
+Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 **kecuali isi `/workflow` (ADR-042)**. Bukan ubah IA atau perilaku overlay. Bukan ganti stack (shadcn + Tailwind v4 tetap, ADR-028). Bukan mockup HTML (ADR-024).
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042** ⏳ berikutnya. **T-043** setelah T-042. **T-031** ⏸️ sampai **T-043**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042.4** ✅ (ADR-042). **T-042.1–T-042.3** ⏳. **T-043** setelah T-042. **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -86,7 +86,7 @@ Jangan meloncat ke halaman sebelum chrome/overlay punya skin baru: header di sem
 
 - Home: hero h1 dua baris kiri-atas / kanan-bawah, lede lantai bawah (ADR-038 / T-051); **section About** `#about` (ADR-040); tanpa Now di hero; pita footer setelah About (ADR-041)
 - About: **section di Home** (bukan halaman) — Now + karya seni + caption (ADR-039); tanpa `#proof`
-- Workflow: offers, values, proses rest/active (`/workflow`)
+- Workflow: hero + tab, lima prinsip, pipeline Human/AI, ADR Vault (`/workflow` — ADR-042)
 - Work: index + tile (klik → sheet yang sama)
 
 **T-043 — Sistem**
@@ -181,23 +181,23 @@ Home / About / Workflow / Work; **tema gelap yang di-ship** (light di-hold — j
 
 ## T-042 — Halaman (setelah T-041)
 
-* **Status:** ⏳ Open — gerbang **T-041.3** ✅ + Q&A per halaman
+* **Status:** ⏳ Open — gerbang **T-041.3** ✅ + Q&A per halaman; **T-042.4** ✅
 * **Domain:** Design / Engineering
-* **Output:** Home / About / Workflow / Work memakai kulit baru; **blok dan copy sama**
-* **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `workflow-page.tsx`, `about-offer-grid.tsx`, `about-process.tsx`, `work-page.tsx`, `work-tile.tsx`
+* **Output:** Home / About / Workflow / Work memakai kulit baru; blok Home/About/Work sama; **Workflow isi ADR-042**
+* **Baca dulu tambahan:** `home-page.tsx`, `about-page.tsx`, `workflow-page.tsx`, `workflow-hero.tsx`, `workflow-principles.tsx`, `workflow-pipeline.tsx`, `workflow-adr-vault.tsx`, `work-page.tsx`, `work-tile.tsx`
 
 ### Subtasks
 
 - [ ] **T-042.1** — Q&A + kode: Home (h1 atas + lede lantai bawah — ADR-038 / T-050; ADR-032 / ADR-041 pita footer setelah `#about`, tanpa Now). Tanpa potret. Lede + tautan `/workflow`. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit, sebelum T-041):** wallpaper live `public/media/home-hero-live.mp4` + veil token agar klaim tetap terbaca. **2026-09-07:** wallpaper `position: fixed` di viewport Home; veil tidak fade ke body penuh. **2026-09-07 (setelah ADR-040):** wallpaper memudar saat scroll ke `#about`, muncul lagi saat kembali ke hero. **ADR-032:** credibility + teaser dicabut. **ADR-041:** pita footer di Home. **ADR-036 / T-046:** copy kalimat h1. **ADR-037 / T-047:** Now ke About. **ADR-038 / T-048–T-051:** dua baris display kiri-atas / kanan-bawah (skala −2 tingkat; ID `yang mulus`) + CTA Workflow di lantai bawah. **T-041** ✅ — sisa = restyle Q&A hero Home di subtask ini.
 - [ ] **T-042.2** — Q&A + kode: About sebagai **section Home** (`#about` — ADR-040): Now, h2 clamp Home, lead penuh, karya seni + “This is not me” (ADR-039). Tanpa `#proof`. **Dikunci chat 2026-09-07** (hero); **2026-09-07** pindah ke Home.
 - [ ] **T-042.3** — Q&A + kode: Work index + tile. Klik tetap buka sheet T-041.3. Verifikasi rute, tema gelap yang di-ship, 320 / 375 / desktop.
-- [ ] **T-042.4** — Q&A + kode: Workflow (`/workflow` — proses, values, offers). Copy T-021.3 tidak dipotong. **Dikunci chat 2026-09-08:** kartu offer + values selalu tampil; deskripsi `.about-card-body` / `.about-process-copy` = `--font-size-md`; accordion proses hover + klik; urutan section = proses → approach/values → offers.
+- [x] **T-042.4** — Q&A + kode: Workflow (`/workflow`). **Dikunci chat 2026-09-08 (gelombang 2):** halaman decision-driven — hero dua baris + tab Chaos vs Decision-Driven, lima prinsip, pipeline Discover→Ship (Human vs AI), ADR Vault (ADR-001 / ADR-012 / ADR-024), penutup + footer Contact. Copy T-021.3 di rute ini di-supersede **ADR-042**. Offers/values/accordion dicabut.
 
 ---
 
 ## T-043 — Gerak sistem, a11y, docs (setelah T-042)
 
-* **Status:** ⏳ Open — gerbang **T-042.4**
+* **Status:** ⏳ Open — gerbang **T-042.1–T-042.3**; **T-042.4** ✅ (ADR-042)
 * **Domain:** Design / Engineering / Documentation
 * **Output:** gerak sistem selaras T-038.3; docs/rule tidak lagi mewajibkan pill kuning sebagai identitas; a11y kontras + reduced-motion
 
