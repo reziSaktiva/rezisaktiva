@@ -14,6 +14,14 @@ Format entri:
 - ...
 ```
 
+## [2026-09-08]
+### Added
+- —
+### Changed
+- Frame karya seni About: rasio mengikuti aset (634×1024) lewat `aspect-ratio`, tinggi mengecil bila kolom lebih sempit; border `4px` (`--spacing-1`).
+### Fixed
+- Letterbox atas/bawah di dalam border potret About: tinggi frame sebelumnya tetap viewport meski lebar kolom terpotong.
+
 ## [2026-09-07]
 ### Added
 - —

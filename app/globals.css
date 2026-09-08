@@ -1873,15 +1873,16 @@ button.home-work-tile,
     100dvh - var(--appshell-header-height, 80px) - 8rem
   );
   position: relative;
-  height: var(--about-portrait-height);
   width: min(100%, calc(var(--about-portrait-height) * 634 / 1024));
+  aspect-ratio: 634 / 1024;
+  height: auto;
   margin-inline: auto;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: var(--spacing-1) solid var(--color-border);
 }
 
 .about-portrait img {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
