@@ -151,6 +151,20 @@ function setLiveParked(parked: boolean): void {
   }
 }
 
+function clearFilmOverlay(): void {
+  document.querySelectorAll(".page-vt-film").forEach((node) => node.remove());
+}
+
+function mountFilmOverlay(): void {
+  if (prefersReducedMotion() || document.querySelector(".page-vt-film")) {
+    return;
+  }
+  const film = document.createElement("div");
+  film.className = "page-vt-film";
+  film.setAttribute("aria-hidden", "true");
+  document.body.appendChild(film);
+}
+
 function applyDocumentLock(lock: boolean, parkLive = true): void {
   const root = document.documentElement;
   if (lock) {
@@ -165,6 +179,7 @@ function applyDocumentLock(lock: boolean, parkLive = true): void {
     freezeWindowScrollAtTop();
     return;
   }
+  clearFilmOverlay();
   root.classList.remove("page-vt-lock", "page-vt-entering");
   setLiveParked(false);
 }
@@ -232,6 +247,7 @@ function finishEnter(): void {
 
 function failSafeUnlock(): void {
   clearClones();
+  clearFilmOverlay();
   releaseLock();
   flushQueuedNav();
 }
@@ -296,7 +312,10 @@ function armTransition(options: {
       if (options.push && options.pushHref) {
         options.push(options.pushHref);
       }
+      mountFilmOverlay();
     });
+  } else {
+    mountFilmOverlay();
   }
 
   armSafety(epoch);

@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-08]
+### Added
+- **T-043.1** overlay film vintage tipis (dikunci chat): grain + vignette + kedip luminance hanya selama `page-vt-lock`. Bukan RGB/VHS, bukan clip video, bukan overlay permanen. Reduced-motion = tanpa overlay.
+
+## [2026-09-08]
 ### Changed
 - **T-043.1** ✅: transisi halaman = hard cut + stutter frame (T-038.3). Clone exit = offset diskrit ~0.2s; cut ke halaman baru + stutter ~0.16s. Bukan Hess scale, bukan RGB/VHS, bukan View Transitions. Reduced-motion = instan. Lenis + pause overlay + scrollbar track (`page-vt-lock`) tetap.
 

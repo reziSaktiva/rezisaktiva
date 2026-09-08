@@ -48,5 +48,7 @@ describe("craft tokens after Astryx removal", () => {
     expect(globalsCss.includes("@keyframes page-vt-stutter-enter")).toBe(true);
     expect(globalsCss.includes("@keyframes page-vt-enter")).toBe(false);
     expect(globalsCss.includes("scale(0.5)")).toBe(false);
+    expect(globalsCss.includes(".page-vt-film")).toBe(true);
+    expect(globalsCss.includes("@keyframes page-vt-film-flicker")).toBe(true);
   });
 });

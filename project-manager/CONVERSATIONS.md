@@ -18,6 +18,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-08] — T-043.1 overlay film vintage
+**Phase:** Validation
+**Summary:** Boss Rezi meminta tambahan tipis Old Film / Vintage Overlay pada transisi yang sudah dikunci.
+**Key Decision/Insight:** Hanya selama `page-vt-lock`. Grain + vignette + kedip cahaya, tanpa grade warna/RGB/VHS. Bukan overlay permanen di seluruh situs.
+**Impact:** `page-transition.tsx` (lapisan `.page-vt-film`), `app/globals.css`; T-043.1 polish.
+
 ## [2026-09-08] — T-043.1 hard cut + stutter
 **Phase:** Validation
 **Summary:** Transisi halaman Hess (scale + slide 1s) diganti hard cut + beberapa frame tersentak, sesuai kunci T-038.3.
