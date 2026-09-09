@@ -72,12 +72,11 @@
     inset 0 1px 0 rgb(255 255 255 / 0.1),
     0 1px 2px rgb(0 0 0 / 0.35);
   /*
-   * T-025.9 — scrollbar. Thumb = darah T-039.1, track elevated.
+   * T-025.9 / T-043.2 — scrollbar. Track elevated; thumb darah yang
+   * lebih terang (--color-accent-muted) supaya kontras vs track.
+   * Nilai warna di bawah, setelah token craft.
    */
   --rz-scrollbar-size: var(--spacing-2);
-  --rz-scrollbar-track: #141418;
-  --rz-scrollbar-thumb: #6b1c23;
-  --rz-scrollbar-thumb-hover: #8a242e;
   /*
    * T-039.1 — palet gothic-blood (kanvas #0B0B0D, vellum #E8E4DC, wine #6B1C23).
    */
@@ -170,6 +169,7 @@
   --size-element-sm: 28px;
   --size-element-md: 32px;
   --size-element-lg: 36px;
+  --size-touch: var(--spacing-11);
   /*
    * Craft `--color-*` = hex light di `:root`, hex dark di
    * `html[data-theme="dark"]` / `.dark` — bukan `light-dark()` (flash chip
@@ -201,9 +201,23 @@
   --color-border-emphasized: #2c2c32;
   --color-border-default: var(--color-border);
   --color-success: #9fe59b;
+  /*
+   * T-043.2 — cincin fokus. Wine murni di kanvas gelap kurang kontras
+   * (WCAG 1.4.11). Campur vellum supaya tetap darah, tetap terbaca.
+   */
+  --color-focus: color-mix(
+    in srgb,
+    var(--color-accent-muted) 58%,
+    var(--color-text-primary)
+  );
+  --ring: var(--color-focus);
+  --sidebar-ring: var(--color-focus);
   --shadow-low:
     0 2px 4px oklch(0 0 0 / 5%), 0 4px 8px oklch(0 0 0 / 10%),
     inset 0 0 0 1px transparent;
+  --rz-scrollbar-track: var(--color-background-muted);
+  --rz-scrollbar-thumb: var(--color-accent-muted);
+  --rz-scrollbar-thumb-hover: var(--color-focus);
 }
 
 html[data-theme="dark"],
@@ -234,6 +248,13 @@ html[style*="color-scheme:dark"],
   --color-border-emphasized: #2c2c32;
   --color-border-default: var(--color-border);
   --color-success: #9fe59b;
+  --color-focus: color-mix(
+    in srgb,
+    var(--color-accent-muted) 58%,
+    var(--color-text-primary)
+  );
+  --ring: var(--color-focus);
+  --sidebar-ring: var(--color-focus);
   --shadow-low:
     0 2px 4px oklch(0 0 0 / 25%), 0 4px 8px oklch(0 0 0 / 40%),
     inset 0 0 0 1px oklch(1 0 0 / 8%);
@@ -251,7 +272,9 @@ html[style*="color-scheme:dark"],
     inset 0 2px 5px rgb(0 0 0 / 0.45),
     inset 0 1px 0 rgb(255 255 255 / 0.1),
     0 1px 2px rgb(0 0 0 / 0.35);
-  --rz-scrollbar-track: #141418;
+  --rz-scrollbar-track: var(--color-background-muted);
+  --rz-scrollbar-thumb: var(--color-accent-muted);
+  --rz-scrollbar-thumb-hover: var(--color-focus);
 }
 
 /*
@@ -295,44 +318,72 @@ html.dark body {
 }
 
 /*
- * T-025.9: track + thumb mengikuti tema (thin, pill). Jangan
+ * T-025.9 / T-043.2: track + thumb token gothic-blood. Jangan
  * `scrollbar-width: none` — track harus tetap kelihatan (T-025.8).
- * Hanya scrollbar dokumen (`html`). Overlay `.ct-panel` memakai token
- * yang sama (T-041.1) — bukan reset `auto` untuk kartu ink lama.
+ * Dokumen (`html`) + panel overlay yang overflow.
  */
-html {
+html,
+.ct-panel,
+.qi-panel,
+.ps-scroll {
   scrollbar-width: thin;
   scrollbar-color: var(--rz-scrollbar-thumb) var(--rz-scrollbar-track);
 }
 
-html::-webkit-scrollbar {
+html::-webkit-scrollbar,
+.ct-panel::-webkit-scrollbar,
+.qi-panel::-webkit-scrollbar,
+.ps-scroll::-webkit-scrollbar {
   width: var(--rz-scrollbar-size);
   height: var(--rz-scrollbar-size);
 }
 
-html::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+.ct-panel::-webkit-scrollbar-track,
+.qi-panel::-webkit-scrollbar-track,
+.ps-scroll::-webkit-scrollbar-track {
   background-color: var(--rz-scrollbar-track);
 }
 
-html::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+.ct-panel::-webkit-scrollbar-thumb,
+.qi-panel::-webkit-scrollbar-thumb,
+.ps-scroll::-webkit-scrollbar-thumb {
   background-color: var(--rz-scrollbar-thumb);
   background-clip: padding-box;
   border: 0.125rem solid var(--rz-scrollbar-track);
   border-radius: 1rem;
 }
 
-html::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover,
+.ct-panel::-webkit-scrollbar-thumb:hover,
+.qi-panel::-webkit-scrollbar-thumb:hover,
+.ps-scroll::-webkit-scrollbar-thumb:hover {
   background-color: var(--rz-scrollbar-thumb-hover);
 }
 
-html::-webkit-scrollbar-corner {
+html::-webkit-scrollbar-corner,
+.ct-panel::-webkit-scrollbar-corner,
+.qi-panel::-webkit-scrollbar-corner,
+.ps-scroll::-webkit-scrollbar-corner {
   background-color: var(--rz-scrollbar-track);
 }
 
-html::-webkit-scrollbar-button {
+html::-webkit-scrollbar-button,
+.ct-panel::-webkit-scrollbar-button,
+.qi-panel::-webkit-scrollbar-button,
+.ps-scroll::-webkit-scrollbar-button {
   display: none;
   width: 0;
   height: 0;
+}
+
+[data-slot="scroll-area-scrollbar"] {
+  background-color: var(--rz-scrollbar-track);
+}
+
+[data-slot="scroll-area-thumb"] {
+  background-color: var(--rz-scrollbar-thumb) !important;
 }
 
 /* Skip-to-content — paritas a11y AppShell, tanpa dependensi i18n Astryx. */
@@ -349,7 +400,8 @@ html::-webkit-scrollbar-button {
   z-index: 9999;
 }
 
-.site-skip-link:focus {
+.site-skip-link:focus,
+.site-skip-link:focus-visible {
   position: fixed;
   top: var(--spacing-2);
   inset-inline-start: var(--spacing-2);
@@ -365,6 +417,8 @@ html::-webkit-scrollbar-button {
   color: var(--color-text-accent);
   font-weight: 600;
   text-decoration: none;
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 .site-chrome {
@@ -451,7 +505,7 @@ html::-webkit-scrollbar-button {
 }
 
 .site-brand-heading:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -551,6 +605,11 @@ html::-webkit-scrollbar-button {
   border-color: var(--color-accent);
 }
 
+.site-nav-chip .site-nav-item:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 /*
  * T-040.4 — lembar hamburger <1024px: panel elevated (#141418), bukan
  * nampan kuning. Bukan `<dialog>` modal: chrome di luar (Contact) tetap
@@ -634,7 +693,7 @@ html::-webkit-scrollbar-button {
 }
 
 .site-mobile-nav-chip .site-mobile-nav-item:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -655,13 +714,6 @@ html::-webkit-scrollbar-button {
   border-radius: 0;
   padding-block: 0.3rem;
   padding-inline: 0.45rem;
-}
-
-.site-locale-switch--menu .site-locale-switch-item {
-  min-width: 2.35rem;
-  min-height: 2rem;
-  font-size: 0.8125rem;
-  padding-inline: var(--spacing-2);
 }
 
 /* Locale switch (dipakai ulang desktop + mobile via komponen yang sama). */
@@ -720,6 +772,20 @@ html::-webkit-scrollbar-button {
   border-color: var(--color-accent) !important;
 }
 
+.site-locale-switch .site-locale-switch-item:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.site-locale-switch--menu {
+  height: auto;
+}
+
+.site-locale-switch--menu .site-locale-switch-item {
+  min-width: var(--size-touch);
+  min-height: var(--size-touch);
+}
+
 /*
  * Separator "/" antara ID/EN di locale switch — sesuai mockup
  * `.locale-switch span.opacity-40`.
@@ -752,8 +818,8 @@ html::-webkit-scrollbar-button {
     box-shadow var(--duration-medium-min) var(--ease-standard);
 }
 .site-contact-button {
-  height: 2.25rem;
-  min-height: 2.25rem;
+  height: var(--size-touch);
+  min-height: var(--size-touch);
   padding-block: 0.35rem;
   padding-inline: 0.85rem;
   font-size: 0.75rem;
@@ -790,9 +856,9 @@ html::-webkit-scrollbar-button {
 }
 
 .site-nav-toggle {
-  width: 2.25rem !important;
-  height: 2.25rem !important;
-  min-width: 2.25rem !important;
+  width: var(--size-touch) !important;
+  height: var(--size-touch) !important;
+  min-width: var(--size-touch) !important;
   flex-shrink: 0;
   border-radius: 0 !important;
   border-color: transparent !important;
@@ -821,7 +887,7 @@ html::-webkit-scrollbar-button {
 }
 
 .site-nav-toggle:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -879,7 +945,7 @@ html::-webkit-scrollbar-button {
 
 .site-contact-button:focus-visible,
 .home-contact-cta:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -898,7 +964,7 @@ html::-webkit-scrollbar-button {
 }
 
 .site-theme-toggle-btn:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
   box-shadow: var(--elev-3d) !important;
 }
@@ -1097,7 +1163,7 @@ html::-webkit-scrollbar-button {
 }
 
 .home-hero-lede-link:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -1195,6 +1261,11 @@ button.home-work-tile,
   min-height: 0 !important;
   background: transparent;
   color: transparent;
+}
+
+.home-work-tile:focus-within {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }
 
 .home-work-tile-media {
@@ -2046,7 +2117,7 @@ button.home-work-tile,
 }
 
 .about-process-trigger:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 4px;
   border-radius: var(--radius-md);
 }
@@ -2180,6 +2251,9 @@ button.home-work-tile,
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   text-decoration: none;
+  min-height: var(--size-touch);
+  display: inline-flex;
+  align-items: center;
   transition: color var(--duration-medium-min) var(--ease-standard);
 }
 
@@ -2189,7 +2263,7 @@ button.home-work-tile,
 }
 
 .site-footer-satellites a:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -2588,11 +2662,18 @@ html.page-vt-lock .wf-cathedral-optics {
 
 .wf-tabs-trigger {
   height: auto;
+  min-height: var(--size-touch);
   flex: 0 1 auto;
   padding-block: var(--spacing-2);
   padding-inline: var(--spacing-3);
   font-size: var(--font-size-sm);
   letter-spacing: 0.02em;
+}
+
+.wf-tabs-trigger:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  box-shadow: none;
 }
 
 .wf-compare-stage {
@@ -2821,6 +2902,7 @@ html.page-vt-lock .wf-cathedral-optics {
   border: 1px solid transparent;
   background: transparent;
   padding: var(--spacing-3);
+  min-height: var(--size-touch);
   cursor: pointer;
   color: inherit;
   font: inherit;
@@ -2833,7 +2915,7 @@ html.page-vt-lock .wf-cathedral-optics {
 }
 
 .wf-vault-item:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -2956,8 +3038,6 @@ html.page-vt-lock .wf-cathedral-optics {
   max-width: none;
   max-height: calc(100vh - 3rem);
   overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-accent) var(--chip-bg);
   border-radius: 1.15rem;
   border: 1px solid var(--color-border);
   background: var(--chip-bg);
@@ -2993,9 +3073,9 @@ html.page-vt-lock .wf-cathedral-optics {
   position: absolute !important;
   top: 1.25rem;
   right: 1.25rem;
-  width: 2.25rem !important;
-  height: 2.25rem !important;
-  min-width: 2.25rem !important;
+  width: var(--size-touch) !important;
+  height: var(--size-touch) !important;
+  min-width: var(--size-touch) !important;
   border-radius: 0 !important;
   background: transparent !important;
   color: var(--color-text-primary) !important;
@@ -3009,7 +3089,7 @@ html.page-vt-lock .wf-cathedral-optics {
 }
 
 .ct-close:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -3086,6 +3166,12 @@ html.page-vt-lock .wf-cathedral-optics {
   background: var(--color-background-body);
 }
 
+.ct-input:focus-visible,
+.ct-textarea:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 .ct-textarea {
   min-height: 8.5rem;
   resize: vertical;
@@ -3133,7 +3219,7 @@ html.page-vt-lock .wf-cathedral-optics {
 }
 
 .ct-submit:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -3175,14 +3261,20 @@ html.page-vt-lock .wf-cathedral-optics {
   word-break: break-all;
 }
 
-.ct-email-link:hover {
+.ct-email-link:hover,
+.ct-email-link:focus-visible {
   color: var(--color-accent-muted);
 }
 
+.ct-email-link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 .ct-copy {
-  width: 1.85rem !important;
-  height: 1.85rem !important;
-  min-width: 1.85rem !important;
+  width: var(--size-touch) !important;
+  height: var(--size-touch) !important;
+  min-width: var(--size-touch) !important;
   border-radius: 0 !important;
   background: transparent !important;
   color: var(--color-text-secondary) !important;
@@ -3196,7 +3288,7 @@ html.page-vt-lock .wf-cathedral-optics {
 }
 
 .ct-copy:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -3213,8 +3305,9 @@ html.page-vt-lock .wf-cathedral-optics {
 }
 
 .ct-socials a {
-  width: 2rem;
-  height: 2rem;
+  width: var(--size-touch);
+  height: var(--size-touch);
+  min-width: var(--size-touch);
   border-radius: 0;
   background: transparent;
   color: var(--color-text-secondary);
@@ -3229,7 +3322,7 @@ html.page-vt-lock .wf-cathedral-optics {
 }
 
 .ct-socials a:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -3559,7 +3652,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 .qi-tab:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -3638,9 +3731,9 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 .qi-close {
-  width: 2.5rem !important;
-  height: 2.5rem !important;
-  min-width: 2.5rem !important;
+  width: var(--size-touch) !important;
+  height: var(--size-touch) !important;
+  min-width: var(--size-touch) !important;
   border-radius: 0 !important;
   background: transparent !important;
   color: var(--color-text-primary) !important;
@@ -3654,7 +3747,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 }
 
 .qi-close:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -3783,14 +3876,20 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   color: var(--color-accent-muted);
 }
 
+.qi-links a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 @media (max-width: 639px) {
   .qi-body {
     padding: 1.25rem 1.25rem 2.5rem;
   }
 
   .qi-tab {
-    padding: 14px 10px !important;
+    padding: 18px 12px !important;
     font-size: 11px !important;
+    min-width: var(--size-touch);
   }
 }
 

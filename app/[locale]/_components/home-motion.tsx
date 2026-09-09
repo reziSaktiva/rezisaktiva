@@ -251,13 +251,15 @@ function CursorKnifeFollow() {
       node instanceof Element && Boolean(node.closest(selector));
 
     const textField = "input, textarea, select, [contenteditable='true']";
+    const interactive =
+      "a, button, [role='button'], [role='tab'], summary";
     const onPointerOver = (event: MouseEvent) => {
       if (isInside(event.target, textField)) {
         onEnterText();
         onLeaveInteractive();
         return;
       }
-      if (isInside(event.target, "a, button")) {
+      if (isInside(event.target, interactive)) {
         onEnterInteractive();
       }
     };
@@ -269,8 +271,8 @@ function CursorKnifeFollow() {
         onLeaveText();
       }
       if (
-        isInside(event.target, "a, button") &&
-        !isInside(event.relatedTarget, "a, button")
+        isInside(event.target, interactive) &&
+        !isInside(event.relatedTarget, interactive)
       ) {
         onLeaveInteractive();
       }

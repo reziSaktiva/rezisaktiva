@@ -75,7 +75,7 @@ Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tet
 | `--color-fg` | `#14181f` (arsip) | `#E8E4DC` vellum | Teks utama |
 | `--color-fg-muted` | arsip | `#8F8A82` | Meta |
 | `--color-border` | arsip | `#2C2C32` | Hairline |
-| Native scrollbar (T-025.9) | arsip kuning | Track `#141418`, thumb `#6B1C23` | Jangan disembunyikan (T-025.8) |
+| Native scrollbar (T-025.9 / T-043.2) | arsip kuning | Track `--color-background-muted`, thumb `--color-accent-muted`, hover `--color-focus` | Jangan disembunyikan (T-025.8); sama di overlay Contact/QI/sheet |
 
 ---
 
@@ -85,7 +85,7 @@ R1 hampir tanpa form/error inline. Token minimal:
 
 | Token | Peran |
 | ----- | ----- |
-| `--color-focus` | Ring fokus keyboard (boleh = accent) |
+| `--color-focus` | Ring fokus keyboard — campur `--color-accent-muted` + vellum (T-043.2); bukan wine murni di kanvas gelap |
 | `--color-danger` | Cadangan; jarang dipakai R1 |
 | `--color-success` | Cadangan; jarang dipakai R1 |
 
@@ -132,7 +132,7 @@ Toggle UI Must saat light hidup (ADR-021). **Dark sebagai default ship** dikunci
 | Tingkat | R1 |
 | ------- | --- |
 | Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
-| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/tile, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025 / ADR-042 / T-043.1):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman hard cut + stutter frame (exit ~0.2s, enter ~0.16s, steps — bukan Hess scale). Pola rest/active accordion **bukan** permukaan Workflow/About lagi |
+| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/tile, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025 / ADR-042 / T-043.1):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman hard cut + stutter frame (exit ~0.2s, enter ~0.16s, steps — bukan Hess scale). Pola rest/active accordion **bukan** permukaan Workflow/About lagi. **T-043.2:** desktop fine-pointer = kursor pisau (`/cursors/bloody-knife.png`, di atas overlay); sentuh / `prefers-reduced-motion` = kursor sistem |
 | Pause | Lenis **berhenti** saat Contact modal (`html.ct-lock`) atau Quick Info (`html.qi-lock`) terbuka, supaya overlay tidak bergeser bersama inersia |
 | Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; transisi halaman instan (tanpa overlay); playable yang sudah ada tetap hormati media query yang sama |
 | Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya; overlay transisi yang tetap `pointer-events: auto` setelah selesai |

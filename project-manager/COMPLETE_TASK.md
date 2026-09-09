@@ -14,6 +14,10 @@ Format entri:
 - ...
 ```
 
+## [2026-09-09]
+### Changed
+- **T-043.2** ✅: scrollbar dokumen + overlay (Contact / Quick Info / project sheet) memakai `--rz-scrollbar-*` dari token gothic-blood (thumb `--color-accent-muted`, hover `--color-focus`). Cincin fokus keyboard = `--color-focus` (campur darah + vellum). Target sentuh chrome/overlay 44px di lantai 320px. Kursor pisau (sudah dikunci 2026-09-04) tetap di atas overlay; sentuh / reduced-motion = kursor sistem.
+
 ## [2026-09-08]
 ### Added
 - **T-043.1** overlay film vintage tipis (dikunci chat): grain + vignette + kedip luminance hanya selama `page-vt-lock`. Bukan RGB/VHS, bukan clip video, bukan overlay permanen. Reduced-motion = tanpa overlay.

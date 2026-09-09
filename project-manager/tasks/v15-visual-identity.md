@@ -6,7 +6,7 @@ Bukan halaman baru. Bukan R2 `/work/[slug]`. Bukan tulis ulang copy T-021 **kecu
 
 **Paket dikunci Boss Rezi (2026-09-04):** ganti **kulit visual seluruh situs** ke arah seni absurdism, surrealism, Gothic Art, dark and blood. Metode = **tanya-jawab per permukaan, lalu implementasi**. Copy, IA, job overlay tetap.
 
-**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042** ✅ (**T-042.1–T-042.4**). **T-043** ⏳ (**T-043.1** ✅). **T-031** ⏸️ sampai **T-043**.
+**Status rilis:** ⏳ **Open**. **T-038** ✅. **T-039** ✅. **T-040** ✅ (incl. T-040.7 / ADR-034). **T-041** ✅. **T-042** ✅ (**T-042.1–T-042.4**). **T-043** ⏳ (**T-043.1–T-043.2** ✅). **T-031** ⏸️ sampai **T-043**.
 
 ---
 
@@ -197,13 +197,13 @@ Home / About / Workflow / Work; **tema gelap yang di-ship** (light di-hold — j
 
 ## T-043 — Gerak sistem, a11y, docs (setelah T-042)
 
-* **Status:** ⏳ Open — **T-043.1** ✅; berikutnya T-043.2
+* **Status:** ⏳ Open — **T-043.1–T-043.2** ✅; berikutnya T-043.3
 * **Domain:** Design / Engineering / Documentation
 * **Output:** gerak sistem selaras T-038.3; docs/rule tidak lagi mewajibkan pill kuning sebagai identitas; a11y kontras + reduced-motion
 
 ### Subtasks
 
 - [x] **T-043.1** — Kode transisi halaman: **hard cut + stutter frame** (T-038.3). Pause overlay tetap. Reduced-motion = instan. Jangan View Transitions API. Jangan clip video. Durasi pendek (UX1). Lenis tetap. **2026-09-08 (chat):** overlay film vintage tipis selama lock (grain + vignette + kedip luminance; bukan RGB/VHS).
-- [ ] **T-043.2** — Scrollbar, fokus keyboard, cursor: token baru, kontras, target sentuh 320px. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit):** cursor desktop = pisau berdarah (`/cursors/bloody-knife.png`); native cursor disembunyikan; reduced-motion / sentuh = kursor sistem. Pisau tetap terlihat di atas overlay (Contact/QI/sheet) — bukan diganti X. Sisa scrollbar/fokus tetap di subtask ini.
+- [x] **T-043.2** — Scrollbar, fokus keyboard, cursor: token baru, kontras, target sentuh 320px. **Dikunci chat 2026-09-04 (maju atas permintaan eksplisit):** cursor desktop = pisau berdarah (`/cursors/bloody-knife.png`); native cursor disembunyikan; reduced-motion / sentuh = kursor sistem. Pisau tetap terlihat di atas overlay (Contact/QI/sheet) — bukan diganti X. **2026-09-09:** scrollbar overlay + dokumen = thumb `--color-accent-muted`; fokus = `--color-focus`; chrome/overlay tap 44px di 320px.
 - [ ] **T-043.3** — Docs: `design-tokens.md` (bila drift), `code-discipline.md`, `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` (hapus “pill kuning” sebagai kontrak identitas). `04-ux/` hanya jika kalimat masih mengunci kuning sebagai Must visual — bukan rewrite prinsip.
 - [ ] **T-043.4** — Verifikasi penuh R1 (empat rute × tema yang hidup × overlay × reduced-motion). Update Snapshot: v15 Done. **T-031** kembali antrian bila masih ⏸️.

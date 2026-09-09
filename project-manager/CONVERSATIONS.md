@@ -14,7 +14,11 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
----
+## [2026-09-09] — T-043.2 scrollbar, fokus, kursor
+**Phase:** Validation
+**Summary:** Scrollbar native + overlay diselaraskan ke token darah yang lebih kontras. Fokus keyboard memakai `--color-focus` (bukan wine murni di kanvas gelap). Target sentuh 44px di chrome 320px. Kursor pisau tetap di atas overlay.
+**Key Decision/Insight:** Thumb scrollbar = `--color-accent-muted` (bukan `#6B1C23` yang hampir hilang di track elevated). Cincin fokus = campur vellum agar lolos kontras non-teks.
+**Impact:** `globals.css`, `home-motion.tsx`, `design-tokens.md`; T-043.2 Done; berikutnya T-043.3.
 
 ---
 
