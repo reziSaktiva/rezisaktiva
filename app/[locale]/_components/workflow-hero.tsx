@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { MessageSquareWarning, Scale } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { WorkflowCompareMode, WorkflowCopy } from "@/content/workflow";
 import {
-  AnimatePresence,
   DURATION_MEDIUM_MAX,
   EASE_STANDARD,
   motion,
@@ -19,9 +18,10 @@ const TAB_TWEEN = {
   ease: EASE_STANDARD,
 };
 
+const COMPARE_MODES = ["chaos", "driven"] as const satisfies WorkflowCompareMode[];
+
 export function WorkflowHero({ copy }: { copy: WorkflowCopy }) {
   const [mode, setMode] = useState<WorkflowCompareMode>("driven");
-  const pane = copy.compare[mode];
 
   return (
     <section className="work-hero wf-hero">
@@ -38,7 +38,7 @@ export function WorkflowHero({ copy }: { copy: WorkflowCopy }) {
           <p className="wf-lede">{copy.lede}</p>
         </Reveal>
 
-        <div className="wf-compare flex flex-col gap-4">
+        <div className="wf-compare">
           <Tabs
             value={mode}
             onValueChange={(value) => {
@@ -69,39 +69,48 @@ export function WorkflowHero({ copy }: { copy: WorkflowCopy }) {
                 {copy.compare.driven.label}
               </TabsTrigger>
             </TabsList>
-          </Tabs>
 
-          <div className="wf-compare-stage">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={mode}
-                className={cn(
-                  "wf-compare-panel flex flex-col gap-6",
-                  mode === "driven" && "wf-compare-panel--driven",
-                )}
-                data-mode={mode}
-                role="tabpanel"
-                aria-label={pane.label}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={TAB_TWEEN}
-              >
-                <p className="home-kicker">{pane.kicker}</p>
-                <ul className="wf-compare-points grid gap-4">
-                  {pane.points.map((point) => (
-                    <li
-                      key={point.title}
-                      className="wf-compare-point flex flex-col gap-2"
+            <div className="wf-compare-stage">
+              {COMPARE_MODES.map((tab) => {
+                const pane = copy.compare[tab];
+                return (
+                  <TabsContent
+                    key={tab}
+                    value={tab}
+                    className={cn(
+                      "wf-compare-panel flex flex-col gap-6",
+                      tab === "driven" && "wf-compare-panel--driven",
+                    )}
+                    data-mode={tab}
+                  >
+                    <motion.div
+                      className="flex flex-col gap-6"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={TAB_TWEEN}
                     >
-                      <p className="wf-compare-point-title">{point.title}</p>
-                      <p className="wf-compare-point-body">{point.body}</p>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                      <p className="home-kicker">{pane.kicker}</p>
+                      <ul className="wf-compare-points grid gap-4">
+                        {pane.points.map((point) => (
+                          <li
+                            key={point.title}
+                            className="wf-compare-point flex flex-col gap-2"
+                          >
+                            <p className="wf-compare-point-title">
+                              {point.title}
+                            </p>
+                            <p className="wf-compare-point-body">
+                              {point.body}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </TabsContent>
+                );
+              })}
+            </div>
+          </Tabs>
         </div>
       </div>
     </section>
