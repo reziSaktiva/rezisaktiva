@@ -6,9 +6,10 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-1. **T-031** — Metadata API ⏳ (ikon / OG / `themeColor` ikut kulit v15). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
-2. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
-3. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
+1. **T-055** — Polish visual navbar ⏳ (berikutnya **T-055.1** Q&A kunci arah). Detail: [`tasks/v20-navbar-polish.md`](tasks/v20-navbar-polish.md).
+2. **T-031** — Metadata API ⏳ (ikon / OG / `themeColor` ikut kulit v15). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+3. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
+4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 
 **Baru selesai**
 
@@ -57,6 +58,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v17 About vs Workflow | [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md) | T-045 | ✅ Done (ADR-035) |
 | v18 About section Home | [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md) | T-052, T-053 | ✅ Done (**ADR-040**, **ADR-041**) |
 | v19 Latar hidup Workflow | [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md) | T-054 | ⏳ Open |
+| v20 Polish navbar | [`tasks/v20-navbar-polish.md`](tasks/v20-navbar-polish.md) | T-055 | ⏳ Open |
 
 ## Aturan
 
@@ -82,3 +84,4 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 * `tasks/v17-about-workflow.md`
 * `tasks/v18-about-home-section.md`
 * `tasks/v19-workflow-living-background.md`
+* `tasks/v20-navbar-polish.md`

@@ -15,6 +15,12 @@ Format entri:
 ```
 
 ## [2026-09-09]
+### Added
+- **T-055** / **v20** ⏳: polish visual navbar (kulit saja). File `tasks/v20-navbar-polish.md`. Berikutnya **T-055.1** Q&A kunci arah vs kode T-040. Job chrome tetap (ADR-020 / ADR-031 / ADR-034). Branch kerja `feat/navbar-polish`.
+### Changed
+- `TASKS.md` Fokus + indeks v20; Snapshot: **T-055** di antrian atas **T-031** / **T-054.4**.
+
+## [2026-09-09]
 ### Changed
 - **T-043.4** ✅: verifikasi R1 di `http://127.0.0.1:3001` — Home (hero + `#about`), `/id/about` → `#about`, `/id/workflow`, `/id/projects`; tema gelap (`html.dark`, kanvas `rgb(11,11,13)`, aksen `#6b1c23`, chip `#141418`); Contact / Quick Info / project sheet elevated `#141418`; selected nav = border 1px darah; hamburger 375/320 (Contact di luar, tap 44px); reduced-motion = tanpa film, tanpa Lenis, kursor sistem. Snapshot **v15 Done**. **T-031** kembali antrian.
 - Catatan verifikasi (dev overlay, bukan blocker v15): `useReducedMotion()` bisa memicu hydration warning Next saat `prefers-reduced-motion: reduce` di-emulasi (Workflow principles). Kulit dan job overlay tetap lolos.

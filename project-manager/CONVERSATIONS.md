@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-09] — T-055 polish navbar
+**Phase:** Validation
+**Summary:** Boss Rezi minta navbar lebih bagus. Ditambah backlog **T-055** (v20) sebagai polish kulit R1, bukan halaman baru. Arah visual konkret belum dikunci — **T-055.1** Q&A dulu, baru kode. Branch `feat/navbar-polish`.
+**Key Decision/Insight:** IA/job chrome tidak berubah (chip tanpa Home, hamburger &lt;1024, Contact di luar, selected outline). ADR baru hanya jika perilaku nav berubah.
+**Impact:** `tasks/v20-navbar-polish.md`, `TASKS.md`, Snapshot; berikutnya T-055.1.
+
 ## [2026-09-09] — T-043.4 verifikasi v15
 **Phase:** Validation
 **Summary:** Pass verifikasi penuh R1 untuk menutup v15: empat permukaan, overlay, viewport 320/375/desktop, reduced-motion. Kulit gothic-blood dan job overlay sesuai kunci. T-031 kembali antrian.
