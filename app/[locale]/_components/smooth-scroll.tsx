@@ -48,10 +48,38 @@ export function scrollToPageId(id: string): void {
     return;
   }
   if (lenisForTransition) {
-    lenisForTransition.scrollTo(target, { offset: 0 });
+    // force: allow scroll while Lenis was stopped (page-vt-lock / overlay).
+    lenisForTransition.scrollTo(target, { offset: 0, force: true });
     return;
   }
   target.scrollIntoView();
+}
+
+/** True while page transition holds the document (Lenis stopped). */
+export function isPageTransitionLocked(): boolean {
+  return document.documentElement.classList.contains("page-vt-lock");
+}
+
+/**
+ * Run `callback` now, or once `page-vt-lock` clears — so #about scroll is
+ * not eaten by freezeWindowScrollAtTop / stopped Lenis during enter.
+ */
+export function whenPageTransitionUnlocked(callback: () => void): () => void {
+  if (!isPageTransitionLocked()) {
+    const frame = window.requestAnimationFrame(callback);
+    return () => window.cancelAnimationFrame(frame);
+  }
+
+  const root = document.documentElement;
+  const observer = new MutationObserver(() => {
+    if (root.classList.contains("page-vt-lock")) {
+      return;
+    }
+    observer.disconnect();
+    callback();
+  });
+  observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
 }
 
 function prefersReducedMotion(): boolean {

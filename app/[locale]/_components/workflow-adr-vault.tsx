@@ -15,7 +15,6 @@ import {
   DURATION_SLOW_MIN,
   EASE_STANDARD,
   motion,
-  useReducedMotion,
 } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +31,6 @@ const PANEL_TWEEN = {
 };
 
 export function WorkflowAdrVault({ copy }: { copy: WorkflowCopy }) {
-  const reduceMotion = useReducedMotion();
   const [activeId, setActiveId] = useState(copy.adrs[0]?.id ?? "");
   const active =
     copy.adrs.find((adr) => adr.id === activeId) ?? copy.adrs[0];
@@ -46,7 +44,7 @@ export function WorkflowAdrVault({ copy }: { copy: WorkflowCopy }) {
       <div className="flex flex-col gap-8">
         <motion.div
           className="flex flex-col gap-3"
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={REVEAL_TWEEN}
@@ -58,7 +56,7 @@ export function WorkflowAdrVault({ copy }: { copy: WorkflowCopy }) {
 
         <motion.div
           className="wf-vault"
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={REVEAL_TWEEN}
@@ -100,7 +98,7 @@ export function WorkflowAdrVault({ copy }: { copy: WorkflowCopy }) {
               </div>
             </ScrollArea>
 
-            <AdrDetail copy={copy} adr={active} reduceMotion={!!reduceMotion} />
+            <AdrDetail copy={copy} adr={active} />
           </div>
         </motion.div>
       </div>
@@ -111,11 +109,9 @@ export function WorkflowAdrVault({ copy }: { copy: WorkflowCopy }) {
 function AdrDetail({
   copy,
   adr,
-  reduceMotion,
 }: {
   copy: WorkflowCopy;
   adr: WorkflowAdrSample;
-  reduceMotion: boolean;
 }) {
   const statusHint =
     adr.status === "Accepted"
@@ -127,7 +123,7 @@ function AdrDetail({
       <motion.article
         key={adr.id}
         className="wf-vault-detail flex flex-col gap-6"
-        initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={PANEL_TWEEN}
       >

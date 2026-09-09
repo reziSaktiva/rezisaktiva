@@ -66,7 +66,9 @@ function resolveInternalHref(anchor: HTMLAnchorElement): string | null {
     return null;
   }
 
-  return `${url.pathname}${url.search}`;
+  // Keep hash (e.g. /id#about) — stripping it sends Workflow/Projects → Home
+  // hero instead of the About section (ADR-040).
+  return `${url.pathname}${url.search}${url.hash}`;
 }
 
 function sanitizeClone(root: ParentNode): void {

@@ -29,7 +29,7 @@ import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
 import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
-import { scrollToPageId } from "./smooth-scroll";
+import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
 
 /**
  * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
@@ -57,10 +57,11 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
     if (!isHomePath(pathname, locale) || window.location.hash !== "#about") {
       return;
     }
-    const frame = window.requestAnimationFrame(() => {
+    // Wait for page-vt-lock to clear — rAF alone races freezeWindowScrollAtTop
+    // and stopped Lenis after Workflow/Projects → About (ADR-040).
+    return whenPageTransitionUnlocked(() => {
       scrollToPageId("about");
     });
-    return () => window.cancelAnimationFrame(frame);
   }, [pathname, locale]);
 
   if (mobileNavPath !== pathname) {

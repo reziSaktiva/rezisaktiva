@@ -2,14 +2,26 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
+const componentsDir = path.join(process.cwd(), "app/[locale]/_components");
+
 const homeMotion = readFileSync(
-  path.join(process.cwd(), "app/[locale]/_components/home-motion.tsx"),
+  path.join(componentsDir, "home-motion.tsx"),
   "utf8",
 );
 const rootLayout = readFileSync(
   path.join(process.cwd(), "app/layout.tsx"),
   "utf8",
 );
+
+const workflowSources = [
+  "workflow-hero.tsx",
+  "workflow-pipeline.tsx",
+  "workflow-principles.tsx",
+  "workflow-adr-vault.tsx",
+].map((file) => ({
+  file,
+  source: readFileSync(path.join(componentsDir, file), "utf8"),
+}));
 
 function exportFn(source: string, name: string, nextName: string): string {
   const start = source.indexOf(`export function ${name}`);
@@ -40,6 +52,16 @@ describe("motion hydration (PR #68 review)", () => {
     const magnetic = exportFn(homeMotion, "Magnetic", "CursorRing");
     expect(magnetic).toContain("skipMagneticPull");
     expect(magnetic).toMatch(/const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/);
+  });
+});
+
+describe("workflow motion hydration", () => {
+  it("does not branch Motion initial on useReducedMotion", () => {
+    for (const { file, source } of workflowSources) {
+      expect(source, file).not.toContain("useReducedMotion");
+      expect(source, file).not.toMatch(/reduceMotion\s*\?/);
+      expect(source, file).toMatch(/initial=\{/);
+    }
   });
 });
 

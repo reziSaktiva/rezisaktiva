@@ -7,7 +7,6 @@ import {
   DURATION_SLOW_MIN,
   EASE_STANDARD,
   motion,
-  useReducedMotion,
 } from "@/lib/motion";
 import { BuildIcon, DesignIcon, DiscoverIcon, ShipIcon } from "./overlay-icons";
 
@@ -37,14 +36,12 @@ const itemVariants = {
 };
 
 export function WorkflowPipeline({ copy }: { copy: WorkflowCopy }) {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section className="about-section wf-section wf-pipeline-section">
       <div className="flex flex-col gap-8">
         <motion.div
           className="flex flex-col gap-3"
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={REVEAL_TWEEN}
@@ -56,8 +53,8 @@ export function WorkflowPipeline({ copy }: { copy: WorkflowCopy }) {
 
         <motion.ol
           className="wf-pipeline"
-          variants={reduceMotion ? undefined : listVariants}
-          initial={reduceMotion ? false : "hidden"}
+          variants={listVariants}
+          initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
@@ -67,7 +64,7 @@ export function WorkflowPipeline({ copy }: { copy: WorkflowCopy }) {
               <motion.li
                 key={step.num}
                 className="wf-pipeline-item"
-                variants={reduceMotion ? undefined : itemVariants}
+                variants={itemVariants}
               >
                 <Card className="wf-pipeline-card h-full gap-0 border border-border bg-card py-0 shadow-none ring-0">
                   <CardHeader className="flex flex-col gap-3 border-b border-border p-6">

@@ -9,7 +9,6 @@ import {
   DURATION_MEDIUM_MAX,
   EASE_STANDARD,
   motion,
-  useReducedMotion,
 } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { Reveal, WordReveal } from "./home-motion";
@@ -21,7 +20,6 @@ const TAB_TWEEN = {
 };
 
 export function WorkflowHero({ copy }: { copy: WorkflowCopy }) {
-  const reduceMotion = useReducedMotion();
   const [mode, setMode] = useState<WorkflowCompareMode>("driven");
   const pane = copy.compare[mode];
 
@@ -84,11 +82,9 @@ export function WorkflowHero({ copy }: { copy: WorkflowCopy }) {
                 data-mode={mode}
                 role="tabpanel"
                 aria-label={pane.label}
-                initial={
-                  reduceMotion ? false : { opacity: 0, y: 12 }
-                }
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                exit={{ opacity: 0, y: -8 }}
                 transition={TAB_TWEEN}
               >
                 <p className="home-kicker">{pane.kicker}</p>
