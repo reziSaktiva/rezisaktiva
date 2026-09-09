@@ -22,7 +22,10 @@ export function HomeHeroWallpaper() {
   const hiddenRef = useRef(false);
 
   useEffect(() => {
-    setAllowVideo(reduceMotion === false);
+    const frame = window.requestAnimationFrame(() => {
+      setAllowVideo(reduceMotion === false);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [reduceMotion]);
 
   useLayoutEffect(() => {
