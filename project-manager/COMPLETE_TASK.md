@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-09-09]
 ### Added
+- **T-055.1** ✅: kunci arah navbar — kaca on-scroll (`scrollY > 0`), hairline `--color-border`, fade opacity; blur instan; chrome T-040 tetap. Detail di `tasks/v20-navbar-polish.md`.
+### Changed
+- Fokus: berikutnya **T-055.2** (kode desktop + kaca). Job chrome / selected outline tidak berubah.
+
+## [2026-09-09]
+### Added
 - **T-055** / **v20** ⏳: polish visual navbar (kulit saja). File `tasks/v20-navbar-polish.md`. Berikutnya **T-055.1** Q&A kunci arah vs kode T-040. Job chrome tetap (ADR-020 / ADR-031 / ADR-034). Branch kerja `feat/navbar-polish`.
 ### Changed
 - `TASKS.md` Fokus + indeks v20; Snapshot: **T-055** di antrian atas **T-031** / **T-054.4**.

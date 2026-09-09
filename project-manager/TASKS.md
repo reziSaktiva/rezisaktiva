@@ -6,7 +6,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-1. **T-055** — Polish visual navbar ⏳ (berikutnya **T-055.1** Q&A kunci arah). Detail: [`tasks/v20-navbar-polish.md`](tasks/v20-navbar-polish.md).
+1. **T-055** — Polish visual navbar ⏳ (**T-055.1** ✅; berikutnya **T-055.2** kode desktop + kaca on-scroll). Detail: [`tasks/v20-navbar-polish.md`](tasks/v20-navbar-polish.md).
 2. **T-031** — Metadata API ⏳ (ikon / OG / `themeColor` ikut kulit v15). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 3. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
 4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).

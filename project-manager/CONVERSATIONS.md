@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-09] — T-055.1 kunci kaca navbar
+**Phase:** Validation
+**Summary:** Arah polish navbar dikunci: paling atas tanpa latar; setelah `scrollY > 0` kaca (wash gelap tipis + backdrop-blur) + hairline `--color-border`. Fade opacity pendek; blur on/off langsung. Brand, chip outline, Contact, hamburger tetap T-040.
+**Key Decision/Insight:** Bukan restyle chip/Contact/panel. Bukan solid elevated, bukan hairline-only, bukan spring, bukan interpolasi progress. Reduced-motion = cut. ADR baru tidak perlu (job chrome tetap).
+**Impact:** `tasks/v20-navbar-polish.md` T-055.1 ✅; berikutnya **T-055.2** kode desktop + kaca.
+
 ## [2026-09-09] — T-055 polish navbar
 **Phase:** Validation
 **Summary:** Boss Rezi minta navbar lebih bagus. Ditambah backlog **T-055** (v20) sebagai polish kulit R1, bukan halaman baru. Arah visual konkret belum dikunci — **T-055.1** Q&A dulu, baru kode. Branch `feat/navbar-polish`.
