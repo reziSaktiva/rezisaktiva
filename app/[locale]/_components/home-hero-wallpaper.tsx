@@ -157,7 +157,7 @@ function documentOffsetTop(element: HTMLElement): number {
   let node: HTMLElement | null = element;
   while (node) {
     top += node.offsetTop;
-    const parent = node.offsetParent;
+    const parent: Element | null = node.offsetParent;
     node = parent instanceof HTMLElement ? parent : null;
   }
   return top;
