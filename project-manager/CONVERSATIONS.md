@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-09] — T-055.2 kaca navbar desktop
+**Phase:** Validation
+**Summary:** Kaca on-scroll dipasang di header ≥1024px: fade opacity Motion, blur on/off, hairline `--color-border`, wash `color-mix` dari `--chip-bg`. Brand/chip/Contact tetap T-040. Compact &lt;1024px belum (T-055.3).
+**Key Decision/Insight:** Scroll dibaca via `useLenis` (root Lenis) + native fallback saat reduced-motion.
+**Impact:** `site-header.tsx`, `site-chrome.tsx`, `globals.css`, `lib/motion.ts`; berikutnya T-055.3.
+
 ## [2026-09-09] — T-055.1 kunci kaca navbar
 **Phase:** Validation
 **Summary:** Arah polish navbar dikunci: paling atas tanpa latar; setelah `scrollY > 0` kaca (wash gelap tipis + backdrop-blur) + hairline `--color-border`. Fade opacity pendek; blur on/off langsung. Brand, chip outline, Contact, hamburger tetap T-040.

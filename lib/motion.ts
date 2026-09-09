@@ -19,6 +19,8 @@ export type CubicBezierEase = readonly [number, number, number, number];
 
 /** Detik — `--duration-fast-max` 165ms. */
 export const DURATION_FAST_MAX = 0.165;
+/** Detik — `--duration-medium-min` 225ms. */
+export const DURATION_MEDIUM_MIN = 0.225;
 /** Detik — `--duration-medium-max` 400ms. */
 export const DURATION_MEDIUM_MAX = 0.4;
 /** Detik — `--duration-slow-min` 525ms (`.home-reveal`, `.page-word`). */

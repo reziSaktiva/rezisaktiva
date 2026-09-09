@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-09-09]
 ### Added
+- **T-055.2** ✅: kaca navbar desktop on-scroll (`SiteNavGlass`) — fade opacity, blur instan, hairline token; chip/Contact T-040 tetap.
+### Changed
+- Fokus: berikutnya **T-055.3** (kaca + hamburger &lt;1024px).
+
+## [2026-09-09]
+### Added
 - **T-055.1** ✅: kunci arah navbar — kaca on-scroll (`scrollY > 0`), hairline `--color-border`, fade opacity; blur instan; chrome T-040 tetap. Detail di `tasks/v20-navbar-polish.md`.
 ### Changed
 - Fokus: berikutnya **T-055.2** (kode desktop + kaca). Job chrome / selected outline tidak berubah.

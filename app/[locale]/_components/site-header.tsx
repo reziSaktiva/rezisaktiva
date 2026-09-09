@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useId, useState, type MouseEvent } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import type Lenis from "lenis";
+import { useLenis } from "lenis/react";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { cn } from "@/lib/utils";
@@ -25,11 +27,22 @@ import {
   isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
+import {
+  DURATION_MEDIUM_MIN,
+  EASE_STANDARD,
+  motion,
+  useReducedMotion,
+} from "@/lib/motion";
 import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
 import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
-import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
+import {
+  readWindowScrollY,
+  scrollToPageId,
+  subscribePageScroll,
+  whenPageTransitionUnlocked,
+} from "./smooth-scroll";
 
 /**
  * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
@@ -42,7 +55,82 @@ import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
+ * T-055.2: kaca desktop on-scroll (`SiteNavGlass`) — bukan restyle chip.
  */
+
+const NAV_GLASS_TWEEN = {
+  type: "tween" as const,
+  duration: DURATION_MEDIUM_MIN,
+  ease: EASE_STANDARD,
+};
+
+const NAV_GLASS_CUT = { type: "tween" as const, duration: 0 };
+
+function useNavGlassScrolled(): boolean {
+  const [scrolled, setScrolled] = useState(false);
+
+  const syncFromLenis = useCallback((instance: Lenis) => {
+    const next = instance.scroll > 0;
+    setScrolled((prev) => (prev === next ? prev : next));
+  }, []);
+
+  const lenis = useLenis(syncFromLenis);
+
+  useEffect(() => {
+    if (lenis) {
+      return;
+    }
+    const sync = () => {
+      const nativeY = window.scrollY || document.documentElement.scrollTop || 0;
+      const next = Math.max(readWindowScrollY(), nativeY) > 0;
+      setScrolled((prev) => (prev === next ? prev : next));
+    };
+    sync();
+    const unsubscribe = subscribePageScroll(sync);
+    window.addEventListener("scroll", sync, { passive: true });
+    return () => {
+      unsubscribe();
+      window.removeEventListener("scroll", sync);
+    };
+  }, [lenis]);
+
+  return scrolled;
+}
+
+/**
+ * Lapisan kaca header ≥1024px (T-055.1). Fade opacity; blur on/off
+ * langsung. Compact <1024px disembunyikan CSS sampai T-055.3.
+ */
+export function SiteNavGlass() {
+  const scrolled = useNavGlassScrolled();
+  const reduceMotion = useReducedMotion();
+  const [blurOn, setBlurOn] = useState(false);
+
+  useEffect(() => {
+    if (scrolled) {
+      setBlurOn(true);
+    } else if (reduceMotion) {
+      setBlurOn(false);
+    }
+  }, [scrolled, reduceMotion]);
+
+  return (
+    <motion.div
+      className="site-nav-glass"
+      aria-hidden="true"
+      data-blur={blurOn ? "true" : undefined}
+      initial={false}
+      animate={{ opacity: scrolled ? 1 : 0 }}
+      transition={reduceMotion ? NAV_GLASS_CUT : NAV_GLASS_TWEEN}
+      onAnimationComplete={() => {
+        if (!scrolled) {
+          setBlurOn(false);
+        }
+      }}
+    />
+  );
+}
+
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const hash = useLocationHash();
