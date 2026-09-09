@@ -47,4 +47,11 @@ Task ID resmi untuk implementasi: **T-013.4** (`v03-development-r1.md`, di bawah
 
 ### Update — 2026-09-03 (ADR-028)
 
-Keputusan produk (toggle Must R1, default light, `prefers-color-scheme` Could) **tetap**. Mekanisme token berganti: class `dark` di `<html>` + cookie `rz-theme`, bukan `<Theme mode>` Astryx. Lihat [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).
+Mekanisme token berganti: class `dark` di `<html>` + cookie `rz-theme`, bukan `<Theme mode>` Astryx. Lihat [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md). Keputusan produk default light **diganti** update 2026-09-04.
+
+### Update — 2026-09-04 (T-038.2 / ADR-029)
+
+1. **Default ship = dark.** Arah seni gothic-blood dikerjakan sebagai tema gelap. Poin 2 (light-first) **tidak lagi berlaku** selama hold di bawah.
+2. **Light mode di-hold, bukan dihapus.** Token/CSS light yang ada di-comment (arsip) di **T-039** supaya tidak hilang; jangan invert palet baru. Skin light gothic (vellum/naskah) **bukan** scope v15 — task terpisah saat hold dicabut.
+3. **Toggle disembunyikan di chrome** selama hold. File `theme-toggle.tsx` + cookie `rz-theme` + anti-flash **tetap**. Jangan uninstall. Saat light dihidupkan lagi, toggle kembali Must di luar hamburger (poin 1 & 3 asli).
+4. Selama hold: jangan render palet krem light lama ke pengunjung (cookie `light` tidak boleh menampilkan tema lama). `prefers-color-scheme` tetap Could.

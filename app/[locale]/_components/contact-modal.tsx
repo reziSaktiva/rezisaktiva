@@ -33,10 +33,10 @@ import {
 import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 
 /**
- * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3) — Dialog shadcn +
- * skin `.ct-*` (kartu dark-ink). Enter/exit = transisi CSS token +
- * `forceMount` hanya selama overlay masih `present` (bukan spring). Bukan
- * route `/contact`.
+ * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3; T-041.1) —
+ * Dialog shadcn + skin `.ct-*` (kartu elevated token, keluarga hamburger).
+ * Enter/exit = transisi CSS token + `forceMount` hanya selama overlay
+ * masih `present` (bukan spring). Bukan route `/contact`.
  *
  * Form: validasi client + state "Terkirim"; tidak ada backend (M8 Could).
  * mailto: tetap primer lewat tautan email.

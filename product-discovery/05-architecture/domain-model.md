@@ -28,7 +28,7 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 
 ## In Scope
 
-* Entitas konten lean (halaman, locale, teaser, saluran kontak)
+* Entitas konten lean (halaman, locale, work item, saluran kontak)
 * Batas: apa yang **bukan** domain produk situs
 
 ## Out of Scope
@@ -43,13 +43,12 @@ Keputusan bentuk sistem: **Static-first (SSG) + konten di repo** (ADR-015).
 
 | Konsep | Arti di R1 | Catatan |
 | ------ | ---------- | ------- |
-| **Page** | Home, About, Work index (per locale) | Surface IA; Work index Must R1 via override ADR-020 |
+| **Page** | Home (memuat section About), Workflow, Work index (per locale) | Surface IA; About bukan Page (ADR-040); Workflow Must R1 via ADR-035 / ADR-042; Work index via ADR-020 |
 | **Locale** | `id` \| `en` | Path prefix; makna salinan setara |
 | **Identity claim** | Positioning product builder (+ fullstack + AI edge) | First viewport Home |
-| **Credibility line** | Satu klaim non-kartu | Bukan daftar project |
-| **Work teaser item** | 1–3 kartu: nama · outcome · tautan bukti opsional | Bukan case detail |
+| **Work item** | Kartu katalog: nama · outcome · tautan bukti opsional | Work index; bukan case detail |
 | **Contact channel** | Modal global (ADR-019), bukan Page; Email primer + form ringan opsional; LinkedIn/GitHub satelit | Tanpa backend form/WA/IG R1 |
-| **Site chrome** | Nav, switcher, footer, theme toggle (ADR-021) | Global |
+| **Site chrome** | Nav, switcher, footer, theme toggle (ADR-021) | Global; footer di semua rute termasuk Home (ADR-041) |
 | **Quick Info overlay** | Drawer glanceable (bio, Services, Tools, Works, Email, Links) | Bukan Page — M13, ADR-022 |
 
 Tidak ada “Customer”, “Order”, “Session user”, atau “Workspace”.
@@ -64,14 +63,16 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 
 | Modul | Konsep domain lean |
 | ----- | ------------------ |
-| M1 Home | Identity claim, credibility line, teaser, arah soft |
-| M2 About | Narrative |
+| M1 Home | Identity claim + lede, arah soft (ADR-032 / ADR-037) |
+| M2 About | Narrative + Now + lead/artwork (section Home, ADR-040); tanpa `#proof` |
+| M14 Workflow | How-I-work (prinsip, pipeline Human/AI, ADR Vault — ADR-042) |
 | M3 Contact | Contact channel (modal overlay) |
-| M4 Work teaser | Work teaser item |
+| M4 Work teaser | Retired (ADR-032) |
 | M5 Language | Locale |
 | M6 Chrome | Site chrome (termasuk theme toggle, ADR-021) |
 | M7 Meta | Share/meta per Page×Locale |
-| M9 Work index | Page katalog karya (Must R1, override ADR-020) |
+| M9 Work index | Page katalog karya + Work item (Must R1, override ADR-020) |
+| M10 Project sheet | Overlay dari bawah; bukan Page (Must R1, ADR-027) |
 | M13 Quick Info | Quick Info overlay (Must R1, ADR-022) |
 
 ---
@@ -122,5 +123,9 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

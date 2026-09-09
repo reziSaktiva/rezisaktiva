@@ -44,4 +44,4 @@ Ini memakai jalur yang sudah diizinkan di dokumen tersebut sendiri (Competitive 
 
 ### Update — 2026-08-24
 
-Implementasi craft R1 (ADR-025) memakai Hess/Mazur sebagai acuan **ritme, tipe oversized, interaksi rest/active, inertia scroll, dan pita “let’s connect”** — bukan palet, bukan Framer spectacle. Bukti karya di Home/Work tetap diferensiasi vs Mazur. Kerangka D tidak berubah.
+Implementasi craft R1 (ADR-025) memakai Hess/Mazur sebagai acuan **ritme, tipe oversized, inertia scroll, dan pita “let’s connect”** — bukan palet, bukan Framer spectacle. Interaksi rest/active accordion **bukan** permukaan Workflow/About lagi (ADR-042 / ADR-039). Bukti karya di Work index tetap diferensiasi vs Mazur. Kerangka D tidak berubah.

@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+        pathname: "/**",
       },
     ],
   },
@@ -27,6 +28,11 @@ const nextConfig: NextConfig = {
       {
         source: "/:locale(id|en)/work",
         destination: "/:locale/projects",
+        permanent: true,
+      },
+      {
+        source: "/:locale(id|en)/about",
+        destination: "/:locale#about",
         permanent: true,
       },
     ];

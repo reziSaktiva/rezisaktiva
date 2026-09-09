@@ -35,6 +35,13 @@ export function localePath(locale: string, pathname = ""): string {
 /** Path katalog M9 (label Proyek / Projects). */
 export const PROJECTS_PATH = "projects";
 
+/** Path cara kerja M14 (label Proses Kerja / How I Work). */
+export const WORKFLOW_PATH = "workflow";
+
 export function projectsHref(locale: string): string {
   return localePath(locale, PROJECTS_PATH);
+}
+
+export function workflowHref(locale: string): string {
+  return localePath(locale, WORKFLOW_PATH);
 }

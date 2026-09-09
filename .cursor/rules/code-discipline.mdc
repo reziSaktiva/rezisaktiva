@@ -10,16 +10,16 @@ SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Komponen: `.
 ## Spacing
 
 - **`gap`** = jarak antar anak (Tailwind `gap-*` atau CSS `gap` di class scoped). **`padding`** = inset dalam container. **Bukan** `margin` di tiap sibling. **Bukan** `space-y-*` / `space-x-*`.
-- Ritme produksi: `gap-2` rapat; `gap-3` kicker+judul; `gap-8` isi section. Ritme viewport di CSS scoped (`.home-container`, `.home-section`).
+- Ritme produksi: `gap-2` rapat; `gap-3` kicker+judul; `gap-8` isi section. Ritme viewport di CSS scoped (`.home-container`, `.about-section`).
 - Token `var(--spacing-*)` di `globals.css`. Bukan `p-[13px]`, bukan hex di JSX.
 
 ```tsx
 // pakai
-<section className="home-section">
-  <div className="home-container flex flex-col gap-8">
+<section className="about-section">
+  <div className="flex flex-col gap-8">
     <div className="flex flex-col gap-3">
       <p className="home-kicker">{kicker}</p>
-      <h2 className="home-work-title">{title}</h2>
+      <h2 className="about-section-title">{title}</h2>
     </div>
   </div>
 </section>
@@ -31,6 +31,7 @@ SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Komponen: `.
 ## Styling
 
 1. Primitf shadcn yang sudah ada (`components/ui/`) → 2. utility Tailwind token-backed → 3. `className` scoped + `app/globals.css` → 4. token `:root` / `.dark` (bukan file tema Astryx).
+- Kulit = token gothic-blood di `globals.css` (ADR-029). **Bukan** pill kuning / nampan krem / 3D chip sebagai identitas.
 - **StyleX / Astryx dilarang.** Tidak ada `xstyle`, tidak ada `@astryxdesign`.
 - Tidak ada `<div>` hanya untuk spasi. `style={{}}` layout/warna dilarang (`colorScheme` di `<html>` = pengecualian yang sudah ada).
 

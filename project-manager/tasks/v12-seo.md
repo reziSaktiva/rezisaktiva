@@ -4,6 +4,8 @@ File task **tersendiri**. JSON-LD schema.org = [`v11-structured-data.md`](v11-st
 
 Isi: memenuhi **3 pilar SEO** yang dikunci Boss Rezi (2026-08-31), **disesuaikan** dengan situs portofolio R1 (bukan toko, bukan blog, bukan bisnis lokal berkantor).
 
+> **Update (2026-09-08, ADR-040 / ADR-032):** About bukan halaman; sitemap = Home / Workflow / Work (enam URL locale×3). Teaser Home retired. Contact tetap modal.
+
 Kerangka acuan (adaptasi, bukan copy checklist e-commerce):
 
 ```

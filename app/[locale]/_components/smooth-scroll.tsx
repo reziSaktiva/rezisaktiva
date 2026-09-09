@@ -7,6 +7,23 @@ import { useReducedMotion } from "@/lib/motion";
 
 let lenisForTransition: Lenis | null = null;
 
+type PageScrollListener = () => void;
+const pageScrollListeners = new Set<PageScrollListener>();
+
+function notifyPageScroll(): void {
+  pageScrollListeners.forEach((listener) => {
+    listener();
+  });
+}
+
+/** Lenis frame + native scroll. Wallpaper Home ikut lerp, bukan hanya event native. */
+export function subscribePageScroll(listener: PageScrollListener): () => void {
+  pageScrollListeners.add(listener);
+  return () => {
+    pageScrollListeners.delete(listener);
+  };
+}
+
 export function readWindowScrollY(): number {
   if (lenisForTransition) {
     return lenisForTransition.scroll;
@@ -23,6 +40,46 @@ export function freezeWindowScrollAtTop(): void {
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
+}
+
+export function scrollToPageId(id: string): void {
+  const target = document.getElementById(id);
+  if (!target) {
+    return;
+  }
+  if (lenisForTransition) {
+    // force: allow scroll while Lenis was stopped (page-vt-lock / overlay).
+    lenisForTransition.scrollTo(target, { offset: 0, force: true });
+    return;
+  }
+  target.scrollIntoView();
+}
+
+/** True while page transition holds the document (Lenis stopped). */
+export function isPageTransitionLocked(): boolean {
+  return document.documentElement.classList.contains("page-vt-lock");
+}
+
+/**
+ * Run `callback` now, or once `page-vt-lock` clears — so #about scroll is
+ * not eaten by freezeWindowScrollAtTop / stopped Lenis during enter.
+ */
+export function whenPageTransitionUnlocked(callback: () => void): () => void {
+  if (!isPageTransitionLocked()) {
+    const frame = window.requestAnimationFrame(callback);
+    return () => window.cancelAnimationFrame(frame);
+  }
+
+  const root = document.documentElement;
+  const observer = new MutationObserver(() => {
+    if (root.classList.contains("page-vt-lock")) {
+      return;
+    }
+    observer.disconnect();
+    callback();
+  });
+  observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
 }
 
 function prefersReducedMotion(): boolean {
@@ -60,6 +117,7 @@ function OverlayLenisPause() {
     };
 
     sync();
+    lenis.on("scroll", notifyPageScroll);
     const observer = new MutationObserver(sync);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -67,6 +125,7 @@ function OverlayLenisPause() {
     });
     return () => {
       observer.disconnect();
+      lenis.off("scroll", notifyPageScroll);
       if (lenisForTransition === lenis) {
         lenisForTransition = null;
       }

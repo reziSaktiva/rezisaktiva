@@ -14,6 +14,358 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-09] — T-043.4 verifikasi v15
+**Phase:** Validation
+**Summary:** Pass verifikasi penuh R1 untuk menutup v15: empat permukaan, overlay, viewport 320/375/desktop, reduced-motion. Kulit gothic-blood dan job overlay sesuai kunci. T-031 kembali antrian.
+**Key Decision/Insight:** Light tetap hold (tidak di-QA dual-theme). Hydration warning Motion `useReducedMotion` di dev saat emulate reduced-motion dicatat, bukan blocker rilis v15.
+**Impact:** Snapshot v15 Done; `tasks/v15-visual-identity.md` T-043 ✅; `tasks/v13-metadata.md` T-031 Open.
+
+## [2026-09-09] — T-043.3 docs identitas
+**Phase:** Validation
+**Summary:** Rule dan playbook engineering dicabut dari kontrak “pill kuning / 3D chip”. Token docs diselaraskan ke gothic-blood. Satu kalimat hamburger di `04-ux/navigation-patterns.md` tidak lagi mengunci lembar aksen.
+**Key Decision/Insight:** ADR-028 tetap untuk stack; bentuk visual mengikuti ADR-029. Prinsip UX (IA, overlay job) tidak di-rewrite.
+**Impact:** `design-tokens.md`, `code-discipline.md`, `shadcn.mdc`, `code-discipline.mdc`, `navigation-patterns.md`; T-043.3 Done; berikutnya T-043.4.
+
+## [2026-09-09] — T-043.2 scrollbar, fokus, kursor
+**Phase:** Validation
+**Summary:** Scrollbar native + overlay diselaraskan ke token darah yang lebih kontras. Fokus keyboard memakai `--color-focus` (bukan wine murni di kanvas gelap). Target sentuh 44px di chrome 320px. Kursor pisau tetap di atas overlay.
+**Key Decision/Insight:** Thumb scrollbar = `--color-accent-muted` (bukan `#6B1C23` yang hampir hilang di track elevated). Cincin fokus = campur vellum agar lolos kontras non-teks.
+**Impact:** `globals.css`, `home-motion.tsx`, `design-tokens.md`; T-043.2 Done; berikutnya T-043.3.
+
+---
+
+## [2026-09-08] — T-043.1 overlay film vintage
+**Phase:** Validation
+**Summary:** Boss Rezi meminta tambahan tipis Old Film / Vintage Overlay pada transisi yang sudah dikunci.
+**Key Decision/Insight:** Hanya selama `page-vt-lock`. Grain + vignette + kedip cahaya, tanpa grade warna/RGB/VHS. Bukan overlay permanen di seluruh situs.
+**Impact:** `page-transition.tsx` (lapisan `.page-vt-film`), `app/globals.css`; T-043.1 polish.
+
+## [2026-09-08] — T-043.1 hard cut + stutter
+**Phase:** Validation
+**Summary:** Transisi halaman Hess (scale + slide 1s) diganti hard cut + beberapa frame tersentak, sesuai kunci T-038.3.
+**Key Decision/Insight:** Glitch = jump diskrit tanpa warna/RGB/VHS. Durasi ~0.36s agar UX1 tidak tertunda. Chrome header tetap; Lenis pause selama `page-vt-lock`.
+**Impact:** `page-transition.tsx`, `globals.css` (`.page-vt-*`), ADR-025 update, `design-tokens.md` §Motion; T-043.1 Done.
+
+## [2026-09-08] — T-042.3 tile Work = pelat
+**Phase:** Validation
+**Summary:** Q&A kulit Work index: Boss Rezi memilih semua tile sebagai pelat museum, bukan polish/arsip/featured-only.
+**Key Decision/Insight:** Bingkai ganda seperti About; blood drip tetap terkurung di dalam plate; job klik → sheet tidak berubah.
+**Impact:** `.home-work-tile` / `.home-work-grid` di `globals.css`; T-042.3 + parent T-042 Done.
+
+## [2026-09-08] — T-042.2 pelat museum About
+**Phase:** Validation
+**Summary:** Q&A kulit `#about`: Boss Rezi memilih pelat museum, bukan polish/bleed/stack-art-first.
+**Key Decision/Insight:** Karya seni = plate (bingkai ganda + caption sebagai label). Kolom teks kiri tetap. Copy ADR-039 tidak diubah.
+**Impact:** `about-page.tsx`, `.about-portrait*` di `globals.css`; T-042.2 Done.
+
+## [2026-09-08] — T-042.1 polish hero Home
+**Phase:** Validation
+**Summary:** Sisa T-042.1 = restyle Q&A. Boss Rezi mengunci polish saja: tanpa motif katedral/naskah/darah-sebagai-tipe baru.
+**Key Decision/Insight:** Komposisi tetap (MP4 fixed, dua sudut h1, lede + tautan Workflow). Kerja = veil + kontras lede/tautan supaya klaim tetap scan (UX1).
+**Impact:** `app/globals.css` (`.home-hero-wallpaper-veil`, `.home-hero-lede`, `.home-hero-lede-link`); T-042.1 Done.
+
+## [2026-09-08] — Optik mote: glow + starburst + flare
+**Phase:** Validation
+**Summary:** Boss Rezi minta setiap abu di `/workflow` dapat glow, starburst, dan lens flare yang rapi dan terasa nyata.
+**Key Decision/Insight:** Bukan stiker bintang. Glow radial, jarum aperture 4 arah (kamera), flare anamorphic selalu horizontal. Twinkle pelan; overlay/reduced-motion tetap menjeda.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, S2b.
+
+## [2026-09-08] — Workflow latar = debu saja
+**Phase:** Validation
+**Summary:** Boss Rezi mencabut gerbang cathedral dan bunga filigree. Yang tersisa = debu mote individual `position: fixed`.
+**Key Decision/Insight:** Motif tracery/filigree tidak dilanjutkan; debu wallpaper tetap.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, S2b, v19.
+
+## [2026-09-08] — Cathedral Breath dikunci ulang (satu gerbang, debu wallpaper)
+**Phase:** Validation
+**Summary:** Boss Rezi menolak hasil T-054.2/T-054.3: dua cathedral, debu berkelompok terlalu terang, filigree hanya di atas. Arah baru = satu gerbang di zona Operating System–Pipeline; debu individual `position: fixed` seperti wallpaper Home, warna samar; bunga filigree 1–2 per section, samar.
+**Key Decision/Insight:** Debu boleh `fixed` (pengecualian vs kunci T-054.1 sebelumnya); tracery + filigree tetap ikut dokumen. Bukan dua gerbang, bukan kelompok mote.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, S2b, v19; sisa **T-054.4**.
+
+## [2026-09-08] — Cathedral Breath diperkaya (debu tidak kelihatan)
+**Phase:** Validation
+**Summary:** Boss Rezi menolak hasil T-054.2 yang terlalu tipis. Debu sebelumnya 6 titik kecil di balik veil. Sekarang mote di atas veil, filigree lebih padat, sinar lancip, percikan halus.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-cathedral-*`, pipeline tembus.
+
+## [2026-09-08] — T-054.2 / T-054.3 Cathedral Breath live
+**Phase:** Validation
+**Summary:** Island latar Workflow dipasang: filigree bernapas + debu katedral ikut tinggi dokumen. Loop berhenti saat reduced-motion atau overlay Contact/Quick Info mengunci Lenis.
+**Key Decision/Insight:** Frame diam = elemen biasa + opacity CSS, bukan `animate` Motion yang di-reset `MotionConfig` ke opacity 1.
+**Impact:** `workflow-cathedral-breath-background.tsx`, `.wf-*` di `globals.css`, S2b; sisa **T-054.4**.
+
+## [2026-09-08] — T-054.1 dikunci ulang sebagai Cathedral Breath
+**Phase:** Validation
+**Summary:** Boss Rezi membuka ulang Q&A motif T-054.1 dan memilih gabungan filigree SVG bernapas + debu katedral. Penempelan tetap ikut dokumen sampai sebelum footer.
+**Key Decision/Insight:** Nama arah = **Cathedral Breath**. Filigree/tracery menjadi bentuk utama; debu hanya tekstur pendukung berkelompok agar tidak menjadi particle soup atau membebani mobile. Island kabut wine sebelumnya tidak dilanjutkan.
+**Impact:** `tasks/v19-workflow-living-background.md`, `TASKS.md`, S2b, Snapshot; implementasi baru dimulai di **T-054.2**.
+
+## [2026-09-08] — T-054.1 kunci kabut wine + ikut dokumen
+**Phase:** Validation
+**Summary:** Q&A satu cluster untuk latar hidup `/workflow`. Motif = kabut wine pelan (blob/veil token). Penempelan = ikut tinggi `.wf-page` dan scroll, bukan `position: fixed` seperti Home, bukan hanya hero.
+**Key Decision/Insight:** Rasa “loop video” dari Motion di lapisan UI, bukan MP4/foto. Island berikutnya `workflow-wine-fog-background.tsx` (T-054.2). Footer Contact tetap tanpa kabut.
+**Impact:** `tasks/v19-workflow-living-background.md`, `TASKS.md`, S2b, Snapshot; kode di T-054.2.
+
+## [2026-09-08] — Wallpaper Workflow dicabut; T-054 latar hidup
+**Phase:** Validation
+**Summary:** Percobaan wallpaper bitmap di `/workflow` tetap blur. Boss Rezi minta cabut semua wallpaper, lalu buat task latar hidup seperti video loop tetapi dari komponen asli + Motion (bukan `<video>`).
+**Key Decision/Insight:** Bitmap/foto/damask di rute ini ditolak. Berikutnya T-054.1 Q&A motif, baru island. Home MP4 tidak jadi acuan aset Workflow.
+**Impact:** `workflow-page.tsx`, `globals.css`, hapus `workflow-wallpaper.tsx` + `public/media/workflow-wallpaper.*`; TASKS / PROJECT_STATE / key screens S2b; `tasks/v19-workflow-living-background.md`.
+
+## [2026-09-08] — Wallpaper Workflow diganti + fixed
+**Phase:** Validation
+**Summary:** Boss Rezi ganti aset wallpaper `/workflow` (masih blur) dan minta perilaku scroll sama Home: `position: fixed`. Footer tetap tanpa wallpaper.
+**Key Decision/Insight:** Island `WorkflowWallpaper` nempel viewport; opacity memudar saat `#contact-cta` masuk layar (pola fade Home ke `#about`).
+**Impact:** `workflow-wallpaper.tsx`, `globals.css`, `public/media/workflow-wallpaper.*`, key screens S2b, T-042.4.
+
+## [2026-09-08] — Wallpaper Workflow tajam + di belakang navbar
+**Phase:** Validation
+**Summary:** Boss Rezi minta kualitas wallpaper `/workflow` dipertajam, dan layer merembes ke belakang navbar seperti Home. Footer tetap tanpa wallpaper.
+**Key Decision/Insight:** Aset di-upscale 4× (2304×4096, WebP + JPEG). `.wf-page` memakai negatif margin header (bukan `position: fixed`).
+**Impact:** `workflow-page.tsx`, `globals.css`, `public/media/workflow-wallpaper.*`, key screens S2b, T-042.4.
+
+## [2026-09-08] — Wallpaper Workflow ikut scroll
+**Phase:** Validation
+**Summary:** Boss Rezi minta wallpaper portrait (tangan atas/bawah + kupu-kupu) sebagai background `/workflow`. Gambar ikut scroll bersama halaman dan terbagi per section, bukan nempel viewport seperti Home.
+**Key Decision/Insight:** Satu aset `public/media/workflow-wallpaper.jpg` di-stretch tinggi `.wf-page` (`object-fit: cover`, `object-position: center top`). Bukan `position: fixed`.
+**Impact:** `workflow-page.tsx`, `globals.css` (`.wf-*`), key screens S2b, T-042.4.
+
+## [2026-09-07] — Footer kembali di Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta tambahkan footer ke Home. Pita Contact yang sama dengan Workflow/Projects muncul setelah section About.
+**Key Decision/Insight:** ADR-041 supersede ADR-033. `SiteFooterSlot` dicabut.
+**Impact:** layout locale, IA, key screens, nav, M1/M6, T-053.
+
+## [2026-09-07] — Wallpaper Home fade ke About
+**Phase:** Validation
+**Summary:** Boss Rezi minta wallpaper MP4 di Home memudar saat scroll ke section About, lalu muncul lagi saat scroll kembali ke hero.
+**Key Decision/Insight:** Opacity terikat posisi `#about` (penuh di hero, hilang saat About sampai scroll-margin). Video pause saat opacity ~0.
+**Impact:** `home-hero-wallpaper.tsx`, `smooth-scroll.tsx`, `globals.css`, T-042.1, key screens / IA.
+
+## [2026-09-07] — About jadi section di Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta hapus proof + contact di About, pindahkan hero About ke Home, pertahankan chip About di nav. About bukan halaman.
+**Key Decision/Insight:** ADR-040 / T-052. `/about` redirect ke `#about`. Satu h1 di Home; judul About = h2.
+**Impact:** IA, nav, key screens, JSON-LD, sitemap.
+
+## [2026-09-07] — About hero: artwork + lead penuh
+**Phase:** Validation
+**Summary:** Boss Rezi kunci hero About: hapus badge available; h1 = clamp Home; lead satu paragraf tanpa rest/active; ganti foto Unsplash dengan karya seni viewport + caption “This is not me”.
+**Key Decision/Insight:** ADR-039 / T-042.2 (hero). Copy ID+EN dikunci di chat. `Person.image` tetap kosong.
+**Impact:** `content/about.ts`, `about-page.tsx`, `globals.css`, `public/media/about-hero.jpg`, IA / key screens.
+
+## [2026-09-07] — Fokus ke halaman About
+**Phase:** Validation
+**Summary:** Boss Rezi mengalihkan fokus dari Home ke About. Kerja = **T-042.2** (Q&A kulit lalu kode). IA tetap: hero + Now + potret 4:5 + bukti AI; tanpa offers/proses.
+**Key Decision/Insight:** Copy T-021 tidak dipotong. Home **T-042.1** tetap terbuka; Workflow/Work setelah About.
+**Impact:** `TASKS.md` Fokus; `PROJECT_STATE.md` Current Focus.
+
+## [2026-09-07] — H1 dua baris kiri-atas / kanan-bawah
+**Phase:** Validation
+**Summary:** Boss Rezi minta h1 seperti pola display awal (baris 1 kiri atas, baris 2 kanan bawah), ukuran tetap, lede tidak digeser. Copy ID baris 2 jadi “menjadi produk digital yang mulus.”
+**Key Decision/Insight:** ADR-038 / T-051. EN tidak berubah.
+**Impact:** `content/home.ts`, `.home-hero-line`, ADR-038, IA/key screens.
+
+## [2026-09-07] — Lede di lantai bawah hero
+**Phase:** Validation
+**Summary:** Boss Rezi pindahkan deskripsi Home ke paling bawah viewport, terpisah dari h1.
+**Key Decision/Insight:** ADR-038 / T-050. `justify-between`: h1 atas, lede lantai bawah; wallpaper di tengah.
+**Impact:** `home-page.tsx`, `globals.css`, ADR-038, IA/key screens, T-042.1.
+
+## [2026-09-07] — Lede di bawah h1; skala −2
+**Phase:** Validation
+**Summary:** Boss Rezi pindahkan deskripsi ke bawah h1 dan minta ukuran h1 turun dua tingkat dari clamp raksasa.
+**Key Decision/Insight:** ADR-038 update / T-049. Desktop max ~6.75rem (dari 10.5rem).
+**Impact:** `home-page.tsx`, `globals.css`, IA / key screens.
+
+## [2026-09-07] — H1 dua baris + tautan Workflow
+**Phase:** Validation
+**Summary:** Boss Rezi reverse h1 ke dua baris display raksasa (baris 2 rata kanan) dan minta tautan ajakan cara kerja di deskripsi menuju `/workflow`.
+**Key Decision/Insight:** ADR-038 / T-048. Copy kalimat ADR-036 tetap; wrapping superseded. CTA ID “Lihat cara saya bekerja” / EN “See how I work”.
+**Impact:** `content/home.ts`, `home-page.tsx`, `home-motion.tsx`, `globals.css`, T-042.1.
+
+## [2026-09-07] — Lede Home + Now ke About
+**Phase:** Validation
+**Summary:** Boss Rezi pindahkan currently work ke About, tambah deskripsi di atas h1 Home, h1 lebih besar, teks tidak menutup wallpaper.
+**Key Decision/Insight:** ADR-037 / T-047. About sudah punya WorkplaceLine; Home Now dicabut; lede baru ID/EN.
+**Impact:** `home-page.tsx`, `about-page.tsx`, `content/home.ts`, `04-ux/` / `02-product/`, T-042.1–T-042.2.
+
+## [2026-09-07] — Klaim hero Home baru
+**Phase:** Validation
+**Summary:** Boss Rezi ganti h1 Home jadi kalimat penuh ID/EN; bentuk = wrap, bukan dua baris display pendek. Now tidak diubah.
+**Key Decision/Insight:** ADR-036 / T-046. Bukan reopen T-021.
+**Impact:** `content/home.ts`, `home-motion.tsx`, `globals.css`, `04-ux/` hero Home, T-042.1.
+
+## [2026-09-07] — About vs Workflow
+**Phase:** Validation
+**Summary:** Boss Rezi minta halaman `/about` yang ada menjadi `/workflow`, lalu About baru untuk diri pribadi. Section cara kerja dipisah dari narasi personal.
+**Key Decision/Insight:** ADR-035. Copy T-021 tidak ditulis ulang; hanya pindah lokasi.
+**Impact:** `about-page.tsx`, `workflow-page.tsx`, `lib/nav.ts`, `04-ux/`, M14, T-045 / T-042.2 / T-042.4.
+
+## [2026-09-07] — Label chrome REZI SAKTIVA / Web Engineer
+**Phase:** Validation
+**Summary:** Boss Rezi kunci teks header: nama `REZI SAKTIVA` (huruf besar), pekerjaan `Web Engineer`.
+**Key Decision/Insight:** Label chrome terpisah dari About/QI (`PERSON_CHROME`).
+**Impact:** `content/person.ts`, `site-header.tsx`, ADR-034.
+
+## [2026-09-07] — Nama display + cabut chip Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta font nama sama dengan judul, pekerjaan di samping nama, dan item Home dihapus dari chip nav. Hanya nama yang klik ke Home.
+**Key Decision/Insight:** ADR-034. Copy nama/pekerjaan dari `PERSON` (bukan string baru).
+**Impact:** `site-header.tsx`, `lib/nav.ts`, `globals.css`; T-040.7.
+
+## [2026-09-07] — Home tanpa footer Contact
+**Phase:** Validation
+**Summary:** Boss Rezi minta pita footer Contact dihilangkan dari Home (tetap di About dan Projects).
+**Key Decision/Insight:** ADR-033. Contact di Home hanya tombol chrome + modal.
+**Impact:** `site-footer-slot.tsx`, layout locale, `04-ux/`, T-044.6 / T-042.1.
+
+## [2026-09-07] — Home satu section
+**Phase:** Validation
+**Summary:** Boss Rezi minta Home hanya satu section. Klaim bukti AI pindah ke About (setelah hero). Teaser proyek terpilih dihapus dari Home; halaman Proyek tidak perlu section baru karena katalog sudah ada.
+**Key Decision/Insight:** ADR-032. M4 retired. Copy T-021.2 tidak ditulis ulang — hanya pindah lokasi.
+**Impact:** `home-page.tsx`, `about-page.tsx`, `content/home.ts`, `content/about.ts`; hapus teaser components; `04-ux/` + `02-product/` + T-044 / T-042.1.
+
+## [2026-09-07] — Selected chrome: outline, tanpa splatter
+**Phase:** Validation
+**Summary:** Boss Rezi minta blood splatter dicabut dari nav dan bahasa terpilih, dan bentuk selected (wine/blood) diganti border merah biasa + font merah.
+**Key Decision/Insight:** ADR-031 mengganti ADR-030. Penanda aktif = outline token darah, bukan percikan halaman dan bukan bercak 3D.
+**Impact:** `globals.css`, `layout.tsx`, hapus `blood-splatter-layer.tsx`; ADR-029/030/031; T-038.3 / T-040.6.
+
+## [2026-09-07] — Wallpaper Home tetap di viewport
+**Phase:** Validation
+**Summary:** Boss Rezi minta latar video Home tidak ikut scroll, dan tembus sampai bawah halaman (bukan tertutup seksi Bukti/teaser/footer).
+**Key Decision/Insight:** Wallpaper `position: fixed` di luar `.home-hero`; veil tetap wash token tanpa fade ke warna body 100%. Konten Home + footer di atas wallpaper; About tidak memakai lapisan ini.
+**Impact:** `home-page.tsx`, `home-hero-wallpaper.tsx`, `globals.css`; catatan T-042.1.
+
+## [2026-09-04] — T-041.3 project sheet elevated
+**Phase:** Validation
+**Summary:** Boss Rezi kunci Drawer karya = elevated `#141418` seperti Contact/QI; radius atas 1.15rem; close ghost. Bukan ghost kanvas, bukan lebih tinggi.
+**Key Decision/Insight:** Tiga overlay satu keluarga material. Live/repo tetap di dalam. Reduced-motion mematikan tween overlay.
+**Impact:** `globals.css` `.ps-*`, `project-sheet.tsx`; v15 **T-041** ✅. Berikutnya T-042.
+
+## [2026-09-04] — T-041.2 Quick Info elevated + tab datar
+**Phase:** Validation
+**Summary:** Boss Rezi kunci panel QI = elevated `#141418` seperti Contact; tab tepi bukan nampan wine, melainkan datar vellum + hairline + hover darah.
+**Key Decision/Insight:** Satu keluarga overlay dengan hamburger/Contact. Tab bukan selected chrome (bukan splatter ADR-030).
+**Impact:** `globals.css` `.qi-*`, `quick-info.tsx` komentar; v15 **T-041.2** ✅.
+
+## [2026-09-04] — T-041.1 Contact elevated token
+**Phase:** Validation
+**Summary:** Boss Rezi kunci kulit Contact = kartu elevated `#141418` (bukan ghost, bukan pulau ink, bukan frame lancip). Dialog/Email primer/job tetap.
+**Key Decision/Insight:** Palet sudah gelap; kartu tidak perlu dark-ink independen. Kirim ikut tombol datar T-038.3.
+**Impact:** `globals.css` `.ct-*`, `contact-modal.tsx` komentar; v15 **T-041.1** ✅.
+
+## [2026-09-04] — Bug cursor pisau hilang di modal
+**Phase:** Validation
+**Summary:** Saat Contact (dan overlay lain) terbuka, pisau tidak kelihatan. Native cursor juga `none`, jadi pointer kosong.
+**Key Decision/Insight:** Overlay portal z-90/92 menutupi pisau z-60; state X di scrim malah menyembunyikan bilah. Perbaikan: portal ke `body` + z-index 200 + pisau tetap cursor di overlay.
+**Impact:** `home-motion.tsx`, `globals.css`.
+
+## [2026-09-04] — Cursor pisau berdarah + wallpaper live hero Home
+**Phase:** Validation
+**Summary:** Boss Rezi minta cursor situs jadi pisau berdarah, dan video `dark-magic-v2-live-wallpaper.mp4` jadi latar hero Home (section paling atas). Bukan gelombang T-041; implementasi maju karena dikunci eksplisit di chat.
+**Key Decision/Insight:** Pisau = objek sureal/absurd di kursor (bukan gore medis halaman). Video loop di `.home-hero` dengan veil supaya klaim first viewport tetap terbaca (UX1 / ADR-029). Reduced-motion: tanpa video, tanpa kursor kustom.
+**Impact:** `home-hero-wallpaper.tsx`, `home-page.tsx`, `home-motion.tsx`, `globals.css`, aset `public/cursors/` + `public/media/`; catatan T-042.1 / T-043.2.
+
+## [2026-09-04] — T-040.6 selected = blood splatter unbounded
+**Phase:** Validation
+**Summary:** Selected chrome ganti dari bercak diam menjadi percikan + aliran darah ke seluruh viewport. Luka 3D di label tetap supaya teks terbaca. Overlay tetap di atas lapisan darah.
+**Key Decision/Insight:** Pengecualian T-038.1 / ADR-029 hanya untuk selected (ADR-030). Reduced-motion = tanpa percikan.
+**Impact:** ADR-030, ADR-029 update, `blood-splatter-layer.tsx`, layout locale, `globals.css`, v15 T-040.6.
+
+## [2026-09-04] — T-040.5 ghost pita footer
+**Phase:** Validation
+**Summary:** Pita Contact tanpa nampan. Judul Texturina + CTA teks datar dengan panah; hover aksen darah. Modal Contact yang sama. Legal hairline + LinkedIn/GitHub.
+**Key Decision/Insight:** CTA footer ikut bahasa tombol datar T-038.3, bukan 3D.
+**Impact:** `globals.css`, `site-footer-cta.tsx`, `site-footer.tsx`, v15 T-040 ✅.
+
+## [2026-09-04] — T-040.4 hamburger elevated + bar stain
+**Phase:** Validation
+**Summary:** Lembar hamburger <1024px jadi panel elevated `#141418`, bukan nampan kuning. Item full-width; selected = bercak darah 3D merentang sebagai bar; switcher compact memakai bercak yang sama.
+**Key Decision/Insight:** Contact tetap di luar. Toggle tetap tidak tampil.
+**Impact:** `globals.css`, `site-header.tsx`, v15 T-040.4.
+
+## [2026-09-04] — T-040.1 ghost overlay
+**Phase:** Validation
+**Summary:** Wordmark tetap grotesk (Instrument Sans), lowercase, tracking tipis, vellum. Bar header transparan di atas hero. Contact header + ikon hamburger datar; hover = aksen darah.
+**Key Decision/Insight:** Bukan wash, bukan hairline, bukan bar elevated. CTA footer masih 3D sampai T-040.5.
+**Impact:** `globals.css`, `site-header.tsx`, v15 T-040.1.
+
+## [2026-09-04] — T-040.3 locale switcher = nav
+**Phase:** Validation
+**Summary:** ID/EN memakai bahasa chrome yang sama dengan nav: nampan hilang, selected = bercak darah 3D.
+**Key Decision/Insight:** Toggle tema tetap tersembunyi (hold).
+**Impact:** `globals.css`, v15 T-040.3.
+
+## [2026-09-04] — T-039.2 font + T-040.2 nav bercak
+**Phase:** Validation
+**Summary:** Pasangan dikunci di implementasi: Texturina (judul besar) + Instrument Sans (body/nav). Nav desktop: nampan dihilangkan; selected jadi bercak darah 3D.
+**Key Decision/Insight:** Bukan Pirata One / Inter. Wordmark, locale switcher, hamburger, tombol Contact belum (T-040.1/3/4/5).
+**Impact:** `app/fonts.ts`, `layout.tsx`, `globals.css`, `sliding-pill-group.tsx`, `design-tokens.md`, v15 T-039/T-040.
+
+## [2026-09-04] — T-039 token wine + kanvas dingin
+
+**Phase:** Validation
+**Summary:** Palet dikunci dan ditulis ke `globals.css`. Light di-hold (comment + force dark). Toggle disembunyikan. Font blackletter belum dipasang (T-039.2).
+**Key Decision/Insight:** Aksen `#6B1C23`, kanvas `#0B0B0D`, teks `#E8E4DC`. Bentuk bercak/nampan hilang = T-040, bukan T-039.
+**Impact:** `app/globals.css`, `layout.tsx`, `theme-mode.ts`, `site-header.tsx`, `design-tokens.md`, v15 T-039.
+
+## [2026-09-04] — T-038 selesai; T-039 berikutnya
+
+**Phase:** Validation
+**Summary:** T-038.1–T-038.5 dikunci. Tipe: blackletter display (judul besar saja) + grotesk body. Berikutnya token T-039.
+**Key Decision/Insight:** Matriks: copy/IA/overlay tetap; light hold; selected bercak 3D; tombol datar; transisi stutter; bukan Hess.
+**Impact:** v15 T-038 Done; TASKS/PROJECT_STATE fokus T-039.
+
+## [2026-09-04] — T-038.3 chrome + transisi dikunci
+
+**Phase:** Validation
+**Summary:** Selected = bercak darah 3D (bukan tombol, bukan pill). Container kuning hilang. Tombol chrome polos/datar + aksen darah tipis hover. Transisi halaman = hard cut + stutter frame (jump horror), bukan Hess.
+**Key Decision/Insight:** Bentuk darah hanya penanda aktif. CTA bukan bercak. Glitch = stutter/jump, bukan RGB/VHS. Reduced-motion tetap instan.
+**Impact:** v15 T-038.3 ✅; T-043.1; ADR-025 ritme Hess tidak wajib (sudah dinote ADR-029).
+
+## [2026-09-04] — T-038.3 selected = bercak darah, bukan tombol
+
+**Phase:** Validation
+**Summary:** Selected bukan pill dan bukan button. Gambar Boss Rezi = **bercak darah** (stain), tetap 3D. Hanya penanda item aktif.
+**Key Decision/Insight:** Bentuk darah ≠ CTA. Contact/submit tetap tombol (bahasa belum dikunci). Container kuning tetap hilang.
+**Impact:** `tasks/v15-visual-identity.md` T-038.3.
+
+## [2026-09-04] — T-038.3 container vs selected (nav)
+
+**Phase:** Validation
+**Summary:** Bahasa chrome dipecah: **selected** = pil geser (putih/krem di dark); **container** = nampan kuning. Selected → darah. Container **dihilangkan** (bukan polos, bukan nampan).
+**Key Decision/Insight:** Nav + switcher tanpa tray. Hanya pil darah yang menandai item aktif. Lembar hamburger bukan chip tray — panel tetap, bukan kuning (T-040.4). Contact/submit/transisi belum dikunci.
+**Impact:** `tasks/v15-visual-identity.md` T-038.3.
+
+## [2026-09-04] — T-038.1–T-038.2 pembacaan + light hold
+
+**Phase:** Validation
+**Summary:** Boss Rezi menerima usulan pembacaan empat kata (deadpan / satu justaposisi diam / gothic sebagai struktur / aksen darah wine-clot). Light mode di-hold atau di-comment — jangan dihapus.
+**Key Decision/Insight:** T-038.1 ✅. T-038.2 ✅: default ship dark; token light di-comment di T-039; toggle disembunyikan selama hold; `theme-toggle.tsx` + cookie tetap. Bukan dark-only permanen.
+**Impact:** ADR-029, ADR-021 (update), v15 T-038.1–T-038.2, `design-tokens.md`, `04-ux/` + M6 (kalimat default light), `COMPLETE_TASK.md`. Berikutnya T-038.3.
+
+## [2026-09-04] — Migrasi tema: absurdism / surrealism / Gothic / dark-blood
+
+**Phase:** Validation
+**Summary:** Boss Rezi ingin ganti seluruh design produksi lewat tanya-jawab per komponen. Arah seni: absurdism, surrealism, Gothic Art, dark and blood. Batas dikunci: **kulit visual saja** (palet, tipe, chrome, gerak, mood); copy, IA, dan perilaku overlay tetap.
+**Key Decision/Insight:** ADR-029. Metode = Q&A per permukaan lalu kode (bukan big-bang). Stack shadcn + Tailwind tetap. Default light/dark belum dikunci (T-038.2 / ADR-021). T-031 mengantri sampai token baru (T-039). Clarity first viewport tetap mengikat.
+**Impact:** `decisions/ADR-029-visual-identity-gothic-blood.md`; `tasks/v15-visual-identity.md` (T-038…T-043); `TASKS.md`; `PROJECT_STATE.md`; ADR-028/025 update; `tasks/v13-metadata.md` (T-031 ⏸️); `BRAINSTORM.md`; `COMPLETE_TASK.md`.
+
+## [2026-09-04] — Now masuk hero Home
+
+**Phase:** Validation
+**Summary:** Setelah foto cutout dicabut, Boss Rezi minta hero diperbaiki dan seksi Now (current work) dipindah ke first viewport.
+**Key Decision/Insight:** Hero 100svh = klaim dua baris rapat di atas + Now (kicker + tautan Insvire) di bawah. Bukan seksi terpisah setelah fold. Bukan tile karya. Credibility tetap di bawah fold.
+**Impact:** `home-page.tsx`, `globals.css`; `04-ux` IA + key-screen-patterns; `COMPLETE_TASK.md`.
+
+## [2026-09-04] — Hero Home tanpa foto diri
+
+**Phase:** Validation
+**Summary:** Boss Rezi tidak ingin foto di Home; potret hanya di About. Cutout Unsplash di hero Home dicabut; komposisi first viewport = tipe oversized + whitespace.
+**Key Decision/Insight:** Home = klaim + bukti karya, bukan wajah. About = satu-satunya permukaan R1 untuk foto diri. Bukan ganti IA; bukan ADR (cutout dulu arah seni mockup, bukan baseline UX). `Person.image` tetap ditahan sampai aset About nyata.
+**Impact:** `home-page.tsx`, `content/home.ts`, `globals.css`; `04-ux` IA + key-screen-patterns; `PROJECT_STATE.md`; catatan foto v11/v13; `COMPLETE_TASK.md`. `design-mockups/` tidak diubah (ADR-024).
+
 ## [2026-09-03] — Dependabot PR #61 ditutup
 
 **Phase:** Validation

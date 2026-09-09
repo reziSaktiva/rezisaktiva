@@ -12,7 +12,7 @@ R1 memakai **Static-first (SSG)**: halaman digenerate saat build dari konten di 
 
 Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sini hanya kontrak perilaku.
 
-> **Update (2026-08-15/16, ADR-019/ADR-020):** Route halaman R1 = Home, About, Work index (`/projects`, M9); Contact **bukan** route — modal global yang dibuka dari chrome (ADR-019), termasuk form client-side singkat (email + message) tanpa backend wajib.
+> **Update (2026-08-15/16, ADR-019/ADR-020; 2026-09-07, ADR-035; 2026-09-08, ADR-040):** Route halaman R1 = Home (termasuk `#about`), Workflow (`/workflow`, M14), Work index (`/projects`, M9). `/about` redirect ke `#about`. Contact **bukan** route — modal global yang dibuka dari chrome (ADR-019), termasuk form client-side singkat (email + message) tanpa backend wajib.
 
 ---
 
@@ -42,11 +42,12 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 
 | Entry | Perilaku |
 | ----- | -------- |
-| `/[id\|en]/`, `/[id\|en]/about`, `/[id\|en]/projects` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/about`, `/en/projects`) |
+| `/[id\|en]/`, `/[id\|en]/workflow`, `/[id\|en]/projects` | Sajikan halaman yang di-build untuk locale itu (contoh: `/id/`, `/id/workflow`, `/en/projects`) |
+| `/[id\|en]/about` | Redirect ke `/[id\|en]#about` (ADR-040) — bukan halaman konten |
 | `/` atau URL tanpa locale | Redirect ke locale default (geo → browser → preferensi setelah switcher) per ADR-014 |
 | Contact modal (tombol di chrome) | Overlay client-side; bukan route/page baru (ADR-019) |
 | Quick Info drawer (tab tepi kanan) | Overlay client-side; bukan route/page baru (ADR-022) |
-| Project sheet (tile Work index + teaser Home) | Overlay dari bawah; bukan route (ADR-027) |
+| Project sheet (tile Work index) | Overlay dari bawah; bukan route (ADR-027) |
 | Switcher | Navigasi ke sibling path locale; set preferensi untuk kunjungan `/` berikutnya saja |
 | Link satelit | Keluar situs (GitHub/LinkedIn) |
 | `mailto:` / form modal | Dibuka klien email pengguna, atau submit ringan dari form modal (ADR-019) — bukan API domain produk |

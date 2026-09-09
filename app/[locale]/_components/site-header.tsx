@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useId, useState, useSyncExternalStore } from "react";
+import { useEffect, useId, useState, type MouseEvent } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -14,37 +14,55 @@ import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/locale";
+import { PERSON_CHROME } from "@/content/person";
 import {
   CONTACT_LABEL,
   MENU_LABEL,
   MENU_TOGGLE_LABEL,
   NAV_ITEMS,
   NAV_LABELS,
+  homeHref,
+  isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
 import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
 import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
-import { ThemeToggle } from "./theme-toggle";
+import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
 
 /**
- * Site chrome — T-013 (ADR-020): nav Home/About/Proyek sebagai link,
- * Contact sebagai tombol pembuka modal (T-016, ADR-019).
+ * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
+ * Proses Kerja / Proyek; nama = tautan Home (bukan chip Home). Contact =
+ * tombol modal (T-016, ADR-019).
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
  * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
+ * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
+ * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
  */
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
+  const hash = useLocationHash();
   const isMobile = useMobileNavBreakpoint();
   const chipColorVars = useChipColorVars();
   const { open } = useContactModal();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileNavPath, setMobileNavPath] = useState(pathname);
   const mobileNavId = useId();
+
+  useEffect(() => {
+    if (!isHomePath(pathname, locale) || window.location.hash !== "#about") {
+      return;
+    }
+    // Wait for page-vt-lock to clear — rAF alone races freezeWindowScrollAtTop
+    // and stopped Lenis after Workflow/Projects → About (ADR-040).
+    return whenPageTransitionUnlocked(() => {
+      scrollToPageId("about");
+    });
+  }, [pathname, locale]);
 
   if (mobileNavPath !== pathname) {
     setMobileNavPath(pathname);
@@ -61,9 +79,16 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
       aria-label="Main navigation"
       className={cn("site-top-nav", isMobile && "site-top-nav--compact")}
     >
-      <NextLink href={`/${locale}`} className="site-brand-heading">
-        rezisaktiva
-      </NextLink>
+      <div className="site-brand flex items-baseline gap-3">
+        <NextLink
+          href={homeHref(locale)}
+          className="site-brand-heading"
+          aria-current={isHomePath(pathname, locale) ? "page" : undefined}
+        >
+          {PERSON_CHROME.name}
+        </NextLink>
+        <span className="site-brand-role">{PERSON_CHROME.jobTitle}</span>
+      </div>
       {!isMobile ? (
         <SlidingPillGroup
           className="site-nav-chip"
@@ -72,7 +97,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
           layoutKey={pathname}
         >
           {NAV_ITEMS.map((item) => {
-            const selected = isNavItemActive(pathname, locale, item);
+            const selected = isNavItemActive(pathname, locale, item, hash);
             return (
               <Button
                 key={item.key}
@@ -83,7 +108,12 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 data-selected={selected ? "true" : undefined}
                 aria-current={selected ? "page" : undefined}
               >
-                <NextLink href={item.href(locale)}>
+                <NextLink
+                  href={item.href(locale)}
+                  onClick={(event) => {
+                    handleAboutNavClick(event, item.key, locale, pathname);
+                  }}
+                >
                   {NAV_LABELS[locale][item.key]}
                 </NextLink>
               </Button>
@@ -149,7 +179,12 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                   layoutKey={pathname}
                 >
                   {NAV_ITEMS.map((item) => {
-                    const selected = isNavItemActive(pathname, locale, item);
+                    const selected = isNavItemActive(
+                      pathname,
+                      locale,
+                      item,
+                      hash,
+                    );
                     return (
                       <Button
                         key={item.key}
@@ -160,7 +195,17 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                         aria-current={selected ? "page" : undefined}
                         onClick={() => setMobileNavOpen(false)}
                       >
-                        <NextLink href={item.href(locale)}>
+                        <NextLink
+                          href={item.href(locale)}
+                          onClick={(event) => {
+                            handleAboutNavClick(
+                              event,
+                              item.key,
+                              locale,
+                              pathname,
+                            );
+                          }}
+                        >
                           {NAV_LABELS[locale][item.key]}
                         </NextLink>
                       </Button>
@@ -173,11 +218,9 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
           </>
         ) : null}
         <Magnetic>
-          <ThemeToggle locale={locale} />
-        </Magnetic>
-        <Magnetic>
           <Button
             type="button"
+            variant="ghost"
             size="sm"
             onClick={open}
             className="site-contact-button"
@@ -193,19 +236,48 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
 /** Hamburger <1024px (ADR-020). Selaras `@media (min-width: 1024px)` desktop. */
 const MOBILE_NAV_QUERY = "(max-width: 1023px)";
 
-function useMobileNavBreakpoint(): boolean {
-  const subscribe = useCallback((onStoreChange: () => void) => {
-    const media = window.matchMedia(MOBILE_NAV_QUERY);
-    media.addEventListener("change", onStoreChange);
-    return () => media.removeEventListener("change", onStoreChange);
+function useLocationHash(): string {
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    const sync = () => {
+      setHash(window.location.hash);
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
   }, []);
 
-  const getSnapshot = useCallback(
-    () => window.matchMedia(MOBILE_NAV_QUERY).matches,
-    [],
-  );
+  return hash;
+}
 
-  const getServerSnapshot = useCallback(() => false, []);
+function handleAboutNavClick(
+  event: MouseEvent<HTMLAnchorElement>,
+  key: string,
+  locale: Locale,
+  pathname: string,
+): void {
+  if (key !== "about" || !isHomePath(pathname, locale)) {
+    return;
+  }
+  event.preventDefault();
+  window.history.replaceState(null, "", `/${locale}#about`);
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+  scrollToPageId("about");
+}
 
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+function useMobileNavBreakpoint(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(MOBILE_NAV_QUERY);
+    const sync = () => {
+      setIsMobile(media.matches);
+    };
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+
+  return isMobile;
 }

@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { animate, EASE_PAGE_TRANSITION, readCssDurationMs } from "@/lib/motion";
+import { readCssDurationMs } from "@/lib/motion";
 import { MAIN_CONTENT_ID } from "@/lib/site-chrome";
 import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
 
@@ -66,7 +66,9 @@ function resolveInternalHref(anchor: HTMLAnchorElement): string | null {
     return null;
   }
 
-  return `${url.pathname}${url.search}`;
+  // Keep hash (e.g. /id#about) — stripping it sends Workflow/Projects → Home
+  // hero instead of the About section (ADR-040).
+  return `${url.pathname}${url.search}${url.hash}`;
 }
 
 function sanitizeClone(root: ParentNode): void {
@@ -132,8 +134,6 @@ function captureOutgoing(scrollY: number): HTMLElement {
 }
 
 function clearClones(): void {
-  cloneAnimation?.stop();
-  cloneAnimation = null;
   document.querySelectorAll(".page-vt-clone").forEach((node) => node.remove());
 }
 
@@ -153,7 +153,21 @@ function setLiveParked(parked: boolean): void {
   }
 }
 
-function applyDocumentLock(lock: boolean): void {
+function clearFilmOverlay(): void {
+  document.querySelectorAll(".page-vt-film").forEach((node) => node.remove());
+}
+
+function mountFilmOverlay(): void {
+  if (prefersReducedMotion() || document.querySelector(".page-vt-film")) {
+    return;
+  }
+  const film = document.createElement("div");
+  film.className = "page-vt-film";
+  film.setAttribute("aria-hidden", "true");
+  document.body.appendChild(film);
+}
+
+function applyDocumentLock(lock: boolean, parkLive = true): void {
   const root = document.documentElement;
   if (lock) {
     // page-vt-lock pauses Lenis (inertia) but CSS keeps overflow-y: scroll
@@ -161,10 +175,13 @@ function applyDocumentLock(lock: boolean): void {
     // hidden/clip here.
     root.classList.add("page-vt-lock");
     root.classList.remove("page-vt-entering");
-    setLiveParked(true);
+    if (parkLive) {
+      setLiveParked(true);
+    }
     freezeWindowScrollAtTop();
     return;
   }
+  clearFilmOverlay();
   root.classList.remove("page-vt-lock", "page-vt-entering");
   setLiveParked(false);
 }
@@ -184,18 +201,13 @@ let queuedHref: string | null = null;
 let startQueuedNav: NavigateFn | null = null;
 let rafId = 0;
 let safetyTimer = 0;
-const runningTimers: number[] = [];
-let cloneAnimation: { stop: () => void } | null = null;
 
 const SAFETY_BUFFER_MS = 750;
 const REPLACED_FROM = "__replaced__";
-
-function clearRunningTimers(): void {
-  for (const id of runningTimers) {
-    window.clearTimeout(id);
-  }
-  runningTimers.length = 0;
-}
+/** Fallback = token T-043.1 di `:root` (bukan ritme Hess 1s / 0.4s). */
+const PAGE_EXIT_FALLBACK_MS = 200;
+const PAGE_ENTER_FALLBACK_MS = 160;
+const PAGE_ENTER_DELAY_FALLBACK_MS = 200;
 
 function cancelRaf(): void {
   if (rafId) {
@@ -236,17 +248,17 @@ function finishEnter(): void {
 }
 
 function failSafeUnlock(): void {
-  clearRunningTimers();
   clearClones();
+  clearFilmOverlay();
   releaseLock();
   flushQueuedNav();
 }
 
 function safetyTimeoutMs(): number {
   return (
-    readCssDurationMs("--duration-page-exit", 1000) +
-    readCssDurationMs("--delay-page-enter", 400) +
-    readCssDurationMs("--duration-page-enter", 400) +
+    readCssDurationMs("--duration-page-exit", PAGE_EXIT_FALLBACK_MS) +
+    readCssDurationMs("--delay-page-enter", PAGE_ENTER_DELAY_FALLBACK_MS) +
+    readCssDurationMs("--duration-page-enter", PAGE_ENTER_FALLBACK_MS) +
     SAFETY_BUFFER_MS
   );
 }
@@ -272,13 +284,12 @@ function armTransition(options: {
   isBusy = true;
   queuedHref = null;
   clearSafetyTimer();
-  clearRunningTimers();
   cancelRaf();
   if (!options.clone) {
     clearClones();
   }
 
-  applyDocumentLock(true);
+  applyDocumentLock(true, Boolean(options.clone));
 
   navEpoch += 1;
   const epoch = navEpoch;
@@ -297,41 +308,16 @@ function armTransition(options: {
       if (pendingNav?.epoch !== epoch) {
         return;
       }
-      // T-036.4: clone exit via Motion tween, token Hess identik
-      // (1s + cubic-bezier(0.65, 0, 0.43, 1)). Enter tetap CSS
-      // (fill-mode both, T-025.10).
-      const exitMs = readCssDurationMs("--duration-page-exit", 1000);
-      cloneAnimation?.stop();
-      cloneAnimation = animate(
-        clone,
-        {
-          transform: [
-            "translateY(0) scale(1)",
-            "translateY(-100dvh) scale(0.5)",
-          ],
-        },
-        {
-          duration: exitMs / 1000,
-          ease: EASE_PAGE_TRANSITION,
-          onComplete: () => {
-            cloneAnimation = null;
-            clone.remove();
-          },
-        },
-      );
+      // T-043.1: discrete stutter on the snapshot, then hard-cut to live.
+      // Clone stays until enter so the last held frame is the cut point.
+      clone.classList.add("page-vt-stutter-exit");
       if (options.push && options.pushHref) {
         options.push(options.pushHref);
       }
+      mountFilmOverlay();
     });
-    const exitMs = readCssDurationMs("--duration-page-exit", 1000);
-    runningTimers.push(
-      window.setTimeout(() => {
-        if (clone.isConnected) {
-          clone.remove();
-        }
-        cloneAnimation = null;
-      }, exitMs + 80),
-    );
+  } else {
+    mountFilmOverlay();
   }
 
   armSafety(epoch);
@@ -354,10 +340,10 @@ function retargetBusyNav(target: string): void {
 }
 
 /**
- * Transisi halaman mengikuti ritme karolinahess.com tanpa View Transitions
- * API. State di luar React supaya remount Strict Mode tidak mematikan clone.
- * Exit clone = Motion tween (T-036.4); enter live = CSS snapshot (T-025.7–10).
- * `html.page-vt-lock` tetap `overflow-y: scroll` (track tidak hilang).
+ * Transisi halaman T-043.1: hard cut + stutter frame (T-038.3), bukan Hess
+ * scale dan bukan View Transitions API. State di luar React supaya remount
+ * Strict Mode tidak mematikan clone. `html.page-vt-lock` tetap
+ * `overflow-y: scroll` (track tidak hilang, T-025.8).
  */
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -475,8 +461,14 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     }
 
     const epoch = pendingNav.epoch;
-    const enterDelay = readCssDurationMs("--delay-page-enter", 400);
-    const enterMs = readCssDurationMs("--duration-page-enter", 400);
+    const hasClone = Boolean(pendingNav.clone);
+    const enterDelay = hasClone
+      ? readCssDurationMs("--delay-page-enter", PAGE_ENTER_DELAY_FALLBACK_MS)
+      : 0;
+    const enterMs = readCssDurationMs(
+      "--duration-page-enter",
+      PAGE_ENTER_FALLBACK_MS,
+    );
     const wait = Math.max(
       0,
       enterDelay - (performance.now() - pendingNav.startedAt),
@@ -486,7 +478,9 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       if (pendingNav?.epoch !== epoch) {
         return;
       }
+      // Hard cut: drop the snapshot in the same turn the live page appears.
       document.documentElement.classList.add("page-vt-entering");
+      clearClones();
       setLiveParked(false);
     }, wait);
     const doneTimer = window.setTimeout(() => {

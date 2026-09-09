@@ -44,7 +44,7 @@ Bukan riset formal wajib (interview/survei sebagai gerbang baseline).
 
 1. Memperdalam (bukan mengganti) ICP dual founder/PO dari `target-market.md`
 2. Menjelaskan jobs & friction pengunjung saat mengevaluasi Rezi sebagai product builder
-3. Memetakan journey R1 Clarity (Home → About/teaser → Contact) plus jalur sekunder tipis
+3. Memetakan journey R1 Clarity (Home `#about` / Workflow / Work index → Contact) plus jalur sekunder tipis
 4. Menghasilkan insight yang actionable untuk UX tanpa menambah Must MVP
 5. Mencatat asumsi berisiko tinggi dan cara validasi ringan opsional
 
@@ -68,7 +68,7 @@ Bukan riset formal wajib (interview/survei sebagai gerbang baseline).
 | ID | Asumsi | Risiko jika salah | Mitigasi |
 | -- | ------ | ----------------- | -------- |
 | A1 | Dua archetipe primer setara (early founder & PO) membaca lapisan pesan yang sama | Pesan terlalu “indie” atau terlalu “korporat” | Salinan netral product-builder; teaser outcome, bukan tone tunggal |
-| A2 | Kunjungan singkat cukup untuk clarity jika Home + About + Contact koheren | Pengunjung tetap bingung tanpa case detail | Teaser karya di Home; magnet case di R2 (bukan blocker R1) |
+| A2 | Kunjungan singkat cukup untuk clarity jika Home + About section + Workflow + Work index + Contact koheren | Pengunjung tetap bingung tanpa case detail | Presence = Work index + sheet; Workflow = cara kerja; teaser Home retired (ADR-032 / ADR-020 / ADR-035 / ADR-040). Magnet case di R2 (bukan blocker R1). |
 | A3 | Soft CTA (email/tautan) cukup untuk inbound berkualitas di R1 | Opportunity hilang karena friction form/booking | Could Have form/calendar di product; validasi setelah live |
 | A4 | Hiring manager / klien project terlayani oleh sinyal sekunder di permukaan yang sama | Mereka bounce karena “bukan CV developer” | Secondary journey tipis: sinyal fullstack + cara kerja tanpa rebrand |
 | A5 | Bilingual geo-aware mengurangi alienasi SEA vs non-SEA | Default bahasa salah → bounce | Detail di UX/Engineering; switcher selalu ada (ADR-002) |

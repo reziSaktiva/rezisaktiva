@@ -1,56 +1,29 @@
 import type { Locale } from "@/lib/locale";
-import { HOME_TEASER_IDS, WORK_ITEMS, type WorkItem } from "./work";
 
 /**
- * Copy Home. Dikunci T-021.2 (h1/bukti/seksi karya/contact 2026-08-20;
- * teaser 2026-08-28). Nama/outcome teaser = katalog T-021.5, satu sumber.
- * Set teaser dikunci di `content/data/projects.json` (`homeTeaserIds`).
+ * Copy Home. Klaim + dua baris display ADR-038 / T-051.
+ * Lede + tautan Workflow ADR-037 / ADR-038. Now bukan di Home.
+ * Contact footer tetap T-021.2.
  */
 
-export type HomeTeaserItem = WorkItem;
-
-function teasersFor(locale: Locale): readonly HomeTeaserItem[] {
-  const byId = new Map(WORK_ITEMS[locale].map((item) => [item.id, item]));
-  return HOME_TEASER_IDS.map((id) => {
-    const item = byId.get(id);
-    if (!item) {
-      throw new Error(`Home teaser: work id ${id} missing for locale ${locale}`);
-    }
-    return item;
-  });
-}
-
 export interface HomeCopy {
+  lede: string;
+  ledeCta: string;
   h1: [string, string];
-  nowLabel: string;
-  buktiLabel: string;
-  buktiEmphasis: string;
-  buktiRest: string;
-  workLabel: string;
-  workTitle: string;
-  workAll: string;
-  teasers: readonly HomeTeaserItem[];
   contactLabel: string;
   contactTitle: string;
   contactBody: string;
   contactCta: string;
 }
 
-export const HERO_PORTRAIT_SRC =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop";
-
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
-    h1: ["Ceritamu", "lewat produk."],
-    nowLabel: "Sekarang",
-    buktiLabel: "Bukti",
-    buktiEmphasis: "AI tidak menghilangkan pekerjaan saya.",
-    buktiRest:
-      " AI mengangkat status saya — dari developer, jadi engineer of my own AI ecosystem.",
-    workLabel: "Proyek terpilih",
-    workTitle: "Beberapa yang udah dipakai orang.",
-    workAll: "Semua proyek →",
-    teasers: teasersFor("id"),
+    lede: "Adaptabilitas adalah skill utama bagi seorang developer. Mengadopsi AI agents memungkinkan saya fokus ke arsitektur tingkat tinggi dan merealisasikan produk digital rumit dengan jauh lebih cepat.",
+    ledeCta: "Lihat cara saya bekerja",
+    h1: [
+      "Saya mengubah ide kompleks",
+      "menjadi produk digital yang mulus.",
+    ],
     contactLabel: "Contact",
     contactTitle: "Ada project?",
     contactBody:
@@ -58,16 +31,9 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     contactCta: "Hubungi saya",
   },
   en: {
-    h1: ["Your story,", "in the product."],
-    nowLabel: "Now",
-    buktiLabel: "Proof",
-    buktiEmphasis: "AI didn't take my job.",
-    buktiRest:
-      " It leveled me up — from developer to engineer of my own AI ecosystem.",
-    workLabel: "Selected projects",
-    workTitle: "A few things people actually use.",
-    workAll: "All projects →",
-    teasers: teasersFor("en"),
+    lede: "Adaptability is the ultimate developer skill. Embracing AI agents allowed me to focus on high-level architecture and bring complex digital products to life faster.",
+    ledeCta: "See how I work",
+    h1: ["I transform complex ideas", "into seamless digital products."],
     contactLabel: "Contact",
     contactTitle: "Got a project?",
     contactBody: "Tell me what you're building. If it's a fit, we go from there.",

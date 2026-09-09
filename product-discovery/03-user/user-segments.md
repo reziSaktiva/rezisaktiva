@@ -77,7 +77,7 @@ Kedua segmen primer **setara** — tidak ada “persona utama tunggal”. Lapisa
 
 | Segmen | Peran terhadap situs | Dilayani bagaimana |
 | ------ | -------------------- | ------------------ |
-| **S3 Hiring manager / tech lead** | Evaluasi peluang role / kolaborasi | Sinyal fullstack + cara kerja di About/teaser; pesan tetap product builder |
+| **S3 Hiring manager / tech lead** | Evaluasi peluang role / kolaborasi | Sinyal fullstack + cara kerja di About section + Workflow; pesan tetap product builder |
 | **S4 Calon klien project** | Evaluasi hire per engagement | Soft path Contact; tanpa pricing / hard sell (ADR-008) |
 | **S5 Peer / community** | Recognition jangka panjang | Craft & kejelasan narasi; bukan driver CTA |
 | **S6 Founder/PO luar SEA** | Evaluasi sama, geo berbeda | Bilingual geo-aware; bukan fokus optimasi konten utama |

@@ -40,7 +40,7 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 
 1. ICP dual founder/PO sudah terkunci — User phase memperdalam, bukan mengganti.
 2. Gesekan terbesar hari ini ada di **merakit narasi** dan **menilai fit cepat**, bukan di ketiadaan akun sosial.
-3. Hybrid lean (Home/About/Contact + teaser) cukup untuk job Must R1 bila clarity & soft CTA kuat.
+3. Hybrid lean (Home termasuk About section / Workflow / Work index / Contact) cukup untuk job Must R1 bila clarity & soft CTA kuat. **Update (ADR-032 / ADR-035 / ADR-040):** teaser Home retired; `#proof` dicabut; destinasi halaman = Home, Workflow, Work index.
 4. Hiring/klien butuh jalur, tetapi **bukan** brand kedua.
 5. Case detail adalah desire (PP11/J6), bukan blocker clarity — selaras ADR-010 (R2).
 6. Evidence baseline = asumsi + validasi Boss Rezi; confidence journey live masih sedang sampai ada draft/live + riset ringan.
@@ -52,8 +52,8 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 | ID | Insight | Konsekuensi |
 | -- | ------- | ----------- |
 | I1 | **Clarity is the product of the first visit** — pengunjung membayar dengan perhatian singkat | UX harus memenangkan Orient dalam viewport awal |
-| I2 | **Satu lapisan pesan, dua penekanan evaluasi** — P1 ↔ P2 beda pertanyaan, sama brand | Jangan split Home jadi dua mode; bedakan lewat About/teaser emphasis |
-| I3 | **Teaser mengantar trust; case memperdalam** — memaksa case di R1 menunda destination | Pertahankan teaser Must; case Later (R2 magnet) |
+| I2 | **Satu lapisan pesan, dua penekanan evaluasi** — P1 ↔ P2 beda pertanyaan, sama brand | Jangan split Home jadi dua mode; bedakan lewat About / Workflow / Work index (bukan teaser Home — ADR-032 / ADR-035) |
+| I3 | **Karya mengantar trust; case memperdalam** — memaksa case di R1 menunda destination | Presence = Work index + sheet M10 (teaser Home retired, ADR-032). Jangan paksa halaman case di R1. |
 | I4 | **Soft path menentukan NS-2** — tanpa Contact yang tenang, clarity tidak jadi inbound | Contact = first-class surface, bukan footer afterthought |
 | I5 | **Secondary success = signal, not conversion UI** — P3/P4 sukses jika menemukan bukti/kontak | Jangan tambah job board / pricing untuk “melayani” mereka |
 | I6 | **Bahasa adalah bagian journey, bukan chrome kosmetik** — J7 memengaruhi bounce early | Geo-default + switcher masuk acceptance UX R1 |
@@ -77,9 +77,11 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 # Product Implications
 
 > **Catatan (2026-08-15/16):** Statement di bawah adalah kondisi saat Baseline User v1.0 dikunci (2026-08-07). Sejak itu, ADR-019/020/021/022 (fase Development) menambah Must baru (Contact modal, Work index, theme toggle, Quick Info) — perubahan tersebut berasal dari keputusan UX/produk lanjutan, bukan temuan fase User, sehingga tidak mengubah kesimpulan I1–I7 di atas.
+>
+> **Catatan (2026-09-08):** ADR-040 membuat About = section Home (tanpa `#proof`); ADR-042 mengganti isi Workflow. Insight I1–I7 tetap acuan fase User; permukaan hidup mengikuti ADR terbaru.
 
 * **Tidak ada perubahan Must** terhadap ADR-010–012 dari temuan User (per baseline 2026-08-07).
-* Perkuat penekanan: Home clarity, teaser berkualitas, About risk-reducer, Contact soft.
+* Perkuat penekanan: Home clarity, About risk-reducer, Workflow cara kerja, Work index + sheet sebagai presence, Contact soft.
 * Could Have (form/calendar) hanya jika A3 terbukti lemah setelah live.
 * R2 magnet tetap jawaban untuk J6 — jangan naikkan ke Must diam-diam.
 
@@ -90,7 +92,7 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 ## For UX Discovery
 
 * Susun IA & flows dari SC1–SC5 dan target journey R1
-* Prioritaskan first-screen messaging, teaser pattern, About structure, Contact soft
+* Prioritaskan first-screen messaging, About / Workflow / Work index, Contact soft
 * Rancang secondary path tanpa nav/IA terpisah untuk hiring
 * Spec bilingual geo-aware + switcher sebagai acceptance
 * Pakai opportunity areas di `user-journey.md` sebagai backlog pertanyaan desain
@@ -108,7 +110,7 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 
 | # | Pertanyaan | Kapan dijawab |
 | - | ---------- | ------------- |
-| OQ1 | Apakah teaser 1–3 item cukup tanpa case untuk P2 yang risk-averse? | Setelah draft/live + riset ringan |
+| OQ1 | Apakah teaser 1–3 item cukup tanpa case untuk P2 yang risk-averse? | **Closed sebagian (ADR-032):** teaser Home retired; presence = Work index + sheet M10. Validasi P2 tetap observasi pasca-live |
 | OQ2 | Soft CTA mana yang paling natural (email vs LinkedIn vs keduanya)? | **Closed (ADR-014)** — Email primer; LinkedIn & GitHub satelit; tanpa WA/IG di R1 |
 | OQ3 | Seberapa agresif availability line tanpa terasa sales? | UX copy / eksekusi konten |
 | OQ4 | Apakah hiring inbound cukup besar sehingga secondary path perlu diperkuat? | Observasi pasca-R1 |

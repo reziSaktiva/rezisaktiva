@@ -8,7 +8,9 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 
 **Paket dikunci Boss Rezi (2026-08-31):** identitas head + icons + media share.
 
-**Antrian (2026-09-01):** migrasi shadcn **T-032…T-037 diutamakan**. **T-037 Done (2026-09-03)** — T-031 boleh dikerjakan. `themeColor` (T-031.4) harus selaras token shadcn di `app/globals.css` (bukan Astryx).
+**Antrian (2026-09-09):** **T-043** ✅. **T-031** kembali antrian (ikon/OG/`themeColor` ikut kulit gothic-blood). Token T-039 sudah.
+
+**Antrian lama (2026-09-01):** migrasi shadcn **T-032…T-037 diutamakan**. **T-037 Done (2026-09-03)** — T-031 boleh dikerjakan *setelah* token baru, bukan sebelum.
 
 ---
 
@@ -30,7 +32,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 | Area | Cara | Isi |
 | ---- | ---- | --- |
 | **Icons** | File-based di `app/` (`icon`, `apple-icon`) dan/atau `metadata.icons` | Favicon multi-size + Apple touch. Sumber = aset brand **rezisaktiva**, bukan `public/next.svg` / globe scaffold |
-| **Media (openGraph.images + twitter.images)** | File-based `opengraph-image` / `twitter-image` **atau** path di `pageMetadata` ke file di `public/` / `app/` | Satu kartu share situs (≈1200×630). Boleh sama untuk semua destinasi R1. Bukan foto Unsplash hero/About |
+| **Media (openGraph.images + twitter.images)** | File-based `opengraph-image` / `twitter-image` **atau** path di `pageMetadata` ke file di `public/` / `app/` | Satu kartu share situs (≈1200×630). Boleh sama untuk semua destinasi R1. Bukan foto Unsplash About |
 | **Identitas** | `generateMetadata` / `metadata` root atau `pageMetadata` | `applicationName` = brand; `authors` / `creator` / `publisher` dari `content/person.ts` (`PERSON.name`) + URL About; `formatDetection` (matikan auto-link telepon/alamat yang tidak ada) |
 | **Robots meta** | `metadata.robots` | Izinkan index/follow publik — selaras `app/robots.ts`, bukan `noindex` |
 | **Manifest** | `app/manifest.ts` (ringan) | `name` / `short_name` / `icons` / `display` — **bukan** service worker / install-prompt PWA penuh |
@@ -54,7 +56,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 
 ## T-031 — Lengkapi Metadata API (ikon + media + identitas)
 
-* **Status:** ⏳ Open — **prioritas** (setelah T-037)
+* **Status:** ⏳ Open — gerbang T-043 tertutup; ikon/OG/`themeColor` ikut kulit gothic-blood
 * **Domain:** Engineering
 * **Output:** head R1 punya ikon brand, kartu share, authors/applicationName; title/description T-021.7 tidak ditulis ulang
 * **Keputusan paket:** tabel di atas (2026-08-31)

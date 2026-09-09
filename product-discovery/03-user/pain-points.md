@@ -64,7 +64,7 @@ Pain mengikuti rantai **visibility → narrative → evaluasi & kontak** (ADR-00
 | PP1 | Tidak ada satu URL yang merangkai cerita + bukti + kontak | P1–P4, Rezi | High | Often | Must ease |
 | PP2 | Harus merakit narasi dari repo/CV sendiri | P1, P2 | High | Often | Must ease |
 | PP3 | Positioning tidak langsung terbaca di permukaan | P1, P2 | High | Often | Must ease |
-| PP4 | Outcome karya tidak terlihat tanpa menggali | P1, P2 | High | Often | Must ease (teaser) |
+| PP4 | Outcome karya tidak terlihat tanpa menggali | P1, P2 | High | Often | Must ease (Work index + sheet) |
 | PP5 | AI / stack diklaim tanpa konteks jujur → distrust | P1, P2 | Med | Sometimes | Must ease (Honest AI edge) |
 | PP6 | Tidak tahu channel kontak yang “aman” / soft | P1, P2, P4 | High | Often | Must ease |
 | PP7 | Bahasa default terasa salah untuk konteks geo | P1, P2, S6 | Med | Sometimes | Must ease (fondasi) |
@@ -78,7 +78,7 @@ Pain mengikuti rantai **visibility → narrative → evaluasi & kontak** (ADR-00
 # Severity Summary
 
 * **Must ease di R1:** PP1–PP4, PP6; PP5/PP7/PP8 sebagai bagian clarity
-* **Terima sementara / R2:** PP11 (teaser dulu; case kemudian)
+* **Terima sementara / R2:** PP11 (Work index/sheet dulu; case kemudian)
 * **Sadar tidak diselesaikan di situs:** PP10 (pricing N/A by design)
 * **Secondary thin:** PP9
 

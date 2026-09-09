@@ -7,6 +7,7 @@ import {
   type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
+import { createPortal } from "react-dom";
 import {
   DURATION_FAST_MAX,
   DURATION_MEDIUM_MAX,
@@ -111,7 +112,7 @@ export function WordReveal({
 }
 
 /**
- * Word reveal hero — mockup `runWordReveal()` (120ms + i * 80ms).
+ * Word reveal hero — dua baris display (ADR-038). Tween token sebelumnya.
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
   return (
@@ -186,9 +187,11 @@ export function Magnetic({ children }: { children: ReactNode }) {
 }
 
 /**
- * Cursor ring desktop — `.home-cursor-ring` (ADR-017, T-036.5).
+ * Cursor pisau berdarah — desktop, pointer halus.
  * Off di sentuh dan `prefers-reduced-motion`. `div` + `left`/`top` + CSS
- * `translate(-50%, -50%)` — bukan Motion `x`/`y` (menimpa centering).
+ * translate ke ujung bilah — bukan Motion `x`/`y` (menimpa hotspot).
+ * Portal ke `document.body` supaya z-index di atas Dialog/Sheet/Drawer
+ * (overlay Contact z-90/92) — jangan di dalam pohon layout.
  */
 export function CursorRing() {
   const reduceMotion = useReducedMotion();
@@ -208,36 +211,38 @@ export function CursorRing() {
     return null;
   }
 
-  return <CursorRingFollow />;
+  return <CursorKnifeFollow />;
 }
 
-function CursorRingFollow() {
-  const ringRef = useRef<HTMLDivElement>(null);
+function CursorKnifeFollow() {
+  const knifeRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
   const current = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const ring = ringRef.current;
-    if (!ring) {
+    const knife = knifeRef.current;
+    if (!knife) {
       return;
     }
 
+    document.documentElement.classList.add("cursor-knife");
+
     target.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     current.current = { ...target.current };
-    ring.style.left = `${target.current.x}px`;
-    ring.style.top = `${target.current.y}px`;
+    knife.style.left = `${target.current.x}px`;
+    knife.style.top = `${target.current.y}px`;
 
     const onMove = (event: MouseEvent) => {
       target.current = { x: event.clientX, y: event.clientY };
-      ring.classList.add("is-active");
+      knife.classList.add("is-active");
     };
     const onLeave = () => {
-      ring.classList.remove("is-active", "is-hover", "is-close");
+      knife.classList.remove("is-active", "is-hover", "is-text");
     };
-    const onEnterInteractive = () => ring.classList.add("is-hover");
-    const onLeaveInteractive = () => ring.classList.remove("is-hover");
-    const onEnterClose = () => ring.classList.add("is-close");
-    const onLeaveClose = () => ring.classList.remove("is-close");
+    const onEnterInteractive = () => knife.classList.add("is-hover");
+    const onLeaveInteractive = () => knife.classList.remove("is-hover");
+    const onEnterText = () => knife.classList.add("is-text");
+    const onLeaveText = () => knife.classList.remove("is-text");
 
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
@@ -245,26 +250,29 @@ function CursorRingFollow() {
     const isInside = (node: EventTarget | null, selector: string) =>
       node instanceof Element && Boolean(node.closest(selector));
 
-    const closeScrim = "[data-overlay-scrim]";
+    const textField = "input, textarea, select, [contenteditable='true']";
+    const interactive =
+      "a, button, [role='button'], [role='tab'], summary";
     const onPointerOver = (event: MouseEvent) => {
-      if (isInside(event.target, closeScrim)) {
-        onEnterClose();
+      if (isInside(event.target, textField)) {
+        onEnterText();
         onLeaveInteractive();
+        return;
       }
-      if (isInside(event.target, "a, button")) {
+      if (isInside(event.target, interactive)) {
         onEnterInteractive();
       }
     };
     const onPointerOut = (event: MouseEvent) => {
       if (
-        isInside(event.target, closeScrim) &&
-        !isInside(event.relatedTarget, closeScrim)
+        isInside(event.target, textField) &&
+        !isInside(event.relatedTarget, textField)
       ) {
-        onLeaveClose();
+        onLeaveText();
       }
       if (
-        isInside(event.target, "a, button") &&
-        !isInside(event.relatedTarget, "a, button")
+        isInside(event.target, interactive) &&
+        !isInside(event.relatedTarget, interactive)
       ) {
         onLeaveInteractive();
       }
@@ -276,13 +284,14 @@ function CursorRingFollow() {
     const tick = () => {
       current.current.x += (target.current.x - current.current.x) * 0.18;
       current.current.y += (target.current.y - current.current.y) * 0.18;
-      ring.style.left = `${current.current.x}px`;
-      ring.style.top = `${current.current.y}px`;
+      knife.style.left = `${current.current.x}px`;
+      knife.style.top = `${current.current.y}px`;
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
 
     return () => {
+      document.documentElement.classList.remove("cursor-knife");
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseover", onPointerOver);
@@ -291,5 +300,17 @@ function CursorRingFollow() {
     };
   }, []);
 
-  return <div ref={ringRef} className="home-cursor-ring" aria-hidden="true" />;
+  return createPortal(
+    <div ref={knifeRef} className="home-cursor-knife" aria-hidden="true">
+      <img
+        className="home-cursor-knife-blade"
+        src="/cursors/bloody-knife.png"
+        alt=""
+        width={256}
+        height={256}
+        draggable={false}
+      />
+    </div>,
+    document.body,
+  );
 }

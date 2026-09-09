@@ -1,38 +1,22 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { JsonLdScript } from "@/app/[locale]/_components/json-ld-script";
-import { buildJsonLd } from "@/lib/json-ld";
+import { notFound, redirect } from "next/navigation";
 import { LOCALES, isLocale } from "@/lib/locale";
-import { pageMetadata } from "@/lib/page-metadata";
-import { AboutPage } from "../_components/about-page";
+import { aboutHref } from "@/lib/nav";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
+/** ADR-040: `/about` bukan halaman — redirect ke Home `#about`. */
+export default async function AboutRedirect({
   params,
-}: PageProps<"/[locale]/about">): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) {
-    return {};
-  }
-  return pageMetadata(locale, "about", "about");
-}
-
-export default async function AboutRoute({
-  params,
-}: PageProps<"/[locale]/about">) {
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
     notFound();
   }
 
-  return (
-    <>
-      <JsonLdScript data={buildJsonLd(locale, "about")} />
-      <AboutPage locale={locale} />
-    </>
-  );
+  redirect(aboutHref(locale));
 }

@@ -12,6 +12,7 @@ export function SiteFooterCta({ label }: { label: string }) {
     <Magnetic>
       <Button
         type="button"
+        variant="ghost"
         size="lg"
         onClick={open}
         className="home-contact-cta"

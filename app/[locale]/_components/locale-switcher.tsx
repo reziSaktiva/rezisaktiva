@@ -47,7 +47,7 @@ export function LocaleSwitcher({
     }
     const target = value as Locale;
     document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=31536000`;
-    navigate(hrefForLocale(pathname, target));
+    navigate(`${hrefForLocale(pathname, target)}${window.location.hash}`);
   };
 
   return (

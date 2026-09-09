@@ -15,7 +15,7 @@ Prioritas mengikuti urutan investasi **clarity → presence → craft** (ADR-006
 * **Could** = nilai tambah jika kapasitas/konten memungkinkan
 * **Won't (current release)** = magnet penuh, media, sales, atau sistem berat — dijadwalkan belakangan atau ditolak untuk arah produk
 
-ID modul merujuk `feature-modules.md` (M1–M13).
+ID modul merujuk `feature-modules.md` (M1–M14).
 
 ---
 
@@ -38,16 +38,18 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 
 | ID | Item | Alasan singkat |
 | -- | ---- | -------------- |
-| M1 | Home (identity + destination) | Pintu clarity: siapa / bukti ringkas / next step |
-| M2 | About (narrative) | Memperdalam trust untuk evaluasi founder/PO |
+| M1 | Home (identity + destination) | Pintu clarity: lede / klaim / next step (ADR-032 / ADR-037) |
+| M2 | About (narrative, section Home) | Siapa Rezi — Now + lead + artwork (ADR-040); bukan `#proof` |
+| M14 | Workflow | Cara kerja (prinsip, pipeline Human/AI, ADR Vault — ADR-042) |
 | M3 | Contact (soft path) | Jalur inbound tanpa hard sell / harga |
-| M4 | Work teaser (section di Home) | Presence bukti tanpa arsitektur case |
 | M5 | Language (bilingual geo-aware + switcher) | ADR-002; relevan SEA + pintu terbuka |
 | M6 | Site chrome & satellites | Nav lean + footer + tautan satelit + **toggle tema (ADR-021)** |
 | M7 | Destination meta (title/description/OG dasar) | URL layak jadi “link utama” |
 | M9 | Work index (katalog karya) | **Naik dari Won't → Must** (override ADR-020, 2026-08-15); nav "Karya" perlu destination nyata |
 | M10 | Project context sheet | **Must R1** (ADR-027): overlay dari bawah; bukan `/work/[slug]`; T-026 sebelum T-018 |
 | M13 | Quick Info panel | Overlay global glanceable — **Must R1 (ADR-022)**; bukan route |
+
+M4 Work teaser **retired** (ADR-032) — bukan Must; presence karya = M9 + M10.
 
 ---
 
@@ -57,7 +59,7 @@ Perubahan naik/turun bucket material setelah Product Baseline → ADR baru.
 | --------- | ---------- | -------------- |
 | Soft availability line | Satu kalimat terbuka kolaborasi/opportunity | Memperkuat soft presence |
 | Paritas makna ID/EN | Salinan setara, bukan dump mesin | Bilingual yang kredibel |
-| Teaser actionable | Highlight → Work index (lalu sheet M10), bukti live/repo di dalam sheet bila ada | ADR-027 |
+| **Karya actionable** | Tile Work index → sheet M10; live/repo di dalam sheet | ADR-027 / ADR-032 (bukan teaser Home) |
 | Aksesibilitas dasar | Heading, kontras, fokus keyboard | Clarity juga berarti bisa dipakai |
 | Motion sebagai identitas visual | Scroll-triggered reveal, micro-interaction halus, easing hero (**ADR-017**) | Naik dari Could minimal; tetap tunduk batas clarity-first, bukan modul halaman baru |
 
@@ -100,7 +102,7 @@ Urutan pengerjaan disarankan (konten + surface), tetap dalam satu rilis MVP:
 | 1 | Clarity permukaan | M1 Home (+ klaim & next step) |
 | 2 | Soft path | M3 Contact |
 | 3 | Narrative | M2 About |
-| 4 | Presence bukti lean | M4 Work teaser |
+| 4 | Presence bukti lean | M9 Work index (M4 retired, ADR-032) |
 | 5 | Lintas halaman | M5 Language + M6 Chrome (termasuk toggle tema, ADR-021) + M13 Quick Info (ADR-022) |
 | 6 | Destination hygiene | M7 Meta |
 | 7 | Poles Should | Availability, paritas ID/EN, a11y dasar |
@@ -119,7 +121,7 @@ Detail jadwal rilis → `release-roadmap.md` (T-002.5).
 4. **Should ≠ Must** — ship Must lengkap lebih penting daripada poles sempurna.
 5. **Could tidak mencuri kapasitas** — form/case awal hanya jika Must+Should (termasuk motion identitas, ADR-017) sudah aman.
 6. **Selaras dual north star** — prioritas yang tidak membantu recall atau soft inbound path dipertanyakan.
-7. **Satu sumber modul** — ID M1–M13 dari `feature-modules.md`; jangan invent modul paralel di sini.
+7. **Satu sumber modul** — ID M1–M14 dari `feature-modules.md` (M4 retired); jangan invent modul paralel di sini.
 
 ---
 
@@ -147,7 +149,7 @@ Prioritas dianggap cukup jika:
 * `README.md` — dokumentasi fase ini
 * `product-scope.md` — batas produk
 * `mvp-definition.md` — definisi MVP
-* `feature-modules.md` — katalog modul M1–M13
+* `feature-modules.md` — katalog modul M1–M14 (M4 retired)
 * `release-roadmap.md` — jadwal rilis (berikutnya)
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0

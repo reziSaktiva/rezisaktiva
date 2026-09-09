@@ -8,9 +8,13 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 
 # Overview
 
-**Keputusan scope journey:** R1 primer (Home → About/teaser/Work index → Contact) sebagai poros; hiring manager & calon klien mendapat jalur sekunder tipis pada permukaan yang sama. Journey R2 magnet (case detail) dicatat sebagai later, bukan Must peta ini.
+**Keputusan scope journey:** R1 primer (Home → About / Workflow / Work index → Contact) sebagai poros; hiring manager & calon klien mendapat jalur sekunder tipis pada permukaan yang sama. Journey R2 magnet (case detail) dicatat sebagai later, bukan Must peta ini.
 
 > **Update (2026-08-15/16, ADR-019/ADR-020/ADR-021/ADR-022):** Work index (M9) naik Must R1 — masuk surface set. Contact final sebagai modal global (ADR-019), bukan halaman. Theme toggle (ADR-021) dan Quick Info overlay (ADR-022) melengkapi chrome di semua stage.
+>
+> **Update (2026-09-07, ADR-032 / ADR-035):** Teaser Home retired. Presence karya = Work index + sheet.
+>
+> **Update (2026-09-08, ADR-040 / ADR-042):** About = section `#about` di Home (tanpa `#proof`). Workflow = lima blok decision-driven, bukan offers/accordion.
 
 ---
 
@@ -46,7 +50,7 @@ Dokumen ini memetakan journey pengunjung website portofolio **rezisaktiva** — 
 | **Primary actor** | P1 & P2 (setara) |
 | **Secondary actor** | P3, P4 (tipis) |
 | **Horizon** | Satu kunjungan singkat → soft next step |
-| **Surface set** | Home, About, Work index, Contact modal, work teaser di Home, language switcher, theme toggle, Quick Info overlay |
+| **Surface set** | Home, About, Workflow, Work index, Contact modal, language switcher, theme toggle, Quick Info overlay |
 | **North stars** | Clarity (NS-1) + inbound berkualitas (NS-2) |
 
 ---
@@ -74,8 +78,8 @@ Tanpa situs milik sendiri (hari ini):
 | ----- | ----------------- | ------- | ---- |
 | **Arrive** | Positioning langsung terbaca | Home (above fold) | J1 |
 | **Orient** | Paham product builder → fullstack → AI edge jujur | Home | J1, E2 |
-| **Evidence** | Credibility line (1 klaim non-kartu) + 1–3 work teaser; opsi ke About | Home | J2, J4 |
-| **Deepen** (opsional) | Narasi & cara kerja | About | J4, E4 |
+| **Evidence** | Siapa di About (`#about`); cara kerja di Workflow (ADR-042); karya di Work index (sheet M10) | Home `#about`, Workflow, Work | J2, J4 |
+| **Deepen** (opsional) | Narasi pribadi & cara kerja | About, Workflow | J4, E4 |
 | **Language** (bila perlu) | Switcher kapan saja | Global chrome | J7 |
 | **Decide** | Cukup percaya untuk next step | — | E1, E3 |
 | **Act** | Soft CTA (email / tautan) via Contact modal | Contact (overlay, ADR-019) | J3 |
@@ -113,7 +117,7 @@ Titik kritis: **Orient → Evidence**. Jika gagal di sini, Act jarang terjadi (N
 Peluang untuk UX (bukan spesifikasi UI):
 
 1. **First-screen clarity** — jawaban “siapa & untuk siapa” tanpa scroll panjang
-2. **Bukti proporsional** — credibility line + teaser outcome mengalahkan list stack; kedua blok tidak boleh menduplikasi isi
+2. **Bukti proporsional** — klaim AI di About + cara kerja di Workflow + karya di Work index mengalahkan list stack; jangan duplikasi tech bingo
 3. **About sebagai risk-reducer** — terutama untuk P2
 4. **Contact sebagai soft landing** — kurangi awkward; jangan sales desk
 5. **Secondary signals without rebrand** — P3 dapat sinyal tanpa mengubah Home jadi CV

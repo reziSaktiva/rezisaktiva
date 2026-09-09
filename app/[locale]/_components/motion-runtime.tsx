@@ -6,8 +6,8 @@ import { PageTransitionProvider } from "./page-transition";
 import { SmoothScroll } from "./smooth-scroll";
 
 /**
- * Fondasi gerak locale (ADR-025): Lenis + transisi halaman Hess.
- * Provider membungkus children (bukan `<div>` layout).
+ * Fondasi gerak locale (ADR-025 / T-043.1): Lenis + transisi halaman
+ * hard-cut stutter. Provider membungkus children (bukan `<div>` layout).
  * `reducedMotion="user"`: transform/layout dimatikan lewat Motion, bukan
  * cabang `initial` yang beda SSR vs klien (hydration).
  */

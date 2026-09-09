@@ -16,6 +16,7 @@ import {
   subscribeThemeMode,
   type ThemeMode,
 } from "@/lib/theme-mode";
+import { ThemeInitScript } from "./theme-init-script";
 
 interface ThemeModeContextValue {
   mode: ThemeMode;
@@ -58,9 +59,10 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
    * Sinkronkan `style.colorScheme` + class `dark` di `<html>` tiap kali
    * `mode` berubah (toggle tanpa reload). Jangan lewat `className` React di
    * `<html>` — itu menimpa class Lenis / overlay lock. Nilai awal: cookie
-   * SSR untuk `colorScheme` + script `beforeInteractive` (`classList`).
+   * SSR untuk `colorScheme` + `ThemeInitScript` (`classList`).
    * `data-theme` di-set di markup SSR (`app/layout.tsx`) dan di-sync di sini
-   * saat toggle tanpa reload. Jangan `className` React di `<html>`.
+   * saat toggle tanpa reload. Class `dark` awal: `ThemeInitScript`
+   * (`useServerInsertedHTML` + `classList`). Jangan `className` React di `<html>`.
    */
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -78,7 +80,10 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
   );
 
   return (
-    <ThemeModeContext value={value}>{children}</ThemeModeContext>
+    <ThemeModeContext value={value}>
+      <ThemeInitScript />
+      {children}
+    </ThemeModeContext>
   );
 }
 
@@ -120,8 +125,9 @@ export function useThemeMode(): ThemeModeContextValue {
  * `globals.css` (komentar di sana menunjuk balik ke sini).
  */
 const CHIP_COLOR_BY_MODE: Record<ThemeMode, { bg: string; fg: string }> = {
-  light: { bg: "#0a0f1a", fg: "#edeae1" },
-  dark: { bg: "#edeae1", fg: "#0a0f1a" },
+  /* T-038.3 selected = bercak darah; T-039.1 wine. Hold: sama di kedua mode. */
+  light: { bg: "#6B1C23", fg: "#E8E4DC" },
+  dark: { bg: "#6B1C23", fg: "#E8E4DC" },
 };
 
 /**

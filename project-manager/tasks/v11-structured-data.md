@@ -17,7 +17,7 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 3. **JSON-LD** (`<script type="application/ld+json">`), bukan Microdata/RDFa. Route `page.tsx` tetap Server Component (code-discipline).
 4. **Locale.** Graph ID dan EN terpisah, `inLanguage` sesuai halaman. Makna setara, bukan string yang sama dipaksa dua locale.
 5. **Tanpa klaim palsu.** Tidak ada rating, review, harga, alamat kantor, follower count, atau URL karya yang tidak ada di `WORK_ITEMS.href`.
-6. **Foto.** `Person.image` **jangan diisi** selama hero/About masih placeholder Unsplash (Google: jangan markup gambar default/placeholder). Nyala setelah aset foto nyata.
+6. **Foto.** `Person.image` **jangan diisi** selama About memakai karya seni yang secara eksplisit bukan Rezi (ADR-039). Home tidak menampilkan foto diri. Nyala hanya jika aset foto nyata Rezi tampil di halaman.
 7. Perpanjangan **M7 Destination meta** (sudah ada title/OG/canonical T-017 + T-021.7). Bukan modul produk baru; **tidak perlu ADR** kecuali nanti mau Organization, `/contact`, atau schema di `/work/[slug]`.
 
 **Baca dulu (semua subtask):** `product-discovery/02-product/feature-modules.md` (M7), `product-scope.md` (bukan toko/blog/perusahaan), `04-ux/information-architecture.md` (kontrak meta), `06-engineering/code-discipline.md` (SSG, page tetap server), ADR-015, ADR-019 (Contact = modal, bukan halaman), ADR-027 (sheet ≠ route), `content/README.md`, `lib/page-metadata.ts`, [schema.org](https://schema.org/docs/schemas.html), [Google structured data gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery), [ProfilePage](https://developers.google.com/search/docs/appearance/structured-data/profile-page), [Site name / WebSite](https://developers.google.com/search/docs/appearance/site-names).
@@ -30,10 +30,10 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | ---- | ------- | ------------ |
 | `WebSite` | Home (`/[locale]`) | `name` = brand `rezisaktiva`; `url` = `getSiteUrl()`; `inLanguage`; `publisher`/`author` → Person `@id` |
 | `Person` | Didefinisikan sekali, di-`@id`-kan; About memakai sebagai `mainEntity` | Lihat mapping di bawah |
-| `ProfilePage` | About saja | `mainEntity` = Person. Home **bukan** ProfilePage (bukan halaman bio murni — Google menolak homepage toko/campuran sebagai profil) |
+| `ProfilePage` | **Tidak dipakai** (ADR-040: About = section Home; Google menolak homepage campuran sebagai profil) | — |
 | `WebPage` | Home | `name`/`description`/`url` dari `SITE_META` + canonical T-017.2; `isPartOf` WebSite; `about` → Person `@id` |
 | `CollectionPage` | Work index | Sama pola WebPage, `mainEntity` = ItemList |
-| `BreadcrumbList` | About + Work | Label dari `NAV_LABELS`; URL dari `localePath` |
+| `BreadcrumbList` | Workflow + Work | Label dari `NAV_LABELS`; URL dari `localePath` |
 | `ItemList` + `CreativeWork` | Work index | Satu `ListItem` per `WORK_ITEMS`; `name`/`description`/`dateCreated` (tahun)/`url` bila `href` ada; `author` → Person `@id` |
 
 **Di luar paket (jangan ditambah di task ini):**
@@ -58,7 +58,7 @@ Bukan copy. Sitemap/robots/`html lang`/CWV = [`v12-seo.md`](v12-seo.md) **T-030*
 | `description` | `QUICK_INFO_COPY[locale].bio` |
 | `email` | `CONTACT_EMAIL` |
 | `sameAs` | `CONTACT_LINKS` (`content/data/links.json`) |
-| `url` | Canonical About (`localePath(locale, "about")`) — halaman profil |
+| `url` | Canonical Home (`pageUrl(locale, "")`) — About bukan halaman profil (ADR-040) |
 | `knowsAbout` | `QUICK_INFO_COPY[locale].services` |
 | `worksFor` | Nested `Organization` dari `PERSON.worksFor` (nama + URL situs perusahaan). Bukan graph Organization untuk situs ini — situs tetap pribadi. |
 | `image` | Kosong sampai foto nyata |
@@ -82,3 +82,5 @@ Item Work tanpa `href`: **jangan** mengarang URL; omit `url`.
 - [x] **T-029.2** — Builder `lib/` (mis. `lib/json-ld.ts`) yang menerima `locale` + surface (`home` \| `about` \| `work`) dan mengembalikan `@graph` sesuai paket. Hanya impor `content/` + `getSiteUrl` / `localePath` + `NAV_LABELS` + `SITE_META` / `WORK_ITEMS`. Tanpa literal copy.
 - [x] **T-029.3** — Pasang di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Satu `<script type="application/ld+json">` per halaman. Contact modal / Quick Info / sheet **tidak** punya graph sendiri.
 - [x] **T-029.4** — Verifikasi: (1) ubah satu string di `content/` → JSON-LD ikut (tes unit atau setara); (2) item tanpa `href` tanpa `url`; (3) tidak ada `Person.image` placeholder; (4) cek Rich Results Test / validator schema.org pada URL lokal atau preview — catat hasil di COMPLETE_TASK, bukan screenshot wajib.
+
+> **Update (2026-09-08, ADR-040):** Surface JSON-LD = `home` \| `workflow` \| `work`. Mount di Home / Workflow / Work index. `about/page.tsx` = redirect, tanpa graph. `Person.url` = Home.

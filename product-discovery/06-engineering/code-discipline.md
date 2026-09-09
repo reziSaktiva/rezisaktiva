@@ -27,18 +27,18 @@ Skala token CSS berbasis **4px** (`var(--spacing-*)` di `app/globals.css`). Util
 Ritme yang dipakai di kode produksi:
 
 * Internal rapat (ikon + teks, item list): `gap-2`
-* Kicker + judul: `gap-3` — `home-page.tsx`
+* Kicker + judul: `gap-3`
 * Isi satu section (kicker → body → grid): `gap-8` pada `flex flex-col` + `className="home-container"`
-* Section halaman: ritme viewport di CSS scoped (`.home-section`, `.about-section`) — `clamp()` / vw di class scoped, bukan di JSX
+* Section halaman: ritme viewport di CSS scoped (`.about-section`, `.work-hero`) — `clamp()` / vw di class scoped, bukan di JSX
 
 **Pakai ini**
 
 ```tsx
-<section className="home-section">
-  <div className="home-container flex flex-col gap-8">
+<section className="about-section">
+  <div className="flex flex-col gap-8">
     <div className="flex flex-col gap-3">
       <p className="home-kicker">{kicker}</p>
-      <h2 className="home-work-title">{title}</h2>
+      <h2 className="about-section-title">{title}</h2>
     </div>
   </div>
 </section>
@@ -61,9 +61,9 @@ Di `globals.css`: utamakan `var(--spacing-4)` bukan `16px` / `1rem` acak. Nilai 
 
 Urutan (atas = coba dulu):
 
-1. **Primitf shadcn yang sudah ada** — `components/ui/` (Dialog, Sheet, Drawer, Button, …) yang sudah di-skin ke palet rezisaktiva. Cek `pnpm exec shadcn docs <Name>` sebelum mengarang. Jangan menambah primitf katalog (Sidebar, Chart, Sonner, …) tanpa task.
+1. **Primitf shadcn yang sudah ada** — `components/ui/` (Dialog, Sheet, Drawer, Button, …) yang sudah di-skin ke palet **gothic-blood** (ADR-029). Cek `pnpm exec shadcn docs <Name>` sebelum mengarang. Jangan menambah primitf katalog (Sidebar, Chart, Sonner, …) tanpa task. **Bukan** pill kuning / nampan krem sebagai kontrak identitas (itu arsip T-038; klausul “bukan redesain” ADR-028 poin 2 sudah diganti ADR-029).
 2. **Layout Tailwind token-backed** — `flex` / `flex-col` / `grid` / `gap-*` / `items-center`. Bukan `<div>` hanya untuk spasi. Bukan `space-y-*`.
-3. **`className` scoped + `app/globals.css`** — chrome, overlay, craft yang utility tidak cukup. Prefix class per permukaan (`.site-*`, `.ct-*`, `.qi-*`, `.ps-*`, `.home-*`, `.about-*`, `.page-vt-*`). Token: `var(--spacing-*)`, `var(--background)`, `var(--chip-*)`, `--elev-3d`.
+3. **`className` scoped + `app/globals.css`** — chrome, overlay, craft yang utility tidak cukup. Prefix class per permukaan (`.site-*`, `.ct-*`, `.qi-*`, `.ps-*`, `.home-*`, `.about-*`, `.page-vt-*`). Token: `var(--spacing-*)`, `var(--background)`, `var(--chip-*)` (elevated, bukan kuning), `var(--color-accent)`. `--elev-3d` boleh ada di CSS sebagai sisa craft, **bukan** identitas yang wajib ditiru.
 4. **Token tema** — `:root` (light) dan `.dark` di `globals.css` + `@theme inline`. Class `dark` di `<html>` (cookie `rz-theme`). Bukan file `theme/` Astryx. Bukan override palet default shadcn zinc.
 5. **StyleX / Astryx** — **dilarang.** Compiler StyleX tidak di-wire (T-013.4); paket dicabut di T-037. Jangan impor `@astryxdesign` / `@stylexjs`.
 6. **Jangan** `style={{…}}` untuk layout/warna. **Jangan** `!important` kecuali sudah ada preseden sadar di file yang sama (overlay Contact theme-independent).
@@ -100,7 +100,7 @@ Default Next App Router = **Server Component**. `"use client"` adalah *opt-in* u
 
 | Jenis | Kapan | Contoh produksi |
 | ----- | ----- | ---------------- |
-| **Server** (tanpa directive) | Tidak ada hook, event, browser API, context klien | `app/[locale]/page.tsx`, `about/page.tsx`, `home-page.tsx`, `overlay-icons.tsx`, `content/*.ts`, `content/data/*.json` |
+| **Server** (tanpa directive) | Tidak ada hook, event, browser API, context klien | `app/[locale]/page.tsx`, `workflow/page.tsx`, `home-page.tsx`, `about-page.tsx` (`AboutSection`), `overlay-icons.tsx`, `content/*.ts`, `content/data/*.json` |
 | **`"use client"`** | `useState` / `useEffect` / context, event handler, Lenis, overlay (focus trap), theme toggle | `contact-modal.tsx`, `site-header.tsx`, `theme-toggle.tsx`, `page-transition.tsx` |
 | **`"use server"`** | Server Actions (fungsi mutasi yang dipanggil dari klien) | **Tidak ada di R1.** Contact = `mailto:` + form klien (ADR-019). Jangan menambah Action “karena tren.” |
 
@@ -114,14 +114,13 @@ Batas:
 **Pakai ini**
 
 ```tsx
-// app/[locale]/about/page.tsx — server
-export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
-}
+// app/[locale]/about/page.tsx — server; redirect saja (ADR-040)
 export default async function AboutRoute({ params }: PageProps<"/[locale]/about">) {
   const { locale } = await params;
-  return <AboutPage locale={locale} />;
+  redirect(aboutHref(locale));
 }
+
+// Section About hidup di Home (`AboutSection` di `about-page.tsx`)
 ```
 
 **Jangan itu**
@@ -180,6 +179,7 @@ Mengubah default ke SSR, ISR, streaming, atau Action backend **memerlukan ADR ba
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
 * `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md` — superseded oleh ADR-028
 * `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-manager/decisions/ADR-029-visual-identity-gothic-blood.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/PROJECT_STATE.md`

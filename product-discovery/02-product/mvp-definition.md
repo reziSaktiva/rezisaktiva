@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan MVP website portofolio pribadi **rezisaktiva**.
 
 # Overview
 
-MVP = **kerangka clarity yang layak dijadikan destination**: halaman inti Home, About, dan Work index (`/work`, override ADR-020); teaser karya di Home; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
+MVP = **kerangka clarity yang layak dijadikan destination**: tiga halaman — Home (hero + section About `#about`, ADR-040), Workflow (`/workflow`, ADR-035 / ADR-042), dan Work index (`/projects`, override ADR-020); Home = h1 atas, lede lantai bawah, pita footer (ADR-038 / ADR-041); Now di About; Contact sebagai modal global (ADR-019) + Quick Info overlay (ADR-022) + theme toggle (ADR-021); soft CTA; dan bilingual geo-aware.
 
 Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial. Magnet ringan (case/proses singkat) **direncanakan segera setelah** kerangka ini hidup — bukan blocker ship pertama.
 
@@ -19,7 +19,7 @@ Bukan MVP perfection craft, bukan katalog case penuh, bukan mesin growth sosial.
 1. Satu URL resmi yang Rezi bisa tunjuk sebagai rumah identitas profesional
 2. Founder/PO paham: Rezi = product builder (fullstack + AI edge) dalam kunjungan singkat
 3. Soft path kontak siap dipakai (tanpa hard sell / harga)
-4. Presence cukup (bukan CV online kosong) lewat About + teaser karya
+4. Presence cukup (bukan CV online kosong) lewat About + Work index
 5. Fondasi bilingual siap; detail deteksi geo dikunci di UX/Engineering
 
 Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`success-metrics.md`).
@@ -30,17 +30,17 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 
 | Item | Keterangan |
 | ---- | ---------- |
-| **Home** | Positioning jelas; bukti ringkas; teaser karya; arah ke About/Contact |
-| **About** | Narasi product builder; konteks pengalaman fullstack; AI edge jujur. Label chrome: Proses Kerja / Process (ADR-020) |
+| **Home** | Positioning jelas (lede + klaim) + section About `#about` + pita footer; arah ke Workflow / Contact |
+| **About** | Section Home (bukan halaman): Now + sapaan + lead + artwork (ADR-040 / ADR-039). Chip chrome: Tentang / About (ADR-035). `/about` redirect. Tanpa `#proof` |
+| **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042). Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
 | **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
-| **Work teaser (di Home)** | 1–3 highlight karya/outcome singkat (bukan halaman detail) |
-| **Work index (M9)** | Halaman katalog karya `/[locale]/work` — Must R1 (ADR-020) |
+| **Work index (M9)** | Halaman katalog karya `/[locale]/projects` — Must R1 (ADR-020). Presence bukti karya (M4 teaser Home retired, ADR-032) |
 | **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |
-| **Navigasi** | Home / About (label Proses Kerja / Process) / Karya (M9) sebagai link; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; mobile <1024px pakai hamburger (override ADR-020) |
-| **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**); default ship tetap light |
+| **Navigasi** | Tentang / About · Proses Kerja / How I Work · Proyek (M9) sebagai chip; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; tanpa chip Home (ADR-034); mobile <1024px pakai hamburger (override ADR-020) |
+| **Theme toggle** | Kontrol dark/light di chrome — Must R1 (**ADR-021**) saat light hidup; hold T-038.2 = default dark, toggle tersembunyi |
 | **Quick Info panel (M13)** | Overlay global (tab kanan → drawer); **ADR-022** |
 | **Bilingual geo-aware** | Default ID/EN sesuai geo; switcher selalu tersedia |
-| **Chrome dasar** | Footer, tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
+| **Chrome dasar** | Pita footer di Home / Workflow / Work index (ADR-041), tautan satelit, sinyal availability soft (opsional teks); toggle tema = Must (ADR-021), bukan opsional chrome |
 | **Destination hygiene** | URL stabil, meta dasar, situs layak dibagikan sebagai link utama |
 
 ---
@@ -51,7 +51,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | ---- | ---------- |
 | **Availability line** | Satu kalimat soft (“open to collaboration / opportunities”) di Home atau Contact |
 | **Konsistensi pesan** | Salinan ID/EN setara makna (bukan machine-dump) |
-| **Teaser yang actionable** | Highlight mengarah ke bukti (repo/live) tanpa halaman case dulu |
+| **Karya yang actionable** | Tile Work index membuka sheet M10; live/repo di dalam sheet |
 | **Aksesibilitas dasar** | Hierarki heading, kontras wajar, fokus keyboard — detail di UX |
 | **Motion sebagai identitas visual** | Scroll-triggered reveal, micro-interaction halus, easing hero — bagian identitas R1 dengan batas clarity-first (**ADR-017**), bukan sekadar Could minimal |
 
@@ -105,14 +105,15 @@ MVP dianggap cukup jika:
 
 | Item | Status |
 | ---- | ------ |
-| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/ADR-020/ADR-021/ADR-022 |
+| Arah permukaan | **Hybrid lean (C)** — ADR-010, override ADR-019/020/021/022/027/032/034/035/040/041/042 (ADR-033 superseded ADR-041) |
 | MVP definition | **Baseline v1.0** (dokumen ini) |
 | Product Baseline | **v1.0** — ADR-012 |
 | Work index (M9) di MVP | Ya — Must R1 (override ADR-020) |
+| Workflow (M14) di MVP | Ya — Must R1 (ADR-035); route `/workflow` |
 | Case detail (M10) di MVP | Overlay sheet Must R1 (ADR-027); route `/work/[slug]` tidak |
 | Contact | Modal global, bukan halaman (ADR-019) |
 | Quick Info (M13) | Ya — Must R1 (ADR-022) |
-| Theme toggle | Ya — Must R1 (ADR-021), default ship light |
+| Theme toggle | Ya — Must R1 (ADR-021), default ship **dark** (light hold, T-038.2) |
 
 ---
 
@@ -129,5 +130,10 @@ MVP dianggap cukup jika:
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
+* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
+* `../../project-manager/decisions/ADR-041-home-with-footer.md`
+* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

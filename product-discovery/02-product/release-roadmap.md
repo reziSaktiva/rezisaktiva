@@ -10,7 +10,7 @@ Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** —
 
 Strategi rilis: **bertahap menurut clarity → presence → craft** (ADR-006), dengan growth **destination + magnet ringan** (ADR-007).
 
-* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home / About / Work index (M9) + **project sheet overlay (M10, ADR-027)** + teaser + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
+* **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home (hero + `#about`, ADR-040) / Workflow (M14, ADR-035 / ADR-042) / Work index (M9) + **project sheet overlay (M10, ADR-027)** + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
 * **R2 — Magnet lanjutan** = halaman case `/work/[slug]` atau pendalaman sheet jika ADR baru; Work index + overlay M10 sudah live sejak R1
 * **R3 — Presence & craft** = poles pengalaman, Could terpilih (motion, form bila perlu)
 
@@ -51,8 +51,8 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M4 Work teaser, M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022) |
-| Should | Availability line, paritas ID/EN, teaser actionable, a11y dasar |
+| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020; M4 teaser Home retired ADR-032), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022), **M14 Workflow** (ADR-035) |
+| Should | Availability line, paritas ID/EN, tile Work → sheet, a11y dasar |
 | Bukan | Route `/work/[slug]`, blog, CMS, pricing |
 
 **Exit R1:**
@@ -79,7 +79,7 @@ Selaras **Phase 1 — Validation** di `success-metrics.md`.
 **Exit R2:**
 
 1. ≥1 magnet live yang mendukung evaluasi founder/PO
-2. Teaser Home terhubung ke detail (bukan hanya tautan eksternal)
+2. Tile Work index terhubung ke sheet / detail (bukan hanya tautan eksternal; teaser Home retired ADR-032)
 3. Traction signals mulai mungkin (recall berulang + inbound kontekstual) — selaras **Phase 2 — Traction**
 
 Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
@@ -98,7 +98,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 **Exit R3:**
 
-1. Presence terasa “rumah brand”, bukan hanya tiga halaman cukup
+1. Presence terasa “rumah brand”, bukan hanya kerangka lean yang cukup
 2. Craft memperkuat cerita — tidak mengaburkan positioning
 3. Siap ritme update konten proporsional (**Phase 3 — Growth** arah)
 
@@ -147,7 +147,7 @@ Roadmap rilis dianggap cukup jika:
 * `README.md` — dokumentasi fase ini
 * `mvp-definition.md` — definisi MVP (R1)
 * `feature-priority.md` — MoSCoW
-* `feature-modules.md` — M1–M13
+* `feature-modules.md` — M1–M14 (M4 retired)
 * `future-roadmap.md` — peluang jangka panjang
 * `../01-business/success-metrics.md` — Validation / Traction / Growth
 * `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`

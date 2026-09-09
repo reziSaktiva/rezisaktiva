@@ -1,33 +1,50 @@
 import type { Locale } from "@/lib/locale";
-import { projectsHref } from "@/lib/site-url";
+import { projectsHref, workflowHref } from "@/lib/site-url";
 
 /**
- * Item nav halaman R1 (Home / About / Proyek) per ADR-020 — Contact bukan
- * bagian dari daftar ini karena dirender sebagai tombol pembuka modal
- * (ADR-019), bukan link nav. Label Proyek/Projects; path `/projects`.
+ * Item nav chip R1 (About / Workflow / Proyek) per ADR-020 + ADR-034 +
+ * ADR-035 + ADR-040 — Home tidak di chip; nama brand adalah tautan Home.
+ * About = `#about` di Home. Contact bukan link nav (ADR-019). `home` tetap
+ * di `NAV_LABELS` untuk breadcrumb JSON-LD (T-029).
  */
-export type NavKey = "home" | "about" | "work";
+export type NavKey = "home" | "about" | "workflow" | "work";
+export type NavChipKey = Exclude<NavKey, "home">;
 
 export interface NavItemConfig {
-  key: NavKey;
+  key: NavChipKey;
   href: (locale: Locale) => string;
 }
 
 export const NAV_ITEMS: NavItemConfig[] = [
-  { key: "home", href: (locale) => `/${locale}` },
-  { key: "about", href: (locale) => `/${locale}/about` },
+  { key: "about", href: (locale) => aboutHref(locale) },
+  { key: "workflow", href: (locale) => workflowHref(locale) },
   { key: "work", href: (locale) => projectsHref(locale) },
 ];
+
+export function homeHref(locale: Locale): string {
+  return `/${locale}`;
+}
+
+export function aboutHref(locale: Locale): string {
+  return `${homeHref(locale)}#about`;
+}
+
+export function isHomePath(pathname: string, locale: Locale): boolean {
+  const href = homeHref(locale);
+  return pathname === href || pathname === `${href}/`;
+}
 
 export const NAV_LABELS: Record<Locale, Record<NavKey, string>> = {
   id: {
     home: "Home",
-    about: "Proses Kerja",
+    about: "Tentang",
+    workflow: "Proses Kerja",
     work: "Proyek",
   },
   en: {
     home: "Home",
-    about: "How I Work",
+    about: "About",
+    workflow: "How I Work",
     work: "Projects",
   },
 };
@@ -57,18 +74,18 @@ export const SKIP_TO_CONTENT_LABEL: Record<Locale, string> = {
 };
 
 /**
- * Cocokkan pathname aktif ke item nav untuk state `isSelected`.
- * Home hanya aktif tepat di root locale; item lain aktif dengan prefix match
- * (mis. `/id/projects` dan turunannya bila ada rute anak di masa depan).
+ * Cocokkan pathname (+ hash untuk About) ke item chip nav.
+ * About = section `#about` di Home (ADR-040), bukan route.
  */
 export function isNavItemActive(
   pathname: string,
   locale: Locale,
   item: NavItemConfig,
+  hash = "",
 ): boolean {
-  const href = item.href(locale);
-  if (item.key === "home") {
-    return pathname === href || pathname === `${href}/`;
+  if (item.key === "about") {
+    return isHomePath(pathname, locale) && hash === "#about";
   }
+  const href = item.href(locale);
   return pathname === href || pathname.startsWith(`${href}/`);
 }

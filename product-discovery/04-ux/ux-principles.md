@@ -25,9 +25,9 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 | ID | Prinsip | Implikasi |
 | -- | ------- | --------- |
 | **UX1** | **Clarity first** | First viewport menjawab “siapa & untuk siapa”; tidak menunda positioning ke bawah fold |
-| **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About/teaser, bukan mode Home terpisah |
-| **UX3** | **Lean surface** | Hanya Home / About / Work index sebagai *halaman*; jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal ADR-019, Quick info ADR-022) **bukan** halaman baru |
-| **UX4** | **Presence tanpa katalog** | Teaser 1–3 item cukup untuk trust R1; case detail = Later R2 |
+| **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About / Workflow / Work index, bukan mode Home terpisah |
+| **UX3** | **Lean surface** | Home (termasuk section About), Workflow, Work index sebagai *halaman*; About bukan route (ADR-040). Jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal ADR-019, Quick info ADR-022) **bukan** halaman baru |
+| **UX4** | **Presence tanpa katalog case** | Bukti karya = Work index + sheet M10 (M4 teaser Home retired, ADR-032); halaman case `/work/[slug]` = Later R2 |
 | **UX5** | **Soft path** | Contact first-class (modal, ADR-019); Email primer; LinkedIn & GitHub satelit; tanpa harga, WA/IG di R1; form singkat opsional (bukan syarat wajib) |
 | **UX6** | **Bahasa adalah journey** | Geo-default + path prefix `/id` & `/en` + switcher selalu ada; makna ID/EN setara |
 | **UX7** | **Kurasi > kelengkapan** | Lebih baik sedikit bukti tajam daripada meniru layout GitHub |
@@ -38,7 +38,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 1. **Hierarchy pesan:** product builder → fullstack sebagai bukti → AI sebagai edge jujur.
 2. **Salinan singkat:** cukup untuk evaluasi cepat; About memperdalam, bukan essay panjang.
-3. **Teaser actionable:** nama + peran/outcome + tautan bukti eksternal bila ada; bukan stub kosong. Credibility line di Home = 1 klaim non-kartu — **bukan** daftar project kedua.
+3. **Karya actionable:** tile Work index membuka sheet M10; live/repo di dalam sheet. Home **tanpa** teaser dan **tanpa** credibility line (ADR-032 / ADR-040).
 4. **Contact tenang:** ajakan soft + konteks kapan relevan; ekspektasi = percakapan, bukan checkout.
 5. **Availability (Should):** satu kalimat soft opsional; jangan hard “hire me now”.
 6. **Secondary tipis:** hiring/klien menemukan sinyal di permukaan yang sama — tanpa job board / pricing.
@@ -47,7 +47,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 
 # Interaction Principles
 
-1. **Navigasi + switcher selalu terlihat di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Contact tidak dikubur. **Toggle tema** selalu di chrome (Must R1, ADR-021) dan **tidak mengubah default light-ship**.
+1. **Navigasi + switcher selalu terlihat di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020). Contact tidak dikubur. **Toggle tema:** Must di chrome **saat light hidup**; selama hold T-038.2 (ADR-021 update 2026-09-04) toggle **disembunyikan**, default ship **dark**.
 2. **Switcher bahasa** mengganti locale dengan URL path yang shareable; preferensi user (setelah switch) hanya memengaruhi redirect `/` / URL tanpa locale — tidak menulis ulang path `/id/...` atau `/en/...` yang dibuka langsung.
 3. **Primary CTA di Contact** = mulai email; satelit tidak bersaing visual dengan Email.
 4. **Tidak ada dead end:** dari Home selalu ada jalur jelas ke About dan Contact.
@@ -84,7 +84,7 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 * Overlay Quick info **bukan** “halaman baru” (UX3) — **ADR-022**; jangan jadikan route `/info`.
 * Overlay project sheet **bukan** “halaman baru” (UX3) — **ADR-027**; jangan jadikan `/work/[slug]` di R1.
 * Menambah halaman Work/case (`/work/[slug]`) → ADR baru. Work index (M9) + sheet M10 sudah Must R1.
-* Toggle tema Must R1 via **ADR-021**; default tetap light — mengubah default ship ke dark butuh ADR terpisah.
+* Toggle tema Must R1 via **ADR-021**; default ship **dark** + light hold (update 2026-09-04 / T-038.2). Cabut hold / hidupkan light lagi = keputusan + update ADR.
 * Mengangkat form/calendar/WA/IG ke Must Contact → keputusan Boss Rezi + ADR bila material.
 * Mengubah skema bahasa dari path prefix → ADR baru.
 * Perubahan material prinsip setelah Baseline UX → ADR baru.
@@ -111,5 +111,7 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-manager/decisions/ADR-032-home-single-section.md`
+* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

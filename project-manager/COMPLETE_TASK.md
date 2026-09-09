@@ -14,6 +14,443 @@ Format entri:
 - ...
 ```
 
+## [2026-09-09]
+### Changed
+- **T-043.4** ✅: verifikasi R1 di `http://127.0.0.1:3001` — Home (hero + `#about`), `/id/about` → `#about`, `/id/workflow`, `/id/projects`; tema gelap (`html.dark`, kanvas `rgb(11,11,13)`, aksen `#6b1c23`, chip `#141418`); Contact / Quick Info / project sheet elevated `#141418`; selected nav = border 1px darah; hamburger 375/320 (Contact di luar, tap 44px); reduced-motion = tanpa film, tanpa Lenis, kursor sistem. Snapshot **v15 Done**. **T-031** kembali antrian.
+- Catatan verifikasi (dev overlay, bukan blocker v15): `useReducedMotion()` bisa memicu hydration warning Next saat `prefers-reduced-motion: reduce` di-emulasi (Workflow principles). Kulit dan job overlay tetap lolos.
+
+## [2026-09-09]
+### Changed
+- **T-043.3** ✅: docs/rule tidak lagi mewajibkan pill kuning sebagai identitas. `design-tokens.md` selaras gothic-blood (selected = outline, chip elevated, bukan bercak/kuning). `code-discipline.md` + `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` memakai ADR-029. `04-ux/navigation-patterns.md`: hamburger = panel elevated (satu kalimat; bukan rewrite prinsip).
+
+## [2026-09-09]
+### Changed
+- **T-043.2** ✅: scrollbar dokumen + overlay (Contact / Quick Info / project sheet) memakai `--rz-scrollbar-*` dari token gothic-blood (thumb `--color-accent-muted`, hover `--color-focus`). Cincin fokus keyboard = `--color-focus` (campur darah + vellum). Target sentuh chrome/overlay 44px di lantai 320px. Kursor pisau (sudah dikunci 2026-09-04) tetap di atas overlay; sentuh / reduced-motion = kursor sistem.
+
+## [2026-09-08]
+### Added
+- **T-043.1** overlay film vintage tipis (dikunci chat): grain + vignette + kedip luminance hanya selama `page-vt-lock`. Bukan RGB/VHS, bukan clip video, bukan overlay permanen. Reduced-motion = tanpa overlay.
+
+## [2026-09-08]
+### Changed
+- **T-043.1** ✅: transisi halaman = hard cut + stutter frame (T-038.3). Clone exit = offset diskrit ~0.2s; cut ke halaman baru + stutter ~0.16s. Bukan Hess scale, bukan RGB/VHS, bukan View Transitions. Reduced-motion = instan. Lenis + pause overlay + scrollbar track (`page-vt-lock`) tetap.
+
+## [2026-09-08]
+### Changed
+- **T-042.3** ✅: tile Work = pelat museum (dikunci chat). Mat + hairline luar seperti About; grid `gap-6`; drip hover tetap di dalam plate; klik tile tetap membuka sheet.
+- **T-042** parent ✅. Gerbang **T-043** terbuka.
+
+## [2026-09-08]
+### Changed
+- **T-042.2** ✅: section About = pelat museum (dikunci chat). Karya seni bingkai ganda (mat + hairline luar); caption “This is not me” jadi label terpusat dengan tracking; kolom Now/h2/lead tidak diubah.
+
+## [2026-09-08]
+### Changed
+- **T-042.1** ✅: restyle hero Home = polish saja (dikunci chat). Veil lebih pekat di zona h1/lede, wallpaper tengah tetap terbuka; lede lebih dekat vellum; tautan Workflow lebih kontras + hover/focus. Komposisi dua baris + MP4 + fade ke `#about` tidak diubah.
+
+## [2026-09-08]
+### Changed
+- **T-054** debu katedral: setiap mote mendapat glow radial, starburst aperture 4 arah, dan flare anamorphic horizontal (optik kamera). Twinkle tetap di-pause oleh overlay lock / reduced-motion.
+
+## [2026-09-08]
+### Changed
+- **T-054** dikunci ulang: gerbang cathedral dan bunga filigree **dicabut**. Latar `/workflow` = debu mote individual `position: fixed` saja.
+
+## [2026-09-08]
+### Changed
+- **T-054.2 / T-054.3** dikunci ulang setelah review Boss Rezi: satu gerbang cathedral di zona Operating System–Pipeline (gerbang hero-filling dicabut); debu katedral jadi mote individual `position: fixed` (wallpaper, warna samar, bukan kelompok terang); bunga filigree 1–2 per section, samar.
+### Fixed
+- SVG filigree tidak lagi `preserveAspectRatio="none"` (bunga sempat ter-stretch oval besar di hero).
+
+## [2026-09-08]
+### Changed
+- Cathedral Breath: bunga filigree 8 kelopak (isi + garis) dipasang di rose window dan sebagai lapisan terpisah di atas veil; gerak abu dipercepat (~5.5–7.2s, loop, jarak naik lebih jauh).
+
+## [2026-09-08]
+### Changed
+- Cathedral Breath diperkaya setelah review Boss Rezi: filigree lebih padat, sinar lancip, debu katedral di **atas** veil (bukan tertutup), kelompok mote + percikan kecil, pipeline tembus latar.
+
+## [2026-09-08]
+### Added
+- **T-054.2** ✅ island `workflow-cathedral-breath-background.tsx`: tracery SVG bernapas + tiga kelompok debu (loop `transform`/`opacity`, `repeatType: mirror`); veil token; `position: absolute` di `.wf-page` (bukan fixed); di belakang navbar, berakhir sebelum footer.
+### Changed
+- **T-054.3** ✅: `useReducedMotion` dan overlay lock (`ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`) memakai frame diam (div + opacity CSS), bukan loop Motion.
+
+## [2026-09-08]
+### Changed
+- **T-054.1** ✅ dikunci ulang sebagai **Cathedral Breath**: filigree SVG bernapas + debu katedral pendukung, ikut dokumen sampai sebelum footer. Keputusan kabut wine sebelumnya di-supersede; island baru masuk **T-054.2**.
+
+## [2026-09-08]
+### Changed
+- **T-054.1** ✅ — motif **kabut wine pelan**; penempelan **ikut dokumen** (bukan fixed Home). Island `workflow-wine-fog-background.tsx` = **T-054.2**.
+
+## [2026-09-08]
+### Added
+- **T-054** — task latar hidup Motion di `/workflow` (bukan foto/video). `tasks/v19-workflow-living-background.md`.
+### Changed
+- Cabut wallpaper bitmap Workflow (`WorkflowWallpaper`, `public/media/workflow-wallpaper.*`, CSS `.wf-page-wallpaper*`); kartu/panel kembali permukaan token utuh.
+
+## [2026-09-08]
+### Changed
+- Wallpaper `/workflow` diganti aset baru; `position: fixed` seperti Home; memudar saat pita footer masuk layar (T-042.4).
+
+## [2026-09-08]
+### Changed
+- Wallpaper Workflow 4× (2304×4096 WebP + JPEG) supaya tidak blur saat di-stretch sepanjang halaman (T-042.4).
+- `.wf-page` ditarik ke belakang navbar transparan (pola negatif margin Home); pita footer tetap tanpa wallpaper.
+
+## [2026-09-08]
+### Added
+- Wallpaper halaman Workflow: `public/media/workflow-wallpaper.jpg` di `.wf-page` — gambar setinggi seluruh halaman, ikut scroll, potongan vertikal mengikuti lima blok (T-042.4).
+### Changed
+- Permukaan `.wf-*` (pipeline band, kartu, compare, vault) sedikit tembus supaya wallpaper terbaca; veil + text-shadow agar klaim tetap kontras.
+
+## [2026-09-08]
+### Fixed
+- Audit konsistensi dokumen vs web hidup (ADR-040 / ADR-041 / ADR-042): baseline `product-discovery/` (About = section Home, Workflow decision-driven, tanpa `#proof` / teaser Home / rest-active accordion); indeks + Update ADR; Fokus `TASKS.md` + Baca dulu v15; catatan superseded di T-021.3 / T-045 / T-044 / v11 / v12 / v14. Pola kerja awal (PD vs PM, Documentation First, Living vs Static) tidak diubah. Folder `context/` tidak ada — dilewati.
+
+## [2026-09-08]
+### Added
+- **ADR-042** — halaman `/workflow` decision-driven (hero + tab Chaos vs Decision-Driven, lima prinsip, pipeline Human vs AI, ADR Vault). Primitf shadcn `Tabs`, `ScrollArea`, `Tooltip`.
+- Island `workflow-hero.tsx`, `workflow-principles.tsx`, `workflow-pipeline.tsx`, `workflow-adr-vault.tsx`.
+### Changed
+- **T-042.4** ✅: `content/workflow.ts` + `workflow-page.tsx` mengikuti ADR-042; copy T-021.3 di rute ini di-supersede. Offers/values/accordion dicabut (`about-offer-grid.tsx`, `about-process.tsx`). CTA Contact tetap pita footer (ADR-041).
+- Docs S2b / M14 / IA / MVP + catatan ADR-025 / ADR-035 / ADR-039.
+### Fixed
+- CLI shadcn sempat menambah paket `cn` yang salah; impor primitf baru memakai `@/lib/utils`.
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): urutan `/workflow` = proses 4 langkah → approach/values → offers (“Yang bisa saya bantu”).
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): accordion proses di `/workflow` terbuka saat hover (desktop) dan klik; `.about-process-copy` `--font-size-sm` → `--font-size-md`.
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): kartu Product/offers dan Values di `/workflow` selalu menampilkan deskripsi (cabut rest/active/`about-rest-active.tsx`); `.about-card-body` `--font-size-sm` → `--font-size-md`.
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- Frame karya seni About: rasio mengikuti aset (634×1024) lewat `aspect-ratio`, tinggi mengecil bila kolom lebih sempit; border `4px` (`--spacing-1`).
+### Fixed
+- Letterbox atas/bawah di dalam border potret About: tinggi frame sebelumnya tetap viewport meski lebar kolom terpotong.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Fade wallpaper Home: jarak fade diukur dari layout `#about` (resize), bukan `getBoundingClientRect` di setiap frame Lenis; layer `visibility: hidden` saat sudah hilang; cabut `will-change: opacity`.
+### Fixed
+- Home mentok di bawah setelah fade wallpaper ke About: scroll ke atas tersangkut karena baca layout + tulis opacity tiap frame Lenis.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- `/[locale]/projects` 500: cover Unsplash ditolak `next/image`. `images.unsplash.com` ditambah ke `remotePatterns`; tile featured `priority`.
+- Hero Work/Projects: `padding-block-start` 5rem/6rem → token `--spacing-8` / `--spacing-10` (header sudah di atas konten, bukan overlay seperti Home).
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- H1 Home terpotong di tablet: layout dua sudut (baris 2 `max-width: 100% − 36rem`) baru dari 1200px; 768–1199 memakai pola mobile + padding kanan supaya tidak ketutup tab Quick info.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- Karya seni About (`#about`) dipusatkan di tengah kolom (bukan rata kiri desktop).
+
+## [2026-09-07]
+### Added
+- **ADR-041** / **T-053** — pita footer Contact di Home (setelah `#about`); `SiteFooter` selalu di layout locale.
+### Changed
+- **ADR-033** superseded. Docs IA / key screens / nav / M1–M6 / TASKS selaras pita di semua rute.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- Overlay Next “Export AboutPage doesn't exist”: `app/[locale]/about/page.tsx` redirect ke `/{locale}#about` (ADR-040), tanpa impor `AboutPage`.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Section About (`#about`) memakai `min-h-screen` / `min-height: 100svh` (bukan viewport minus header).
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- Wallpaper Home fade mengikuti scroll hero ↔ `#about` (**T-042.1**, chat).
+### Changed
+- `HomeHeroWallpaper` opacity terikat posisi About; video pause saat hilang. Lenis `scroll` dinotifikasi ke listener halaman.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-052.1–T-052.2** — About jadi section `#about` di Home; chip nav tetap; `/about` redirect. **ADR-040**.
+### Changed
+- Cabut `#proof` dan pita Contact dari About (Home tetap tanpa footer). JSON-LD tanpa ProfilePage. Sitemap tanpa URL `/about`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-042.2** (hero) — karya seni `public/media/about-hero.jpg` setinggi viewport + caption “This is not me”; **ADR-039**.
+### Changed
+- About: badge availability dicabut; lead satu paragraf (tanpa rest/active); copy ID/EN baru; h1 mengikuti clamp Home.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-051.1** — h1 dua baris display kiri-atas / kanan-bawah; copy ID `yang mulus`.
+### Changed
+- Clamp h1 tidak diubah. Lede tetap lantai bawah.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-050.1** — lede Home di lantai bawah first viewport.
+### Changed
+- Hero: h1 atas, deskripsi + tautan Workflow di paling bawah (`justify-between`); veil atas+bawah.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-049.1–T-049.2** — lede di bawah h1; skala h1 dua tingkat lebih kecil.
+### Changed
+- Urutan hero Home: h1 lalu deskripsi + tautan Workflow. Clamp desktop max `6.75rem` (dari `10.5rem`).
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-038** — h1 Home dua baris display + tautan Workflow di lede. **T-048.1–T-048.3**.
+### Changed
+- `HeroWords` kembali dua baris; `.home-hero-line-2` rata kanan. Lede CTA `ledeCta` → `/workflow`. ADR-036 bentuk wrapping superseded.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-037** — Now ke About; lede di atas h1 Home. **T-047.1–T-047.3**.
+### Changed
+- Home: kluster kiri-bawah (lede body + h1 display); veil ke zona teks. About: kicker Now + `#now`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-036** — h1 Home kalimat wrapping. **T-046.1–T-046.3**.
+### Changed
+- Copy hero ID/EN di `content/home.ts`. `HeroWords` satu blok; `.home-hero-line-2` dicabut. IA / key screens / T-042.1 mengikuti wrap.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- Docs audit pasca ADR-032–035: sisa permukaan lama (teaser Home, About = Proses Kerja, tiga destinasi, Home = M1+M4, default ship light, inventaris T-042 About masih offers/proses). Baseline `02-product` / `03-user` / `04-ux` / `05-architecture`, catatan update ADR-012/014/019/020/022/025, indeks DECISIONS, Snapshot Milestone M14, `v15-visual-identity.md` cluster T-042, `PROJECT_OVERVIEW.md`, skill audit rute R1.
+
+## [2026-09-07]
+### Added
+- Route `/[locale]/workflow` (M14). Chip nav **Proses Kerja / How I Work**. **ADR-035**. **T-045.1–T-045.4**.
+### Changed
+- `/about` = About pribadi (hero + bukti AI). Offers, approach, values, langkah proses pindah ke Workflow. Label About chrome = Tentang / About.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Label chrome kiri: **REZI SAKTIVA** + **Web Engineer** (`PERSON_CHROME`). About / Quick Info / JSON-LD tetap `PERSON.name` / `PERSON.jobTitle`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-034** / **T-040.7** — Nama header pakai font display; pekerjaan di samping; chip nav tanpa Home.
+### Changed
+- Hanya nama yang tautan ke Home. `NAV_ITEMS` = About + Projects. IA / nav / key screens selaras.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-033** / **T-044.6** — Home tidak merender pita footer Contact. About dan Projects tetap.
+### Changed
+- Layout locale memakai `SiteFooterSlot`; IA / key screens / nav / M1 selaras ADR-033.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-032** / **T-044.1–T-044.5** — Home satu section (hero + Now). Klaim bukti AI pindah ke About setelah hero. Teaser karya dicabut dari Home; Work index tidak dapat section baru. M4 retired.
+### Changed
+- IA / key screens / flows / M1–M4 / MVP: bukti bukan di Home. Sheet M10 hanya dari katalog. Copy T-021.2 tidak ditulis ulang.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-031** — selected chrome = outline darah + teks aksen (nav, locale, hamburger).
+### Changed
+- Cabut blood splatter viewport (ADR-030 superseded). Hapus `blood-splatter-layer.tsx`. Blob wine selected diganti border + font merah.
+
+## [2026-09-07]
+### Changed
+- **T-042.1** Wallpaper Home nempel di viewport sepanjang halaman (video tembus sampai footer). Veil tidak lagi fade ke warna body penuh. About tidak ikut.
+
+## [2026-09-04]
+### Changed
+- Hover drip: kembalikan lidah halus versi sebelumnya (tanpa polygon/miring/rambut); tetap tanpa bulatan ujung (radius kecil, bukan oval).
+
+## [2026-09-04]
+### Changed
+- Hover drip: cabut bulatan ujung; lidah meruncing + miring tidak seragam; dua rambut tipis; tanpa nampan atas.
+
+## [2026-09-04]
+### Changed
+- Hover drip tile: lidah dipersempit (~7–11px, ~4.5% lebar kartu), nampan atas 38% dicabut (sisa rim 8px), tinggi tetes 36–64% supaya foto tetap terbaca.
+
+## [2026-09-04]
+### Changed
+- **T-041.3** — Project Drawer: elevated `#141418`, radius atas 1.15rem, scrim gelap, live/repo di dalam. Reduced-motion: transisi overlay `none`. **T-041** ✅.
+- **T-041.2** — Quick Info: panel elevated `#141418`; tab tepi datar (vellum + hairline, hover darah), bukan nampan wine. Close ghost. Email primer vs Links.
+- **T-041.1** — Contact Dialog: kartu elevated token (`#141418`, border `#2C2C32`, vellum) keluarga hamburger; hex ink lama dicabut. Tombol kirim datar (hairline, tanpa 3D). Email lebih besar dari ikon sosial.
+
+## [2026-09-04]
+### Fixed
+- Cursor pisau tidak tampil saat modal/overlay terbuka: z-index 60 tertutup Contact 90/92; state scrim `is-close` menyembunyikan bilah. Pisau di-portal ke `document.body`, z-index 200, tetap pisau di atas overlay (I-beam hanya di field teks).
+
+## [2026-09-04]
+### Added
+- Cursor desktop = pisau berdarah (`public/cursors/bloody-knife.png`); hotspot ujung bilah; scrim overlay tetap X; reduced-motion/sentuh = kursor sistem.
+- Wallpaper live di hero Home: `public/media/home-hero-live.mp4` (1080p, dari sumber 4K) + poster + veil token. Reduced-motion = poster diam.
+
+### Changed
+- Ring kursor diganti pengikut pisau (`.home-cursor-knife`). Native cursor `none` saat pisau aktif.
+- Catatan kunci di **T-042.1** / **T-043.2** (implementasi maju atas permintaan eksplisit; **T-041** tetap prioritas gelombang).
+
+## [2026-09-04]
+### Fixed
+- Overlay Next.js 2 issue: (1) `<Script>` tema di `app/layout.tsx` diganti `ThemeInitScript` + `useServerInsertedHTML` (React 19 menolak `<script>` di pohon komponen). (2) Hydration `BloodSplatterLayer` — wrapper selalu di-render (jangan `return null` dari `useReducedMotion` SSR); bukan menabrak tombol footer. Nav `<1024px`: breakpoint hamburger setelah mount (bukan `useSyncExternalStore` vs snapshot server desktop).
+
+## [2026-09-04]
+### Added
+- **ADR-030** — selected chrome = blood splatter yang mengalir ke seluruh halaman (pengecualian T-038.1).
+- **T-040.6** — canvas overlay percik/tetes dari item `data-selected`; reduced-motion = bercak diam.
+
+### Changed
+- ADR-029 poin 1 & 4: splatter hanya lewat ADR-030.
+- T-038.1 / T-038.3 catatan v15 + `design-tokens.md` elevation selected.
+
+## [2026-09-04]
+### Changed
+- **T-040.5** — pita footer ghost (tanpa nampan); CTA teks datar + panah, hover darah; job tetap buka modal Contact. Legal hairline + satelit. Verifikasi Home/About/Work, desktop + 375.
+- **T-040** ✅ (T-040.1–T-040.5). Berikutnya **T-041** overlay.
+
+## [2026-09-04]
+### Changed
+- **T-040.4** — lembar hamburger = panel elevated `#141418` + selected bar stain 3D (keluarga nav). Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04.
+
+## [2026-09-04]
+### Changed
+- **T-040.1** — wordmark Instrument Sans lowercase + tracking; bar header tetap transparan. Contact header + hamburger jadi teks/ikon datar (tanpa 3D); hover = aksen darah. CTA footer belum (T-040.5).
+
+## [2026-09-04]
+### Changed
+- **T-040.3** — locale switcher ID/EN tanpa nampan; selected = bercak 3D yang sama dengan nav.
+
+## [2026-09-04]
+### Fixed
+- **T-040.2** — bentuk selected nav dikembalikan ke bercak radius organik + `--elev-3d` (bukan mask SVG noda).
+
+## [2026-09-04]
+### Added
+- **T-039.2** — pasangan font: Texturina (display blackletter, OFL) + Instrument Sans (grotesk body/nav/form, OFL) via `next/font`; Fontshare General Sans/Satoshi dicabut.
+### Changed
+- **T-039** ✅ (T-039.1–T-039.5).
+- **T-040.2** — nav desktop tanpa nampan; selected = bercak darah 3D (bukan pill). Locale switcher & hamburger belum.
+- **T-031** tetap ⏸️ sampai T-043.
+
+## [2026-09-04]
+### Changed
+- **T-039.1 / T-039.3 / T-039.4 / T-039.5** — token gothic-blood hidup (`#0B0B0D` / `#E8E4DC` / `#6B1C23`); light di-comment; `THEME_HOLD_FORCE_DARK`; toggle tidak di-mount; kuning overlay → `--color-accent`. **T-039.2** (font) belum.
+- Verifikasi browser Home `/id`: `html.dark`, kanvas rgb(11,11,13), toggle absen.
+
+## [2026-09-04]
+### Changed
+- **T-038** ✅ (T-038.1–T-038.5). Matriks keep/change:
+  - **Tetap:** copy, IA, overlay job, stack, Lenis, reduced-motion, cookie tema (mesin).
+  - **Hold:** light mode (comment/arsip, toggle tersembunyi).
+  - **Ganti:** palet gelap + aksen darah; selected = bercak 3D; tanpa nampan kuning; tombol datar; transisi hard-cut stutter; display blackletter (judul besar) + grotesk body.
+- **T-038.4** — blackletter hanya heading besar; body/nav/form grotesk. Family konkret di T-039.2.
+
+## [2026-09-04]
+### Changed
+- **T-038.3** — selected = bercak darah 3D (bukan tombol); nampan kuning dihilangkan; tombol chrome datar + aksen darah tipis; transisi halaman = hard cut + stutter (bukan Hess).
+
+## [2026-09-04]
+### Changed
+- **T-038.1** — pembacaan arah seni dikunci (tabel v15).
+- **T-038.2** — default ship **dark**; light **hold/comment** (jangan hapus); toggle chrome tersembunyi selama hold. ADR-021 + ADR-029 di-update. Docs UX/token/M6 diselaraskan.
+
+## [2026-09-04]
+### Added
+- **ADR-029** — migrasi identitas visual ke absurdism / surrealism / Gothic Art / dark-blood (kulit visual; IA/copy/overlay tetap; metode Q&A per permukaan).
+- **v15** [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) — **T-038** kunci arah; **T-039** token; **T-040** chrome; **T-041** overlay; **T-042** halaman; **T-043** gerak sistem + docs.
+### Changed
+- Fokus: **T-038** prioritas. **T-031** ⏸️ sampai **T-039**. Active Mode mengizinkan redesain visual ADR-029 (bukan copy/IA).
+- ADR-028: klausul “bukan redesain” visual diganti ADR-029; stack tetap. ADR-025: pola UX tetap; palet/chrome 3D tidak lagi wajib.
+
+## [2026-09-04]
+### Changed
+- Hero Home: klaim dua baris tidak lagi di-split ke atas/bawah viewport; Now (kicker + tautan tempat kerja) pindah ke dalam `#hero` (`#now` di bawah klaim). Seksi Now terpisah dihapus.
+
+## [2026-09-04]
+### Changed
+- Hero Home: cabut foto cutout (Unsplash). First viewport = judul dua baris + ruang kosong; header overlay 100svh tetap.
+- Potret diri hanya di About (`about-portrait`). `HERO_PORTRAIT_SRC` dihapus dari `content/home.ts`.
+- Pola UX: Home tanpa potret; About satu-satunya foto diri. `Person.image` tetap ditahan selama About Unsplash.
+
 ## [2026-09-03]
 ### Added
 - Tes regresi `lib/home-motion-hydration.test.ts`: `Reveal` / `WordReveal` / `HeroWords` tidak cabang `initial` lewat `useReducedMotion`; Magnetic `onLeave` ikut `skipMagneticPull`; `<body>` tanpa `suppressHydrationWarning`.

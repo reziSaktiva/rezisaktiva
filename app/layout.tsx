@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { cookies, headers } from "next/headers";
 import { DEFAULT_LOCALE, LOCALE_REQUEST_HEADER, isLocale } from "@/lib/locale";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   parseThemeModeCookieValue,
+  THEME_HOLD_FORCE_DARK,
   THEME_MODE_STORAGE_KEY,
 } from "@/lib/theme-mode";
 import { ThemeModeProvider } from "./_components/theme-mode-provider";
+import { instrumentSans, texturina } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,45 +26,14 @@ export const metadata: Metadata = {
  * `className` di `<html>`, reconcile RSC (navigasi setelah cookie tema
  * berubah) menimpa seluruh atribut `class` dan class itu hilang.
  *
- * Script ini `classList.toggle("dark")` saja — tidak `setAttribute("class")`.
+ * Class `dark` awal: `ThemeInitScript` (`useServerInsertedHTML`) memanggil
+ * `classList.toggle("dark")` — tidak `setAttribute("class")`.
  * Cookie menang vs localStorage (code review 2026-08-16). Tanpa cookie,
  * localStorage di-apply sekali dan cookie di-tulis (migrasi 1x).
  * `data-theme` di-set di JSX dari cookie (`initialMode`) supaya first paint
  * CSS `html[data-theme]` tidak menunggu script. Toggle tanpa reload tetap
  * lewat `ThemeModeProvider` (`setAttribute`), bukan `className` di `<html>`.
- *
- * Key = `THEME_MODE_STORAGE_KEY` — di-inline karena script harus plain JS.
  */
-const themeInitScript = `
-(function () {
-  try {
-    var key = ${JSON.stringify(THEME_MODE_STORAGE_KEY)};
-    var prefix = key + "=";
-    var mode = null;
-    var parts = document.cookie.split("; ");
-    for (var i = 0; i < parts.length; i++) {
-      if (parts[i].indexOf(prefix) === 0) {
-        mode = parts[i].slice(prefix.length);
-        break;
-      }
-    }
-    var fromCookie = mode === "dark" || mode === "light";
-    if (!fromCookie) {
-      mode = window.localStorage.getItem(key);
-      if (mode !== "dark" && mode !== "light") {
-        return;
-      }
-      var secure = location.protocol === "https:" ? "; secure" : "";
-      document.cookie = key + "=" + mode + "; path=/; max-age=31536000; samesite=lax" + secure;
-    }
-    var root = document.documentElement;
-    root.setAttribute("data-theme", mode);
-    root.style.colorScheme = mode;
-    root.classList.toggle("dark", mode === "dark");
-  } catch (e) {}
-})();
-`;
-
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   /**
    * Fix flash tema (bug ditemukan 2026-08-16, lihat COMPLETE_TASK.md):
@@ -71,7 +41,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
    * client langsung sinkron — tidak ada lagi render koreksi
    * `useSyncExternalStore` yang bikin flash. `cookies()` di Next.js
    * request-scoped/aman untuk concurrent request (bukan module state).
-   * Default "light" kalau cookie belum ada (ADR-021 poin 2, tidak berubah).
+   * Default "dark" selama T-038.2 hold (`THEME_HOLD_FORCE_DARK`).
+   * Cookie light tidak boleh menampilkan palet krem lama.
    *
    * Trade-off yang perlu diketahui: memanggil `cookies()` di root layout
    * membuat SELURUH app keluar dari static rendering (semua route jadi
@@ -80,9 +51,10 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
    * dihindari selagi tema harus diketahui server sebelum render pertama.
    */
   const cookieStore = await cookies();
-  const initialMode =
-    parseThemeModeCookieValue(cookieStore.get(THEME_MODE_STORAGE_KEY)?.value) ??
-    "light";
+  const storedTheme = parseThemeModeCookieValue(
+    cookieStore.get(THEME_MODE_STORAGE_KEY)?.value,
+  );
+  const initialMode = THEME_HOLD_FORCE_DARK ? "dark" : (storedTheme ?? "light");
 
   const headerLocale = (await headers()).get(LOCALE_REQUEST_HEADER);
   const htmlLang =
@@ -96,18 +68,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       style={{ colorScheme: initialMode }}
     >
       <head>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeInitScript}
-        </Script>
-        <link rel="preconnect" href="https://api.fontshare.com" />
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500&display=swap"
-          rel="stylesheet"
-        />
         {/*
          * Deklarasi `color-scheme` di 2 tempat sejak byte pertama HTML (tanpa
-         * JS/CSS sama sekali): meta tag ini + inline `style` di <html> di
-         * atas. Ini lapis pertahanan terhadap heuristik "auto dark mode"
+         * JS/CSS sama sekali): meta tag ini + inline `style` di `<html>` di
+         * atas. Script anti-flash class `dark` = `ThemeInitScript` (bukan
+         * `next/script` di sini — React 19 menolak `<script>` di pohon layout).
+         * Ini lapis pertahanan terhadap heuristik "auto dark mode"
          * browser (Chrome dkk. bisa auto-render konten belum-bergaya pakai
          * warna gelap kalau OS dark & halaman belum menyatakan color-scheme
          * yang didukung) — sumber sisa flash yang dilihat Boss Rezi khusus
@@ -118,7 +84,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
          */}
         <meta name="color-scheme" content={initialMode} />
       </head>
-      <body>
+      <body
+        className={`${instrumentSans.variable} ${texturina.variable} ${instrumentSans.className}`}
+      >
         <ThemeModeProvider initialMode={initialMode}>
           {children}
         </ThemeModeProvider>
