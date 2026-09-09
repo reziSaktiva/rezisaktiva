@@ -61,9 +61,9 @@ Di `globals.css`: utamakan `var(--spacing-4)` bukan `16px` / `1rem` acak. Nilai 
 
 Urutan (atas = coba dulu):
 
-1. **Primitf shadcn yang sudah ada** — `components/ui/` (Dialog, Sheet, Drawer, Button, …) yang sudah di-skin ke palet rezisaktiva. Cek `pnpm exec shadcn docs <Name>` sebelum mengarang. Jangan menambah primitf katalog (Sidebar, Chart, Sonner, …) tanpa task.
+1. **Primitf shadcn yang sudah ada** — `components/ui/` (Dialog, Sheet, Drawer, Button, …) yang sudah di-skin ke palet **gothic-blood** (ADR-029). Cek `pnpm exec shadcn docs <Name>` sebelum mengarang. Jangan menambah primitf katalog (Sidebar, Chart, Sonner, …) tanpa task. **Bukan** pill kuning / nampan krem sebagai kontrak identitas (itu arsip T-038; klausul “bukan redesain” ADR-028 poin 2 sudah diganti ADR-029).
 2. **Layout Tailwind token-backed** — `flex` / `flex-col` / `grid` / `gap-*` / `items-center`. Bukan `<div>` hanya untuk spasi. Bukan `space-y-*`.
-3. **`className` scoped + `app/globals.css`** — chrome, overlay, craft yang utility tidak cukup. Prefix class per permukaan (`.site-*`, `.ct-*`, `.qi-*`, `.ps-*`, `.home-*`, `.about-*`, `.page-vt-*`). Token: `var(--spacing-*)`, `var(--background)`, `var(--chip-*)`, `--elev-3d`.
+3. **`className` scoped + `app/globals.css`** — chrome, overlay, craft yang utility tidak cukup. Prefix class per permukaan (`.site-*`, `.ct-*`, `.qi-*`, `.ps-*`, `.home-*`, `.about-*`, `.page-vt-*`). Token: `var(--spacing-*)`, `var(--background)`, `var(--chip-*)` (elevated, bukan kuning), `var(--color-accent)`. `--elev-3d` boleh ada di CSS sebagai sisa craft, **bukan** identitas yang wajib ditiru.
 4. **Token tema** — `:root` (light) dan `.dark` di `globals.css` + `@theme inline`. Class `dark` di `<html>` (cookie `rz-theme`). Bukan file `theme/` Astryx. Bukan override palet default shadcn zinc.
 5. **StyleX / Astryx** — **dilarang.** Compiler StyleX tidak di-wire (T-013.4); paket dicabut di T-037. Jangan impor `@astryxdesign` / `@stylexjs`.
 6. **Jangan** `style={{…}}` untuk layout/warna. **Jangan** `!important` kecuali sudah ada preseden sadar di file yang sama (overlay Contact theme-independent).
@@ -179,6 +179,7 @@ Mengubah default ke SSR, ISR, streaming, atau Action backend **memerlukan ADR ba
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
 * `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md` — superseded oleh ADR-028
 * `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-manager/decisions/ADR-029-visual-identity-gothic-blood.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/PROJECT_STATE.md`

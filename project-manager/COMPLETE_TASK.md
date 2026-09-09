@@ -16,6 +16,15 @@ Format entri:
 
 ## [2026-09-09]
 ### Changed
+- **T-043.4** ✅: verifikasi R1 di `http://127.0.0.1:3001` — Home (hero + `#about`), `/id/about` → `#about`, `/id/workflow`, `/id/projects`; tema gelap (`html.dark`, kanvas `rgb(11,11,13)`, aksen `#6b1c23`, chip `#141418`); Contact / Quick Info / project sheet elevated `#141418`; selected nav = border 1px darah; hamburger 375/320 (Contact di luar, tap 44px); reduced-motion = tanpa film, tanpa Lenis, kursor sistem. Snapshot **v15 Done**. **T-031** kembali antrian.
+- Catatan verifikasi (dev overlay, bukan blocker v15): `useReducedMotion()` bisa memicu hydration warning Next saat `prefers-reduced-motion: reduce` di-emulasi (Workflow principles). Kulit dan job overlay tetap lolos.
+
+## [2026-09-09]
+### Changed
+- **T-043.3** ✅: docs/rule tidak lagi mewajibkan pill kuning sebagai identitas. `design-tokens.md` selaras gothic-blood (selected = outline, chip elevated, bukan bercak/kuning). `code-discipline.md` + `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` memakai ADR-029. `04-ux/navigation-patterns.md`: hamburger = panel elevated (satu kalimat; bukan rewrite prinsip).
+
+## [2026-09-09]
+### Changed
 - **T-043.2** ✅: scrollbar dokumen + overlay (Contact / Quick Info / project sheet) memakai `--rz-scrollbar-*` dari token gothic-blood (thumb `--color-accent-muted`, hover `--color-focus`). Cincin fokus keyboard = `--color-focus` (campur darah + vellum). Target sentuh chrome/overlay 44px di lantai 320px. Kursor pisau (sudah dikunci 2026-09-04) tetap di atas overlay; sentuh / reduced-motion = kursor sistem.
 
 ## [2026-09-08]

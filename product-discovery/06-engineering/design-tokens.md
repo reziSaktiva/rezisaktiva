@@ -59,8 +59,10 @@ Arah ship (T-039.1 / ADR-029): **kanvas hitam dingin + vellum + satu aksen wine*
 | Token | Light (hold / arsip) | Dark (ship) | Peran |
 | ----- | --------------- | ---------------- | ----- |
 | `--color-brand` / teks kuat | `#14181f` | `#E8E4DC` | Heading, brand |
-| `--color-accent` | `#4c7a73` (arsip teal) | `#6B1C23` wine | Selected bercak, fokus, hover tombol |
-| `--color-accent-muted` | arsip | `#8A242E` | Hover darah |
+| `--color-accent` | `#4c7a73` (arsip teal) | `#6B1C23` wine | Outline selected (ADR-031), hover tombol |
+| `--color-accent-muted` | arsip | `#8A242E` | Hover darah, thumb scrollbar |
+| `--chip-bg` / `--chip-fg` | `#fde047` / ink (arsip) | `#141418` / vellum | Nampan grup bila ada; **bukan** kuning sebagai identitas |
+| `--chrome-pill-*` | arsip | wine / vellum | Sisa token bercak (ADR-030 superseded); selected hidup = outline |
 
 Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tetap primer visual — ADR-014).
 
@@ -75,7 +77,7 @@ Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tet
 | `--color-fg` | `#14181f` (arsip) | `#E8E4DC` vellum | Teks utama |
 | `--color-fg-muted` | arsip | `#8F8A82` | Meta |
 | `--color-border` | arsip | `#2C2C32` | Hairline |
-| Native scrollbar (T-025.9 / T-043.2) | arsip kuning | Track `--color-background-muted`, thumb `--color-accent-muted`, hover `--color-focus` | Jangan disembunyikan (T-025.8); sama di overlay Contact/QI/sheet |
+| Native scrollbar (T-025.9 / T-043.2) | arsip (thumb chip lama) | Track `--color-background-muted`, thumb `--color-accent-muted`, hover `--color-focus` | Jangan disembunyikan (T-025.8); sama di overlay Contact/QI/sheet |
 
 ---
 
@@ -99,7 +101,7 @@ Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
 | ------ | ------------ |
 | Spacing | Skala token 4px di `globals.css` (`--spacing-*`) + Tailwind `gap-*`; konsisten ritme section |
 | Radius | Sedang untuk chip/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
-| Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Selected nav/switcher/hamburger:** border 1px `--color-accent` + teks `--color-text-accent` (ADR-031). **Tombol chrome** (Contact header/footer, hamburger): datar (T-038.3 / T-040.1 / T-040.5). |
+| Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Bukan** chip 3D kuning sebagai identitas. Token `--elev-3d` boleh tersisa di CSS; selected chrome **bukan** memakainya (ADR-031). **Selected nav/switcher/hamburger:** border 1px `--color-accent` + teks `--color-text-accent`. **Tombol chrome** (Contact header/footer, hamburger): datar (T-038.3 / T-040.1 / T-040.5). |
 | Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = kode produksi (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
 Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebihan.
@@ -156,7 +158,7 @@ className scoped + craft CSS (.home-* .ct-* .qi-* .ps-* .page-vt-*)
 
 | Lapisan | Isi |
 | ------- | --- |
-| Sumber kebenaran token | `app/globals.css` (`--background`, `--foreground`, `--spacing-*`, `--size-element-*`, `--chip-*`, `--elev-3d`, `--color-*` craft) — **ADR-024** / **ADR-028**; nilai kanvas/aksen R1 *berasal* dari arsip `design-mockups/shared.css` `--c-*` |
+| Sumber kebenaran token | `app/globals.css` (`--background`, `--foreground`, `--spacing-*`, `--size-element-*`, `--chip-*` elevated, `--color-*` craft, `--rz-scrollbar-*`) — **ADR-024** / **ADR-028** / **ADR-029**. Kanvas/aksen ship = gothic-blood (T-039), bukan palet krem/kuning mockup. Light hold = arsip comment di file yang sama. |
 | Komponen | shadcn di `components/ui/` + permukaan `app/[locale]/_components/` — bukan hardcode hex/px |
 | Override lokal | utility Tailwind token-backed + `className` scoped. **Bukan** StyleX. Dilarang `style={{}}` inline atau hex/px acak di JSX. Playbook: `code-discipline.md` |
 | Konten MD/MDX | Tidak menyimpan hex brand; styling lewat komponen |
@@ -164,7 +166,7 @@ className scoped + craft CSS (.home-* .ct-* .qi-* .ps-* .page-vt-*)
 | Agent docs | `.cursor/rules/shadcn.mdc` + `.cursor/rules/code-discipline.mdc` |
 | Figma / design file | Opsional Later — docs ini cukup untuk bootstrap R1 |
 
-Nilai hex kanvas/aksen R1 dikunci di `globals.css` (asal historis: mockup `shared.css`, KI-001 / KI-002). Perubahan token berikutnya di file itu, bukan di mockup.
+Nilai hex ship dikunci di `globals.css` (gothic-blood). Palet krem/kuning mockup = arsip hold, bukan kontrak. Perubahan token berikutnya di file itu, bukan di mockup.
 
 ---
 
@@ -173,7 +175,7 @@ Nilai hex kanvas/aksen R1 dikunci di `globals.css` (asal historis: mockup `share
 | Keputusan | Pilihan |
 | --------- | ------- |
 | Styling | **shadcn/ui + Tailwind CSS v4** — menggantikan Astryx + StyleX (**ADR-028**; ADR-018 superseded) |
-| Theme | Token di `app/globals.css` (`:root` / `.dark`); palet rezisaktiva (asal historis: arsip `shared.css`) |
+| Theme | Token di `app/globals.css` (`:root` / `.dark`); palet ship = gothic-blood (**ADR-029**). Palet krem + pill kuning **bukan** kontrak |
 | Tema default | **Dark** (T-038.2 / ADR-021 update 2026-09-04); light di-hold |
 | Dark | Class `html.dark` + cookie `rz-theme`; toggle UI = **Must R1 (ADR-021) saat light hidup**; selama hold toggle tersembunyi |
 | Nilai visual | Kanvas + aksen di `globals.css` (SoT hidup = kode produksi, ADR-024) |
@@ -203,6 +205,7 @@ Nilai hex kanvas/aksen R1 dikunci di `globals.css` (asal historis: mockup `share
 * `../../project-manager/decisions/ADR-016-engineering-baseline-v1.md`
 * `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md` — superseded
 * `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-manager/decisions/ADR-029-visual-identity-gothic-blood.md`
 * `../../project-manager/decisions/ADR-017-motion-as-identity-r1.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`

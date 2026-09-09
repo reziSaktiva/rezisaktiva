@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-09] — T-043.4 verifikasi v15
+**Phase:** Validation
+**Summary:** Pass verifikasi penuh R1 untuk menutup v15: empat permukaan, overlay, viewport 320/375/desktop, reduced-motion. Kulit gothic-blood dan job overlay sesuai kunci. T-031 kembali antrian.
+**Key Decision/Insight:** Light tetap hold (tidak di-QA dual-theme). Hydration warning Motion `useReducedMotion` di dev saat emulate reduced-motion dicatat, bukan blocker rilis v15.
+**Impact:** Snapshot v15 Done; `tasks/v15-visual-identity.md` T-043 ✅; `tasks/v13-metadata.md` T-031 Open.
+
+## [2026-09-09] — T-043.3 docs identitas
+**Phase:** Validation
+**Summary:** Rule dan playbook engineering dicabut dari kontrak “pill kuning / 3D chip”. Token docs diselaraskan ke gothic-blood. Satu kalimat hamburger di `04-ux/navigation-patterns.md` tidak lagi mengunci lembar aksen.
+**Key Decision/Insight:** ADR-028 tetap untuk stack; bentuk visual mengikuti ADR-029. Prinsip UX (IA, overlay job) tidak di-rewrite.
+**Impact:** `design-tokens.md`, `code-discipline.md`, `shadcn.mdc`, `code-discipline.mdc`, `navigation-patterns.md`; T-043.3 Done; berikutnya T-043.4.
+
 ## [2026-09-09] — T-043.2 scrollbar, fokus, kursor
 **Phase:** Validation
 **Summary:** Scrollbar native + overlay diselaraskan ke token darah yang lebih kontras. Fokus keyboard memakai `--color-focus` (bukan wine murni di kanvas gelap). Target sentuh 44px di chrome 320px. Kursor pisau tetap di atas overlay.

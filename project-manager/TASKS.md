@@ -6,14 +6,16 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-1. **T-043** — pass seluruh situs ⏳ (**T-043.1–T-043.2** ✅; berikutnya **T-043.3** docs). Detail: [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md).
+1. **T-031** — Metadata API ⏳ (ikon / OG / `themeColor` ikut kulit v15). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 2. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
-3. **T-031** — Metadata API ⏸️ **Deferred** sampai **T-043**. Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
-4. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
+3. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 
 **Baru selesai**
 
-6. **T-043.2** — scrollbar, fokus keyboard, kursor pisau ✅ (2026-09-09).
+6. **T-043.4** — verifikasi penuh R1; v15 Done ✅ (2026-09-09).
+7. **T-043** — gerak sistem + docs + a11y identitas visual ✅ (T-043.1–T-043.4).
+8. **T-043.3** — docs: cabut pill kuning sebagai kontrak identitas ✅ (2026-09-09).
+7. **T-043.2** — scrollbar, fokus keyboard, kursor pisau ✅ (2026-09-09).
 7. **T-043.1** — transisi halaman hard cut + stutter ✅ (2026-09-08).
 7. **T-042** — halaman identitas visual ✅ (2026-09-08). **T-042.1–T-042.4**.
 7. **T-042.3** — tile Work = pelat museum ✅ (2026-09-08). Drip hover tetap di dalam plate.
@@ -48,9 +50,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023, T-046–T-051 | ⏳ In Progress (**T-021** ✅; **T-046…T-051** ✅; **T-023** ⏸️ Deferred) |
 | v11 Structured data | [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md) | T-029 | ✅ Done |
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
-| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏸️ Deferred (tunggu T-043) |
+| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏳ Open (setelah T-043) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
-| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ⏳ Open (**T-038** ✅; **T-039** ✅; **T-040** ✅; **T-041** ✅; **T-042** ✅; **T-043** ⏳; ADR-029, ADR-031, **ADR-032** Home hero + About, **ADR-041** footer Home, **ADR-035** About vs Workflow, **ADR-042** Workflow) |
+| v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ✅ Done (ADR-029; T-038…T-043) |
 | v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032; ADR-033 superseded ADR-041) |
 | v17 About vs Workflow | [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md) | T-045 | ✅ Done (ADR-035) |
 | v18 About section Home | [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md) | T-052, T-053 | ✅ Done (**ADR-040**, **ADR-041**) |

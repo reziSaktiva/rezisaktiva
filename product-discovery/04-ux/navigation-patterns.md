@@ -73,7 +73,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
 * Footer satelit (pita Contact) ada di Home / Workflow / Work index sebagai pelengkap, bukan pengganti Contact (ADR-041).
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
-* **Komposisi panel hamburger** (chrome produksi, 2026-08-20): satu lembar aksen; **item nav halaman selebar panel** (state aktif = bar penuh, bukan pill selebar teks); **switcher ID/EN compact** (chip, tidak meregang penuh). Acuan = kode, bukan mockup HTML (ADR-024).
+* **Komposisi panel hamburger** (chrome produksi; kulit T-040.4): panel elevated (bukan nampan kuning/aksen); **item nav halaman selebar panel**; selected = outline darah + teks aksen (ADR-031), bukan pill kecil; **switcher ID/EN compact** (tidak meregang penuh). Acuan = kode, bukan mockup HTML (ADR-024).
 * **Chrome satu baris** di ponsel: brand kiri; hamburger + tema + Contact kanan. Tidak wrap jadi dua baris. Lantai lebar **320px** (iPhone SE 1) wajib rapi; **375px** (SE 2/3) acuan ponsel utama.
 * Acuan visual: **kode produksi** (chrome di `app/[locale]/_components/`, tema built) — **ADR-024**. `design-mockups/` arsip; pixel/spacing tidak lagi mengikuti HTML mockup.
 

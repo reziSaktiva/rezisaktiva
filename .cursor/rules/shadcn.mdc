@@ -31,10 +31,10 @@ Import di `app/globals.css`: `tailwindcss`, `tw-animate-css`, `shadcn/tailwind.c
 
 ## Styling
 
-Urutan: 1. primitf shadcn yang sudah di-skin → 2. utility Tailwind **token-backed** (`flex`, `flex-col`, `gap-8`, `bg-background`, `text-foreground`) → 3. `className` scoped + `app/globals.css` (`var(--spacing-*)`, `--chip-*`, `--elev-3d`, craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*`) → 4. `cn()` untuk class kondisional.
+Urutan: 1. primitf shadcn yang sudah di-skin → 2. utility Tailwind **token-backed** (`flex`, `flex-col`, `gap-8`, `bg-background`, `text-foreground`) → 3. `className` scoped + `app/globals.css` (`var(--spacing-*)`, `--chip-*`, `--color-accent`, craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*`) → 4. `cn()` untuk class kondisional.
 
 - **`gap-*` / `flex` / `grid`**, bukan `space-y-*` / `space-x-*`, bukan `margin` di tiap sibling.
-- Bukan redesain: palet rezisaktiva, pill kuning, elevasi 3D, overlay craft. Bukan tampilan default zinc/slate shadcn.
+- Identitas visual = **gothic-blood** (ADR-029): kanvas gelap, vellum, satu aksen darah; selected chrome = outline (ADR-031). **Bukan** pill kuning, **bukan** nampan krem, **bukan** elevasi 3D sebagai kontrak identitas. Overlay craft (Contact/QI/sheet) tetap job-nya. Bukan tampilan default zinc/slate shadcn.
 - **Tidak ada StyleX** (`xstyle` / `stylex.create()`). Gap compiler Turbopack ditutup dengan cabut Astryx (T-037).
 - Dilarang `style={{}}` layout/warna (`colorScheme` di `<html>` = pengecualian yang sudah ada). Dilarang hex/px acak di JSX (`bg-[#fff]`, `p-[13px]`).
 - `!important` hanya jika sudah ada preseden sadar di file yang sama (overlay theme-independent).
