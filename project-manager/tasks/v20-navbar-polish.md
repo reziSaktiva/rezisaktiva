@@ -8,7 +8,7 @@ Kulit header/navbar R1 **lebih rapi dan lebih selaras gothic-blood**, tanpa mena
 
 ## T-055 — Polish visual navbar (kulit saja)
 
-* **Status:** ⏳ Open — berikutnya **T-055.3** (T-055.1–T-055.2 ✅)
+* **Status:** ⏳ Open — berikutnya **T-055.4** (T-055.1–T-055.3 ✅)
 * **Domain:** Design / Engineering
 * **Output:** header desktop + hamburger &lt;1024px terasa lebih baik vs T-040, tetap scan-able (UX1); verifikasi browser bukan satu screenshot
 * **Baca dulu:** ADR-020, ADR-021 (toggle hold T-038.2), ADR-024, ADR-029, ADR-031, ADR-034, ADR-035, ADR-040, `product-discovery/04-ux/navigation-patterns.md`, `product-discovery/06-engineering/code-discipline.md`, `app/[locale]/_components/site-header.tsx`, `sliding-pill-group.tsx`, `locale-switcher.tsx`, `overlay-icons.tsx`, `lib/nav.ts`, class `.site-*` di `app/globals.css`, `.cursor/rules/shadcn.mdc`, `.cursor/rules/code-discipline.mdc`, `.cursor/rules/ui-ux-mockup-check.mdc`
@@ -39,5 +39,5 @@ Perilaku overlay (Contact / Quick Info / project sheet) **tidak** diubah di task
 
 - [x] **T-055.1** — Q&A kunci arah visual navbar (desktop + hamburger) terhadap kode T-040 yang sudah live. Dikunci chat 2026-09-09: kaca on-scroll (lihat blok di atas). **Jangan kode sebelum dikunci.**
 - [x] **T-055.2** — Kode desktop (≥1024px): kaca on-scroll + hairline (kunci T-055.1); brand/chip/locale/Contact **tetap** T-040. Token + class `.site-*`; primitif shadcn yang sudah di-skin. Bukan mockup HTML.
-- [ ] **T-055.3** — Kode hamburger &lt;1024px: kaca yang sama di bar; panel elevated T-040 tidak di-restyle; item nav selebar panel; switcher compact; Contact di luar; chrome **satu baris** di 320px dan 375px (ADR-020 / `navigation-patterns.md`).
+- [x] **T-055.3** — Kode hamburger &lt;1024px: kaca yang sama di bar; panel elevated T-040 tidak di-restyle; item nav selebar panel; switcher compact; Contact di luar; chrome **satu baris** di 320px dan 375px (ADR-020 / `navigation-patterns.md`).
 - [ ] **T-055.4** — Verifikasi browser: Home, `#about`, `/workflow`, `/projects`, ID + EN; 320 / 375 / desktop; selected + hover; hamburger buka/tutup; Contact modal dari chrome; `prefers-reduced-motion`. Bukan satu screenshot.

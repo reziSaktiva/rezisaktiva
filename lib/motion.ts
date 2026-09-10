@@ -14,6 +14,8 @@ export {
 
 /** `--ease-standard` di `app/globals.css`: cubic-bezier(0.24, 1, 0.4, 1). */
 export const EASE_STANDARD = [0.24, 1, 0.4, 1] as const;
+/** `--ease-overlay` di `app/globals.css`: cubic-bezier(0.22, 1, 0.36, 1). */
+export const EASE_OVERLAY = [0.22, 1, 0.36, 1] as const;
 
 export type CubicBezierEase = readonly [number, number, number, number];
 

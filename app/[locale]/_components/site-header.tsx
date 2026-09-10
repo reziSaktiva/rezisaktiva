@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useId, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type MouseEvent,
+} from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -28,8 +35,8 @@ import {
   isNavItemActive,
 } from "@/lib/nav";
 import {
-  DURATION_MEDIUM_MIN,
-  EASE_STANDARD,
+  DURATION_MEDIUM_MAX,
+  EASE_OVERLAY,
   motion,
   useReducedMotion,
 } from "@/lib/motion";
@@ -55,13 +62,14 @@ import {
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
- * T-055.2: kaca desktop on-scroll (`SiteNavGlass`) — bukan restyle chip.
+ * T-055.2 / T-055.3: kaca on-scroll (`SiteNavGlass`) di desktop + compact
+ * — bukan restyle chip / panel hamburger.
  */
 
 const NAV_GLASS_TWEEN = {
   type: "tween" as const,
-  duration: DURATION_MEDIUM_MIN,
-  ease: EASE_STANDARD,
+  duration: DURATION_MEDIUM_MAX,
+  ease: EASE_OVERLAY,
 };
 
 const NAV_GLASS_CUT = { type: "tween" as const, duration: 0 };
@@ -98,13 +106,16 @@ function useNavGlassScrolled(): boolean {
 }
 
 /**
- * Lapisan kaca header ≥1024px (T-055.1). Fade opacity; blur on/off
- * langsung. Compact <1024px disembunyikan CSS sampai T-055.3.
+ * Lapisan kaca header (T-055.1): desktop + compact <1024px. Fade opacity
+ * `--duration-medium-max` + `--ease-overlay`; blur on/off langsung.
  */
 export function SiteNavGlass() {
   const scrolled = useNavGlassScrolled();
+  const scrolledRef = useRef(scrolled);
   const reduceMotion = useReducedMotion();
   const [blurOn, setBlurOn] = useState(false);
+
+  scrolledRef.current = scrolled;
 
   useEffect(() => {
     if (scrolled) {
@@ -123,7 +134,7 @@ export function SiteNavGlass() {
       animate={{ opacity: scrolled ? 1 : 0 }}
       transition={reduceMotion ? NAV_GLASS_CUT : NAV_GLASS_TWEEN}
       onAnimationComplete={() => {
-        if (!scrolled) {
+        if (!scrolledRef.current) {
           setBlurOn(false);
         }
       }}

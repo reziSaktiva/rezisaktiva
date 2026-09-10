@@ -14,6 +14,20 @@ Format entri:
 - ...
 ```
 
+## [2026-09-10]
+### Fixed
+- Console: `willChange` di `SiteNavGlass` tidak diteruskan ke DOM — pindah ke CSS `will-change: opacity` di `.site-nav-glass`.
+
+## [2026-09-10]
+### Changed
+- Fade kaca navbar: 225ms `--ease-standard` → 400ms `--ease-overlay` (T-055, tetap fade opacity; blur on/off). Callback blur pakai ref supaya tidak nyala/mati salah saat scroll dibalik.
+
+## [2026-09-09]
+### Added
+- **T-055.3** ✅: kaca navbar compact &lt;1024px (lapisan `.site-nav-glass` yang sama); chrome satu baris 320/375; panel hamburger T-040 tetap.
+### Changed
+- Fokus: berikutnya **T-055.4** (verifikasi browser penuh).
+
 ## [2026-09-09]
 ### Added
 - **T-055.2** ✅: kaca navbar desktop on-scroll (`SiteNavGlass`) — fade opacity, blur instan, hairline token; chip/Contact T-040 tetap.

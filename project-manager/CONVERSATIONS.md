@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-10] — fade kaca navbar lebih halus
+**Phase:** Validation
+**Summary:** Boss Rezi minta transisi kaca lebih smooth. Fade opacity diperpanjang ke `--duration-medium-max` (400ms) dengan `--ease-overlay`; blur tetap on/off, bukan interpolasi. Callback blur memakai ref.
+**Key Decision/Insight:** Masih dalam kunci T-055.1 (fade opacity, bukan spring, bukan blur tween, bukan progress 0–80px).
+**Impact:** `lib/motion.ts` (`EASE_OVERLAY`), `site-header.tsx`, `globals.css`.
+
+## [2026-09-09] — T-055.3 kaca navbar compact
+**Phase:** Validation
+**Summary:** Kaca on-scroll yang sama dipasang di bar &lt;1024px. Panel hamburger elevated T-040 tidak diubah: item selebar panel, switcher compact, Contact di luar. Chrome tetap satu baris di 320px dan 375px.
+**Key Decision/Insight:** Lapisan `.site-nav-glass` tidak lagi di-`display: none` di compact; brand cluster `flex: 1 1 0` + `overflow: hidden` supaya role ellipsis, bukan wrap dua baris.
+**Impact:** `globals.css`, `site-header.tsx`, `site-chrome.tsx`; berikutnya T-055.4 verifikasi penuh.
+
 ## [2026-09-09] — T-055.2 kaca navbar desktop
 **Phase:** Validation
 **Summary:** Kaca on-scroll dipasang di header ≥1024px: fade opacity Motion, blur on/off, hairline `--color-border`, wash `color-mix` dari `--chip-bg`. Brand/chip/Contact tetap T-040. Compact &lt;1024px belum (T-055.3).

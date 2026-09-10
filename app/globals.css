@@ -456,6 +456,12 @@ html::-webkit-scrollbar-button,
 
 .site-top-nav--compact {
   display: flex;
+  flex-wrap: nowrap;
+}
+
+.site-top-nav--compact .site-brand {
+  flex: 1 1 0;
+  overflow: hidden;
 }
 
 @media (min-width: 1024px) {
@@ -982,8 +988,8 @@ html::-webkit-scrollbar-button,
  * class (pola chrome T-013), token Astryx untuk warna/spacing, clamp hero
  * meniru mockup karena tidak ada step token yang setara.
  *
- * Header overlay (T-040.1 / T-055.2): sticky. Paling atas tanpa wash;
- * kaca desktop on-scroll. Kontras = vellum di kanvas gelap.
+ * Header overlay (T-040.1 / T-055.2–T-055.3): sticky. Paling atas tanpa
+ * wash; kaca on-scroll di desktop dan compact. Kontras = vellum di kanvas gelap.
  */
 .site-chrome-header {
   position: sticky;
@@ -993,21 +999,16 @@ html::-webkit-scrollbar-button,
   background-color: transparent;
 }
 
-/* T-055.2 — kaca ≥1024px; fade opacity via Motion; blur via [data-blur]. */
+/* T-055.2 / T-055.3 — kaca bar (desktop + compact); blur via [data-blur]. */
 .site-nav-glass {
-  display: none;
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  isolation: isolate;
+  will-change: opacity;
   background-color: color-mix(in srgb, var(--chip-bg) 62%, transparent);
   border-bottom: 1px solid var(--color-border);
-}
-
-@media (min-width: 1024px) {
-  .site-nav-glass {
-    display: block;
-  }
 }
 
 .site-nav-glass[data-blur="true"] {

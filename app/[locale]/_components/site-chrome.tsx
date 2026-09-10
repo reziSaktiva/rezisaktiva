@@ -25,7 +25,7 @@ function SiteSkipLink({ locale }: { locale: Locale }) {
 /**
  * Pengganti AppShell (T-033.1): header sticky + `<main>`. Footer sibling
  * di layout locale (ADR-041). Nav di `SiteTopNav`; kaca desktop on-scroll
- * di `SiteNavGlass` (T-055.2).
+ * di `SiteNavGlass` (T-055.2 / T-055.3).
  */
 export function SiteChrome({
   locale,
