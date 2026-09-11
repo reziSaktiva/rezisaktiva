@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-11] — T-055.4 verifikasi navbar
+**Phase:** Validation
+**Summary:** Verifikasi browser T-055 (bukan satu screenshot): rute Home/`#about`/Workflow/Projects × ID/EN; desktop + 375/320; kaca, selected, hamburger, Contact, reduced-motion. Parent T-055 / v20 ditutup.
+**Key Decision/Insight:** Job chrome T-040 tetap; kaca sesuai kunci T-055.1.
+**Impact:** `tasks/v20-navbar-polish.md`, `TASKS.md`, Snapshot; berikutnya **T-031**.
+
 ## [2026-09-10] — fade kaca navbar lebih halus
 **Phase:** Validation
 **Summary:** Boss Rezi minta transisi kaca lebih smooth. Fade opacity diperpanjang ke `--duration-medium-max` (400ms) dengan `--ease-overlay`; blur tetap on/off, bukan interpolasi. Callback blur memakai ref.

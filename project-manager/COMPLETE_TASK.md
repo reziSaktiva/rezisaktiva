@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-11]
+### Changed
+- **T-055.4** ✅: verifikasi navbar di `http://127.0.0.1:3001` — Home / `#about` / `/workflow` / `/projects`, ID + EN; desktop 1440 + compact 375/320; kaca on-scroll (wash + blur + hairline); selected outline darah; hamburger buka/tutup + Contact di luar; Contact modal dari chrome; reduced-motion = cut kaca tanpa Lenis. **T-055** / **v20** Done. Berikutnya **T-031**.
+
+## [2026-09-11]
 ### Fixed
 - Review PR #70: ESLint refs + setState-in-effect di `SiteNavGlass`; kaca baca max(Lenis, native) via `useSyncExternalStore`; blur fade-out dari event Motion, bukan effect; `will-change` hanya saat `data-blur`. Tes `lib/nav-glass.test.ts`.
 
