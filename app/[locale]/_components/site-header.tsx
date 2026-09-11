@@ -1,11 +1,10 @@
 "use client";
 
 import {
-  useCallback,
   useEffect,
   useId,
-  useRef,
   useState,
+  useSyncExternalStore,
   type MouseEvent,
 } from "react";
 import NextLink from "next/link";
@@ -17,8 +16,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import type Lenis from "lenis";
-import { useLenis } from "lenis/react";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { cn } from "@/lib/utils";
@@ -34,6 +31,13 @@ import {
   isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
+import {
+  isNavGlassBlurOn,
+  isNavGlassFadeOut,
+  isNavGlassScrolled,
+  navGlassOpacityTarget,
+  resolveNavGlassScrollY,
+} from "@/lib/nav-glass";
 import {
   DURATION_MEDIUM_MAX,
   EASE_OVERLAY,
@@ -74,35 +78,28 @@ const NAV_GLASS_TWEEN = {
 
 const NAV_GLASS_CUT = { type: "tween" as const, duration: 0 };
 
+function subscribeNavGlassScroll(onStoreChange: () => void): () => void {
+  const unsubscribe = subscribePageScroll(onStoreChange);
+  window.addEventListener("scroll", onStoreChange, { passive: true });
+  return () => {
+    unsubscribe();
+    window.removeEventListener("scroll", onStoreChange);
+  };
+}
+
+function getNavGlassScrolled(): boolean {
+  const nativeY = window.scrollY || document.documentElement.scrollTop || 0;
+  return isNavGlassScrolled(
+    resolveNavGlassScrollY(null, nativeY, readWindowScrollY()),
+  );
+}
+
 function useNavGlassScrolled(): boolean {
-  const [scrolled, setScrolled] = useState(false);
-
-  const syncFromLenis = useCallback((instance: Lenis) => {
-    const next = instance.scroll > 0;
-    setScrolled((prev) => (prev === next ? prev : next));
-  }, []);
-
-  const lenis = useLenis(syncFromLenis);
-
-  useEffect(() => {
-    if (lenis) {
-      return;
-    }
-    const sync = () => {
-      const nativeY = window.scrollY || document.documentElement.scrollTop || 0;
-      const next = Math.max(readWindowScrollY(), nativeY) > 0;
-      setScrolled((prev) => (prev === next ? prev : next));
-    };
-    sync();
-    const unsubscribe = subscribePageScroll(sync);
-    window.addEventListener("scroll", sync, { passive: true });
-    return () => {
-      unsubscribe();
-      window.removeEventListener("scroll", sync);
-    };
-  }, [lenis]);
-
-  return scrolled;
+  return useSyncExternalStore(
+    subscribeNavGlassScroll,
+    getNavGlassScrolled,
+    () => false,
+  );
 }
 
 /**
@@ -111,19 +108,9 @@ function useNavGlassScrolled(): boolean {
  */
 export function SiteNavGlass() {
   const scrolled = useNavGlassScrolled();
-  const scrolledRef = useRef(scrolled);
-  const reduceMotion = useReducedMotion();
-  const [blurOn, setBlurOn] = useState(false);
-
-  scrolledRef.current = scrolled;
-
-  useEffect(() => {
-    if (scrolled) {
-      setBlurOn(true);
-    } else if (reduceMotion) {
-      setBlurOn(false);
-    }
-  }, [scrolled, reduceMotion]);
+  const reduceMotion = useReducedMotion() === true;
+  const [fadingOut, setFadingOut] = useState(false);
+  const blurOn = isNavGlassBlurOn(scrolled, fadingOut, reduceMotion);
 
   return (
     <motion.div
@@ -133,10 +120,17 @@ export function SiteNavGlass() {
       initial={false}
       animate={{ opacity: scrolled ? 1 : 0 }}
       transition={reduceMotion ? NAV_GLASS_CUT : NAV_GLASS_TWEEN}
-      onAnimationComplete={() => {
-        if (!scrolledRef.current) {
-          setBlurOn(false);
+      onAnimationStart={(definition) => {
+        if (reduceMotion) {
+          setFadingOut(false);
+          return;
         }
+        setFadingOut(
+          isNavGlassFadeOut(navGlassOpacityTarget(definition)),
+        );
+      }}
+      onAnimationComplete={() => {
+        setFadingOut(false);
       }}
     />
   );

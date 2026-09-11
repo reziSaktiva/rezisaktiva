@@ -14,6 +14,10 @@ Format entri:
 - ...
 ```
 
+## [2026-09-11]
+### Fixed
+- Review PR #70: ESLint refs + setState-in-effect di `SiteNavGlass`; kaca baca max(Lenis, native) via `useSyncExternalStore`; blur fade-out dari event Motion, bukan effect; `will-change` hanya saat `data-blur`. Tes `lib/nav-glass.test.ts`.
+
 ## [2026-09-10]
 ### Fixed
 - Console: `willChange` di `SiteNavGlass` tidak diteruskan ke DOM — pindah ke CSS `will-change: opacity` di `.site-nav-glass`.
