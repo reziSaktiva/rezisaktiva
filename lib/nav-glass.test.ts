@@ -4,6 +4,7 @@ import {
   isNavGlassFadeOut,
   isNavGlassScrolled,
   navGlassOpacityTarget,
+  nextNavGlassFadingOut,
   resolveNavGlassScrollY,
 } from "@/lib/nav-glass";
 
@@ -30,6 +31,26 @@ describe("isNavGlassBlurOn", () => {
     expect(isNavGlassBlurOn(false, false, false)).toBe(false);
     expect(isNavGlassBlurOn(false, true, true)).toBe(false);
     expect(isNavGlassBlurOn(true, false, true)).toBe(true);
+  });
+});
+
+describe("nextNavGlassFadingOut", () => {
+  it("starts fade-out on the scrolled → top render, not after animation start", () => {
+    expect(nextNavGlassFadingOut(true, false, false, false)).toBe(true);
+    expect(
+      isNavGlassBlurOn(
+        false,
+        nextNavGlassFadingOut(true, false, false, false),
+        false,
+      ),
+    ).toBe(true);
+  });
+
+  it("holds until complete, cuts under reduced-motion, and ignores a missing Motion opacity", () => {
+    expect(nextNavGlassFadingOut(false, false, true, false)).toBe(true);
+    expect(nextNavGlassFadingOut(true, false, false, true)).toBe(false);
+    expect(nextNavGlassFadingOut(false, true, true, false)).toBe(true);
+    expect(isNavGlassFadeOut(navGlassOpacityTarget({}))).toBe(false);
   });
 });
 

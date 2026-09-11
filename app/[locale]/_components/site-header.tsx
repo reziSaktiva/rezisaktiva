@@ -3,6 +3,7 @@
 import {
   useEffect,
   useId,
+  useRef,
   useState,
   useSyncExternalStore,
   type MouseEvent,
@@ -36,6 +37,7 @@ import {
   isNavGlassFadeOut,
   isNavGlassScrolled,
   navGlassOpacityTarget,
+  nextNavGlassFadingOut,
   resolveNavGlassScrollY,
 } from "@/lib/nav-glass";
 import {
@@ -110,7 +112,18 @@ export function SiteNavGlass() {
   const scrolled = useNavGlassScrolled();
   const reduceMotion = useReducedMotion() === true;
   const [fadingOut, setFadingOut] = useState(false);
-  const blurOn = isNavGlassBlurOn(scrolled, fadingOut, reduceMotion);
+  const wasScrolledRef = useRef(scrolled);
+  const nextFadingOut = nextNavGlassFadingOut(
+    wasScrolledRef.current,
+    scrolled,
+    fadingOut,
+    reduceMotion,
+  );
+  if (nextFadingOut !== fadingOut) {
+    setFadingOut(nextFadingOut);
+  }
+  wasScrolledRef.current = scrolled;
+  const blurOn = isNavGlassBlurOn(scrolled, nextFadingOut, reduceMotion);
 
   return (
     <motion.div
@@ -125,9 +138,11 @@ export function SiteNavGlass() {
           setFadingOut(false);
           return;
         }
-        setFadingOut(
-          isNavGlassFadeOut(navGlassOpacityTarget(definition)),
-        );
+        const opacityTarget = navGlassOpacityTarget(definition);
+        if (opacityTarget === undefined) {
+          return;
+        }
+        setFadingOut(isNavGlassFadeOut(opacityTarget));
       }}
       onAnimationComplete={() => {
         setFadingOut(false);

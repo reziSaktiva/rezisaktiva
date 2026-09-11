@@ -26,6 +26,26 @@ export function isNavGlassBlurOn(
   return scrolled || fadingOut;
 }
 
+/**
+ * Hold blur on the same render that `scrolled` flips false — do not wait
+ * for Motion `onAnimationStart` (one frame / whole fade with blur off).
+ * Stay true until the caller clears `fadingOut` on animation complete.
+ */
+export function nextNavGlassFadingOut(
+  wasScrolled: boolean,
+  scrolled: boolean,
+  fadingOut: boolean,
+  reduceMotion: boolean,
+): boolean {
+  if (reduceMotion) {
+    return false;
+  }
+  if (wasScrolled && !scrolled) {
+    return true;
+  }
+  return fadingOut;
+}
+
 export function isNavGlassFadeOut(opacityTarget: number | undefined): boolean {
   return opacityTarget === 0;
 }

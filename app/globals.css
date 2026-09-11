@@ -461,7 +461,7 @@ html::-webkit-scrollbar-button,
 
 .site-top-nav--compact .site-brand {
   flex: 1 1 0;
-  overflow: hidden;
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
