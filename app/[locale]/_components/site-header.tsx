@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useId, useState, type MouseEvent } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type MouseEvent,
+} from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -25,11 +32,30 @@ import {
   isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
+import {
+  isNavGlassBlurOn,
+  isNavGlassFadeOut,
+  isNavGlassScrolled,
+  navGlassOpacityTarget,
+  nextNavGlassFadingOut,
+  resolveNavGlassScrollY,
+} from "@/lib/nav-glass";
+import {
+  DURATION_MEDIUM_MAX,
+  EASE_OVERLAY,
+  motion,
+  useReducedMotion,
+} from "@/lib/motion";
 import { Magnetic } from "./home-motion";
 import { LocaleSwitcher } from "./locale-switcher";
 import { CloseIcon, MenuIcon } from "./overlay-icons";
 import { SlidingPillGroup } from "./sliding-pill-group";
-import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
+import {
+  readWindowScrollY,
+  scrollToPageId,
+  subscribePageScroll,
+  whenPageTransitionUnlocked,
+} from "./smooth-scroll";
 
 /**
  * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
@@ -42,7 +68,89 @@ import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
+ * T-055.2 / T-055.3: kaca on-scroll (`SiteNavGlass`) di desktop + compact
+ * — bukan restyle chip / panel hamburger.
  */
+
+const NAV_GLASS_TWEEN = {
+  type: "tween" as const,
+  duration: DURATION_MEDIUM_MAX,
+  ease: EASE_OVERLAY,
+};
+
+const NAV_GLASS_CUT = { type: "tween" as const, duration: 0 };
+
+function subscribeNavGlassScroll(onStoreChange: () => void): () => void {
+  const unsubscribe = subscribePageScroll(onStoreChange);
+  window.addEventListener("scroll", onStoreChange, { passive: true });
+  return () => {
+    unsubscribe();
+    window.removeEventListener("scroll", onStoreChange);
+  };
+}
+
+function getNavGlassScrolled(): boolean {
+  const nativeY = window.scrollY || document.documentElement.scrollTop || 0;
+  return isNavGlassScrolled(
+    resolveNavGlassScrollY(null, nativeY, readWindowScrollY()),
+  );
+}
+
+function useNavGlassScrolled(): boolean {
+  return useSyncExternalStore(
+    subscribeNavGlassScroll,
+    getNavGlassScrolled,
+    () => false,
+  );
+}
+
+/**
+ * Lapisan kaca header (T-055.1): desktop + compact <1024px. Fade opacity
+ * `--duration-medium-max` + `--ease-overlay`; blur on/off langsung.
+ */
+export function SiteNavGlass() {
+  const scrolled = useNavGlassScrolled();
+  const reduceMotion = useReducedMotion() === true;
+  const [fadingOut, setFadingOut] = useState(false);
+  const wasScrolledRef = useRef(scrolled);
+  const nextFadingOut = nextNavGlassFadingOut(
+    wasScrolledRef.current,
+    scrolled,
+    fadingOut,
+    reduceMotion,
+  );
+  if (nextFadingOut !== fadingOut) {
+    setFadingOut(nextFadingOut);
+  }
+  wasScrolledRef.current = scrolled;
+  const blurOn = isNavGlassBlurOn(scrolled, nextFadingOut, reduceMotion);
+
+  return (
+    <motion.div
+      className="site-nav-glass"
+      aria-hidden="true"
+      data-blur={blurOn ? "true" : undefined}
+      initial={false}
+      animate={{ opacity: scrolled ? 1 : 0 }}
+      transition={reduceMotion ? NAV_GLASS_CUT : NAV_GLASS_TWEEN}
+      onAnimationStart={(definition) => {
+        if (reduceMotion) {
+          setFadingOut(false);
+          return;
+        }
+        const opacityTarget = navGlassOpacityTarget(definition);
+        if (opacityTarget === undefined) {
+          return;
+        }
+        setFadingOut(isNavGlassFadeOut(opacityTarget));
+      }}
+      onAnimationComplete={() => {
+        setFadingOut(false);
+      }}
+    />
+  );
+}
+
 export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const hash = useLocationHash();

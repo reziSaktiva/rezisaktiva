@@ -14,6 +14,50 @@ Format entri:
 - ...
 ```
 
+## [2026-09-11]
+### Fixed
+- Review PR #70: blur kaca tetap on di render yang sama saat scroll kembali ke puncak (`nextNavGlassFadingOut`); cincin fokus brand compact tidak terpotong (`overflow` hanya di role). Tes hold fade-out.
+
+## [2026-09-11]
+### Changed
+- **T-055.4** ✅: verifikasi navbar di `http://127.0.0.1:3001` — Home / `#about` / `/workflow` / `/projects`, ID + EN; desktop 1440 + compact 375/320; kaca on-scroll (wash + blur + hairline); selected outline darah; hamburger buka/tutup + Contact di luar; Contact modal dari chrome; reduced-motion = cut kaca tanpa Lenis. **T-055** / **v20** Done. Berikutnya **T-031**.
+
+## [2026-09-11]
+### Fixed
+- Review PR #70: ESLint refs + setState-in-effect di `SiteNavGlass`; kaca baca max(Lenis, native) via `useSyncExternalStore`; blur fade-out dari event Motion, bukan effect; `will-change` hanya saat `data-blur`. Tes `lib/nav-glass.test.ts`.
+
+## [2026-09-10]
+### Fixed
+- Console: `willChange` di `SiteNavGlass` tidak diteruskan ke DOM — pindah ke CSS `will-change: opacity` di `.site-nav-glass`.
+
+## [2026-09-10]
+### Changed
+- Fade kaca navbar: 225ms `--ease-standard` → 400ms `--ease-overlay` (T-055, tetap fade opacity; blur on/off). Callback blur pakai ref supaya tidak nyala/mati salah saat scroll dibalik.
+
+## [2026-09-09]
+### Added
+- **T-055.3** ✅: kaca navbar compact &lt;1024px (lapisan `.site-nav-glass` yang sama); chrome satu baris 320/375; panel hamburger T-040 tetap.
+### Changed
+- Fokus: berikutnya **T-055.4** (verifikasi browser penuh).
+
+## [2026-09-09]
+### Added
+- **T-055.2** ✅: kaca navbar desktop on-scroll (`SiteNavGlass`) — fade opacity, blur instan, hairline token; chip/Contact T-040 tetap.
+### Changed
+- Fokus: berikutnya **T-055.3** (kaca + hamburger &lt;1024px).
+
+## [2026-09-09]
+### Added
+- **T-055.1** ✅: kunci arah navbar — kaca on-scroll (`scrollY > 0`), hairline `--color-border`, fade opacity; blur instan; chrome T-040 tetap. Detail di `tasks/v20-navbar-polish.md`.
+### Changed
+- Fokus: berikutnya **T-055.2** (kode desktop + kaca). Job chrome / selected outline tidak berubah.
+
+## [2026-09-09]
+### Added
+- **T-055** / **v20** ⏳: polish visual navbar (kulit saja). File `tasks/v20-navbar-polish.md`. Berikutnya **T-055.1** Q&A kunci arah vs kode T-040. Job chrome tetap (ADR-020 / ADR-031 / ADR-034). Branch kerja `feat/navbar-polish`.
+### Changed
+- `TASKS.md` Fokus + indeks v20; Snapshot: **T-055** di antrian atas **T-031** / **T-054.4**.
+
 ## [2026-09-09]
 ### Changed
 - **T-043.4** ✅: verifikasi R1 di `http://127.0.0.1:3001` — Home (hero + `#about`), `/id/about` → `#about`, `/id/workflow`, `/id/projects`; tema gelap (`html.dark`, kanvas `rgb(11,11,13)`, aksen `#6b1c23`, chip `#141418`); Contact / Quick Info / project sheet elevated `#141418`; selected nav = border 1px darah; hamburger 375/320 (Contact di luar, tap 44px); reduced-motion = tanpa film, tanpa Lenis, kursor sistem. Snapshot **v15 Done**. **T-031** kembali antrian.

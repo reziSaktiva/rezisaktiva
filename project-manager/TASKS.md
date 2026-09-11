@@ -12,7 +12,9 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Baru selesai**
 
-6. **T-043.4** — verifikasi penuh R1; v15 Done ✅ (2026-09-09).
+6. **T-055.4** — verifikasi browser polish navbar; **T-055** / v20 Done ✅ (2026-09-11).
+7. **T-055** — Polish visual navbar ✅ (T-055.1–T-055.4).
+8. **T-043.4** — verifikasi penuh R1; v15 Done ✅ (2026-09-09).
 7. **T-043** — gerak sistem + docs + a11y identitas visual ✅ (T-043.1–T-043.4).
 8. **T-043.3** — docs: cabut pill kuning sebagai kontrak identitas ✅ (2026-09-09).
 7. **T-043.2** — scrollbar, fokus keyboard, kursor pisau ✅ (2026-09-09).
@@ -57,6 +59,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v17 About vs Workflow | [`tasks/v17-about-workflow.md`](tasks/v17-about-workflow.md) | T-045 | ✅ Done (ADR-035) |
 | v18 About section Home | [`tasks/v18-about-home-section.md`](tasks/v18-about-home-section.md) | T-052, T-053 | ✅ Done (**ADR-040**, **ADR-041**) |
 | v19 Latar hidup Workflow | [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md) | T-054 | ⏳ Open |
+| v20 Polish navbar | [`tasks/v20-navbar-polish.md`](tasks/v20-navbar-polish.md) | T-055 | ✅ Done |
 
 ## Aturan
 
@@ -82,3 +85,4 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 * `tasks/v17-about-workflow.md`
 * `tasks/v18-about-home-section.md`
 * `tasks/v19-workflow-living-background.md`
+* `tasks/v20-navbar-polish.md`
