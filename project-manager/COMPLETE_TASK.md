@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-09-11]
 ### Fixed
+- Review PR #70: blur hold tanpa `useRef` di render (CI `react-hooks/refs`).
+
+## [2026-09-11]
+### Fixed
 - Review PR #70: blur kaca tetap on di render yang sama saat scroll kembali ke puncak (`nextNavGlassFadingOut`); cincin fokus brand compact tidak terpotong (`overflow` hanya di role). Tes hold fade-out.
 
 ## [2026-09-11]

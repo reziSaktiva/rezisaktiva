@@ -3,7 +3,6 @@
 import {
   useEffect,
   useId,
-  useRef,
   useState,
   useSyncExternalStore,
   type MouseEvent,
@@ -112,9 +111,9 @@ export function SiteNavGlass() {
   const scrolled = useNavGlassScrolled();
   const reduceMotion = useReducedMotion() === true;
   const [fadingOut, setFadingOut] = useState(false);
-  const wasScrolledRef = useRef(scrolled);
+  const [wasScrolled, setWasScrolled] = useState(false);
   const nextFadingOut = nextNavGlassFadingOut(
-    wasScrolledRef.current,
+    wasScrolled,
     scrolled,
     fadingOut,
     reduceMotion,
@@ -122,7 +121,9 @@ export function SiteNavGlass() {
   if (nextFadingOut !== fadingOut) {
     setFadingOut(nextFadingOut);
   }
-  wasScrolledRef.current = scrolled;
+  if (wasScrolled !== scrolled) {
+    setWasScrolled(scrolled);
+  }
   const blurOn = isNavGlassBlurOn(scrolled, nextFadingOut, reduceMotion);
 
   return (
