@@ -14,11 +14,15 @@ export {
 
 /** `--ease-standard` di `app/globals.css`: cubic-bezier(0.24, 1, 0.4, 1). */
 export const EASE_STANDARD = [0.24, 1, 0.4, 1] as const;
+/** `--ease-overlay` di `app/globals.css`: cubic-bezier(0.22, 1, 0.36, 1). */
+export const EASE_OVERLAY = [0.22, 1, 0.36, 1] as const;
 
 export type CubicBezierEase = readonly [number, number, number, number];
 
 /** Detik — `--duration-fast-max` 165ms. */
 export const DURATION_FAST_MAX = 0.165;
+/** Detik — `--duration-medium-min` 225ms. */
+export const DURATION_MEDIUM_MIN = 0.225;
 /** Detik — `--duration-medium-max` 400ms. */
 export const DURATION_MEDIUM_MAX = 0.4;
 /** Detik — `--duration-slow-min` 525ms (`.home-reveal`, `.page-word`). */

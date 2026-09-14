@@ -14,6 +14,42 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-11] — T-055.4 verifikasi navbar
+**Phase:** Validation
+**Summary:** Verifikasi browser T-055 (bukan satu screenshot): rute Home/`#about`/Workflow/Projects × ID/EN; desktop + 375/320; kaca, selected, hamburger, Contact, reduced-motion. Parent T-055 / v20 ditutup.
+**Key Decision/Insight:** Job chrome T-040 tetap; kaca sesuai kunci T-055.1.
+**Impact:** `tasks/v20-navbar-polish.md`, `TASKS.md`, Snapshot; berikutnya **T-031**.
+
+## [2026-09-10] — fade kaca navbar lebih halus
+**Phase:** Validation
+**Summary:** Boss Rezi minta transisi kaca lebih smooth. Fade opacity diperpanjang ke `--duration-medium-max` (400ms) dengan `--ease-overlay`; blur tetap on/off, bukan interpolasi. Callback blur memakai ref.
+**Key Decision/Insight:** Masih dalam kunci T-055.1 (fade opacity, bukan spring, bukan blur tween, bukan progress 0–80px).
+**Impact:** `lib/motion.ts` (`EASE_OVERLAY`), `site-header.tsx`, `globals.css`.
+
+## [2026-09-09] — T-055.3 kaca navbar compact
+**Phase:** Validation
+**Summary:** Kaca on-scroll yang sama dipasang di bar &lt;1024px. Panel hamburger elevated T-040 tidak diubah: item selebar panel, switcher compact, Contact di luar. Chrome tetap satu baris di 320px dan 375px.
+**Key Decision/Insight:** Lapisan `.site-nav-glass` tidak lagi di-`display: none` di compact; brand cluster `flex: 1 1 0` + `overflow: hidden` supaya role ellipsis, bukan wrap dua baris.
+**Impact:** `globals.css`, `site-header.tsx`, `site-chrome.tsx`; berikutnya T-055.4 verifikasi penuh.
+
+## [2026-09-09] — T-055.2 kaca navbar desktop
+**Phase:** Validation
+**Summary:** Kaca on-scroll dipasang di header ≥1024px: fade opacity Motion, blur on/off, hairline `--color-border`, wash `color-mix` dari `--chip-bg`. Brand/chip/Contact tetap T-040. Compact &lt;1024px belum (T-055.3).
+**Key Decision/Insight:** Scroll dibaca via `useLenis` (root Lenis) + native fallback saat reduced-motion.
+**Impact:** `site-header.tsx`, `site-chrome.tsx`, `globals.css`, `lib/motion.ts`; berikutnya T-055.3.
+
+## [2026-09-09] — T-055.1 kunci kaca navbar
+**Phase:** Validation
+**Summary:** Arah polish navbar dikunci: paling atas tanpa latar; setelah `scrollY > 0` kaca (wash gelap tipis + backdrop-blur) + hairline `--color-border`. Fade opacity pendek; blur on/off langsung. Brand, chip outline, Contact, hamburger tetap T-040.
+**Key Decision/Insight:** Bukan restyle chip/Contact/panel. Bukan solid elevated, bukan hairline-only, bukan spring, bukan interpolasi progress. Reduced-motion = cut. ADR baru tidak perlu (job chrome tetap).
+**Impact:** `tasks/v20-navbar-polish.md` T-055.1 ✅; berikutnya **T-055.2** kode desktop + kaca.
+
+## [2026-09-09] — T-055 polish navbar
+**Phase:** Validation
+**Summary:** Boss Rezi minta navbar lebih bagus. Ditambah backlog **T-055** (v20) sebagai polish kulit R1, bukan halaman baru. Arah visual konkret belum dikunci — **T-055.1** Q&A dulu, baru kode. Branch `feat/navbar-polish`.
+**Key Decision/Insight:** IA/job chrome tidak berubah (chip tanpa Home, hamburger &lt;1024, Contact di luar, selected outline). ADR baru hanya jika perilaku nav berubah.
+**Impact:** `tasks/v20-navbar-polish.md`, `TASKS.md`, Snapshot; berikutnya T-055.1.
+
 ## [2026-09-09] — T-043.4 verifikasi v15
 **Phase:** Validation
 **Summary:** Pass verifikasi penuh R1 untuk menutup v15: empat permukaan, overlay, viewport 320/375/desktop, reduced-motion. Kulit gothic-blood dan job overlay sesuai kunci. T-031 kembali antrian.
