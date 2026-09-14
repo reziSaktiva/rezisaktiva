@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-09-14]
 ### Added
+- **T-031.3** kartu share di head: `openGraph.images` + `twitter.images` dari `pageMetadata` → `/brand/og.png` (satu kartu Home/Workflow/Projects). Title/description T-021.7 tidak diubah.
+### Changed
+- Fokus T-031: T-031.1–T-031.3 ✅; sisa T-031.4–T-031.5.
+
+## [2026-09-14]
+### Added
 - **T-031.1** aset tipografi brand (gothic-blood, tanpa wajah): `public/brand/icon-32.png`, `icon-192.png`, `icon-512.png`, `apple-touch.png`, `og.png` (~1200×630). Generator `scripts/generate-brand-metadata-assets.mjs`; font `scripts/vendor/texturina-display-700.ttf` (OFL).
 - **T-031.2** file-based ikon + manifest ringan: `app/favicon.ico` (ganti scaffold Next), `app/icon.png`, `app/apple-icon.png`, `app/manifest.ts` (`display: browser`, ikon `/brand/icon-192.png` + `/brand/icon-512.png`).
 ### Changed

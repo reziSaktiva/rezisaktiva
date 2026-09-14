@@ -6,7 +6,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-1. **T-031** — Metadata API ⏳ (**T-031.1–T-031.2** ✅ aset + ikon/manifest; berikutnya **T-031.3–T-031.5**). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+1. **T-031** — Metadata API ⏳ (**T-031.1–T-031.3** ✅; berikutnya **T-031.4–T-031.5**). Detail: [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
 2. **T-054** — Latar hidup Motion di `/workflow` ⏳ (**T-054.1–T-054.3** ✅ debu wallpaper saja; berikutnya **T-054.4** verifikasi). Detail: [`tasks/v19-workflow-living-background.md`](tasks/v19-workflow-living-background.md).
 3. **T-023** — unduh CV/Portofolio di Contact modal ⏸️ **Deferred**, menunggu CV versi Inggris (ADR-023). Detail: [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md).
 
@@ -52,7 +52,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | v10 Page copy R1 | [`tasks/v10-page-copy.md`](tasks/v10-page-copy.md) | T-021, T-023, T-046–T-051 | ⏳ In Progress (**T-021** ✅; **T-046…T-051** ✅; **T-023** ⏸️ Deferred) |
 | v11 Structured data | [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md) | T-029 | ✅ Done |
 | v12 SEO | [`tasks/v12-seo.md`](tasks/v12-seo.md) | T-030 | ✅ Done |
-| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏳ Open (**T-031.1–T-031.2** ✅) |
+| v13 Metadata API | [`tasks/v13-metadata.md`](tasks/v13-metadata.md) | T-031 | ⏳ Open (**T-031.1–T-031.3** ✅) |
 | v14 shadcn + Tailwind | [`tasks/v14-shadcn-tailwind.md`](tasks/v14-shadcn-tailwind.md) | T-032 … T-037 | ✅ Done (ADR-028) |
 | v15 Identitas visual | [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) | T-038 … T-043 | ✅ Done (ADR-029; T-038…T-043) |
 | v16 Home satu section | [`tasks/v16-home-single-section.md`](tasks/v16-home-single-section.md) | T-044 | ✅ Done (ADR-032; ADR-033 superseded ADR-041) |
