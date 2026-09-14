@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { PERSON } from "@/content/person";
 
+/** Kanvas gelap T-039 / ADR-029. Dipakai manifest + theme-color. */
+export const SITE_CANVAS_COLOR = "#0b0b0d";
+
 /**
  * Manifest ringan T-031.2. Bukan PWA (tanpa SW / install-prompt).
  * `display: browser` = tab biasa. Warna = kanvas gelap T-039.
@@ -26,8 +29,8 @@ export function siteManifest(): MetadataRoute.Manifest {
     short_name: PERSON.alternateName,
     display: "browser",
     start_url: "/",
-    background_color: "#0b0b0d",
-    theme_color: "#0b0b0d",
+    background_color: SITE_CANVAS_COLOR,
+    theme_color: SITE_CANVAS_COLOR,
     icons: [...SITE_MANIFEST_ICONS],
   };
 }

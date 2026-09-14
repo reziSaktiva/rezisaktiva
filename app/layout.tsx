@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { cookies, headers } from "next/headers";
 import { DEFAULT_LOCALE, LOCALE_REQUEST_HEADER, isLocale } from "@/lib/locale";
+import { SITE_CANVAS_COLOR } from "@/lib/site-manifest";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   parseThemeModeCookieValue,
@@ -17,6 +18,11 @@ export const metadata: Metadata = {
     default: "rezisaktiva",
     template: "%s",
   },
+};
+
+/** T-031.4 — chrome browser. Statis gelap (hold T-038.2); tidak baca cookie. */
+export const viewport: Viewport = {
+  themeColor: SITE_CANVAS_COLOR,
 };
 
 /**

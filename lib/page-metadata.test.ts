@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
+import { PERSON } from "@/content/person";
 import { SITE_META } from "@/content/site-meta";
 import { pageMetadata, SITE_SHARE_IMAGE } from "./page-metadata";
+import { getSiteUrl, localePath } from "./site-url";
 
 describe("pageMetadata (T-031.3)", () => {
   it("keeps T-021.7 copy and adds one site share card", () => {
@@ -27,5 +29,23 @@ describe("pageMetadata (T-031.3)", () => {
     expect(pageMetadata("en", "work", "projects").twitter?.images).toEqual([
       SITE_SHARE_IMAGE.url,
     ]);
+  });
+});
+
+describe("pageMetadata (T-031.4)", () => {
+  it("sets identity, public robots, and no phone/address auto-link", () => {
+    const home = pageMetadata("id", "home");
+    expect(home.applicationName).toBe(PERSON.alternateName);
+    expect(home.authors).toEqual([
+      { name: PERSON.name, url: `${getSiteUrl()}${localePath("id")}#about` },
+    ]);
+    expect(home.creator).toBe(PERSON.name);
+    expect(home.publisher).toBe(PERSON.name);
+    expect(home.robots).toEqual({ index: true, follow: true });
+    expect(home.formatDetection).toEqual({
+      telephone: false,
+      address: false,
+    });
+    expect(home.title).toBe(SITE_META.id.home.title);
   });
 });

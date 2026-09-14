@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PERSON } from "@/content/person";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import type { Locale } from "@/lib/locale";
 import { getSiteUrl, localePath } from "@/lib/site-url";
@@ -25,9 +26,23 @@ export function pageMetadata(
   const canonicalPath = localePath(locale, path);
   const canonical = `${siteUrl}${canonicalPath}`;
 
+  const aboutUrl = `${siteUrl}${localePath(locale)}#about`;
+
   return {
     title: copy.title,
     description: copy.description,
+    applicationName: PERSON.alternateName,
+    authors: [{ name: PERSON.name, url: aboutUrl }],
+    creator: PERSON.name,
+    publisher: PERSON.name,
+    robots: {
+      index: true,
+      follow: true,
+    },
+    formatDetection: {
+      telephone: false,
+      address: false,
+    },
     alternates: {
       canonical,
       languages: {

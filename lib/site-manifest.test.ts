@@ -2,7 +2,11 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { PERSON } from "@/content/person";
-import { SITE_MANIFEST_ICONS, siteManifest } from "./site-manifest";
+import {
+  SITE_CANVAS_COLOR,
+  SITE_MANIFEST_ICONS,
+  siteManifest,
+} from "./site-manifest";
 
 const root = process.cwd();
 
@@ -14,6 +18,7 @@ describe("siteManifest (T-031.2)", () => {
     expect(manifest.display).toBe("browser");
     expect(manifest.start_url).toBe("/");
     expect(manifest.icons).toEqual([...SITE_MANIFEST_ICONS]);
+    expect(manifest.theme_color).toBe(SITE_CANVAS_COLOR);
   });
 });
 

@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-09-14]
 ### Added
+- **T-031.4** identitas head: `applicationName` rezisaktiva; authors/creator/publisher dari `PERSON`; `robots` index/follow; `formatDetection` telepon/alamat mati; `viewport.themeColor` kanvas gelap tanpa `cookies()`.
+### Changed
+- Fokus T-031: T-031.1–T-031.4 ✅; sisa T-031.5.
+
+## [2026-09-14]
+### Added
 - **T-031.3** kartu share di head: `openGraph.images` + `twitter.images` dari `pageMetadata` → `/brand/og.png` (satu kartu Home/Workflow/Projects). Title/description T-021.7 tidak diubah.
 ### Changed
 - Fokus T-031: T-031.1–T-031.3 ✅; sisa T-031.4–T-031.5.
