@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-14]
+### Fixed
+- Review PR #73: pita footer full-bleed + `z-index: 2` hanya `body:has(.wf-cathedral-dust)` — Home/Projects kembali max-width 1400. ADR-043: “tanpa kode produksi” berlaku **T-023 saja**. Tes kontrak CSS `lib/workflow-cathedral-dust.test.ts`.
+
+## [2026-09-14]
 ### Added
 - **T-054.4** ✅: verifikasi Cathedral Breath `http://127.0.0.1:3001` — `/id/workflow` + `/en/workflow`; desktop 1920 (115 mote, loop `transform`/`opacity`); 375/320 (48 mote); reduced-motion = diam; Contact/`ct-lock` + Quick Info/`qi-lock` menjeda debu. **T-054** / **v19** Done.
 ### Fixed

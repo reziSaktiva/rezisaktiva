@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-14] — Review PR #73: footer scoped
+**Phase:** Validation
+**Summary:** Temuan review: pita full-bleed global merubah Home. Perbaikan: full-bleed + z-index 2 hanya `body:has(.wf-cathedral-dust)`. Tes kontrak CSS ditambah.
+**Key Decision/Insight:** Isolasi blend tetap di `.wf-cathedral-dust`. Home/Projects pita 1400 seperti sebelum PR.
+**Impact:** `globals.css`, `lib/workflow-cathedral-dust.test.ts`, ADR-043 kalimat T-023, v19, COMPLETE_TASK.
+
 ## [2026-09-14] — T-054.4 verifikasi Cathedral Breath
 **Phase:** Validation
 **Summary:** Verifikasi browser latar debu `/workflow` (bukan satu screenshot): ID+EN, desktop/375/320, reduced-motion, footer Contact, overlay Contact/QI. Debu yang menembus pita footer diperbaiki (isolasi blend + footer full-bleed).

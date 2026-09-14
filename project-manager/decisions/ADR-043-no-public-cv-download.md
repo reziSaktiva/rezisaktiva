@@ -38,4 +38,4 @@ Accepted
 - `product-discovery/02-product/feature-modules.md` — M3: cabut tautan unduh dari isi inti; catat superseded ADR-023.
 - `project-manager/tasks/v10-page-copy.md` — **T-023** ❌ Cancelled; v10 Done.
 - `TASKS.md`, `PROJECT_STATE.md`, indeks `DECISIONS.md`, `COMPLETE_TASK.md`, `CONVERSATIONS.md`.
-- Tidak ada perubahan kode produksi: implementasi unduh sudah di-revert dari PR T-021.4.
+- Tidak ada perubahan kode produksi **untuk T-023**: implementasi unduh sudah di-revert dari PR T-021.4. Kulit debu/footer Workflow = **T-054.4**, bukan keputusan ini.
