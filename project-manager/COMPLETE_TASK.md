@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-09-14]
 ### Added
+- **T-031.5** ✅: HTML head live `http://127.0.0.1:3001` locale `en` — Home `/en` + Work `/en/projects`: `og:image` `/brand/og.png`, `link rel="icon"` (favicon.ico + icon.png), `apple-touch-icon`; title T-021.7 tetap (`rezisaktiva — Home` / `rezisaktiva — Projects`). About = **308** `/en#about` (ADR-040); kartu/ikon About = head Home. Aset 200: favicon, icon, apple-icon, og.png, manifest. **T-031** / **v13** Done. Berikutnya **T-054.4**.
+### Changed
+- Fokus TASKS / Snapshot: T-031 selesai; antrian atas **T-054.4**.
+
+## [2026-09-14]
+### Added
 - **T-031.4** identitas head: `applicationName` rezisaktiva; authors/creator/publisher dari `PERSON`; `robots` index/follow; `formatDetection` telepon/alamat mati; `viewport.themeColor` kanvas gelap tanpa `cookies()`.
 ### Changed
 - Fokus T-031: T-031.1–T-031.4 ✅; sisa T-031.5.

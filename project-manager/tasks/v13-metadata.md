@@ -59,7 +59,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 
 ## T-031 — Lengkapi Metadata API (ikon + media + identitas)
 
-* **Status:** ⏳ Open — **T-031.1–T-031.4** ✅; berikutnya **T-031.5**
+* **Status:** ✅ Done (2026-09-14) — **T-031.1–T-031.5**
 * **Domain:** Engineering
 * **Output:** head R1 punya ikon brand, kartu share, authors/applicationName; title/description T-021.7 tidak ditulis ulang
 * **Keputusan paket:** tabel di atas (2026-08-31)
@@ -70,4 +70,4 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 - [x] **T-031.2** — Icons + manifest: file-based `app/icon` / `apple-icon` (dan `manifest.ts` ringan). Pastikan tab browser dan Apple touch memakai aset T-031.1.
 - [x] **T-031.3** — Media: `openGraph.images` + `twitter.images` (file-based atau `pageMetadata`). Satu kartu situs cukup; `summary_large_image` tetap. Jangan duplikasi title/description.
 - [x] **T-031.4** — Identitas + robots meta: `applicationName`, `authors`/`creator`/`publisher` dari `PERSON`, `metadata.robots` index/follow, `formatDetection`. Tetap `generateMetadata` di page server. Opsional `generateViewport` `themeColor` tanpa merusak cookie tema.
-- [ ] **T-031.5** — Verifikasi: View Source / head Home+About+Work (satu locale cukup) — ada `og:image`, `link rel="icon"`, Apple icon; title T-021.7 tidak berubah. Catat di COMPLETE_TASK.
+- [x] **T-031.5** — Verifikasi: View Source / head Home+About+Work (satu locale cukup) — ada `og:image`, `link rel="icon"`, Apple icon; title T-021.7 tidak berubah. Catat di COMPLETE_TASK.
