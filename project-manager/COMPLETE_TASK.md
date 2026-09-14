@@ -15,6 +15,19 @@ Format entri:
 ```
 
 ## [2026-09-14]
+### Added
+- **T-054.4** ✅: verifikasi Cathedral Breath `http://127.0.0.1:3001` — `/id/workflow` + `/en/workflow`; desktop 1920 (115 mote, loop `transform`/`opacity`); 375/320 (48 mote); reduced-motion = diam; Contact/`ct-lock` + Quick Info/`qi-lock` menjeda debu. **T-054** / **v19** Done.
+### Fixed
+- Debu menembus pita footer (`mix-blend-mode: plus-lighter`): isolasi + kanvas pada `.wf-cathedral-dust`; `.site-footer` full-bleed `z-index: 2` (lebar isi tetap di inner).
+### Changed
+- Fokus TASKS: tidak ada task R1 terbuka.
+
+## [2026-09-14]
+### Changed
+- **T-023** ❌ Cancelled (**ADR-043**): unduhan CV/Portofolio publik tidak akan di-ship (risiko penyalahgunaan). ADR-023 superseded. M3 Contact = email + satelit saja. v10 Done.
+- Fokus TASKS: antrian terbuka hanya **T-054.4**.
+
+## [2026-09-14]
 ### Fixed
 - Review PR #72: `rel="icon"` 192/512 di head (`SITE_HEAD_ICONS` + Apple 180); `favicon.ico` BMP/DIB (bukan PNG-in-ICO); warna generator = `lib/brand-chrome.json` (sama dengan `SITE_CANVAS_COLOR`); tes dimensi OG 1200×630; komentar path About di `page-metadata.ts`.
 ### Changed

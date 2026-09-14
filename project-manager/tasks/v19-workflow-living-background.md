@@ -8,7 +8,7 @@ Latar `/workflow` **bukan** foto, wallpaper, atau video. Latar hidup yang **beru
 
 ## T-054 — Latar hidup `/workflow` (Motion, bukan video)
 
-* **Status:** ⏳ Open — **T-054.1–T-054.3** ✅; berikutnya **T-054.4**
+* **Status:** ✅ Done (2026-09-14) — **T-054.1–T-054.4**
 * **Domain:** Design / Engineering
 * **Output:** Island latar di `/[locale]/workflow` yang terasa “hidup” dan loop; klaim tetap terbaca (UX1); `prefers-reduced-motion` = diam/instan; pita footer tanpa latar; stack Motion yang sudah ada (`lib/motion.ts`, ADR-017 / ADR-028)
 * **Baca dulu:** ADR-029, ADR-042, T-038.1 (bukan gore / mall-goth), T-038.3 + T-043 (gerak + reduced-motion), `workflow-page.tsx`, `app/globals.css` (`.wf-*`), `.cursor/skills/motion/SKILL.md`, kode Home wallpaper **hanya** sebagai pola z-index/navbar/footer — **bukan** sebagai acuan MP4
@@ -36,4 +36,4 @@ Seperti video yang **berulang terus**, tetapi yang bergerak adalah **lapisan UI 
 - [x] **T-054.1** — Q&A motif dikunci ulang: **debu katedral** mote individual `position: fixed` (wallpaper). Gerbang dan filigree dicabut. Bukan kabut blob.
 - [x] **T-054.2** — Island `workflow-cathedral-breath-background.tsx`: debu mote individual (CSS `transform`/`opacity`, loop); `fixed` di belakang navbar, tertutup footer.
 - [x] **T-054.3** — `prefers-reduced-motion` = diam. Overlay lock (`ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`) menjeda debu. Tidak ada jank scroll.
-- [ ] **T-054.4** — Verifikasi browser: `/id/workflow` + `/en/workflow`, 320 / 375 / desktop, reduced-motion, footer Contact, overlay Contact/QI. Bukan satu screenshot.
+- [x] **T-054.4** — Verifikasi browser: `/id/workflow` + `/en/workflow`, 320 / 375 / desktop, reduced-motion, footer Contact, overlay Contact/QI. Bukan satu screenshot. **2026-09-14** `http://127.0.0.1:3001`: desktop 1920 — 115 mote, `position:fixed` z-index 0, animasi `running`, tanpa `<video>`/`<img>` wallpaper; h1 ID+EN terbaca. Footer `#contact-cta` menutup debu (isolasi + kanvas pada `.wf-cathedral-dust`; pita full-bleed `z-index: 2`). `html.ct-lock` / `html.qi-lock` → `animation-play-state: paused`; setelah tutup → `running`. 375/320: 48 mote terlihat (`n+49` disembunyikan). `prefers-reduced-motion: reduce` → `animation: none`.

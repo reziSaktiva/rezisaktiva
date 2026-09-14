@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-14] — T-054.4 verifikasi Cathedral Breath
+**Phase:** Validation
+**Summary:** Verifikasi browser latar debu `/workflow` (bukan satu screenshot): ID+EN, desktop/375/320, reduced-motion, footer Contact, overlay Contact/QI. Debu yang menembus pita footer diperbaiki (isolasi blend + footer full-bleed).
+**Key Decision/Insight:** Kontrak T-054.2 tetap: debu di belakang navbar, tertutup footer; overlay lock menjeda animasi.
+**Impact:** `globals.css`, `tasks/v19-workflow-living-background.md`, `TASKS.md`, Snapshot; **T-054** / v19 Done.
+
+## [2026-09-14] — Batalkan T-023 unduh CV publik
+**Phase:** Validation
+**Summary:** Boss Rezi membatalkan T-023 (sebelumnya deferred menunggu CV Inggris) karena khawatir file CV di situs publik disalahgunakan. Tidak ada tautan unduh di Contact atau permukaan lain.
+**Key Decision/Insight:** **ADR-043** — tidak ada CV publik; ADR-023 superseded; inbound tetap email. ID T-023 tidak didaur ulang.
+**Impact:** ADR-043, ADR-023, `feature-modules.md` M3, `v10-page-copy.md`, `TASKS.md`, Snapshot, COMPLETE_TASK.
+
 ## [2026-09-14] — T-031.1 aset tipografi brand
 **Phase:** Validation
 **Summary:** Aset ikon/OG belum ada di repo. Boss Rezi mengunci generate tipografi brand (teks rezisaktiva, kanvas gothic-blood, tanpa wajah) lalu pasang T-031.1–T-031.2. Bukan Unsplash, bukan menunggu file eksternal.
