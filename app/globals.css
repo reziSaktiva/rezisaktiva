@@ -2216,11 +2216,9 @@ button.home-work-tile,
 
 .site-footer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  isolation: isolate;
   width: 100%;
-  max-width: 1400px;
-  margin-inline: auto;
-  padding-inline: var(--spacing-6);
   padding-block-start: 5rem;
   padding-block-end: var(--spacing-8);
   background-color: var(--color-background-body);
@@ -2228,7 +2226,6 @@ button.home-work-tile,
 
 @media (min-width: 768px) {
   .site-footer {
-    padding-inline: var(--spacing-10);
     padding-block-start: 7rem;
     padding-block-end: var(--spacing-10);
   }
@@ -2243,6 +2240,15 @@ button.home-work-tile,
 
 .site-footer-inner {
   gap: var(--spacing-10);
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+  .site-footer-inner {
+    padding-inline: var(--spacing-10);
+  }
 }
 
 .site-footer-band {
@@ -2346,6 +2352,8 @@ button.home-work-tile,
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  isolation: isolate;
+  background-color: var(--color-background-body);
   color: color-mix(in srgb, var(--color-text-primary) 48%, var(--color-accent-muted));
 }
 
