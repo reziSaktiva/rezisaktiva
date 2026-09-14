@@ -15,6 +15,12 @@ Format entri:
 ```
 
 ## [2026-09-14]
+### Fixed
+- Review PR #72: `rel="icon"` 192/512 di head (`SITE_HEAD_ICONS` + Apple 180); `favicon.ico` BMP/DIB (bukan PNG-in-ICO); warna generator = `lib/brand-chrome.json` (sama dengan `SITE_CANVAS_COLOR`); tes dimensi OG 1200×630; komentar path About di `page-metadata.ts`.
+### Changed
+- Aset brand di-regenerasi lewat `scripts/generate-brand-metadata-assets.mjs`.
+
+## [2026-09-14]
 ### Added
 - **T-031.5** ✅: HTML head live `http://127.0.0.1:3001` locale `en` — Home `/en` + Work `/en/projects`: `og:image` `/brand/og.png`, `link rel="icon"` (favicon.ico + icon.png), `apple-touch-icon`; title T-021.7 tetap (`rezisaktiva — Home` / `rezisaktiva — Projects`). About = **308** `/en#about` (ADR-040); kartu/ikon About = head Home. Aset 200: favicon, icon, apple-icon, og.png, manifest. **T-031** / **v13** Done. Berikutnya **T-054.4**.
 ### Changed

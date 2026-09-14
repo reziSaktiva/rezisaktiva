@@ -14,7 +14,8 @@ export const SITE_SHARE_IMAGE = {
 
 /**
  * OG dasar + canonical dari `NEXT_PUBLIC_SITE_URL` (T-017.2, M7).
- * Path tanpa prefix locale, mis. `""` (Home), `"about"`, `"workflow"`, `"projects"`.
+ * Path tanpa prefix locale, mis. `""` (Home), `"workflow"`, `"projects"`.
+ * About = `#about` di Home (ADR-040), bukan path halaman.
  */
 export function pageMetadata(
   locale: Locale,
