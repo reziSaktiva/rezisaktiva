@@ -14,7 +14,7 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work inde
 >
 > **Update (2026-08-16):** M6 menyertakan toggle tema Must R1 (**ADR-021**). Modul baru **M13 — Quick Info panel** (**ADR-022**) — overlay global, bukan halaman.
 >
-> **Update (2026-08-21):** M3 (Contact) akan menambah tautan unduh CV/Portofolio di dalam modal yang sudah ada (**ADR-023**) — bukan route baru, bukan pengganti email. Diterima, belum di-ship sampai CV versi Inggris siap (lihat `PROJECT_STATE.md` / `TASKS.md`).
+> **Update (2026-08-21):** M3 sempat merencanakan tautan unduh CV/Portofolio di modal (**ADR-023**). **Update (2026-09-14, ADR-043):** keputusan itu **dicabut** — tidak ada unduhan CV publik.
 >
 > **Update (2026-09-08, ADR-040 / ADR-042):** M2 = section Home, bukan halaman. `/about` redirect. `#proof` dicabut. Isi `/workflow` = lima blok decision-driven.
 
@@ -62,9 +62,8 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work inde
 * Jalur primer: email dan/atau tautan langsung
 * Tautan satelit (LinkedIn, GitHub, dll.)
 * Opsional: availability line
-* Tautan unduh CV/Portofolio (PDF) — keputusan diterima **ADR-023** (2026-08-21), di luar draf mockup awal; belum di-ship sampai CV versi Inggris siap (paritas ID/EN)
 
-**Bukan (MVP):** form berbackend, CRM, calendar wajib, rate card.
+**Bukan (MVP):** form berbackend, CRM, calendar wajib, rate card, tautan unduh CV/Portofolio publik (**ADR-043**; ADR-023 superseded).
 
 ---
 
@@ -174,7 +173,8 @@ Modul dianggap cukup terdefinisi jika:
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/decisions/ADR-023-cv-download-contact-modal.md`
+* `../../project-manager/decisions/ADR-023-cv-download-contact-modal.md` — superseded ADR-043
+* `../../project-manager/decisions/ADR-043-no-public-cv-download.md`
 * `../../project-manager/decisions/ADR-032-home-single-section.md`
 * `../../project-manager/decisions/ADR-035-about-workflow-split.md`
 * `../../project-manager/decisions/ADR-040-about-as-home-section.md`
