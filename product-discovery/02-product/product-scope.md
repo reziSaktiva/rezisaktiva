@@ -10,7 +10,7 @@ Dokumen ini menetapkan batas dan domain produk website portofolio pribadi **rezi
 
 **rezisaktiva** adalah situs portofolio publik yang berfungsi sebagai **satu rumah digital** untuk identitas product builder Rezi Saktiva: cerita jelas, bukti kredibel, dan jalur kontak soft.
 
-Struktur permukaan R1: **Hybrid lean** — tiga halaman **Home** (hero + section About `#about`, ADR-040), **Workflow** (`/workflow`, ADR-035 / ADR-042), dan **Work index** (`/projects`). Home = h1 atas, lede lantai bawah, pita footer (ADR-038 / ADR-041). Now di About. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027) — bukan halaman `/projects/[slug]`.
+Struktur permukaan R1: **Hybrid lean** — tiga halaman **Home** (hero + section About `#about`, ADR-040), **Workflow** (`/workflow`, ADR-035 / ADR-042), dan **Work index** (`/projects`). Home = h1 atas, lede lantai bawah, pita footer (ADR-038 / ADR-041). Now di About. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027). **R2:** halaman case `/[locale]/projects/[slug]` dari tautan di sheet (**ADR-044**).
 
 Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
@@ -79,7 +79,7 @@ Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
 
 Untuk MVP Hybrid lean, **belum** termasuk:
 
-* Halaman **detail case** `/projects/[slug]` (bukan overlay M10 — overlay sudah Must R1 via ADR-027)
+* Halaman **detail case** `/projects/[slug]` — **R2 (ADR-044)**; bukan pengganti overlay M10
 * Blog / writing hub
 * Form kontak berbackend, booking calendar, atau CRM
 * Playground/eksperimen web sebagai panggung utama
@@ -97,7 +97,7 @@ Scope dianggap mengarah benar jika:
 
 1. Founder/PO bisa evaluasi dasar lewat Home + About + Workflow + Work index + Contact modal tanpa merakit cerita dari GitHub/CV
 2. Homepage menjawab siapa / bukti ringkas / next step (selaras dual north star)
-3. Karya terasa hadir (katalog Work index + sheet M10) tanpa memaksa arsitektur detail case penuh di MVP
+3. Karya terasa hadir (katalog + sheet M10); magnet URL per karya = R2 ADR-044
 4. Soft path kontak jelas (modal, ADR-019); tidak ada harga atau hard sell
 5. Batas di dokumen ini konsisten dengan ADR-002, ADR-006, ADR-007, ADR-010, dan override ADR-019/020/021/022/032/035/040/041/042
 

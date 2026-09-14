@@ -46,7 +46,7 @@ Ini **perluasan material vs ADR-017** (kadar craft + dua teknik baru: inertia sc
 - `product-discovery/04-ux/key-screen-patterns.md` — About rest/active; footer = pita Contact; Home tanpa section CTA terpisah.
 - `product-discovery/01-business/competitor-analysis.md` — selaraskan “implementasi craft” Hess/Mazur (bukan hanya arah seni mockup).
 - ADR-017 — tetap berlaku untuk batas clarity; teknik baru merujuk ADR ini.
-- Task **T-025** di `project-manager/tasks/v03-development-r1.md`.
+- Task **T-025** di `project-manager/tasks/r1.md`.
 
 ### Update — 2026-09-04 (ADR-029)
 

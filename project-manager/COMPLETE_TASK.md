@@ -15,6 +15,23 @@ Format entri:
 ```
 
 ## [2026-09-14]
+### Changed
+- Folder `project-manager/tasks/`: 15 file `vXX-*.md` digabung jadi `discovery.md`, `bootstrap.md`, `r1.md`, `r2.md` (+ `README.md`). ID task tidak berubah. Indeks TASKS = fase, bukan v01–v21.
+
+## [2026-09-14]
+### Added
+- **ADR-044** — R2 hibrid: sheet M10 + halaman `/[locale]/projects/[slug]`.
+- `tasks/v21-r2-case-pages.md` — **T-056** (**T-056.1** ✅).
+### Changed
+- Baseline 02/04/05 + ADR-027 catatan R2; Snapshot/TASKS → **T-056.2**.
+
+## [2026-09-14]
+### Added
+- `R1_COMPLETE.md` — ringkasan beku R1 Hybrid lean (exit T-018, polish T-055, T-023 ❌).
+### Changed
+- Snapshot + Fokus TASKS menunjuk **R1 sudah selesai**; tidak ada task R1 baru.
+
+## [2026-09-14]
 ### Fixed
 - Review PR #73: pita footer full-bleed + `z-index: 2` hanya `body:has(.wf-cathedral-dust)` — Home/Projects kembali max-width 1400. ADR-043: “tanpa kode produksi” berlaku **T-023 saja**. Tes kontrak CSS `lib/workflow-cathedral-dust.test.ts`.
 

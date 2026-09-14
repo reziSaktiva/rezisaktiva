@@ -35,7 +35,7 @@ Superseded (ADR-043 — tidak ada unduhan CV publik)
 ### Impact / Follow-up
 
 - `product-discovery/02-product/feature-modules.md` — M3 Contact, baris "Isi inti" catat tautan unduh CV/Portofolio (cite ADR-023) sebagai keputusan yang **diterima tapi belum diimplementasi**.
-- Implementasi kode (komponen, content, ikon, style) — task terpisah **T-023** (`project-manager/tasks/v10-page-copy.md`), ditunda menunggu prasyarat di Update.
+- Implementasi kode (komponen, content, ikon, style) — task terpisah **T-023** (`project-manager/tasks/r1.md`), ditunda menunggu prasyarat di Update.
 
 ### Update — 2026-08-21
 

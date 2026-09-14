@@ -37,7 +37,7 @@ salah satu dari:
 
 | Argumen | Artinya |
 | -------- | ------- |
-| `project-manager` | `PROJECT_STATE.md`, `TASKS.md` + seluruh `tasks/vXX-*.md`, `DECISIONS.md` + seluruh `decisions/ADR-*.md`, plus Static Reference PM (`PROJECT_RULES.md`, `PROJECT_OVERVIEW.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `README.md`) |
+| `project-manager` | `PROJECT_STATE.md`, `TASKS.md` + seluruh `tasks/*.md` (fase), `DECISIONS.md` + seluruh `decisions/ADR-*.md`, plus Static Reference PM (`PROJECT_RULES.md`, `PROJECT_OVERVIEW.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `README.md`) |
 | `product-discovery` | Seluruh `product-discovery/**/*.md` |
 | `agent` | `AGENTS.md`, `.cursor/skills/*/SKILL.md`, `.cursor/rules/*.mdc` |
 | Kombinasi (`product-discovery+agent`, dst.) | Union dari area yang disebut, dipisah `+` |
@@ -94,11 +94,11 @@ yang ambigu) tetap dilakukan oleh AI utama, bukan diserahkan ke subagent.
 Periksa lintas dokumen dalam scope untuk kategori berikut:
 
 1. **Status/progress drift** — status task berbeda antara `TASKS.md`,
-   `tasks/vXX-*.md`, dan `PROJECT_STATE.md` untuk task/ID yang sama (`T-XXX` /
+   `tasks/*.md`, dan `PROJECT_STATE.md` untuk task/ID yang sama (`T-XXX` /
    `T-XXX.N`).
 2. **Hitungan/index drift** — jumlah task selesai, breakdown status
-   (✅/🟡/⏳/🚫/⏸️), jumlah subtask di **Indeks release** tidak cocok dengan
-   isi aktual file `tasks/vXX-*.md` (hitung ulang langsung dari sana, jangan
+   (✅/🟡/⏳/🚫/⏸️), jumlah subtask di **Indeks fase** tidak cocok dengan
+   isi aktual file `tasks/*.md` (hitung ulang langsung dari sana, jangan
    percaya angka yang tertulis).
 3. **ADR amandemen belum tercermin** — ADR baru mengubah/mengamandemen ADR
    lama, tapi dokumen lain yang merujuk ke keputusan lama (baseline
@@ -136,7 +136,7 @@ Ada satu jawaban yang jelas benar berdasarkan Source of Truth yang sudah
 ditetapkan (tabel Source of Truth di `AGENTS.md`, atau ADR yang sudah
 Accepted). Contoh: hitungan subtask yang salah jumlah (kebenarannya tinggal
 dihitung ulang dari file), status task di `PROJECT_STATE.md` yang belum
-disalin dari `tasks/vXX-*.md` yang sudah diupdate.
+disalin dari file fase di `tasks/` yang sudah diupdate.
 
 → Laporkan dengan **usulan perbaikan konkret**, tapi tetap tunggu konfirmasi
 sebelum edit (lihat Langkah 5).

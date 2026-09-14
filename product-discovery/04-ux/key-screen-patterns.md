@@ -8,7 +8,7 @@ Dokumen ini mendefinisikan pola layar kunci (blok konten & hierarki) untuk R1 �
 
 # Overview
 
-Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contact** (modal), **Work index + project sheet** (S4, ADR-027). Pola mendukung F1–F7 dan prinsip UX1–UX7.
+Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contact** (modal), **Work index + project sheet** (S4), **Work case** (S5). Pola mendukung F1–F8.
 
 ---
 
@@ -30,6 +30,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 | S2b Workflow | `/[id/en]/workflow` | J4, E4 |
 | S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
 | S4 Work index + project sheet | `/[id/en]/projects` + overlay M10 (ADR-027) | J2 |
+| S5 Work case | `/[id/en]/projects/[slug]` (ADR-044) | J2, magnet share |
 
 ---
 
@@ -118,9 +119,13 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 
 ### S4 — Work index + project sheet
 
-**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027) — live preview (iframe) atau galeri, services, location or company, year, description. Live/repo tautan hanya di dalam sheet. Home **tidak** punya teaser karya (ADR-032).
+**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027). Dari sheet: tautan halaman case `/projects/[slug]` (**ADR-044**) plus live/repo sekunder. Home **tidak** punya teaser karya (ADR-032).
 
-**Komponen:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. Astryx `BottomSheet` dicoba dulu (T-026.2) lalu diganti overlay custom karena tidak ada prop lebar penuh; overlay custom itu diganti `Drawer` saat migrasi. Bukan `/work/[slug]` di R1.
+**Komponen sheet:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. **Halaman case:** route Next SSG, Server Component — bukan mengganti Drawer.
+
+### S5 — Halaman case (R2)
+
+**Route:** `/[locale]/projects/[slug]`. Isi: slot sheet + narasi/proses singkat jika copy dikunci. Chip Proyek aktif. Bukan `/work/[slug]`.
 
 ---
 
@@ -138,7 +143,7 @@ Lima+ permukaan R1: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contac
 # Success Criteria
 
 * S1 first viewport lulus uji “siapa & untuk siapa” tanpa scroll panjang
-* S1 = hero + `#about`; narasi di S2; cara kerja di S2b (ADR-042); karya di S4 (ADR-032, ADR-035, ADR-040). Tanpa `#proof`.
+* S1 = hero + `#about`; narasi di S2; cara kerja di S2b (ADR-042); karya di S4; magnet URL di S5 (ADR-044). Tanpa `#proof`.
 * S3 Email jelas sebagai primer; satelit terbatas LinkedIn + GitHub
 * S0 memungkinkan F3 (ganti bahasa) dari setiap screen
 * Meta/share & content readiness di `information-architecture.md` terpenuhi sebelum live

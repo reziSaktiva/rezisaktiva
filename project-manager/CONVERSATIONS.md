@@ -14,6 +14,24 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-14] — Rapikan folder tasks (tanpa vXX)
+**Phase:** Validation + R2
+**Summary:** Boss Rezi minta folder task dirapikan karena terlalu banyak file `v`. 15 file `v01`–`v21` digabung jadi 4 file fase. ID `T-XXX` tidak berubah.
+**Key Decision/Insight:** Satu file per fase: `discovery.md`, `bootstrap.md`, `r1.md`, `r2.md`.
+**Impact:** `tasks/`, `TASKS.md`, Snapshot, AGENTS, navigator, ADRs yang menunjuk path file.
+
+## [2026-09-14] — ADR-044 R2 magnet hibrid
+**Phase:** Validation + R2
+**Summary:** Boss Rezi mengunci bentuk R2 = hibrid: tile tetap sheet M10; magnet = halaman `/[locale]/projects/[slug]` dari tautan “baca selengkapnya”. Path `/work/[slug]` ditolak.
+**Key Decision/Insight:** **ADR-044**. Overlay ADR-027 tidak di-supersede. Copy tidak dikarang (T-056.2 sebelum kode).
+**Impact:** ADR-044, ADR-027 catatan, `product-discovery/` 02/04/05, `tasks/v21-r2-case-pages.md`, TASKS, Snapshot.
+
+## [2026-09-14] — R1 sudah selesai (ringkasan beku)
+**Phase:** Validation
+**Summary:** Boss Rezi minta artefak “R1 sudah selesai”. Backlog T-001–T-055 sudah tertutup sejak sebelumnya (exit T-018 2026-08-31). Dibuat ringkasan beku `R1_COMPLETE.md` + penunjuk di Snapshot/TASKS.
+**Key Decision/Insight:** Tidak menambah task bernomor. R2 tetap butuh ADR.
+**Impact:** `R1_COMPLETE.md`, `TASKS.md`, `PROJECT_STATE.md`, `COMPLETE_TASK.md`.
+
 ## [2026-09-14] — Review PR #73: footer scoped
 **Phase:** Validation
 **Summary:** Temuan review: pita full-bleed global merubah Home. Perbaikan: full-bleed + z-index 2 hanya `body:has(.wf-cathedral-dust)`. Tes kontrak CSS ditambah.

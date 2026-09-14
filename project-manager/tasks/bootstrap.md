@@ -1,4 +1,4 @@
-# v0.2 — Repository & Bootstrap
+# Bootstrap — T-008 … T-012
 
 Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale routing skeleton, dan CI/deploy/env — sesuai Engineering Baseline (ADR-016). Bukan implementasi konten/fitur R1 penuh.
 
@@ -81,4 +81,4 @@ Release untuk scaffold aplikasi (Next single-app + pnpm), tooling DX, locale rou
 - Implementasi konten/fitur R1 (Home/About/Contact polished, work teaser final)
 - Auth / DB / ORM (N/A — ADR-011/015)
 - Husky / test runner wajib (ditunda per `dx-tooling.md`)
-- Dark mode toggle UI (Should/Later saat bootstrap ditulis; **superseded** — naik jadi Must R1 via ADR-021, dikerjakan sebagai T-013.4 di `v03-development-r1.md`)
+- Dark mode toggle UI (Should/Later saat bootstrap ditulis; **superseded** — naik jadi Must R1 via ADR-021, dikerjakan sebagai T-013.4 di `r1.md`)

@@ -1,4 +1,4 @@
-# v0.1 — Product Discovery
+# Discovery — T-001 … T-007
 
 Release untuk mengisi seluruh fase Product Discovery sampai siap bootstrap implementasi.
 

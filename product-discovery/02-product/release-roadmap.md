@@ -11,7 +11,7 @@ Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** —
 Strategi rilis: **bertahap menurut clarity → presence → craft** (ADR-006), dengan growth **destination + magnet ringan** (ADR-007).
 
 * **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home (hero + `#about`, ADR-040) / Workflow (M14, ADR-035 / ADR-042) / Work index (M9) + **project sheet overlay (M10, ADR-027)** + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
-* **R2 — Magnet lanjutan** = halaman case `/work/[slug]` atau pendalaman sheet jika ADR baru; Work index + overlay M10 sudah live sejak R1
+* **R2 — Magnet lanjutan** = halaman case `/[locale]/projects/[slug]` **dan** sheet M10 tetap (**ADR-044**); Work index sudah live sejak R1
 * **R3 — Presence & craft** = poles pengalaman, Could terpilih (motion, form bila perlu)
 
 Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawah + dual north star (`success-metrics.md`).
@@ -72,9 +72,9 @@ Selaras **Phase 1 — Validation** di `success-metrics.md`.
 
 | Termasuk | Modul / item |
 | -------- | ------------ |
-| Inti | Pendalaman magnet: halaman case `/work/[slug]` hanya jika ADR baru; overlay M10 sudah live R1 |
-| Opsional | Early case yang sempat Could di R1 dipindah/ dirapikan ke pola M9/M10 |
-| Bukan | Blog volume, newsletter machine, distribusi sosial wajib |
+| Inti | Hibrid **ADR-044**: tile → sheet; “baca selengkapnya” → `/[locale]/projects/[slug]` (SSG); overlay M10 tetap |
+| Opsional | Kedalaman copy per karya bertahap; OG per-karya bukan blocker |
+| Bukan | Blog volume, newsletter machine, distribusi sosial wajib, cabut sheet, path `/work/[slug]` |
 
 **Exit R2:**
 
@@ -116,7 +116,7 @@ Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
 
 # Roadmap Review
 
-* Baseline v1.0 dikunci (ADR-012); geser M9 ke R1 = ADR-020; geser M10 overlay ke R1 = **ADR-027**. Route `/work/[slug]` masih butuh ADR terpisah.
+* Baseline v1.0 dikunci (ADR-012); M9 R1 = ADR-020; M10 overlay R1 = **ADR-027**. Halaman case R2 = **ADR-044** (`/projects/[slug]`, hibrid).
 * Setelah live, review exit R1 sebelum memulai build R2 secara serius.
 * Tanggal/estimasi minggu boleh ditambah di Engineering planning — bukan syarat dokumen ini.
 

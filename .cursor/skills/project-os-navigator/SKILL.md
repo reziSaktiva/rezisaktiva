@@ -25,7 +25,7 @@ Jangan langsung baca semua dokumen `project-manager/` untuk setiap pesan. Eskala
 
 1. `project-manager/PROJECT_STATE.md` — Snapshot dulu, lalu detail bila perlu
 2. `project-manager/TASKS.md` — temukan ID task/subtask (`T-XXX` / `T-XXX.N`)
-3. `project-manager/tasks/vXX-*.md` — **hanya satu file** release; ikuti field **Baca dulu**
+3. `project-manager/tasks/` — **hanya satu file fase** (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`); ikuti field **Baca dulu**
 4. `project-manager/PROJECT_RULES.md` — bila menyentuh tata kelola dokumen
 5. ADR spesifik yang relevan
 6. `project-manager/PROJECT_OVERVIEW.md` — bila perlu gambaran umum
@@ -98,7 +98,7 @@ Jika ditemukan: **jangan diamkan** — itu kondisi urgent (salah/gap di dokumen)
 2. Cek `Active Conversation Mode`.
 3. Baca baseline relevan sebelum menulis.
 4. Setelah selesai, update:
-   - `project-manager/tasks/vXX-*.md` — centang subtask ber-ID (`T-XXX.N`) + status parent
+   - file fase di `project-manager/tasks/` — centang subtask ber-ID (`T-XXX.N`) + status parent
    - `project-manager/TASKS.md` — indeks + Fokus sekarang (sebut kode subtask bila relevan)
    - `PROJECT_STATE.md` — hanya jika phase/milestone/KI/fokus berubah (jangan salin detail task)
    - `COMPLETE_TASK.md` — append entri baru di atas (jangan baca riwayat lama); sebut `T-XXX.N`

@@ -8,9 +8,9 @@ Dokumen ini mendefinisikan alur pengguna website portofolio **rezisaktiva** untu
 
 # Overview
 
-Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi singkat → soft next step. Bukan flow CMS, auth, atau halaman case `/work/[slug]`.
+Flows diterjemahkan dari skenario SC1–SC6 dan journey R1 + magnet R2. Fokus: evaluasi singkat → soft next step. Bukan CMS atau auth.
 
-> **Update (2026-08-26, ADR-027):** F7 = buka **project sheet** (overlay dari bawah) dari tile Work index. Route `/work/[slug]` tetap di luar R1.
+> **Update (2026-08-26, ADR-027; 2026-09-14, ADR-044):** F7 = buka **project sheet** dari tile Work index. Dari sheet: tautan ke halaman case `/projects/[slug]`. Path `/work/[slug]` tidak dipakai.
 
 ---
 
@@ -33,6 +33,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 | F5 | Soft outreach klien | P4 | Sekunder tipis |
 | F6 | Share URL ke tim | P1/P2 | Primer sosial |
 | F7 | Buka project sheet | P1/P2 | Primer (M10 overlay, ADR-027) |
+| F8 | Buka halaman case | P1/P2 | Primer R2 (`/projects/[slug]`, ADR-044) |
 
 ---
 
@@ -43,7 +44,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 1. Masuk via URL (locale default atau link ber-locale)
 2. **Home** — baca first viewport (lede + klaim)
 3. Opsional: scroll **About** (`#about` — Now + siapa + lead/artwork) atau buka **Workflow** (prinsip / pipeline / ADR Vault, ADR-042) atau **Work index** (`/projects`, M9) bila butuh detail lebih
-4. Di Work index: klik tile → **project sheet** (F7, ADR-027); live/repo hanya dari dalam sheet
+4. Di Work index: klik tile → **project sheet** (F7); dari sheet boleh ke **halaman case** (F8, ADR-044); live/repo hanya dari dalam sheet/case
 5. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
 6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
 
@@ -89,10 +90,19 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 1. User di **Work index** (`/[locale]/projects`)
 2. Klik **tile karya** (bukan URL live/repo)
 3. **Sheet dari bawah** terbuka: preview live (iframe) atau galeri, services, location or company, year, description
-4. Opsional: tautan live/repo **di dalam sheet** (tab baru); tutup sheet (Escape / scrim / kontrol tutup)
+4. Opsional: tautan **halaman case** (ADR-044) atau live/repo **di dalam sheet** (tab baru untuk eksternal); tutup sheet (Escape / scrim / kontrol tutup)
 5. Sukses: paham proyek apa dan bagaimana dikerjakan tanpa meninggalkan situs lebih dulu
 
-**Failure modes:** tile langsung keluar ke GitHub/live; sheet kosong/dikarang; Quick Info hilang dari Work index.
+**Failure modes:** tile langsung keluar ke GitHub/live atau langsung ke `[slug]` (melewati sheet); sheet kosong/dikarang; Quick Info hilang dari Work index.
+
+### F8 — Buka halaman case (ADR-044)
+
+1. User di sheet M10 **atau** membuka URL `/[locale]/projects/[slug]` langsung
+2. Halaman case SSG (bukan sheet otomatis)
+3. Switcher locale → sibling slug yang sama
+4. Sukses: URL layak dishare; kembali ke index lewat chrome/tautan
+
+**Failure modes:** 404 untuk karya visible; halaman untuk `hiddenIds`; copy dikarang.
 
 ---
 
@@ -116,7 +126,6 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 # Out of Scope Flows (R1)
 
-* Halaman case `/work/[slug]` (bukan overlay F7)
 * Calendar booking
 * Chat WA / DM Instagram sebagai jalur Contact
 * Login, CMS, personalisasi akun
@@ -125,9 +134,9 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1. Fokus: evaluasi sing
 
 # Success Criteria
 
-* F1–F3, F6, dan **F7** (project sheet) terdokumentasi sebagai primer
+* F1–F3, F6, **F7** (project sheet), dan **F8** (halaman case, ADR-044) terdokumentasi sebagai primer
 * F4–F5 tipis pada permukaan yang sama
-* Route `/work/[slug]` eksplisit di luar R1
+* Path case = `/projects/[slug]`; `/work/[slug]` bukan rute
 * Failure modes mengunci anti-pattern di key screens
 
 ---

@@ -23,7 +23,7 @@ Accepted
    - **Description**
 4. Tautan live/repo (jika ada, `WorkItem.href` R1) boleh tampil **di dalam sheet** sebagai aksi sekunder, bukan target klik tile.
 5. **Komponen:** coba **Astryx `BottomSheet`** dulu (`purpose='info'`, `height`/`snapPoints` sesuai isi, `label` a11y). Jika tema/craft `rezisaktiva` tidak cukup, **fallback overlay custom** dari bawah (pola `quick-info.tsx` + lock Lenis). Bukan pindah ke shadcn (ADR-026).
-6. Implementasi = **T-026** di `tasks/v03-development-r1.md`. **Dikerjakan sebelum exit R1 (`T-018`)** — tidak ditunda ke R2. **T-018** menunggu T-021.1–T-021.7 **dan** T-026.
+6. Implementasi = **T-026** di `tasks/r1.md`. **Dikerjakan sebelum exit R1 (`T-018`)** — tidak ditunda ke R2. **T-018** menunggu T-021.1–T-021.7 **dan** T-026.
 7. Halaman case penuh `/work/[slug]` **bukan** R1; bila nanti dibutuhkan, ADR terpisah (boleh R2+).
 
 Ini **override** ADR-020 (M10 tetap R2) dan ADR-010 (tanpa magnet detail di MVP) **hanya** untuk bentuk overlay ini — bukan untuk route case study.
@@ -45,7 +45,7 @@ Ini **override** ADR-020 (M10 tetap R2) dan ADR-010 (tanpa magnet detail di MVP)
 - `product-discovery/02-product/feature-modules.md`, `feature-priority.md`, `mvp-definition.md`, `release-roadmap.md`, `product-scope.md`
 - `04-ux/information-architecture.md`, `key-screen-patterns.md`, `navigation-patterns.md`, `user-flows.md`, `ux-principles.md`
 - `05-architecture/application-layer.md`, `domain-model.md`
-- Task **T-026** di `tasks/v03-development-r1.md`; **T-018** menunggu T-026
+- Task **T-026** di `tasks/r1.md`; **T-018** menunggu T-026
 - Copy sheet: **T-026.1** (bukan T-021 / v10)
 
 ### Update — 2026-08-26 (urutan)
@@ -63,3 +63,7 @@ Seksi media: **iframe situs live** dulu (URL http(s) non-GitHub). Framing ditola
 ### Update — 2026-09-03 (ADR-028)
 
 Primitf sheet M10 = shadcn `Drawer` dari bawah (T-035), lebar penuh, di-skin `.ps-*`. Poin 5 (“coba BottomSheet Astryx / bukan pindah shadcn”) adalah jejak R1 (ADR-026); T-026.2 sudah fallback overlay custom, lalu T-035 menggantinya dengan Drawer. Keputusan produk (overlay dari bawah, bukan `/work/[slug]`) **tetap**. Lihat [ADR-028](ADR-028-shadcn-tailwind-replaces-astryx.md).
+
+### Update — 2026-09-14 (ADR-044)
+
+Halaman case **R2** = `/[locale]/projects/[slug]` (hibrid). Tile **tetap** membuka sheet. Halaman case **bukan** pengganti M10. Nama historis `/work/[slug]` tidak dipakai sebagai rute.
