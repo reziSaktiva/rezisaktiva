@@ -18,6 +18,7 @@ export interface WorkSheetCopy {
   previewLabel: string;
   liveLabel: string;
   repoLabel: string;
+  readMoreLabel: string;
 }
 
 export interface WorkSheetFields {
@@ -38,6 +39,7 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     previewLabel: "Pratinjau situs",
     liveLabel: "Live",
     repoLabel: "Repo",
+    readMoreLabel: "Baca selengkapnya",
   },
   en: {
     close: "Close project details",
@@ -49,6 +51,7 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     previewLabel: "Live preview",
     liveLabel: "Live",
     repoLabel: "Repo",
+    readMoreLabel: "Read the full case",
   },
 };
 

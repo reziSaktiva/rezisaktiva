@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-14] — T-056.2 copy case dikunci
+**Phase:** Validation + R2
+**Summary:** Boss Rezi mengunci isi halaman case = pakai ulang slot sheet (tanpa narasi baru). Slug: social-media-management-platform, cook-it-real-good, minerank. Label tautan: “Baca selengkapnya” / “Read the full case”.
+**Key Decision/Insight:** AI tidak mengarang copy. Karya hiddenIds tetap tanpa rute publik.
+**Impact:** `projects.json`, `work-sheet.ts`, route T-056.3, TASKS.
+
 ## [2026-09-14] — Rapikan folder tasks (tanpa vXX)
 **Phase:** Validation + R2
 **Summary:** Boss Rezi minta folder task dirapikan karena terlalu banyak file `v`. 15 file `v01`–`v21` digabung jadi 4 file fase. ID `T-XXX` tidak berubah.

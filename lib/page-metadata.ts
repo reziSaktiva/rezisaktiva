@@ -21,8 +21,9 @@ export function pageMetadata(
   locale: Locale,
   surface: SiteSurface,
   path = "",
+  copyOverride?: { title: string; description: string },
 ): Metadata {
-  const copy = SITE_META[locale][surface];
+  const copy = copyOverride ?? SITE_META[locale][surface];
   const siteUrl = getSiteUrl();
   const canonicalPath = localePath(locale, path);
   const canonical = `${siteUrl}${canonicalPath}`;

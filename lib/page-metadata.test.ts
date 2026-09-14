@@ -22,6 +22,19 @@ describe("pageMetadata (T-031.3)", () => {
     });
   });
 
+  it("can override title and description for a case path", () => {
+    const meta = pageMetadata("en", "work", "projects/minerank", {
+      title: "Minerank",
+      description: "case outcome",
+    });
+    expect(meta.title).toBe("Minerank");
+    expect(meta.description).toBe("case outcome");
+    expect(meta.alternates?.canonical).toBe(
+      `${getSiteUrl()}${localePath("en", "projects/minerank")}`,
+    );
+    expect(meta.openGraph?.images).toEqual([SITE_SHARE_IMAGE]);
+  });
+
   it("uses the same card on workflow and projects", () => {
     expect(
       pageMetadata("id", "workflow", "workflow").openGraph?.images,

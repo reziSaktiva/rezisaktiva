@@ -15,6 +15,13 @@ Format entri:
 ```
 
 ## [2026-09-14]
+### Added
+- **T-056.2** — slug kebab-case di `projects.json`; copy halaman case = slot sheet yang sudah dikunci; label tautan “Baca selengkapnya” / “Read the full case”.
+- **T-056.3** — route SSG `app/[locale]/projects/[slug]/` (`generateStaticParams`, 404 slug hidden/unknown).
+### Changed
+- Snapshot/TASKS → **T-056.4**.
+
+## [2026-09-14]
 ### Changed
 - Folder `project-manager/tasks/`: 15 file `vXX-*.md` digabung jadi `discovery.md`, `bootstrap.md`, `r1.md`, `r2.md` (+ `README.md`). ID task tidak berubah. Indeks TASKS = fase, bukan v01–v21.
 

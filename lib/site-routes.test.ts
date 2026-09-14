@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { SITE_META } from "@/content/site-meta";
+import { publicProjectRows } from "@/content/work";
 import { LOCALES } from "@/lib/locale";
-import { r1PageUrls } from "@/lib/site-routes";
+import { projectCaseUrls, r1PageUrls } from "@/lib/site-routes";
 
 describe("r1PageUrls", () => {
   it("emits one URL per locale × SITE_META surface", () => {
@@ -29,5 +30,22 @@ describe("r1PageUrls", () => {
         ).toBe(true);
       }
     }
+  });
+});
+
+describe("projectCaseUrls", () => {
+  it("emits locale × public slug and skips hidden works", () => {
+    const entries = projectCaseUrls();
+    const publicCount = publicProjectRows().length;
+    expect(entries).toHaveLength(LOCALES.length * publicCount);
+    expect(
+      entries.some((entry) =>
+        entry.url.endsWith("/en/projects/cook-it-real-good"),
+      ),
+    ).toBe(true);
+    expect(entries.some((entry) => entry.url.includes("gamestalgia"))).toBe(
+      false,
+    );
+    expect(entries.some((entry) => entry.url.includes("curious"))).toBe(false);
   });
 });

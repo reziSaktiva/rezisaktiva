@@ -3,6 +3,7 @@
   "items": [
     {
       "id": "1",
+      "slug": "social-media-management-platform",
       "name": "Social Media Management Platform",
       "year": "2026",
       "featured": true,
@@ -29,6 +30,7 @@
     },
     {
       "id": "2",
+      "slug": "cook-it-real-good",
       "name": "Cook It Real Good",
       "year": "2025",
       "featured": false,
@@ -60,6 +62,7 @@
     },
     {
       "id": "3",
+      "slug": "minerank",
       "name": "Minerank",
       "year": "2024–2025",
       "featured": false,
@@ -94,6 +97,7 @@
     },
     {
       "id": "6",
+      "slug": "gamestalgia",
       "name": "Gamestalgia",
       "year": "2023",
       "featured": false,
@@ -120,6 +124,7 @@
     },
     {
       "id": "7",
+      "slug": "curious",
       "name": "Curious",
       "year": "2023–2024",
       "featured": false,
