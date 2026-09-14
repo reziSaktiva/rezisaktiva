@@ -15,6 +15,12 @@ Format entri:
 ```
 
 ## [2026-09-14]
+### Fixed
+- Review PR #74: padding/probe iframe sheet tidak bocor ke halaman case; JSON-LD case + CreativeWork `url` = `/projects/[slug]`; `notFound()` jika sheet hilang; tes tautan primer vs Live/Repo.
+### Changed
+- Snapshot/TASKS tetap **T-056.6**.
+
+## [2026-09-14]
 ### Added
 - **T-056.4** — tautan primer “Baca selengkapnya” / “Read the full case” di sheet → `/[locale]/projects/[slug]`; Live/Repo tetap sekunder.
 - **T-056.5** — `casePageMetadata`: title `rezisaktiva — {name}`, description = outcome, canonical + hreflang, OG kartu situs.

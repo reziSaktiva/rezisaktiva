@@ -1,16 +1,14 @@
+import { notFound } from "next/navigation";
 import {
   WORK_SHEET_COPY,
   getWorkSheet,
+  projectActionHrefs,
   workSheetImages,
 } from "@/content/work-sheet";
 import type { Locale } from "@/lib/locale";
 import type { WorkItem } from "@/content/work";
 import { Reveal, WordReveal } from "./home-motion";
 import { ProjectSheetMedia } from "./project-sheet-media";
-
-function isRepoUrl(url: string): boolean {
-  return url.includes("github.com");
-}
 
 export function WorkCasePage({
   locale,
@@ -21,15 +19,15 @@ export function WorkCasePage({
 }) {
   const labels = WORK_SHEET_COPY[locale];
   const sheet = getWorkSheet(locale, item.id);
-  const images = workSheetImages(item.id);
-  const liveHref =
-    item.href && !isRepoUrl(item.href) ? item.href : undefined;
-  const repoHref =
-    item.href && isRepoUrl(item.href) ? item.href : sheet?.gitHref;
-
   if (!sheet) {
-    return null;
+    notFound();
   }
+  const images = workSheetImages(item.id);
+  const { liveHref, repoHref } = projectActionHrefs(
+    locale,
+    item,
+    sheet.gitHref,
+  );
 
   return (
     <div className="work-page case-page flex flex-col">

@@ -1,4 +1,6 @@
 import type { Locale } from "@/lib/locale";
+import { isProjectRepoUrl } from "@/lib/project-live-preview";
+import { projectCaseHref } from "@/lib/site-url";
 import { PROJECTS_CATALOG } from "./work";
 
 /**
@@ -72,5 +74,26 @@ export function getWorkSheet(
     locationOrCompany: row.locationOrCompany[locale],
     description: row.description[locale],
     gitHref: row.gitHref ?? undefined,
+  };
+}
+
+/** Primer = case in-site; Live/Repo sekunder (T-056.4). */
+export function projectActionHrefs(
+  locale: Locale,
+  item: { slug: string; href?: string },
+  gitHref?: string,
+): {
+  caseHref: string;
+  liveHref: string | undefined;
+  repoHref: string | undefined;
+} {
+  const liveHref =
+    item.href && !isProjectRepoUrl(item.href) ? item.href : undefined;
+  const repoHref =
+    item.href && isProjectRepoUrl(item.href) ? item.href : gitHref;
+  return {
+    caseHref: projectCaseHref(locale, item.slug),
+    liveHref,
+    repoHref,
   };
 }

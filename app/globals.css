@@ -3052,8 +3052,27 @@ html.page-vt-lock .wf-cathedral-optics {
   padding-block-end: var(--spacing-8);
 }
 
+.case-body {
+  position: relative;
+}
+
 .case-body .ps-description {
   margin-block-end: 0;
+}
+
+.case-body .ps-gallery,
+.case-body .ps-preview--live {
+  padding: 0;
+}
+
+.case-body .ps-preview:not(.ps-preview--live) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Contact modal — T-041.1: kartu elevated token (keluarga hamburger T-040.4). */
@@ -4135,10 +4154,13 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 .ps-gallery {
   width: 100%;
   box-sizing: border-box;
+}
+
+.ps-panel .ps-gallery {
   padding: 0 clamp(1.25rem, 6vw, 5rem) clamp(1.75rem, 4vw, 3rem);
 }
 
-.ps-preview:not(.ps-preview--live) {
+.ps-panel .ps-preview:not(.ps-preview--live) {
   position: fixed;
   left: -120vw;
   top: 0;
@@ -4151,6 +4173,9 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
 .ps-preview--live {
   width: 100%;
   box-sizing: border-box;
+}
+
+.ps-panel .ps-preview--live {
   padding: 0 clamp(1.25rem, 6vw, 5rem) clamp(1.75rem, 4vw, 3rem);
 }
 

@@ -8,18 +8,14 @@ import type { WorkItem } from "@/content/work";
 import {
   WORK_SHEET_COPY,
   getWorkSheet,
+  projectActionHrefs,
   workSheetImages,
 } from "@/content/work-sheet";
 import type { Locale } from "@/lib/locale";
-import { projectCaseHref } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { readCssDurationMs } from "@/lib/motion";
 import { CloseIcon } from "./overlay-icons";
 import { ProjectSheetMedia } from "./project-sheet-media";
-
-function isRepoUrl(url: string): boolean {
-  return url.includes("github.com");
-}
 
 export const PROJECT_SHEET_ID = "ps-panel";
 
@@ -65,6 +61,9 @@ export function ProjectSheet({
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.id) : [];
+  const { caseHref, liveHref, repoHref } = visible
+    ? projectActionHrefs(locale, visible, sheet?.gitHref)
+    : { caseHref: "", liveHref: undefined, repoHref: undefined };
 
   useEffect(() => {
     if (isOpen || visible == null) {
@@ -113,11 +112,6 @@ export function ProjectSheet({
     }
     lastFocus.current = null;
   }, [isOpen]);
-
-  const liveHref =
-    visible?.href && !isRepoUrl(visible.href) ? visible.href : undefined;
-  const repoHref =
-    visible?.href && isRepoUrl(visible.href) ? visible.href : sheet?.gitHref;
 
   return (
     <Drawer
@@ -206,10 +200,7 @@ export function ProjectSheet({
                   {sheet.description}
                 </p>
                 <div className="flex flex-col gap-3 ps-actions ps-reveal">
-                  <NextLink
-                    href={projectCaseHref(locale, visible.slug)}
-                    className="ps-read-more"
-                  >
+                  <NextLink href={caseHref} className="ps-read-more">
                     {labels.readMoreLabel}
                   </NextLink>
                   {liveHref || repoHref ? (
