@@ -63,13 +63,13 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | ---- | ---------- |
 | **Form kontak sederhana** | Jika email/tautan terasa kurang; bukan syarat MVP |
 | **Calendar booking** | Hanya jika Rezi ingin; tetap soft, bukan sales funnel |
-| **1 case/proses singkat** | Boleh dimasukkan lebih awal jika konten sudah siap — idealnya release berikutnya |
+| **1 case/proses singkat** | Bentuk dikunci **ADR-044** (hibrid); eksekusi **T-056** — bukan Could mengambang |
 
 ---
 
 # Out of Scope
 
-* Halaman detail case `/work/[slug]` — bukan R1 (ADR-027); overlay sheet M10 sudah Must R1
+* Halaman detail case `/work/[slug]` — nama historis **ditolak**; R2 = `/[locale]/projects/[slug]` (**ADR-044**); overlay sheet M10 tetap Must R1
 * Blog / writing hub / newsletter sebagai fitur inti
 * CMS, auth, dashboard, area private di situs
 * Pricing, paket jasa, checkout
@@ -93,7 +93,7 @@ MVP dianggap cukup jika:
 
 # Decision Rules
 
-* Menambah **halaman** Work/detail case (`/work/[slug]`) ke Must → ADR baru. Overlay M10 sudah Must R1 (ADR-027).
+* Menambah **halaman** Work/detail case → bentuk dikunci **ADR-044** (`/projects/[slug]` + sheet). Overlay M10 tetap Must R1.
 * Menambah **harga / hard CTA** → bertentangan ADR-002 / ADR-008; ditolak kecuali ADR baru.
 * Form/calendar masuk Must Have hanya jika Boss Rezi mengunci kebutuhan itu.
 * Perubahan material MVP setelah Product Baseline → ADR baru.
@@ -110,7 +110,7 @@ MVP dianggap cukup jika:
 | Product Baseline | **v1.0** — ADR-012 |
 | Work index (M9) di MVP | Ya — Must R1 (override ADR-020) |
 | Workflow (M14) di MVP | Ya — Must R1 (ADR-035); route `/workflow` |
-| Case detail (M10) di MVP | Overlay sheet Must R1 (ADR-027); route `/work/[slug]` tidak |
+| Case detail (M10) di MVP | Overlay sheet Must R1 (ADR-027); halaman `/projects/[slug]` = R2 **ADR-044** |
 | Contact | Modal global, bukan halaman (ADR-019) |
 | Quick Info (M13) | Ya — Must R1 (ADR-022) |
 | Theme toggle | Ya — Must R1 (ADR-021), default ship **dark** (light hold, T-038.2) |

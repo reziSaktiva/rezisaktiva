@@ -16,6 +16,43 @@ Format entri:
 
 ## [2026-09-14]
 ### Fixed
+- Review PR #74: padding/probe iframe sheet tidak bocor ke halaman case; JSON-LD case + CreativeWork `url` = `/projects/[slug]`; `notFound()` jika sheet hilang; tes tautan primer vs Live/Repo.
+### Changed
+- Snapshot/TASKS tetap **T-056.6**.
+
+## [2026-09-14]
+### Added
+- **T-056.4** — tautan primer “Baca selengkapnya” / “Read the full case” di sheet → `/[locale]/projects/[slug]`; Live/Repo tetap sekunder.
+- **T-056.5** — `casePageMetadata`: title `rezisaktiva — {name}`, description = outcome, canonical + hreflang, OG kartu situs.
+### Changed
+- Snapshot/TASKS → **T-056.6**.
+
+## [2026-09-14]
+### Added
+- **T-056.2** — slug kebab-case di `projects.json`; copy halaman case = slot sheet yang sudah dikunci; label tautan “Baca selengkapnya” / “Read the full case”.
+- **T-056.3** — route SSG `app/[locale]/projects/[slug]/` (`generateStaticParams`, 404 slug hidden/unknown).
+### Changed
+- Snapshot/TASKS → **T-056.4**.
+
+## [2026-09-14]
+### Changed
+- Folder `project-manager/tasks/`: 15 file `vXX-*.md` digabung jadi `discovery.md`, `bootstrap.md`, `r1.md`, `r2.md` (+ `README.md`). ID task tidak berubah. Indeks TASKS = fase, bukan v01–v21.
+
+## [2026-09-14]
+### Added
+- **ADR-044** — R2 hibrid: sheet M10 + halaman `/[locale]/projects/[slug]`.
+- `tasks/v21-r2-case-pages.md` — **T-056** (**T-056.1** ✅).
+### Changed
+- Baseline 02/04/05 + ADR-027 catatan R2; Snapshot/TASKS → **T-056.2**.
+
+## [2026-09-14]
+### Added
+- `R1_COMPLETE.md` — ringkasan beku R1 Hybrid lean (exit T-018, polish T-055, T-023 ❌).
+### Changed
+- Snapshot + Fokus TASKS menunjuk **R1 sudah selesai**; tidak ada task R1 baru.
+
+## [2026-09-14]
+### Fixed
 - Review PR #73: pita footer full-bleed + `z-index: 2` hanya `body:has(.wf-cathedral-dust)` — Home/Projects kembali max-width 1400. ADR-043: “tanpa kode produksi” berlaku **T-023 saja**. Tes kontrak CSS `lib/workflow-cathedral-dust.test.ts`.
 
 ## [2026-09-14]

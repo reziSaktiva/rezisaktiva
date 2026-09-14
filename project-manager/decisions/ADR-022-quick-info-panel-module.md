@@ -46,7 +46,7 @@ Accepted
 - `product-discovery/04-ux/information-architecture.md` — Content Hierarchy (lintas halaman/chrome): baris Quick info overlay.
 - `product-discovery/04-ux/key-screen-patterns.md` — S0 Chrome: blok Quick info panel.
 - `product-discovery/04-ux/ux-principles.md` — catatan: overlay tidak dianggap halaman baru (selaras UX3).
-- `project-manager/tasks/v03-development-r1.md` — task implementasi M13 (konten placeholder → copy nyata + komponen overlay, exclude Work case).
+- `project-manager/tasks/r1.md` — task implementasi M13 (konten placeholder → copy nyata + komponen overlay, exclude Work case).
 
 ### Update — 2026-08-16
 

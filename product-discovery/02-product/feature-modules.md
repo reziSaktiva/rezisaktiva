@@ -8,9 +8,9 @@ Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** unt
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work index) + **About sebagai section `#about` di Home** (ADR-040) + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + `#about` + pita footer (ADR-038 / ADR-040 / ADR-041). Now = About. Cara kerja = M14 `/workflow` (ADR-035; isi ADR-042). M10 di R1 = overlay (ADR-027), bukan halaman case.
+Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work index) + **About sebagai section `#about` di Home** (ADR-040) + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + `#about` + pita footer (ADR-038 / ADR-040 / ADR-041). Now = About. Cara kerja = M14 `/workflow` (ADR-035; isi ADR-042). M10 di R1 = overlay (ADR-027). **R2** menambah halaman case `/[locale]/projects/[slug]` tanpa mencabut sheet (**ADR-044**).
 
-> **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026) — bukan route `/work/[slug]`.
+> **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027; 2026-09-14, ADR-044):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026). Halaman case **R2** = `/[locale]/projects/[slug]` (hibrid; tile tetap sheet).
 >
 > **Update (2026-08-16):** M6 menyertakan toggle tema Must R1 (**ADR-021**). Modul baru **M13 — Quick Info panel** (**ADR-022**) — overlay global, bukan halaman.
 >
@@ -112,7 +112,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
 | **M8 — Contact form / booking** | Alternatif jalur kontak | Could — bukan syarat MVP |
 | **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
-| **M10 — Case / process detail** | Overlay dari bawah (bukan route): preview live (iframe) atau galeri, services, location or company, year, description; tile Work index membuka sheet, live/repo sekunder di dalam sheet | **Must R1** (ADR-027, T-026; teaser Home dicabut ADR-032) |
+| **M10 — Case / process detail** | **R1:** overlay dari bawah (preview live/galeri, services, location or company, year, description); tile membuka sheet; live/repo sekunder. **R2 (ADR-044):** tautan “baca selengkapnya” ke halaman `/[locale]/projects/[slug]`; sheet **tetap** | **Must R1** overlay (ADR-027); **Must R2** halaman case (ADR-044, T-056) |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
 | **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
 | **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
@@ -131,11 +131,12 @@ M6 Chrome ── includes ► Theme toggle (ADR-021)
 M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick Info tetap di Work index; sheet M10 overlay terpisah)
 
 M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
+                              └──► halaman case `/projects/[slug]` (Must R2, ADR-044) — dari tautan di sheet
 ```
 
 * M1 adalah pintu destination (lede + klaim); M2 memperdalam siapa + Now + lead/artwork; M14 memperdalam cara kerja; M3 menutup soft path.
-* M4 retired (ADR-032); bukti karya = M9 + M10.
-* M9 Must R1 (ADR-020); M10 overlay sheet Must R1 (ADR-027); halaman `/work/[slug]` bukan R1.
+* M4 retired (ADR-032); bukti karya = M9 + M10; magnet URL = halaman case (ADR-044).
+* M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); halaman `/[locale]/projects/[slug]` = **R2 (ADR-044)** — bukan `/work/[slug]`.
 * M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).
 
 ---
@@ -146,7 +147,7 @@ M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, A
 2. **Kurasi ketat** — teaser sedikit yang kuat > daftar panjang.
 3. **Soft by default** — Contact tidak berubah jadi sales page.
 4. **Bahasa sebagai lapisan** — bukan afterthought; konten inti dual.
-5. **Magnet overlay, bukan halaman case** — M10 R1 = sheet dari bawah (ADR-027); `/work/[slug]` tetap di luar R1.
+5. **Magnet hibrid R2** — M10 R1 = sheet; halaman case = `/projects/[slug]` dari tautan sheet (**ADR-044**). Jangan cabut sheet.
 6. **Satelit tetap satelit** — GitHub/LinkedIn mendukung, tidak menggantikan M1–M3.
 7. **Detail interaksi di UX** — dokumen ini tidak mengunci wireframe atau komponen UI.
 
@@ -180,5 +181,6 @@ Modul dianggap cukup terdefinisi jika:
 * `../../project-manager/decisions/ADR-040-about-as-home-section.md`
 * `../../project-manager/decisions/ADR-041-home-with-footer.md`
 * `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
+* `../../project-manager/decisions/ADR-044-r2-hybrid-case-pages.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

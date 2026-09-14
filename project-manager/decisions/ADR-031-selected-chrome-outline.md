@@ -35,4 +35,4 @@ Accepted
 - Implementasi: `globals.css` (`.site-nav-item` / `.site-locale-switch-item` / `.site-mobile-nav-item` `[data-selected]`), `layout.tsx` (cabut layer), hapus `blood-splatter-layer.tsx`.
 - ADR-030 status **Superseded**.
 - ADR-029 poin 1 & 4: splatter tidak lagi pengecualian selected.
-- Catatan T-038.3 / T-040.2 / T-040.6 di [`tasks/v15-visual-identity.md`](../tasks/v15-visual-identity.md).
+- Catatan T-038.3 / T-040.2 / T-040.6 di [`tasks/r1.md`](../tasks/r1.md).

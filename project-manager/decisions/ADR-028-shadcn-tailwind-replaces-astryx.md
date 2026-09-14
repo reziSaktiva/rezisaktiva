@@ -55,7 +55,7 @@ Accepted
 
 ### Impact / Follow-up
 
-- Backlog: [`tasks/v14-shadcn-tailwind.md`](../tasks/v14-shadcn-tailwind.md) (**T-032** … **T-037**).
+- Backlog: [`tasks/r1.md`](../tasks/r1.md) (**T-032** … **T-037**).
 - ADR-018 **superseded** oleh ADR ini. ADR-021, ADR-017, ADR-025, ADR-019, ADR-022, ADR-024, ADR-027 **tetap berlaku** (perilaku produk); hanya mekanisme komponen yang berganti. **Bentuk visual** (palet/chrome) kemudian diganti **[ADR-029](ADR-029-visual-identity-gothic-blood.md)** — stack shadcn + Tailwind di ADR ini **tetap**.
 - Saat T-037: update `product-discovery/06-engineering/` (tokens, dependency, code-discipline, README), `ARCHITECTURE_OVERVIEW.md`, `AGENTS.md`, `.cursor/rules/`.
 - Compiler StyleX (catatan T-013.4 / T-027) **tidak dikerjakan** — gap ditutup dengan cabut Astryx.

@@ -39,7 +39,7 @@ Accepted
 - `product-discovery/02-product/mvp-definition.md` / `feature-priority.md` / `release-roadmap.md` — Must Have / R1 Must tambah Theme toggle (cite ADR-021).
 - `product-discovery/04-ux/navigation-patterns.md` — Mobile Considerations: "toggle tema" direferensikan ke ADR-021 (bukan lagi asumsi tanpa prioritas).
 - `product-discovery/04-ux/ux-principles.md` / `key-screen-patterns.md` — catatan singkat: toggle tidak mengubah default light-ship.
-- `project-manager/tasks/v03-development-r1.md` — subtask implementasi komponen toggle di chrome (site-header); hapus "Dark mode toggle UI (Should/Later)" dari daftar yang tidak masuk backlog R1.
+- `project-manager/tasks/r1.md` — subtask implementasi komponen toggle di chrome (site-header); hapus "Dark mode toggle UI (Should/Later)" dari daftar yang tidak masuk backlog R1.
 
 ### Update — 2026-08-16
 

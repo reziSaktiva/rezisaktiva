@@ -5,11 +5,13 @@ import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { SITE_META } from "@/content/site-meta";
 import { WORK_ITEMS } from "@/content/work";
 import {
+  buildCaseJsonLd,
   buildJsonLd,
   findAllNodes,
   findNode,
   type JsonLdNode,
 } from "./json-ld";
+import { getSiteUrl, projectCaseHref } from "./site-url";
 
 function personFrom(surface: "home" | "workflow" | "work") {
   const person = findNode(buildJsonLd("id", surface), "Person");
@@ -73,24 +75,52 @@ describe("buildJsonLd", () => {
     expect(crumbs.map((item) => item.name)).toEqual(["Home", "Proses Kerja"]);
   });
 
-  it("omits url on CreativeWork items that have no href", () => {
+  it("points CreativeWork url at the public case page, live/repo as sameAs", () => {
     const doc = buildJsonLd("id", "work");
     const works = findAllNodes(doc, "CreativeWork");
     const catalog = WORK_ITEMS.id;
     expect(works).toHaveLength(catalog.length);
 
-    const withoutHref = catalog.filter((item) => !item.href);
-    expect(withoutHref).toHaveLength(0);
-
     for (const item of catalog) {
       const node = works.find((work) => work.name === item.name);
       expect(node).toBeDefined();
       expect(node?.description).toBe(item.outcome);
+      expect(node?.url).toBe(
+        `${getSiteUrl()}${projectCaseHref("id", item.slug)}`,
+      );
       if (item.href) {
-        expect(node?.url).toBe(item.href);
+        expect(node?.sameAs).toEqual([item.href]);
       } else {
-        expect(node).not.toHaveProperty("url");
+        expect(node).not.toHaveProperty("sameAs");
       }
     }
+  });
+
+  it("builds a case page graph with breadcrumbs and the in-site work url", () => {
+    const item = WORK_ITEMS.en.find((row) => row.slug === "cook-it-real-good");
+    expect(item).toBeDefined();
+    const doc = buildCaseJsonLd("en", item!);
+    const types = doc["@graph"].map((node) => node["@type"]);
+    expect(types).toEqual([
+      "Person",
+      "WebSite",
+      "WebPage",
+      "BreadcrumbList",
+      "CreativeWork",
+    ]);
+    const page = findNode(doc, "WebPage");
+    const work = findNode(doc, "CreativeWork");
+    const caseUrl = `${getSiteUrl()}${projectCaseHref("en", item!.slug)}`;
+    expect(page?.url).toBe(caseUrl);
+    expect(page?.name).toBe(`${PERSON.alternateName} — ${item!.name}`);
+    expect(work?.url).toBe(caseUrl);
+    expect(work?.sameAs).toEqual([item!.href]);
+    const crumbs = findNode(doc, "BreadcrumbList")
+      ?.itemListElement as JsonLdNode[];
+    expect(crumbs.map((crumb) => crumb.name)).toEqual([
+      "Home",
+      "Projects",
+      item!.name,
+    ]);
   });
 });

@@ -72,7 +72,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 | M6 Chrome | Site chrome (termasuk theme toggle, ADR-021) |
 | M7 Meta | Share/meta per Page×Locale |
 | M9 Work index | Page katalog karya + Work item (Must R1, override ADR-020) |
-| M10 Project sheet | Overlay dari bawah; bukan Page (Must R1, ADR-027) |
+| M10 Project sheet | Overlay dari bawah (Must R1, ADR-027) + Page `/projects/[slug]` (Must R2, ADR-044) |
 | M13 Quick Info | Quick Info overlay (Must R1, ADR-022) |
 
 ---
@@ -87,7 +87,7 @@ Pemetaan praktis ke modul produk (sudah di `02-product/feature-modules.md`):
 
 1. **Publik read-only** — pengunjung tidak menulis state ke domain situs.
 2. **Authoring di luar produk** — Rezi mengedit konten di repo / alat deploy; itu proses engineering, bukan domain in-app.
-3. **Project sheet (M10 overlay)** = Must R1 (ADR-027) — bukan Page `/work/[slug]`. Work index (M9) tetap Page.
+3. **Project sheet (M10 overlay)** = Must R1 (ADR-027). **Halaman case** `/[locale]/projects/[slug]` = Must R2 (**ADR-044**) — bukan `/work/[slug]`. Work index (M9) tetap Page.
 4. **Materi sensitif** → `private/` atau di luar repo (ADR-003), bukan entitas produk.
 5. Menambah aggregate transaksi / user account → ADR + revisi Product scope.
 

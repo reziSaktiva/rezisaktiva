@@ -10,7 +10,7 @@ Dokumen ini menetapkan struktur informasi & halaman website portofolio **rezisak
 
 IA R1 = **tiga halaman konten** (Home, Workflow, Work index) + **About sebagai section di Home** (`#about`, ADR-040) + **Contact, Quick Info, dan project sheet sebagai overlay global** (bukan halaman/route) + **locale path prefix** `/id` dan `/en`. Hiring & klien memakai pohon yang sama (jalur sekunder tipis). Home **tidak** punya teaser karya atau credibility line (ADR-032). About = narasi pribadi di Home; cara kerja = `/workflow` (ADR-035).
 
-> **Update (2026-08-26, ADR-027):** M10 Must R1 = overlay sheet dari bawah (bukan `/work/[slug]`). Tile Work index membuka sheet.
+> **Update (2026-08-26, ADR-027; 2026-09-14, ADR-044):** M10 Must R1 = overlay sheet dari bawah. Tile Work index membuka sheet. Halaman case R2 = `/[id/en]/projects/[slug]` dari tautan di sheet.
 
 ---
 
@@ -33,6 +33,7 @@ Locale sebagai **path param** `[id/en]` — nilai ∈ `{ id, en }` (bukan query 
     ├── /[id/en]/about      → redirect ke `/[id/en]#about` (ADR-040)
     ├── /[id/en]/workflow   → Workflow / Proses Kerja (ADR-035)
     └── /[id/en]/projects   → Work index (M9, Must R1 — ADR-020)
+        └── /[id/en]/projects/[slug] → Work case (R2, ADR-044)
 
 Overlay global (bukan route, tampil di atas halaman manapun):
     • Contact modal      → dibuka dari tombol Contact di chrome (ADR-019)
@@ -40,9 +41,7 @@ Overlay global (bukan route, tampil di atas halaman manapun):
     • Project sheet      → dibuka dari tile Work index (M10, ADR-027; dari bawah)
 ```
 
-Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). **Tidak ada** route `/projects/[slug]` di R1. `/about` hanya redirect.
-
-**Bukan R1 (Later / R2):** halaman case `/projects/[slug]`, blog, auth area.
+Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`, `/en/projects/cook-it-real-good`. **Tidak ada** route `/contact` terpisah — Contact selalu modal (final, ADR-019). `/about` hanya redirect. **Tidak ada** `/work/[slug]`.
 
 ---
 
@@ -102,7 +101,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | Overlay global | Contact modal (bukan path, final — ADR-019) | M3 | Must |
 | Overlay global | Quick info panel (bukan path) | M13 | Must (ADR-022) |
 | Overlay global | Project context sheet (bukan path) | M10 | Must (ADR-027); dari bawah; tile Work index |
-| `/[id/en]/projects/[slug]` | Work case sebagai halaman | — | Bukan R1 (ADR-027) |
+| `/[id/en]/projects/[slug]` | Work case sebagai halaman | M10 (halaman) | **Must R2** (ADR-044) |
 
 ---
 
@@ -112,7 +111,7 @@ Notasi sama dengan Site Map: `[id/en]` = path param locale ∈ `{ id, en }` (set
 | ----- | ------------------------ |
 | URL bare domain `/` | Redirect ke `/id/...` atau `/en/...` sesuai aturan default di bawah |
 | Link langsung ber-locale (mis. `/id#about`, `/en/projects`) | **Buka apa adanya** — jangan rewrite ke locale lain meski ada cookie preferensi |
-| Switcher | Pindah ke path sibling locale yang sama (Home↔Home termasuk hash `#about`, Workflow↔Workflow, Work index↔Work index) |
+| Switcher | Pindah ke path sibling locale yang sama (Home↔Home termasuk hash `#about`, Workflow↔Workflow, Work index↔Work index, case↔case) |
 | Share URL | Prefer URL ber-locale agar penerima melihat bahasa yang sama (SC6) |
 | Satelit GitHub/LinkedIn (keluar) | Boleh; Contact & Home tetap destination utama |
 
@@ -169,7 +168,7 @@ Sebelum R1 dianggap siap live:
 
 * Menambah rute konten R1 baru → ADR + update Product bila perlu
 * Mengubah skema locale (hapus path prefix) → ADR baru
-* Memasukkan Work index ke inventory Must → ADR-020. Overlay M10 Must R1 → **ADR-027**. Route `/work/[slug]` tetap butuh ADR baru.
+* Memasukkan Work index ke inventory Must → ADR-020. Overlay M10 Must R1 → **ADR-027**. Halaman case `/projects/[slug]` → **ADR-044**.
 * Contact sebagai modal (bukan route) → final via ADR-019; T-016 selesai, jangan tambah route `/contact` tanpa ADR baru
 
 ---

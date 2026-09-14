@@ -27,7 +27,7 @@ UX R1 melayani **clarity dalam kunjungan singkat** dan **jalur soft inbound** �
 | **UX1** | **Clarity first** | First viewport menjawab “siapa & untuk siapa”; tidak menunda positioning ke bawah fold |
 | **UX2** | **Satu brand, dua penekanan** | Founder & PO memakai permukaan yang sama; beda kebutuhan lewat About / Workflow / Work index, bukan mode Home terpisah |
 | **UX3** | **Lean surface** | Home (termasuk section About), Workflow, Work index sebagai *halaman*; About bukan route (ADR-040). Jangan menambah halaman untuk “melayani” hiring. Overlay (Contact modal ADR-019, Quick info ADR-022) **bukan** halaman baru |
-| **UX4** | **Presence tanpa katalog case** | Bukti karya = Work index + sheet M10 (M4 teaser Home retired, ADR-032); halaman case `/work/[slug]` = Later R2 |
+| **UX4** | **Presence + magnet URL** | Bukti karya = Work index + sheet M10; magnet share = `/projects/[slug]` (**ADR-044**); teaser Home retired ADR-032 |
 | **UX5** | **Soft path** | Contact first-class (modal, ADR-019); Email primer; LinkedIn & GitHub satelit; tanpa harga, WA/IG di R1; form singkat opsional (bukan syarat wajib) |
 | **UX6** | **Bahasa adalah journey** | Geo-default + path prefix `/id` & `/en` + switcher selalu ada; makna ID/EN setara |
 | **UX7** | **Kurasi > kelengkapan** | Lebih baik sedikit bukti tajam daripada meniru layout GitHub |
@@ -82,8 +82,8 @@ Detail token/visual final tetap di fase Engineering / design execution — bukan
 # Decision Rules
 
 * Overlay Quick info **bukan** “halaman baru” (UX3) — **ADR-022**; jangan jadikan route `/info`.
-* Overlay project sheet **bukan** “halaman baru” (UX3) — **ADR-027**; jangan jadikan `/work/[slug]` di R1.
-* Menambah halaman Work/case (`/work/[slug]`) → ADR baru. Work index (M9) + sheet M10 sudah Must R1.
+* Overlay project sheet **bukan** “halaman baru” (UX3) — **ADR-027**; tile tidak boleh skip sheet.
+* Halaman case `/[locale]/projects/[slug]` = pengecualian UX3 untuk magnet R2 — **ADR-044**. Bukan `/work/[slug]`. Jangan cabut sheet.
 * Toggle tema Must R1 via **ADR-021**; default ship **dark** + light hold (update 2026-09-04 / T-038.2). Cabut hold / hidupkan light lagi = keputusan + update ADR.
 * Mengangkat form/calendar/WA/IG ke Must Contact → keputusan Boss Rezi + ADR bila material.
 * Mengubah skema bahasa dari path prefix → ADR baru.

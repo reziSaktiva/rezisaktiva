@@ -42,6 +42,10 @@ export function projectsHref(locale: string): string {
   return localePath(locale, PROJECTS_PATH);
 }
 
+export function projectCaseHref(locale: string, slug: string): string {
+  return localePath(locale, `${PROJECTS_PATH}/${slug}`);
+}
+
 export function workflowHref(locale: string): string {
   return localePath(locale, WORKFLOW_PATH);
 }

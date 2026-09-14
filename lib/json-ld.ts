@@ -2,12 +2,13 @@ import { PERSON } from "@/content/person";
 import { CONTACT_EMAIL, CONTACT_LINKS } from "@/content/contact";
 import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
-import { WORK_ITEMS } from "@/content/work";
+import { WORK_ITEMS, type WorkItem } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 import { NAV_LABELS } from "@/lib/nav";
 import {
   getSiteUrl,
   localePath,
+  projectCaseHref,
   PROJECTS_PATH,
   WORKFLOW_PATH,
 } from "@/lib/site-url";
@@ -148,22 +149,30 @@ function breadcrumbNode(
   };
 }
 
+function casePageUrl(locale: Locale, slug: string): string {
+  return `${getSiteUrl()}${projectCaseHref(locale, slug)}`;
+}
+
+function creativeWorkId(locale: Locale, slug: string): string {
+  return `${casePageUrl(locale, slug)}#work`;
+}
+
 function creativeWorkNode(
   locale: Locale,
-  item: (typeof WORK_ITEMS)[Locale][number],
-  workIndexUrl: string,
+  item: WorkItem,
 ): JsonLdNode {
   const node: JsonLdNode = {
     "@type": "CreativeWork",
-    "@id": `${workIndexUrl}#work-${item.id}`,
+    "@id": creativeWorkId(locale, item.slug),
     name: item.name,
     description: item.outcome,
     dateCreated: dateCreatedFromYear(item.year),
     inLanguage: locale,
     author: { "@id": personId() },
+    url: casePageUrl(locale, item.slug),
   };
   if (item.href) {
-    node.url = item.href;
+    node.sameAs = [item.href];
   }
   return node;
 }
@@ -178,8 +187,53 @@ function itemListNode(locale: Locale): JsonLdNode {
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      item: creativeWorkNode(locale, item, workIndexUrl),
+      item: creativeWorkNode(locale, item),
     })),
+  };
+}
+
+function caseWebPageNode(locale: Locale, item: WorkItem): JsonLdNode {
+  const url = casePageUrl(locale, item.slug);
+  return {
+    "@type": "WebPage",
+    "@id": url,
+    name: `${PERSON.alternateName} — ${item.name}`,
+    description: item.outcome,
+    url,
+    inLanguage: locale,
+    isPartOf: { "@id": websiteId() },
+    about: { "@id": personId() },
+    mainEntity: { "@id": creativeWorkId(locale, item.slug) },
+  };
+}
+
+function caseBreadcrumbNode(locale: Locale, item: WorkItem): JsonLdNode {
+  const homeUrl = pageUrl(locale, "");
+  const workUrl = pageUrl(locale, PROJECTS_PATH);
+  const url = casePageUrl(locale, item.slug);
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: NAV_LABELS[locale].home,
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: NAV_LABELS[locale].work,
+        item: workUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: item.name,
+        item: url,
+      },
+    ],
   };
 }
 
@@ -207,6 +261,22 @@ export function buildJsonLd(
   return {
     "@context": "https://schema.org",
     "@graph": graph,
+  };
+}
+
+export function buildCaseJsonLd(
+  locale: Locale,
+  item: WorkItem,
+): JsonLdDocument {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      personNode(locale),
+      websiteNode(locale),
+      caseWebPageNode(locale, item),
+      caseBreadcrumbNode(locale, item),
+      creativeWorkNode(locale, item),
+    ],
   };
 }
 

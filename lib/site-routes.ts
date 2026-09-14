@@ -1,8 +1,10 @@
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
+import { publicProjectRows } from "@/content/work";
 import { LOCALES, type Locale } from "@/lib/locale";
 import {
   getSiteUrl,
   localePath,
+  projectCaseHref,
   PROJECTS_PATH,
   WORKFLOW_PATH,
 } from "@/lib/site-url";
@@ -36,6 +38,22 @@ export function r1PageUrls(): {
       locale,
       surface,
       url: `${siteUrl}${localePath(locale, surfacePath(surface))}`,
+    })),
+  );
+}
+
+/** Halaman case publik (locale × slug terlihat). Hidden tidak masuk. */
+export function projectCaseUrls(): {
+  locale: Locale;
+  slug: string;
+  url: string;
+}[] {
+  const siteUrl = getSiteUrl();
+  return LOCALES.flatMap((locale) =>
+    publicProjectRows().map((item) => ({
+      locale,
+      slug: item.slug,
+      url: `${siteUrl}${projectCaseHref(locale, item.slug)}`,
     })),
   );
 }

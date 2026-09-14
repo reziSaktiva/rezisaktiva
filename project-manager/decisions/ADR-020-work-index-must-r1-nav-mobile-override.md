@@ -40,7 +40,7 @@ Accepted
 - `product-discovery/02-product/release-roadmap.md` — R1 Must tambah M9; R2 tetap M10 (+ M9 dicoret dari daftar R2 karena sudah dikerjakan di R1).
 - `product-discovery/04-ux/information-architecture.md` — site map tambah `/[id/en]/work` sebagai Must; Page Inventory M9 → R1 Must.
 - `product-discovery/04-ux/navigation-patterns.md` — Mobile Considerations ditandai override sebagian oleh ADR ini (hamburger <1024px diizinkan; sisanya tetap berlaku selama tidak bertentangan).
-- `project-manager/tasks/v03-development-r1.md` — T-013.1 direvisi (nav items + breakpoint hamburger); tambah task baru **T-019 — Work index R1 (M9)** untuk halaman `/[locale]/work` (di luar chrome T-013).
+- `project-manager/tasks/r1.md` — T-013.1 direvisi (nav items + breakpoint hamburger); tambah task baru **T-019 — Work index R1 (M9)** untuk halaman `/[locale]/work` (di luar chrome T-013).
 - Konten & desain detail Work index (copy, kurasi karya) menyusul di task T-019 tersendiri — ADR ini hanya mengunci keputusan scope & nav, bukan isi halaman.
 
 ### Update — 2026-09-01 (label chrome)

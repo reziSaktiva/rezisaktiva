@@ -52,7 +52,8 @@ rezisaktiva/
 │   ├── PROJECT_RULES.md
 │   ├── PROJECT_STATE.md      → baca section "Snapshot" dulu
 │   ├── TASKS.md              → indeks backlog
-│   ├── tasks/                → detail task per release
+│   ├── R1_COMPLETE.md        → ringkasan beku R1 (bukan living status)
+│   ├── tasks/                → discovery / bootstrap / r1 / r2 (bukan vXX)
 │   ├── DECISIONS.md          → indeks ADR
 │   ├── decisions/            → satu file per ADR
 │   ├── DEVELOPER_WORKFLOW.md
@@ -71,7 +72,8 @@ rezisaktiva/
 | `PROJECT_OVERVIEW.md` | Gambaran umum project |
 | `PROJECT_RULES.md` | Aturan, prinsip, klasifikasi dokumen |
 | `PROJECT_STATE.md` | Living status (Snapshot di atas) |
-| `TASKS.md` + `tasks/` | Backlog |
+| `TASKS.md` + `tasks/` | Backlog (fase: discovery, bootstrap, r1, r2) |
+| `R1_COMPLETE.md` | Ringkasan beku R1 Hybrid lean (exit T-018) |
 | `DECISIONS.md` + `decisions/` | ADR |
 | `COMPLETE_TASK.md` | Append-only riwayat selesai |
 | `CONVERSATIONS.md` | Log diskusi penting |

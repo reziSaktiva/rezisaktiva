@@ -34,6 +34,6 @@ Superseded (ADR-031)
 ### Impact / Follow-up
 
 - Implementasi: **T-040.6** (`blood-splatter-layer.tsx`, `globals.css`).
-- Update catatan T-038.1 / T-038.3 di [`tasks/v15-visual-identity.md`](../tasks/v15-visual-identity.md).
+- Update catatan T-038.1 / T-038.3 di [`tasks/r1.md`](../tasks/r1.md).
 - ADR-029 poin 1 & 4: splatter tetap dilarang **kecuali** selected chrome per ADR ini.
 - **2026-09-07:** diganti [ADR-031](ADR-031-selected-chrome-outline.md) — selected = outline + teks aksen; splatter dicabut.

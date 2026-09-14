@@ -22,7 +22,7 @@ Dokumen ini **bukan** Source of Truth produk. Ia mengarahkan agent ke dokumen ya
 ## Wajib di awal sesi
 
 1. Baca **Snapshot** di `project-manager/PROJECT_STATE.md`.
-2. Kalau akan mengerjakan task: buka `project-manager/TASKS.md`, lalu **hanya** file `project-manager/tasks/vXX-*.md` yang memuat task/subtask itu (`T-XXX` / `T-XXX.N`). Ikuti field **Baca dulu**.
+2. Kalau akan mengerjakan task: buka `project-manager/TASKS.md`, lalu **hanya** satu file fase di `project-manager/tasks/` (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`) yang memuat task itu (`T-XXX` / `T-XXX.N`). Ikuti field **Baca dulu**.
 3. Ikuti skill: `.cursor/skills/project-os-navigator/SKILL.md`.
 4. Cek kelengkapan task + dokumen acuan + (untuk UI) kode produksi yang ada. Tanya Boss Rezi **hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana): `.cursor/rules/ask-before-assuming.mdc` + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya). Jangan tanya ritual.
 5. Setelah pekerjaan selesai: `.cursor/skills/work-report-simple/SKILL.md`.
@@ -77,7 +77,7 @@ Next.js (App Router) + TypeScript + pnpm di root — single-app (ADR-016). Styli
 
 ## Setelah mengubah sesuatu
 
-1. Update `project-manager/tasks/vXX-*.md` + `project-manager/TASKS.md` bila relevan.
+1. Update file fase di `project-manager/tasks/` + `project-manager/TASKS.md` bila relevan.
 2. Update `PROJECT_STATE.md` hanya jika phase/milestone/fokus/blocker berubah.
 3. Append `COMPLETE_TASK.md`.
 4. Buat ADR bila keputusan material.

@@ -4,6 +4,7 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-044 | R2 magnet = hibrid sheet + halaman `/projects/[slug]` | Accepted | 2026-09-14 | Tile tetap sheet (ADR-027); baca selengkapnya → case SSG; path bukan `/work/[slug]`; **T-056** | [ADR-044](decisions/ADR-044-r2-hybrid-case-pages.md) |
 | ADR-043 | Tidak ada tautan unduh CV/Portofolio publik | Accepted | 2026-09-14 | Supersede ADR-023; **T-023** ❌; Contact tetap email + satelit (ADR-019); CV tidak di `public/` | [ADR-043](decisions/ADR-043-no-public-cv-download.md) |
 | ADR-042 | Halaman Workflow = decision-driven | Accepted | 2026-09-08 | Supersede isi T-021.3 di `/workflow`; lima section; rest/active dicabut | [ADR-042](decisions/ADR-042-workflow-decision-driven-page.md) |
 | ADR-041 | Home merender pita footer Contact | Accepted | 2026-09-07 | Supersede ADR-033; pita sama di semua rute termasuk Home | [ADR-041](decisions/ADR-041-home-with-footer.md) |

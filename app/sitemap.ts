@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
-import { r1PageUrls } from "@/lib/site-routes";
+import { projectCaseUrls, r1PageUrls } from "@/lib/site-routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return r1PageUrls().map(({ url }) => ({ url }));
+  return [
+    ...r1PageUrls().map(({ url }) => ({ url })),
+    ...projectCaseUrls().map(({ url }) => ({ url })),
+  ];
 }

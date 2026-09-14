@@ -1,3 +1,14 @@
+/** Host GitHub (repo), bukan situs live. */
+
+export function isProjectRepoUrl(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === "github.com" || host.endsWith(".github.com");
+  } catch {
+    return false;
+  }
+}
+
 /** URL yang boleh di-embed sebagai pratinjau live (bukan repo). */
 
 export function isHttpLivePreviewUrl(url: string): boolean {
@@ -8,8 +19,7 @@ export function isHttpLivePreviewUrl(url: string): boolean {
     }
     const host = parsed.hostname.toLowerCase();
     if (
-      host === "github.com" ||
-      host.endsWith(".github.com") ||
+      isProjectRepoUrl(url) ||
       host === "githubusercontent.com" ||
       host.endsWith(".githubusercontent.com")
     ) {
