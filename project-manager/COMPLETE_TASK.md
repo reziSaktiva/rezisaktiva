@@ -14,6 +14,37 @@ Format entri:
 - ...
 ```
 
+## [2026-09-14]
+### Fixed
+- Review PR #72: `rel="icon"` 192/512 di head (`SITE_HEAD_ICONS` + Apple 180); `favicon.ico` BMP/DIB (bukan PNG-in-ICO); warna generator = `lib/brand-chrome.json` (sama dengan `SITE_CANVAS_COLOR`); tes dimensi OG 1200×630; komentar path About di `page-metadata.ts`.
+### Changed
+- Aset brand di-regenerasi lewat `scripts/generate-brand-metadata-assets.mjs`.
+
+## [2026-09-14]
+### Added
+- **T-031.5** ✅: HTML head live `http://127.0.0.1:3001` locale `en` — Home `/en` + Work `/en/projects`: `og:image` `/brand/og.png`, `link rel="icon"` (favicon.ico + icon.png), `apple-touch-icon`; title T-021.7 tetap (`rezisaktiva — Home` / `rezisaktiva — Projects`). About = **308** `/en#about` (ADR-040); kartu/ikon About = head Home. Aset 200: favicon, icon, apple-icon, og.png, manifest. **T-031** / **v13** Done. Berikutnya **T-054.4**.
+### Changed
+- Fokus TASKS / Snapshot: T-031 selesai; antrian atas **T-054.4**.
+
+## [2026-09-14]
+### Added
+- **T-031.4** identitas head: `applicationName` rezisaktiva; authors/creator/publisher dari `PERSON`; `robots` index/follow; `formatDetection` telepon/alamat mati; `viewport.themeColor` kanvas gelap tanpa `cookies()`.
+### Changed
+- Fokus T-031: T-031.1–T-031.4 ✅; sisa T-031.5.
+
+## [2026-09-14]
+### Added
+- **T-031.3** kartu share di head: `openGraph.images` + `twitter.images` dari `pageMetadata` → `/brand/og.png` (satu kartu Home/Workflow/Projects). Title/description T-021.7 tidak diubah.
+### Changed
+- Fokus T-031: T-031.1–T-031.3 ✅; sisa T-031.4–T-031.5.
+
+## [2026-09-14]
+### Added
+- **T-031.1** aset tipografi brand (gothic-blood, tanpa wajah): `public/brand/icon-32.png`, `icon-192.png`, `icon-512.png`, `apple-touch.png`, `og.png` (~1200×630). Generator `scripts/generate-brand-metadata-assets.mjs`; font `scripts/vendor/texturina-display-700.ttf` (OFL).
+- **T-031.2** file-based ikon + manifest ringan: `app/favicon.ico` (ganti scaffold Next), `app/icon.png`, `app/apple-icon.png`, `app/manifest.ts` (`display: browser`, ikon `/brand/icon-192.png` + `/brand/icon-512.png`).
+### Changed
+- Fokus T-031: T-031.1–T-031.2 ✅; sisa T-031.3–T-031.5 (OG/Twitter di head, identitas, verifikasi).
+
 ## [2026-09-11]
 ### Fixed
 - Review PR #70: blur hold tanpa `useRef` di render (CI `react-hooks/refs`).

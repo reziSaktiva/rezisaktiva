@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-14] — T-031.1 aset tipografi brand
+**Phase:** Validation
+**Summary:** Aset ikon/OG belum ada di repo. Boss Rezi mengunci generate tipografi brand (teks rezisaktiva, kanvas gothic-blood, tanpa wajah) lalu pasang T-031.1–T-031.2. Bukan Unsplash, bukan menunggu file eksternal.
+**Key Decision/Insight:** Mark tab = huruf R Texturina + outline wine; kartu OG = wordmark rezisaktiva. Manifest ringan `display: browser`.
+**Impact:** `tasks/v13-metadata.md`, `TASKS.md`, `PROJECT_STATE.md`, `COMPLETE_TASK.md`.
+
 ## [2026-09-11] — T-055.4 verifikasi navbar
 **Phase:** Validation
 **Summary:** Verifikasi browser T-055 (bukan satu screenshot): rute Home/`#about`/Workflow/Projects × ID/EN; desktop + 375/320; kaca, selected, hamburger, Contact, reduced-motion. Parent T-055 / v20 ditutup.
