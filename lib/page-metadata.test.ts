@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { PERSON } from "@/content/person";
 import { SITE_META } from "@/content/site-meta";
-import { pageMetadata, SITE_SHARE_IMAGE } from "./page-metadata";
+import {
+  casePageMetadata,
+  pageMetadata,
+  SITE_SHARE_IMAGE,
+} from "./page-metadata";
 import { getSiteUrl, localePath } from "./site-url";
 
 describe("pageMetadata (T-031.3)", () => {
@@ -42,6 +46,39 @@ describe("pageMetadata (T-031.3)", () => {
     expect(pageMetadata("en", "work", "projects").twitter?.images).toEqual([
       SITE_SHARE_IMAGE.url,
     ]);
+  });
+});
+
+describe("casePageMetadata (T-056.5)", () => {
+  it("sets title, description, canonical, and site OG card", () => {
+    const meta = casePageMetadata("en", "minerank", {
+      name: "Minerank",
+      description: "Minerank web: database migration, real-time auctions.",
+    });
+    const canonical = `${getSiteUrl()}${localePath("en", "projects/minerank")}`;
+    expect(meta.title).toBe("rezisaktiva — Minerank");
+    expect(meta.description).toBe(
+      "Minerank web: database migration, real-time auctions.",
+    );
+    expect(meta.alternates).toEqual({
+      canonical,
+      languages: {
+        id: `${getSiteUrl()}${localePath("id", "projects/minerank")}`,
+        en: canonical,
+        "x-default": canonical,
+      },
+    });
+    expect(meta.openGraph).toMatchObject({
+      title: "rezisaktiva — Minerank",
+      description: "Minerank web: database migration, real-time auctions.",
+      url: canonical,
+      images: [SITE_SHARE_IMAGE],
+    });
+    expect(meta.twitter).toMatchObject({
+      card: "summary_large_image",
+      title: "rezisaktiva — Minerank",
+      images: [SITE_SHARE_IMAGE.url],
+    });
   });
 });
 

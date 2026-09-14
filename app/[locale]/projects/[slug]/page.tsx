@@ -7,7 +7,7 @@ import {
   toWorkItem,
 } from "@/content/work";
 import { LOCALES, isLocale } from "@/lib/locale";
-import { pageMetadata } from "@/lib/page-metadata";
+import { casePageMetadata } from "@/lib/page-metadata";
 
 export const dynamicParams = false;
 
@@ -28,8 +28,8 @@ export async function generateMetadata({
   if (!row) {
     return {};
   }
-  return pageMetadata(locale, "work", `projects/${row.slug}`, {
-    title: row.name,
+  return casePageMetadata(locale, row.slug, {
+    name: row.name,
     description: row.outcome[locale],
   });
 }

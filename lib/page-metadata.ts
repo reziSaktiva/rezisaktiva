@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PERSON } from "@/content/person";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import type { Locale } from "@/lib/locale";
-import { getSiteUrl, localePath } from "@/lib/site-url";
+import { getSiteUrl, localePath, PROJECTS_PATH } from "@/lib/site-url";
 
 /** Satu kartu situs T-031.1 / T-031.3. Bukan Unsplash, bukan foto diri. */
 export const SITE_SHARE_IMAGE = {
@@ -70,4 +70,19 @@ export function pageMetadata(
       images: [SITE_SHARE_IMAGE.url],
     },
   };
+}
+
+/**
+ * Title/description/canonical/OG per halaman case (T-056.5).
+ * Kartu share = aset situs; OG per-karya bukan blocker.
+ */
+export function casePageMetadata(
+  locale: Locale,
+  slug: string,
+  copy: { name: string; description: string },
+): Metadata {
+  return pageMetadata(locale, "work", `${PROJECTS_PATH}/${slug}`, {
+    title: `${PERSON.alternateName} — ${copy.name}`,
+    description: copy.description,
+  });
 }

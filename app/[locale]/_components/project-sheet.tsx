@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import NextLink from "next/link";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer";
 import type { WorkItem } from "@/content/work";
@@ -10,6 +11,7 @@ import {
   workSheetImages,
 } from "@/content/work-sheet";
 import type { Locale } from "@/lib/locale";
+import { projectCaseHref } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { readCssDurationMs } from "@/lib/motion";
 import { CloseIcon } from "./overlay-icons";
@@ -31,8 +33,10 @@ function prefersReducedMotionNow(): boolean {
 /**
  * Project sheet M10 (T-026, ADR-027; T-035.3–T-035.4; T-041.3) — Drawer
  * vaul dari bawah, skin `.ps-*` elevated token. Tile Work index
- * membuka sheet, bukan live URL. Event `rz-project-sheet-open`; `ps-lock` +
- * Lenis pause; overlay asing menutup sheet.
+ * membuka sheet, bukan live URL. Tautan primer in-site ke case
+ * (T-056.4, ADR-044); live/repo tetap sekunder. Event
+ * `rz-project-sheet-open`; `ps-lock` + Lenis pause; overlay asing
+ * menutup sheet.
  */
 export function ProjectSheet({
   locale,
@@ -201,28 +205,36 @@ export function ProjectSheet({
                 <p className="qi-bio ps-description ps-reveal">
                   {sheet.description}
                 </p>
-                {liveHref || repoHref ? (
-                  <div className="qi-links ps-reveal">
-                    {liveHref ? (
-                      <a
-                        href={liveHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {labels.liveLabel}
-                      </a>
-                    ) : null}
-                    {repoHref ? (
-                      <a
-                        href={repoHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {labels.repoLabel}
-                      </a>
-                    ) : null}
-                  </div>
-                ) : null}
+                <div className="flex flex-col gap-3 ps-actions ps-reveal">
+                  <NextLink
+                    href={projectCaseHref(locale, visible.slug)}
+                    className="ps-read-more"
+                  >
+                    {labels.readMoreLabel}
+                  </NextLink>
+                  {liveHref || repoHref ? (
+                    <div className="qi-links">
+                      {liveHref ? (
+                        <a
+                          href={liveHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {labels.liveLabel}
+                        </a>
+                      ) : null}
+                      {repoHref ? (
+                        <a
+                          href={repoHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {labels.repoLabel}
+                        </a>
+                      ) : null}
+                    </div>
+                  ) : null}
+                </div>
               </section>
 
               <ProjectSheetMedia

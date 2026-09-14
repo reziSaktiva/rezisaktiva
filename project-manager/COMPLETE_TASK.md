@@ -16,6 +16,13 @@ Format entri:
 
 ## [2026-09-14]
 ### Added
+- **T-056.4** — tautan primer “Baca selengkapnya” / “Read the full case” di sheet → `/[locale]/projects/[slug]`; Live/Repo tetap sekunder.
+- **T-056.5** — `casePageMetadata`: title `rezisaktiva — {name}`, description = outcome, canonical + hreflang, OG kartu situs.
+### Changed
+- Snapshot/TASKS → **T-056.6**.
+
+## [2026-09-14]
+### Added
 - **T-056.2** — slug kebab-case di `projects.json`; copy halaman case = slot sheet yang sudah dikunci; label tautan “Baca selengkapnya” / “Read the full case”.
 - **T-056.3** — route SSG `app/[locale]/projects/[slug]/` (`generateStaticParams`, 404 slug hidden/unknown).
 ### Changed
