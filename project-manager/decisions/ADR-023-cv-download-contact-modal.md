@@ -6,7 +6,7 @@ Tambahan M3 Contact — tautan unduh CV/Portofolio (PDF)
 
 ### Status
 
-Accepted (implementasi ditunda — lihat Update di bawah)
+Superseded (ADR-043 — tidak ada unduhan CV publik)
 
 ### Date
 
@@ -42,3 +42,7 @@ Accepted (implementasi ditunda — lihat Update di bawah)
 Saat code review PR implementasi (T-021.4), ditemukan gap: file CV yang tersedia (`Resume_rezi_updated_agustus_2026.pdf`) **sepenuhnya berbahasa Indonesia**, sementara tautan yang sama akan tampil juga di locale EN — berpotensi tidak sejalan dengan prinsip paritas makna ID/EN project ini. Boss Rezi memutuskan: **tunda implementasi** sampai CV versi Inggris siap (sumber belum diputuskan — draf terjemahan dari `private/Resume_rezi_updated_agustus_2026.md` atau file terpisah dari Boss Rezi).
 
 Kode implementasi (komponen `ContactModal`, `content/contact.ts` field CV, `DownloadIcon`, style `.ct-cv-*`, file PDF) **di-revert** dari PR T-021.4 supaya PR itu hanya mengirim fix kontras + kunci copy yang sudah pasti. Keputusan penempatan (item 1–4 di atas) **tetap berlaku** untuk saat implementasi dilanjutkan — dicatat sebagai task baru **T-023** (⏸️ Deferred, menunggu aset CV Inggris).
+
+### Update — 2026-09-14
+
+**Superseded oleh [ADR-043](ADR-043-no-public-cv-download.md).** Boss Rezi membatalkan unduhan CV publik (risiko penyalahgunaan). **T-023** ❌ Cancelled. Fix kontras modal (item 5) tetap.
