@@ -23,7 +23,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 | `alternates.canonical` + `languages` (hreflang) | T-017.2 |
 | `openGraph` teks (`title`, `description`, `url`, `siteName`, `locale`, `type: website`) | T-017.2 |
 | `twitter.card` + title/description (`summary_large_image`) | T-017.2 — **tanpa** `images` |
-| Favicon | Hanya `app/favicon.ico` default scaffold Next — **bukan** brand |
+| Favicon | `app/favicon.ico` + `app/icon.png` + `app/apple-icon.png` (T-031.1–T-031.2); sumber raster `public/brand/` |
 
 ---
 
@@ -46,7 +46,7 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 - OG image per-karya atau `/work/[slug]` (R2)
 - Klaim foto diri di kartu share selama foto halaman masih Unsplash
 
-**Aset:** Boss Rezi menaruh file ikon + kartu OG (SVG/PNG). Kalau file belum ada saat eksekusi: **jangan** pakai Unsplash; berhenti dan minta aset (boleh ⏸️ seperti T-023), atau generate kartu **tipografi brand** (teks `rezisaktiva`, tanpa wajah) jika Boss Rezi setuju di chat eksekusi.
+**Aset (2026-09-14, T-031.1):** tipografi brand dikunci chat (bukan file dari Boss Rezi, bukan Unsplash). Path: `public/brand/` + `app/favicon.ico` / `icon.png` / `apple-icon.png`. Regenerasi: `node scripts/generate-brand-metadata-assets.mjs`.
 
 **Tidak perlu ADR** — perpanjangan M7. ADR hanya jika nanti PWA terpasang (SW, offline).
 
@@ -56,15 +56,15 @@ Bukan halaman baru. Bukan rewrite title “kata kunci di depan”. Bukan Unsplas
 
 ## T-031 — Lengkapi Metadata API (ikon + media + identitas)
 
-* **Status:** ⏳ Open — gerbang T-043 tertutup; ikon/OG/`themeColor` ikut kulit gothic-blood
+* **Status:** ⏳ Open — **T-031.1–T-031.2** ✅; berikutnya **T-031.3–T-031.5**
 * **Domain:** Engineering
 * **Output:** head R1 punya ikon brand, kartu share, authors/applicationName; title/description T-021.7 tidak ditulis ulang
 * **Keputusan paket:** tabel di atas (2026-08-31)
 
 ### Subtasks
 
-- [ ] **T-031.1** — Aset: taruh ikon + kartu OG/Twitter (bukan scaffold Next, bukan Unsplash). Ganti `app/favicon.ico` default. Catat path di COMPLETE_TASK.
-- [ ] **T-031.2** — Icons + manifest: file-based `app/icon` / `apple-icon` (dan `manifest.ts` ringan). Pastikan tab browser dan Apple touch memakai aset T-031.1.
+- [x] **T-031.1** — Aset: taruh ikon + kartu OG/Twitter (bukan scaffold Next, bukan Unsplash). Ganti `app/favicon.ico` default. Catat path di COMPLETE_TASK.
+- [x] **T-031.2** — Icons + manifest: file-based `app/icon` / `apple-icon` (dan `manifest.ts` ringan). Pastikan tab browser dan Apple touch memakai aset T-031.1.
 - [ ] **T-031.3** — Media: `openGraph.images` + `twitter.images` (file-based atau `pageMetadata`). Satu kartu situs cukup; `summary_large_image` tetap. Jangan duplikasi title/description.
 - [ ] **T-031.4** — Identitas + robots meta: `applicationName`, `authors`/`creator`/`publisher` dari `PERSON`, `metadata.robots` index/follow, `formatDetection`. Tetap `generateMetadata` di page server. Opsional `generateViewport` `themeColor` tanpa merusak cookie tema.
 - [ ] **T-031.5** — Verifikasi: View Source / head Home+About+Work (satu locale cukup) — ada `og:image`, `link rel="icon"`, Apple icon; title T-021.7 tidak berubah. Catat di COMPLETE_TASK.
