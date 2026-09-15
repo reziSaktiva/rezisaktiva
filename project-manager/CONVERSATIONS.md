@@ -14,6 +14,78 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Hover CTA footer tanpa nampan muted
+**Phase:** Validation
+**Summary:** Boss Rezi minta hover tombol “Hubungi saya” di pita footer diperbaiki. Variant ghost shadcn memakai `hover:bg-muted` (#141418) sehingga muncul chip gelap di atas kanvas body.
+**Key Decision/Insight:** Hover = teks + panah aksen darah, tanpa fill (T-040.5). Utility `hover:bg-transparent` mengalahkan ghost. Bungkus Magnetic di pita footer harus `max-content` (bukan stretch kolom) supaya pull tidak dihitung dari lebar penuh.
+**Impact:** `site-footer-cta.tsx`, `globals.css`.
+
+## [2026-09-15] — Tanpa em dash di copy Workflow
+**Phase:** Validation
+**Summary:** Boss Rezi minta karakter "—" dihapus dari semua deskripsi halaman Workflow karena terasa copy buatan AI.
+**Key Decision/Insight:** Ganti dengan koma, titik, atau titik dua. Label peran pipeline ikut: "My Role: Human Lead". Isi `/workflow` boleh diubah (ADR-042).
+**Impact:** `content/workflow.ts`.
+
+## [2026-09-15] — Locale switcher jadi Dropdown Menu
+**Phase:** Validation
+**Summary:** Boss Rezi minta pengubah bahasa memakai Dropdown Menu shadcn, dikulit gothic-blood (bukan segmented ID / EN).
+**Key Decision/Insight:** Job chrome tetap (cookie `NEXT_LOCALE`, sibling path, hamburger compact). Kulit = trigger outline darah + menu elevated; opsi aktif ADR-031. Bukan ADR baru.
+**Impact:** `locale-switcher.tsx`, `dropdown-menu.tsx`, `site-header.tsx`, `globals.css`, `04-ux/navigation-patterns.md`.
+
+## [2026-09-15] — Now di antara judul dan lead About
+**Phase:** Validation
+**Summary:** Boss Rezi minta blok current work (Now) di section `#about` berada di tengah, antara judul display dan deskripsi lead.
+**Key Decision/Insight:** Urutan kolom teks About = judul → Now (`#now`) → lead; artwork tetap di kolom kanan. Bukan ADR baru (urutan visual, Now tetap di About).
+**Impact:** `about-page.tsx`, `04-ux/key-screen-patterns.md`, `04-ux/information-architecture.md`, `02-product/mvp-definition.md`, `02-product/feature-modules.md`.
+
+## [2026-09-15] — Tanpa tautan Repo di sheet/case
+**Phase:** Validation
+**Summary:** Boss Rezi minta fitur tautan Repo dihilangkan dari project sheet dan halaman project.
+**Key Decision/Insight:** Aksi sekunder hanya Live (URL situs, bukan GitHub). `gitHref` boleh tetap di JSON tanpa UI. ADR-027 / ADR-044 di-update.
+**Impact:** `project-sheet.tsx`, `work-case-page.tsx`, `work-sheet.ts`, JSON-LD, ADR-027/044, 02/04-ux.
+
+## [2026-09-15] — Cover backend platform sosial = explore
+**Phase:** Validation
+**Summary:** Boss Rezi minta gambar pertama karya `backend platform sosial` = yang sebelumnya gambar ke-2.
+**Key Decision/Insight:** `explore.jpg` jadi cover tile + item galeri pertama; `feed.jpg` geser ke posisi kedua.
+**Impact:** `content/data/projects.json`
+
+## [2026-09-15] — Lead Work: dari nol hingga rilis
+**Phase:** Validation
+**Summary:** Boss Rezi mengunci kalimat lead halaman Proyek (label EN/ID di chat tertukar; dipasang sesuai bahasa locale).
+**Key Decision/Insight:** ID: "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis." EN: "Here are a few projects I’ve crafted from the ground up."
+**Impact:** `content/work.ts`, `content/site-meta.ts`, catatan T-021.5.
+
+## [2026-09-15] — Lead Work: AI hanya di proyek terbaru
+**Phase:** Validation
+**Summary:** Boss Rezi minta lead `/projects` tidak terkesan semua karya memakai AI ecosystem.
+**Key Decision/Insight:** Katalog = pengalaman fullstack. AI ecosystem hanya di proyek-proyek terbaru. Kemudian disupersede oleh kunci kalimat “dari nol hingga siap rilis”.
+**Impact:** `content/work.ts`, `content/site-meta.ts`, catatan T-021.5.
+
+## [2026-09-15] — Hover tile project tanpa darah
+**Phase:** Validation
+**Summary:** Boss Rezi minta hover pada tile project tidak memakai animasi darah (drip) yang dikunci T-042.3.
+**Key Decision/Insight:** Hover desktop = grayscale → warna penuh + scale foto + caption/scrim. Ponsel = warna penuh. Job klik → sheet tidak berubah. Reduced-motion tanpa scale; warna tetap berubah instan.
+**Impact:** `work-tile.tsx`, `globals.css`; catatan T-042.3.
+
+## [2026-09-15] — Admin panel frontend di backend platform sosial
+**Phase:** Validation
+**Summary:** Boss Rezi minta copy menyatakan ikut frontend admin panel, plus tiga screenshot admin (dashboard, deleted user, maintenance) tanpa merek.
+**Key Decision/Insight:** Layanan = Backend Developer + Frontend admin panel. Galeri klien tetap; admin ditambah.
+**Impact:** `projects.json` id 7, `public/work/backend-platform-sosial/admin-*.jpg`
+
+## [2026-09-15] — Case lebih dalam dari sheet
+**Phase:** Validation
+**Summary:** Boss Rezi minta seluruh halaman `/projects/[slug]` memuat lebih banyak informasi daripada sheet. Sumber tambahan = CV private Agustus 2026.
+**Key Decision/Insight:** **ADR-046** / **T-058**. Sheet tetap skim. Case = periode, stack, poin terstruktur. Karya deskriptif tetap tanpa merek/URL asli.
+**Impact:** `projects.json` field `case`, `work-case-page.tsx`, S5, tes.
+
+## [2026-09-15] — Gamestalgia & Curious tanpa nama merek
+**Phase:** Validation
+**Summary:** Boss Rezi ingin bukti kerja Gamestalgia dan Curious tetap muncul, tapi nama proyek tidak disebut gamblang. Yang ditampilkan = fitur/kapabilitas (Wasm emulator, GraphQL dual-backend, Algolia, dst.), sebagai sinyal “pernah mengerjakan sistem seperti ini.”
+**Key Decision/Insight:** Dua tile anonim, perilaku seperti karya bernama. **Curious publik = judul “backend platform sosial”** (sudut Backend). Enam tulang copy: (1) klasifikasi topik multimodal teks/gambar/video/suara, (2) algoritma minat, (3) location range, (4) chat, (5) event sourcing / append-only, (6) satu BE untuk mobile, web, admin. Screenshot crop tanpa wordmark = bukti permukaan. Outcome “dihentikan PO” dan URL `curious-server` tidak untuk publik. Gamestalgia belum dikunci.
+**Impact:** **T-057** / **ADR-045**. `projects.json` id 7 publik sebagai `backend platform sosial`; `hiddenIds` = Gamestalgia saja.
+
 ## [2026-09-15] — Kursor ring kembali; pisau dicabut
 **Phase:** Validation
 **Summary:** Boss Rezi minta kursor situs kembali ke `cursor-ring`, tanpa pisau berdarah. Ikon X di scrim overlay (Contact / Quick Info / project sheet) tetap.

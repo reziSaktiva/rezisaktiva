@@ -1,5 +1,5 @@
 {
-  "hiddenIds": ["6", "7"],
+  "hiddenIds": ["6"],
   "items": [
     {
       "id": "1",
@@ -26,6 +26,36 @@
       "description": {
         "id": "Membangun platform manajemen media sosial dengan mengorkestrasi 7 AI subagent berperan spesifik (backend, QA, arsitektur, UI, product design) melalui workflow terstruktur end-to-end. Tiga custom skill mendokumentasikan keputusan, bug, dan progres sepanjang siklus development. Staging di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan.",
         "en": "A social media management platform built by orchestrating 7 role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow. Three custom skills keep decisions, bugs, and progress documented across the development cycle. Staging is live on Railway; third-party publishing (Outstand) is in progress."
+      },
+      "case": {
+        "period": {
+          "id": "2026 – berjalan, fase 6/8",
+          "en": "2026 – in progress, phase 6/8"
+        },
+        "stack": [
+          "Next.js 16",
+          "Bun",
+          "Prisma",
+          "Better Auth",
+          "Supabase",
+          "TypeScript"
+        ],
+        "sections": [
+          {
+            "bullets": {
+              "id": [
+                "Orkestrasi 7 AI subagent dengan peran spesifik (backend, QA, arsitektur, UI, product design) lewat workflow end-to-end.",
+                "Tiga custom skill untuk mencatat keputusan, bug, dan progres sepanjang siklus development.",
+                "Staging di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan."
+              ],
+              "en": [
+                "Orchestrated 7 role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow.",
+                "Three custom skills keep decisions, bugs, and progress documented across the development cycle.",
+                "Staging is live on Railway; third-party publishing (Outstand) is in progress."
+              ]
+            }
+          }
+        ]
       }
     },
     {
@@ -58,6 +88,42 @@
       "description": {
         "id": "Memimpin migrasi ~500 resep dari WordPress lama menggunakan Node.js (tuntas 1–2 hari), termasuk migrasi plugin resep dari Mediavine ke WP Recipe Maker. Komponen WordPress (WPRM, Feast, Kadence) diterjemahkan menjadi custom component Next.js agar kartu dan daftar resep konsisten di frontend headless. Menambah Web Stories dan structured data (schema.org: Recipe, Organization) untuk menjaga visibilitas SEO. Infrastruktur bergeser dari VPS + Coolify ke Railway; PostHog terpasang untuk analytics.",
         "en": "Led the migration of ~500 recipes off legacy WordPress with Node.js (finished in 1–2 days), including moving the recipe plugin from Mediavine to WP Recipe Maker. WordPress pieces (WPRM, Feast, Kadence) became custom Next.js components so recipe cards and lists stay consistent on the headless frontend. Added Web Stories and schema.org structured data (Recipe, Organization) to keep SEO visibility. Infrastructure moved from VPS + Coolify to Railway, with PostHog for analytics."
+      },
+      "case": {
+        "period": {
+          "id": "Januari – November 2025",
+          "en": "January – November 2025"
+        },
+        "stack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Bun",
+          "WordPress REST API",
+          "Railway",
+          "PostHog",
+          "Nginx",
+          "SSL/TLS"
+        ],
+        "sections": [
+          {
+            "bullets": {
+              "id": [
+                "Memimpin migrasi ~500 resep dari WordPress lama dengan Node.js (tuntas 1–2 hari), termasuk pindah plugin resep dari Mediavine ke WP Recipe Maker (WPRM).",
+                "Komponen WordPress (WPRM, Feast, Kadence) jadi custom component Next.js — termasuk kartu dan daftar resep — supaya tampilan konsisten dan ter-generate di frontend headless.",
+                "Web Stories (plugin Stories) dan structured data schema.org (Recipe, Organization) untuk menjaga visibilitas SEO setelah migrasi.",
+                "Infrastruktur bergeser dari VPS + Coolify (Hostinger) ke Railway; PostHog untuk analytics dan reverse proxy."
+              ],
+              "en": [
+                "Led the migration of ~500 recipes off legacy WordPress with Node.js (finished in 1–2 days), including moving the recipe plugin from Mediavine to WP Recipe Maker (WPRM).",
+                "WordPress pieces (WPRM, Feast, Kadence) became custom Next.js components — including recipe cards and lists — so the headless frontend stays consistent and generated.",
+                "Added Web Stories and schema.org structured data (Recipe, Organization) to keep SEO visibility after the migration.",
+                "Infrastructure moved from VPS + Coolify (Hostinger) to Railway, with PostHog for analytics and reverse proxy."
+              ]
+            }
+          }
+        ]
       }
     },
     {
@@ -67,7 +133,10 @@
       "year": "2024–2025",
       "featured": false,
       "cover": "/work/minerank/blog.jpg",
-      "liveHref": "https://www.minerank.com/blog",
+      "liveHref": [
+        "https://www.minerank.com/blog",
+        "https://smc.auction"
+      ],
       "gitHref": null,
       "gallery": [
         "/work/minerank/blog.jpg",
@@ -93,6 +162,116 @@
       "description": {
         "id": "Satu product web Minerank di Insvire Omni Technology, dikerjakan berurutan: migrasi database, lelang, lalu blog.\n\nMigrasi: dua tahap (metadata dan konten) memindahkan ribuan artikel dari MySQL ke WordPress, dengan checkpoint/resume berbasis log CSV. Google Vision AI dan Gemini (gemini-2.5-flash) mengisi alt-text SEO pada gambar yang dimigrasi.\n\nLelang (SMC Auction): job queue BullMQ, notifikasi otomatis ke Discord, klasemen real-time lewat Socket.io, bot Discord interaktif, Next-Auth v5, plus validasi form (React Hook Form + Zod) di klien dan server. Live: https://smc.auction\n\nBlog: WordPress sebagai CMS, Next.js sebagai UI headless di /blog, Core Web Vitals dijaga. ISR on-demand lewat webhook supaya konten update tanpa rebuild penuh; dua plugin WordPress internal untuk routing dan pencarian REST. Live: https://www.minerank.com/blog",
         "en": "One Minerank web product at Insvire Omni Technology, shipped in sequence: database migration, auctions, then the blog.\n\nMigration: a two-stage job (metadata and content) moving thousands of articles from MySQL to WordPress, with CSV-log checkpoint/resume. Google Vision AI and Gemini (gemini-2.5-flash) generate SEO alt text for migrated images.\n\nAuctions (SMC Auction): BullMQ job queue, automatic Discord alerts, live standings over Socket.io, an interactive Discord bot, Next-Auth v5, and strict form validation (React Hook Form + Zod) on client and server. Live: https://smc.auction\n\nBlog: WordPress as the CMS, Next.js as the headless UI on /blog, with Core Web Vitals kept in range. On-demand ISR via webhook so content updates without a full rebuild; two internal WordPress plugins cover routing and REST search. Live: https://www.minerank.com/blog"
+      },
+      "case": {
+        "period": {
+          "id": "Agustus 2024 – September 2025",
+          "en": "August 2024 – September 2025"
+        },
+        "stack": [
+          "Next.js",
+          "React 19",
+          "Node.js",
+          "TypeScript",
+          "PostgreSQL",
+          "MySQL",
+          "Drizzle ORM",
+          "Redis",
+          "BullMQ",
+          "Socket.io",
+          "Next-Auth v5",
+          "WordPress REST API"
+        ],
+        "sections": [
+          {
+            "title": {
+              "id": "Migrasi data",
+              "en": "Data migration"
+            },
+            "stack": [
+              "Node.js (TSX)",
+              "TypeScript",
+              "MySQL",
+              "WordPress REST API",
+              "Drizzle ORM",
+              "Google Vision AI",
+              "Gemini 2.5 Flash",
+              "Puppeteer"
+            ],
+            "bullets": {
+              "id": [
+                "Migrasi dua tahap (metadata dan konten) memindahkan ribuan artikel dari MySQL ke WordPress.",
+                "Checkpoint/resume berbasis log CSV supaya pekerjaan bisa dilanjut setelah gangguan jaringan atau server.",
+                "Google Vision AI dan Gemini (gemini-2.5-flash) mengisi alt-text SEO pada gambar yang dimigrasi."
+              ],
+              "en": [
+                "A two-stage job (metadata and content) moving thousands of articles from MySQL to WordPress.",
+                "CSV-log checkpoint/resume so the run can continue after a network or server interruption.",
+                "Google Vision AI and Gemini (gemini-2.5-flash) generate SEO alt text for migrated images."
+              ]
+            }
+          },
+          {
+            "title": {
+              "id": "Lelang real-time",
+              "en": "Real-time auctions"
+            },
+            "stack": [
+              "Next.js",
+              "Node.js",
+              "TypeScript",
+              "Socket.io",
+              "Redis",
+              "BullMQ",
+              "Drizzle ORM",
+              "PostgreSQL",
+              "Next-Auth v5",
+              "Discord.js",
+              "PayPal API"
+            ],
+            "bullets": {
+              "id": [
+                "Job queue BullMQ untuk tugas berat di latar, termasuk notifikasi lelang otomatis ke Discord.",
+                "Klasemen lelang real-time lewat Socket.io dan bot Discord interaktif.",
+                "Next-Auth v5 plus validasi form ketat (React Hook Form + Zod) di klien dan server.",
+                "Live: https://smc.auction"
+              ],
+              "en": [
+                "BullMQ job queue for heavy background work, including automatic auction alerts to Discord.",
+                "Live standings over Socket.io and an interactive Discord bot.",
+                "Next-Auth v5 and strict form validation (React Hook Form + Zod) on client and server.",
+                "Live: https://smc.auction"
+              ]
+            }
+          },
+          {
+            "title": {
+              "id": "Blog headless",
+              "en": "Headless blog"
+            },
+            "stack": [
+              "Next.js (App Router)",
+              "React 19",
+              "WordPress REST API",
+              "ISR",
+              "WordPress plugin (PHP)"
+            ],
+            "bullets": {
+              "id": [
+                "WordPress sebagai CMS, Next.js sebagai UI headless di /blog, dengan Core Web Vitals dijaga.",
+                "ISR on-demand lewat webhook supaya konten update tanpa rebuild penuh.",
+                "Dua plugin WordPress internal untuk routing dan pencarian REST yang disesuaikan frontend.",
+                "Live: https://www.minerank.com/blog"
+              ],
+              "en": [
+                "WordPress as the CMS, Next.js as the headless UI on /blog, with Core Web Vitals kept in range.",
+                "On-demand ISR via webhook so content updates without a full rebuild.",
+                "Two internal WordPress plugins cover routing and REST search tailored to the frontend.",
+                "Live: https://www.minerank.com/blog"
+              ]
+            }
+          }
+        ]
       }
     },
     {
@@ -120,33 +299,145 @@
       "description": {
         "id": "Sanity CMS (GROQ) untuk pustaka ROM dan metadata game. Emulator WebAssembly menjalankan game konsol (PS1, PSP, NES) langsung di browser. Engagement lewat Disqus, social share, dan Vercel Analytics.",
         "en": "Sanity CMS (GROQ) for the ROM library and game metadata. A WebAssembly emulator runs console games (PS1, PSP, NES) in the browser. Engagement via Disqus, social share, and Vercel Analytics."
+      },
+      "case": {
+        "period": {
+          "id": "Mei – Juni 2023",
+          "en": "May – June 2023"
+        },
+        "stack": [
+          "Next.js",
+          "Sanity CMS",
+          "GROQ",
+          "WebAssembly",
+          "Tailwind CSS",
+          "Disqus",
+          "Framer Motion"
+        ],
+        "sections": [
+          {
+            "bullets": {
+              "id": [
+                "Sanity CMS (GROQ) untuk pustaka ROM dan metadata game.",
+                "Emulator WebAssembly menjalankan game konsol (PS1, PSP, NES) langsung di browser.",
+                "Komentar Disqus, social share, dan Vercel Analytics untuk engagement dan performa."
+              ],
+              "en": [
+                "Sanity CMS (GROQ) for the ROM library and game metadata.",
+                "A WebAssembly emulator runs console games (PS1, PSP, NES) in the browser.",
+                "Disqus comments, social share, and Vercel Analytics for engagement and performance."
+              ]
+            }
+          }
+        ]
       }
     },
     {
       "id": "7",
-      "slug": "curious",
-      "name": "Curious",
+      "slug": "backend-platform-sosial",
+      "name": "backend platform sosial",
       "year": "2023–2024",
       "featured": false,
-      "cover": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=2400&auto=format&fit=crop",
-      "liveHref": "https://github.com/reziSaktiva/curious-server",
+      "cover": "/work/backend-platform-sosial/explore.jpg",
+      "liveHref": null,
       "gitHref": null,
-      "gallery": [],
+      "gallery": [
+        "/work/backend-platform-sosial/explore.jpg",
+        "/work/backend-platform-sosial/feed.jpg",
+        "/work/backend-platform-sosial/messages.jpg",
+        "/work/backend-platform-sosial/admin-dashboard.jpg",
+        "/work/backend-platform-sosial/admin-deleted-users.jpg",
+        "/work/backend-platform-sosial/admin-maintenance.jpg"
+      ],
       "outcome": {
-        "id": "Dual-backend GraphQL dengan personalisasi Algolia. Dihentikan product owner, bukan kendala teknis.",
-        "en": "Dual-backend GraphQL with Algolia personalization. Shut down by the product owner, not a technical failure."
+        "id": "Backend sosial untuk mobile, web, dan admin, plus UI admin panel: topik multimodal, minat, lokasi, chat, data append-only.",
+        "en": "A social backend for mobile, web, and admin, plus the admin panel UI: multimodal topics, interest, location, chat, append-only data."
       },
       "services": {
-        "id": ["Backend Developer"],
-        "en": ["Backend Developer"]
+        "id": ["Backend Developer", "Frontend admin panel"],
+        "en": ["Backend Developer", "Admin panel frontend"]
       },
       "locationOrCompany": {
         "id": "Insvire Omni Technology, Bandung",
         "en": "Insvire Omni Technology, Bandung"
       },
       "description": {
-        "id": "Dual-backend Apollo GraphQL (Admin & Client) dengan pemisahan akses. Personalisasi Algolia dan kategorisasi topik multimodal (Google Cloud AI: teks, gambar, video). Nearby Posts (geolokasi) dan grup sosial Rooms dengan notifikasi real-time lewat GraphQL Subscriptions. Infrastruktur serverless Firebase Cloud Functions. Scope fitur yang direncanakan selesai; pengembangan dihentikan keputusan strategis product owner, bukan kendala teknis.",
-        "en": "A dual-backend Apollo GraphQL setup (Admin & Client) with strict access separation. Algolia personalization and multimodal topic tagging (Google Cloud AI: text, image, video). Nearby Posts (geolocation) and social Rooms with real-time GraphQL subscriptions. Serverless Firebase Cloud Functions. Planned feature scope shipped; the product owner stopped development for strategic reasons, not a technical failure."
+        "id": "Backend untuk platform sosial yang dipakai bersama oleh klien mobile, web, dan admin panel. Saya juga mengerjakan frontend admin panel. Post dibaca sebagai kategori atau topik dari teks, gambar, video, dan suara. Feed mengikuti algoritma minat (personalisasi) dan rentang lokasi. Chat ada di sistem yang sama. Basis data dikelola dengan pendekatan event sourcing / append-only.",
+        "en": "A social-platform backend shared by mobile, web, and admin clients. I also built the admin panel frontend. Posts are read as categories or topics from text, image, video, and voice. The feed follows an interest algorithm (personalization) and a location range. Chat lives in the same system. Data is managed with an event-sourcing / append-only approach."
+      },
+      "case": {
+        "period": {
+          "id": "2023 – 2024",
+          "en": "2023 – 2024"
+        },
+        "stack": [
+          "Node.js",
+          "TypeScript",
+          "Firebase Cloud Functions",
+          "Apollo GraphQL",
+          "Google Cloud AI",
+          "Algolia",
+          "Redis",
+          "Google Maps API"
+        ],
+        "sections": [
+          {
+            "title": {
+              "id": "Yang sulit",
+              "en": "Hard parts"
+            },
+            "bullets": {
+              "id": [
+                "Post dibaca sebagai kategori atau topik dari teks, gambar, video, dan suara (Google Cloud AI).",
+                "Algoritma minat / personalisasi (Algolia).",
+                "Rentang lokasi (nearby) dengan Google Maps API.",
+                "Chat di sistem yang sama.",
+                "Basis data event sourcing / append-only.",
+                "Satu backend dipakai klien mobile, web, dan admin panel — frontend admin panel saya kerjakan juga."
+              ],
+              "en": [
+                "Posts are read as categories or topics from text, image, video, and voice (Google Cloud AI).",
+                "Interest algorithm / personalization (Algolia).",
+                "Location range (nearby) with the Google Maps API.",
+                "Chat lives in the same system.",
+                "Data is managed with an event-sourcing / append-only approach.",
+                "One backend is shared by mobile, web, and admin clients — I also built the admin panel frontend."
+              ]
+            }
+          },
+          {
+            "title": {
+              "id": "Admin panel",
+              "en": "Admin panel"
+            },
+            "bullets": {
+              "id": [
+                "Frontend admin panel: dashboard user/konten, daftar user terhapus atau di-suspend, dan jadwal maintenance."
+              ],
+              "en": [
+                "Admin panel frontend: user/content dashboard, deleted or suspended users, and maintenance windows."
+              ]
+            }
+          },
+          {
+            "title": {
+              "id": "Arsitektur",
+              "en": "Architecture"
+            },
+            "bullets": {
+              "id": [
+                "Dual-backend Apollo GraphQL (Admin dan Client) dengan pemisahan akses.",
+                "Grup sosial dan notifikasi real-time lewat GraphQL Subscriptions.",
+                "Infrastruktur serverless Firebase Cloud Functions yang menangani jutaan trigger otomatis."
+              ],
+              "en": [
+                "Dual-backend Apollo GraphQL (Admin and Client) with strict access separation.",
+                "Social groups and real-time notifications over GraphQL Subscriptions.",
+                "Serverless Firebase Cloud Functions handling millions of automatic triggers."
+              ]
+            }
+          }
+        ]
       }
     }
   ]

@@ -14,8 +14,9 @@ import { cn } from "@/lib/utils";
  * `onSelect` — klik tile membuka project sheet (Work index).
  *
  * Caption + scrim: CSS hover/focus desktop; selalu terlihat jika
- * `hover: none` (ponsel). Hover desktop = blood drip terkurung di tile
- * (T-042.3, dikunci chat 2026-09-04). Reduced-motion = stain instan.
+ * `hover: none` (ponsel). Hover desktop = grayscale → warna penuh,
+ * foto sedikit membesar di dalam plate + caption. Reduced-motion =
+ * tanpa scale; warna tetap berubah instan.
  */
 export function WorkTile({
   item,
@@ -55,15 +56,6 @@ export function WorkTile({
           )}
           priority={featured}
         />
-      </div>
-      <div aria-hidden="true" className="home-work-tile-drip">
-        <span className="home-work-tile-drip-sheet" />
-        <span className="home-work-tile-drip-col" />
-        <span className="home-work-tile-drip-col" />
-        <span className="home-work-tile-drip-col" />
-        <span className="home-work-tile-drip-col" />
-        <span className="home-work-tile-drip-col" />
-        <span className="home-work-tile-drip-col" />
       </div>
       <div aria-hidden="true" className="home-work-tile-scrim" />
       <div className="home-work-tile-meta flex flex-col gap-1">

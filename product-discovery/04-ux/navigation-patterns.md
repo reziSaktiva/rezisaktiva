@@ -46,7 +46,7 @@ Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa ber
 | ---- | --- | ----- |
 | **In-page (Home)** | Arah soft lewat chrome (nav + tombol Contact) + pita footer setelah About | Memperkuat next step tanpa section Contact di tengah halaman (ADR-041) |
 | **Footer** | Brand singkat · pita Contact · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer. Ada di Home, Workflow, Work index (ADR-041) |
-| **Work index tiles** | Membuka project sheet (M10) | Overlay dari bawah (ADR-027); tautan case di dalam sheet (**ADR-044**); live/repo sekunder |
+| **Work index tiles** | Membuka project sheet (M10) | Overlay dari bawah (ADR-027); tautan case di dalam sheet (**ADR-044**); Live sekunder; tanpa Repo |
 | **Quick info panel (M13)** | Tab tepi kanan → drawer: bio, Services, Tools, Proyek/Projects, Email, Links | Overlay global (bukan route). Tidak menggantikan Contact modal (ADR-019) atau footer satelit — **ADR-022** |
 | **Tidak ada** | Nav Work terpisah dari Proyek, Blog, Services sebagai halaman, Pricing, WA, Instagram | Out of scope R1 |
 
@@ -73,7 +73,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
 * Footer satelit (pita Contact) ada di Home / Workflow / Work index sebagai pelengkap, bukan pengganti Contact (ADR-041).
 * Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
-* **Komposisi panel hamburger** (chrome produksi; kulit T-040.4): panel elevated (bukan nampan kuning/aksen); **item nav halaman selebar panel**; selected = outline darah + teks aksen (ADR-031), bukan pill kecil; **switcher ID/EN compact** (tidak meregang penuh). Acuan = kode, bukan mockup HTML (ADR-024).
+* **Komposisi panel hamburger** (chrome produksi; kulit T-040.4): panel elevated (bukan nampan kuning/aksen); **item nav halaman selebar panel**; selected = outline darah + teks aksen (ADR-031), bukan pill kecil; **switcher bahasa = Dropdown Menu compact** (ID/EN, tidak meregang penuh). Acuan = kode, bukan mockup HTML (ADR-024).
 * **Chrome satu baris** di ponsel: brand kiri; hamburger + tema + Contact kanan. Tidak wrap jadi dua baris. Lantai lebar **320px** (iPhone SE 1) wajib rapi; **375px** (SE 2/3) acuan ponsel utama.
 * Acuan visual: **kode produksi** (chrome di `app/[locale]/_components/`, tema built) — **ADR-024**. `design-mockups/` arsip; pixel/spacing tidak lagi mengikuti HTML mockup.
 
@@ -83,7 +83,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 * Contact bisa dicapai **≤ satu ketukan** dari halaman mana pun (desktop & mobile) — tombol selalu di luar hamburger
 * Home / About / Workflow / Proyek ≤1 ketukan di desktop; di mobile (<1024px) boleh lewat hamburger (1 ketukan buka menu + 1 ketukan item — override ADR-020)
-* Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020) sebagai chip compact, bukan full-width
+* Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020) sebagai Dropdown Menu compact, bukan full-width
 * Panel hamburger: item halaman full-width; halaman aktif tertandai sebagai bar penuh
 * Footer tidak menggantikan peran Contact
 * Tidak ada item nav untuk permukaan non-R1 di luar Proyek (M9, sudah masuk R1 via ADR-020)

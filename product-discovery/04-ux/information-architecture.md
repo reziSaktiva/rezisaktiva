@@ -51,17 +51,17 @@ Contoh konkret: `/id/`, `/id#about`, `/id/workflow`, `/en/projects`, `/en/projec
 
 1. Identitas brand (nama / mark)
 2. Primary nav: **nama** (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · **Tentang / About** (`#about` di Home, ADR-040) · **Proses Kerja / How I Work** (`/workflow`, ADR-035) · **Proyek / Projects** (M9, path `/projects`, ADR-020) sebagai chip; Contact sebagai tombol pembuka modal (ADR-019), bukan link. **Tidak ada chip Home.**
-3. Language switcher (`ID` ↔ `EN`) → URL path sibling
+3. Language switcher (Dropdown Menu ID/EN) → URL path sibling
 4. Theme toggle (dark/light) di chrome — Must R1 (**ADR-021**); default ship **dark**, light hold, toggle tersembunyi selama hold (T-038.2, 2026-09-04)
 5. **Quick info panel (M13)** — overlay (tab tepi kanan → drawer); bukan rute baru (**ADR-022**)
 6. **Project sheet (M10)** — overlay dari bawah dari tile Work index; bukan rute baru (**ADR-027**)
 7. Footer: identitas singkat · pita Contact · satelit LinkedIn/GitHub · legal ringan — semua rute termasuk Home (ADR-041).
-8. Mobile (<1024px): nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + switcher di balik hamburger (item nav full-width; ID/EN compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
+8. Mobile (<1024px): nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + switcher Dropdown Menu di balik hamburger (item nav full-width; switcher compact); Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021). Lantai 320px; acuan visual **kode produksi** (ADR-024; `design-mockups/` arsip)
 
 ### Home (urutan konten)
 
 1. **Hero / first viewport** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038); lede (deskripsi + tautan Workflow) di **lantai bawah** (ADR-038) **tanpa potret**. Wallpaper terbuka di tengah; memudar saat scroll ke `#about`, kembali di hero. Bukan tile karya.
-2. **About** — section `#about` (ADR-040): Now, sapaan, lead, karya seni + caption. Bukan halaman terpisah. Tanpa `#proof`.
+2. **About** — section `#about` (ADR-040): sapaan, Now (antara judul dan lead), lead, karya seni + caption. Bukan halaman terpisah. Tanpa `#proof`.
 3. **Pita footer Contact** — setelah `#about` (ADR-041): heading + CTA modal + legal + satelit.
 4. **Arah soft** — ke Workflow lewat lede/chrome; Contact lewat chrome + pita footer.
 

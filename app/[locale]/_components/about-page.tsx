@@ -13,7 +13,10 @@ export function AboutSection({ locale }: { locale: Locale }) {
   return (
     <section id="about" className="about-hero min-h-screen">
       <div className="about-hero-grid grid items-center">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-8">
+          <h2 className="about-h1">
+            <WordReveal words={copy.h1} />
+          </h2>
           <Reveal>
             <div id="now" className="flex flex-col gap-2">
               <p className="home-kicker">
@@ -22,9 +25,6 @@ export function AboutSection({ locale }: { locale: Locale }) {
               <WorkplaceLine locale={locale} className="about-workplace" />
             </div>
           </Reveal>
-          <h2 className="about-h1">
-            <WordReveal words={copy.h1} />
-          </h2>
           <Reveal>
             <p className="about-lead">{copy.lead}</p>
           </Reveal>

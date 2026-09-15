@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { isHttpLivePreviewUrl, isProjectRepoUrl } from "@/lib/project-live-preview";
+import {
+  isHttpLivePreviewUrl,
+  isProjectRepoUrl,
+} from "@/lib/project-live-preview";
 
 describe("isHttpLivePreviewUrl", () => {
   it("accepts public https sites", () => {
@@ -9,7 +12,9 @@ describe("isHttpLivePreviewUrl", () => {
 
   it("rejects GitHub and non-http", () => {
     expect(
-      isHttpLivePreviewUrl("https://github.com/reziSaktiva/curious-server"),
+      isHttpLivePreviewUrl(
+        "https://github.com/reziSaktiva/social-media-management",
+      ),
     ).toBe(false);
     expect(isHttpLivePreviewUrl("mailto:hi@example.com")).toBe(false);
     expect(isHttpLivePreviewUrl("not a url")).toBe(false);
@@ -18,9 +23,9 @@ describe("isHttpLivePreviewUrl", () => {
 
 describe("isProjectRepoUrl", () => {
   it("matches GitHub hosts only", () => {
-    expect(isProjectRepoUrl("https://github.com/reziSaktiva/cookitrealgood")).toBe(
-      true,
-    );
+    expect(
+      isProjectRepoUrl("https://github.com/reziSaktiva/cookitrealgood"),
+    ).toBe(true);
     expect(isProjectRepoUrl("https://www.cookitrealgood.com/")).toBe(false);
     expect(isProjectRepoUrl("not a url")).toBe(false);
   });

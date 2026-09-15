@@ -19,7 +19,6 @@ export interface WorkSheetCopy {
   imagesLabel: string;
   previewLabel: string;
   liveLabel: string;
-  repoLabel: string;
   readMoreLabel: string;
 }
 
@@ -27,7 +26,6 @@ export interface WorkSheetFields {
   services: readonly string[];
   locationOrCompany: string;
   description: string;
-  gitHref?: string;
 }
 
 export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
@@ -40,7 +38,6 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     imagesLabel: "Gambar proyek",
     previewLabel: "Pratinjau situs",
     liveLabel: "Live",
-    repoLabel: "Repo",
     readMoreLabel: "Baca selengkapnya",
   },
   en: {
@@ -52,7 +49,6 @@ export const WORK_SHEET_COPY: Record<Locale, WorkSheetCopy> = {
     imagesLabel: "Project images",
     previewLabel: "Live preview",
     liveLabel: "Live",
-    repoLabel: "Repo",
     readMoreLabel: "Read the full case",
   },
 };
@@ -73,27 +69,25 @@ export function getWorkSheet(
     services: row.services[locale],
     locationOrCompany: row.locationOrCompany[locale],
     description: row.description[locale],
-    gitHref: row.gitHref ?? undefined,
   };
 }
 
-/** Primer = case in-site; Live/Repo sekunder (T-056.4). */
+/** Primer = case in-site; Live sekunder (bisa lebih dari satu situs). Tanpa Repo. */
 export function projectActionHrefs(
   locale: Locale,
-  item: { slug: string; href?: string },
-  gitHref?: string,
+  item: { slug: string; href?: string; liveHrefs?: readonly string[] },
 ): {
   caseHref: string;
   liveHref: string | undefined;
-  repoHref: string | undefined;
+  liveHrefs: readonly string[];
 } {
-  const liveHref =
-    item.href && !isProjectRepoUrl(item.href) ? item.href : undefined;
-  const repoHref =
-    item.href && isProjectRepoUrl(item.href) ? item.href : gitHref;
+  const liveHrefs = (
+    item.liveHrefs ??
+    (item.href && !isProjectRepoUrl(item.href) ? [item.href] : [])
+  ).filter((url) => !isProjectRepoUrl(url));
   return {
     caseHref: projectCaseHref(locale, item.slug),
-    liveHref,
-    repoHref,
+    liveHref: liveHrefs[0],
+    liveHrefs,
   };
 }

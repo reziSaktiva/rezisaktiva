@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sheet";
 import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
+import { isInsideLocaleMenuGuard } from "@/lib/overlay-dismiss";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/locale";
 import { PERSON_CHROME } from "@/content/person";
@@ -63,7 +64,7 @@ import {
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
- * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
+ * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → DropdownMenu;
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
@@ -159,6 +160,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   const chipColorVars = useChipColorVars();
   const { open } = useContactModal();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
   const [mobileNavPath, setMobileNavPath] = useState(pathname);
   const mobileNavId = useId();
 
@@ -252,7 +254,12 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
             </Button>
             <Sheet
               open={mobileNavOpen}
-              onOpenChange={setMobileNavOpen}
+              onOpenChange={(open) => {
+                setMobileNavOpen(open);
+                if (!open) {
+                  setLocaleMenuOpen(false);
+                }
+              }}
               modal={false}
             >
               <SheetContent
@@ -268,11 +275,22 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 onOpenAutoFocus={(event) => event.preventDefault()}
                 onCloseAutoFocus={(event) => event.preventDefault()}
                 onPointerDownOutside={(event) => {
-                  const target = event.target;
-                  if (
-                    target instanceof Element &&
-                    target.closest(".site-nav-toggle")
-                  ) {
+                  if (isInsideLocaleMenuGuard(event.target)) {
+                    event.preventDefault();
+                  }
+                }}
+                onFocusOutside={(event) => {
+                  if (isInsideLocaleMenuGuard(event.target)) {
+                    event.preventDefault();
+                  }
+                }}
+                onInteractOutside={(event) => {
+                  if (isInsideLocaleMenuGuard(event.target)) {
+                    event.preventDefault();
+                  }
+                }}
+                onEscapeKeyDown={(event) => {
+                  if (localeMenuOpen) {
                     event.preventDefault();
                   }
                 }}
@@ -321,7 +339,11 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                     );
                   })}
                 </SlidingPillGroup>
-                <LocaleSwitcher locale={locale} variant="menu" />
+                <LocaleSwitcher
+                  locale={locale}
+                  variant="menu"
+                  onOpenChange={setLocaleMenuOpen}
+                />
               </SheetContent>
             </Sheet>
           </>

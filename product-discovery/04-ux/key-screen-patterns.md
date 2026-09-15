@@ -76,7 +76,7 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 
 **Blok berurutan:**
 
-1. Section `#about` — **Now** (`#now`) + judul display (`h2`, clamp sama Home) + **karya seni viewport** + caption “This is not me”; lead penuh. **Tanpa** badge availability. **Tanpa** `#proof`.
+1. Section `#about` — judul display (`h2`, clamp sama Home) + **Now** (`#now`, di antara judul dan lead) + lead penuh + **karya seni viewport** + caption “This is not me”. **Tanpa** badge availability. **Tanpa** `#proof`.
 2. Soft CTA Contact lewat chrome (tombol header / modal) dan pita footer di layout Home (ADR-041), bukan section di dalam About
 
 **Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; menumpuk pipeline proses di About.
@@ -119,13 +119,13 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 
 ### S4 — Work index + project sheet
 
-**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027). Dari sheet: tautan halaman case `/projects/[slug]` (**ADR-044**) plus live/repo sekunder. Home **tidak** punya teaser karya (ADR-032).
+**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027). Dari sheet: tautan halaman case `/projects/[slug]` (**ADR-044**) plus Live sekunder (bukan Repo). Home **tidak** punya teaser karya (ADR-032).
 
-**Komponen sheet:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. **Halaman case:** route Next SSG, Server Component — bukan mengganti Drawer.
+**Komponen sheet:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. **Halaman case:** route Next SSG, Server Component — bukan mengganti Drawer. Isi lebih dalam dari sheet: periode, stack, poin kerja dari CV / copy kunci (**ADR-046**).
 
 ### S5 — Halaman case (R2)
 
-**Route:** `/[locale]/projects/[slug]`. Isi: slot sheet + narasi/proses singkat jika copy dikunci. Chip Proyek aktif. Bukan `/work/[slug]`.
+**Route:** `/[locale]/projects/[slug]`. Isi: meta sheet + kedalaman (periode, stack, sections); bukan mengulang skim overlay saja. Chip Proyek aktif. Bukan `/work/[slug]`.
 
 ---
 

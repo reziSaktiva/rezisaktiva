@@ -16,6 +16,71 @@ Format entri:
 
 ## [2026-09-15]
 ### Fixed
+- PR #77 review: redact PII di screenshot admin; dismiss locale dropdown di hamburger (Escape + text node); tautan live Minerank termasuk smc.auction; URL di copy case/sheet jadi tautan; tes EN + file galeri.
+
+## [2026-09-15]
+### Fixed
+- Hover CTA pita footer (`.home-contact-cta`): tanpa fill muted shadcn; teks/panah aksen darah. Bungkus Magnetic di pita tidak stretch penuh.
+
+## [2026-09-15]
+### Changed
+- Copy halaman Workflow: cabut em dash ("—") dari lede, deskripsi, catatan, dan label peran (ID+EN).
+
+## [2026-09-15]
+### Added
+- Primitf shadcn `DropdownMenu` (`components/ui/dropdown-menu.tsx`).
+### Changed
+- Locale switcher: ToggleGroup ID/EN → Dropdown Menu compact, kulit gothic-blood.
+
+## [2026-09-15]
+### Changed
+- Section About: Now (`#now`) dipindah ke antara judul display dan lead.
+
+## [2026-09-15]
+### Changed
+- Cabut tautan Repo dari project sheet dan halaman case. Live (situs, bukan GitHub) tetap. JSON-LD `sameAs` hanya URL live.
+
+## [2026-09-15]
+### Changed
+- Galeri `backend platform sosial`: `explore.jpg` jadi cover + gambar pertama; `feed.jpg` jadi kedua.
+
+## [2026-09-15]
+### Changed
+- Lead halaman Proyek dikunci: ID “dari nol hingga siap rilis”; EN “crafted from the ground up” (T-021.5).
+
+## [2026-09-15]
+### Changed
+- Lead halaman Proyek (ID/EN) + meta Work: AI ecosystem hanya di proyek terbaru, bukan seluruh katalog (T-021.5).
+
+## [2026-09-15]
+### Changed
+- Hover tile project: cabut blood drip. Desktop = grayscale → warna penuh + scale foto + caption di pelat museum (T-042.3 kunci drip 2026-09-04 dicabut). Ponsel = warna penuh.
+
+## [2026-09-15]
+### Added
+- Galeri admin panel pada `backend platform sosial` (dashboard, user terhapus, maintenance).
+### Changed
+- Copy + layanan: frontend admin panel, bukan backend saja.
+
+## [2026-09-15]
+### Added
+- **T-058** / **ADR-046**: halaman `/projects/[slug]` lebih dalam dari sheet — periode, stack, poin dari CV (`private/Resume_rezi_updated_agustus_2026.md`) + copy kunci chat.
+- `content/work-case.ts` + field `case` di `projects.json` untuk semua item katalog (termasuk Gamestalgia, tetap hidden).
+### Changed
+- `work-case-page.tsx` merender kedalaman; sheet M10 tetap skim.
+- S5 `key-screen-patterns.md`.
+- **T-058.4** ✅ — browser: case Cook It / Minerank / backend platform sosial punya periode+stack+poin; sheet Cook It tetap skim (tahun + deskripsi, tanpa stack).
+
+## [2026-09-15]
+### Added
+- **T-057** / **ADR-045**: karya publik boleh judul deskriptif tanpa merek; item `backend platform sosial` (slug `backend-platform-sosial`) di Work index + sheet + case; galeri crop tanpa wordmark; tanpa live/repo.
+- Tes: slug publik memuat item baru; merek tertahan tidak di baris publik; rute `curious` tetap tidak di-emit.
+### Changed
+- `hiddenIds` hanya Gamestalgia (`6`). Copy id 7 = enam highlight backend yang dikunci Boss Rezi.
+- **T-057.5** ✅ — browser `http://127.0.0.1:3001`: tile di `/id/projects`; sheet tanpa Live/Repo; “Baca selengkapnya” → `/id/projects/backend-platform-sosial`; sibling `/en/...`; slug lama 404; case desktop + 375.
+
+## [2026-09-15]
+### Fixed
 - Review PR #76: tes kontrak ring/X (tanpa pisau); rAF berhenti saat pointer diam / tab hidden; ring portaled disembunyikan lewat `html.page-vt-lock`, bukan selector klon.
 
 ## [2026-09-15]

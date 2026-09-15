@@ -97,7 +97,7 @@ export function useThemeMode(): ThemeModeContextValue {
 
 /**
  * Warna chip kuning (nav link, locale switch, mobile drawer — lihat
- * `globals.css` `.site-nav-chip`/`.site-locale-switch`/`.site-mobile-nav-chip`).
+ * `globals.css` `.site-nav-chip`/`.site-mobile-nav-chip`).
  *
  * Bug ditemukan 2026-08-16 (lihat COMPLETE_TASK.md): sebelumnya dua warna ini
  * ("--chrome-pill-bg"/"--chrome-pill-fg") didefinisikan lewat CSS
@@ -113,7 +113,7 @@ export function useThemeMode(): ThemeModeContextValue {
  * sekali. Hitung langsung dari `mode` React (satu-satunya sumber kebenaran,
  * sudah dijamin identik antara server & client — lihat `ThemeModeProvider`
  * di atas) dan suntikkan sebagai inline `style` di elemen wrapper masing-
- * masing (`site-header.tsx`, `locale-switcher.tsx`). Tidak ada CSS
+ * masing (`site-header.tsx`). Tidak ada CSS
  * `color-scheme`/`light-dark()` yang perlu di-resolve sama sekali untuk 2
  * token ini lagi, jadi tidak ada lagi kemungkinan koreksi 2-pass.
  *

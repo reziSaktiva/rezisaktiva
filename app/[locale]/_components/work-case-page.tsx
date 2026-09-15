@@ -5,10 +5,13 @@ import {
   projectActionHrefs,
   workSheetImages,
 } from "@/content/work-sheet";
+import { WORK_CASE_COPY, getWorkCase } from "@/content/work-case";
 import type { Locale } from "@/lib/locale";
 import type { WorkItem } from "@/content/work";
 import { Reveal, WordReveal } from "./home-motion";
+import { LinkedText } from "./linked-text";
 import { ProjectSheetMedia } from "./project-sheet-media";
+import { WorkLiveLinks } from "./work-live-links";
 
 export function WorkCasePage({
   locale,
@@ -18,16 +21,14 @@ export function WorkCasePage({
   item: WorkItem;
 }) {
   const labels = WORK_SHEET_COPY[locale];
+  const caseCopy = WORK_CASE_COPY[locale];
   const sheet = getWorkSheet(locale, item.id);
   if (!sheet) {
     notFound();
   }
+  const depth = getWorkCase(locale, item.id);
   const images = workSheetImages(item.id);
-  const { liveHref, repoHref } = projectActionHrefs(
-    locale,
-    item,
-    sheet.gitHref,
-  );
+  const { liveHref, liveHrefs } = projectActionHrefs(locale, item);
 
   return (
     <div className="work-page case-page flex flex-col">
@@ -56,30 +57,60 @@ export function WorkCasePage({
             <div className="flex flex-col gap-3">
               <p className="qi-label">{labels.locationLabel}</p>
               <p>{sheet.locationOrCompany}</p>
-              <p className="qi-label">{labels.yearLabel}</p>
-              <p>{item.year}</p>
+              <p className="qi-label">
+                {depth?.period ? caseCopy.periodLabel : labels.yearLabel}
+              </p>
+              <p>{depth?.period ?? item.year}</p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <p className="qi-label">{labels.descriptionLabel}</p>
-            <p className="qi-bio ps-description">{sheet.description}</p>
-          </div>
-
-          {liveHref || repoHref ? (
-            <div className="qi-links">
-              {liveHref ? (
-                <a href={liveHref} target="_blank" rel="noopener noreferrer">
-                  {labels.liveLabel}
-                </a>
+          {depth ? (
+            <div className="flex flex-col gap-8 case-depth">
+              {depth.stack.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  <p className="qi-label">{caseCopy.stackLabel}</p>
+                  <ul className="case-stack">
+                    {depth.stack.map((tech) => (
+                      <li key={tech}>{tech}</li>
+                    ))}
+                  </ul>
+                </div>
               ) : null}
-              {repoHref ? (
-                <a href={repoHref} target="_blank" rel="noopener noreferrer">
-                  {labels.repoLabel}
-                </a>
-              ) : null}
+              {depth.sections.map((section, index) => (
+                <div
+                  key={section.title ?? `section-${index}`}
+                  className="flex flex-col gap-3"
+                >
+                  {section.title ? (
+                    <h2 className="case-section-title">{section.title}</h2>
+                  ) : null}
+                  {section.stack.length > 0 ? (
+                    <ul className="case-stack">
+                      {section.stack.map((tech) => (
+                        <li key={tech}>{tech}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  <ul className="qi-list">
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet}>
+                        <LinkedText text={bullet} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ) : null}
+          ) : (
+            <div className="flex flex-col gap-3">
+              <p className="qi-label">{labels.descriptionLabel}</p>
+              <p className="qi-bio ps-description">
+                <LinkedText text={sheet.description} />
+              </p>
+            </div>
+          )}
+
+          <WorkLiveLinks hrefs={liveHrefs} label={labels.liveLabel} />
 
           <ProjectSheetMedia
             liveHref={liveHref}
