@@ -3,8 +3,8 @@
 ## Snapshot
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
-* **Active Mode:** Validation + **R2** — **T-056.4** ✅ / **T-056.5** ✅; lanjut **T-056.6** verifikasi browser; R1 tetap exited
-* **Top Next Tasks:** **T-056.6** verifikasi browser case hibrid — [`TASKS.md`](TASKS.md) / [`tasks/r2.md`](tasks/r2.md)
+* **Active Mode:** Validation — **T-056** ✅ (R2 magnet ADR-044); R1 tetap exited
+* **Top Next Tasks:** Tidak ada task terbuka — [`TASKS.md`](TASKS.md) / [`tasks/r2.md`](tasks/r2.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + [`tasks/README.md`](tasks/README.md) (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`) + [`R1_COMPLETE.md`](R1_COMPLETE.md)
@@ -18,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-09-14 |
+| Last Updated | 2026-09-15 |
 
 ---
 
@@ -27,8 +27,8 @@
 | Item | Value |
 | ----- | ----- |
 | Current Phase | Validation (Phase 1 — `01-business/success-metrics.md`) |
-| Current Milestone | R1 exited; R2 magnet dikunci **ADR-044** (hibrid sheet + `/projects/[slug]`) |
-| Overall Progress | R1 T-001–T-055 tertutup; **T-023** ❌; **T-056** ⏳ (**T-056.1–T-056.5** ✅) |
+| Current Milestone | R1 exited; R2 magnet **T-056** ✅ (**ADR-044**) |
+| Overall Progress | R1 T-001–T-055 tertutup; **T-023** ❌; **T-056** ✅ |
 | Project Status | R1 exited — destination layak evaluasi; **v14** ✅; **v16** ✅ (Home hero-only); **v17** ✅ (About/Workflow); **v15** ✅; **v13** ✅ (T-031); **v19** ✅ (T-054); **v10** ✅ (**T-023** ❌) |
 
 ---
@@ -38,7 +38,7 @@
 * Product Discovery **selesai** (baseline 01–06 + exit T-007).
 * Repository & Bootstrap **selesai** (`tasks/bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean terkirim di kode: Home (hero + `#about`), Workflow, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, copy T-021 (isi `/workflow` = ADR-042). Acuan visual: kode produksi (ADR-024).
-* Fase aktif: **Validation** + **R2**. **T-056.1–T-056.5** ✅. Lanjut **T-056.6**. R1 polish **T-055** / **T-054** / **T-043** tetap Done.
+* Fase aktif: **Validation**. **T-056** ✅ (T-056.1–T-056.6). R1 polish **T-055** / **T-054** / **T-043** tetap Done.
 * **Copy R1:** **T-021.1–T-021.7 ✅**. **T-046…T-051** ✅. **Isi `/workflow` di-supersede ADR-042** (bukan offers/values/accordion T-021.3). Home tanpa potret. Foto About masih placeholder Unsplash (bukan blocker exit).
 * **Catatan engineering:** gap StyleX/Turbopack (T-013.4) ditutup dengan cabut Astryx. Rilis v14 **T-037.7** ✅. **T-038…T-043** / **v15** ✅. **T-055** / **v20** ✅. **T-031** / **v13** ✅. **T-054** / **v19** ✅. Tidak ada task R1 terbuka.
 
@@ -46,12 +46,11 @@
 
 ## Active Conversation Mode
 
-**Validation + R2 (ADR-044)**
+**Validation (R2 magnet T-056 ✅)**
 
 Diizinkan:
 
-* **T-056** halaman case hibrid (`/[locale]/projects/[slug]`) — tautan sheet + meta **T-056.4–T-056.5** ✅; lanjut verifikasi **T-056.6**
-* Bug / regresi pada permukaan R1 yang sudah live
+* Bug / regresi pada permukaan R1–R2 yang sudah live (termasuk case `/[locale]/projects/[slug]`)
 * **T-038…T-043** identitas visual (kulit saja, ADR-029) — Q&A per permukaan lalu kode; **bukan** tulis ulang copy kecuali **T-046…T-048** dan **isi `/workflow` (ADR-042)**; IA Home mengikuti **ADR-032** + **ADR-037** + **ADR-038** (lede + h1 dua baris, Now di About) dan **ADR-041** (pita footer di Home setelah `#about`); About vs Workflow mengikuti **ADR-035**; permukaan Workflow mengikuti **ADR-042**; latar hidup Workflow = **T-054** (Cathedral Breath, ikut dokumen; bukan MP4)
 * Polish R1 yang tidak menambah halaman (a11y, paritas); **T-055** kulit navbar (Q&A lalu kode; job chrome tetap)
 * **T-031** metadata **selesai** (T-031.1–T-031.5 ✅; token T-039 sudah)

@@ -8,15 +8,15 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-**T-056.6** — verifikasi browser halaman case hibrid (ADR-044). Detail: [`tasks/r2.md`](tasks/r2.md).
+Tidak ada task implementasi terbuka. **T-056** / magnet R2 (ADR-044) ✅. Fase aktif: Validation (bug/regresi R1–R2 bila muncul).
 
 **Baru selesai**
 
-1. **T-056.4** — tautan “baca selengkapnya” di sheet → case.
-2. **T-056.5** — title/description/canonical/OG per case (kartu situs).
-3. **T-056.3** — route SSG `/[locale]/projects/[slug]`.
-4. **T-056.2** — slug + copy case (pakai ulang slot sheet; label ID/EN dikunci).
-5. **T-056.1** — ADR-044 + amandemen docs R2.
+1. **T-056.6** — verifikasi browser case hibrid (tile→sheet→case, URL langsung, locale, hiddenIds, Contact/QI, desktop + 375).
+2. **T-056.4** — tautan “baca selengkapnya” di sheet → case.
+3. **T-056.5** — title/description/canonical/OG per case (kartu situs).
+4. **T-056.3** — route SSG `/[locale]/projects/[slug]`.
+5. **T-056.2** — slug + copy case (pakai ulang slot sheet; label ID/EN dikunci).
 
 ## Indeks fase
 
@@ -25,7 +25,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | Discovery | [`tasks/discovery.md`](tasks/discovery.md) | T-001 … T-007 | ✅ Done |
 | Bootstrap | [`tasks/bootstrap.md`](tasks/bootstrap.md) | T-008 … T-012 | ✅ Done |
 | R1 | [`tasks/r1.md`](tasks/r1.md) | T-013 … T-055 | ✅ Done (**T-023** ❌) |
-| R2 | [`tasks/r2.md`](tasks/r2.md) | T-056 … | ⏳ **T-056.1–T-056.5** ✅; lanjut **T-056.6** |
+| R2 | [`tasks/r2.md`](tasks/r2.md) | T-056 … | ✅ **T-056** Done |
 
 Peta file: [`tasks/README.md`](tasks/README.md).
 

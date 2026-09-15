@@ -14,6 +14,11 @@ Format entri:
 - ...
 ```
 
+## [2026-09-15]
+### Changed
+- **T-056.6** ✅ — verifikasi browser `http://127.0.0.1:3010` (production `next start`): tile tetap sheet (URL index tidak berubah; tautan “Baca selengkapnya”); URL langsung ID/EN; `hiddenIds` + slug unknown = 404; Contact + Quick Info di case; desktop + 375 (chip/menu Proyek aktif). **T-056** Done.
+- Snapshot/TASKS: tidak ada task implementasi terbuka; Validation.
+
 ## [2026-09-14]
 ### Fixed
 - Review PR #74: padding/probe iframe sheet tidak bocor ke halaman case; JSON-LD case + CreativeWork `url` = `/projects/[slug]`; `notFound()` jika sheet hilang; tes tautan primer vs Live/Repo.
