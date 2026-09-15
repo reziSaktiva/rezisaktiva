@@ -63,7 +63,7 @@ import {
  * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
  * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
  *
- * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → ToggleGroup;
+ * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → DropdownMenu;
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
@@ -271,7 +271,17 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                   const target = event.target;
                   if (
                     target instanceof Element &&
-                    target.closest(".site-nav-toggle")
+                    (target.closest(".site-nav-toggle") ||
+                      target.closest(".site-locale-menu"))
+                  ) {
+                    event.preventDefault();
+                  }
+                }}
+                onFocusOutside={(event) => {
+                  const target = event.target;
+                  if (
+                    target instanceof Element &&
+                    target.closest(".site-locale-menu")
                   ) {
                     event.preventDefault();
                   }

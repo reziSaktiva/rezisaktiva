@@ -15,6 +15,12 @@ Format entri:
 ```
 
 ## [2026-09-15]
+### Added
+- Primitf shadcn `DropdownMenu` (`components/ui/dropdown-menu.tsx`).
+### Changed
+- Locale switcher: ToggleGroup ID/EN → Dropdown Menu compact, kulit gothic-blood.
+
+## [2026-09-15]
 ### Changed
 - Section About: Now (`#now`) dipindah ke antara judul display dan lead.
 

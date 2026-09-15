@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Locale switcher jadi Dropdown Menu
+**Phase:** Validation
+**Summary:** Boss Rezi minta pengubah bahasa memakai Dropdown Menu shadcn, dikulit gothic-blood (bukan segmented ID / EN).
+**Key Decision/Insight:** Job chrome tetap (cookie `NEXT_LOCALE`, sibling path, hamburger compact). Kulit = trigger outline darah + menu elevated; opsi aktif ADR-031. Bukan ADR baru.
+**Impact:** `locale-switcher.tsx`, `dropdown-menu.tsx`, `site-header.tsx`, `globals.css`, `04-ux/navigation-patterns.md`.
+
 ## [2026-09-15] — Now di antara judul dan lead About
 **Phase:** Validation
 **Summary:** Boss Rezi minta blok current work (Now) di section `#about` berada di tengah, antara judul display dan deskripsi lead.
