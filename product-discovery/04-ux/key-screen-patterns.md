@@ -76,7 +76,7 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 
 **Blok berurutan:**
 
-1. Section `#about` — **Now** (`#now`) + judul display (`h2`, clamp sama Home) + **karya seni viewport** + caption “This is not me”; lead penuh. **Tanpa** badge availability. **Tanpa** `#proof`.
+1. Section `#about` — judul display (`h2`, clamp sama Home) + **Now** (`#now`, di antara judul dan lead) + lead penuh + **karya seni viewport** + caption “This is not me”. **Tanpa** badge availability. **Tanpa** `#proof`.
 2. Soft CTA Contact lewat chrome (tombol header / modal) dan pita footer di layout Home (ADR-041), bukan section di dalam About
 
 **Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; menumpuk pipeline proses di About.

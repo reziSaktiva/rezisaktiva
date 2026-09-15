@@ -43,8 +43,9 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work inde
 
 **Isi inti:**
 
-* **Now** — status pekerjaan saat ini (kicker + tautan perusahaan, ADR-037)
-* Sapaan (`h2`) + lead pribadi satu paragraf (ADR-039)
+* Sapaan (`h2`)
+* **Now** — status pekerjaan saat ini (kicker + tautan perusahaan, ADR-037); di antara judul dan lead
+* Lead pribadi satu paragraf (ADR-039)
 * Karya seni viewport + caption “This is not me”
 * Konteks pengalaman (di dalam lead, bukan CV kronologis)
 

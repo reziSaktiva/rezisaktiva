@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-09-15]
 ### Changed
+- Section About: Now (`#now`) dipindah ke antara judul display dan lead.
+
+## [2026-09-15]
+### Changed
 - Cabut tautan Repo dari project sheet dan halaman case. Live (situs, bukan GitHub) tetap. JSON-LD `sameAs` hanya URL live.
 
 ## [2026-09-15]

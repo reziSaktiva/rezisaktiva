@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Now di antara judul dan lead About
+**Phase:** Validation
+**Summary:** Boss Rezi minta blok current work (Now) di section `#about` berada di tengah, antara judul display dan deskripsi lead.
+**Key Decision/Insight:** Urutan kolom teks About = judul → Now (`#now`) → lead; artwork tetap di kolom kanan. Bukan ADR baru (urutan visual, Now tetap di About).
+**Impact:** `about-page.tsx`, `04-ux/key-screen-patterns.md`, `04-ux/information-architecture.md`, `02-product/mvp-definition.md`, `02-product/feature-modules.md`.
+
 ## [2026-09-15] — Tanpa tautan Repo di sheet/case
 **Phase:** Validation
 **Summary:** Boss Rezi minta fitur tautan Repo dihilangkan dari project sheet dan halaman project.
