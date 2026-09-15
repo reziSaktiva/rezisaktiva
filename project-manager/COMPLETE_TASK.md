@@ -15,8 +15,9 @@ Format entri:
 ```
 
 ## [2026-09-15]
-### Fixed
-- PR #77 review: redact PII di screenshot admin; dismiss locale dropdown di hamburger (Escape + text node); tautan live Minerank termasuk smc.auction; URL di copy case/sheet jadi tautan; tes EN + file galeri.
+### Added
+- **ADR-047** / **T-059.1**: form Contact mengantar email lewat Resend (Route Handler; halaman tetap SSG). Task **T-059.2–T-059.5** terbuka.
+
 
 ## [2026-09-15]
 ### Fixed

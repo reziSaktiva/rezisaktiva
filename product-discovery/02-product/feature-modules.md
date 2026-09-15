@@ -61,10 +61,11 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work inde
 
 * Ajakan soft + konteks kapan relevan menghubungi
 * Jalur primer: email dan/atau tautan langsung
+* Form singkat di modal **mengantar** pesan ke inbox (Resend, **ADR-047**)
 * Tautan satelit (LinkedIn, GitHub, dll.)
 * Opsional: availability line
 
-**Bukan (MVP):** form berbackend, CRM, calendar wajib, rate card, tautan unduh CV/Portofolio publik (**ADR-043**; ADR-023 superseded).
+**Bukan (MVP):** calendar wajib, CRM, rate card, tautan unduh CV/Portofolio publik (**ADR-043**; ADR-023 superseded). Form tanpa backend (hanya “Terkirim” palsu) **dicabut** oleh ADR-047.
 
 ---
 
@@ -111,7 +112,7 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 | Modul | Peran | Kapan |
 | ----- | ----- | ----- |
 | **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
-| **M8 — Contact form / booking** | Alternatif jalur kontak | Could — bukan syarat MVP |
+| **M8 — Contact form / booking** | Form modal → Resend (**ADR-047**). Booking/calendar tetap di luar | Form = **Must** (Validation); calendar = Could |
 | **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
 | **M10 — Case / process detail** | **R1:** overlay dari bawah (preview live/galeri, services, location or company, year, description); tile membuka sheet; Live sekunder, tanpa Repo. **R2 (ADR-044):** tautan “baca selengkapnya” ke halaman `/[locale]/projects/[slug]`; sheet **tetap** | **Must R1** overlay (ADR-027); **Must R2** halaman case (ADR-044, T-056) |
 | **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
@@ -183,5 +184,6 @@ Modul dianggap cukup terdefinisi jika:
 * `../../project-manager/decisions/ADR-041-home-with-footer.md`
 * `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
 * `../../project-manager/decisions/ADR-044-r2-hybrid-case-pages.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

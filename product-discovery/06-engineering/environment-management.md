@@ -11,7 +11,7 @@ Dokumen ini mendefinisikan pengelolaan environment & secrets untuk website porto
 R1 adalah situs **publik static-first** tanpa DB/auth produk. Environment sengaja **tipis**:
 
 * Tier: Local / Preview / Production (selaras Vercel)
-* Secret produk: **minimal atau kosong**
+* Secret produk: **minimal** — plus `RESEND_*` untuk form Contact (**ADR-047**)
 * Konfigurasi publik (URL situs, flag analytics opsional) boleh `NEXT_PUBLIC_*` bila diperlukan
 
 ---
@@ -71,6 +71,8 @@ R1 diharapkan **sangat pendek**. Contoh yang wajar (dikunci detail nama saat boo
 | Variabel | Wajib R1 | Tier | Catatan |
 | -------- | -------- | ---- | ------- |
 | `NEXT_PUBLIC_SITE_URL` | Should | Semua | Canonical URL untuk meta/OG/sitemap. Production: `https://rezisaktiva.space` |
+| `RESEND_API_KEY` | Must (setelah ADR-047) | Local / Preview / Prod | Server-only. Jangan `NEXT_PUBLIC_`. |
+| `RESEND_FROM` | Must (setelah ADR-047) | Local / Preview / Prod | Mailbox terverifikasi di `rezisaktiva.space` |
 | Analytics key (`NEXT_PUBLIC_*` atau server) | Could | Preview/Prod | Hanya jika analytics diaktifkan; privacy-aware |
 | `DATABASE_URL` | Tidak | — | N/A |
 | Auth secrets (`AUTH_*`, `NEXTAUTH_*`) | Tidak | — | N/A |
@@ -88,6 +90,7 @@ Tambah variabel baru hanya jika fitur membutuhkannya; update `.env.example` + do
 | Secret store R1 | Vercel (+ `.env.local` lokal) |
 | Vault eksternal | Tidak |
 | Env untuk DB/auth | Tidak ada |
+| Contact email | Resend `RESEND_API_KEY` + `RESEND_FROM` (ADR-047) |
 | CI secrets | Tidak wajib (pipeline B) |
 | Baseline Engineering | ADR-016 |
 
@@ -109,5 +112,6 @@ Tambah variabel baru hanya jika fitur membutuhkannya; update `.env.example` + do
 * `database-orm.md` — N/A
 * `auth-strategy.md` — N/A
 * `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
