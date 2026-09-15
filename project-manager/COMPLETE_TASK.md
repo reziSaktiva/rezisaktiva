@@ -15,6 +15,13 @@ Format entri:
 ```
 
 ## [2026-09-15]
+### Changed
+- Kursor desktop kembali ke `.home-cursor-ring` (ADR-019): ring mengikuti pointer; hover tautan/tombol membesar; scrim overlay Contact/QI/sheet = ikon X. Native cursor tidak disembunyikan secara global.
+- Cabut kursor pisau: hapus `CursorKnifeFollow`, class `cursor-knife`, aset `public/cursors/bloody-knife.png`. Ring tetap portal ke `body` (z-200) supaya X tidak tertutup overlay.
+- Ikon X memakai token gothic-blood (`--color-accent-muted` + `--color-text-primary`), bukan pill kuning.
+- Catatan T-043.2 + `design-tokens.md` diselaraskan.
+
+## [2026-09-15]
 ### Fixed
 - Review PR #75: `R1_COMPLETE.md` “Berikutnya” tidak lagi menunjuk T-056 sebagai kerja terbuka. Locale sibling di T-056.6 = halaman `/en/…` dan `/id/…` via URL langsung (bukan klik switcher klien). `TASKS.md` “Baru selesai” memuat lagi **T-056.1**.
 

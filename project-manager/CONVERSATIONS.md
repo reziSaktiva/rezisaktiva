@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Kursor ring kembali; pisau dicabut
+**Phase:** Validation
+**Summary:** Boss Rezi minta kursor situs kembali ke `cursor-ring`, tanpa pisau berdarah. Ikon X di scrim overlay (Contact / Quick Info / project sheet) tetap.
+**Key Decision/Insight:** Mengembalikan pola ADR-019; kunci chat T-043.2 (pisau) dicabut. Native cursor tidak disembunyikan secara global.
+**Impact:** `home-motion.tsx`, `globals.css`, hapus `public/cursors/bloody-knife.png`; `design-tokens.md`; catatan T-043.2.
+
 ## [2026-09-14] — T-056.2 copy case dikunci
 **Phase:** Validation + R2
 **Summary:** Boss Rezi mengunci isi halaman case = pakai ulang slot sheet (tanpa narasi baru). Slug: social-media-management-platform, cook-it-real-good, minerank. Label tautan: “Baca selengkapnya” / “Read the full case”.
