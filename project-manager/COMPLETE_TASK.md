@@ -15,6 +15,23 @@ Format entri:
 ```
 
 ## [2026-09-15]
+### Added
+- **T-058** / **ADR-046**: halaman `/projects/[slug]` lebih dalam dari sheet — periode, stack, poin dari CV (`private/Resume_rezi_updated_agustus_2026.md`) + copy kunci chat.
+- `content/work-case.ts` + field `case` di `projects.json` untuk semua item katalog (termasuk Gamestalgia, tetap hidden).
+### Changed
+- `work-case-page.tsx` merender kedalaman; sheet M10 tetap skim.
+- S5 `key-screen-patterns.md`.
+- **T-058.4** ✅ — browser: case Cook It / Minerank / backend platform sosial punya periode+stack+poin; sheet Cook It tetap skim (tahun + deskripsi, tanpa stack).
+
+## [2026-09-15]
+### Added
+- **T-057** / **ADR-045**: karya publik boleh judul deskriptif tanpa merek; item `backend platform sosial` (slug `backend-platform-sosial`) di Work index + sheet + case; galeri crop tanpa wordmark; tanpa live/repo.
+- Tes: slug publik memuat item baru; merek tertahan tidak di baris publik; rute `curious` tetap tidak di-emit.
+### Changed
+- `hiddenIds` hanya Gamestalgia (`6`). Copy id 7 = enam highlight backend yang dikunci Boss Rezi.
+- **T-057.5** ✅ — browser `http://127.0.0.1:3001`: tile di `/id/projects`; sheet tanpa Live/Repo; “Baca selengkapnya” → `/id/projects/backend-platform-sosial`; sibling `/en/...`; slug lama 404; case desktop + 375.
+
+## [2026-09-15]
 ### Fixed
 - Review PR #76: tes kontrak ring/X (tanpa pisau); rAF berhenti saat pointer diam / tab hidden; ring portaled disembunyikan lewat `html.page-vt-lock`, bukan selector klon.
 

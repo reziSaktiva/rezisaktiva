@@ -43,6 +43,11 @@ describe("projectCaseUrls", () => {
         entry.url.endsWith("/en/projects/cook-it-real-good"),
       ),
     ).toBe(true);
+    expect(
+      entries.some((entry) =>
+        entry.url.endsWith("/en/projects/backend-platform-sosial"),
+      ),
+    ).toBe(true);
     expect(entries.some((entry) => entry.url.includes("gamestalgia"))).toBe(
       false,
     );

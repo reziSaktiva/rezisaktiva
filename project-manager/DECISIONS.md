@@ -4,6 +4,8 @@ Indeks Architecture Decision Records (ADR). Full text ada di `decisions/`.
 
 | ADR | Title | Status | Date | Ringkasan | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
+| ADR-046 | Case lebih dalam dari sheet; fakta CV | Accepted | 2026-09-15 | Sheet skim; slug = periode + stack + poin; sumber resume + copy kunci; **T-058** | [ADR-046](decisions/ADR-046-case-deeper-than-sheet.md) |
+| ADR-045 | Karya publik boleh judul deskriptif tanpa merek | Accepted | 2026-09-15 | Tile/sheet/case sama ADR-044; identitas kapabilitas; tanpa live/repo/slug merek; **T-057** | [ADR-045](decisions/ADR-045-anonymous-descriptive-work-cases.md) |
 | ADR-044 | R2 magnet = hibrid sheet + halaman `/projects/[slug]` | Accepted | 2026-09-14 | Tile tetap sheet (ADR-027); baca selengkapnya → case SSG; path bukan `/work/[slug]`; **T-056** | [ADR-044](decisions/ADR-044-r2-hybrid-case-pages.md) |
 | ADR-043 | Tidak ada tautan unduh CV/Portofolio publik | Accepted | 2026-09-14 | Supersede ADR-023; **T-023** ❌; Contact tetap email + satelit (ADR-019); CV tidak di `public/` | [ADR-043](decisions/ADR-043-no-public-cv-download.md) |
 | ADR-042 | Halaman Workflow = decision-driven | Accepted | 2026-09-08 | Supersede isi T-021.3 di `/workflow`; lima section; rest/active dicabut | [ADR-042](decisions/ADR-042-workflow-decision-driven-page.md) |

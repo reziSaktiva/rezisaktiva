@@ -14,6 +14,18 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Case lebih dalam dari sheet
+**Phase:** Validation
+**Summary:** Boss Rezi minta seluruh halaman `/projects/[slug]` memuat lebih banyak informasi daripada sheet. Sumber tambahan = CV private Agustus 2026.
+**Key Decision/Insight:** **ADR-046** / **T-058**. Sheet tetap skim. Case = periode, stack, poin terstruktur. Karya deskriptif tetap tanpa merek/URL asli.
+**Impact:** `projects.json` field `case`, `work-case-page.tsx`, S5, tes.
+
+## [2026-09-15] — Gamestalgia & Curious tanpa nama merek
+**Phase:** Validation
+**Summary:** Boss Rezi ingin bukti kerja Gamestalgia dan Curious tetap muncul, tapi nama proyek tidak disebut gamblang. Yang ditampilkan = fitur/kapabilitas (Wasm emulator, GraphQL dual-backend, Algolia, dst.), sebagai sinyal “pernah mengerjakan sistem seperti ini.”
+**Key Decision/Insight:** Dua tile anonim, perilaku seperti karya bernama. **Curious publik = judul “backend platform sosial”** (sudut Backend). Enam tulang copy: (1) klasifikasi topik multimodal teks/gambar/video/suara, (2) algoritma minat, (3) location range, (4) chat, (5) event sourcing / append-only, (6) satu BE untuk mobile, web, admin. Screenshot crop tanpa wordmark = bukti permukaan. Outcome “dihentikan PO” dan URL `curious-server` tidak untuk publik. Gamestalgia belum dikunci.
+**Impact:** **T-057** / **ADR-045**. `projects.json` id 7 publik sebagai `backend platform sosial`; `hiddenIds` = Gamestalgia saja.
+
 ## [2026-09-15] — Kursor ring kembali; pisau dicabut
 **Phase:** Validation
 **Summary:** Boss Rezi minta kursor situs kembali ke `cursor-ring`, tanpa pisau berdarah. Ikon X di scrim overlay (Contact / Quick Info / project sheet) tetap.

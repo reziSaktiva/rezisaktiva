@@ -12,6 +12,8 @@ import projects from "./data/projects.json";
  *
  * Sembunyikan karya: tambah id ke `hiddenIds` di JSON (data tetap tersimpan).
  * Karya di `hiddenIds` tidak punya rute publik `/projects/[slug]` (ADR-044).
+ * Karya publik tanpa merek: judul/slug deskriptif, tanpa live/repo merek (ADR-045).
+ * Halaman case lebih dalam dari sheet (ADR-046): periode, stack, poin dari CV.
  */
 
 export const PROJECT_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
