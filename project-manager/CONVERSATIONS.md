@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Hover CTA footer tanpa nampan muted
+**Phase:** Validation
+**Summary:** Boss Rezi minta hover tombol “Hubungi saya” di pita footer diperbaiki. Variant ghost shadcn memakai `hover:bg-muted` (#141418) sehingga muncul chip gelap di atas kanvas body.
+**Key Decision/Insight:** Hover = teks + panah aksen darah, tanpa fill (T-040.5). Utility `hover:bg-transparent` mengalahkan ghost. Bungkus Magnetic di pita footer harus `max-content` (bukan stretch kolom) supaya pull tidak dihitung dari lebar penuh.
+**Impact:** `site-footer-cta.tsx`, `globals.css`.
+
 ## [2026-09-15] — Tanpa em dash di copy Workflow
 **Phase:** Validation
 **Summary:** Boss Rezi minta karakter "—" dihapus dari semua deskripsi halaman Workflow karena terasa copy buatan AI.

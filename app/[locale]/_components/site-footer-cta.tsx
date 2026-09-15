@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
+import { cn } from "@/lib/utils";
 import { Magnetic } from "./home-motion";
 import { ArrowRightIcon } from "./overlay-icons";
 
@@ -15,7 +16,9 @@ export function SiteFooterCta({ label }: { label: string }) {
         variant="ghost"
         size="lg"
         onClick={open}
-        className="home-contact-cta"
+        className={cn(
+          "home-contact-cta rounded-none hover:bg-transparent dark:hover:bg-transparent hover:text-[var(--color-accent-muted)] active:translate-y-0",
+        )}
       >
         {label}
         <ArrowRightIcon data-icon="inline-end" />

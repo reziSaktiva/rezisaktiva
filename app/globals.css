@@ -927,6 +927,7 @@ html::-webkit-scrollbar-button,
 .site-contact-button:focus-visible,
 .home-contact-cta:hover,
 .home-contact-cta:focus-visible {
+  background: none !important;
   background-image: none !important;
   background-color: transparent !important;
   color: var(--color-accent-muted) !important;
@@ -1442,6 +1443,7 @@ button.home-work-tile,
   font-size: var(--font-size-base);
   font-weight: 500;
   letter-spacing: 0.04em;
+  background: none !important;
   background-image: none !important;
   background-color: transparent !important;
   color: var(--color-text-primary) !important;
@@ -1456,10 +1458,21 @@ button.home-work-tile,
 .home-contact-cta svg {
   width: 1.125rem;
   height: 1.125rem;
+  transition: transform var(--duration-medium-min) var(--ease-standard);
+}
+
+.home-contact-cta:hover svg,
+.home-contact-cta:focus-visible svg {
+  transform: translateX(0.25rem);
 }
 
 .home-magnetic {
   display: inline-flex;
+}
+
+.site-footer-band > .home-magnetic {
+  align-self: flex-start;
+  width: max-content;
 }
 
 .home-cursor-ring {

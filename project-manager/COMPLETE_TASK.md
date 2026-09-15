@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-15]
+### Fixed
+- Hover CTA pita footer (`.home-contact-cta`): tanpa fill muted shadcn; teks/panah aksen darah. Bungkus Magnetic di pita tidak stretch penuh.
+
+## [2026-09-15]
 ### Changed
 - Copy halaman Workflow: cabut em dash ("—") dari lede, deskripsi, catatan, dan label peran (ID+EN).
 
