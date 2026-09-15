@@ -191,7 +191,8 @@ export function Magnetic({ children }: { children: ReactNode }) {
  * Off di sentuh dan `prefers-reduced-motion`. `div` + `left`/`top` + CSS
  * `translate(-50%, -50%)` — bukan Motion `x`/`y`.
  * Portal ke `document.body` supaya ring/X di atas Dialog/Sheet/Drawer
- * (overlay Contact z-90/92).
+ * (overlay Contact z-90/92). rAF hanya saat pointer bergerak; pause
+ * `document.hidden`.
  */
 export function CursorRing() {
   const reduceMotion = useReducedMotion();
@@ -230,10 +231,6 @@ function CursorRingFollow() {
     ring.style.left = `${target.current.x}px`;
     ring.style.top = `${target.current.y}px`;
 
-    const onMove = (event: MouseEvent) => {
-      target.current = { x: event.clientX, y: event.clientY };
-      ring.classList.add("is-active");
-    };
     const onLeave = () => {
       ring.classList.remove("is-active", "is-hover", "is-close");
     };
@@ -242,8 +239,56 @@ function CursorRingFollow() {
     const onEnterClose = () => ring.classList.add("is-close");
     const onLeaveClose = () => ring.classList.remove("is-close");
 
+    let frame = 0;
+    const stopTick = () => {
+      if (frame) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      }
+    };
+    const tick = () => {
+      if (document.hidden) {
+        frame = 0;
+        return;
+      }
+      const dx = target.current.x - current.current.x;
+      const dy = target.current.y - current.current.y;
+      if (dx * dx + dy * dy < 0.01) {
+        current.current.x = target.current.x;
+        current.current.y = target.current.y;
+        ring.style.left = `${current.current.x}px`;
+        ring.style.top = `${current.current.y}px`;
+        frame = 0;
+        return;
+      }
+      current.current.x += dx * 0.18;
+      current.current.y += dy * 0.18;
+      ring.style.left = `${current.current.x}px`;
+      ring.style.top = `${current.current.y}px`;
+      frame = requestAnimationFrame(tick);
+    };
+    const startTick = () => {
+      if (!frame) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    const onMove = (event: MouseEvent) => {
+      target.current = { x: event.clientX, y: event.clientY };
+      ring.classList.add("is-active");
+      startTick();
+    };
+    const onVisibility = () => {
+      if (document.hidden) {
+        stopTick();
+        return;
+      }
+      startTick();
+    };
+
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("visibilitychange", onVisibility);
 
     const isInside = (node: EventTarget | null, selector: string) =>
       node instanceof Element && Boolean(node.closest(selector));
@@ -281,22 +326,13 @@ function CursorRingFollow() {
     document.addEventListener("mouseover", onPointerOver);
     document.addEventListener("mouseout", onPointerOut);
 
-    let frame = 0;
-    const tick = () => {
-      current.current.x += (target.current.x - current.current.x) * 0.18;
-      current.current.y += (target.current.y - current.current.y) * 0.18;
-      ring.style.left = `${current.current.x}px`;
-      ring.style.top = `${current.current.y}px`;
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-
     return () => {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("visibilitychange", onVisibility);
       document.removeEventListener("mouseover", onPointerOver);
       document.removeEventListener("mouseout", onPointerOut);
-      cancelAnimationFrame(frame);
+      stopTick();
     };
   }, []);
 

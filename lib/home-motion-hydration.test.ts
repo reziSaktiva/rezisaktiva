@@ -65,6 +65,40 @@ describe("workflow motion hydration", () => {
   });
 });
 
+describe("pointer ring contract", () => {
+  const globals = readFileSync(
+    path.join(process.cwd(), "app/globals.css"),
+    "utf8",
+  );
+
+  it("keeps the overlay close glyph and portals the ring", () => {
+    expect(homeMotion).toContain('const closeScrim = "[data-overlay-scrim]"');
+    expect(homeMotion).toContain('className="home-cursor-ring"');
+    expect(homeMotion).toContain("createPortal(");
+    expect(homeMotion).toContain("document.body");
+  });
+
+  it("does not ship the knife pointer", () => {
+    expect(homeMotion).not.toContain("home-cursor-knife");
+    expect(homeMotion).not.toContain("bloody-knife");
+    expect(homeMotion).not.toContain("cursor-knife");
+    expect(globals).not.toContain("home-cursor-knife");
+    expect(globals).not.toContain("cursor-knife");
+  });
+
+  it("hides the portaled ring during page lock, not only inside the clone", () => {
+    expect(globals).toContain("html.page-vt-lock .home-cursor-ring");
+    expect(globals).not.toContain(".page-vt-clone .home-cursor-ring");
+  });
+
+  it("pauses the follow loop when the pointer rests or the tab is hidden", () => {
+    expect(homeMotion).toContain("document.hidden");
+    expect(homeMotion).toContain("visibilitychange");
+    expect(homeMotion).toContain("startTick");
+    expect(homeMotion).toContain("stopTick");
+  });
+});
+
 describe("root layout hydration warning", () => {
   it("suppresses only on html (theme script), not body", () => {
     expect(rootLayout).toMatch(/<html[\s\S]*suppressHydrationWarning/);

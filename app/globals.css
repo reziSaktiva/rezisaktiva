@@ -3480,8 +3480,12 @@ html.lenis.page-vt-lock.lenis-stopped {
 }
 
 .page-vt-clone .site-chrome-header,
-.page-vt-clone .home-cursor-ring,
 .page-vt-clone .site-mobile-nav {
+  visibility: hidden !important;
+}
+
+/* Ring di-portal ke `body`, bukan di dalam klon. */
+html.page-vt-lock .home-cursor-ring {
   visibility: hidden !important;
 }
 
