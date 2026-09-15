@@ -187,11 +187,12 @@ export function Magnetic({ children }: { children: ReactNode }) {
 }
 
 /**
- * Cursor pisau berdarah — desktop, pointer halus.
+ * Cursor ring — desktop, pointer halus (ADR-019).
  * Off di sentuh dan `prefers-reduced-motion`. `div` + `left`/`top` + CSS
- * translate ke ujung bilah — bukan Motion `x`/`y` (menimpa hotspot).
- * Portal ke `document.body` supaya z-index di atas Dialog/Sheet/Drawer
- * (overlay Contact z-90/92) — jangan di dalam pohon layout.
+ * `translate(-50%, -50%)` — bukan Motion `x`/`y`.
+ * Portal ke `document.body` supaya ring/X di atas Dialog/Sheet/Drawer
+ * (overlay Contact z-90/92). rAF hanya saat pointer bergerak; pause
+ * `document.hidden`.
  */
 export function CursorRing() {
   const reduceMotion = useReducedMotion();
@@ -211,64 +212,109 @@ export function CursorRing() {
     return null;
   }
 
-  return <CursorKnifeFollow />;
+  return <CursorRingFollow />;
 }
 
-function CursorKnifeFollow() {
-  const knifeRef = useRef<HTMLDivElement>(null);
+function CursorRingFollow() {
+  const ringRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
   const current = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const knife = knifeRef.current;
-    if (!knife) {
+    const ring = ringRef.current;
+    if (!ring) {
       return;
     }
 
-    document.documentElement.classList.add("cursor-knife");
-
     target.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     current.current = { ...target.current };
-    knife.style.left = `${target.current.x}px`;
-    knife.style.top = `${target.current.y}px`;
+    ring.style.left = `${target.current.x}px`;
+    ring.style.top = `${target.current.y}px`;
+
+    const onLeave = () => {
+      ring.classList.remove("is-active", "is-hover", "is-close");
+    };
+    const onEnterInteractive = () => ring.classList.add("is-hover");
+    const onLeaveInteractive = () => ring.classList.remove("is-hover");
+    const onEnterClose = () => ring.classList.add("is-close");
+    const onLeaveClose = () => ring.classList.remove("is-close");
+
+    let frame = 0;
+    const stopTick = () => {
+      if (frame) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      }
+    };
+    const tick = () => {
+      if (document.hidden) {
+        frame = 0;
+        return;
+      }
+      const dx = target.current.x - current.current.x;
+      const dy = target.current.y - current.current.y;
+      if (dx * dx + dy * dy < 0.01) {
+        current.current.x = target.current.x;
+        current.current.y = target.current.y;
+        ring.style.left = `${current.current.x}px`;
+        ring.style.top = `${current.current.y}px`;
+        frame = 0;
+        return;
+      }
+      current.current.x += dx * 0.18;
+      current.current.y += dy * 0.18;
+      ring.style.left = `${current.current.x}px`;
+      ring.style.top = `${current.current.y}px`;
+      frame = requestAnimationFrame(tick);
+    };
+    const startTick = () => {
+      if (!frame) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
 
     const onMove = (event: MouseEvent) => {
       target.current = { x: event.clientX, y: event.clientY };
-      knife.classList.add("is-active");
+      ring.classList.add("is-active");
+      startTick();
     };
-    const onLeave = () => {
-      knife.classList.remove("is-active", "is-hover", "is-text");
+    const onVisibility = () => {
+      if (document.hidden) {
+        stopTick();
+        return;
+      }
+      startTick();
     };
-    const onEnterInteractive = () => knife.classList.add("is-hover");
-    const onLeaveInteractive = () => knife.classList.remove("is-hover");
-    const onEnterText = () => knife.classList.add("is-text");
-    const onLeaveText = () => knife.classList.remove("is-text");
 
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("visibilitychange", onVisibility);
 
     const isInside = (node: EventTarget | null, selector: string) =>
       node instanceof Element && Boolean(node.closest(selector));
 
-    const textField = "input, textarea, select, [contenteditable='true']";
+    const closeScrim = "[data-overlay-scrim]";
     const interactive =
       "a, button, [role='button'], [role='tab'], summary";
     const onPointerOver = (event: MouseEvent) => {
-      if (isInside(event.target, textField)) {
-        onEnterText();
+      if (isInside(event.target, closeScrim)) {
+        onEnterClose();
         onLeaveInteractive();
         return;
       }
+      onLeaveClose();
       if (isInside(event.target, interactive)) {
         onEnterInteractive();
+      } else {
+        onLeaveInteractive();
       }
     };
     const onPointerOut = (event: MouseEvent) => {
       if (
-        isInside(event.target, textField) &&
-        !isInside(event.relatedTarget, textField)
+        isInside(event.target, closeScrim) &&
+        !isInside(event.relatedTarget, closeScrim)
       ) {
-        onLeaveText();
+        onLeaveClose();
       }
       if (
         isInside(event.target, interactive) &&
@@ -280,37 +326,18 @@ function CursorKnifeFollow() {
     document.addEventListener("mouseover", onPointerOver);
     document.addEventListener("mouseout", onPointerOut);
 
-    let frame = 0;
-    const tick = () => {
-      current.current.x += (target.current.x - current.current.x) * 0.18;
-      current.current.y += (target.current.y - current.current.y) * 0.18;
-      knife.style.left = `${current.current.x}px`;
-      knife.style.top = `${current.current.y}px`;
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-
     return () => {
-      document.documentElement.classList.remove("cursor-knife");
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("visibilitychange", onVisibility);
       document.removeEventListener("mouseover", onPointerOver);
       document.removeEventListener("mouseout", onPointerOut);
-      cancelAnimationFrame(frame);
+      stopTick();
     };
   }, []);
 
   return createPortal(
-    <div ref={knifeRef} className="home-cursor-knife" aria-hidden="true">
-      <img
-        className="home-cursor-knife-blade"
-        src="/cursors/bloody-knife.png"
-        alt=""
-        width={256}
-        height={256}
-        draggable={false}
-      />
-    </div>,
+    <div ref={ringRef} className="home-cursor-ring" aria-hidden="true" />,
     document.body,
   );
 }
