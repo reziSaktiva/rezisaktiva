@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Admin panel frontend di backend platform sosial
+**Phase:** Validation
+**Summary:** Boss Rezi minta copy menyatakan ikut frontend admin panel, plus tiga screenshot admin (dashboard, deleted user, maintenance) tanpa merek.
+**Key Decision/Insight:** Layanan = Backend Developer + Frontend admin panel. Galeri klien tetap; admin ditambah.
+**Impact:** `projects.json` id 7, `public/work/backend-platform-sosial/admin-*.jpg`
+
 ## [2026-09-15] — Case lebih dalam dari sheet
 **Phase:** Validation
 **Summary:** Boss Rezi minta seluruh halaman `/projects/[slug]` memuat lebih banyak informasi daripada sheet. Sumber tambahan = CV private Agustus 2026.

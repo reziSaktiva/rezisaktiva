@@ -110,7 +110,23 @@ describe("work case depth (T-058)", () => {
     }
   });
 
-  it("keeps the withheld product name out of the public social-backend case", () => {
+  it("records admin panel frontend and gallery on the social-backend case", () => {
+    const row = PROJECTS_CATALOG.find((item) => item.id === "7")!;
+    expect(row.services.id).toEqual([
+      "Backend Developer",
+      "Frontend admin panel",
+    ]);
+    expect(row.gallery).toEqual(
+      expect.arrayContaining([
+        "/work/backend-platform-sosial/admin-dashboard.jpg",
+        "/work/backend-platform-sosial/admin-deleted-users.jpg",
+        "/work/backend-platform-sosial/admin-maintenance.jpg",
+      ]),
+    );
+    const depth = getWorkCase("id", "7");
+    expect(
+      depth?.sections.some((section) => section.title === "Admin panel"),
+    ).toBe(true);
     expect(JSON.stringify(getWorkCase("id", "7")).toLowerCase()).not.toMatch(
       /curious/,
     );

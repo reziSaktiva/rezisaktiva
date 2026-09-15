@@ -341,23 +341,26 @@
       "gallery": [
         "/work/backend-platform-sosial/feed.jpg",
         "/work/backend-platform-sosial/explore.jpg",
-        "/work/backend-platform-sosial/messages.jpg"
+        "/work/backend-platform-sosial/messages.jpg",
+        "/work/backend-platform-sosial/admin-dashboard.jpg",
+        "/work/backend-platform-sosial/admin-deleted-users.jpg",
+        "/work/backend-platform-sosial/admin-maintenance.jpg"
       ],
       "outcome": {
-        "id": "Satu backend sosial untuk mobile, web, dan admin: topik multimodal, minat, lokasi, chat, data append-only.",
-        "en": "One social backend for mobile, web, and admin: multimodal topics, interest, location, chat, append-only data."
+        "id": "Backend sosial untuk mobile, web, dan admin, plus UI admin panel: topik multimodal, minat, lokasi, chat, data append-only.",
+        "en": "A social backend for mobile, web, and admin, plus the admin panel UI: multimodal topics, interest, location, chat, append-only data."
       },
       "services": {
-        "id": ["Backend Developer"],
-        "en": ["Backend Developer"]
+        "id": ["Backend Developer", "Frontend admin panel"],
+        "en": ["Backend Developer", "Admin panel frontend"]
       },
       "locationOrCompany": {
         "id": "Insvire Omni Technology, Bandung",
         "en": "Insvire Omni Technology, Bandung"
       },
       "description": {
-        "id": "Backend untuk platform sosial yang dipakai bersama oleh klien mobile, web, dan admin panel. Post dibaca sebagai kategori atau topik dari teks, gambar, video, dan suara. Feed mengikuti algoritma minat (personalisasi) dan rentang lokasi. Chat ada di sistem yang sama. Basis data dikelola dengan pendekatan event sourcing / append-only.",
-        "en": "A social-platform backend shared by mobile, web, and admin clients. Posts are read as categories or topics from text, image, video, and voice. The feed follows an interest algorithm (personalization) and a location range. Chat lives in the same system. Data is managed with an event-sourcing / append-only approach."
+        "id": "Backend untuk platform sosial yang dipakai bersama oleh klien mobile, web, dan admin panel. Saya juga mengerjakan frontend admin panel. Post dibaca sebagai kategori atau topik dari teks, gambar, video, dan suara. Feed mengikuti algoritma minat (personalisasi) dan rentang lokasi. Chat ada di sistem yang sama. Basis data dikelola dengan pendekatan event sourcing / append-only.",
+        "en": "A social-platform backend shared by mobile, web, and admin clients. I also built the admin panel frontend. Posts are read as categories or topics from text, image, video, and voice. The feed follows an interest algorithm (personalization) and a location range. Chat lives in the same system. Data is managed with an event-sourcing / append-only approach."
       },
       "case": {
         "period": {
@@ -387,7 +390,7 @@
                 "Rentang lokasi (nearby) dengan Google Maps API.",
                 "Chat di sistem yang sama.",
                 "Basis data event sourcing / append-only.",
-                "Satu backend dipakai klien mobile, web, dan admin panel."
+                "Satu backend dipakai klien mobile, web, dan admin panel — frontend admin panel saya kerjakan juga."
               ],
               "en": [
                 "Posts are read as categories or topics from text, image, video, and voice (Google Cloud AI).",
@@ -395,7 +398,21 @@
                 "Location range (nearby) with the Google Maps API.",
                 "Chat lives in the same system.",
                 "Data is managed with an event-sourcing / append-only approach.",
-                "One backend is shared by mobile, web, and admin clients."
+                "One backend is shared by mobile, web, and admin clients — I also built the admin panel frontend."
+              ]
+            }
+          },
+          {
+            "title": {
+              "id": "Admin panel",
+              "en": "Admin panel"
+            },
+            "bullets": {
+              "id": [
+                "Frontend admin panel: dashboard user/konten, daftar user terhapus atau di-suspend, dan jadwal maintenance."
+              ],
+              "en": [
+                "Admin panel frontend: user/content dashboard, deleted or suspended users, and maintenance windows."
               ]
             }
           },

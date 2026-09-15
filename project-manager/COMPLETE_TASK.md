@@ -16,6 +16,12 @@ Format entri:
 
 ## [2026-09-15]
 ### Added
+- Galeri admin panel pada `backend platform sosial` (dashboard, user terhapus, maintenance).
+### Changed
+- Copy + layanan: frontend admin panel, bukan backend saja.
+
+## [2026-09-15]
+### Added
 - **T-058** / **ADR-046**: halaman `/projects/[slug]` lebih dalam dari sheet — periode, stack, poin dari CV (`private/Resume_rezi_updated_agustus_2026.md`) + copy kunci chat.
 - `content/work-case.ts` + field `case` di `projects.json` untuk semua item katalog (termasuk Gamestalgia, tetap hidden).
 ### Changed
