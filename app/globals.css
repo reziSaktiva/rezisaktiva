@@ -1898,8 +1898,8 @@ button.home-work-tile,
 
 .about-portrait {
   position: relative;
-  width: min(100%, calc(var(--about-portrait-height) * 634 / 1024));
-  aspect-ratio: 634 / 1024;
+  width: min(100%, calc(var(--about-portrait-height) * 768 / 1024));
+  aspect-ratio: 768 / 1024;
   height: auto;
   margin-inline: auto;
   overflow: hidden;
@@ -1923,7 +1923,7 @@ button.home-work-tile,
   justify-content: center;
   gap: var(--spacing-2);
   box-sizing: border-box;
-  width: min(100%, calc(var(--about-portrait-height) * 634 / 1024));
+  width: min(100%, calc(var(--about-portrait-height) * 768 / 1024));
   margin: 0;
   padding-block-start: var(--spacing-2);
   border-block-start: 1px solid var(--color-border);
