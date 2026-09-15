@@ -38,10 +38,12 @@ function hrefForLocale(pathname: string, target: Locale): string {
 export function LocaleSwitcher({
   locale,
   variant = "bar",
+  onOpenChange,
 }: {
   locale: Locale;
   /** `menu` = compact di panel hamburger. */
   variant?: "bar" | "menu";
+  onOpenChange?: (open: boolean) => void;
 }) {
   const pathname = usePathname();
   const navigate = useTransitionNavigate();
@@ -57,7 +59,7 @@ export function LocaleSwitcher({
   };
 
   return (
-    <DropdownMenu modal={false}>
+    <DropdownMenu modal={false} onOpenChange={onOpenChange}>
       <DropdownMenuTrigger asChild>
         <Button
           type="button"

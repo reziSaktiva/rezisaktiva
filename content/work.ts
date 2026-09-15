@@ -1,4 +1,6 @@
 import type { Locale } from "@/lib/locale";
+import { catalogLiveUrls } from "@/lib/linkify";
+import { isProjectRepoUrl } from "@/lib/project-live-preview";
 import projects from "./data/projects.json";
 
 /**
@@ -6,9 +8,8 @@ import projects from "./data/projects.json";
  * `content/data/projects.json` — dikunci T-021.5 dari resume, jangan dikarang.
  * Slug kebab-case + isi halaman case = slot sheet yang sama (T-056.2).
  *
- * `href` = tautan keluar (live diutamakan, fallback repo). `undefined` =
- * tanpa tautan. Di Work index, tile membuka sheet M10 (T-026);
- * live/repo hanya di dalam sheet.
+ * `liveHrefs` / `href` = situs live (bukan GitHub). Kosong = tanpa tautan.
+ * Tile Work membuka sheet M10 (T-026); Live di sheet dan halaman case.
  *
  * Sembunyikan karya: tambah id ke `hiddenIds` di JSON (data tetap tersimpan).
  * Karya di `hiddenIds` tidak punya rute publik `/projects/[slug]` (ADR-044).
@@ -27,6 +28,7 @@ export interface WorkItem {
   year: string;
   featured: boolean;
   href?: string;
+  liveHrefs: readonly string[];
 }
 
 export interface WorkPageCopy {
@@ -42,6 +44,9 @@ export function toWorkItem(
   item: (typeof projects.items)[number],
   locale: Locale,
 ): WorkItem {
+  const liveHrefs = catalogLiveUrls(item.liveHref).filter(
+    (url) => !isProjectRepoUrl(url),
+  );
   const row: WorkItem = {
     id: item.id,
     slug: item.slug,
@@ -50,9 +55,10 @@ export function toWorkItem(
     imageSrc: item.cover,
     year: item.year,
     featured: item.featured,
+    liveHrefs,
   };
-  if (item.liveHref) {
-    row.href = item.liveHref;
+  if (liveHrefs[0]) {
+    row.href = liveHrefs[0];
   }
   return row;
 }

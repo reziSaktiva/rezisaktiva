@@ -3817,6 +3817,14 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   color: var(--color-text-secondary);
 }
 
+.qi-bio a,
+.qi-list a,
+.ps-description a {
+  color: var(--color-text-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .qi-workplace {
   font-size: 0.95rem;
 }

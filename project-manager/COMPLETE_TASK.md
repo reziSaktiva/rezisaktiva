@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-09-15]
 ### Fixed
+- PR #77 review: redact PII di screenshot admin; dismiss locale dropdown di hamburger (Escape + text node); tautan live Minerank termasuk smc.auction; URL di copy case/sheet jadi tautan; tes EN + file galeri.
+
+## [2026-09-15]
+### Fixed
 - Hover CTA pita footer (`.home-contact-cta`): tanpa fill muted shadcn; teks/panah aksen darah. Bungkus Magnetic di pita tidak stretch penuh.
 
 ## [2026-09-15]

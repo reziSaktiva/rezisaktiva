@@ -133,7 +133,10 @@
       "year": "2024–2025",
       "featured": false,
       "cover": "/work/minerank/blog.jpg",
-      "liveHref": "https://www.minerank.com/blog",
+      "liveHref": [
+        "https://www.minerank.com/blog",
+        "https://smc.auction"
+      ],
       "gitHref": null,
       "gallery": [
         "/work/minerank/blog.jpg",

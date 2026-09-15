@@ -15,7 +15,9 @@ import type { Locale } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 import { readCssDurationMs } from "@/lib/motion";
 import { CloseIcon } from "./overlay-icons";
+import { LinkedText } from "./linked-text";
 import { ProjectSheetMedia } from "./project-sheet-media";
+import { WorkLiveLinks } from "./work-live-links";
 
 export const PROJECT_SHEET_ID = "ps-panel";
 
@@ -61,9 +63,9 @@ export function ProjectSheet({
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.id) : [];
-  const { caseHref, liveHref } = visible
+  const { caseHref, liveHref, liveHrefs } = visible
     ? projectActionHrefs(locale, visible)
-    : { caseHref: "", liveHref: undefined };
+    : { caseHref: "", liveHref: undefined, liveHrefs: [] };
 
   useEffect(() => {
     if (isOpen || visible == null) {
@@ -173,10 +175,7 @@ export function ProjectSheet({
               </div>
 
               <section className="ps-info" aria-labelledby={titleId}>
-                <DrawerTitle
-                  id={titleId}
-                  className="ps-info-title ps-reveal"
-                >
+                <DrawerTitle id={titleId} className="ps-info-title ps-reveal">
                   {visible.name}
                 </DrawerTitle>
                 <div className="qi-cols ps-info-meta ps-reveal">
@@ -197,23 +196,13 @@ export function ProjectSheet({
                 </div>
                 <p className="qi-label ps-reveal">{labels.descriptionLabel}</p>
                 <p className="qi-bio ps-description ps-reveal">
-                  {sheet.description}
+                  <LinkedText text={sheet.description} />
                 </p>
                 <div className="flex flex-col gap-3 ps-actions ps-reveal">
                   <NextLink href={caseHref} className="ps-read-more">
                     {labels.readMoreLabel}
                   </NextLink>
-                  {liveHref ? (
-                    <div className="qi-links">
-                      <a
-                        href={liveHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {labels.liveLabel}
-                      </a>
-                    </div>
-                  ) : null}
+                  <WorkLiveLinks hrefs={liveHrefs} label={labels.liveLabel} />
                 </div>
               </section>
 

@@ -9,7 +9,9 @@ import { WORK_CASE_COPY, getWorkCase } from "@/content/work-case";
 import type { Locale } from "@/lib/locale";
 import type { WorkItem } from "@/content/work";
 import { Reveal, WordReveal } from "./home-motion";
+import { LinkedText } from "./linked-text";
 import { ProjectSheetMedia } from "./project-sheet-media";
+import { WorkLiveLinks } from "./work-live-links";
 
 export function WorkCasePage({
   locale,
@@ -26,7 +28,7 @@ export function WorkCasePage({
   }
   const depth = getWorkCase(locale, item.id);
   const images = workSheetImages(item.id);
-  const { liveHref } = projectActionHrefs(locale, item);
+  const { liveHref, liveHrefs } = projectActionHrefs(locale, item);
 
   return (
     <div className="work-page case-page flex flex-col">
@@ -74,9 +76,9 @@ export function WorkCasePage({
                   </ul>
                 </div>
               ) : null}
-              {depth.sections.map((section) => (
+              {depth.sections.map((section, index) => (
                 <div
-                  key={section.title ?? section.bullets[0]}
+                  key={section.title ?? `section-${index}`}
                   className="flex flex-col gap-3"
                 >
                   {section.title ? (
@@ -91,7 +93,9 @@ export function WorkCasePage({
                   ) : null}
                   <ul className="qi-list">
                     {section.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+                      <li key={bullet}>
+                        <LinkedText text={bullet} />
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -100,17 +104,13 @@ export function WorkCasePage({
           ) : (
             <div className="flex flex-col gap-3">
               <p className="qi-label">{labels.descriptionLabel}</p>
-              <p className="qi-bio ps-description">{sheet.description}</p>
+              <p className="qi-bio ps-description">
+                <LinkedText text={sheet.description} />
+              </p>
             </div>
           )}
 
-          {liveHref ? (
-            <div className="qi-links">
-              <a href={liveHref} target="_blank" rel="noopener noreferrer">
-                {labels.liveLabel}
-              </a>
-            </div>
-          ) : null}
+          <WorkLiveLinks hrefs={liveHrefs} label={labels.liveLabel} />
 
           <ProjectSheetMedia
             liveHref={liveHref}

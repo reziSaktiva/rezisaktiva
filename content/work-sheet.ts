@@ -72,18 +72,22 @@ export function getWorkSheet(
   };
 }
 
-/** Primer = case in-site; Live sekunder. Tanpa tautan Repo (chat 2026-09-15). */
+/** Primer = case in-site; Live sekunder (bisa lebih dari satu situs). Tanpa Repo. */
 export function projectActionHrefs(
   locale: Locale,
-  item: { slug: string; href?: string },
+  item: { slug: string; href?: string; liveHrefs?: readonly string[] },
 ): {
   caseHref: string;
   liveHref: string | undefined;
+  liveHrefs: readonly string[];
 } {
-  const liveHref =
-    item.href && !isProjectRepoUrl(item.href) ? item.href : undefined;
+  const liveHrefs = (
+    item.liveHrefs ??
+    (item.href && !isProjectRepoUrl(item.href) ? [item.href] : [])
+  ).filter((url) => !isProjectRepoUrl(url));
   return {
     caseHref: projectCaseHref(locale, item.slug),
-    liveHref,
+    liveHref: liveHrefs[0],
+    liveHrefs,
   };
 }

@@ -4,7 +4,6 @@ import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { WORK_ITEMS, type WorkItem } from "@/content/work";
 import type { Locale } from "@/lib/locale";
-import { isProjectRepoUrl } from "@/lib/project-live-preview";
 import { NAV_LABELS } from "@/lib/nav";
 import {
   getSiteUrl,
@@ -123,10 +122,7 @@ function workflowPageNode(locale: Locale): JsonLdNode {
   };
 }
 
-function breadcrumbNode(
-  locale: Locale,
-  leaf: "work" | "workflow",
-): JsonLdNode {
+function breadcrumbNode(locale: Locale, leaf: "work" | "workflow"): JsonLdNode {
   const homeUrl = pageUrl(locale, "");
   const leafPath = leaf === "work" ? PROJECTS_PATH : WORKFLOW_PATH;
   const leafUrl = pageUrl(locale, leafPath);
@@ -158,10 +154,7 @@ function creativeWorkId(locale: Locale, slug: string): string {
   return `${casePageUrl(locale, slug)}#work`;
 }
 
-function creativeWorkNode(
-  locale: Locale,
-  item: WorkItem,
-): JsonLdNode {
+function creativeWorkNode(locale: Locale, item: WorkItem): JsonLdNode {
   const node: JsonLdNode = {
     "@type": "CreativeWork",
     "@id": creativeWorkId(locale, item.slug),
@@ -172,8 +165,8 @@ function creativeWorkNode(
     author: { "@id": personId() },
     url: casePageUrl(locale, item.slug),
   };
-  if (item.href && !isProjectRepoUrl(item.href)) {
-    node.sameAs = [item.href];
+  if (item.liveHrefs.length > 0) {
+    node.sameAs = [...item.liveHrefs];
   }
   return node;
 }
@@ -247,10 +240,7 @@ export function buildJsonLd(
   if (surface === "home") {
     graph.push(webPageNode(locale));
   } else if (surface === "workflow") {
-    graph.push(
-      workflowPageNode(locale),
-      breadcrumbNode(locale, "workflow"),
-    );
+    graph.push(workflowPageNode(locale), breadcrumbNode(locale, "workflow"));
   } else {
     graph.push(
       collectionPageNode(locale),

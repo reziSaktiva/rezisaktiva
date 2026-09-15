@@ -88,8 +88,8 @@ describe("buildJsonLd", () => {
       expect(node?.url).toBe(
         `${getSiteUrl()}${projectCaseHref("id", item.slug)}`,
       );
-      if (item.href && !item.href.includes("github.com")) {
-        expect(node?.sameAs).toEqual([item.href]);
+      if (item.liveHrefs.length > 0) {
+        expect(node?.sameAs).toEqual([...item.liveHrefs]);
       } else {
         expect(node).not.toHaveProperty("sameAs");
       }

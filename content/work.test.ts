@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   PROJECT_SLUG_PATTERN,
@@ -6,10 +8,7 @@ import {
   publicProjectRows,
   toWorkItem,
 } from "./work";
-import {
-  WORK_SHEET_COPY,
-  projectActionHrefs,
-} from "./work-sheet";
+import { WORK_SHEET_COPY, projectActionHrefs } from "./work-sheet";
 import { WORK_CASE_COPY, getWorkCase } from "./work-case";
 import projects from "./data/projects.json";
 
@@ -64,6 +63,7 @@ describe("projectActionHrefs (T-056.4)", () => {
     expect(projectActionHrefs("en", cook)).toEqual({
       caseHref: "/en/projects/cook-it-real-good",
       liveHref: "https://www.cookitrealgood.com/",
+      liveHrefs: ["https://www.cookitrealgood.com/"],
     });
 
     const social = toWorkItem(
@@ -75,6 +75,7 @@ describe("projectActionHrefs (T-056.4)", () => {
     expect(projectActionHrefs("id", social)).toEqual({
       caseHref: "/id/projects/social-media-management-platform",
       liveHref: undefined,
+      liveHrefs: [],
     });
 
     const socialBackend = toWorkItem(
@@ -85,19 +86,49 @@ describe("projectActionHrefs (T-056.4)", () => {
     expect(projectActionHrefs("id", socialBackend)).toEqual({
       caseHref: "/id/projects/backend-platform-sosial",
       liveHref: undefined,
+      liveHrefs: [],
+    });
+
+    const minerank = toWorkItem(
+      PROJECTS_CATALOG.find((row) => row.slug === "minerank")!,
+      "en",
+    );
+    expect(projectActionHrefs("en", minerank)).toEqual({
+      caseHref: "/en/projects/minerank",
+      liveHref: "https://www.minerank.com/blog",
+      liveHrefs: ["https://www.minerank.com/blog", "https://smc.auction"],
     });
   });
 });
 
 describe("work case depth (T-058)", () => {
-  it("stores structured case copy on every catalog row", () => {
+  it("stores structured case copy on every catalog row in both locales", () => {
     for (const row of PROJECTS_CATALOG) {
-      const depth = getWorkCase("id", row.id);
-      expect(depth).toBeDefined();
-      expect(depth!.sections.length).toBeGreaterThan(0);
-      expect(
-        depth!.sections.flatMap((section) => section.bullets).length,
-      ).toBeGreaterThan(0);
+      for (const locale of ["id", "en"] as const) {
+        const depth = getWorkCase(locale, row.id);
+        expect(depth).toBeDefined();
+        expect(depth!.sections.length).toBeGreaterThan(0);
+        expect(
+          depth!.sections.flatMap((section) => section.bullets).length,
+        ).toBeGreaterThan(0);
+        expect(
+          depth!.sections.every((section) =>
+            section.bullets.every((bullet) => bullet.trim().length > 0),
+          ),
+        ).toBe(true);
+      }
+    }
+  });
+
+  it("keeps local gallery files on disk", () => {
+    const publicRoot = path.join(process.cwd(), "public");
+    for (const row of PROJECTS_CATALOG) {
+      const paths = [row.cover, ...row.gallery].filter((src) =>
+        src.startsWith("/"),
+      );
+      for (const src of paths) {
+        expect(existsSync(path.join(publicRoot, src))).toBe(true);
+      }
     }
   });
 
@@ -114,9 +145,9 @@ describe("work case depth (T-058)", () => {
         "/work/backend-platform-sosial/admin-maintenance.jpg",
       ]),
     );
-    const depth = getWorkCase("id", "7");
+    const depthEn = getWorkCase("en", "7");
     expect(
-      depth?.sections.some((section) => section.title === "Admin panel"),
+      depthEn?.sections.some((section) => section.title === "Admin panel"),
     ).toBe(true);
     expect(JSON.stringify(getWorkCase("id", "7")).toLowerCase()).not.toMatch(
       /curious/,
