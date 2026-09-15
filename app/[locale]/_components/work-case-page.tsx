@@ -26,11 +26,7 @@ export function WorkCasePage({
   }
   const depth = getWorkCase(locale, item.id);
   const images = workSheetImages(item.id);
-  const { liveHref, repoHref } = projectActionHrefs(
-    locale,
-    item,
-    sheet.gitHref,
-  );
+  const { liveHref } = projectActionHrefs(locale, item);
 
   return (
     <div className="work-page case-page flex flex-col">
@@ -108,18 +104,11 @@ export function WorkCasePage({
             </div>
           )}
 
-          {liveHref || repoHref ? (
+          {liveHref ? (
             <div className="qi-links">
-              {liveHref ? (
-                <a href={liveHref} target="_blank" rel="noopener noreferrer">
-                  {labels.liveLabel}
-                </a>
-              ) : null}
-              {repoHref ? (
-                <a href={repoHref} target="_blank" rel="noopener noreferrer">
-                  {labels.repoLabel}
-                </a>
-              ) : null}
+              <a href={liveHref} target="_blank" rel="noopener noreferrer">
+                {labels.liveLabel}
+              </a>
             </div>
           ) : null}
 

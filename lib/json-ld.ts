@@ -4,6 +4,7 @@ import { QUICK_INFO_COPY } from "@/content/quick-info";
 import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { WORK_ITEMS, type WorkItem } from "@/content/work";
 import type { Locale } from "@/lib/locale";
+import { isProjectRepoUrl } from "@/lib/project-live-preview";
 import { NAV_LABELS } from "@/lib/nav";
 import {
   getSiteUrl,
@@ -171,7 +172,7 @@ function creativeWorkNode(
     author: { "@id": personId() },
     url: casePageUrl(locale, item.slug),
   };
-  if (item.href) {
+  if (item.href && !isProjectRepoUrl(item.href)) {
     node.sameAs = [item.href];
   }
   return node;

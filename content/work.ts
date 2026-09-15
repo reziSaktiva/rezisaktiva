@@ -84,13 +84,13 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
 export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {
   id: {
     h1: ["Proyek", "saya."],
-    lead: "Kumpulan proyek dari pengalaman fullstack saya, dengan beberapa proyek terbaru mengeksplorasi AI ecosystem yang saya kembangkan sendiri.",
+    lead: "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis.",
     ctaQuestion: "Ada yang mau dibahas?",
     ctaLink: "Hubungi saya",
   },
   en: {
     h1: ["My", "Projects"],
-    lead: "A collection of projects from my fullstack experience, with a few recent ones exploring the AI ecosystem I built myself.",
+    lead: "Here are a few projects I’ve crafted from the ground up.",
     ctaQuestion: "Want to talk about one?",
     ctaLink: "Get in touch",
   },

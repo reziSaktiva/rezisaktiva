@@ -28,7 +28,7 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     work: {
       title: "rezisaktiva — Proyek",
       description:
-        "Proyek dari pengalaman fullstack saya, dengan beberapa yang terbaru mengeksplorasi AI ecosystem yang saya kembangkan sendiri.",
+        "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis.",
     },
   },
   en: {
@@ -44,7 +44,7 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     work: {
       title: "rezisaktiva — Projects",
       description:
-        "Projects from my fullstack experience, with a few recent ones exploring the AI ecosystem I built myself.",
+        "Here are a few projects I’ve crafted from the ground up.",
     },
   },
 };

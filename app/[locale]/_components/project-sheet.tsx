@@ -30,7 +30,7 @@ function prefersReducedMotionNow(): boolean {
  * Project sheet M10 (T-026, ADR-027; T-035.3–T-035.4; T-041.3) — Drawer
  * vaul dari bawah, skin `.ps-*` elevated token. Tile Work index
  * membuka sheet, bukan live URL. Tautan primer in-site ke case
- * (T-056.4, ADR-044); live/repo tetap sekunder. Event
+ * (T-056.4, ADR-044); Live sekunder. Tanpa tautan Repo. Event
  * `rz-project-sheet-open`; `ps-lock` + Lenis pause; overlay asing
  * menutup sheet.
  */
@@ -61,9 +61,9 @@ export function ProjectSheet({
 
   const sheet = visible ? getWorkSheet(locale, visible.id) : undefined;
   const images = visible ? workSheetImages(visible.id) : [];
-  const { caseHref, liveHref, repoHref } = visible
-    ? projectActionHrefs(locale, visible, sheet?.gitHref)
-    : { caseHref: "", liveHref: undefined, repoHref: undefined };
+  const { caseHref, liveHref } = visible
+    ? projectActionHrefs(locale, visible)
+    : { caseHref: "", liveHref: undefined };
 
   useEffect(() => {
     if (isOpen || visible == null) {
@@ -203,26 +203,15 @@ export function ProjectSheet({
                   <NextLink href={caseHref} className="ps-read-more">
                     {labels.readMoreLabel}
                   </NextLink>
-                  {liveHref || repoHref ? (
+                  {liveHref ? (
                     <div className="qi-links">
-                      {liveHref ? (
-                        <a
-                          href={liveHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {labels.liveLabel}
-                        </a>
-                      ) : null}
-                      {repoHref ? (
-                        <a
-                          href={repoHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {labels.repoLabel}
-                        </a>
-                      ) : null}
+                      <a
+                        href={liveHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {labels.liveLabel}
+                      </a>
                     </div>
                   ) : null}
                 </div>

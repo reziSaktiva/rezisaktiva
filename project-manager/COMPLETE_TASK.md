@@ -15,6 +15,26 @@ Format entri:
 ```
 
 ## [2026-09-15]
+### Changed
+- Cabut tautan Repo dari project sheet dan halaman case. Live (situs, bukan GitHub) tetap. JSON-LD `sameAs` hanya URL live.
+
+## [2026-09-15]
+### Changed
+- Galeri `backend platform sosial`: `explore.jpg` jadi cover + gambar pertama; `feed.jpg` jadi kedua.
+
+## [2026-09-15]
+### Changed
+- Lead halaman Proyek dikunci: ID “dari nol hingga siap rilis”; EN “crafted from the ground up” (T-021.5).
+
+## [2026-09-15]
+### Changed
+- Lead halaman Proyek (ID/EN) + meta Work: AI ecosystem hanya di proyek terbaru, bukan seluruh katalog (T-021.5).
+
+## [2026-09-15]
+### Changed
+- Hover tile project: cabut blood drip. Desktop = grayscale → warna penuh + scale foto + caption di pelat museum (T-042.3 kunci drip 2026-09-04 dicabut). Ponsel = warna penuh.
+
+## [2026-09-15]
 ### Added
 - Galeri admin panel pada `backend platform sosial` (dashboard, user terhapus, maintenance).
 ### Changed

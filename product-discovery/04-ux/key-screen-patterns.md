@@ -119,7 +119,7 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 
 ### S4 — Work index + project sheet
 
-**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027). Dari sheet: tautan halaman case `/projects/[slug]` (**ADR-044**) plus live/repo sekunder. Home **tidak** punya teaser karya (ADR-032).
+**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027). Dari sheet: tautan halaman case `/projects/[slug]` (**ADR-044**) plus Live sekunder (bukan Repo). Home **tidak** punya teaser karya (ADR-032).
 
 **Komponen sheet:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. **Halaman case:** route Next SSG, Server Component — bukan mengganti Drawer. Isi lebih dalam dari sheet: periode, stack, poin kerja dari CV / copy kunci (**ADR-046**).
 

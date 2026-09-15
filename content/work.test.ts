@@ -8,7 +8,6 @@ import {
 } from "./work";
 import {
   WORK_SHEET_COPY,
-  getWorkSheet,
   projectActionHrefs,
 } from "./work-sheet";
 import { WORK_CASE_COPY, getWorkCase } from "./work-case";
@@ -57,16 +56,14 @@ describe("case sheet labels (T-056.2)", () => {
 });
 
 describe("projectActionHrefs (T-056.4)", () => {
-  it("keeps the case path primary and live/repo secondary", () => {
+  it("keeps the case path primary and live secondary, without repo", () => {
     const cook = toWorkItem(
       PROJECTS_CATALOG.find((row) => row.slug === "cook-it-real-good")!,
       "en",
     );
-    const cookSheet = getWorkSheet("en", cook.id);
-    expect(projectActionHrefs("en", cook, cookSheet?.gitHref)).toEqual({
+    expect(projectActionHrefs("en", cook)).toEqual({
       caseHref: "/en/projects/cook-it-real-good",
       liveHref: "https://www.cookitrealgood.com/",
-      repoHref: "https://github.com/reziSaktiva/cookitrealgood",
     });
 
     const social = toWorkItem(
@@ -78,22 +75,16 @@ describe("projectActionHrefs (T-056.4)", () => {
     expect(projectActionHrefs("id", social)).toEqual({
       caseHref: "/id/projects/social-media-management-platform",
       liveHref: undefined,
-      repoHref: "https://github.com/reziSaktiva/social-media-management",
     });
 
     const socialBackend = toWorkItem(
       PROJECTS_CATALOG.find((row) => row.slug === "backend-platform-sosial")!,
       "id",
     );
-    const socialBackendSheet = getWorkSheet("id", socialBackend.id);
     expect(socialBackend.href).toBeUndefined();
-    expect(socialBackendSheet?.gitHref).toBeUndefined();
-    expect(
-      projectActionHrefs("id", socialBackend, socialBackendSheet?.gitHref),
-    ).toEqual({
+    expect(projectActionHrefs("id", socialBackend)).toEqual({
       caseHref: "/id/projects/backend-platform-sosial",
       liveHref: undefined,
-      repoHref: undefined,
     });
   });
 });

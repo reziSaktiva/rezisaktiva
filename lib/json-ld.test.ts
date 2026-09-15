@@ -75,7 +75,7 @@ describe("buildJsonLd", () => {
     expect(crumbs.map((item) => item.name)).toEqual(["Home", "Proses Kerja"]);
   });
 
-  it("points CreativeWork url at the public case page, live/repo as sameAs", () => {
+  it("points CreativeWork url at the public case page, live as sameAs", () => {
     const doc = buildJsonLd("id", "work");
     const works = findAllNodes(doc, "CreativeWork");
     const catalog = WORK_ITEMS.id;
@@ -88,7 +88,7 @@ describe("buildJsonLd", () => {
       expect(node?.url).toBe(
         `${getSiteUrl()}${projectCaseHref("id", item.slug)}`,
       );
-      if (item.href) {
+      if (item.href && !item.href.includes("github.com")) {
         expect(node?.sameAs).toEqual([item.href]);
       } else {
         expect(node).not.toHaveProperty("sameAs");

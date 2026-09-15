@@ -16,7 +16,7 @@ Accepted
 
 1. **R2 mengaktifkan magnet ringan ADR-007** sebagai **halaman case**, tanpa mencabut overlay M10.
 2. **Klik tile di Work index** tetap membuka **project sheet dari bawah** (**ADR-027**). Bukan navigasi langsung ke halaman case, live, atau repo.
-3. **Di dalam sheet** ada tautan primer in-site **“baca selengkapnya”** (salinan ID/EN dikunci di task copy) ke **`/[locale]/projects/[slug]`**. Live/repo tetap aksi sekunder di sheet (dan boleh diulang di halaman case).
+3. **Di dalam sheet** ada tautan primer in-site **“baca selengkapnya”** (salinan ID/EN dikunci di task copy) ke **`/[locale]/projects/[slug]`**. **Live** (situs, bukan GitHub) boleh sekunder di sheet dan halaman case. **Repo tidak ditampilkan** (update ADR-027, 2026-09-15).
 4. **URL case adalah magnet:** bisa dibuka langsung, dishare, dan di-switch locale ke sibling path. Tidak membuka sheet otomatis.
 5. **Slug** = string stabil kebab-case di `content/data/projects.json` (bukan id numerik). Karya di `hiddenIds` **tidak** punya rute publik.
 6. **Bentuk:** SSG + `generateStaticParams` (locale × slug terlihat) — **ADR-015**. `page.tsx` tetap Server Component. Konten di repo; **bukan** CMS.

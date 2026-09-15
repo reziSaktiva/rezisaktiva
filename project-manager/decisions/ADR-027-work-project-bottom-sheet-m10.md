@@ -21,7 +21,7 @@ Accepted
    - **Services**
    - **Location or company** & **year**
    - **Description**
-4. Tautan live/repo (jika ada, `WorkItem.href` R1) boleh tampil **di dalam sheet** sebagai aksi sekunder, bukan target klik tile.
+4. Tautan **Live** (situs, bukan GitHub) boleh tampil **di dalam sheet** dan halaman case sebagai aksi sekunder. **Tautan Repo tidak ditampilkan** di sheet atau halaman case (dikunci chat 2026-09-15). `gitHref` boleh tetap di JSON, tanpa UI.
 5. **Komponen:** coba **Astryx `BottomSheet`** dulu (`purpose='info'`, `height`/`snapPoints` sesuai isi, `label` a11y). Jika tema/craft `rezisaktiva` tidak cukup, **fallback overlay custom** dari bawah (pola `quick-info.tsx` + lock Lenis). Bukan pindah ke shadcn (ADR-026).
 6. Implementasi = **T-026** di `tasks/r1.md`. **Dikerjakan sebelum exit R1 (`T-018`)** — tidak ditunda ke R2. **T-018** menunggu T-021.1–T-021.7 **dan** T-026.
 7. Halaman case penuh `/work/[slug]` **bukan** R1; bila nanti dibutuhkan, ADR terpisah (boleh R2+).
@@ -58,7 +58,11 @@ Teaser Home **dicabut**. Sheet M10 hanya dari tile Work index. Home tidak lagi p
 
 ### Update — 2026-09-01 (preview live di sheet)
 
-Seksi media: **iframe situs live** dulu (URL http(s) non-GitHub). Framing ditolak / timeout → **galeri**. Tanpa galeri → **kosong**. Tautan Live/Repo tetap sekunder di body.
+Seksi media: **iframe situs live** dulu (URL http(s) non-GitHub). Framing ditolak / timeout → **galeri**. Tanpa galeri → **kosong**. Tautan Live (bukan Repo) sekunder di body.
+
+### Update — 2026-09-15 (tanpa tautan Repo)
+
+Sheet dan halaman case **tidak** menampilkan aksi Repo. Live tetap jika URL bukan GitHub.
 
 ### Update — 2026-09-03 (ADR-028)
 

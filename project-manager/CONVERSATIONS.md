@@ -14,6 +14,36 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Tanpa tautan Repo di sheet/case
+**Phase:** Validation
+**Summary:** Boss Rezi minta fitur tautan Repo dihilangkan dari project sheet dan halaman project.
+**Key Decision/Insight:** Aksi sekunder hanya Live (URL situs, bukan GitHub). `gitHref` boleh tetap di JSON tanpa UI. ADR-027 / ADR-044 di-update.
+**Impact:** `project-sheet.tsx`, `work-case-page.tsx`, `work-sheet.ts`, JSON-LD, ADR-027/044, 02/04-ux.
+
+## [2026-09-15] — Cover backend platform sosial = explore
+**Phase:** Validation
+**Summary:** Boss Rezi minta gambar pertama karya `backend platform sosial` = yang sebelumnya gambar ke-2.
+**Key Decision/Insight:** `explore.jpg` jadi cover tile + item galeri pertama; `feed.jpg` geser ke posisi kedua.
+**Impact:** `content/data/projects.json`
+
+## [2026-09-15] — Lead Work: dari nol hingga rilis
+**Phase:** Validation
+**Summary:** Boss Rezi mengunci kalimat lead halaman Proyek (label EN/ID di chat tertukar; dipasang sesuai bahasa locale).
+**Key Decision/Insight:** ID: "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis." EN: "Here are a few projects I’ve crafted from the ground up."
+**Impact:** `content/work.ts`, `content/site-meta.ts`, catatan T-021.5.
+
+## [2026-09-15] — Lead Work: AI hanya di proyek terbaru
+**Phase:** Validation
+**Summary:** Boss Rezi minta lead `/projects` tidak terkesan semua karya memakai AI ecosystem.
+**Key Decision/Insight:** Katalog = pengalaman fullstack. AI ecosystem hanya di proyek-proyek terbaru. Kemudian disupersede oleh kunci kalimat “dari nol hingga siap rilis”.
+**Impact:** `content/work.ts`, `content/site-meta.ts`, catatan T-021.5.
+
+## [2026-09-15] — Hover tile project tanpa darah
+**Phase:** Validation
+**Summary:** Boss Rezi minta hover pada tile project tidak memakai animasi darah (drip) yang dikunci T-042.3.
+**Key Decision/Insight:** Hover desktop = grayscale → warna penuh + scale foto + caption/scrim. Ponsel = warna penuh. Job klik → sheet tidak berubah. Reduced-motion tanpa scale; warna tetap berubah instan.
+**Impact:** `work-tile.tsx`, `globals.css`; catatan T-042.3.
+
 ## [2026-09-15] — Admin panel frontend di backend platform sosial
 **Phase:** Validation
 **Summary:** Boss Rezi minta copy menyatakan ikut frontend admin panel, plus tiga screenshot admin (dashboard, deleted user, maintenance) tanpa merek.
