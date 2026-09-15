@@ -25,4 +25,4 @@ Reviewer singkat bisa merangkum product builder + fullstack + AI edge; Contact s
 
 ## Berikutnya
 
-**ADR-044** / **T-056** — magnet hibrid: sheet tetap; halaman `/[locale]/projects/[slug]`. Copy dulu (**T-056.2**), baru kode.
+**T-056** / magnet R2 (**ADR-044**) ✅. Fase aktif: Validation — [`PROJECT_STATE.md`](PROJECT_STATE.md).
