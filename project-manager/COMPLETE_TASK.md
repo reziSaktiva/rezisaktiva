@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-09-15]
+### Changed
+- Copy halaman Workflow: cabut em dash ("—") dari lede, deskripsi, catatan, dan label peran (ID+EN).
+
+## [2026-09-15]
 ### Added
 - Primitf shadcn `DropdownMenu` (`components/ui/dropdown-menu.tsx`).
 ### Changed

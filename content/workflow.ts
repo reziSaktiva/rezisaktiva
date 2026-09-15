@@ -85,7 +85,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
   id: {
     kicker: "How I Work",
     headline: ["AI mengeksekusi kodenya.", "Saya yang mengunci keputusannya."],
-    lede: "Saya membangun produk dari arsitektur yang dikunci di dokumen—bukan dari vibe coding yang hilang begitu chat berganti. Kepemimpinan dan keputusan tetap di tangan saya; AI mengeksekusi secara paralel.",
+    lede: "Saya membangun produk dari arsitektur yang dikunci di dokumen, bukan dari vibe coding yang hilang begitu chat berganti. Kepemimpinan dan keputusan tetap di tangan saya; AI mengeksekusi secara paralel.",
     compare: {
       chaos: {
         label: "The Chat Chaos",
@@ -93,7 +93,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         points: [
           {
             title: "Scope merayap tanpa kunci",
-            body: "Fitur bertambah di tengah chat. Tidak ada MoSCoW, tidak ada MVP yang jujur—hanya daftar yang terus memanjang.",
+            body: "Fitur bertambah di tengah chat. Tidak ada MoSCoW, tidak ada MVP yang jujur, hanya daftar yang terus memanjang.",
           },
           {
             title: "Keputusan tenggelam di memori",
@@ -115,7 +115,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         points: [
           {
             title: "Dokumen dikunci dulu",
-            body: "Bisnis, UX, dan arsitektur jadi baseline sebelum kode. Perubahan material lewat ADR baru—bukan “ubah di chat”.",
+            body: "Bisnis, UX, dan arsitektur jadi baseline sebelum kode. Perubahan material lewat ADR baru, bukan “ubah di chat”.",
           },
           {
             title: "ADR terstruktur",
@@ -138,7 +138,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       {
         tag: "STRATEGY",
         title: "Dulu yang dibangun, baru yang dikerjakan",
-        body: "Produk dan proses dipisah. “Apa yang dibuat” dikunci dulu sebagai baseline—bisnis, UX, arsitektur. Kode mengikuti dokumen yang sudah dikunci, bukan sebaliknya.",
+        body: "Produk dan proses dipisah. “Apa yang dibuat” dikunci dulu sebagai baseline: bisnis, UX, arsitektur. Kode mengikuti dokumen yang sudah dikunci, bukan sebaliknya.",
       },
       {
         tag: "SCOPE",
@@ -158,67 +158,67 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       {
         tag: "TRUTH",
         title: "Setelah live, sumber kebenaran bergeser",
-        body: "Kode produksi adalah acuan visual dan fungsional—bukan Figma atau mockup tua. Iterasi berikutnya berangkat dari yang live, plus data pemakaian.",
+        body: "Kode produksi adalah acuan visual dan fungsional, bukan Figma atau mockup tua. Iterasi berikutnya berangkat dari yang live, plus data pemakaian.",
       },
     ],
     pipelineKicker: "Pipeline",
     pipelineTitle: "Discover → Design → Build → Ship",
     pipelineNote:
-      "Empat langkah yang sama di setiap proyek. Yang berubah hanya skala—pembagian peran manusia dan AI tetap eksplisit.",
+      "Empat langkah yang sama di setiap proyek. Yang berubah hanya skala. Pembagian peran manusia dan AI tetap eksplisit.",
     steps: [
       {
         num: "01",
         title: "Discover",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "Membedah masalah, mengunci scope, dan menolak yang tidak perlu masuk baseline.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Menyintesis riset pasar, alternatif, dan sinyal yang sudah ada—siap ditinjau, bukan langsung dipercaya.",
+          label: "AI Role: Orchestration",
+          body: "Menyintesis riset pasar, alternatif, dan sinyal yang sudah ada, siap ditinjau, bukan langsung dipercaya.",
         },
       },
       {
         num: "02",
         title: "Design",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "Arsitektur UX, alur sistem, dan kontrak antar permukaan. Arah produk tidak didelegasikan.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Boilerplate komponen UI dan variasi layout dari sistem yang sudah dikunci—bukan desain dari nol.",
+          label: "AI Role: Orchestration",
+          body: "Boilerplate komponen UI dan variasi layout dari sistem yang sudah dikunci, bukan desain dari nol.",
         },
       },
       {
         num: "03",
         title: "Build",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "Kontrak API, batas modul, dan review PR. Tidak ada yang masuk produksi tanpa kendali mutu langsung.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Subagent paralel menulis kode dan unit test sesuai task yang sudah dipecah—bukan one-shot seluruh repo.",
+          label: "AI Role: Orchestration",
+          body: "Subagent paralel menulis kode dan unit test sesuai task yang sudah dipecah, bukan one-shot seluruh repo.",
         },
       },
       {
         num: "04",
         title: "Ship",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "Persetujuan rilis akhir dan pembaruan ADR. Keputusan yang baru muncul saat ship tetap ditulis.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Checklist deploy dan sinkron dokumen ke keadaan live—jejak tetap mengikuti kode yang dipakai.",
+          label: "AI Role: Orchestration",
+          body: "Checklist deploy dan sinkron dokumen ke keadaan live. Jejak tetap mengikuti kode yang dipakai.",
         },
       },
     ],
     vaultKicker: "Proof",
     vaultTitle: "ADR Vault",
     vaultNote:
-      "Bukan dekorasi. Tiga rekaman nyata dari project ini—status, konteks, keputusan, dan alternatif yang ditolak. Rencana lama di-supersede, bukan dihapus.",
+      "Bukan dekorasi. Tiga rekaman nyata dari project ini: status, konteks, keputusan, dan alternatif yang ditolak. Rencana lama di-supersede, bukan dihapus.",
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
@@ -274,12 +274,12 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeKicker: "Working together",
     closeTitle: "Keputusan yang tidak ditulis, tidak pernah terjadi.",
     closeBody:
-      "Kalau kita kerja bersama, arah produk tidak tinggal di thread. Pita di bawah ini membuka percakapan yang sama—email tetap jalur utamanya.",
+      "Kalau kita kerja bersama, arah produk tidak tinggal di thread. Pita di bawah ini membuka percakapan yang sama. Email tetap jalur utamanya.",
   },
   en: {
     kicker: "How I Work",
     headline: ["AI Executes the Code.", "I Drive the Decisions."],
-    lede: "I build products from architecture locked in writing—not from vibe coding that vanishes the moment the chat moves on. Leadership and architectural calls stay with me; AI executes in parallel.",
+    lede: "I build products from architecture locked in writing, not from vibe coding that vanishes the moment the chat moves on. Leadership and architectural calls stay with me; AI executes in parallel.",
     compare: {
       chaos: {
         label: "The Chat Chaos",
@@ -287,7 +287,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         points: [
           {
             title: "Scope creeps with no lock",
-            body: "Features pile up mid-thread. No MoSCoW, no honest MVP—just a list that never stops growing.",
+            body: "Features pile up mid-thread. No MoSCoW, no honest MVP, just a list that never stops growing.",
           },
           {
             title: "Decisions sink into chat memory",
@@ -309,7 +309,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         points: [
           {
             title: "Documents lock first",
-            body: "Business, UX, and architecture become baseline before code. Material change goes through a new ADR—not “just tweak it in chat.”",
+            body: "Business, UX, and architecture become baseline before code. Material change goes through a new ADR, not “just tweak it in chat.”",
           },
           {
             title: "Structured ADRs",
@@ -332,7 +332,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       {
         tag: "STRATEGY",
         title: "What we build, then how we build it",
-        body: "Product and process stay separate. “What gets made” locks first as baseline—business, UX, architecture. Code follows the locked documents, not the other way around.",
+        body: "Product and process stay separate. “What gets made” locks first as baseline: business, UX, architecture. Code follows the locked documents, not the other way around.",
       },
       {
         tag: "SCOPE",
@@ -342,7 +342,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       {
         tag: "DOCUMENTATION",
         title: "Written decisions, alternatives included",
-        body: "Every material decision covers Decision, Reason, and Alternatives. Old plans are superseded so the trail stays readable—they are not deleted.",
+        body: "Every material decision covers Decision, Reason, and Alternatives. Old plans are superseded so the trail stays readable. They are not deleted.",
       },
       {
         tag: "ARCHITECTURE",
@@ -352,67 +352,67 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       {
         tag: "TRUTH",
         title: "After live, truth shifts to what ships",
-        body: "Production code is the visual and functional benchmark—not Figma or an old mockup. The next iteration starts from what is live, plus usage data.",
+        body: "Production code is the visual and functional benchmark, not Figma or an old mockup. The next iteration starts from what is live, plus usage data.",
       },
     ],
     pipelineKicker: "Pipeline",
     pipelineTitle: "Discover → Design → Build → Ship",
     pipelineNote:
-      "The same four steps on every project. Only the scale changes—the human / AI split stays explicit.",
+      "The same four steps on every project. Only the scale changes. The human / AI split stays explicit.",
     steps: [
       {
         num: "01",
         title: "Discover",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "Break down the problem, lock scope, and refuse what does not belong in the baseline.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Synthesize market research, alternatives, and existing signals—ready for review, not blind trust.",
+          label: "AI Role: Orchestration",
+          body: "Synthesize market research, alternatives, and existing signals, ready for review, not blind trust.",
         },
       },
       {
         num: "02",
         title: "Design",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "UX architecture, system flow, and contracts between surfaces. Product direction is not delegated.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "UI component boilerplate and layout variants from the locked system—not design from a blank canvas.",
+          label: "AI Role: Orchestration",
+          body: "UI component boilerplate and layout variants from the locked system, not design from a blank canvas.",
         },
       },
       {
         num: "03",
         title: "Build",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "API contracts, module boundaries, and PR review. Nothing reaches production without direct quality control.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Parallel subagents write code and unit tests against split tasks—not a one-shot of the whole repo.",
+          label: "AI Role: Orchestration",
+          body: "Parallel subagents write code and unit tests against split tasks, not a one-shot of the whole repo.",
         },
       },
       {
         num: "04",
         title: "Ship",
         human: {
-          label: "My Role — Human Lead",
+          label: "My Role: Human Lead",
           body: "Final release approval and ADR updates. Calls that surface at ship time still get written down.",
         },
         ai: {
-          label: "AI Role — Orchestration",
-          body: "Deployment checklist and docs synced to the live state—the trail follows the code people actually use.",
+          label: "AI Role: Orchestration",
+          body: "Deployment checklist and docs synced to the live state. The trail follows the code people actually use.",
         },
       },
     ],
     vaultKicker: "Proof",
     vaultTitle: "ADR Vault",
     vaultNote:
-      "Not decoration. Three real records from this project—status, context, decision, and rejected alternatives. Old plans are superseded, not deleted.",
+      "Not decoration. Three real records from this project: status, context, decision, and rejected alternatives. Old plans are superseded, not deleted.",
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
@@ -468,6 +468,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeKicker: "Working together",
     closeTitle: "A decision that is not written never happened.",
     closeBody:
-      "If we work together, product direction does not stay in a thread. The band below opens the same conversation—email remains the primary path.",
+      "If we work together, product direction does not stay in a thread. The band below opens the same conversation. Email remains the primary path.",
   },
 };

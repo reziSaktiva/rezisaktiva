@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-09-15] — Tanpa em dash di copy Workflow
+**Phase:** Validation
+**Summary:** Boss Rezi minta karakter "—" dihapus dari semua deskripsi halaman Workflow karena terasa copy buatan AI.
+**Key Decision/Insight:** Ganti dengan koma, titik, atau titik dua. Label peran pipeline ikut: "My Role: Human Lead". Isi `/workflow` boleh diubah (ADR-042).
+**Impact:** `content/workflow.ts`.
+
 ## [2026-09-15] — Locale switcher jadi Dropdown Menu
 **Phase:** Validation
 **Summary:** Boss Rezi minta pengubah bahasa memakai Dropdown Menu shadcn, dikulit gothic-blood (bukan segmented ID / EN).
