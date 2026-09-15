@@ -12,11 +12,12 @@ Tidak ada task implementasi terbuka. **T-056** / magnet R2 (ADR-044) ✅. Fase a
 
 **Baru selesai**
 
-1. **T-056.6** — verifikasi browser case hibrid (tile→sheet→case, URL langsung, locale, hiddenIds, Contact/QI, desktop + 375).
+1. **T-056.6** — verifikasi browser case hibrid (tile→sheet; tautan case; URL langsung ID/EN sebagai sibling; hiddenIds; Contact/QI; desktop + 375).
 2. **T-056.4** — tautan “baca selengkapnya” di sheet → case.
 3. **T-056.5** — title/description/canonical/OG per case (kartu situs).
 4. **T-056.3** — route SSG `/[locale]/projects/[slug]`.
 5. **T-056.2** — slug + copy case (pakai ulang slot sheet; label ID/EN dikunci).
+6. **T-056.1** — ADR-044 + amandemen docs R2.
 
 ## Indeks fase
 
