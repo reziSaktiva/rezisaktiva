@@ -8,16 +8,17 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-Tidak ada task implementasi terbuka. **T-058** ✅ (ADR-046). **T-057** ✅. Fase aktif: Validation. Tile anonim Gamestalgia menunggu kunci judul/highlight.
+**T-059** form Contact → Resend (**ADR-047**). **T-059.1** ✅. Berikutnya **T-059.2** (DNS + secret) lalu Handler + UI. **T-058** ✅. Tile anonim Gamestalgia menunggu kunci judul/highlight.
 
 **Baru selesai**
 
-1. **T-058.4** — tes + browser kedalaman case vs sheet.
-2. **T-058.3** — halaman slug merender periode/stack/poin.
-3. **T-058.2** — field `case` di katalog dari CV.
-4. **T-058.1** — ADR-046.
-5. **T-057.5** — verifikasi browser tile/sheet/case `backend-platform-sosial`.
-6. **T-057.1** — ADR-045.
+1. **T-059.1** — ADR-047 + amandemen baseline Contact/Resend.
+2. **T-058.4** — tes + browser kedalaman case vs sheet.
+3. **T-058.3** — halaman slug merender periode/stack/poin.
+4. **T-058.2** — field `case` di katalog dari CV.
+5. **T-058.1** — ADR-046.
+6. **T-057.5** — verifikasi browser tile/sheet/case `backend-platform-sosial`.
+7. **T-057.1** — ADR-045.
 
 ## Indeks fase
 
@@ -26,7 +27,7 @@ Tidak ada task implementasi terbuka. **T-058** ✅ (ADR-046). **T-057** ✅. Fas
 | Discovery | [`tasks/discovery.md`](tasks/discovery.md) | T-001 … T-007 | ✅ Done |
 | Bootstrap | [`tasks/bootstrap.md`](tasks/bootstrap.md) | T-008 … T-012 | ✅ Done |
 | R1 | [`tasks/r1.md`](tasks/r1.md) | T-013 … T-055 | ✅ Done (**T-023** ❌) |
-| R2 | [`tasks/r2.md`](tasks/r2.md) | T-056 … | ✅ **T-056** / **T-057** / **T-058** Done |
+| R2 | [`tasks/r2.md`](tasks/r2.md) | T-056 … | **T-056**–**T-058** Done; **T-059** 🟡 |
 
 Peta file: [`tasks/README.md`](tasks/README.md).
 

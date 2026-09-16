@@ -39,7 +39,7 @@ SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Komponen: `.
 
 - Default = Server Component. Route `page.tsx`/`layout.tsx` **tetap server** (`generateStaticParams`, metadata).
 - `"use client"` hanya untuk hook, event, context, Lenis, overlay. Bukan karena impor shadcn — primitf RSC-friendly.
-- `"use server"` = Server Action. **Tidak ada di R1** (Contact = `mailto:` + form klien). Jangan taruh di page.
+- `"use server"` = Server Action. **Jangan di `page.tsx`.** Contact = Route Handler + Resend (**ADR-047**); `mailto:` cadangan. Jangan taruh Action di page.
 
 ```tsx
 // pakai — about/page.tsx server, island klien diimpor

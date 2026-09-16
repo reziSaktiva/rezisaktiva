@@ -44,3 +44,7 @@ Accepted
 ### Update — 2026-09-07 (ADR-035)
 
 Permukaan yang membuka modal: Home (termasuk `#about`), **Workflow** (`/workflow`), Work index. Label chrome About = Tentang / About (`#about`); Proses Kerja / How I Work menempel di `/workflow`.
+
+### Update — 2026-09-15 (ADR-047)
+
+Form di modal **mengantar email** lewat Resend (Route Handler). Modal, hierarki Email-sebelum-Socials, dan larangan calendar/WA/IG **tidak berubah**. `mailto:` + salin tetap cadangan.

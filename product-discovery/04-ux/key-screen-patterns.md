@@ -108,7 +108,7 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 **Blok berurutan:**
 
 1. Judul + salinan soft (kapan relevan menghubungi; ekspektasi diskusi)
-2. **Primer — Email** (visual & urutan pertama; mailto atau alamat + copy) — *boleh disertai form singkat (email + message) per ADR-019, tetap tampil sebelum blok Socials*
+2. **Primer — Email** (visual & urutan pertama; mailto atau alamat + copy) — *form singkat (email + message) per ADR-019 **mengantar** ke inbox (**ADR-047**); tetap tampil sebelum blok Socials*
 3. **Satelit** — LinkedIn, GitHub (setingkat satu sama lain, di bawah Email)
 4. Availability line bila belum di Home
 5. Tanpa calendar, harga, WA, Instagram (form dikecualikan dari larangan ini per ADR-019)
@@ -154,7 +154,7 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 # Decision Rules
 
 * Mengubah Contact primer dari Email → keputusan Boss Rezi + update ADR bila material
-* Menambah blok form/WA/IG ke S3 R1 → ditolak kecuali ADR baru
+* Menambah blok form/WA/IG ke S3 R1 → ditolak kecuali ADR baru. Form yang sudah ada **mengantar** pesan (**ADR-047**); calendar/WA/IG tetap ditolak.
 * Detail visual (type, warna, motion) → 06-engineering / desain eksekusi; jangan mengunci di sini
 
 ---
@@ -190,5 +190,7 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 * `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
 * `../../project-manager/decisions/ADR-040-about-as-home-section.md`
 * `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
+* `../../project-manager/decisions/ADR-046-case-deeper-than-sheet.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

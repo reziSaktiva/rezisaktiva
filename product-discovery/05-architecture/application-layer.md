@@ -50,7 +50,7 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 | Project sheet (tile Work index) | Overlay dari bawah; bukan route (ADR-027); tautan ke `/projects/[slug]` di dalam sheet (ADR-044) |
 | Switcher | Navigasi ke sibling path locale; set preferensi untuk kunjungan `/` berikutnya saja |
 | Link satelit | Keluar situs (GitHub/LinkedIn) |
-| `mailto:` / form modal | Dibuka klien email pengguna, atau submit ringan dari form modal (ADR-019) — bukan API domain produk |
+| `mailto:` / form modal | `mailto:` cadangan; form POST ke Resend (ADR-047) — bukan API domain produk |
 
 ---
 
@@ -63,7 +63,7 @@ Framework konkret (Astro / Next / dll.) dikunci di **06-engineering** — di sin
 | Render halaman | Build time (SSG) |
 | Locale routing | Framework + hosting rules |
 | Meta/OG | Generate saat build per Page×Locale |
-| Contact | Modal client-side (ADR-019); mailto / form ringan — bukan service kontak backend |
+| Contact | Modal client-side (ADR-019); kirim lewat Route Handler + Resend (ADR-047) |
 
 Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastruktur, bukan domain API.
 
@@ -85,7 +85,7 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 | i18n | Path prefix di build; redirect `/` di edge/host |
 | Preferensi bahasa | Cookie `NEXT_LOCALE` + `proxy.ts` (baca cookie/header) **hanya** untuk redirect `/` — path ber-locale tidak di-rewrite (ADR-014) |
 | Preferensi tema | Cookie `rz-theme` dibaca di root layout (`cookies()` Next, ADR-021) supaya anti-flash. Next merender layout per-request — **bukan** izin SSR-as-product, ISR, atau API. Jangan tambah `cookies()`/`headers()` Next di route halaman locale. Jangan menyentuh `proxy.ts` seolah pelanggaran playbook tema. Playbook: `../06-engineering/code-discipline.md` |
-| Form/API | Tidak di R1 (Contact = mailto + form klien) |
+| Form/API | Hanya `POST` Contact → Resend (ADR-047). Bukan API bisnis. Halaman tetap SSG |
 | Preview draft | Opsional later (bukan Must); bila ada, tetap di luar auth produk kecuali ADR baru |
 
 **SSR/hybrid penuh** ditolak untuk R1 (opsi B) — kompleksitas tanpa Must produk baru. Engineering boleh memakai framework yang *mampu* SSR, selama **delivery default R1 = SSG/static** (konten repo, bukan CMS/API). ISR dan streaming **bukan** default — lihat `code-discipline.md`.
@@ -98,7 +98,7 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 | --------- | ------- |
 | Bentuk aplikasi | Static-first SSG + konten repo |
 | SSR sebagai default R1 | Tidak |
-| API bisnis | Tidak |
+| API bisnis | Tidak (Contact Resend = pengecualian, ADR-047) |
 
 ---
 
@@ -120,6 +120,7 @@ Boleh ada **edge/redirect helper** di hosting untuk geo-default — itu infrastr
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`

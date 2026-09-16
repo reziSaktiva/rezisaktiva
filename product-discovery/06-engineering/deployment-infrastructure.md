@@ -50,7 +50,7 @@ Alternatif yang ditimbang dan **tidak dipilih** untuk R1: Cloudflare Pages, Netl
 
 Tidak ada staging terpisah wajib untuk R1; Preview Vercel cukup sebagai gerbang kualitas.
 
-Secrets produk R1 diharapkan **minimal** (lihat `environment-management.md` nanti) — situs publik tanpa auth/DB.
+Secrets produk R1 diharapkan **minimal** — situs publik tanpa auth/DB. **Pengecualian Validation:** `RESEND_API_KEY` + `RESEND_FROM` (**ADR-047**).
 
 ---
 
@@ -69,7 +69,7 @@ Alur konseptual:
 | Install | pnpm (selaras `monorepo-setup.md`) |
 | Build | `next build` — generate halaman `/id`, `/en`, … |
 | Redirect `/` | Middleware (geo → `Accept-Language` → preferensi → fallback `en`) per ADR-014 |
-| Contact | `mailto:` — tidak butuh function kontak |
+| Contact | `mailto:` cadangan; form → Resend Route Handler (**ADR-047**) |
 | Analytics | Opsional; bukan blocker deploy |
 
 Detail pipeline CI tambahan (lint/typecheck di GitHub Actions vs hanya Vercel) → `cicd-pipeline.md` (T-006.5).
@@ -131,5 +131,6 @@ Tidak ada blue-green kustom atau multi-region aktif-aktif untuk R1.
 * `../05-architecture/integration-layer.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/PROJECT_STATE.md`
 * `../../project-manager/DECISIONS.md`
