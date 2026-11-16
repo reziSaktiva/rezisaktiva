@@ -7,12 +7,12 @@ Project ini dikelola dengan **Project Operating System**:
 | Folder | Peran |
 | ------ | ----- |
 | [`product-discovery/`](product-discovery/) | **Apa** yang dibangun — business → engineering |
-| [`project-manager/`](project-manager/) | **Bagaimana** dikerjakan — aturan, status, ADR, task |
+| [`project-os/`](project-os/) | **Bagaimana** dikerjakan — aturan, status, ADR, task |
 | [`.cursor/skills/`](.cursor/skills/) | Skills agent Cursor untuk navigasi Project OS |
 
 ## Status saat ini
 
-Lihat Snapshot di [`project-manager/PROJECT_STATE.md`](project-manager/PROJECT_STATE.md).
+Lihat Snapshot di [`project-os/PROJECT_STATE.md`](project-os/PROJECT_STATE.md).
 
 ## Mulai di sini
 
@@ -30,4 +30,4 @@ Lihat Snapshot di [`project-manager/PROJECT_STATE.md`](project-manager/PROJECT_S
 
 ## Catatan
 
-App Next.js + pnpm sudah di-scaffold di root (Bootstrap). Status & fokus kerja: lihat Snapshot di [`project-manager/PROJECT_STATE.md`](project-manager/PROJECT_STATE.md).
+App Next.js + pnpm sudah di-scaffold di root (Bootstrap). Status & fokus kerja: lihat Snapshot di [`project-os/PROJECT_STATE.md`](project-os/PROJECT_STATE.md).

@@ -14,7 +14,7 @@ theme/rezisaktiva.variants.d.ts
 
 # Dokumentasi & konten non-app-code — bukan scope format DX tooling (dx-tooling.md)
 product-discovery/
-project-manager/
+project-os/
 private/
 design-mockups/
 README.md
