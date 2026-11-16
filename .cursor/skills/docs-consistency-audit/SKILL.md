@@ -1,204 +1,123 @@
 ---
 name: docs-consistency-audit
 description: >-
-  Audit menyeluruh untuk mencari konflik, drift, atau inkonsistensi antar
-  dokumentasi project (product-discovery, project-manager, AGENTS.md, skills,
-  rules). HANYA dipicu saat Boss Rezi secara eksplisit meminta audit/cross-check/
-  consistency-check dokumentasi — bukan behavior otomatis rutin (itu sudah
-  dicakup mode "Bug / Inkonsistensi Dokumen" di project-os-navigator). Cakupan
-  audit ditentukan lewat argumen: nama area (product-discovery, project-manager,
-  agent, all) atau nama topik/fitur (mis. "Quick Info", "Contact modal") yang
-  akan di-resolve ke seluruh dokumen lintas layer yang menyinggung topik itu.
+  Full documentation audit for conflicts, drift, or inconsistencies across
+  product-discovery, project-os, AGENTS.md, skills, and rules. Use only when Boss
+  Rezi explicitly asks for a docs audit, cross-check, or consistency check. Scope
+  comes from the requested area or topic.
 ---
 
 # Docs Consistency Audit
 
-Skill ini untuk audit **sengaja dan menyeluruh** — bukan proses reaktif yang
-menempel di akhir tiap task. Tujuannya menangkap drift yang lolos dari
-kebiasaan "update docs setelah kerja" (`AGENTS.md` § "Setelah mengubah
-sesuatu"): ADR yang mengamandemen ADR lama tapi baseline yang dirujuknya
-belum diupdate, hitungan/status yang diam-diam desync antar file, atau
-dokumen yang masih menjelaskan pola yang sudah digantikan (contoh: mockup
-HTML sebagai kontrak visual setelah ADR-024).
+This skill is for deliberate, thorough audits. It is not a routine end-of-task checklist. It catches drift that ordinary "update docs after work" habits can miss: ADR amendments not reflected in baselines, status counts that desync across files, or documents that still describe replaced patterns such as mockups as a visual contract after ADR-024.
 
-**Mode kerja: report-only, lalu tanya.** Skill ini tidak pernah memperbaiki
-apapun secara diam-diam — termasuk temuan yang kelihatannya jelas benar
-(typo hitungan, status usang). Ini override eksplisit terhadap langkah 3 di
-mode "Bug / Inkonsistensi Dokumen" (`project-os-navigator/SKILL.md`) yang
-memperbolehkan perbaikan langsung — untuk audit lewat skill ini, semua
-temuan dilaporkan dulu, baru dieksekusi setelah dikonfirmasi.
+**Work mode: report first, then ask.** Do not fix anything silently during this audit, including objectively obvious issues. Report findings first and make edits only after Boss Rezi confirms.
 
 ---
 
-## Langkah 0 — Resolve Scope dari Argumen
+## Step 0 — Resolve Scope From The Request
 
-Skill ini dipanggil dengan argumen bebas (`args`). Interpretasikan sebagai
-salah satu dari:
+Interpret Boss Rezi's request as one of these scopes:
 
 | Argumen | Artinya |
 | -------- | ------- |
-| `project-manager` | `PROJECT_STATE.md`, `TASKS.md` + seluruh `tasks/*.md` (fase), `DECISIONS.md` + seluruh `decisions/ADR-*.md`, plus Static Reference PM (`PROJECT_RULES.md`, `PROJECT_OVERVIEW.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `README.md`) |
-| `product-discovery` | Seluruh `product-discovery/**/*.md` |
+| Argument | Meaning |
+| -------- | ------- |
+| `project-os` | `PROJECT_STATE.md`, `AVAILABLE_TICKETS.md`, `tickets/*.md`, `specs/*.md`, `context/*.md`, `DECISIONS.md`, `decisions/ADR-*.md`, and static Project OS references (`PROJECT_RULES.md`, `PROJECT_OVERVIEW.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `README.md`) |
+| `product-discovery` | All `product-discovery/**/*.md` |
 | `agent` | `AGENTS.md`, `.cursor/skills/*/SKILL.md`, `.cursor/rules/*.mdc` |
-| Kombinasi (`product-discovery+agent`, dst.) | Union dari area yang disebut, dipisah `+` |
-| `all` | Union semua area di atas |
-| Nama topik/fitur bebas (mis. `Quick Info`, `Contact modal`, `project sheet`) | **Topic-based scope** — lihat Langkah 0b |
-| Kosong / tidak ada argumen | **Jangan menebak** — tanya dulu ke Boss Rezi area mana yang dimaksud (opsi: salah satu area di atas, atau topik spesifik) |
+| Combination (`product-discovery+agent`, etc.) | Union of the named areas |
+| `all` | Union of all areas above |
+| Free-form topic or feature name (`Quick Info`, `Contact modal`, `project sheet`) | Topic-based scope; see Step 0b |
+| Empty / no argument | Do not guess; ask Boss Rezi which area or topic to audit |
 
-**Selalu kecualikan `project-manager/COMPLETE_TASK.md` dari scope apapun**
-kecuali Boss Rezi eksplisit menyebutnya — ini hard rule project (`AGENTS.md`),
-bukan keputusan skill ini.
+Always exclude `project-os/COMPLETE_TASK.md` unless Boss Rezi explicitly names it. It is a frozen historical archive under ADR-049.
 
-**Jangan jadikan `design-mockups/` sebagai Source of Truth visual** (ADR-024).
-Masukkan folder itu ke scope hanya jika Boss Rezi menyebutnya, dan audit
-sebagai **arsip** (apakah dokumen lain masih merujuknya sebagai kontrak
-desain), bukan sebagai target paritas piksel.
+Do not treat `design-mockups/` as a visual Source of Truth. Include it only if Boss Rezi explicitly names it, and audit it as an archive: check whether other docs still incorrectly treat it as a design contract.
 
-Repo ini **tidak punya** folder `context/` / `ctx-*.md`. Jangan mencari atau
-membuat area itu.
+### Step 0b — Topic-Based Scope
 
-### Langkah 0b — Topic-Based Scope
+If the request names a topic or feature instead of a standard area:
 
-Kalau argumen adalah nama topik/fitur (bukan nama area baku di atas):
-
-1. Grep kata kunci topik (dan sinonim/istilah terkait yang jelas — mis.
-   "Quick Info" juga cari "M13", "T-020", "T-021.6", "qi.") di seluruh:
-   - `project-manager/TASKS.md` + `project-manager/tasks/`
-   - `project-manager/DECISIONS.md` + `project-manager/decisions/`
-   - `project-manager/PROJECT_STATE.md`
+1. Search the topic keyword and clear synonyms across:
+   - `project-os/AVAILABLE_TICKETS.md` + `project-os/tickets/`
+   - `project-os/specs/` and `project-os/context/`
+   - `project-os/DECISIONS.md` + `project-os/decisions/`
+   - `project-os/PROJECT_STATE.md`
    - `product-discovery/`
    - `AGENTS.md`, `.cursor/skills/`, `.cursor/rules/`
-2. Kumpulkan daftar file yang match sebagai scope. Kalau hasil grep sangat
-   banyak (topik terlalu generik, mis. "work") atau sangat sedikit
-   (mungkin salah eja/istilah), **konfirmasi dulu** ke Boss Rezi daftar file
-   yang akan diaudit sebelum lanjut — jangan diam-diam mempersempit atau
-   memperluas cakupan sendiri.
+2. Collect matching files as the proposed scope.
+3. If the results are too broad or suspiciously sparse, confirm the scope with Boss Rezi before continuing.
 
 ---
 
-## Langkah 1 — Baca Seluruh Dokumen dalam Scope
+## Step 1 — Read Every Document In Scope
 
-Beda dengan cascade hemat-token di `project-os-navigator` (yang berhenti
-secepat mungkin), audit ini **wajib baca penuh** setiap file dalam scope yang
-sudah di-resolve — tujuannya memang menyisir menyeluruh, bukan lookup cepat.
+Unlike the token-saving cascade in `project-os-navigator`, this audit requires reading each resolved file in full. The purpose is broad consistency checking, not quick lookup.
 
-Untuk scope besar (`all`, atau `product-discovery` penuh), pertimbangkan
-delegasi ke Agent (Explore atau general-purpose) per sub-area supaya konteks
-utama tidak penuh — tapi sintesis akhir (klasifikasi temuan, keputusan mana
-yang ambigu) tetap dilakukan oleh AI utama, bukan diserahkan ke subagent.
+For large scopes such as `all` or full `product-discovery`, use careful batching. If subagents are available and Boss Rezi or the environment permits them, they may explore sub-areas, but the final classification and judgment stay with the main agent.
 
 ---
 
-## Langkah 2 — Kategori Pengecekan
+## Step 2 — Check Categories
 
-Periksa lintas dokumen dalam scope untuk kategori berikut:
+Check documents in scope for:
 
-1. **Status/progress drift** — status task berbeda antara `TASKS.md`,
-   `tasks/*.md`, dan `PROJECT_STATE.md` untuk task/ID yang sama (`T-XXX` /
-   `T-XXX.N`).
-2. **Hitungan/index drift** — jumlah task selesai, breakdown status
-   (✅/🟡/⏳/🚫/⏸️), jumlah subtask di **Indeks fase** tidak cocok dengan
-   isi aktual file `tasks/*.md` (hitung ulang langsung dari sana, jangan
-   percaya angka yang tertulis).
-3. **ADR amandemen belum tercermin** — ADR baru mengubah/mengamandemen ADR
-   lama, tapi dokumen lain yang merujuk ke keputusan lama (baseline
-   `product-discovery/`, task, skills, atau rules) belum diupdate mengikuti
-   versi terbaru. Contoh khas R1: ADR-019 (Contact modal-only), ADR-020
-   (Work index Must), ADR-024 (mockup HTML arsip), ADR-027 (M10 sheet overlay).
-4. **Terminologi/enum drift** — penyebutan berbeda untuk hal yang sama:
-   pemilik keputusan (**Boss Rezi**, bukan gelar lain); persona **P1–P4** /
-   segmen **S1–S6** (bukan nama fiksi wajib); modul **M1–M14** (M4 retired);
-   rute R1 (`/[locale]`, `/about`, `/workflow`, `/projects` — **bukan**
-   `/contact` atau `/work/[slug]` sebagai Must R1); istilah chrome / Quick Info /
-   project sheet / locale ID·EN.
-5. **Referensi mati/usang** — link atau sebutan ke file/section/komponen
-   yang sudah dihapus, dipindah, atau digantikan (mis. `contact.html` yang
-   sudah dihapus, Tailwind coexist padahal ADR-018 replace penuh, mockup
-   sebagai SoT visual setelah ADR-024).
-6. **Pelanggaran Source of Truth** — dokumen bertipe Static Reference
-   (README, `PROJECT_RULES.md`, baseline, `SKILL.md`, `AGENTS.md`) memuat
-   info yang seharusnya hanya ada di Living Document (`PROJECT_STATE.md`) —
-   status, progress %, phase aktif. Ini pola yang sama dengan "Proactive
-   Consistency Check" di `project-os-navigator`, tapi di sini dicari secara
-   sengaja ke seluruh scope, bukan cuma dokumen yang kebetulan dibaca.
-7. **Dua dokumen saling bertentangan tanpa source of truth jelas** — lihat
-   Langkah 3, kategori ini diperlakukan beda dari 6 kategori di atas.
+1. **Status/progress drift** — the same task or subtask has conflicting status in `AVAILABLE_TICKETS.md`, `tickets/*.md`, or `PROJECT_STATE.md`.
+2. **Count/index drift** — status counts, open/closed breakdowns, or subtask counts do not match the actual ticket files.
+3. **ADR amendment not reflected** — a newer ADR amends an older decision but affected baselines, tickets, skills, or rules still describe the old version.
+4. **Terminology drift** — different terms for the same concept: Boss Rezi, P1–P4, S1–S6, M1–M14, chrome, Quick Info, project sheet, locale ID/EN, or R1 routes.
+5. **Dead or stale references** — links or mentions to deleted, moved, or replaced files, sections, components, or patterns.
+6. **Source of Truth violation** — static references contain living status such as active phase, current focus, blockers, known issues, status icons, or progress percentages.
+7. **Unclear contradiction** — two documents conflict and no accepted Source of Truth clearly wins.
 
 ---
 
-## Langkah 3 — Klasifikasi Temuan
+## Step 3 — Classify Findings
 
-Setiap temuan masuk salah satu dari dua kelas:
+Every finding is one of two classes:
 
-### A. Mekanis / Objektif
+### A. Mechanical / Objective
 
-Ada satu jawaban yang jelas benar berdasarkan Source of Truth yang sudah
-ditetapkan (tabel Source of Truth di `AGENTS.md`, atau ADR yang sudah
-Accepted). Contoh: hitungan subtask yang salah jumlah (kebenarannya tinggal
-dihitung ulang dari file), status task di `PROJECT_STATE.md` yang belum
-disalin dari file fase di `tasks/` yang sudah diupdate.
+There is one clearly correct answer based on established Source of Truth, such as `AGENTS.md` or an accepted ADR.
 
-→ Laporkan dengan **usulan perbaikan konkret**, tapi tetap tunggu konfirmasi
-sebelum edit (lihat Langkah 5).
+Report it with a concrete proposed fix, then wait for confirmation before editing.
 
-### B. Substantif / Ambigu
+### B. Substantive / Ambiguous
 
-Dua dokumen menyatakan hal yang saling bertentangan **tanpa** ada satu yang
-jelas menjadi Source of Truth — misalnya baseline lama vs. keputusan
-verbal/implementasi yang belum pernah di-ADR-kan, atau dua ADR yang
-tumpang-tindih tanpa saling mengamandemen secara eksplisit.
+Two documents conflict and there is no clear accepted Source of Truth, such as an old baseline versus an undocumented verbal direction, or two ADRs that overlap without explicit amendment.
 
-→ **Jangan berasumsi mana yang benar.** Sajikan kedua sisi apa adanya dan
-tanyakan ke Boss Rezi (pola sama `proactive-clarification`). Temuan kelas
-ini bisa berujung ADR baru — jangan diselesaikan tanpa keputusan eksplisit.
+Do not assume which side wins. Present both sides and ask Boss Rezi. This class can require a new ADR.
 
 ---
 
-## Langkah 4 — Format Laporan
+## Step 4 — Report Format
 
-Sajikan hasil sebagai daftar temuan, dikelompokkan per kategori (Langkah 2),
-masing-masing minimal memuat:
+Present findings grouped by category. Each finding should include:
 
-- **File yang terlibat** (path relatif, dengan link markdown)
-- **Apa yang bertentangan** (kutip baris/bagian yang relevan, singkat)
-- **Kelas** (A. Mekanis / B. Ambigu)
-- **Usulan** (untuk kelas A: perbaikan konkret; untuk kelas B: pertanyaan
-  yang perlu dijawab Boss Rezi)
+- **Files involved** — relative paths
+- **Conflict or drift** — short quote or summary
+- **Class** — A. Mechanical / B. Ambiguous
+- **Proposal** — concrete fix for class A; decision question for class B
 
-Kalau tidak ada temuan sama sekali di scope yang diminta, katakan itu secara
-eksplisit — jangan mengarang temuan supaya laporan terlihat berisi.
+If there are no findings, say that clearly. Do not invent findings.
 
 ---
 
-## Langkah 5 — Tindak Lanjut (Setelah Laporan Disajikan)
+## Step 5 — Follow-Up After Reporting
 
-1. Untuk temuan kelas A: tanya per-temuan atau batch ("mau saya perbaiki
-   semua temuan mekanis ini sekarang?") — baru eksekusi setelah dikonfirmasi.
-2. Untuk temuan kelas B: tanya dulu, tunggu keputusan. Kalau keputusan itu
-   mengubah baseline/arsitektur, ikuti alur ADR baru (mode "Planning Change"
-   di `project-os-navigator`).
-3. Setiap perbaikan yang benar-benar dieksekusi dicatat sebagai entri baru
-   di `project-manager/COMPLETE_TASK.md` (section `### Fixed`), mengikuti
-   format yang sama dengan mode "Bug / Inkonsistensi Dokumen".
-4. Kalau perbaikan menyentuh hitungan/status di `TASKS.md` atau
-   `PROJECT_STATE.md`, pastikan diupdate bersamaan (jangan salah satu saja —
-   ini penyebab paling umum drift berulang).
+1. For class A findings, ask whether to fix the mechanical findings now, either individually or as a batch.
+2. For class B findings, ask first and wait for a decision. If the decision changes a baseline or architecture, follow the planning-change ADR flow in `project-os-navigator`.
+3. Record executed fixes in the relevant ticket or `AVAILABLE_TICKETS.md` when status changes.
+4. If a fix touches status or counts in `AVAILABLE_TICKETS.md` or `PROJECT_STATE.md`, update all related places together.
 
 ---
 
-## Aturan Kritis
+## Critical Rules
 
-- Jangan trigger skill ini secara otomatis di sesi kerja biasa — hanya saat
-  diminta eksplisit.
-- Jangan pernah membaca `COMPLETE_TASK.md` sebagai bagian audit kecuali
-  diminta eksplisit oleh nama file itu.
-- Jangan memperbaiki apapun sebelum melaporkan dan dikonfirmasi — berlaku
-  untuk temuan kelas A maupun B.
-- Untuk temuan kelas B, jangan menebak mana yang benar walau salah satu
-  terlihat "lebih baru" — tanggal lebih baru bukan otomatis berarti lebih
-  benar tanpa dikonfirmasi.
-- Kalau scope yang diminta (topic-based) menghasilkan daftar file yang
-  terasa tidak lengkap atau berlebihan, konfirmasi dulu sebelum audit
-  penuh berjalan — jangan mempersempit/memperluas cakupan secara diam-diam.
-- Selaras `ask-before-assuming`: tanya Boss Rezi, bukan gelar lain; jangan
-  tanya ritual di luar alur audit ini.
+- Do not trigger this skill automatically during normal work.
+- Do not read `project-os/COMPLETE_TASK.md` unless Boss Rezi explicitly names it.
+- Do not fix anything before reporting and getting confirmation.
+- For class B findings, do not guess which side is correct just because one document is newer.
+- If a topic-based scope looks incomplete or excessive, confirm the file list before the full audit.
+- Align with `ask-before-assuming`: ask Boss Rezi only for real gaps, wrong documents, or unplanned decisions.

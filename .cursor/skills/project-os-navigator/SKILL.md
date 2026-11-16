@@ -1,38 +1,38 @@
 ---
 name: project-os-navigator
 description: >-
-  Project OS navigator untuk project rezisaktiva (portofolio pribadi). Memandu AI
-  memahami cara kerja, aturan dokumentasi, dan behavior per jenis interaksi —
-  diskusi, brainstorm, planning change, pekerjaan baru, dan bug. Gunakan di awal
-  setiap sesi kerja pada project ini, atau ketika context project dibutuhkan.
+  Project OS navigator for the rezisaktiva portfolio. Guides agents through the
+  documentation cascade, governance rules, and behavior for discussion,
+  brainstorming, new work, planning changes, and bugs. Use at the start of each
+  project work session or whenever Project OS context is needed.
 ---
 
 # Project OS Navigator — rezisaktiva
 
-Skill ini mendefinisikan cara AI berperilaku saat bekerja pada project portofolio **rezisaktiva**.
+This skill defines how agents work in the **rezisaktiva** portfolio project.
 
-## Langkah Pertama: Load Context (Cascade)
+## First Step: Load Context By Cascade
 
-Jangan langsung baca semua dokumen `project-manager/` untuk setiap pesan. Eskalasi bertahap:
+Do not read every `project-os/` document for every prompt. Escalate gradually.
 
-**Tingkat 1 — Status / progress / pertanyaan umum**
+**Level 1 — Status, progress, and general questions**
 
-- Baca **section "Snapshot"** di paling atas `project-manager/PROJECT_STATE.md`. Jangan baca seluruh file kecuali perlu.
-- Untuk pertanyaan task / rencana: baca `project-manager/TASKS.md`. Jangan buka `tasks/` kecuali butuh detail satu task.
-- Untuk ADR spesifik: buka **hanya** `project-manager/decisions/ADR-XXX-*.md` (indeks di `DECISIONS.md`).
+- Read only the **Snapshot** at the top of `project-os/PROJECT_STATE.md` unless more detail is needed.
+- For task or plan questions, read `project-os/AVAILABLE_TICKETS.md`.
+- For a specific ADR, open only the relevant `project-os/decisions/ADR-XXX-*.md` after checking the index in `DECISIONS.md`.
 
-**Tingkat 2 — Task nyata** (Pekerjaan Baru, Planning Change, Bug): baca berurutan:
+**Level 2 — Real task work** (new work, planning change, bug):
 
-1. `project-manager/PROJECT_STATE.md` — Snapshot dulu, lalu detail bila perlu
-2. `project-manager/TASKS.md` — temukan ID task/subtask (`T-XXX` / `T-XXX.N`)
-3. `project-manager/tasks/` — **hanya satu file fase** (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`); ikuti field **Baca dulu**
-4. `project-manager/PROJECT_RULES.md` — bila menyentuh tata kelola dokumen
-5. ADR spesifik yang relevan
-6. `project-manager/PROJECT_OVERVIEW.md` — bila perlu gambaran umum
+1. `project-os/PROJECT_STATE.md` — Snapshot first, then more detail only if needed.
+2. `project-os/AVAILABLE_TICKETS.md` — find the parent or subtask ID (`T-XXX` / `T-XXX.N`).
+3. `project-os/tickets/` — open only the one ticket file or section that contains the task, then follow its **Read first** field.
+4. `project-os/PROJECT_RULES.md` — only when document governance is involved.
+5. Relevant ADRs.
+6. `project-os/PROJECT_OVERVIEW.md` — only if broader orientation is needed.
 
-Kalau pekerjaan belum punya ID task/subtask: tanyakan ke Boss Rezi apakah perlu ditambahkan ke backlog.
+If the work has no task or subtask ID, ask Boss Rezi whether it needs to be added to the ticket queue.
 
-Jika diskusi menyentuh domain spesifik, baca dokumen relevan dari:
+If the discussion touches a specific product domain, read the relevant files under:
 
 - `product-discovery/01-business/`
 - `product-discovery/02-product/`
@@ -41,91 +41,83 @@ Jika diskusi menyentuh domain spesifik, baca dokumen relevan dari:
 - `product-discovery/05-architecture/`
 - `product-discovery/06-engineering/`
 
-`product-discovery/` adalah **Source of Truth produk** dan sibling dari `project-manager/`.
+`product-discovery/` is the product Source of Truth and a sibling of `project-os/`.
 
 ### Proactive Consistency Check
 
-Setiap kali membaca dokumen **Static Reference** (README, OVERVIEW, RULES, SKILL.md, baseline), periksa apakah memuat info yang seharusnya hanya di **Living Document** (`PROJECT_STATE.md`) — status ✅/🟡/⏳, progress %, phase aktif.
+Whenever you read a **Static Reference** document (README, overview, rules, skills, or baseline), check whether it contains content that belongs only in a **Living Document** (`PROJECT_STATE.md`) — status markers, progress percentages, active phase, current focus, or current blockers.
 
-Jika ditemukan: **jangan diamkan** — itu kondisi urgent (salah/gap di dokumen). Tanya Boss Rezi, jangan perbaiki diam-diam.
+If you find that drift, do not ignore it. Treat it as urgent wrong-document context: ask Boss Rezi before fixing it.
 
 ---
 
-## Behavior per Jenis Interaksi
+## Behavior By Interaction Type
 
-### 1. Diskusi / Tanya Jawab
+### 1. Discussion / Q&A
 
-1. Selaraskan jawaban dengan baseline yang sudah ada.
-2. Jika konflik dengan keputusan sebelumnya, sebutkan ADR relevan.
-3. Jangan sarankan solusi di luar scope phase aktif (`Active Conversation Mode` di PROJECT_STATE).
-4. Insight penting → catat di `project-manager/CONVERSATIONS.md`.
+1. Align answers with the established baseline.
+2. If there is a conflict with an earlier decision, cite the relevant ADR.
+3. Do not suggest work outside the active scope in `Active Conversation Mode` unless Boss Rezi asks for it.
+4. Record important insights in `project-os/CONVERSATIONS.md` when they affect future work.
 
 **Format CONVERSATIONS.md:**
 
 ```
-## [YYYY-MM-DD] — [Topik Singkat]
-**Phase:** [phase aktif]
-**Summary:** [2-3 kalimat]
-**Key Decision/Insight:** [jika ada]
-**Impact:** [dokumen yang perlu diupdate?]
+## [YYYY-MM-DD] — [Short Topic]
+**Phase:** [active phase]
+**Summary:** [2-3 sentences]
+**Key Decision/Insight:** [if any]
+**Impact:** [documents that need updates?]
 ```
+
+Use English for new entries.
 
 ---
 
 ### 2. Brainstorming
 
-1. Explore bebas; tandai spekulatif vs selaras baseline.
-2. Evaluasi hasil terhadap baseline.
-3. Ide layak → `project-manager/BRAINSTORM.md`.
+1. Explore freely, but label what is speculative versus baseline-aligned.
+2. Evaluate ideas against the baseline.
+3. Save worthwhile ideas in `project-os/BRAINSTORM.md`.
 
 **Format BRAINSTORM.md:**
 
 ```
-## [YYYY-MM-DD] — [Topik Brainstorm]
-**Phase:** [phase aktif]
+## [YYYY-MM-DD] — [Brainstorm Topic]
+**Phase:** [active phase]
 **Context:** [...]
 **Ideas:**
 - ...
-**Evaluation:** [selaras / bertentangan / perlu ADR / perlu validasi]
-**Next Action:** [discard / simpan / buat ADR / validasi]
+**Evaluation:** [aligned / conflicting / needs ADR / needs validation]
+**Next Action:** [discard / save / create ADR / validate]
 ```
+
+Use English for new entries.
 
 ---
 
-### 3. Pekerjaan Baru / Pembuatan Dokumen
+### 3. New Work / Document Creation
 
-1. Cek `PROJECT_STATE.md` — sesuai phase aktif.
-2. Cek `Active Conversation Mode`.
-3. Baca baseline relevan sebelum menulis.
-4. Setelah selesai, update:
-   - file fase di `project-manager/tasks/` — centang subtask ber-ID (`T-XXX.N`) + status parent
-   - `project-manager/TASKS.md` — indeks + Fokus sekarang (sebut kode subtask bila relevan)
-   - `PROJECT_STATE.md` — hanya jika phase/milestone/KI/fokus berubah (jangan salin detail task)
-   - `COMPLETE_TASK.md` — append entri baru di atas (jangan baca riwayat lama); sebut `T-XXX.N`
-
-**Format COMPLETE_TASK.md:**
-
-```
-## [YYYY-MM-DD]
-### Added
-- ...
-### Changed
-- ...
-### Fixed
-- ...
-```
+1. Check `PROJECT_STATE.md` for the active phase and mode.
+2. Read the relevant baseline before writing.
+3. Check task completeness, referenced docs, and production code when UI is involved.
+4. After finishing, update:
+   - the relevant file or section in `project-os/tickets/` — check off subtask IDs (`T-XXX.N`) and parent status
+   - `project-os/AVAILABLE_TICKETS.md` — remove completed work or update the open queue
+   - `PROJECT_STATE.md` — only if phase, milestone, known issues, blockers, or focus changed
+   - never append `COMPLETE_TASK.md` unless Boss Rezi explicitly asks for legacy changelog work
 
 ---
 
-### 4. Planning Change / Perubahan Keputusan
+### 4. Planning Change / Decision Change
 
-1. Identifikasi dampak dokumen.
-2. Evaluasi kebutuhan ADR baru.
+1. Identify impacted documents.
+2. Evaluate whether a new ADR is required.
 
-**Wajib ADR:** target audience, problem statement, vision/scope, MVP, arsitektur, tech stack, repository strategy.
+**ADR required for:** target audience, problem statement, vision/scope, MVP, architecture, tech stack, repository strategy, or any material change to a previously accepted decision.
 
-3. Buat `decisions/ADR-NNN-slug.md` + baris indeks di atas `DECISIONS.md`.
-4. Update dokumen terdampak + Snapshot bila relevan + COMPLETE_TASK.
+3. Create `project-os/decisions/ADR-NNN-slug.md` and add the index row near the top of `project-os/DECISIONS.md`.
+4. Update impacted docs, Snapshot if relevant, and the ticket queue.
 
 **Format ADR:**
 
@@ -148,25 +140,26 @@ YYYY-MM-DD
 
 ---
 
-### 5. Bug / Inkonsistensi Dokumen
+### 5. Bug / Documentation Inconsistency
 
-1. Identifikasi konflik dan Source of Truth.
-2. Perbaiki agar selaras.
-3. Catat di COMPLETE_TASK (`### Fixed`).
-4. Jika keputusan belum terdokumentasi → buat ADR.
+1. Identify the conflict and Source of Truth.
+2. If one correct answer is clear from accepted docs, fix the drift.
+3. Record the fix in the relevant ticket or `AVAILABLE_TICKETS.md` when status changes.
+4. If the needed decision is not documented, ask Boss Rezi and create an ADR if the decision is material.
 
 ---
 
-## Aturan Context (Jangan Dilanggar)
+## Context Rules
 
-- Jangan menyarankan implementasi kode jika belum di phase Development (kecuali diminta eksplisit).
-- Jangan mengubah baseline tanpa ADR.
-- Jangan membuat dokumen di luar scope phase aktif.
-- Jangan perbaiki inkonsistensi diam-diam (itu urgent — tanya Boss Rezi).
-- Jangan tanya ritual jika task + dokumen + (untuk UI) kode produksi sudah lengkap dan selaras (`.cursor/rules/ask-before-assuming.mdc`, ADR-024). Kerja baru di `app/` ikut `.cursor/rules/code-discipline.mdc`.
-- Jangan salin detail task ke `PROJECT_STATE.md`.
-- Jangan daur ulang ID task/subtask (`T-XXX` / `T-XXX.N`); deferred = `⏸️` + alasan.
-- Skills resmi project hanya di `.cursor/skills/`. Audit docs menyeluruh (`docs-consistency-audit`) hanya jika Boss Rezi meminta secara eksplisit.
+- Do not suggest code implementation outside the active phase unless Boss Rezi explicitly asks.
+- Do not change a baseline decision without an ADR when the change is material.
+- Do not create documents outside the active scope.
+- Do not silently fix urgent gaps, wrong documents, or unplanned decisions; ask first.
+- Do not ask ritual questions when the task, docs, and production code are complete and aligned.
+- Do not copy task detail into `PROJECT_STATE.md`.
+- Do not reuse task or subtask IDs (`T-XXX` / `T-XXX.N`).
+- Official project skills live only in `.cursor/skills/`.
+- Full docs audits with `docs-consistency-audit` run only when Boss Rezi explicitly asks.
 
 ---
 
@@ -174,25 +167,28 @@ YYYY-MM-DD
 
 ```
 rezisaktiva/
-├── project-manager/         → Cara kerja
-│   ├── PROJECT_STATE.md     → Snapshot dulu
-│   ├── TASKS.md + tasks/    → Backlog
+├── project-os/               -> Operating system
+│   ├── PROJECT_STATE.md      -> Snapshot first
+│   ├── AVAILABLE_TICKETS.md  -> open queue
+│   ├── tickets/              -> open and completed ticket history
+│   ├── specs/                -> multi-session programs
+│   ├── context/              -> short pointer layer
 │   ├── DECISIONS.md + decisions/
-│   ├── COMPLETE_TASK.md     → append only; jangan dibaca kecuali diperintah
+│   ├── COMPLETE_TASK.md      -> frozen historical archive; do not read unless asked
 │   ├── CONVERSATIONS.md
 │   └── BRAINSTORM.md
-├── product-discovery/       → SoT produk 01–06
-├── design-mockups/          → Arsip HTML R1 (bukan SoT visual — ADR-024)
-├── app/                     → Kode Next.js (App Router)
+├── product-discovery/        -> product Source of Truth
+├── design-mockups/           -> archived HTML mockups, not visual Source of Truth
+├── app/                      -> Next.js App Router code
 ├── AGENTS.md
-├── .cursor/skills/          → Process skills Cursor + skill library Motion (ADR-028)
-└── .cursor/rules/           → Rule aktif (shadcn, disiplin kode, mockup gate, no-AI-attribution, ask-before-assuming)
+├── .cursor/skills/           -> process skills + Motion library
+└── .cursor/rules/            -> active rules
 ```
 
 ---
 
 ## Additional Resources
 
-- `project-manager/PROJECT_RULES.md`
+- `project-os/PROJECT_RULES.md`
 - `product-discovery/README.md`
 - `AGENTS.md`
