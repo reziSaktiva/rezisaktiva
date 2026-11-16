@@ -35,3 +35,5 @@ Accepted
 - `vercel.json`
 - `scripts/vercel-ignore-build.sh`
 - `product-discovery/06-engineering/cicd-pipeline.md`
+- `product-discovery/06-engineering/deployment-infrastructure.md`
+- `project-os/context/ctx-development.md`

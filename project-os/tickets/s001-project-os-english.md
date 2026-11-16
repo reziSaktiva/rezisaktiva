@@ -260,5 +260,5 @@ This file tracks the multi-session work approved in ADR-049. Public site locale 
 - Living docs no longer point at `project-manager/` as the active folder. Remaining mentions are historical: frozen `COMPLETE_TASK.md`, ADR-001 filename slug, and this ticket’s rename checklist.
 - Agent docs / process skills / always-on rules scanned clean of Indonesian prose.
 - Fixed `PROJECT_STATE.md` Snapshot (was still pointing Project OS next work at T-063). Added English language banners on `CONVERSATIONS.md` and `BRAINSTORM.md` (past entries unchanged). Removed T-072 helper artifacts (`.r1-*`, `.translation-*`).
-- **T-059** still open in `tickets/r2.md` for Contact → Resend (T-059.2, T-059.5). Open queue is T-059 only.
+- **T-059** still open in `tickets/r2.md` for Contact → Resend (T-059.2, T-059.5). Open queue is T-059 only. Later the same day, Boss Rezi confirmed the production send and **T-059** was closed. The open queue is now empty.
 - **PR #85 review follow-up:** finished remaining English gaps (`README.md`, `content/README.md`, `R1_COMPLETE.md`, baseline README, `PROJECT_RULES` leftover, `COMPLETE_TASK` AI warning header, `.prettierignore` comment); fixed ADR-049 decision #2 wording (`TASKS.md` → tickets); restored Indonesian Resend subject as `CONTACT_EMAIL_SUBJECT` with a unit test.

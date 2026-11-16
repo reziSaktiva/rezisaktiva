@@ -4,7 +4,7 @@ Architecture Decision Record (ADR) index. Full text lives in `decisions/`.
 
 | ADR | Title | Status | Date | Summary | File |
 | --- | ----- | ------ | ---- | --------- | ---- |
-| ADR-051 | Skip Vercel builds for documentation-only changes | Accepted | 2026-11-16 | `ignoreCommand` cancels Preview and Production when the diff stays in docs, skills, and agent files | [ADR-051](decisions/ADR-051-skip-docs-only-vercel-builds.md) |
+| ADR-051 | Skip Vercel builds for documentation-only changes | Accepted | 2026-11-16 | `ignoreCommand` cancels the build when every changed path is in `project-os/`, `product-discovery/`, `design-mockups/`, `.cursor/`, `private/`, `.github/`, `AGENTS.md`, or `README.md` | [ADR-051](decisions/ADR-051-skip-docs-only-vercel-builds.md) |
 | ADR-050 | Portfolio-shaped wave and review skills | Accepted | 2026-11-16 | Add fitted `wave-plan`, `wave-work`, and `review-work`; keep ask-only-when-urgent and the portfolio docs audit; no Postific staging ladder | [ADR-050](decisions/ADR-050-portfolio-wave-and-review-skills.md) |
 | ADR-049 | Project OS English agent ecosystem | Accepted | 2026-11-16 | Rename the former Project Manager folder to `project-os/`; add specs/tickets/context model; keep bilingual site copy; freeze `COMPLETE_TASK.md`; **S-001 / T-060** | [ADR-049](decisions/ADR-049-project-os-english-agent-ecosystem.md) |
 | ADR-048 | Public canonical URL = www.rezisaktiva.space | Accepted | 2026-11-16 | Not vercel.app or localhost; apex to www; **T-059** PR | [ADR-048](decisions/ADR-048-canonical-www-not-vercel.md) |

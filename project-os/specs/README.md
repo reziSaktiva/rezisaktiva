@@ -8,7 +8,7 @@ Specs are not a second backlog. They define the goal, scope, constraints, and co
 
 | Spec | Scope | Status |
 | ---- | ----- | ------ |
-| `S-001` | Project OS English agent ecosystem | In progress |
+| `S-001` | Project OS English agent ecosystem | Done |
 
 ## Rules
 
