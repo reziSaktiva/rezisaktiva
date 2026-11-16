@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { PRODUCTION_SITE_URL, VERCEL_DEPLOY_HOST } from "./lib/site-url";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,6 +26,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: VERCEL_DEPLOY_HOST }],
+        destination: `${PRODUCTION_SITE_URL}/:path*`,
+        permanent: true,
+      },
       {
         source: "/:locale(id|en)/work",
         destination: "/:locale/projects",

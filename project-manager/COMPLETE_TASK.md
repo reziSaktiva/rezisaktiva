@@ -15,6 +15,10 @@ Format entri:
 ```
 
 ## [2026-11-16]
+### Fixed
+- **ADR-048** — canonical, JSON-LD, sitemap, dan robots di build Vercel memakai `https://www.rezisaktiva.space`. `rezisaktiva.vercel.app` diarahkan permanen ke host itu. Production yang live sebelumnya menulis `http://localhost:3000`.
+
+## [2026-11-16]
 ### Added
 - **T-059.3** — `POST /api/contact` mengantar lewat Resend. Validasi email/pesan, honeypot, Reply-To pengunjung, To = email kontak. Tanpa secret, jawaban 503 dan isi pesan tidak dicatat.
 - **T-059.4** — Modal Contact: Mengirim / Terkirim hanya setelah server menerima / gagal. `mailto:` dan salin tetap terlihat.

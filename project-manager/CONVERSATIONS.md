@@ -14,6 +14,12 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-11-16] — Kanonis www, bukan vercel.app
+**Phase:** Validation
+**Summary:** Google menampilkan `rezisaktiva.vercel.app`. HTML production menulis canonical, JSON-LD, dan sitemap ke `http://localhost:3000` karena `NEXT_PUBLIC_SITE_URL` tidak terpasang saat build. Apex sudah berakhir di `www`.
+**Key Decision/Insight:** **ADR-048** — host kanonis `https://www.rezisaktiva.space`. Build Vercel tidak lagi memakai localhost atau hostname Vercel. `rezisaktiva.vercel.app` redirect permanen ke www.
+**Impact:** `lib/site-url.ts`, `next.config.ts`, deployment + environment docs. Search Console setelah deploy.
+
 ## [2026-09-15] — Form Contact → Resend
 **Phase:** Validation
 **Summary:** Boss Rezi ingin pesan form sampai inbox. Ada opsi gratis (Resend API vs Web3Forms). Dipilih Resend.

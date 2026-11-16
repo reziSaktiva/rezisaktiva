@@ -70,7 +70,7 @@ R1 diharapkan **sangat pendek**. Contoh yang wajar (dikunci detail nama saat boo
 
 | Variabel | Wajib R1 | Tier | Catatan |
 | -------- | -------- | ---- | ------- |
-| `NEXT_PUBLIC_SITE_URL` | Should | Semua | Canonical URL untuk meta/OG/sitemap. Production: `https://rezisaktiva.space` |
+| `NEXT_PUBLIC_SITE_URL` | Should | Lokal | Canonical URL untuk meta/OG/sitemap di mesin lokal. Build Vercel mengunci `https://www.rezisaktiva.space` (ADR-048) |
 | `RESEND_API_KEY` | Must (setelah ADR-047) | Local / Preview / Prod | Server-only. Jangan `NEXT_PUBLIC_`. |
 | `RESEND_FROM` | Must (setelah ADR-047) | Local / Preview / Prod | Mailbox terverifikasi di `rezisaktiva.space` |
 | Analytics key (`NEXT_PUBLIC_*` atau server) | Could | Preview/Prod | Hanya jika analytics diaktifkan; privacy-aware |
