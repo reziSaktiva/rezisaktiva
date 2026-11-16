@@ -11,7 +11,7 @@ This document defines the CI/CD pipeline for the **rezisaktiva** portfolio websi
 R1 uses **option B**:
 
 * **CI** = GitHub Actions (lint + typecheck; tests if any)
-* **CD** = Vercel (Preview per PR, Production from the main branch)
+* **CD** = Vercel (Preview per PR, Production from the main branch). A documentation-only change skips the Vercel build (ADR-051).
 
 There is no custom deploy from Actions to Vercel for R1 — Vercel remains the owner of the site build/deploy.
 
@@ -71,8 +71,8 @@ Lint/format tool details → `dx-tooling.md` (T-006.7).
 
 | Environment | Who deploys | When |
 | ----------- | ----------- | ---- |
-| Preview | Vercel | Every PR |
-| Production | Vercel | Merge/push to main branch |
+| Preview | Vercel | Every PR that changes the site or deploy config. Documentation-only changes are skipped (ADR-051). |
+| Production | Vercel | Merge/push to main when the site or deploy config changed. Documentation-only merges are skipped (ADR-051). |
 
 * Rollback = Vercel dashboard (see `deployment-infrastructure.md`)
 * No CD via `vercel deploy` from Actions for R1
@@ -102,6 +102,7 @@ Do not put product secrets in Actions logs or the public repo.
 | Vercel-only (without Actions) | Not chosen |
 | Full deploy from Actions | Not for R1 |
 | Engineering Baseline | ADR-016 |
+| Docs-only Vercel build | Skipped via `vercel.json` `ignoreCommand` (ADR-051) |
 
 ---
 
