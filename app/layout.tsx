@@ -21,41 +21,40 @@ export const metadata: Metadata = {
   icons: SITE_HEAD_ICONS,
 };
 
-/** T-031.4 — chrome browser. Statis gelap (hold T-038.2); tidak baca cookie. */
+/** T-031.4 — browser chrome. Static dark (T-038.2 hold); does not read cookie. */
 export const viewport: Viewport = {
   themeColor: SITE_CANVAS_COLOR,
 };
 
 /**
- * Anti-flash + `html.dark` (T-032.5) tanpa `className` di JSX `<html>`.
- * Lenis, `ct-lock` / `qi-lock` / `ps-lock`, dan `page-vt-lock` juga menulis
- * class di `documentElement` lewat `classList`. Kalau React punya
- * `className` di `<html>`, reconcile RSC (navigasi setelah cookie tema
- * berubah) menimpa seluruh atribut `class` dan class itu hilang.
+ * Anti-flash + `html.dark` (T-032.5) without `className` on JSX `<html>`.
+ * Lenis, `ct-lock` / `qi-lock` / `ps-lock`, and `page-vt-lock` also write
+ * classes on `documentElement` via `classList`. If React owns `className` on
+ * `<html>`, RSC reconcile (navigation after theme cookie changes) overwrites the
+ * entire `class` attribute and those classes disappear.
  *
- * Class `dark` awal: `ThemeInitScript` (`useServerInsertedHTML`) memanggil
- * `classList.toggle("dark")` — tidak `setAttribute("class")`.
- * Cookie menang vs localStorage (code review 2026-08-16). Tanpa cookie,
- * localStorage di-apply sekali dan cookie di-tulis (migrasi 1x).
- * `data-theme` di-set di JSX dari cookie (`initialMode`) supaya first paint
- * CSS `html[data-theme]` tidak menunggu script. Toggle tanpa reload tetap
- * lewat `ThemeModeProvider` (`setAttribute`), bukan `className` di `<html>`.
+ * Initial `dark` class: `ThemeInitScript` (`useServerInsertedHTML`) calls
+ * `classList.toggle("dark")` — not `setAttribute("class")`.
+ * Cookie wins vs localStorage (code review 2026-08-16). Without cookie,
+ * localStorage applies once and cookie is written (one-time migration).
+ * `data-theme` is set in JSX from cookie (`initialMode`) so first-paint CSS
+ * `html[data-theme]` does not wait for script. Toggle without reload still goes
+ * through `ThemeModeProvider` (`setAttribute`), not `className` on `<html>`.
  */
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   /**
-   * Fix flash tema (bug ditemukan 2026-08-16, lihat COMPLETE_TASK.md):
-   * baca preferensi dari cookie SEBELUM render pertama, supaya server &
-   * client langsung sinkron — tidak ada lagi render koreksi
-   * `useSyncExternalStore` yang bikin flash. `cookies()` di Next.js
-   * request-scoped/aman untuk concurrent request (bukan module state).
-   * Default "dark" selama T-038.2 hold (`THEME_HOLD_FORCE_DARK`).
-   * Cookie light tidak boleh menampilkan palet krem lama.
+   * Theme flash fix (bug found 2026-08-16, see COMPLETE_TASK.md):
+   * read preference from cookie BEFORE the first render so server &
+   * client align immediately — no more `useSyncExternalStore` correction
+   * flash. `cookies()` in Next.js is request-scoped/safe for concurrent
+   * requests (not module state).
+   * Default "dark" while T-038.2 hold (`THEME_HOLD_FORCE_DARK`).
+   * Light cookie must not show the old cream palette.
    *
-   * Trade-off yang perlu diketahui: memanggil `cookies()` di root layout
-   * membuat SELURUH app keluar dari static rendering (semua route jadi
-   * render dinamis per-request, tidak bisa di-cache statis/ISR) — ini
-   * konsekuensi inheren cookie-based SSR-theme, bukan sesuatu yang bisa
-   * dihindari selagi tema harus diketahui server sebelum render pertama.
+   * Trade-off: calling `cookies()` in the root layout opts the ENTIRE app out
+   * of static rendering (all routes become per-request dynamic, cannot cache
+   * statically/ISR) — inherent to cookie-based SSR theme, not avoidable while
+   * the server must know theme before the first render.
    */
   const cookieStore = await cookies();
   const storedTheme = parseThemeModeCookieValue(
@@ -76,18 +75,16 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/*
-         * Deklarasi `color-scheme` di 2 tempat sejak byte pertama HTML (tanpa
-         * JS/CSS sama sekali): meta tag ini + inline `style` di `<html>` di
-         * atas. Script anti-flash class `dark` = `ThemeInitScript` (bukan
-         * `next/script` di sini — React 19 menolak `<script>` di pohon layout).
-         * Ini lapis pertahanan terhadap heuristik "auto dark mode"
-         * browser (Chrome dkk. bisa auto-render konten belum-bergaya pakai
-         * warna gelap kalau OS dark & halaman belum menyatakan color-scheme
-         * yang didukung) — sumber sisa flash yang dilihat Boss Rezi khusus
-         * di light mode + OS dark, tidak tertangkap 2 lapis fix sebelumnya
-         * (cookie SSR + wrapper div Astryx) karena keduanya baru berlaku
-         * setelah CSS/komponen React ter-render, bukan dari HTML mentah.
-         * Nilai selalu sinkron dengan `initialMode` (server, per-request).
+         * Declare `color-scheme` in 2 places from the first HTML byte (no JS/CSS):
+         * this meta tag + inline `style` on `<html>` above. Anti-flash `dark`
+         * class script = `ThemeInitScript` (not `next/script` here — React 19
+         * rejects `<script>` in the layout tree).
+         * Defense against browser "auto dark mode" heuristics (Chrome etc. may
+         * paint unstyled content dark when OS is dark & the page has not declared
+         * color-scheme) — remaining flash Boss Rezi saw specifically in light
+         * mode + OS dark, not caught by the prior two fixes (cookie SSR + Astryx
+         * wrapper div) because those only apply after CSS/React render, not raw HTML.
+         * Value always matches `initialMode` (server, per-request).
          */}
         <meta name="color-scheme" content={initialMode} />
       </head>

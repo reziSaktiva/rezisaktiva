@@ -40,7 +40,7 @@ describe("decideContactPayload", () => {
   it("rejects a missing, oversized, or malformed body", () => {
     expect(decideContactPayload(null)).toEqual({ kind: "invalid" });
     expect(decideContactPayload([])).toEqual({ kind: "invalid" });
-    expect(decideContactPayload({ ...valid, email: "bukan-email" })).toEqual({
+    expect(decideContactPayload({ ...valid, email: "not-an-email" })).toEqual({
       kind: "invalid",
     });
     expect(decideContactPayload({ ...valid, message: "   " })).toEqual({

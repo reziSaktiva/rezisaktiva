@@ -6,11 +6,11 @@ import { readWindowScrollY, subscribePageScroll } from "./smooth-scroll";
 
 /**
  * Live wallpaper Home, nempel di viewport (T-042.1).
- * Opacity ikut posisi `#about`: penuh di hero, memudar saat scroll ke
- * About, kembali saat scroll ke hero. Poster selalu ada (CSS). Video
- * dipasang setelah mount supaya tidak hydration-mismatch.
+ * Opacity follows `#about` position: full on hero, fades scrolling to
+ * About, returns scrolling to hero. Poster always present (CSS). Video
+ * attached after mount to avoid hydration mismatch.
  *
- * Jarak fade diukur saat resize saja — bukan getBoundingClientRect
+ * Fade distance measured on resize only — not getBoundingClientRect
  * di setiap frame Lenis (itu membuat scroll mentok di bawah).
  */
 export function HomeHeroWallpaper() {
@@ -75,7 +75,7 @@ export function HomeHeroWallpaper() {
       }
       if (video.paused) {
         void video.play().catch(() => {
-          /* Autoplay boleh ditolak browser; poster tetap terlihat. */
+          /* Autoplay may be blocked; poster stays visible. */
         });
       }
     };
@@ -125,7 +125,7 @@ export function HomeHeroWallpaper() {
       return;
     }
     void video.play().catch(() => {
-      /* Autoplay boleh ditolak browser; poster tetap terlihat. */
+      /* Autoplay may be blocked; poster stays visible. */
     });
   }, [allowVideo]);
 

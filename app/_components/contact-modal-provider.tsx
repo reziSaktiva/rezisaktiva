@@ -20,8 +20,8 @@ const ContactModalContext = createContext<ContactModalContextValue | null>(
 );
 
 /**
- * State global modal Contact (T-016.2, ADR-019) — dibuka dari nav/CTA
- * di halaman manapun, bukan route `/contact`.
+ * Global Contact modal state (T-016.2, ADR-019) — opened from nav/CTA
+ * on any page, not the `/contact` route.
  */
 export function ContactModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);

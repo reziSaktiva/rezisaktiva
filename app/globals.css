@@ -3,20 +3,20 @@
 @import "shadcn/tailwind.css";
 @import "lenis/dist/lenis.css";
 
-/* Class `.dark` (bukan OS). Token = T-032.4; `html.dark` dari cookie = T-032.5. */
+/* `.dark` class (not OS). Tokens = T-032.4; `html.dark` from cookie = T-032.5. */
 @custom-variant dark (&:is(.dark *));
 
 /*
  * Chrome chip/pill (`site-header.tsx`, `locale-switcher.tsx`) — class
  * scoped + token di `:root` (`var(--spacing-*)`, `var(--radius-full)`).
- * Warna/layout chrome tetap di wrapper (`.site-*`).
+ * Chrome color/layout stays on the wrapper (`.site-*`).
  *
- * `--chip-bg` — nampan grup (T-038.3 dihilangkan; token = elevated, bukan kuning).
- * `--chrome-pill-bg`/`--chrome-pill-fg` — sisa token bercak (ADR-030, superseded).
+ * `--chip-bg` — group tray (T-038.3 removed; token = elevated, not yellow).
+ * `--chrome-pill-bg`/`--chrome-pill-fg` — legacy spot tokens (ADR-030, superseded).
  * Selected hidup = outline + teks aksen (ADR-031).
- * Nilai pill runtime: `useChipColorVars()`; fallback di `:root` harus sama.
+ * Runtime pill values: `useChipColorVars()`; fallback on `:root` must match.
  *
- * LIGHT HOLD (T-038.2) — arsip palet krem/kuning, JANGAN HAPUS:
+ * LIGHT HOLD (T-038.2) — archive cream/yellow palette, DO NOT DELETE:
  *   --chip-bg #fde047; --chip-fg #14181f;
  *   --chrome-pill-bg light #0a0f1a / dark #edeae1;
  *   --background #edeae1; --foreground #14181f; --accent craft teal #4c7a73;
@@ -28,8 +28,8 @@
   --chrome-pill-bg: #6b1c23;
   --chrome-pill-fg: #e8e4dc;
   /*
-   * Transisi halaman T-043.1: hard cut + stutter frame (bukan Hess 1s/0.4s).
-   * `--ease-page-transition` tetap untuk overlay sheet; stutter pakai steps.
+   * Page transition T-043.1: hard cut + stutter frame (not Hess 1s/0.4s).
+   * `--ease-page-transition` stays for overlay sheet; stutter uses steps.
    */
   --duration-page-exit: 0.2s;
   --duration-page-enter: 0.16s;
@@ -42,7 +42,7 @@
   --page-stutter-5: 0.1rem;
   --page-film-opacity: 0.16;
   --page-film-flicker: 0.14s;
-  /* Overlay Dialog/Sheet/Drawer (T-036.3) — tween, bukan bounce. */
+  /* Overlay Dialog/Sheet/Drawer (T-036.3) — tween, not bounce. */
   --duration-ct-scrim: 0.35s;
   --duration-ct-panel-opacity: 0.3s;
   --duration-ct-panel: 0.4s;
@@ -50,11 +50,11 @@
   --duration-sheet-panel: 0.55s;
   --ease-overlay: cubic-bezier(0.22, 1, 0.36, 1);
   /*
-   * Elevasi timbul 3D untuk chrome chip.
-   * Bukan glow hierarki halaman (lihat design-tokens.md): highlight atas,
+   * Raised 3D elevation for chrome chips.
+   * Not page hierarchy glow (see design-tokens.md): top highlight,
    * bibir tebal di bawah, lalu drop shadow.
-   * Sengaja BUKAN `light-dark()` — pola itu pernah flash di chip
-   * (2026-08-16). Nilai dark di-set lewat `html[data-theme="dark"]`
+   * Deliberately NOT `light-dark()` — that pattern once flashed on chips
+   * (2026-08-16). Dark values set via `html[data-theme="dark"]`
    * dan class `.dark` (T-032.5).
    */
   --elev-3d:
@@ -72,9 +72,9 @@
     inset 0 1px 0 rgb(255 255 255 / 0.1),
     0 1px 2px rgb(0 0 0 / 0.35);
   /*
-   * T-025.9 / T-043.2 — scrollbar. Track elevated; thumb darah yang
-   * lebih terang (--color-accent-muted) supaya kontras vs track.
-   * Nilai warna di bawah, setelah token craft.
+   * T-025.9 / T-043.2 — scrollbar. Track elevated; blood-colored thumb
+   * lighter (--color-accent-muted) for contrast vs track.
+   * Color values below, after craft tokens.
    */
   --rz-scrollbar-size: var(--spacing-2);
   /*
@@ -172,9 +172,9 @@
   --size-touch: var(--spacing-11);
   /*
    * Craft `--color-*` = hex light di `:root`, hex dark di
-   * `html[data-theme="dark"]` / `.dark` — bukan `light-dark()` (flash chip
-   * 2026-08-16). Teal aksen craft (`--color-accent`) terpisah dari token
-   * shadcn `--accent` (muted) yang dipetakan `@theme inline`.
+   * `html[data-theme="dark"]` / `.dark` — not `light-dark()` (chip flash
+   * 2026-08-16). Teal aksen craft (`--color-accent`) separate from
+   * shadcn `--accent` (muted) mapped in `@theme inline`.
    */
   --color-background-surface: #0b0b0d;
   --color-background-body: #0b0b0d;
@@ -202,8 +202,8 @@
   --color-border-default: var(--color-border);
   --color-success: #9fe59b;
   /*
-   * T-043.2 — cincin fokus. Wine murni di kanvas gelap kurang kontras
-   * (WCAG 1.4.11). Campur vellum supaya tetap darah, tetap terbaca.
+   * T-043.2 — focus ring. Pure wine on a dark canvas lacks contrast
+   * (WCAG 1.4.11). Blend vellum so it stays blood-red and readable.
    */
   --color-focus: color-mix(
     in srgb,
@@ -278,12 +278,12 @@ html[style*="color-scheme:dark"],
 }
 
 /*
- * Kanvas halaman. Nilai = `--c-bg` / `--c-fg` mockup
+ * Page canvas. Values = `--c-bg` / `--c-fg` mockup
  * (`design-mockups/shared.css`) — KI-002.
  *
- * `light-dark()` di `html, body` = jaring `color-scheme` sebelum CSS tema.
+ * `light-dark()` di `html, body` = `color-scheme` mesh before theme CSS.
  * `data-theme` ada di markup SSR (`app/layout.tsx`); `ThemeModeProvider`
- * menyinkronkan atribut itu saat toggle tanpa reload.
+ * syncs that attribute on toggle without reload.
  */
 html,
 body {
@@ -294,8 +294,8 @@ body {
 
 /*
  * next/font variable (--font-instrument / --font-texturina) dipasang di
- * <body>, bukan <html> (className di html menimpa dark/Lenis). Token
- * keluarga harus di-resolve di body supaya var() tidak invalid di :root.
+ * <body>, not <html> (className on html overwrites dark/Lenis). Token
+ * families must resolve on body so var() is not invalid on :root.
  */
 body {
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
@@ -318,9 +318,9 @@ html.dark body {
 }
 
 /*
- * T-025.9 / T-043.2: track + thumb token gothic-blood. Jangan
- * `scrollbar-width: none` — track harus tetap kelihatan (T-025.8).
- * Dokumen (`html`) + panel overlay yang overflow.
+ * T-025.9 / T-043.2: track + thumb gothic-blood tokens. Do not
+ * `scrollbar-width: none` — track must stay visible (T-025.8).
+ * Document (`html`) + overflowing overlay panels.
  */
 html,
 .ct-panel,
@@ -386,7 +386,7 @@ html::-webkit-scrollbar-button,
   background-color: var(--rz-scrollbar-thumb) !important;
 }
 
-/* Skip-to-content — paritas a11y AppShell, tanpa dependensi i18n Astryx. */
+/* Skip-to-content — AppShell a11y parity, without Astryx i18n dependency. */
 .site-skip-link {
   position: absolute;
   width: 1px;
@@ -438,7 +438,7 @@ html::-webkit-scrollbar-button,
   outline: none;
 }
 
-/* Header: tinggi + padding-inline sesuai `.site-header` mockup (satu-satunya TopNav di app). */
+/* Header: height + padding-inline per `.site-header` mockup (the only TopNav in app). */
 .site-top-nav {
   position: relative;
   z-index: 1;
@@ -472,7 +472,7 @@ html::-webkit-scrollbar-button,
   }
 }
 
-/* T-040.1 / ADR-034 — nama = display (sama keluarga judul); role bukan tautan. */
+/* T-040.1 / ADR-034 — name = display (same family as headings); role is not a link. */
 .site-brand {
   justify-self: start;
   min-width: 0;
@@ -535,7 +535,7 @@ html::-webkit-scrollbar-button,
   align-items: stretch;
 }
 
-/* Sliding selected — ukuran/posisi via --pill-* (T-040.2, bukan transform JS). */
+/* Sliding selected — size/position via --pill-* (T-040.2, not JS transform). */
 .site-pill-indicator {
   position: absolute;
   top: 0;
@@ -560,7 +560,7 @@ html::-webkit-scrollbar-button,
   transition: none !important;
 }
 
-/* Nav halaman (desktop) — tanpa nampan; selected = outline darah (ADR-031). */
+/* Page nav (desktop) — no tray; selected = blood outline (ADR-031). */
 .site-nav-chip {
   position: relative;
   overflow: visible;
@@ -618,9 +618,9 @@ html::-webkit-scrollbar-button,
 }
 
 /*
- * T-040.4 — lembar hamburger <1024px: panel elevated (#141418), bukan
- * nampan kuning. Bukan `<dialog>` modal: chrome di luar (Contact) tetap
- * bisa di-tap. Tutup via hamburger, Escape, atau pointer di luar panel.
+ * T-040.4 — hamburger sheet <1024px: elevated panel (#141418), not
+ * yellow tray. Not a `<dialog>` modal: chrome outside (Contact) stays
+ * tappable. Close via hamburger, Escape, or pointer outside the panel.
  */
 .site-mobile-nav {
   position: fixed;
@@ -643,9 +643,9 @@ html::-webkit-scrollbar-button,
 }
 
 /*
- * Stack Astryx memasang `display: flex` di stylesheet author, yang mengalahkan
- * UA rule `[hidden] { display: none }`. Tanpa ini panel hamburger tetap terlihat
- * setelah state React sudah tertutup (toggle/Escape/klik luar).
+ * Astryx stack sets `display: flex` in the author stylesheet, overriding
+ * UA rule `[hidden] { display: none }`. Without this the hamburger panel stays visible
+ * after React state is already closed (toggle/Escape/outside click).
  */
 .site-mobile-nav[hidden] {
   display: none !important;
@@ -747,8 +747,8 @@ html::-webkit-scrollbar-button,
 }
 
 /*
- * Di atas hamburger (z-index 55). Token popover sudah gothic-blood;
- * item mengikuti ADR-031 (outline darah, bukan fill muted).
+ * Above hamburger (z-index 55). Popover tokens already gothic-blood;
+ * items follow ADR-031 (blood outline, not muted fill).
  */
 .site-locale-menu[data-slot="dropdown-menu-content"] {
   z-index: 70;
@@ -795,9 +795,9 @@ html::-webkit-scrollbar-button,
 }
 
 /*
- * T-040.1 / T-040.5 — tombol chrome datar (T-038.3). Tanpa 3D, tanpa isi.
- * Hover/focus = aksen darah tipis (warna). Theme toggle hold: aturan isi
- * tetap, tidak di-mount.
+ * T-040.1 / T-040.5 — flat chrome buttons (T-038.3). No 3D, no fill.
+ * Hover/focus = thin blood accent (color). Theme toggle hold: inner rules
+ * remain, not mounted.
  */
 .site-theme-toggle-btn,
 .site-theme-toggle-btn[data-state="on"],
@@ -973,12 +973,12 @@ html::-webkit-scrollbar-button,
 
 /*
  * Home (T-014.2) — layout/spacing/motion mengikuti `design-mockups/home.html`
- * + `shared.css`. Compiler StyleX belum wired, jadi override scoped lewat
- * class (pola chrome T-013), token Astryx untuk warna/spacing, clamp hero
- * meniru mockup karena tidak ada step token yang setara.
+ * + `shared.css`. Compiler StyleX not wired yet, so scoped overrides via
+ * class (chrome T-013 pattern), Astryx tokens for color/spacing, hero clamp
+ * mirrors mockup because no matching token step exists.
  *
- * Header overlay (T-040.1 / T-055.2–T-055.3): sticky. Paling atas tanpa
- * wash; kaca on-scroll di desktop dan compact. Kontras = vellum di kanvas gelap.
+ * Header overlay (T-040.1 / T-055.2–T-055.3): sticky. Topmost without
+ * wash; on-scroll glass on desktop and compact. Contrast = vellum on dark canvas.
  */
 .site-chrome-header {
   position: sticky;
@@ -1202,7 +1202,7 @@ html::-webkit-scrollbar-button,
   text-align: right;
 }
 
-/* Dua sudut kiri-atas / kanan-bawah hanya jika sisa lebar cukup
+/* Top-left / bottom-right corners only when remaining width is enough
    di kanan lede (36rem). Tablet 768–1199 memakai pola mobile. */
 @media (min-width: 1200px) {
   .home-hero-heading {
@@ -1483,7 +1483,7 @@ button.home-work-tile,
     color-mix(in srgb, var(--color-text-primary) 35%, transparent);
   border-radius: var(--radius-full);
   pointer-events: none;
-  /* Di atas Contact/QI/sheet (90–92). Skip-link tetap 9999. */
+  /* Above Contact/QI/sheet (90–92). Skip-link stays 9999. */
   z-index: 200;
   transform: translate(-50%, -50%);
   opacity: 0;
@@ -1651,8 +1651,8 @@ button.home-work-tile,
 
 /*
  * About / Work / Contact / Quick Info (T-015, T-016, T-019, T-020)
- * Visual dari design-mockups/about.html, work.html, shared.css.
- * Compiler StyleX belum wired — scoped class + token, pola T-013/T-014.
+ * Visual from design-mockups/about.html, work.html, shared.css.
+ * Compiler StyleX not wired — scoped class + token, T-013/T-014 pattern.
  */
 
 .page-word {
@@ -2180,8 +2180,8 @@ button.home-work-tile,
 }
 
 /*
- * T-054.4 (review PR #73): mix-blend debu tidak boleh menembus pita Contact,
- * tapi Home/Projects tetap pita 1400. Full-bleed + z-index 2 hanya saat
+ * T-054.4 (review PR #73): dust mix-blend must not bleed through the Contact ribbon,
+ * but Home/Projects keep ribbon 1400. Full-bleed + z-index 2 only when
  * `.wf-cathedral-dust` terpasang.
  */
 body:has(.wf-cathedral-dust) .site-footer {
@@ -3032,7 +3032,7 @@ html.page-vt-lock .wf-cathedral-optics {
   color: var(--color-text-primary);
 }
 
-/* Contact modal — T-041.1: kartu elevated token (keluarga hamburger T-040.4). */
+/* Contact modal — T-041.1: elevated token card (hamburger family T-040.4). */
 .ct-scrim {
   position: fixed;
   inset: 0;
@@ -3064,7 +3064,7 @@ html.page-vt-lock .wf-cathedral-optics {
   position: fixed;
   top: 50%;
   left: 50%;
-  /* Pusatkan lewat `translate(-50%, -50%)`. Scale enter/exit = keyframe
+  /* Center via `translate(-50%, -50%)`. Scale enter/exit = keyframe
    * `.ct-panel[data-state]` (T-036.3/T-036.6). */
   z-index: 92;
   width: min(880px, calc(100vw - 2rem));
@@ -3421,22 +3421,22 @@ html.ct-lock .qi-tab {
 }
 
 /*
- * Transisi halaman T-043.1 = snapshot CSS, hard cut + stutter frame
- * (T-038.3). Bukan Hess scale, bukan RGB/VHS, bukan View Transitions API.
- * Live page diparkir (visibility) sampai cut — tampil lebih dulu = kedip.
- * Selector live tidak boleh mengenai clone.
+ * Page transition T-043.1 = snapshot CSS, hard cut + stutter frame
+ * (T-038.3). Not Hess scale, not RGB/VHS, not View Transitions API.
+ * Live page parked (visibility) until cut — showing earlier = flicker.
+ * Live selector must not hit the clone.
  *
- * T-025.8: Lenis.stop() menambah .lenis-stopped { overflow: clip } dan
- * menelan scrollbar track. Tetap tampilkan track (overflow-y: scroll);
- * wheel tetap diblokir Lenis. Jangan overflow: hidden pada html/body.
- * Specificity harus mengalahkan `.lenis.lenis-stopped` (3 class).
+ * T-025.8: Lenis.stop() adds .lenis-stopped { overflow: clip } and
+ * swallow the scrollbar track. Keep showing the track (overflow-y: scroll);
+ * wheel stays blocked by Lenis. Do not use overflow: hidden on html/body.
+ * Specificity must beat `.lenis.lenis-stopped` (3 class).
  *
- * T-025.10: clone selalu `translateY(-scrollY)`; reset Lenis+window ke 0
- * setelah snapshot. Parkir live = visibility saja (bukan 100dvh) supaya
- * hard cut tidak slide dari bawah.
- * Selector `.site-chrome-main` dan `.site-footer` harus
- * `:not(.page-vt-clone *)` — clone menghapus `id` tapi menyimpan class;
- * tanpa pengecualian, snapshot exit ikut di-park (P2 PR #46 + review PR #67).
+ * T-025.10: clone always `translateY(-scrollY)`; reset Lenis+window to 0
+ * after snapshot. Park live = visibility only (not 100dvh) so
+ * hard cut does not slide in from below.
+ * Selectors `.site-chrome-main` and `.site-footer` must use
+ * `:not(.page-vt-clone *)` — clone drops `id` but keeps class;
+ * no exceptions; snapshot exit is parked too (P2 PR #46 + review PR #67).
  */
 html.page-vt-lock,
 html.page-vt-lock body {
@@ -3465,17 +3465,17 @@ html.lenis.page-vt-lock.lenis-stopped {
   visibility: hidden !important;
 }
 
-/* Ring di-portal ke `body`, bukan di dalam klon. */
+/* Ring portaled to `body`, not inside the clone. */
 html.page-vt-lock .home-cursor-ring {
   visibility: hidden !important;
 }
 
 /*
- * T-043.1 follow-up (chat 2026-09-08): overlay film vintage tipis selama
- * lock saja. Grain + vignette + kedip luminance — bukan RGB/VHS, bukan
- * grade warna, bukan clip video. Chrome tetap di atas (z-index 50).
- * Lapisan `.page-vt-film` (bukan html::before/after) supaya compositor
- * root tidak ikut blend.
+ * T-043.1 follow-up (chat 2026-09-08): thin vintage film overlay during
+ * lock only. Grain + vignette + kedip luminance — not RGB/VHS, not
+ * color grade, not video clip. Chrome stays on top (z-index 50).
+ * `.page-vt-film` layer (not html::before/after) so the compositor
+ * root does not blend along.
  */
 .page-vt-film {
   position: fixed;
@@ -3536,8 +3536,8 @@ html.page-vt-lock .home-cursor-ring {
 }
 
 /*
- * Discrete holds (steps(1) antar keyframe) — jump horror, bukan tween.
- * Offset tidak simetris supaya terasa skip film, bukan shake library.
+ * Discrete holds (steps(1) between keyframes) — jump horror, not tween.
+ * Asymmetric offset so it feels like film skip, not library shake.
  */
 @keyframes page-vt-stutter-exit {
   0% {
@@ -3651,7 +3651,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   }
 }
 
-/* Quick Info — T-041.2: panel elevated; tab tepi datar (bukan nampan wine). */
+/* Quick Info — T-041.2: panel elevated; flat edge tab (not wine tray). */
 .qi-scrim {
   position: fixed;
   inset: 0;
@@ -4025,7 +4025,7 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   }
 }
 
-/* Project sheet — T-041.3: Drawer bawah elevated (keluarga Contact/QI). */
+/* Project sheet — T-041.3: Bottom elevated drawer (Contact/QI family). */
 .ps-scrim[data-vaul-overlay],
 .ps-scrim[data-slot="drawer-overlay"],
 .ps-scrim {

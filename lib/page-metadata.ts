@@ -4,7 +4,7 @@ import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import type { Locale } from "@/lib/locale";
 import { getSiteUrl, localePath, PROJECTS_PATH } from "@/lib/site-url";
 
-/** Satu kartu situs T-031.1 / T-031.3. Bukan Unsplash, bukan foto diri. */
+/** Single site share card T-031.1 / T-031.3. Not Unsplash, not a portrait photo. */
 export const SITE_SHARE_IMAGE = {
   url: "/brand/og.png",
   width: 1200,
@@ -13,9 +13,9 @@ export const SITE_SHARE_IMAGE = {
 } as const;
 
 /**
- * OG dasar + canonical dari `NEXT_PUBLIC_SITE_URL` (T-017.2, M7).
- * Path tanpa prefix locale, mis. `""` (Home), `"workflow"`, `"projects"`.
- * About = `#about` di Home (ADR-040), bukan path halaman.
+ * Base OG + canonical from `NEXT_PUBLIC_SITE_URL` (T-017.2, M7).
+ * Path without locale prefix, e.g. `""` (Home), `"workflow"`, `"projects"`.
+ * About = `#about` on Home (ADR-040), not a page path.
  */
 export function pageMetadata(
   locale: Locale,
@@ -73,8 +73,8 @@ export function pageMetadata(
 }
 
 /**
- * Title/description/canonical/OG per halaman case (T-056.5).
- * Kartu share = aset situs; OG per-karya bukan blocker.
+ * Title/description/canonical/OG per case page (T-056.5).
+ * Share card = site asset; per-work OG is not a blocker.
  */
 export function casePageMetadata(
   locale: Locale,

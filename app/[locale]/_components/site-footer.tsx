@@ -4,15 +4,15 @@ import type { Locale } from "@/lib/locale";
 import { SiteFooterCta } from "./site-footer-cta";
 
 /**
- * Footer = pita Contact (T-025.3, ADR-025): heading + CTA membuka modal
- * yang sama, lalu legal + satelit LinkedIn/GitHub. Bukan form baru;
- * tanpa WA/IG (ADR-014). Copy dari `HOME_COPY` (T-021.2) — tidak dikarang.
- * Shell server; tombol modal = island `SiteFooterCta` (T-028.1).
+ * Footer = Contact ribbon (T-025.3, ADR-025): heading + CTA opens the same
+ * modal, then legal + LinkedIn/GitHub satellite links. Not a new form;
+ * no WA/IG (ADR-014). Copy from `HOME_COPY` (T-021.2) — not invented.
+ * Server shell; modal button = `SiteFooterCta` island (T-028.1).
  *
- * T-033.6: Section/VStack/Heading/Text/Link Astryx → semantik + class
- * scoped; CTA = Button shadcn + Magnetic (T-036.1).
- * T-040.5: pita ghost (tanpa nampan); CTA teks datar + panah.
- * ADR-041: pita di semua rute termasuk Home (ADR-033 superseded).
+ * T-033.6: Section/VStack/Heading/Text/Link Astryx → semantic markup + scoped
+ * classes; CTA = shadcn Button + Magnetic (T-036.1).
+ * T-040.5: ghost ribbon (no tray); flat text CTA + arrow.
+ * ADR-041: ribbon on all routes including Home (ADR-033 superseded).
  */
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
@@ -29,17 +29,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
         <div className="site-footer-legal">
           {/*
-           * Bug ditemukan 2026-08-16 saat regression test PR theme flash (tidak
-           * terkait ADR-021/tema — pre-existing, ada di `main` juga): setiap
-           * kali ada state client di ancestor (mis. toggle tema) yang memicu
-           * React men-diff ulang, nilai `new Date().getFullYear()` di Server
-           * Component ini bisa dianggap mismatch oleh React dev — persis kasus
-           * yang React sendiri sebut di pesan error hydration-nya ("Date.now()
-           * or Math.random() which changes each time it's called").
-           * `suppressHydrationWarning` adalah pola resmi React untuk nilai
-           * seperti ini (react.dev/link/hydration-mismatch). Angka tahun
-           * sendiri tidak berubah dalam satu sesi, jadi tidak ada dampak
-           * visual — cuma hilangkan warning.
+           * Bug found 2026-08-16 during PR theme-flash regression (unrelated to
+           * ADR-021/theme — pre-existing, on `main` too): whenever ancestor
+           * client state (e.g. theme toggle) makes React re-diff, `new Date().getFullYear()`
+           * in this Server Component can look like a mismatch in React dev — the case
+           * React cites in hydration errors ("Date.now() or Math.random() which
+           * changes each time it's called").
+           * `suppressHydrationWarning` is the official React pattern for values
+           * like this (react.dev/link/hydration-mismatch). The year itself does not
+           * change within a session, so there is no visual impact — only silences the warning.
            */}
           <p className="site-footer-legal-copy">
             © <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}

@@ -3,7 +3,7 @@ import email from "./data/email.json";
 import links from "./data/links.json";
 
 /**
- * Copy Contact modal. Email & tautan satelit dari
+ * Contact modal copy. Email & satellite links from
  * `content/data/email.json` + `content/data/links.json`.
  */
 

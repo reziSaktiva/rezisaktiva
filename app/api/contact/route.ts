@@ -8,7 +8,7 @@ import {
 
 export const runtime = "nodejs";
 
-const SUBJECT = "Pesan dari situs rezisaktiva";
+const SUBJECT = "Message from rezisaktiva site";
 const contactHits = new Map<string, number[]>();
 
 export async function POST(request: Request) {

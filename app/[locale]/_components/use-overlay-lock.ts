@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { readCssDurationMs } from "@/lib/motion";
 
 /**
- * `ct-lock` / `qi-lock` tetap aktif sampai transisi tutup overlay selesai,
- * supaya Lenis tidak jalan di bawah scrim yang masih fade-out.
+ * `ct-lock` / `qi-lock` stay active until the overlay close transition finishes,
+ * so Lenis does not run under a scrim still fading out.
  */
 export function useOverlayDocumentLock(
   isOpen: boolean,

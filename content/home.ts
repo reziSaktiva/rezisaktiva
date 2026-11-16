@@ -1,9 +1,9 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy Home. Klaim + dua baris display ADR-038 / T-051.
- * Lede + tautan Workflow ADR-037 / ADR-038. Now bukan di Home.
- * Contact footer tetap T-021.2.
+ * Home copy. Claim + two display lines ADR-038 / T-051.
+ * Lede + Workflow link ADR-037 / ADR-038. Now is not on Home.
+ * Contact footer stays T-021.2.
  */
 
 export interface HomeCopy {

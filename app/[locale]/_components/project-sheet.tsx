@@ -30,11 +30,11 @@ function prefersReducedMotionNow(): boolean {
 
 /**
  * Project sheet M10 (T-026, ADR-027; T-035.3–T-035.4; T-041.3) — Drawer
- * vaul dari bawah, skin `.ps-*` elevated token. Tile Work index
- * membuka sheet, bukan live URL. Tautan primer in-site ke case
- * (T-056.4, ADR-044); Live sekunder. Tanpa tautan Repo. Event
- * `rz-project-sheet-open`; `ps-lock` + Lenis pause; overlay asing
- * menutup sheet.
+ * vaul from bottom, `.ps-*` elevated token skin. Work index tile
+ * opens the sheet, not the live URL. Primary in-site link to case
+ * (T-056.4, ADR-044); Live secondary. No repo link. Event
+ * `rz-project-sheet-open`; `ps-lock` + Lenis pause; foreign overlay
+ * closes the sheet.
  */
 export function ProjectSheet({
   locale,

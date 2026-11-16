@@ -27,13 +27,13 @@ function hrefForLocale(pathname: string, target: Locale): string {
 }
 
 /**
- * Language switcher — selalu ada di chrome (T-013.2, polish T-010.3).
- * Klik menyimpan preferensi ke cookie `NEXT_LOCALE`; hanya dipakai middleware
- * untuk redirect `/` (tidak pernah rewrite path ber-locale) sesuai ADR-014.
- * Path tetap dievaluasi di sibling locale (Home↔Home, About↔About, dst.)
+ * Language switcher — always in chrome (T-013.2, polish T-010.3).
+ * Click stores preference in `NEXT_LOCALE` cookie; middleware uses it only
+ * for `/` redirect (never rewrites locale paths) per ADR-014.
+ * Path still resolves to the sibling locale (Home↔Home, About↔About, etc.)
  * per `navigation-patterns.md`.
  *
- * Dropdown Menu shadcn (radio ID/EN); kulit gothic-blood via `.site-locale-*`.
+ * shadcn Dropdown Menu (ID/EN radio); gothic-blood skin via `.site-locale-*`.
  */
 export function LocaleSwitcher({
   locale,
@@ -41,7 +41,7 @@ export function LocaleSwitcher({
   onOpenChange,
 }: {
   locale: Locale;
-  /** `menu` = compact di panel hamburger. */
+  /** `menu` = compact in the hamburger panel. */
   variant?: "bar" | "menu";
   onOpenChange?: (open: boolean) => void;
 }) {

@@ -7,16 +7,16 @@ import { workPhotoProps } from "@/lib/work-image";
 import { cn } from "@/lib/utils";
 
 /**
- * Tile karya — visual `.work-tile` + craft hover (T-025.5, T-036.2).
+ * Work tile — `.work-tile` visual + hover craft (T-025.5, T-036.2).
  *
- * `href` (internal, via NextLink) — tautan katalog, mis. “Semua proyek”.
+ * `href` (internal, via NextLink) — catalog link, e.g. “All projects”.
  *
- * `onSelect` — klik tile membuka project sheet (Work index).
+ * `onSelect` — tile click opens project sheet (Work index).
  *
- * Caption + scrim: CSS hover/focus desktop; selalu terlihat jika
- * `hover: none` (ponsel). Hover desktop = grayscale → warna penuh,
- * foto sedikit membesar di dalam plate + caption. Reduced-motion =
- * tanpa scale; warna tetap berubah instan.
+ * Caption + scrim: CSS hover/focus on desktop; always visible when
+ * `hover: none` (phone). Desktop hover = grayscale → full color,
+ * photo scales slightly inside the plate + caption. Reduced-motion =
+ * no scale; color still flips instantly.
  */
 export function WorkTile({
   item,
@@ -29,7 +29,7 @@ export function WorkTile({
 }: {
   item: WorkItem;
   href?: string;
-  /** Work index: buka sheet. Jangan dipakai bersama `href`. */
+  /** Work index: open sheet. Do not use with `href`. */
   onSelect?: () => void;
   sheetOpen?: boolean;
   sheetPanelId?: string;

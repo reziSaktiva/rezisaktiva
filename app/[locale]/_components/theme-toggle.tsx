@@ -13,8 +13,8 @@ const THEME_TOGGLE_LABEL: Record<Locale, string> = {
 
 /**
  * T-013.4 (ADR-021) — toggle dark/light.
- * T-038.2 hold: **tidak di-mount** di `site-header.tsx`. File tetap.
- * Saat hold dicabut, pasang lagi di luar hamburger.
+ * T-038.2 hold: **not mounted** in `site-header.tsx`. File kept.
+ * When hold is released, mount again outside the hamburger.
  */
 export function ThemeToggle({ locale }: { locale: Locale }) {
   const { mode } = useThemeMode();

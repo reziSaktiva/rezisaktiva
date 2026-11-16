@@ -127,10 +127,10 @@ export function SlidingPillGroup({
     };
 
     /**
-     * Klik mouse menyisakan :focus di link nav, tapi biasanya bukan
-     * :focus-visible. onLeave dulu menahan reset selama ada fokus di chip
-     * — pill tidak kembali ke item terpilih sampai klik di luar. Keyboard
-     * (Tab) tetap menahan pill lewat :focus-visible.
+     * Mouse click leaves :focus on the nav link, but usually not
+     * :focus-visible. onLeave used to hold reset while focus stayed on the chip
+     * — pill does not return to the selected item until click outside. Keyboard
+     * (Tab) still holds the pill via :focus-visible.
      */
     const onLeave = () => {
       const activeEl = document.activeElement;

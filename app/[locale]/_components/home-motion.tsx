@@ -45,7 +45,7 @@ const MAGNETIC_TWEEN = {
 
 /**
  * Scroll-triggered fade/slide — pola `.home-reveal` (ADR-017).
- * Tween `--duration-slow-min` + `--ease-standard`, bukan spring.
+ * Tween `--duration-slow-min` + `--ease-standard`, not spring.
  */
 export function Reveal({
   children,
@@ -112,7 +112,7 @@ export function WordReveal({
 }
 
 /**
- * Word reveal hero — dua baris display (ADR-038). Tween token sebelumnya.
+ * Hero word reveal — two display lines (ADR-038). Token tween as before.
  */
 export function HeroWords({ lines }: { lines: readonly [string, string] }) {
   return (
@@ -189,9 +189,9 @@ export function Magnetic({ children }: { children: ReactNode }) {
 /**
  * Cursor ring — desktop, pointer halus (ADR-019).
  * Off di sentuh dan `prefers-reduced-motion`. `div` + `left`/`top` + CSS
- * `translate(-50%, -50%)` — bukan Motion `x`/`y`.
- * Portal ke `document.body` supaya ring/X di atas Dialog/Sheet/Drawer
- * (overlay Contact z-90/92). rAF hanya saat pointer bergerak; pause
+ * `translate(-50%, -50%)` — not Motion `x`/`y`.
+ * Portal to `document.body` so ring/X sit above Dialog/Sheet/Drawer
+ * (Contact overlay z-90/92). rAF only while the pointer moves; pause
  * `document.hidden`.
  */
 export function CursorRing() {

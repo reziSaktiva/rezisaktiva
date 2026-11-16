@@ -4,7 +4,7 @@ import type { Locale } from "@/lib/locale";
 /**
  * Title + description destinasi R1. Dikunci T-021.7 (2026-08-28);
  * About vs Workflow dipisah ADR-035 (2026-09-07); About jadi section Home
- * (ADR-040). Contact = modal, tidak punya title halaman.
+ * (ADR-040). Contact = modal, no page title.
  */
 
 export type SiteSurface = "home" | "workflow" | "work";

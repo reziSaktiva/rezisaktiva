@@ -38,12 +38,12 @@ import { useOverlayDocumentLock, useOverlayPresence } from "./use-overlay-lock";
 
 /**
  * Contact modal global (T-016.2, ADR-019; T-035.1, T-036.3; T-041.1) —
- * Dialog shadcn + skin `.ct-*` (kartu elevated token, keluarga hamburger).
- * Enter/exit = transisi CSS token + `forceMount` hanya selama overlay
- * masih `present` (bukan spring). Bukan route `/contact`.
+ * shadcn Dialog + `.ct-*` skin (elevated token card, hamburger family).
+ * Enter/exit = CSS token transition + `forceMount` only while the overlay
+ * is still `present` (not spring). Not the `/contact` route.
  *
- * Form: POST /api/contact (ADR-047). "Terkirim" hanya setelah server
- * menerima. mailto: + salin tetap cadangan yang terlihat.
+ * Form: POST /api/contact (ADR-047). “Sent” UI only after the server
+ * accepts. mailto + copy remain visible fallbacks.
  */
 export function ContactModal({ locale }: { locale: Locale }) {
   const { isOpen, close } = useContactModal();

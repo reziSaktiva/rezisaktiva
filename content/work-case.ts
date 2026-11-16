@@ -2,8 +2,8 @@ import type { Locale } from "@/lib/locale";
 import { PROJECTS_CATALOG } from "./work";
 
 /**
- * Kedalaman halaman case (ADR-046, T-058). Sheet tetap skim.
- * Fakta dari CV + copy yang dikunci; jangan dikarang.
+ * Case page depth (ADR-046, T-058). Sheet stays skim-level.
+ * Facts from CV + locked copy; do not invent.
  */
 
 export interface WorkCaseCopy {

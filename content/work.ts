@@ -4,17 +4,17 @@ import { isProjectRepoUrl } from "@/lib/project-live-preview";
 import projects from "./data/projects.json";
 
 /**
- * Katalog karya R1 + copy halaman Work index. Fakta di
- * `content/data/projects.json` — dikunci T-021.5 dari resume, jangan dikarang.
- * Slug kebab-case + isi halaman case = slot sheet yang sama (T-056.2).
+ * R1 work catalog + Work index page copy. Facts in
+ * `content/data/projects.json` — locked T-021.5 from resume, do not invent.
+ * Kebab-case slug + case page body = same sheet slot (T-056.2).
  *
- * `liveHrefs` / `href` = situs live (bukan GitHub). Kosong = tanpa tautan.
- * Tile Work membuka sheet M10 (T-026); Live di sheet dan halaman case.
+ * `liveHrefs` / `href` = live sites (not GitHub). Empty = no link.
+ * Work tile opens M10 sheet (T-026); Live on sheet and case page.
  *
- * Sembunyikan karya: tambah id ke `hiddenIds` di JSON (data tetap tersimpan).
- * Karya di `hiddenIds` tidak punya rute publik `/projects/[slug]` (ADR-044).
- * Karya publik tanpa merek: judul/slug deskriptif, tanpa live/repo merek (ADR-045).
- * Halaman case lebih dalam dari sheet (ADR-046): periode, stack, poin dari CV.
+ * Hide work: add id to `hiddenIds` in JSON (data kept).
+ * `hiddenIds` items have no public `/projects/[slug]` route (ADR-044).
+ * Public work without brand names: descriptive title/slug, no branded live/repo (ADR-045).
+ * Case page deeper than sheet (ADR-046): period, stack, bullets from CV.
  */
 
 export const PROJECT_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

@@ -5,7 +5,7 @@ import { useServerInsertedHTML } from "next/navigation";
 import { getThemeInitScript } from "@/lib/theme-mode";
 
 /**
- * Suntik script anti-flash ke HTML SSR di luar pohon yang di-hydrate.
+ * Inject anti-flash script into SSR HTML outside the hydrated tree.
  * `<Script>` / `<script>` di `app/layout.tsx` memicu React 19:
  * "Encountered a script tag while rendering React component".
  */

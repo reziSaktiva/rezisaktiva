@@ -2,10 +2,10 @@ import { Instrument_Sans, Texturina } from "next/font/google";
 
 /**
  * T-039.2 — pasangan T-038.4.
- * Display: Texturina (textura, OFL, Google Fonts) — naskah/katedral, bukan costume.
- * Body/UI: Instrument Sans (OFL) — grotesk terbaca; bukan Inter/Roboto/Arial.
- * Variabel dipasang di `<body>` (bukan `<html>`) supaya class `dark`/Lenis
- * di documentElement tidak ditimpa reconcile `className`.
+ * Display: Texturina (textura, OFL, Google Fonts) — manuscript/cathedral, not costume.
+ * Body/UI: Instrument Sans (OFL) — readable grotesk; not Inter/Roboto/Arial.
+ * Variables on `<body>` (not `<html>`) so `dark`/Lenis classes on
+ * documentElement are not overwritten by `className` reconcile.
  */
 export const instrumentSans = Instrument_Sans({
   subsets: ["latin", "latin-ext"],

@@ -28,24 +28,24 @@ const ThemeModeContext = createContext<ThemeModeContextValue | null>(null);
 interface ThemeModeProviderProps {
   children: ReactNode;
   /**
-   * Preferensi yang sudah diketahui server (dibaca dari cookie di
-   * `app/layout.tsx`, default "light" kalau tidak ada — ADR-021 poin 2).
-   * Dialirkan sebagai prop (bukan module state) supaya per-request dan aman
-   * dari kebocoran antar request — lihat komentar `lib/theme-mode.ts`.
+   * Preference already known on the server (read from cookie in
+   * `app/layout.tsx`, default "light" when missing — ADR-021 point 2).
+   * Passed as a prop (not module state) so it is per-request and safe from
+   * cross-request leakage — see `lib/theme-mode.ts` comments.
    *
-   * Karena nilai ini identik dengan yang akan dipakai render client pertama
-   * (`getSnapshot` di bawah jatuh balik ke prop ini kalau localStorage
-   * kosong), server & client snapshot SELALU sama — tidak ada lagi render
-   * koreksi `useSyncExternalStore` yang menyebabkan flash tema.
+   * Because this value matches the first client render
+   * (`getSnapshot` below falls back to this prop when localStorage is empty),
+   * server & client snapshots are ALWAYS equal — no more
+   * `useSyncExternalStore` correction renders that caused theme flash.
    */
   initialMode: ThemeMode;
 }
 
 /**
- * T-013.4 (ADR-021) — default ship tetap light kalau belum ada preferensi.
- * Mode dibaca lewat `useSyncExternalStore` dari `lib/theme-mode.ts`; server
- * & client snapshot pertama sama-sama `initialMode` (dari cookie), sehingga
- * tanpa effect/setState terpisah dan tanpa hydration mismatch/flash.
+ * T-013.4 (ADR-021) — default ship stays light when no preference yet.
+ * Mode is read via `useSyncExternalStore` from `lib/theme-mode.ts`; first
+ * server & client snapshots are both `initialMode` (from cookie), so there is
+ * no separate effect/setState and no hydration mismatch/flash.
  */
 export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderProps) {
   const getServerSnapshot = useCallback(() => initialMode, [initialMode]);
@@ -56,13 +56,13 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
   const mode = useSyncExternalStore(subscribeThemeMode, getSnapshot, getServerSnapshot);
 
   /**
-   * Sinkronkan `style.colorScheme` + class `dark` di `<html>` tiap kali
-   * `mode` berubah (toggle tanpa reload). Jangan lewat `className` React di
-   * `<html>` — itu menimpa class Lenis / overlay lock. Nilai awal: cookie
-   * SSR untuk `colorScheme` + `ThemeInitScript` (`classList`).
-   * `data-theme` di-set di markup SSR (`app/layout.tsx`) dan di-sync di sini
-   * saat toggle tanpa reload. Class `dark` awal: `ThemeInitScript`
-   * (`useServerInsertedHTML` + `classList`). Jangan `className` React di `<html>`.
+   * Sync `style.colorScheme` + `dark` class on `<html>` whenever `mode` changes
+   * (toggle without reload). Do not use React `className` on `<html>` — it
+   * overwrites Lenis / overlay lock classes. Initial values: cookie SSR for
+   * `colorScheme` + `ThemeInitScript` (`classList`).
+   * `data-theme` is set in SSR markup (`app/layout.tsx`) and synced here on
+   * toggle without reload. Initial `dark` class: `ThemeInitScript`
+   * (`useServerInsertedHTML` + `classList`). No React `className` on `<html>`.
    */
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -90,52 +90,48 @@ export function ThemeModeProvider({ children, initialMode }: ThemeModeProviderPr
 export function useThemeMode(): ThemeModeContextValue {
   const ctx = useContext(ThemeModeContext);
   if (!ctx) {
-    throw new Error("useThemeMode harus dipakai di dalam ThemeModeProvider");
+    throw new Error("useThemeMode must be used within ThemeModeProvider");
   }
   return ctx;
 }
 
 /**
- * Warna chip kuning (nav link, locale switch, mobile drawer — lihat
+ * Yellow chip colors (nav link, locale switch, mobile drawer — see
  * `globals.css` `.site-nav-chip`/`.site-mobile-nav-chip`).
  *
- * Bug ditemukan 2026-08-16 (lihat COMPLETE_TASK.md): sebelumnya dua warna ini
- * ("--chrome-pill-bg"/"--chrome-pill-fg") didefinisikan lewat CSS
- * `light-dark()` di `:root` (`globals.css`), MEWARISI `color-scheme` dari
- * wrapper `<div>` Astryx yang jauh di atasnya. Terbukti lewat CDP
- * (`transition-property: background-color, color` bawaan Astryx pada chip)
- * bahwa browser sempat meng-kalkulasi `light-dark()` itu 1 pass memakai
- * skema yang salah sebelum "settle" ke yang benar — transition Astryx lalu
- * membuat koreksi itu terlihat sebagai animasi warna (persis gejala yang
- * dilaporkan: chip "Home"/bahasa terpilih kedip sebentar sebelum jadi hitam).
+ * Bug found 2026-08-16 (see COMPLETE_TASK.md): previously these two colors
+ * ("--chrome-pill-bg"/"--chrome-pill-fg") were defined via CSS `light-dark()`
+ * on `:root` (`globals.css`), INHERITING `color-scheme` from a high Astryx
+ * wrapper `<div>`. Proven via CDP (`transition-property: background-color, color`
+ * on chips by default) that the browser sometimes computed `light-dark()` in
+ * one pass with the wrong scheme before settling — Astryx transition then made
+ * the correction look like a color animation (exact symptom reported: selected
+ * "Home"/language chip flashed briefly before turning black).
  *
- * Fix: jangan gantungkan warna ini ke resolusi `light-dark()` CSS sama
- * sekali. Hitung langsung dari `mode` React (satu-satunya sumber kebenaran,
- * sudah dijamin identik antara server & client — lihat `ThemeModeProvider`
- * di atas) dan suntikkan sebagai inline `style` di elemen wrapper masing-
- * masing (`site-header.tsx`). Tidak ada CSS
- * `color-scheme`/`light-dark()` yang perlu di-resolve sama sekali untuk 2
- * token ini lagi, jadi tidak ada lagi kemungkinan koreksi 2-pass.
+ * Fix: do not tie these colors to CSS `light-dark()` resolution at all.
+ * Compute directly from React `mode` (single source of truth, already guaranteed
+ * identical server & client — see `ThemeModeProvider` above) and inject as inline
+ * `style` on each wrapper (`site-header.tsx`). No CSS `color-scheme`/`light-dark()`
+ * resolution needed for these 2 tokens anymore, so no 2-pass correction.
  *
- * PENTING — jaga sinkron manual (code review 2026-08-16): nilai hex di
- * bawah adalah SATU-SATUNYA sumber yang benar-benar dipakai saat runtime.
- * `app/globals.css` `:root { --chrome-pill-bg/--chrome-pill-fg }` cuma
- * fallback statis (tidak pernah kepakai selama `useChipColorVars()`
- * ter-render) — kalau ubah warna di sini, update juga fallback di
- * `globals.css` (komentar di sana menunjuk balik ke sini).
+ * IMPORTANT — keep in sync manually (code review 2026-08-16): hex values below
+ * are the ONLY source actually used at runtime. `app/globals.css`
+ * `:root { --chrome-pill-bg/--chrome-pill-fg }` is only a static fallback
+ * (never used while `useChipColorVars()` renders) — if you change colors here,
+ * update the fallback in `globals.css` (comments there point back here).
  */
 const CHIP_COLOR_BY_MODE: Record<ThemeMode, { bg: string; fg: string }> = {
-  /* T-038.3 selected = bercak darah; T-039.1 wine. Hold: sama di kedua mode. */
+  /* T-038.3 selected = blood spot; T-039.1 wine. Hold: same in both modes. */
   light: { bg: "#6B1C23", fg: "#E8E4DC" },
   dark: { bg: "#6B1C23", fg: "#E8E4DC" },
 };
 
 /**
- * `CSSProperties` bawaan React belum punya index signature untuk custom
- * property (`--*`) — intersection type ini (bukan `as` cast, code review
- * 2026-08-16) tetap menahan compiler mengecek 2 key wajibnya, karena semua
- * properti `CSSProperties` opsional sehingga object literal yang cuma
- * berisi 2 custom property ini tetap valid secara struktural.
+ * Built-in React `CSSProperties` has no index signature for custom properties
+ * (`--*`) — this intersection type (not an `as` cast, code review 2026-08-16)
+ * still lets the compiler check the two required keys, because all `CSSProperties`
+ * fields are optional so an object literal with only these 2 custom properties
+ * remains structurally valid.
  */
 type ChipColorVars = CSSProperties & {
   "--chrome-pill-bg": string;

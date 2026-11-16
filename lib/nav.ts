@@ -2,10 +2,10 @@ import type { Locale } from "@/lib/locale";
 import { projectsHref, workflowHref } from "@/lib/site-url";
 
 /**
- * Item nav chip R1 (About / Workflow / Proyek) per ADR-020 + ADR-034 +
- * ADR-035 + ADR-040 — Home tidak di chip; nama brand adalah tautan Home.
- * About = `#about` di Home. Contact bukan link nav (ADR-019). `home` tetap
- * di `NAV_LABELS` untuk breadcrumb JSON-LD (T-029).
+ * R1 nav chip items (About / Workflow / Work) per ADR-020 + ADR-034 +
+ * ADR-035 + ADR-040 — Home is not on the chip; the brand name is the Home link.
+ * About = `#about` on Home. Contact is not a nav link (ADR-019). `home` stays
+ * in `NAV_LABELS` for breadcrumb JSON-LD (T-029).
  */
 export type NavKey = "home" | "about" | "workflow" | "work";
 export type NavChipKey = Exclude<NavKey, "home">;
@@ -60,8 +60,8 @@ export const MENU_LABEL: Record<Locale, string> = {
 };
 
 /**
- * Aria-label tombol hamburger, berbeda saat terbuka/tertutup — selaras
- * `nav.menu` / `nav.menuClose` di mockup (`design-mockups/shared.js`).
+ * Hamburger button aria-label, different when open/closed — aligned with
+ * `nav.menu` / `nav.menuClose` in the mockup (`design-mockups/shared.js`).
  */
 export const MENU_TOGGLE_LABEL: Record<Locale, { open: string; close: string }> = {
   id: { open: "Buka menu", close: "Tutup menu" },
@@ -74,8 +74,8 @@ export const SKIP_TO_CONTENT_LABEL: Record<Locale, string> = {
 };
 
 /**
- * Cocokkan pathname (+ hash untuk About) ke item chip nav.
- * About = section `#about` di Home (ADR-040), bukan route.
+ * Match pathname (+ hash for About) to a chip nav item.
+ * About = `#about` section on Home (ADR-040), not a route.
  */
 export function isNavItemActive(
   pathname: string,
