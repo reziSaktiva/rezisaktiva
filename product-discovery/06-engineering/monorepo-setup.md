@@ -1,29 +1,29 @@
 # Monorepo / Repo Setup
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-11). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan bentuk repo aplikasi untuk website portofolio **rezisaktiva**.
+This document defines the application repo shape for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-R1 memakai **single-app di repo yang sama** (bukan monorepo workspace, bukan repo app terpisah).
+R1 uses a **single app in the same repo** (not a monorepo workspace, not a separate app repo).
 
-* Framework: **Next.js** (App Router), **static-first SSG** — selaras ADR-015
+* Framework: **Next.js** (App Router), **static-first SSG** — aligned with ADR-015
 * Package manager: **pnpm**
-* Satu `package.json` di **root** repo
-* Docs discovery (`product-discovery/`, `project-manager/`) tetap di repo yang sama (ADR-003)
+* One `package.json` at the repo **root**
+* Discovery docs (`product-discovery/`, `project-os/`) stay in the same repo (ADR-003)
 
-Tidak ada Turborepo / pnpm workspace multi-package untuk R1.
+There is no Turborepo / pnpm multi-package workspace for R1.
 
 ---
 
-# Tujuan
+# Purpose
 
-* Mengunci bentuk repo sebelum bootstrap
-* Menjaga proporsi: situs kecil + docs, tanpa scaffolding monorepo berlebih
-* Memisahkan jelas: konten situs vs dokumen discovery vs private
+* Lock the repo shape before bootstrap
+* Keep the proportion right: small site + docs, without excessive monorepo scaffolding
+* Clearly separate site content vs discovery docs vs private material
 
 ---
 
@@ -31,13 +31,13 @@ Tidak ada Turborepo / pnpm workspace multi-package untuk R1.
 
 ```text
 rezisaktiva/
-├── app/                    # Next.js App Router (halaman /id|/en, …)
-├── content/                # SoT konten: copy TS + fakta JSON di `content/data/`
-├── public/                 # aset statis
-├── product-discovery/      # SoT produk (docs)
-├── project-manager/        # SoT cara kerja (docs)
-├── private/                # sensitif (ADR-003); bukan runtime app
-├── package.json            # satu app Next
+├── app/                    # Next.js App Router (pages /id|/en, …)
+├── content/                # Content SoT: TS copy + JSON facts in `content/data/`
+├── public/                 # static assets
+├── product-discovery/      # product SoT (docs)
+├── project-os/             # ways-of-working SoT (docs)
+├── private/                # sensitive (ADR-003); not runtime app
+├── package.json            # one Next app
 ├── pnpm-lock.yaml
 ├── next.config.ts
 ├── tsconfig.json
@@ -45,85 +45,85 @@ rezisaktiva/
 └── …
 ```
 
-| Area | Peran |
-| ---- | ----- |
-| `app/` | UI & routing locale |
-| `content/` | Konten yang di-build ke halaman. Fakta yang sering diubah (proyek, services, tools, email, tautan) di `content/data/*.json`; copy UI tetap `content/*.ts` |
-| `product-discovery/` | Keputusan produk — bukan runtime |
-| `project-manager/` | Status/task/ADR — bukan runtime |
-| `private/` | Dilindungi; tidak di-bundle ke situs publik |
+| Area | Role |
+| ---- | ---- |
+| `app/` | UI & locale routing |
+| `content/` | Content built into pages. Frequently changed facts (projects, services, tools, email, links) in `content/data/*.json`; UI copy remains in `content/*.ts` |
+| `product-discovery/` | Product decisions — not runtime |
+| `project-os/` | Status/task/ADR — not runtime |
+| `private/` | Protected; not bundled into the public site |
 
-Nama folder implementasi boleh disesuaikan saat bootstrap selama kontrak di atas dihormati.
+Implementation folder names may be adjusted during bootstrap as long as the contract above is respected.
 
 ---
 
 # Package / Workspace Config
 
-| Aspek | Keputusan R1 |
-| ----- | ------------ |
-| Bentuk | **Single package** (bukan monorepo) |
-| Lokasi manifest | Root `package.json` |
+| Aspect | R1 Decision |
+| ------ | ----------- |
+| Shape | **Single package** (not monorepo) |
+| Manifest location | Root `package.json` |
 | Package manager | **pnpm** |
-| Workspace packages | Tidak |
+| Workspace packages | No |
 | Framework | **Next.js** (App Router) |
-| Render default | **SSG** — halaman digenerate saat build |
-| `output: 'export'` | **Tidak wajib** — di Vercel, SSG + Middleware edge untuk redirect `/` lebih cocok (lihat `deployment-infrastructure.md`) |
-| Node | LTS yang didukung Next saat bootstrap |
+| Default render | **SSG** — pages generated at build |
+| `output: 'export'` | **Not required** — on Vercel, SSG + edge Middleware for the `/` redirect fits better (see `deployment-infrastructure.md`) |
+| Node | LTS supported by Next during bootstrap |
 
-Script minimal yang diharapkan saat bootstrap: `dev`, `build`, `start` (atau setara preview), `lint`.
+Expected minimal scripts during bootstrap: `dev`, `build`, `start` (or equivalent preview), `lint`.
 
 ---
 
 # TypeScript Configuration
 
-* TypeScript **wajib** untuk app Next
-* `strict: true` sebagai default
-* Path alias sederhana (mis. `@/`) untuk `app/` / modul lokal — tanpa path lintas-package (tidak ada package internal)
+* TypeScript is **required** for the Next app
+* `strict: true` as the default
+* Simple path alias (for example `@/`) for `app/` / local modules — no cross-package paths (there are no internal packages)
 
-Detail `tsconfig` dikunci saat bootstrap; dokumen ini hanya mengunci **ada TS strict + single project**.
+`tsconfig` details are locked during bootstrap; this document only locks **TS strict + single project exists**.
 
 ---
 
 # Import Rules
 
-| Boleh | Tidak |
-| ----- | ----- |
-| Import antar modul di app (`@/…`) | Import runtime dari `product-discovery/` atau `project-manager/` |
-| Baca `content/` saat build (SSG) | Menganggap docs discovery sebagai CMS runtime |
-| Import dari `public/` via path URL | Bundle isi `private/` ke client |
+| Allowed | Not Allowed |
+| ------- | ----------- |
+| Imports between app modules (`@/…`) | Runtime imports from `product-discovery/` or `project-os/` |
+| Read `content/` at build time (SSG) | Treat discovery docs as runtime CMS |
+| Import from `public/` via URL path | Bundle `private/` contents to the client |
 
-Docs dan app **co-located di git**, bukan co-imported di runtime.
+Docs and app are **co-located in git**, not co-imported at runtime.
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Bentuk repo | Single-app di repo ini (opsi A) |
+| Decision | Choice |
+| -------- | ------ |
+| Repo shape | Single app in this repo (option A) |
 | Framework | Next.js App Router, static-first |
 | Package manager | pnpm |
-| Monorepo / multi-package | Tidak untuk R1 |
-| Repo app terpisah | Tidak |
-| Baseline Engineering | ADR-016 |
+| Monorepo / multi-package | No for R1 |
+| Separate app repo | No |
+| Engineering Baseline | ADR-016 |
 
 ---
 
 # Success Criteria
 
-1. Satu orang memahami: di mana app, di mana konten, di mana docs
-2. Tidak ada asumsi Turborepo/workspace tanpa ADR baru
-3. Bootstrap tidak mencampur SoT discovery ke bundle situs
+1. One person understands: where the app is, where content is, where docs are
+2. No Turborepo/workspace assumption without a new ADR
+3. Bootstrap does not mix discovery SoT into the site bundle
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
+* `README.md` — this phase documentation
 * `deployment-infrastructure.md` — Vercel + build/deploy
-* `../05-architecture/application-layer.md` — kontrak SSG
-* `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/decisions/ADR-016-engineering-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../05-architecture/application-layer.md` — SSG contract
+* `../../project-os/decisions/ADR-003-public-repo-privacy-private-folder.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/decisions/ADR-016-engineering-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

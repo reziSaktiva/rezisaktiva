@@ -1,93 +1,93 @@
 # Database & ORM
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada database/ORM produk untuk R1. File tetap ada sebagai jejak — selaras ADR-015 / ADR-016 / `database-strategy.md`.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-11). There is no product database/ORM for R1. This file remains as a trace record — aligned with ADR-015 / ADR-016 / `database-strategy.md`.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan engineering tercatat.
+This document is **intentionally filled as N/A** so the engineering decision is recorded.
 
 ---
 
 # Overview
 
-Website **rezisaktiva** R1 = **static-first SSG + konten di repo**. Tidak ada Postgres/MySQL/SQLite/Turso sebagai SoT, tidak ada Prisma/Drizzle/Kysely, tidak ada migrasi schema aplikasi.
+The **rezisaktiva** R1 website = **static-first SSG + content in repo**. There is no Postgres/MySQL/SQLite/Turso as the SoT, no Prisma/Drizzle/Kysely, and no application schema migration.
 
-SoT konten: file di `content/` (atau setara) — dikunci di `monorepo-setup.md`.
-
----
-
-# Tujuan
-
-* Menyatakan DB & ORM R1 = N/A di lapisan engineering
-* Mencegah penambahan Prisma/Supabase “karena template folder ada”
-* Menyelaraskan dengan `../05-architecture/database-strategy.md`
+Content SoT: files in `content/` (or equivalent) — locked in `monorepo-setup.md`.
 
 ---
 
-# Keputusan Database & ORM
+# Purpose
 
-**N/A** — tidak ada database & ORM produk untuk R1.
+* State R1 DB & ORM = N/A at the engineering layer
+* Prevent adding Prisma/Supabase “because the template folder exists”
+* Align with `../05-architecture/database-strategy.md`
 
-| Aspek | Status R1 |
-| ----- | --------- |
-| Database produk | Tidak |
-| ORM / query builder | Tidak |
-| Connection pooling / serverless DB | Tidak |
-| Migrasi schema | Tidak |
-| SoT konten | File di repo |
-| Session/user store | Tidak (auth N/A) |
+---
+
+# Database & ORM Decision
+
+**N/A** — there is no product database & ORM for R1.
+
+| Aspect | R1 Status |
+| ------ | --------- |
+| Product database | No |
+| ORM / query builder | No |
+| Connection pooling / serverless DB | No |
+| Schema migration | No |
+| Content SoT | Files in repo |
+| Session/user store | No (auth N/A) |
 
 ---
 
 # Access Architecture
 
-**N/A** untuk akses DB runtime.
+**N/A** for runtime DB access.
 
-Akses konten = baca filesystem saat **build** (SSG). Tidak ada client DB di browser atau server produk.
+Content access = read filesystem during **build** (SSG). There is no DB client in the browser or product server.
 
 ---
 
 # Migration Strategy
 
-**N/A** — evolusi konten = commit + deploy (Vercel).
+**N/A** — content evolution = commit + deploy (Vercel).
 
-Jika nanti dibutuhkan DB (form, CMS, member area):
+If a DB is later needed (form, CMS, member area):
 
-* ADR baru + ubah status dokumen ini dari N/A
-* Dampak ke Architecture (`database-strategy.md`) dan Product scope
+* New ADR + change this document status from N/A
+* Impact to Architecture (`database-strategy.md`) and Product scope
 
 ---
 
 # Local Development
 
-Tanpa DB lokal. `pnpm dev` cukup untuk app + konten file.
+No local DB. `pnpm dev` is enough for the app + content files.
 
-Tidak ada Docker Postgres, seed DB, atau `.env` `DATABASE_URL` untuk R1.
+There is no Docker Postgres, DB seed, or `.env` `DATABASE_URL` for R1.
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| DB / ORM R1 | N/A |
-| Selaras | ADR-015, `database-strategy.md` |
-| Baseline Engineering | ADR-016 |
+| Decision | Choice |
+| -------- | ------ |
+| R1 DB / ORM | N/A |
+| Aligned with | ADR-015, `database-strategy.md` |
+| Engineering Baseline | ADR-016 |
 
 ---
 
 # Success Criteria
 
-1. Jelas tidak ada dependency ORM/DB di R1
-2. Bootstrap tidak memasang Prisma/Drizzle “default”
-3. Handoff: konten = file, bukan tabel
+1. It is clear there is no ORM/DB dependency in R1
+2. Bootstrap does not install Prisma/Drizzle “by default”
+3. Handoff: content = files, not tables
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `monorepo-setup.md` — `content/` sebagai SoT
+* `README.md` — this phase documentation
+* `monorepo-setup.md` — `content/` as SoT
 * `../05-architecture/database-strategy.md`
 * `../05-architecture/domain-model.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

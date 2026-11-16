@@ -1,124 +1,124 @@
 # CI/CD Pipeline
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-11). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan pipeline CI/CD untuk website portofolio **rezisaktiva**.
+This document defines the CI/CD pipeline for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-R1 memakai **opsi B**:
+R1 uses **option B**:
 
-* **CI** = GitHub Actions (lint + typecheck; test bila ada)
-* **CD** = Vercel (Preview per PR, Production dari branch utama)
+* **CI** = GitHub Actions (lint + typecheck; tests if any)
+* **CD** = Vercel (Preview per PR, Production from the main branch)
 
-Tidak ada deploy custom dari Actions ke Vercel untuk R1 — Vercel tetap pemilik build/deploy situs.
+There is no custom deploy from Actions to Vercel for R1 — Vercel remains the owner of the site build/deploy.
 
 ---
 
-# Tujuan
+# Purpose
 
-* Quality gate ringan di PR sebelum merge
-* Deploy tetap sederhana (sudah dikunci di `deployment-infrastructure.md`)
-* Cocok repo publik + perubahan sering (termasuk via agent)
+* Lightweight quality gate on PRs before merge
+* Keep deploy simple (already locked in `deployment-infrastructure.md`)
+* Fit a public repo + frequent changes (including via agent)
 
 ---
 
 # Pipeline Overview
 
 ```text
-[PR dibuka / di-update]
-    ├── GitHub Actions: lint + typecheck (+ test bila ada)
+[PR opened / updated]
+    ├── GitHub Actions: lint + typecheck (+ tests if any)
     └── Vercel: Preview deployment
 
-[Merge ke branch utama]
+[Merge to main branch]
     └── Vercel: Production deployment
 ```
 
-| Jalur | Alat | Trigger |
-| ----- | ---- | ------- |
-| CI | GitHub Actions | `pull_request` (dan opsional `push` ke main) |
+| Path | Tool | Trigger |
+| ---- | ---- | ------- |
+| CI | GitHub Actions | `pull_request` (and optional `push` to main) |
 | Preview | Vercel | PR |
-| Production | Vercel | push/merge ke branch produksi |
+| Production | Vercel | push/merge to production branch |
 
 ---
 
 # Continuous Integration
 
-## Workflow R1 (minimal)
+## R1 Workflow (minimal)
 
-| Step | Wajib R1 | Catatan |
-| ---- | -------- | ------- |
-| Checkout | Ya | — |
-| Setup pnpm + Node LTS | Ya | Selaras `monorepo-setup.md` |
-| `pnpm install` | Ya | Lockfile committed |
-| Lint | Ya | ESLint (detail di `dx-tooling.md`) |
-| Typecheck | Ya | `tsc --noEmit` atau script setara |
-| Unit/e2e test | Bila ada | Tidak memblokir definisi pipeline jika belum ada test |
-| `next build` di Actions | Tidak wajib | Build produksi di Vercel; hindari duplikasi lama kecuali dibutuhkan nanti |
+| Step | R1 Required | Notes |
+| ---- | ----------- | ----- |
+| Checkout | Yes | — |
+| Setup pnpm + Node LTS | Yes | Aligned with `monorepo-setup.md` |
+| `pnpm install` | Yes | Lockfile committed |
+| Lint | Yes | ESLint (details in `dx-tooling.md`) |
+| Typecheck | Yes | `tsc --noEmit` or equivalent script |
+| Unit/e2e test | If present | Does not block the pipeline definition if no tests exist yet |
+| `next build` in Actions | Not required | Production build is in Vercel; avoid old duplication unless needed later |
 
-## Branch protection (disarankan)
+## Branch protection (recommended)
 
-* Require CI hijau sebelum merge ke branch utama
-* Vercel Preview boleh dipakai untuk review visual; tidak menggantikan lint/typecheck
+* Require green CI before merging to the main branch
+* Vercel Preview may be used for visual review; it does not replace lint/typecheck
 
-Detail tool lint/format → `dx-tooling.md` (T-006.7).
+Lint/format tool details → `dx-tooling.md` (T-006.7).
 
 ---
 
 # Continuous Deployment
 
-| Lingkungan | Siapa yang deploy | Kapan |
-| ---------- | ----------------- | ----- |
-| Preview | Vercel | Setiap PR |
-| Production | Vercel | Merge/push ke branch utama |
+| Environment | Who deploys | When |
+| ----------- | ----------- | ---- |
+| Preview | Vercel | Every PR |
+| Production | Vercel | Merge/push to main branch |
 
-* Rollback = Vercel dashboard (lihat `deployment-infrastructure.md`)
-* Tidak ada CD via `vercel deploy` dari Actions untuk R1
-* Tidak ada promote manual multi-stage wajib
+* Rollback = Vercel dashboard (see `deployment-infrastructure.md`)
+* No CD via `vercel deploy` from Actions for R1
+* No required manual multi-stage promotion
 
 ---
 
 # Secrets & Environment
 
-| Rahasia CI | Di mana |
-| ---------- | ------- |
-| Token GitHub Actions bawaan | Cukup untuk lint/typecheck publik |
-| Secret Vercel / domain | Dashboard Vercel — bukan di workflow CI R1 |
-| `DATABASE_URL` / auth secret | **Tidak ada** (N/A) |
+| CI Secret | Where |
+| --------- | ----- |
+| Built-in GitHub Actions token | Enough for public lint/typecheck |
+| Vercel / domain secrets | Vercel dashboard — not in the R1 CI workflow |
+| `DATABASE_URL` / auth secret | **None** (N/A) |
 
-Katalog variabel → `environment-management.md`.
+Variable catalog → `environment-management.md`.
 
-Jangan menaruh secret produk di log Actions atau di repo publik.
+Do not put product secrets in Actions logs or the public repo.
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Model CI/CD | **B** — Actions (lint/typecheck) + Vercel deploy |
-| Vercel-only (tanpa Actions) | Tidak dipilih |
-| Deploy penuh dari Actions | Tidak untuk R1 |
-| Baseline Engineering | ADR-016 |
+| Decision | Choice |
+| -------- | ------ |
+| CI/CD model | **B** — Actions (lint/typecheck) + Vercel deploy |
+| Vercel-only (without Actions) | Not chosen |
+| Full deploy from Actions | Not for R1 |
+| Engineering Baseline | ADR-016 |
 
 ---
 
 # Success Criteria
 
-1. PR tanpa lint/typecheck hijau tidak ideal untuk merge
-2. Preview & Production tetap lewat Vercel tanpa skrip CD ganda
-3. Pipeline tetap pendek dan bisa dijelaskan dalam satu diagram
+1. A PR without green lint/typecheck is not ideal to merge
+2. Preview & Production still go through Vercel without duplicate CD scripts
+3. Pipeline stays short and explainable in one diagram
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
+* `README.md` — this phase documentation
 * `deployment-infrastructure.md` — Vercel Preview/Production
 * `environment-management.md` — env & secrets
 * `monorepo-setup.md` — pnpm / Next
-* `dx-tooling.md` — ESLint + Prettier; CI tanpa husky
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `dx-tooling.md` — ESLint + Prettier; CI without husky
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

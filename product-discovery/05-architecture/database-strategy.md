@@ -1,81 +1,81 @@
 # Database Strategy
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada database produk untuk R1. File tetap ada sebagai jejak — lihat ADR-015.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-11). There is no product database for R1. This file remains as a trace record — see ADR-015.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat (bukan dokumen yang terlupa).
+This document is **intentionally filled as N/A** so the decision is recorded (not a forgotten document).
 
 ---
 
 # Overview
 
-Website **rezisaktiva** R1 = **Static-first (SSG) + konten di repo**. Tidak ada Postgres/MySQL/SQLite sebagai SoT konten, tidak ada ORM produk, tidak ada migrasi schema aplikasi.
+The **rezisaktiva** R1 website = **Static-first (SSG) + content in repo**. There is no Postgres/MySQL/SQLite as the content SoT, no product ORM, and no application schema migration.
 
-SoT konten: **file di repository** (Markdown/MDX atau setara — dikunci di Engineering).
+Content SoT: **files in the repository** (Markdown/MDX or equivalent — locked in Engineering).
 
 ---
 
 # Purpose
 
-* Mencatat bahwa ketiadaan DB adalah **keputusan sadar**, bukan kelalaian
-* Mencegah “tambah database karena template folder ada”
+* Record that the absence of a DB is a **deliberate decision**, not an omission
+* Prevent “add a database because the template folder exists”
 
 ---
 
-# Keputusan Database Strategy
+# Database Strategy Decision
 
-| Aspek | Keputusan R1 |
-| ----- | ------------ |
-| Database produk | **Tidak ada** |
-| SoT konten | Repo (file) |
-| CMS / headless | Tidak (opsi C ditolak) |
-| User/session store | Tidak (auth N/A) |
-| Analytics DB | Bukan SoT produk; bila ada tool pihak ketiga = opsional privacy-aware (Engineering) |
+| Aspect | R1 Decision |
+| ------ | ----------- |
+| Product database | **None** |
+| Content SoT | Repo (files) |
+| CMS / headless | No (option C rejected) |
+| User/session store | No (auth N/A) |
+| Analytics DB | Not the product SoT; if present, a third-party tool = optional and privacy-aware (Engineering) |
 
 ---
 
 # Schema / Content Model
 
 **N/A database schema.**  
-Model konten lean ada di `domain-model.md` (Page, Locale, work item, channel) — diwujudkan sebagai file/frontmatter, bukan tabel.
+The lean content model is in `domain-model.md` (Page, Locale, work item, channel) — implemented as files/frontmatter, not tables.
 
 ---
 
 # Storage Strategy
 
-| Data | Di mana |
-| ---- | ------- |
-| Salinan halaman ID/EN | Repo aplikasi (setelah bootstrap) |
+| Data | Where |
+| ---- | ----- |
+| ID/EN page copy | Application repo (after bootstrap) |
 | Teaser & meta | Repo |
-| Secret / materi non-publik | `private/` atau di luar repo (ADR-003) |
-| Preferensi locale browser | Cookie/local di klien — **bukan** DB; hanya untuk redirect `/` (ADR-014) |
+| Secrets / non-public material | `private/` or outside the repo (ADR-003) |
+| Browser locale preference | Cookie/local storage on the client — **not** a DB; only for the `/` redirect (ADR-014) |
 
 ---
 
 # Migration Strategy
 
-**N/A** — tidak ada migrasi DB. Evolusi konten = commit + deploy.
+**N/A** — there are no DB migrations. Content evolution = commit + deploy.
 
-Jika nanti dibutuhkan DB (form, CMS, member):
+If a DB is later needed (form, CMS, member):
 
-* ADR baru + revisi dokumen ini dari N/A
-* Jangan mengasumsikan DB “karena folder architecture ada”
+* New ADR + revise this document from N/A
+* Do not assume a DB “because the architecture folder exists”
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| DB R1 | N/A — konten di repo |
-| Bentuk sistem | Static-first SSG (ADR-015) |
+| Decision | Choice |
+| -------- | ------ |
+| R1 DB | N/A — content in repo |
+| System shape | Static-first SSG (ADR-015) |
 
 ---
 
 # Success Criteria
 
-1. Jelas tidak ada DB produk di R1
-2. File tetap sebagai jejak N/A
-3. Handoff Engineering: ORM/DB = N/A kecuali ADR baru
+1. It is clear there is no product DB in R1
+2. The file remains as an N/A trace record
+3. Engineering handoff: ORM/DB = N/A unless a new ADR changes it
 
 ---
 
@@ -85,7 +85,7 @@ Jika nanti dibutuhkan DB (form, CMS, member):
 * `domain-model.md`
 * `application-layer.md`
 * `../02-product/product-scope.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/decisions/ADR-003-public-repo-privacy-private-folder.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

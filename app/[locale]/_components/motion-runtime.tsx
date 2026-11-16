@@ -6,10 +6,10 @@ import { PageTransitionProvider } from "./page-transition";
 import { SmoothScroll } from "./smooth-scroll";
 
 /**
- * Fondasi gerak locale (ADR-025 / T-043.1): Lenis + transisi halaman
- * hard-cut stutter. Provider membungkus children (bukan `<div>` layout).
- * `reducedMotion="user"`: transform/layout dimatikan lewat Motion, bukan
- * cabang `initial` yang beda SSR vs klien (hydration).
+ * Locale motion foundation (ADR-025 / T-043.1): Lenis + hard-cut
+ * page transition stutter. Provider wraps children (not a layout `<div>`).
+ * `reducedMotion="user"`: transform/layout off via Motion, not a different
+ * `initial` branch for SSR vs client (hydration).
  */
 export function MotionRuntime({ children }: { children: ReactNode }) {
   return (

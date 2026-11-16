@@ -58,18 +58,18 @@ import {
 } from "./smooth-scroll";
 
 /**
- * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: chip Tentang /
- * Proses Kerja / Proyek; nama = tautan Home (bukan chip Home). Contact =
- * tombol modal (T-016, ADR-019).
- * <1024px: nav halaman + switcher masuk hamburger; Contact-button + toggle
- * tema tetap di luar (ADR-020 override `navigation-patterns.md`).
+ * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: About /
+ * How I Work / Work chips; brand name = Home link (not a Home chip). Contact =
+ * modal button (T-016, ADR-019).
+ * <1024px: page nav + switcher in hamburger; Contact button + theme
+ * toggle stay outside (ADR-020 overrides `navigation-patterns.md`).
  *
  * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → DropdownMenu;
  * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
  * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
  * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
  * T-055.2 / T-055.3: kaca on-scroll (`SiteNavGlass`) di desktop + compact
- * — bukan restyle chip / panel hamburger.
+ * — not a chip / hamburger panel restyle.
  */
 
 const NAV_GLASS_TWEEN = {
@@ -105,8 +105,8 @@ function useNavGlassScrolled(): boolean {
 }
 
 /**
- * Lapisan kaca header (T-055.1): desktop + compact <1024px. Fade opacity
- * `--duration-medium-max` + `--ease-overlay`; blur on/off langsung.
+ * Header glass layer (T-055.1): desktop + compact <1024px. Opacity fade
+ * `--duration-medium-max` + `--ease-overlay`; blur on/off instant.
  */
 export function SiteNavGlass() {
   const scrolled = useNavGlassScrolled();
@@ -364,7 +364,7 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   );
 }
 
-/** Hamburger <1024px (ADR-020). Selaras `@media (min-width: 1024px)` desktop. */
+/** Hamburger <1024px (ADR-020). Aligns with desktop `@media (min-width: 1024px)`. */
 const MOBILE_NAV_QUERY = "(max-width: 1023px)";
 
 function useLocationHash(): string {

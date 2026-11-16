@@ -1,11 +1,11 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Identitas yang sudah tampil di UI (T-029.1).
- * `name` = h1 About (`ABOUT_COPY.h1`), bukan nama legal yang belum tertulis.
- * `jobTitle` = frasa yang sama di bio Quick Info — bukan string baru.
- * `worksFor` = tempat kerja yang tampil di section About (`#now`) dan Quick Info.
- * Email / sameAs dari `content/data/email.json` + `links.json`. JSON-LD tidak ditulis di file ini.
+ * Identity already shown in the UI (T-029.1).
+ * `name` = About h1 (`ABOUT_COPY.h1`), not an unwritten legal name.
+ * `jobTitle` = same phrase in Quick Info bio — not a new string.
+ * `worksFor` = workplace shown in About section (`#now`) and Quick Info.
+ * Email / sameAs from `content/data/email.json` + `links.json`. JSON-LD is not written in this file.
  */
 
 export const PERSON = {

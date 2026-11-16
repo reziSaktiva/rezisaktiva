@@ -1,22 +1,22 @@
 # Jobs To Be Done
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini merumuskan jobs-to-be-done pengunjung website portofolio pribadi **rezisaktiva**.
+This document defines the jobs-to-be-done for visitors to the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Overview
 
-JTBD di sini adalah pekerjaan yang ingin “selesai” saat seseorang mengevaluasi Rezi lewat situs — functional, emotional, dan social — dengan prioritas untuk permukaan R1 Hybrid lean.
+JTBD here are the jobs someone wants to “finish” when evaluating Rezi through the site — functional, emotional, and social — with priority for the R1 Hybrid lean surfaces.
 
 ---
 
 # Purpose
 
-* Menyatakan job dalam format yang bisa diuji di scenarios/journey
-* Memisahkan job Must R1 vs job yang menunggu magnet R2
-* Mengarahkan UX pada progress job, bukan dekorasi
+* State jobs in a format that can be tested in scenarios/journey
+* Separate Must R1 jobs from jobs waiting for the R2 magnet
+* Direct UX toward job progress, not decoration
 
 ---
 
@@ -24,22 +24,22 @@ JTBD di sini adalah pekerjaan yang ingin “selesai” saat seseorang mengevalua
 
 ## In Scope
 
-* Format JTBD + core / emotional / social jobs
-* Prioritas job untuk MVP (R1)
+* JTBD format + core / emotional / social jobs
+* Job priority for MVP (R1)
 
 ## Out of Scope
 
-* Job pemilik brand sebagai operator CMS (N/A R1)
-* Job growth/social posting sebagai mesin utama
-* Job “bandingkan harga vendor”
+* The brand owner’s job as CMS operator (N/A R1)
+* Growth/social posting job as the main engine
+* “Compare vendor pricing” job
 
 ---
 
 # JTBD Format
 
-**When** [situasi], **I want to** [motivasi], **so I can** [hasil].
+**When** [situation], **I want to** [motivation], **so I can** [outcome].
 
-Setiap job punya: ID, persona utama, prioritas R1 (Must / Should / Later).
+Each job has: ID, main persona, R1 priority (Must / Should / Later).
 
 ---
 
@@ -47,59 +47,59 @@ Setiap job punya: ID, persona utama, prioritas R1 (Must / Should / Later).
 
 | ID | Job statement | Persona | R1 |
 | -- | ------------- | ------- | --- |
-| J1 | When saya menemukan Rezi (referral/search/link), I want to paham siapa dia dalam hitungan menit, so I can putuskan apakah relevan untuk saya | P1, P2 | Must |
-| J2 | When saya menilai builder untuk ide/inisiatif, I want to lihat bukti ship & cara berpikir, so I can kurangi risiko outreach | P1, P2 | Must |
-| J3 | When saya sudah cukup tertarik, I want to menghubungi dengan jalur soft yang jelas, so I can mulai percakapan tanpa awkward sales | P1, P2, P4 | Must |
-| J4 | When saya butuh konteks lebih dalam dari Home, I want to baca narasi About yang koheren, so I can percaya framing product builder | P1, P2 | Must |
-| J5 | When saya hiring / menilai kolaborasi, I want to temukan sinyal fullstack + product tanpa CV ATS, so I can lanjut atau skip proses | P3 | Should (tipis) |
-| J6 | When saya ingin melihat detail proses/case, I want to baca cerita karya yang lebih dalam, so I can yakin pada craft & ownership | P1, P2 | Later (R2) |
-| J7 | When bahasa default terasa asing, I want to ganti bahasa dengan mudah, so I can lanjut evaluasi nyaman | P1–P4, S6 | Must (fondasi) |
+| J1 | When I discover Rezi (referral/search/link), I want to understand who he is within minutes, so I can decide whether he is relevant to me | P1, P2 | Must |
+| J2 | When I evaluate a builder for an idea/initiative, I want to see proof of shipping and way of thinking, so I can reduce outreach risk | P1, P2 | Must |
+| J3 | When I am interested enough, I want a clear soft contact path, so I can start a conversation without awkward sales pressure | P1, P2, P4 | Must |
+| J4 | When I need deeper context than Home, I want to read a coherent About narrative, so I can trust the product builder framing | P1, P2 | Must |
+| J5 | When I am hiring / evaluating collaboration, I want to find fullstack + product signals without an ATS CV, so I can continue or skip the process | P3 | Should (thin) |
+| J6 | When I want to see process/case detail, I want to read deeper work stories, so I can trust the craft & ownership | P1, P2 | Later (R2) |
+| J7 | When the default language feels unfamiliar, I want to switch language easily, so I can continue evaluating comfortably | P1–P4, S6 | Must (foundation) |
 
 ---
 
 # Emotional Jobs
 
-| ID | Job | Catatan |
-| -- | --- | ------- |
-| E1 | Merasa tidak “mengganggu” saat outreach | Soft CTA, availability line opsional |
-| E2 | Merasa evaluasi fair — tidak di-hype AI / stack kosong | Honest AI edge; bukti proporsional |
-| E3 | Merasa Rezi “untuk orang seperti saya” (founder/PO SEA) | Relevansi lokal tanpa menutup pintu |
-| E4 | Mengurangi takut salah hire / salah ajak kolaborasi | Work index/sheet + About section |
+| ID | Job | Notes |
+| -- | --- | ----- |
+| E1 | Feel like I am not “bothering” someone when reaching out | Soft CTA, optional availability line |
+| E2 | Feel the evaluation is fair — not AI hype / empty stack | Honest AI edge; proportional proof |
+| E3 | Feel Rezi is “for people like me” (SEA founder/PO) | Local relevance without closing doors |
+| E4 | Reduce fear of a bad hire / wrong collaboration invite | Work index/sheet + About section |
 
 ---
 
 # Social Jobs
 
-| ID | Job | Catatan |
-| -- | --- | ------- |
-| SJ1 | Bisa menunjuk satu URL ke cofounder / tim (“ini orangnya”) | Destination hygiene |
-| SJ2 | Terlihat profesional saat share ke hiring chain | Clarity > gimmick |
-| SJ3 | Peer recognition (opsional) | Bukan driver CTA R1 |
+| ID | Job | Notes |
+| -- | --- | ----- |
+| SJ1 | Can point one URL to a cofounder / team (“this is the person”) | Destination hygiene |
+| SJ2 | Look professional when shared into a hiring chain | Clarity > gimmick |
+| SJ3 | Peer recognition (optional) | Not an R1 CTA driver |
 
 ---
 
 # Job Priority for MVP
 
-| Prioritas | Jobs | Surface utama |
-| --------- | ---- | ------------- |
-| **Must R1** | J1, J2, J3, J4, J7 + E1–E4 pendukung | Home, About, Workflow, Work index, Contact modal, i18n |
-| **Should tipis** | J5 | About + tautan satelit |
-| **Later R2** | J6 | Case/proses singkat (magnet) |
-| **Out** | Banding harga, login app, feed sosial sebagai job inti | — |
+| Priority | Jobs | Main surface |
+| -------- | ---- | ------------ |
+| **Must R1** | J1, J2, J3, J4, J7 + supporting E1–E4 | Home, About, Workflow, Work index, Contact modal, i18n |
+| **Should thin** | J5 | About + satellite links |
+| **Later R2** | J6 | Short case/process (magnet) |
+| **Out** | Price comparison, app login, social feed as core job | — |
 
 ---
 
 # Expected Output
 
-Set JTBD yang selaras dual north star dan Product Baseline.
+A JTBD set aligned with the dual north star and Product Baseline.
 
 ---
 
 # Exit Criteria
 
-* Core/emotional/social jobs terdokumentasi
-* Must vs Later jelas terhadap ADR-010
-* Siap dipakai di scenarios & journey
+* Core/emotional/social jobs documented
+* Must vs Later clear against ADR-010
+* Ready to use in scenarios & journey
 
 ---
 
@@ -110,7 +110,7 @@ Set JTBD yang selaras dual north star dan Product Baseline.
 * `pain-points.md`
 * `user-scenarios.md`
 * `../02-product/mvp-definition.md`
-* `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

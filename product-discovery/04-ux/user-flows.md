@@ -1,143 +1,143 @@
 # User Flows
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-10). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-10). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan alur pengguna website portofolio **rezisaktiva** untuk R1 Clarity (+ cabang sekunder tipis).
+This document defines user flows for the **rezisaktiva** portfolio website for R1 Clarity (+ thin secondary branch).
 
 ---
 
 # Overview
 
-Flows diterjemahkan dari skenario SC1–SC6 dan journey R1 + magnet R2. Fokus: evaluasi singkat → soft next step. Bukan CMS atau auth.
+Flows are translated from scenarios SC1–SC6 and the R1 journey + R2 magnet. Focus: short evaluation → soft next step. Not CMS or auth.
 
-> **Update (2026-08-26, ADR-027; 2026-09-14, ADR-044):** F7 = buka **project sheet** dari tile Work index. Dari sheet: tautan ke halaman case `/projects/[slug]`. Path `/work/[slug]` tidak dipakai.
+> **Update (2026-08-26, ADR-027; 2026-09-14, ADR-044):** F7 = open **project sheet** from Work index tile. From sheet: link to case page `/projects/[slug]`. Path `/work/[slug]` is not used.
 
 ---
 
 # Purpose
 
-* Menghubungkan User Discovery ke pola layar & navigasi
-* Menjadi acceptance “happy path” sebelum implementasi
-* Menjaga secondary path tanpa pohon navigasi baru
+* Connect User Discovery to screen patterns & navigation
+* Become “happy path” acceptance before implementation
+* Keep secondary path without a new navigation tree
 
 ---
 
 # Flow Inventory
 
-| ID | Nama | Persona | Prioritas |
-| -- | ---- | ------- | --------- |
-| F1 | Evaluasi fit cepat (founder) | P1 | Primer |
-| F2 | Evaluasi kolaborasi (PO) | P2 | Primer |
-| F3 | Ganti bahasa lalu lanjut | P1/P2 | Primer (lintas) |
-| F4 | Cek sinyal hiring | P3 | Sekunder tipis |
-| F5 | Soft outreach klien | P4 | Sekunder tipis |
-| F6 | Share URL ke tim | P1/P2 | Primer sosial |
-| F7 | Buka project sheet | P1/P2 | Primer (M10 overlay, ADR-027) |
-| F8 | Buka halaman case | P1/P2 | Primer R2 (`/projects/[slug]`, ADR-044) |
+| ID | Name | Persona | Priority |
+| -- | ---- | ------- | -------- |
+| F1 | Quick fit evaluation (founder) | P1 | Primary |
+| F2 | Collaboration evaluation (PO) | P2 | Primary |
+| F3 | Switch language then continue | P1/P2 | Primary (cross-cutting) |
+| F4 | Check hiring signal | P3 | Thin secondary |
+| F5 | Client soft outreach | P4 | Thin secondary |
+| F6 | Share URL to team | P1/P2 | Primary social |
+| F7 | Open project sheet | P1/P2 | Primary (M10 overlay, ADR-027) |
+| F8 | Open case page | P1/P2 | Primary R2 (`/projects/[slug]`, ADR-044) |
 
 ---
 
 # Primary Flows
 
-### F1 — Evaluasi fit cepat (SC1)
+### F1 — Quick fit evaluation (SC1)
 
-1. Masuk via URL (locale default atau link ber-locale)
-2. **Home** — baca first viewport (lede + klaim)
-3. Opsional: scroll **About** (`#about` — Now + siapa + lead/artwork) atau buka **Workflow** (prinsip / pipeline / ADR Vault, ADR-042) atau **Work index** (`/projects`, M9) bila butuh detail lebih
-4. Di Work index: klik tile → **project sheet** (F7); dari sheet boleh ke **halaman case** (F8, ADR-044); live/repo hanya dari dalam sheet/case
-5. Buka **Contact modal** (tombol di chrome, ADR-019) → kirim Email **atau** simpan URL / lanjut satelit bila perlu
-6. Sukses: paham “Rezi = product builder…”; soft next step terjadi atau URL disimpan
+1. Enter via URL (default locale or locale-bearing link)
+2. **Home** — read first viewport (lede + claim)
+3. Optional: scroll **About** (`#about` — Now + who + lead/artwork) or open **Workflow** (principles / pipeline / ADR Vault, ADR-042) or **Work index** (`/projects`, M9) if more detail is needed
+4. On Work index: click tile → **project sheet** (F7); from sheet may go to **case page** (F8, ADR-044); live/repo only from inside sheet/case
+5. Open **Contact modal** (button in chrome, ADR-019) → send Email **or** save URL / continue to satellites if needed
+6. Success: understands “Rezi = product builder…”; soft next step happens or URL is saved
 
-**Failure modes:** Home = daftar stack; Contact tersembunyi; tidak ada Email jelas.
-
----
-
-### F2 — Evaluasi kolaborasi (SC2)
-
-1. Masuk Home (clarity)
-2. Ke **About** (`#about`) — Now + siapa Rezi + lead/artwork; lanjut **Workflow** (ADR-042) bila butuh cara kerja / kolaborasi
-3. Lanjut cek **Work index** (tile membuka sheet, F7)
-4. **Contact modal** — Email primer (ADR-019)
-5. Sukses: cukup sinyal profesional + product thinking untuk outreach soft
-
-**Failure modes:** About tidak menambah trust; tone terlalu kosong atau terlalu “dev for hire”.
+**Failure modes:** Home = stack list; Contact hidden; no clear Email.
 
 ---
 
-### F3 — Ganti bahasa (SC3)
+### F2 — Collaboration evaluation (SC2)
 
-1. User merasa default bahasa kurang pas
-2. Pakai **language switcher** di chrome
-3. Land di path sibling (`/id/...` ↔ `/en/...`) halaman yang sama
-4. Lanjut F1 atau F2 tanpa mengulang pencarian URL
-5. Sukses: evaluasi berlanjut; makna salinan setara
+1. Enter Home (clarity)
+2. Go to **About** (`#about`) — Now + who Rezi is + lead/artwork; continue to **Workflow** (ADR-042) if way of working / collaboration is needed
+3. Continue checking **Work index** (tile opens sheet, F7)
+4. **Contact modal** — Email primary (ADR-019)
+5. Success: enough professional + product thinking signal for soft outreach
 
-**Failure modes:** switcher hilang; redirect ke Home selalu; salinan tidak setara.
-
----
-
-### F6 — Share ke tim (SC6)
-
-1. User menyalin URL ber-locale (disarankan)
-2. Rekan membuka URL yang sama
-3. Rekan menjalankan F1/F2 singkat
-4. Sukses: satu destination cukup untuk align
+**Failure modes:** About does not add trust; tone too empty or too “dev for hire”.
 
 ---
 
-### F7 — Buka project sheet (ADR-027)
+### F3 — Switch language (SC3)
 
-1. User di **Work index** (`/[locale]/projects`)
-2. Klik **tile karya** (bukan URL live/repo)
-3. **Sheet dari bawah** terbuka: preview live (iframe) atau galeri, services, location or company, year, description
-4. Opsional: tautan **halaman case** (ADR-044) atau live/repo **di dalam sheet** (tab baru untuk eksternal); tutup sheet (Escape / scrim / kontrol tutup)
-5. Sukses: paham proyek apa dan bagaimana dikerjakan tanpa meninggalkan situs lebih dulu
+1. User feels the default language is less fitting
+2. Use **language switcher** in chrome
+3. Land on sibling path (`/id/...` ↔ `/en/...`) for the same page
+4. Continue F1 or F2 without searching for the URL again
+5. Success: evaluation continues; copy meaning is equivalent
 
-**Failure modes:** tile langsung keluar ke GitHub/live atau langsung ke `[slug]` (melewati sheet); sheet kosong/dikarang; Quick Info hilang dari Work index.
+**Failure modes:** switcher missing; always redirects to Home; copy is not equivalent.
 
-### F8 — Buka halaman case (ADR-044)
+---
 
-1. User di sheet M10 **atau** membuka URL `/[locale]/projects/[slug]` langsung
-2. Halaman case SSG (bukan sheet otomatis)
-3. Switcher locale → sibling slug yang sama
-4. Sukses: URL layak dishare; kembali ke index lewat chrome/tautan
+### F6 — Share to team (SC6)
 
-**Failure modes:** 404 untuk karya visible; halaman untuk `hiddenIds`; copy dikarang.
+1. User copies a locale-bearing URL (recommended)
+2. Colleague opens the same URL
+3. Colleague runs a short F1/F2
+4. Success: one destination is enough to align
+
+---
+
+### F7 — Open project sheet (ADR-027)
+
+1. User is on **Work index** (`/[locale]/projects`)
+2. Clicks **work tile** (not live/repo URL)
+3. **Bottom sheet** opens: live preview (iframe) or gallery, services, location or company, year, description
+4. Optional: **case page** link (ADR-044) or live/repo **inside sheet** (new tab for external); close sheet (Escape / scrim / close control)
+5. Success: understands what the project is and how it was worked on without leaving the site first
+
+**Failure modes:** tile exits directly to GitHub/live or directly to `[slug]` (skipping sheet); sheet empty/invented; Quick Info disappears from Work index.
+
+### F8 — Open case page (ADR-044)
+
+1. User is in M10 sheet **or** opens URL `/[locale]/projects/[slug]` directly
+2. SSG case page (not automatic sheet)
+3. Locale switcher → sibling same slug
+4. Success: URL is share-worthy; can return to index via chrome/link
+
+**Failure modes:** 404 for visible work; page for `hiddenIds`; invented copy.
 
 ---
 
 # Secondary Flows
 
-### F4 — Hiring sinyal (SC4)
+### F4 — Hiring signal (SC4)
 
-1. Home positioning → About (`#about`, siapa); Workflow (cara kerja, ADR-042)
-2. Ikuti GitHub (satelit) bila perlu bukti teknis
-3. Putuskan lanjut/skip **tanpa** mengubah situs jadi CV ATS
-4. Sukses: cukup sinyal; brand tetap product builder
+1. Home positioning → About (`#about`, who); Workflow (way of working, ADR-042)
+2. Follow GitHub (satellite) if technical proof is needed
+3. Decide continue/skip **without** turning the site into an ATS CV
+4. Success: enough signal; brand remains product builder
 
-### F5 — Klien soft (SC5)
+### F5 — Client soft (SC5)
 
 1. Home / About / Workflow / Work index → Contact modal
-2. Email (tanpa mencari harga)
-3. Sukses: outreach terkirim; ekspektasi diskusi
-4. Failure diterima: mencari pricing — salinan Contact mengarahkan ke percakapan (ADR-008)
+2. Email (without looking for pricing)
+3. Success: outreach sent; discussion expectation
+4. Accepted failure: looking for pricing — Contact copy steers toward conversation (ADR-008)
 
 ---
 
 # Out of Scope Flows (R1)
 
 * Calendar booking
-* Chat WA / DM Instagram sebagai jalur Contact
-* Login, CMS, personalisasi akun
+* WA chat / Instagram DM as Contact path
+* Login, CMS, account personalization
 
 ---
 
 # Success Criteria
 
-* F1–F3, F6, **F7** (project sheet), dan **F8** (halaman case, ADR-044) terdokumentasi sebagai primer
-* F4–F5 tipis pada permukaan yang sama
-* Path case = `/projects/[slug]`; `/work/[slug]` bukan rute
-* Failure modes mengunci anti-pattern di key screens
+* F1–F3, F6, **F7** (project sheet), and **F8** (case page, ADR-044) documented as primary
+* F4–F5 thin on the same surfaces
+* Case path = `/projects/[slug]`; `/work/[slug]` is not a route
+* Failure modes lock anti-patterns in key screens
 
 ---
 
@@ -145,7 +145,7 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1 + magnet R2. Fokus: e
 
 | Item | Status |
 | ---- | ------ |
-| User Flows | **Baseline v1.0** (dokumen ini) |
+| User Flows | **Baseline v1.0** (this document) |
 
 ---
 
@@ -158,10 +158,10 @@ Flows diterjemahkan dari skenario SC1–SC6 dan journey R1 + magnet R2. Fokus: e
 * `key-screen-patterns.md`
 * `../03-user/user-scenarios.md`
 * `../03-user/user-journey.md`
-* `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
-* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
-* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
-* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
-* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-os/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-os/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
+* `../../project-os/decisions/ADR-040-about-as-home-section.md`
+* `../../project-os/decisions/ADR-042-workflow-decision-driven-page.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

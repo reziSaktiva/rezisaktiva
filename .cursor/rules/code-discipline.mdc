@@ -1,20 +1,22 @@
 ---
-description: Playbook kode — spacing, lapisan styling (shadcn + Tailwind v4), Server vs Client, SSG; kerja baru di app/ wajib ikut
+description: Code playbook for spacing, styling layers, Server/Client boundaries, and SSG
 alwaysApply: true
 ---
 
-# Disiplin kode (R1)
+# Code Discipline
 
-SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Komponen: `.cursor/rules/shadcn.mdc`. **Kerja baru** ikut ini; jangan rewrite besar `app/` lama di task yang sama.
+Full Source of Truth: `product-discovery/06-engineering/code-discipline.md`. Component system: `.cursor/rules/shadcn.mdc`. New work must follow this rule; do not combine it with a broad rewrite of old `app/` code.
 
 ## Spacing
 
-- **`gap`** = jarak antar anak (Tailwind `gap-*` atau CSS `gap` di class scoped). **`padding`** = inset dalam container. **Bukan** `margin` di tiap sibling. **Bukan** `space-y-*` / `space-x-*`.
-- Ritme produksi: `gap-2` rapat; `gap-3` kicker+judul; `gap-8` isi section. Ritme viewport di CSS scoped (`.home-container`, `.about-section`).
-- Token `var(--spacing-*)` di `globals.css`. Bukan `p-[13px]`, bukan hex di JSX.
+- **`gap`** is distance between children, either Tailwind `gap-*` or CSS `gap` in a scoped class.
+- **`padding`** is container inset.
+- Do not use sibling margins or `space-y-*` / `space-x-*` for rhythm.
+- Production rhythm: `gap-2` tight, `gap-3` kicker + title, `gap-8` section body. Viewport rhythm belongs in scoped CSS such as `.home-container` and `.about-section`.
+- Use `var(--spacing-*)` tokens in `globals.css`. Do not use arbitrary JSX values such as `p-[13px]` or random hex colors.
 
 ```tsx
-// pakai
+// Use
 <section className="about-section">
   <div className="flex flex-col gap-8">
     <div className="flex flex-col gap-3">
@@ -24,35 +26,43 @@ SoT lengkap: `product-discovery/06-engineering/code-discipline.md`. Komponen: `.
   </div>
 </section>
 
-// jangan
+// Avoid
 <div style={{ marginBottom: 32 }}><h2>{title}</h2></div>
 ```
 
 ## Styling
 
-1. Primitf shadcn yang sudah ada (`components/ui/`) → 2. utility Tailwind token-backed → 3. `className` scoped + `app/globals.css` → 4. token `:root` / `.dark` (bukan file tema Astryx).
-- Kulit = token gothic-blood di `globals.css` (ADR-029). **Bukan** pill kuning / nampan krem / 3D chip sebagai identitas.
-- **StyleX / Astryx dilarang.** Tidak ada `xstyle`, tidak ada `@astryxdesign`.
-- Tidak ada `<div>` hanya untuk spasi. `style={{}}` layout/warna dilarang (`colorScheme` di `<html>` = pengecualian yang sudah ada).
+Preferred order:
+
+1. Existing shadcn primitives in `components/ui/`
+2. Token-backed Tailwind utilities
+3. Scoped `className` + `app/globals.css`
+4. Tokens in `:root` / `.dark`
+
+- Visual skin uses gothic-blood tokens in `globals.css` (ADR-029), not yellow pills, cream trays, or 3D chips as identity.
+- StyleX and Astryx are forbidden. No `xstyle`; no `@astryxdesign`.
+- Do not add `<div>` elements only for spacing.
+- `style={{}}` for layout or color is forbidden. The existing `colorScheme` on `<html>` is the exception.
 
 ## Server / client / `"use server"`
 
-- Default = Server Component. Route `page.tsx`/`layout.tsx` **tetap server** (`generateStaticParams`, metadata).
-- `"use client"` hanya untuk hook, event, context, Lenis, overlay. Bukan karena impor shadcn — primitf RSC-friendly.
-- `"use server"` = Server Action. **Jangan di `page.tsx`.** Contact = Route Handler + Resend (**ADR-047**); `mailto:` cadangan. Jangan taruh Action di page.
+- Default to Server Components. Route `page.tsx` and `layout.tsx` stay server-side for `generateStaticParams` and metadata.
+- Use `"use client"` only for hooks, events, context, Lenis, or overlays. Do not add it only because a shadcn primitive is imported.
+- `"use server"` means Server Action. Do not put it in `page.tsx`. Contact uses a Route Handler + Resend under ADR-047, with `mailto:` as fallback.
 
 ```tsx
-// pakai — about/page.tsx server, island klien diimpor
+// Use: about/page.tsx stays server-side and imports a client island
 export default async function AboutRoute({ params }: PageProps<"/[locale]/about">) {
   const { locale } = await params;
   return <AboutPage locale={locale} />;
 }
 
-// jangan — "use client" di page.tsx; atau "use server" di page
+// Avoid: "use client" in page.tsx, or "use server" in a page
 ```
 
 ## Render Next.js
 
-- Bentuk: SSG + `content/` + `generateStaticParams` locale (ADR-015).
-- `cookies()` Next **hanya** di `app/layout.tsx` untuk tema (`rz-theme`). Locale `/`: `proxy.ts` baca `NEXT_LOCALE` + header geo/`Accept-Language` (ADR-014) — jangan hapus. Jangan tambah `cookies()`/`headers()` di route halaman locale.
-- ISR, `loading.tsx`/streaming, `revalidate`, `force-dynamic` **bukan** default R1. Ubah bentuk → ADR baru.
+- Shape: SSG + `content/` + locale `generateStaticParams` (ADR-015).
+- Next `cookies()` is only for theme in `app/layout.tsx` (`rz-theme`). Locale `/` uses `proxy.ts` with `NEXT_LOCALE`, geo headers, and `Accept-Language` (ADR-014); do not remove it.
+- Do not add `cookies()` or `headers()` to locale page routes.
+- ISR, `loading.tsx`/streaming, `revalidate`, and `force-dynamic` are not the default R1 shape. A shape change needs a new ADR.

@@ -4,10 +4,10 @@ import { projectCaseHref } from "@/lib/site-url";
 import { PROJECTS_CATALOG } from "./work";
 
 /**
- * Slot project sheet (M10, T-026.1, ADR-027). Fakta di
- * `content/data/projects.json`. Cover galeri = `gallery`. Seksi media sheet:
- * iframe live (jika URL http(s) non-GitHub dan situs izinkan framing), else
- * `gallery`, else kosong. Year tetap di `WorkItem`.
+ * Project sheet slot (M10, T-026.1, ADR-027). Facts in
+ * `content/data/projects.json`. Gallery cover = `gallery`. Sheet media section:
+ * live iframe (if URL is http(s) non-GitHub and the site allows framing), else
+ * `gallery`, else empty. Year stays on `WorkItem`.
  */
 
 export interface WorkSheetCopy {
@@ -72,7 +72,7 @@ export function getWorkSheet(
   };
 }
 
-/** Primer = case in-site; Live sekunder (bisa lebih dari satu situs). Tanpa Repo. */
+/** Primary = in-site case; Live secondary (may be more than one site). No repo. */
 export function projectActionHrefs(
   locale: Locale,
   item: { slug: string; href?: string; liveHrefs?: readonly string[] },

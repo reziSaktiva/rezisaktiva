@@ -1,86 +1,86 @@
 # 06 — Engineering Planning
 
-Dokumentasi pada folder ini berfokus pada fase **Engineering Planning** untuk website portofolio pribadi **rezisaktiva**.
+Documentation in this folder focuses on the **Engineering Planning** phase for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Purpose
 
-* Mengunci keputusan teknis sebelum bootstrap repo aplikasi.
-* Menyiapkan acuan monorepo/single-app, deploy, auth, DX, dan tokens.
+* Lock technical decisions before application repo bootstrap.
+* Prepare references for monorepo/single-app shape, deploy, auth, DX, and tokens.
 
 ---
 
 # Scope
 
-Folder ini hanya membahas aspek engineering planning.
+This folder only covers engineering planning aspects.
 
-Topik berikut tidak dibahas di sini:
+The following topics are not covered here:
 
-- Implementasi fitur produk
-- Isi konten portofolio final
+- Product feature implementation
+- Final portfolio content
 
 ---
 
 # Documents
 
-* `monorepo-setup.md` — struktur repo / workspace.
-* `deployment-infrastructure.md` — platform deploy.
-* `auth-strategy.md` — strategi auth implementasi.
-* `database-orm.md` — ORM / akses data.
+* `monorepo-setup.md` — repo / workspace structure.
+* `deployment-infrastructure.md` — deploy platform.
+* `auth-strategy.md` — implementation auth strategy.
+* `database-orm.md` — ORM / data access.
 * `cicd-pipeline.md` — CI/CD.
 * `environment-management.md` — env & secrets.
 * `dx-tooling.md` — lint, format, test.
-* `dependency-strategy.md` — strategi dependency.
+* `dependency-strategy.md` — dependency strategy.
 * `design-tokens.md` — design tokens.
-* `code-discipline.md` — playbook harian: spacing, lapisan styling, Server/Client, SSG (ADR-015/028).
-* `../README.md` — dokumentasi fase Product Discovery.
-* `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
-* `../../project-manager/PROJECT_RULES.md` — aturan project.
-* `../../project-manager/PROJECT_STATE.md` — status dan progress.
-* `../../project-manager/DECISIONS.md` — keputusan penting (ADR).
+* `code-discipline.md` — daily playbook: spacing, styling layers, Server/Client, SSG (ADR-015/028).
+* `../README.md` — Product Discovery phase documentation.
+* `../../project-os/PROJECT_OVERVIEW.md` — project summary.
+* `../../project-os/PROJECT_RULES.md` — project rules.
+* `../../project-os/PROJECT_STATE.md` — status and progress.
+* `../../project-os/DECISIONS.md` — important decisions (ADRs).
 
 ---
 
 # Workflow
 
-1. Mulai dari keputusan repo (`monorepo-setup.md`) dan deploy.
-2. Lengkapi auth, data, CI/CD, env, DX, dependency.
-3. Isi `design-tokens.md` setelah arah desain jelas (boleh iteratif).
+1. Start from repo (`monorepo-setup.md`) and deploy decisions.
+2. Complete auth, data, CI/CD, env, DX, dependency.
+3. Fill `design-tokens.md` after the design direction is clear (may be iterative).
 
 ---
 
 # Expected Output
 
-**Engineering Baseline v1.0 sudah ditetapkan** (ADR-016, 2026-08-11). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `auth-strategy.md` / `database-orm.md` sebagai N/A).
+**Engineering Baseline v1.0 has been established** (ADR-016, 2026-08-11). All documents in this folder are filled and agreed upon, including `auth-strategy.md` / `database-orm.md` as N/A.
 
-Acuan fase: Next.js single-app + pnpm; Vercel; CI Actions lint/typecheck; ESLint/Prettier; shadcn/ui + Tailwind CSS v4 (dark default, light hold via `html.dark` — **ADR-028** / **ADR-021** update T-038.2; ADR-018 superseded).
+Phase reference: Next.js single-app + pnpm; Vercel; CI Actions lint/typecheck; ESLint/Prettier; shadcn/ui + Tailwind CSS v4 (dark default, light hold via `html.dark` — **ADR-028** / **ADR-021** update T-038.2; ADR-018 superseded).
 
-Langkah berikutnya (historis fase): **Repository & Bootstrap**, lalu Development. Status fase aktif ada di `PROJECT_STATE.md`.
+Next step (historical phase): **Repository & Bootstrap**, then Development. Active phase status is in `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+The following criteria **have been met** for Baseline v1.0:
 
-* Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material tercatat di `DECISIONS.md` (ADR-016, dll.).
-* Boss Rezi menyetujui baseline fase ini.
+* All documents above are filled (not TBD).
+* Material decisions are recorded in `DECISIONS.md` (ADR-016, etc.).
+* Boss Rezi approved this phase baseline.
 
 ---
 
 # Decision Rules
 
-* Fase Engineering Planning selesai — urutan historis: **Repository & Bootstrap**, lalu Development. Fase aktif ada di `PROJECT_STATE.md`.
-* Perubahan material setelah baseline → ADR baru + revisi dokumen terdampak.
-* Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
+* The Engineering Planning phase is complete — historical sequence: **Repository & Bootstrap**, then Development. Active phase is in `PROJECT_STATE.md`.
+* Material changes after the baseline → new ADR + revision of impacted documents.
+* Phase status/progress is recorded only in `PROJECT_STATE.md`, not in this README.
 
 ---
 
 # Related Documents
 
 * `../README.md`
-* `../../project-manager/README.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/README.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

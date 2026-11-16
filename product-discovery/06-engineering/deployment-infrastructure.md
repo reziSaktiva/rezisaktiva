@@ -1,136 +1,136 @@
 # Deployment & Infrastructure
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-11). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan platform deploy dan topologi infrastruktur untuk website portofolio **rezisaktiva**.
+This document defines the deploy platform and infrastructure topology for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-R1 di-deploy ke **Vercel**, terhubung ke repo publik yang sama (Git-based deploy).
+R1 is deployed to **Vercel**, connected to the same public repo (Git-based deploy).
 
-* Situs = keluaran **Next.js SSG** (static-first, ADR-015)
-* Redirect locale untuk `/` = **Edge Middleware** / aturan hosting di Vercel (ADR-014)
-* Tidak ada server aplikasi bisnis, DB managed, atau queue untuk produk R1
+* Site = **Next.js SSG** output (static-first, ADR-015)
+* Locale redirect for `/` = **Edge Middleware** / Vercel hosting rules (ADR-014)
+* No business application server, managed DB, or queue for the R1 product
 
 ---
 
-# Tujuan
+# Purpose
 
-* Mengunci vendor hosting sebelum bootstrap & CI
-* Memenuhi fondasi geo/locale redirect tanpa backend kustom
-* Menjaga ops ringan untuk pemilik tunggal
+* Lock the hosting vendor before bootstrap & CI
+* Provide the geo/locale redirect foundation without a custom backend
+* Keep ops lightweight for a single owner
 
 ---
 
 # Platform Overview
 
-| Aspek | Keputusan R1 |
-| ----- | ------------ |
+| Aspect | R1 Decision |
+| ------ | ----------- |
 | Platform | **Vercel** |
-| Sumber deploy | Git push / PR ke repo ini |
-| Runtime produk | Halaman statis (SSG) + edge untuk redirect `/` |
-| CDN | Termasuk platform Vercel |
-| Server/DB/queue milik produk | Tidak |
+| Deploy source | Git push / PR to this repo |
+| Product runtime | Static pages (SSG) + edge for the `/` redirect |
+| CDN | Included in the Vercel platform |
+| Product-owned server/DB/queue | No |
 
-**Mengapa Vercel (untuk R1):** native Next.js, preview per PR, domain/TLS sederhana, Middleware cocok untuk aturan locale di `/`.
+**Why Vercel (for R1):** native Next.js, preview per PR, simple domain/TLS, Middleware fits locale rules at `/`.
 
-Alternatif yang ditimbang dan **tidak dipilih** untuk R1: Cloudflare Pages, Netlify, GitHub Pages.
+Alternatives considered and **not chosen** for R1: Cloudflare Pages, Netlify, GitHub Pages.
 
 ---
 
 # Environment Topology
 
-| Lingkungan | Peran |
-| ---------- | ----- |
-| **Production** | Situs publik (domain utama) |
-| **Preview** | Deployment per PR / branch — review sebelum merge |
-| **Local** | `pnpm dev` di mesin pengembang |
+| Environment | Role |
+| ----------- | ---- |
+| **Production** | Public site (main domain) |
+| **Preview** | Deployment per PR / branch — review before merge |
+| **Local** | `pnpm dev` on the developer machine |
 
-Tidak ada staging terpisah wajib untuk R1; Preview Vercel cukup sebagai gerbang kualitas.
+There is no required separate staging for R1; Vercel Preview is enough as the quality gate.
 
-Secrets produk R1 diharapkan **minimal** — situs publik tanpa auth/DB. **Pengecualian Validation:** `RESEND_API_KEY` + `RESEND_FROM` (**ADR-047**).
+R1 product secrets are expected to be **minimal** — public site without auth/DB. **Validation exception:** `RESEND_API_KEY` + `RESEND_FROM` (**ADR-047**).
 
 ---
 
 # Build & Deploy
 
-Alur konseptual:
+Conceptual flow:
 
 ```text
 [Push / PR] → [Vercel build: pnpm install + next build]
                     → [SSG pages + assets]
-                    → [CDN / Production atau Preview URL]
+                    → [CDN / Production or Preview URL]
 ```
 
-| Aspek | Catatan |
-| ----- | ------- |
-| Install | pnpm (selaras `monorepo-setup.md`) |
-| Build | `next build` — generate halaman `/id`, `/en`, … |
-| Redirect `/` | Middleware (geo → `Accept-Language` → preferensi → fallback `en`) per ADR-014 |
-| Contact | `mailto:` cadangan; form → Resend Route Handler (**ADR-047**) |
-| Analytics | Opsional; bukan blocker deploy |
+| Aspect | Notes |
+| ------ | ----- |
+| Install | pnpm (aligned with `monorepo-setup.md`) |
+| Build | `next build` — generate pages `/id`, `/en`, … |
+| Redirect `/` | Middleware (geo → `Accept-Language` → preference → fallback `en`) per ADR-014 |
+| Contact | `mailto:` fallback; form → Resend Route Handler (**ADR-047**) |
+| Analytics | Optional; not a deploy blocker |
 
-Detail pipeline CI tambahan (lint/typecheck di GitHub Actions vs hanya Vercel) → `cicd-pipeline.md` (T-006.5).
+Additional CI pipeline details (lint/typecheck in GitHub Actions vs Vercel-only) → `cicd-pipeline.md` (T-006.5).
 
 ---
 
 # Domain & TLS
 
-| Aspek | Keputusan R1 |
-| ----- | ------------ |
-| TLS | Disediakan Vercel (HTTPS) |
-| Domain kustom | Ya — diarahkan ke project Vercel |
-| Canonical | `https://www.rezisaktiva.space` (ADR-048; mengganti kunci apex 2026-08-26) |
-| Apex + `www` | Apex mengarah ke `www`. `rezisaktiva.vercel.app` mengarah permanen ke `www` |
+| Aspect | R1 Decision |
+| ------ | ----------- |
+| TLS | Provided by Vercel (HTTPS) |
+| Custom domain | Yes — pointed to the Vercel project |
+| Canonical | `https://www.rezisaktiva.space` (ADR-048; replacing the apex lock on 2026-08-26) |
+| Apex + `www` | Apex points to `www`. `rezisaktiva.vercel.app` permanently redirects to `www` |
 
-Nama domain production: **`https://www.rezisaktiva.space`**. Hosting tetap Vercel + TLS.
+Production domain name: **`https://www.rezisaktiva.space`**. Hosting remains Vercel + TLS.
 
 ---
 
 # Rollback Strategy
 
-| Situasi | Tindakan |
-| ------- | -------- |
-| Deploy production buruk | Rollback ke deployment sebelumnya di dashboard Vercel |
-| Regresi di PR | Jangan merge; perbaiki di Preview |
-| Konten salah | Revert commit / perbaiki file di `content/` + redeploy |
+| Situation | Action |
+| --------- | ------ |
+| Bad production deploy | Roll back to the previous deployment in the Vercel dashboard |
+| Regression in PR | Do not merge; fix in Preview |
+| Wrong content | Revert commit / fix file in `content/` + redeploy |
 
-Tidak ada blue-green kustom atau multi-region aktif-aktif untuk R1.
+There is no custom blue-green or active-active multi-region setup for R1.
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
+| Decision | Choice |
+| -------- | ------ |
 | Hosting | Vercel |
 | Preview | Vercel Preview (PR) |
-| Static export murni wajib | Tidak — SSG di Vercel + Middleware |
-| Cloudflare / Netlify / GitHub Pages | Tidak untuk R1 |
-| Baseline Engineering | ADR-016 |
+| Pure static export required | No — SSG on Vercel + Middleware |
+| Cloudflare / Netlify / GitHub Pages | No for R1 |
+| Engineering Baseline | ADR-016 |
 
 ---
 
 # Success Criteria
 
-1. Satu perintah mental: push → build Vercel → live/preview
-2. Redirect `/` bisa diimplementasikan tanpa server kustom
-3. Rollback dipahami tanpa runbook panjang
+1. One mental command: push → Vercel build → live/preview
+2. `/` redirect can be implemented without a custom server
+3. Rollback is understood without a long runbook
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
+* `README.md` — this phase documentation
 * `monorepo-setup.md` — single-app Next + pnpm
-* `cicd-pipeline.md` — CI (menyusul)
-* `environment-management.md` — env/secrets (menyusul)
+* `cicd-pipeline.md` — CI (to follow)
+* `environment-management.md` — env/secrets (to follow)
 * `../05-architecture/application-layer.md`
 * `../05-architecture/integration-layer.md`
-* `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/decisions/ADR-047-contact-form-resend.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

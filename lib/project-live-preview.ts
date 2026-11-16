@@ -1,4 +1,4 @@
-/** Host GitHub (repo), bukan situs live. */
+/** GitHub host (repo), not the live site. */
 
 export function isProjectRepoUrl(url: string): boolean {
   try {
@@ -9,7 +9,7 @@ export function isProjectRepoUrl(url: string): boolean {
   }
 }
 
-/** URL yang boleh di-embed sebagai pratinjau live (bukan repo). */
+/** URL that may be embedded as a live preview (not a repo). */
 
 export function isHttpLivePreviewUrl(url: string): boolean {
   try {
@@ -32,8 +32,8 @@ export function isHttpLivePreviewUrl(url: string): boolean {
 }
 
 /**
- * Setelah `load`: dokumen `about:blank` yang masih bisa dibaca = framing
- * ditolak (X-Frame-Options / CSP). Cross-origin sukses melempar SecurityError.
+ * After `load`: a still-readable `about:blank` document means framing was
+ * denied (X-Frame-Options / CSP). Cross-origin success throws SecurityError.
  */
 export function isIframeFramingBlocked(iframe: HTMLIFrameElement): boolean {
   try {

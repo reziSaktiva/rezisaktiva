@@ -1,22 +1,22 @@
 # Pain Points
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mendalami pain points pengunjung (dan current-state tanpa rumah digital) terkait evaluasi **rezisaktiva** sebagai product builder.
+This document deepens visitor pain points (and the current state without a digital home) related to evaluating **rezisaktiva** as a product builder.
 
 ---
 
 # Overview
 
-Pain mengikuti rantai **visibility → narrative → evaluasi & kontak** (ADR-004). Fokus pada gesekan audiens saat menilai fit — bukan daftar keluhan generik internet.
+Pains follow the **visibility → narrative → evaluation & contact** chain (ADR-004). The focus is on audience friction when judging fit — not a generic list of internet complaints.
 
 ---
 
 # Purpose
 
-* Menghubungkan masalah bisnis ke pengalaman user konkret
-* Memprioritaskan pain yang R1 harus redakan
-* Memberi input opportunity areas di journey (tanpa solusikan UI di sini)
+* Connect the business problem to concrete user experience
+* Prioritize pains that R1 must ease
+* Provide input for opportunity areas in the journey (without solving UI here)
 
 ---
 
@@ -24,88 +24,88 @@ Pain mengikuti rantai **visibility → narrative → evaluasi & kontak** (ADR-00
 
 ## In Scope
 
-* Framework severity
-* Tema pain inti + inventory
-* Mapping pain per persona
+* Severity framework
+* Core pain themes + inventory
+* Pain mapping by persona
 
 ## Out of Scope
 
-* Solusi wireframe / copy final (→ UX)
-* Pain infrastruktur hosting / SEO teknis detail
-* Pain yang hanya relevan untuk produk SaaS multi-user
+* Wireframe solution / final copy (→ UX)
+* Detailed hosting infrastructure / technical SEO pains
+* Pains only relevant to multi-user SaaS products
 
 ---
 
 # Pain Point Framework
 
-| Dimensi | Skala | Arti |
-| ------- | ----- | ---- |
-| **Severity** | High / Med / Low | Seberapa menghambat evaluasi & kontak |
-| **Frequency** | Often / Sometimes / Rare | Seberapa sering muncul di konteks ICP |
-| **R1 relevance** | Must ease / Later / Out | Apakah Hybrid lean harus meredakan |
+| Dimension | Scale | Meaning |
+| --------- | ----- | ------- |
+| **Severity** | High / Med / Low | How much it blocks evaluation & contact |
+| **Frequency** | Often / Sometimes / Rare | How often it appears in the ICP context |
+| **R1 relevance** | Must ease / Later / Out | Whether Hybrid lean must ease it |
 
 ---
 
 # Core Pain Themes
 
-1. **Fragmented proof** — bukti tersebar di GitHub, CV, chat
-2. **Wrong default frame** — terbaca “developer” bukan product builder
-3. **Slow fit judgment** — sulit jawab “cocok untuk ide/inisiatif saya?” cepat
-4. **Contact friction** — tidak jelas bagaimana / kapan menghubungi tanpa awkward
-5. **Tone mismatch risk** — terlalu generic global, terlalu lokal sempit, atau terlalu indie vs korporat
-6. **Secondary evaluator gap** — hiring/klien kesulitan sinyal tanpa CV ATS / pricing (lebih rendah prioritas)
+1. **Fragmented proof** — proof scattered across GitHub, CV, chat
+2. **Wrong default frame** — read as “developer” instead of product builder
+3. **Slow fit judgment** — hard to answer “is he right for my idea/initiative?” quickly
+4. **Contact friction** — unclear how / when to reach out without awkwardness
+5. **Tone mismatch risk** — too generic global, too narrowly local, or too indie vs corporate
+6. **Secondary evaluator gap** — hiring/clients struggle to find signals without an ATS CV / pricing (lower priority)
 
 ---
 
 # Pain Points Inventory
 
-| ID | Pain | Siapa | Severity | Freq | R1 |
-| -- | ---- | ----- | -------- | ---- | --- |
-| PP1 | Tidak ada satu URL yang merangkai cerita + bukti + kontak | P1–P4, Rezi | High | Often | Must ease |
-| PP2 | Harus merakit narasi dari repo/CV sendiri | P1, P2 | High | Often | Must ease |
-| PP3 | Positioning tidak langsung terbaca di permukaan | P1, P2 | High | Often | Must ease |
-| PP4 | Outcome karya tidak terlihat tanpa menggali | P1, P2 | High | Often | Must ease (Work index + sheet) |
-| PP5 | AI / stack diklaim tanpa konteks jujur → distrust | P1, P2 | Med | Sometimes | Must ease (Honest AI edge) |
-| PP6 | Tidak tahu channel kontak yang “aman” / soft | P1, P2, P4 | High | Often | Must ease |
-| PP7 | Bahasa default terasa salah untuk konteks geo | P1, P2, S6 | Med | Sometimes | Must ease (fondasi) |
-| PP8 | Sinyal kolaborasi / profesionalisme lemah bagi PO | P2 | Med | Sometimes | Must ease (About) |
-| PP9 | Hiring sulit lihat fit teknis+produk tanpa CV panjang | P3 | Med | Sometimes | Should (tipis) |
-| PP10 | Tidak ada harga → ketidakpastian klien project | P4 | Low–Med | Sometimes | Out (ADR-008); soft path saja |
-| PP11 | Case detail belum ada di R1 → rasa “kurang bukti” | P1, P2 | Med | Sometimes | Later (R2 magnet) |
+| ID | Pain | Who | Severity | Freq | R1 |
+| -- | ---- | --- | -------- | ---- | --- |
+| PP1 | No single URL that strings together story + proof + contact | P1–P4, Rezi | High | Often | Must ease |
+| PP2 | Must assemble the narrative from repo/CV alone | P1, P2 | High | Often | Must ease |
+| PP3 | Positioning is not immediately readable on the surface | P1, P2 | High | Often | Must ease |
+| PP4 | Work outcomes are not visible without digging | P1, P2 | High | Often | Must ease (Work index + sheet) |
+| PP5 | AI / stack claimed without honest context → distrust | P1, P2 | Med | Sometimes | Must ease (Honest AI edge) |
+| PP6 | Do not know which contact channel feels “safe” / soft | P1, P2, P4 | High | Often | Must ease |
+| PP7 | Default language feels wrong for the geo context | P1, P2, S6 | Med | Sometimes | Must ease (foundation) |
+| PP8 | Collaboration / professionalism signal is weak for PO | P2 | Med | Sometimes | Must ease (About) |
+| PP9 | Hiring struggles to see technical+product fit without a long CV | P3 | Med | Sometimes | Should (thin) |
+| PP10 | No pricing → uncertainty for project clients | P4 | Low–Med | Sometimes | Out (ADR-008); soft path only |
+| PP11 | Case detail missing in R1 → feeling of “not enough proof” | P1, P2 | Med | Sometimes | Later (R2 magnet) |
 
 ---
 
 # Severity Summary
 
-* **Must ease di R1:** PP1–PP4, PP6; PP5/PP7/PP8 sebagai bagian clarity
-* **Terima sementara / R2:** PP11 (Work index/sheet dulu; case kemudian)
-* **Sadar tidak diselesaikan di situs:** PP10 (pricing N/A by design)
+* **Must ease in R1:** PP1–PP4, PP6; PP5/PP7/PP8 as part of clarity
+* **Temporarily accepted / R2:** PP11 (Work index/sheet first; cases later)
+* **Consciously not solved on the site:** PP10 (pricing N/A by design)
 * **Secondary thin:** PP9
 
 ---
 
 # Pain Points by Persona
 
-| Persona | Pain dominan |
-| ------- | ------------ |
-| **P1** | PP2, PP3, PP4, PP6 — butuh kecepatan & ownership signal |
-| **P2** | PP2, PP3, PP8, PP6 — butuh kredibilitas kolaborasi |
-| **P3** | PP9, PP3 — butuh sinyal tanpa rebrand ke CV |
-| **P4** | PP6, PP4, PP10 — kontak + bukti; harga tetap out |
+| Persona | Dominant pain |
+| ------- | ------------- |
+| **P1** | PP2, PP3, PP4, PP6 — needs speed & ownership signal |
+| **P2** | PP2, PP3, PP8, PP6 — needs collaboration credibility |
+| **P3** | PP9, PP3 — needs signals without rebrand to CV |
+| **P4** | PP6, PP4, PP10 — contact + proof; pricing remains out |
 
 ---
 
 # Expected Output
 
-Inventory pain yang terhubung ke rantai masalah dan prioritas R1.
+A pain inventory connected to the problem chain and R1 priority.
 
 ---
 
 # Exit Criteria
 
-* Tema inti + ID pain terdokumentasi
-* Mapping R1 / Later / Out jelas
-* Selaras ADR-004 tanpa menambah Must produk baru
+* Core themes + pain IDs documented
+* R1 / Later / Out mapping clear
+* Aligned with ADR-004 without adding new product Musts
 
 ---
 
@@ -116,7 +116,7 @@ Inventory pain yang terhubung ke rantai masalah dan prioritas R1.
 * `jobs-to-be-done.md`
 * `user-journey.md`
 * `../01-business/problem-statement.md`
-* `../../project-manager/decisions/ADR-004-problem-statement-dual-chain.md`
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-004-problem-statement-dual-chain.md`
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

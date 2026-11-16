@@ -1,7 +1,7 @@
 /**
- * Foto karya: JPEG lokal jangan dikompres ulang oleh optimizer (q=75
- * default membuat screenshot terlihat empuk). Unsplash tetap dioptimasi
- * dengan quality lebih tinggi.
+ * Work photos: do not recompress local JPEGs via the optimizer (default q=75
+ * makes screenshots look mushy). Unsplash still goes through optimization
+ * at a higher quality.
  */
 export function workPhotoProps(src: string, sizes: string) {
   return {

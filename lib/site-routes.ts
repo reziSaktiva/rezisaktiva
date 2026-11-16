@@ -26,7 +26,7 @@ function surfaces(): SiteSurface[] {
   return Object.keys(SITE_META[LOCALES[0]]) as SiteSurface[];
 }
 
-/** Destinasi R1: locale × permukaan, dari `SITE_META` + `LOCALES`. */
+/** R1 destinations: locale × surface, from `SITE_META` + `LOCALES`. */
 export function r1PageUrls(): {
   locale: Locale;
   surface: SiteSurface;
@@ -42,7 +42,7 @@ export function r1PageUrls(): {
   );
 }
 
-/** Halaman case publik (locale × slug terlihat). Hidden tidak masuk. */
+/** Public case pages (locale × visible slug). Hidden items are excluded. */
 export function projectCaseUrls(): {
   locale: Locale;
   slug: string;

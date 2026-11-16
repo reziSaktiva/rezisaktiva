@@ -6,7 +6,7 @@ import { Reveal, WordReveal } from "./home-motion";
 import { ArrowUpIcon } from "./overlay-icons";
 import { WorkplaceLine } from "./workplace-line";
 
-/** Section About di Home (`#about`). Satu h1 tetap di hero Home. */
+/** About section on Home (`#about`). Single h1 remains on the Home hero. */
 export function AboutSection({ locale }: { locale: Locale }) {
   const copy = ABOUT_COPY[locale];
 

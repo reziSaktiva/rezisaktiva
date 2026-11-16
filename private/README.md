@@ -9,6 +9,6 @@ Contoh isi yang cocok di sini:
 * Catatan gaji, negosiasi, nama klien rahasia
 * File sementara yang belum siap publik
 
-`product-discovery/` dan `project-manager/` **tetap publik** — jangan taruh data sensitif di sana.
+`product-discovery/` dan `project-os/` **tetap publik** — jangan taruh data sensitif di sana.
 
 File di folder ini diabaikan oleh Git (kecuali README ini).

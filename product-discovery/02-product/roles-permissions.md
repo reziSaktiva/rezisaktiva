@@ -1,105 +1,105 @@
 # Roles & Permissions
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-07). Roles & permissions tidak relevan untuk website portofolio publik **rezisaktiva** tanpa area login / multi-user. File tidak dihapus — lihat ADR-011 / ADR-012.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-07). Roles & permissions are not relevant for the public **rezisaktiva** portfolio website without login / multi-user areas. The file is not deleted — see ADR-011 / ADR-012.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat (bukan dokumen yang terlupa).
+This document is **intentionally filled as N/A** so the decision is recorded (not a forgotten document).
 
 ---
 
 # Overview
 
-Situs **rezisaktiva** adalah portofolio publik Hybrid lean (Home termasuk section About, Workflow, Work index, Contact modal). Tidak ada autentikasi pengunjung, area member, peran admin di dalam produk, atau matriks hak akses antar user.
+The **rezisaktiva** site is a public Hybrid lean portfolio (Home including About section, Workflow, Work index, Contact modal). There is no visitor authentication, member area, in-product admin role, or permission matrix between users.
 
-Oleh karena itu **tidak ada model roles & permissions** untuk produk situs pada arah v0.1 / R1–R3 inti.
+Therefore there is **no roles & permissions model** for the site product in the v0.1 / core R1–R3 direction.
 
-Akses yang ada bersifat sederhana:
+Existing access is simple:
 
-* **Publik** — semua halaman produk dapat dibaca siapa saja
-* **Pemilik konten (Rezi)** — mengedit/deploy di luar “produk” situs (repo / hosting); itu proses authoring, bukan role in-app
+* **Public** — all product pages can be read by anyone
+* **Content owner (Rezi)** — edits/deploys outside the site “product” (repo / hosting); that is an authoring process, not an in-app role
 
 ---
 
 # Current Status
 
-| Aspek | Status |
-| ----- | ------ |
-| Login / auth pengunjung | Tidak ada |
-| Role (admin, editor, viewer, dll.) | Tidak berlaku |
-| Permission matrix | Tidak berlaku |
-| Area private di situs | Tidak (materi sensitif → `private/` di repo, ADR-003 — bukan fitur produk) |
-| Dokumen ini | **N/A — keputusan sadar** |
+| Aspect | Status |
+| ------ | ------ |
+| Visitor login / auth | None |
+| Role (admin, editor, viewer, etc.) | Not applicable |
+| Permission matrix | Not applicable |
+| Private area on site | No (sensitive material → `private/` in repo, ADR-003 — not a product feature) |
+| This document | **N/A — intentional decision** |
 
 ---
 
 # Roles
 
-Tidak ada role produk yang didefinisikan.
+No product role is defined.
 
-| “Aktor” di dunia nyata | Hubungan ke situs |
-| ---------------------- | ----------------- |
-| Pengunjung (founder/PO, sekunder, peer) | Baca konten publik saja |
-| Rezi (pemilik) | Kurasi konten & rilis di luar model permission in-app |
-
----
-
-# Ringkasan Hak Akses per Role
-
-**N/A** — tidak ada matriks role × permission.
-
-Implikasi untuk fase berikutnya:
-
-* UX tidak merancang screen login / RBAC
-* Architecture/Engineering tidak perlu authz in-app untuk MVP (kecuali keputusan baru + ADR)
+| Real-world “actor” | Relationship to the site |
+| ------------------ | ------------------------ |
+| Visitor (founder/PO, secondary, peer) | Reads public content only |
+| Rezi (owner) | Curates content & releases outside the in-app permission model |
 
 ---
 
-# Mapping ke Personas
+# Access Rights Summary per Role
 
-Persona audiens (`03-user/`, nanti) = **pembaca publik**, bukan role dengan privilege berbeda.
+**N/A** — there is no role × permission matrix.
 
-Tidak ada mapping persona → permission level.
+Implications for the next phase:
+
+* UX does not design login / RBAC screens
+* Architecture/Engineering does not need in-app authz for MVP (unless a new decision + ADR changes that)
+
+---
+
+# Mapping to Personas
+
+Audience personas (`03-user/`, later) = **public readers**, not roles with different privileges.
+
+There is no persona → permission-level mapping.
 
 ---
 
 # Future Considerations
 
-Jika suatu saat muncul kebutuhan (mis. draft preview terlindungi, CMS dengan editor, area klien):
+If a need appears later (for example protected draft preview, CMS with editors, client area):
 
-* Ubah status dokumen ini dari N/A menjadi model role nyata
-* ADR baru + dampak ke scope/MVP/architecture
-* Jangan mengasumsikan auth “karena template folder ada”
+* Change this document status from N/A to a real role model
+* New ADR + impact on scope/MVP/architecture
+* Do not assume auth “because the template folder exists”
 
-Sampai itu terjadi: **situs = read-only publik**.
+Until then: **site = public read-only**.
 
 ---
 
 # Decision Rules
 
-* Menambah auth/RBAC ke Must MVP → bertentangan N/A ini; butuh ADR + revisi scope.
-* Menghapus file ini → ditolak; jejak keputusan hilang (sama pola ADR-008).
-* Secret / materi non-publik → `private/` atau di luar repo, bukan role di situs (ADR-003).
+* Adding auth/RBAC to Must MVP → conflicts with this N/A; requires ADR + scope revision.
+* Deleting this file → rejected; the decision trace is lost (same pattern as ADR-008).
+* Secret / non-public material → `private/` or outside the repo, not a role on the site (ADR-003).
 
 ---
 
 # Success Criteria
 
-Dokumen roles & permissions dianggap selesai (N/A) jika:
+The roles & permissions document is considered complete (N/A) if:
 
-1. Jelas bahwa **tidak ada RBAC/auth produk** dan itu disengaja
-2. File tetap ada sebagai jejak (bukan TBD kosong)
-3. Selaras Hybrid lean / product-scope (tanpa area member)
-4. Subtask **T-002.7** bisa dicentang sebagai **N/A completed**
+1. It is clear that **there is no product RBAC/auth** and that this is intentional
+2. The file stays as a trace (not empty TBD)
+3. Aligned with Hybrid lean / product-scope (no member area)
+4. Subtask **T-002.7** can be checked as **N/A completed**
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `product-scope.md` — batas produk (tanpa auth/member)
-* `mvp-definition.md` — out of scope CMS/auth
-* `../../project-manager/decisions/ADR-011-roles-permissions-na-for-portfolio-site.md`
-* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
-* `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
-* `../../project-manager/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md` — pola N/A serupa
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `README.md` — documentation for this phase
+* `product-scope.md` — product boundaries (no auth/member)
+* `mvp-definition.md` — CMS/auth out of scope
+* `../../project-os/decisions/ADR-011-roles-permissions-na-for-portfolio-site.md`
+* `../../project-os/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-os/decisions/ADR-003-public-repo-privacy-private-folder.md`
+* `../../project-os/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md` — similar N/A pattern
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

@@ -1,0 +1,2368 @@
+# COMPLETE TASK
+
+> **Frozen historical archive (ADR-049).** Do not translate this file. Do not add new entries here unless Boss Rezi explicitly asks for legacy changelog work; use `project-os/tickets/`, `project-os/AVAILABLE_TICKETS.md`, and git history for new work.
+
+⚠️ **Warning for AI:** Do not read the history below unless Boss Rezi explicitly orders it. Always **append new entries at the very top** (after this header).
+
+Entry format:
+
+```
+## [YYYY-MM-DD]
+### Added
+- ...
+### Changed
+- ...
+### Fixed
+- ...
+```
+
+## [2026-11-16]
+### Fixed
+- **T-059** — form Contact: batas 5 kiriman per IP / 10 menit; honeypot `rz_hp` (bukan `company`, supaya tidak terisi otomatis lalu mengaku terkirim). Tes mencakup secret absen, penolakan Resend, dan honeypot tanpa kirim.
+
+## [2026-11-16]
+### Fixed
+- **ADR-048** — canonical, JSON-LD, sitemap, dan robots di build Vercel memakai `https://www.rezisaktiva.space`. `rezisaktiva.vercel.app` diarahkan permanen ke host itu. Production yang live sebelumnya menulis `http://localhost:3000`.
+
+## [2026-11-16]
+### Added
+- **T-059.3** — `POST /api/contact` mengantar lewat Resend. Validasi email/pesan, honeypot, Reply-To pengunjung, To = email kontak. Tanpa secret, jawaban 503 dan isi pesan tidak dicatat.
+- **T-059.4** — Modal Contact: Mengirim / Terkirim hanya setelah server menerima / gagal. `mailto:` dan salin tetap terlihat.
+
+### Changed
+- Fokus **T-059**: sisa **T-059.2** (domain + Preview/lokal; Production sudah diisi) dan **T-059.5** (bukti masuk inbox setelah deploy).
+
+## [2026-09-15]
+### Added
+- **ADR-047** / **T-059.1**: form Contact mengantar email lewat Resend (Route Handler; halaman tetap SSG). Task **T-059.2–T-059.5** terbuka.
+
+
+## [2026-09-15]
+### Fixed
+- Hover CTA pita footer (`.home-contact-cta`): tanpa fill muted shadcn; teks/panah aksen darah. Bungkus Magnetic di pita tidak stretch penuh.
+
+## [2026-09-15]
+### Changed
+- Copy halaman Workflow: cabut em dash ("—") dari lede, deskripsi, catatan, dan label peran (ID+EN).
+
+## [2026-09-15]
+### Added
+- Primitf shadcn `DropdownMenu` (`components/ui/dropdown-menu.tsx`).
+### Changed
+- Locale switcher: ToggleGroup ID/EN → Dropdown Menu compact, kulit gothic-blood.
+
+## [2026-09-15]
+### Changed
+- Section About: Now (`#now`) dipindah ke antara judul display dan lead.
+
+## [2026-09-15]
+### Changed
+- Cabut tautan Repo dari project sheet dan halaman case. Live (situs, bukan GitHub) tetap. JSON-LD `sameAs` hanya URL live.
+
+## [2026-09-15]
+### Changed
+- Galeri `backend platform sosial`: `explore.jpg` jadi cover + gambar pertama; `feed.jpg` jadi kedua.
+
+## [2026-09-15]
+### Changed
+- Lead halaman Proyek dikunci: ID “dari nol hingga siap rilis”; EN “crafted from the ground up” (T-021.5).
+
+## [2026-09-15]
+### Changed
+- Lead halaman Proyek (ID/EN) + meta Work: AI ecosystem hanya di proyek terbaru, bukan seluruh katalog (T-021.5).
+
+## [2026-09-15]
+### Changed
+- Hover tile project: cabut blood drip. Desktop = grayscale → warna penuh + scale foto + caption di pelat museum (T-042.3 kunci drip 2026-09-04 dicabut). Ponsel = warna penuh.
+
+## [2026-09-15]
+### Added
+- Galeri admin panel pada `backend platform sosial` (dashboard, user terhapus, maintenance).
+### Changed
+- Copy + layanan: frontend admin panel, bukan backend saja.
+
+## [2026-09-15]
+### Added
+- **T-058** / **ADR-046**: halaman `/projects/[slug]` lebih dalam dari sheet — periode, stack, poin dari CV (`private/Resume_rezi_updated_agustus_2026.md`) + copy kunci chat.
+- `content/work-case.ts` + field `case` di `projects.json` untuk semua item katalog (termasuk Gamestalgia, tetap hidden).
+### Changed
+- `work-case-page.tsx` merender kedalaman; sheet M10 tetap skim.
+- S5 `key-screen-patterns.md`.
+- **T-058.4** ✅ — browser: case Cook It / Minerank / backend platform sosial punya periode+stack+poin; sheet Cook It tetap skim (tahun + deskripsi, tanpa stack).
+
+## [2026-09-15]
+### Added
+- **T-057** / **ADR-045**: karya publik boleh judul deskriptif tanpa merek; item `backend platform sosial` (slug `backend-platform-sosial`) di Work index + sheet + case; galeri crop tanpa wordmark; tanpa live/repo.
+- Tes: slug publik memuat item baru; merek tertahan tidak di baris publik; rute `curious` tetap tidak di-emit.
+### Changed
+- `hiddenIds` hanya Gamestalgia (`6`). Copy id 7 = enam highlight backend yang dikunci Boss Rezi.
+- **T-057.5** ✅ — browser `http://127.0.0.1:3001`: tile di `/id/projects`; sheet tanpa Live/Repo; “Baca selengkapnya” → `/id/projects/backend-platform-sosial`; sibling `/en/...`; slug lama 404; case desktop + 375.
+
+## [2026-09-15]
+### Fixed
+- Review PR #76: tes kontrak ring/X (tanpa pisau); rAF berhenti saat pointer diam / tab hidden; ring portaled disembunyikan lewat `html.page-vt-lock`, bukan selector klon.
+
+## [2026-09-15]
+### Changed
+- Kursor desktop kembali ke `.home-cursor-ring` (ADR-019): ring mengikuti pointer; hover tautan/tombol membesar; scrim overlay Contact/QI/sheet = ikon X. Native cursor tidak disembunyikan secara global.
+- Cabut kursor pisau: hapus `CursorKnifeFollow`, class `cursor-knife`, aset `public/cursors/bloody-knife.png`. Ring tetap portal ke `body` (z-200) supaya X tidak tertutup overlay.
+- Ikon X memakai token gothic-blood (`--color-accent-muted` + `--color-text-primary`), bukan pill kuning.
+- Catatan T-043.2 + `design-tokens.md` diselaraskan.
+
+## [2026-09-15]
+### Fixed
+- Review PR #75: `R1_COMPLETE.md` “Berikutnya” tidak lagi menunjuk T-056 sebagai kerja terbuka. Locale sibling di T-056.6 = halaman `/en/…` dan `/id/…` via URL langsung (bukan klik switcher klien). `TASKS.md` “Baru selesai” memuat lagi **T-056.1**.
+
+## [2026-09-15]
+### Changed
+- **T-056.6** ✅ — verifikasi browser `http://127.0.0.1:3010` (production `next start`): tile tetap sheet (URL index tidak berubah; tautan “Baca selengkapnya”); URL langsung ID/EN; `hiddenIds` + slug unknown = 404; Contact + Quick Info di case; desktop + 375 (chip/menu Proyek aktif). **T-056** Done.
+- Snapshot/TASKS: tidak ada task implementasi terbuka; Validation.
+
+## [2026-09-14]
+### Fixed
+- Review PR #74: padding/probe iframe sheet tidak bocor ke halaman case; JSON-LD case + CreativeWork `url` = `/projects/[slug]`; `notFound()` jika sheet hilang; tes tautan primer vs Live/Repo.
+### Changed
+- Snapshot/TASKS tetap **T-056.6**.
+
+## [2026-09-14]
+### Added
+- **T-056.4** — tautan primer “Baca selengkapnya” / “Read the full case” di sheet → `/[locale]/projects/[slug]`; Live/Repo tetap sekunder.
+- **T-056.5** — `casePageMetadata`: title `rezisaktiva — {name}`, description = outcome, canonical + hreflang, OG kartu situs.
+### Changed
+- Snapshot/TASKS → **T-056.6**.
+
+## [2026-09-14]
+### Added
+- **T-056.2** — slug kebab-case di `projects.json`; copy halaman case = slot sheet yang sudah dikunci; label tautan “Baca selengkapnya” / “Read the full case”.
+- **T-056.3** — route SSG `app/[locale]/projects/[slug]/` (`generateStaticParams`, 404 slug hidden/unknown).
+### Changed
+- Snapshot/TASKS → **T-056.4**.
+
+## [2026-09-14]
+### Changed
+- Folder `project-manager/tasks/`: 15 file `vXX-*.md` digabung jadi `discovery.md`, `bootstrap.md`, `r1.md`, `r2.md` (+ `README.md`). ID task tidak berubah. Indeks TASKS = fase, bukan v01–v21.
+
+## [2026-09-14]
+### Added
+- **ADR-044** — R2 hibrid: sheet M10 + halaman `/[locale]/projects/[slug]`.
+- `tasks/v21-r2-case-pages.md` — **T-056** (**T-056.1** ✅).
+### Changed
+- Baseline 02/04/05 + ADR-027 catatan R2; Snapshot/TASKS → **T-056.2**.
+
+## [2026-09-14]
+### Added
+- `R1_COMPLETE.md` — ringkasan beku R1 Hybrid lean (exit T-018, polish T-055, T-023 ❌).
+### Changed
+- Snapshot + Fokus TASKS menunjuk **R1 sudah selesai**; tidak ada task R1 baru.
+
+## [2026-09-14]
+### Fixed
+- Review PR #73: pita footer full-bleed + `z-index: 2` hanya `body:has(.wf-cathedral-dust)` — Home/Projects kembali max-width 1400. ADR-043: “tanpa kode produksi” berlaku **T-023 saja**. Tes kontrak CSS `lib/workflow-cathedral-dust.test.ts`.
+
+## [2026-09-14]
+### Added
+- **T-054.4** ✅: verifikasi Cathedral Breath `http://127.0.0.1:3001` — `/id/workflow` + `/en/workflow`; desktop 1920 (115 mote, loop `transform`/`opacity`); 375/320 (48 mote); reduced-motion = diam; Contact/`ct-lock` + Quick Info/`qi-lock` menjeda debu. **T-054** / **v19** Done.
+### Fixed
+- Debu menembus pita footer (`mix-blend-mode: plus-lighter`): isolasi + kanvas pada `.wf-cathedral-dust`; `.site-footer` full-bleed `z-index: 2` (lebar isi tetap di inner).
+### Changed
+- Fokus TASKS: tidak ada task R1 terbuka.
+
+## [2026-09-14]
+### Changed
+- **T-023** ❌ Cancelled (**ADR-043**): unduhan CV/Portofolio publik tidak akan di-ship (risiko penyalahgunaan). ADR-023 superseded. M3 Contact = email + satelit saja. v10 Done.
+- Fokus TASKS: antrian terbuka hanya **T-054.4**.
+
+## [2026-09-14]
+### Fixed
+- Review PR #72: `rel="icon"` 192/512 di head (`SITE_HEAD_ICONS` + Apple 180); `favicon.ico` BMP/DIB (bukan PNG-in-ICO); warna generator = `lib/brand-chrome.json` (sama dengan `SITE_CANVAS_COLOR`); tes dimensi OG 1200×630; komentar path About di `page-metadata.ts`.
+### Changed
+- Aset brand di-regenerasi lewat `scripts/generate-brand-metadata-assets.mjs`.
+
+## [2026-09-14]
+### Added
+- **T-031.5** ✅: HTML head live `http://127.0.0.1:3001` locale `en` — Home `/en` + Work `/en/projects`: `og:image` `/brand/og.png`, `link rel="icon"` (favicon.ico + icon.png), `apple-touch-icon`; title T-021.7 tetap (`rezisaktiva — Home` / `rezisaktiva — Projects`). About = **308** `/en#about` (ADR-040); kartu/ikon About = head Home. Aset 200: favicon, icon, apple-icon, og.png, manifest. **T-031** / **v13** Done. Berikutnya **T-054.4**.
+### Changed
+- Fokus TASKS / Snapshot: T-031 selesai; antrian atas **T-054.4**.
+
+## [2026-09-14]
+### Added
+- **T-031.4** identitas head: `applicationName` rezisaktiva; authors/creator/publisher dari `PERSON`; `robots` index/follow; `formatDetection` telepon/alamat mati; `viewport.themeColor` kanvas gelap tanpa `cookies()`.
+### Changed
+- Fokus T-031: T-031.1–T-031.4 ✅; sisa T-031.5.
+
+## [2026-09-14]
+### Added
+- **T-031.3** kartu share di head: `openGraph.images` + `twitter.images` dari `pageMetadata` → `/brand/og.png` (satu kartu Home/Workflow/Projects). Title/description T-021.7 tidak diubah.
+### Changed
+- Fokus T-031: T-031.1–T-031.3 ✅; sisa T-031.4–T-031.5.
+
+## [2026-09-14]
+### Added
+- **T-031.1** aset tipografi brand (gothic-blood, tanpa wajah): `public/brand/icon-32.png`, `icon-192.png`, `icon-512.png`, `apple-touch.png`, `og.png` (~1200×630). Generator `scripts/generate-brand-metadata-assets.mjs`; font `scripts/vendor/texturina-display-700.ttf` (OFL).
+- **T-031.2** file-based ikon + manifest ringan: `app/favicon.ico` (ganti scaffold Next), `app/icon.png`, `app/apple-icon.png`, `app/manifest.ts` (`display: browser`, ikon `/brand/icon-192.png` + `/brand/icon-512.png`).
+### Changed
+- Fokus T-031: T-031.1–T-031.2 ✅; sisa T-031.3–T-031.5 (OG/Twitter di head, identitas, verifikasi).
+
+## [2026-09-11]
+### Fixed
+- Review PR #70: blur hold tanpa `useRef` di render (CI `react-hooks/refs`).
+
+## [2026-09-11]
+### Fixed
+- Review PR #70: blur kaca tetap on di render yang sama saat scroll kembali ke puncak (`nextNavGlassFadingOut`); cincin fokus brand compact tidak terpotong (`overflow` hanya di role). Tes hold fade-out.
+
+## [2026-09-11]
+### Changed
+- **T-055.4** ✅: verifikasi navbar di `http://127.0.0.1:3001` — Home / `#about` / `/workflow` / `/projects`, ID + EN; desktop 1440 + compact 375/320; kaca on-scroll (wash + blur + hairline); selected outline darah; hamburger buka/tutup + Contact di luar; Contact modal dari chrome; reduced-motion = cut kaca tanpa Lenis. **T-055** / **v20** Done. Berikutnya **T-031**.
+
+## [2026-09-11]
+### Fixed
+- Review PR #70: ESLint refs + setState-in-effect di `SiteNavGlass`; kaca baca max(Lenis, native) via `useSyncExternalStore`; blur fade-out dari event Motion, bukan effect; `will-change` hanya saat `data-blur`. Tes `lib/nav-glass.test.ts`.
+
+## [2026-09-10]
+### Fixed
+- Console: `willChange` di `SiteNavGlass` tidak diteruskan ke DOM — pindah ke CSS `will-change: opacity` di `.site-nav-glass`.
+
+## [2026-09-10]
+### Changed
+- Fade kaca navbar: 225ms `--ease-standard` → 400ms `--ease-overlay` (T-055, tetap fade opacity; blur on/off). Callback blur pakai ref supaya tidak nyala/mati salah saat scroll dibalik.
+
+## [2026-09-09]
+### Added
+- **T-055.3** ✅: kaca navbar compact &lt;1024px (lapisan `.site-nav-glass` yang sama); chrome satu baris 320/375; panel hamburger T-040 tetap.
+### Changed
+- Fokus: berikutnya **T-055.4** (verifikasi browser penuh).
+
+## [2026-09-09]
+### Added
+- **T-055.2** ✅: kaca navbar desktop on-scroll (`SiteNavGlass`) — fade opacity, blur instan, hairline token; chip/Contact T-040 tetap.
+### Changed
+- Fokus: berikutnya **T-055.3** (kaca + hamburger &lt;1024px).
+
+## [2026-09-09]
+### Added
+- **T-055.1** ✅: kunci arah navbar — kaca on-scroll (`scrollY > 0`), hairline `--color-border`, fade opacity; blur instan; chrome T-040 tetap. Detail di `tasks/v20-navbar-polish.md`.
+### Changed
+- Fokus: berikutnya **T-055.2** (kode desktop + kaca). Job chrome / selected outline tidak berubah.
+
+## [2026-09-09]
+### Added
+- **T-055** / **v20** ⏳: polish visual navbar (kulit saja). File `tasks/v20-navbar-polish.md`. Berikutnya **T-055.1** Q&A kunci arah vs kode T-040. Job chrome tetap (ADR-020 / ADR-031 / ADR-034). Branch kerja `feat/navbar-polish`.
+### Changed
+- `TASKS.md` Fokus + indeks v20; Snapshot: **T-055** di antrian atas **T-031** / **T-054.4**.
+
+## [2026-09-09]
+### Changed
+- **T-043.4** ✅: verifikasi R1 di `http://127.0.0.1:3001` — Home (hero + `#about`), `/id/about` → `#about`, `/id/workflow`, `/id/projects`; tema gelap (`html.dark`, kanvas `rgb(11,11,13)`, aksen `#6b1c23`, chip `#141418`); Contact / Quick Info / project sheet elevated `#141418`; selected nav = border 1px darah; hamburger 375/320 (Contact di luar, tap 44px); reduced-motion = tanpa film, tanpa Lenis, kursor sistem. Snapshot **v15 Done**. **T-031** kembali antrian.
+- Catatan verifikasi (dev overlay, bukan blocker v15): `useReducedMotion()` bisa memicu hydration warning Next saat `prefers-reduced-motion: reduce` di-emulasi (Workflow principles). Kulit dan job overlay tetap lolos.
+
+## [2026-09-09]
+### Changed
+- **T-043.3** ✅: docs/rule tidak lagi mewajibkan pill kuning sebagai identitas. `design-tokens.md` selaras gothic-blood (selected = outline, chip elevated, bukan bercak/kuning). `code-discipline.md` + `.cursor/rules/shadcn.mdc` / `code-discipline.mdc` memakai ADR-029. `04-ux/navigation-patterns.md`: hamburger = panel elevated (satu kalimat; bukan rewrite prinsip).
+
+## [2026-09-09]
+### Changed
+- **T-043.2** ✅: scrollbar dokumen + overlay (Contact / Quick Info / project sheet) memakai `--rz-scrollbar-*` dari token gothic-blood (thumb `--color-accent-muted`, hover `--color-focus`). Cincin fokus keyboard = `--color-focus` (campur darah + vellum). Target sentuh chrome/overlay 44px di lantai 320px. Kursor pisau (sudah dikunci 2026-09-04) tetap di atas overlay; sentuh / reduced-motion = kursor sistem.
+
+## [2026-09-08]
+### Added
+- **T-043.1** overlay film vintage tipis (dikunci chat): grain + vignette + kedip luminance hanya selama `page-vt-lock`. Bukan RGB/VHS, bukan clip video, bukan overlay permanen. Reduced-motion = tanpa overlay.
+
+## [2026-09-08]
+### Changed
+- **T-043.1** ✅: transisi halaman = hard cut + stutter frame (T-038.3). Clone exit = offset diskrit ~0.2s; cut ke halaman baru + stutter ~0.16s. Bukan Hess scale, bukan RGB/VHS, bukan View Transitions. Reduced-motion = instan. Lenis + pause overlay + scrollbar track (`page-vt-lock`) tetap.
+
+## [2026-09-08]
+### Changed
+- **T-042.3** ✅: tile Work = pelat museum (dikunci chat). Mat + hairline luar seperti About; grid `gap-6`; drip hover tetap di dalam plate; klik tile tetap membuka sheet.
+- **T-042** parent ✅. Gerbang **T-043** terbuka.
+
+## [2026-09-08]
+### Changed
+- **T-042.2** ✅: section About = pelat museum (dikunci chat). Karya seni bingkai ganda (mat + hairline luar); caption “This is not me” jadi label terpusat dengan tracking; kolom Now/h2/lead tidak diubah.
+
+## [2026-09-08]
+### Changed
+- **T-042.1** ✅: restyle hero Home = polish saja (dikunci chat). Veil lebih pekat di zona h1/lede, wallpaper tengah tetap terbuka; lede lebih dekat vellum; tautan Workflow lebih kontras + hover/focus. Komposisi dua baris + MP4 + fade ke `#about` tidak diubah.
+
+## [2026-09-08]
+### Changed
+- **T-054** debu katedral: setiap mote mendapat glow radial, starburst aperture 4 arah, dan flare anamorphic horizontal (optik kamera). Twinkle tetap di-pause oleh overlay lock / reduced-motion.
+
+## [2026-09-08]
+### Changed
+- **T-054** dikunci ulang: gerbang cathedral dan bunga filigree **dicabut**. Latar `/workflow` = debu mote individual `position: fixed` saja.
+
+## [2026-09-08]
+### Changed
+- **T-054.2 / T-054.3** dikunci ulang setelah review Boss Rezi: satu gerbang cathedral di zona Operating System–Pipeline (gerbang hero-filling dicabut); debu katedral jadi mote individual `position: fixed` (wallpaper, warna samar, bukan kelompok terang); bunga filigree 1–2 per section, samar.
+### Fixed
+- SVG filigree tidak lagi `preserveAspectRatio="none"` (bunga sempat ter-stretch oval besar di hero).
+
+## [2026-09-08]
+### Changed
+- Cathedral Breath: bunga filigree 8 kelopak (isi + garis) dipasang di rose window dan sebagai lapisan terpisah di atas veil; gerak abu dipercepat (~5.5–7.2s, loop, jarak naik lebih jauh).
+
+## [2026-09-08]
+### Changed
+- Cathedral Breath diperkaya setelah review Boss Rezi: filigree lebih padat, sinar lancip, debu katedral di **atas** veil (bukan tertutup), kelompok mote + percikan kecil, pipeline tembus latar.
+
+## [2026-09-08]
+### Added
+- **T-054.2** ✅ island `workflow-cathedral-breath-background.tsx`: tracery SVG bernapas + tiga kelompok debu (loop `transform`/`opacity`, `repeatType: mirror`); veil token; `position: absolute` di `.wf-page` (bukan fixed); di belakang navbar, berakhir sebelum footer.
+### Changed
+- **T-054.3** ✅: `useReducedMotion` dan overlay lock (`ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`) memakai frame diam (div + opacity CSS), bukan loop Motion.
+
+## [2026-09-08]
+### Changed
+- **T-054.1** ✅ dikunci ulang sebagai **Cathedral Breath**: filigree SVG bernapas + debu katedral pendukung, ikut dokumen sampai sebelum footer. Keputusan kabut wine sebelumnya di-supersede; island baru masuk **T-054.2**.
+
+## [2026-09-08]
+### Changed
+- **T-054.1** ✅ — motif **kabut wine pelan**; penempelan **ikut dokumen** (bukan fixed Home). Island `workflow-wine-fog-background.tsx` = **T-054.2**.
+
+## [2026-09-08]
+### Added
+- **T-054** — task latar hidup Motion di `/workflow` (bukan foto/video). `tasks/v19-workflow-living-background.md`.
+### Changed
+- Cabut wallpaper bitmap Workflow (`WorkflowWallpaper`, `public/media/workflow-wallpaper.*`, CSS `.wf-page-wallpaper*`); kartu/panel kembali permukaan token utuh.
+
+## [2026-09-08]
+### Changed
+- Wallpaper `/workflow` diganti aset baru; `position: fixed` seperti Home; memudar saat pita footer masuk layar (T-042.4).
+
+## [2026-09-08]
+### Changed
+- Wallpaper Workflow 4× (2304×4096 WebP + JPEG) supaya tidak blur saat di-stretch sepanjang halaman (T-042.4).
+- `.wf-page` ditarik ke belakang navbar transparan (pola negatif margin Home); pita footer tetap tanpa wallpaper.
+
+## [2026-09-08]
+### Added
+- Wallpaper halaman Workflow: `public/media/workflow-wallpaper.jpg` di `.wf-page` — gambar setinggi seluruh halaman, ikut scroll, potongan vertikal mengikuti lima blok (T-042.4).
+### Changed
+- Permukaan `.wf-*` (pipeline band, kartu, compare, vault) sedikit tembus supaya wallpaper terbaca; veil + text-shadow agar klaim tetap kontras.
+
+## [2026-09-08]
+### Fixed
+- Audit konsistensi dokumen vs web hidup (ADR-040 / ADR-041 / ADR-042): baseline `product-discovery/` (About = section Home, Workflow decision-driven, tanpa `#proof` / teaser Home / rest-active accordion); indeks + Update ADR; Fokus `TASKS.md` + Baca dulu v15; catatan superseded di T-021.3 / T-045 / T-044 / v11 / v12 / v14. Pola kerja awal (PD vs PM, Documentation First, Living vs Static) tidak diubah. Folder `context/` tidak ada — dilewati.
+
+## [2026-09-08]
+### Added
+- **ADR-042** — halaman `/workflow` decision-driven (hero + tab Chaos vs Decision-Driven, lima prinsip, pipeline Human vs AI, ADR Vault). Primitf shadcn `Tabs`, `ScrollArea`, `Tooltip`.
+- Island `workflow-hero.tsx`, `workflow-principles.tsx`, `workflow-pipeline.tsx`, `workflow-adr-vault.tsx`.
+### Changed
+- **T-042.4** ✅: `content/workflow.ts` + `workflow-page.tsx` mengikuti ADR-042; copy T-021.3 di rute ini di-supersede. Offers/values/accordion dicabut (`about-offer-grid.tsx`, `about-process.tsx`). CTA Contact tetap pita footer (ADR-041).
+- Docs S2b / M14 / IA / MVP + catatan ADR-025 / ADR-035 / ADR-039.
+### Fixed
+- CLI shadcn sempat menambah paket `cn` yang salah; impor primitf baru memakai `@/lib/utils`.
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): urutan `/workflow` = proses 4 langkah → approach/values → offers (“Yang bisa saya bantu”).
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): accordion proses di `/workflow` terbuka saat hover (desktop) dan klik; `.about-process-copy` `--font-size-sm` → `--font-size-md`.
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- **T-042.4** (sebagian): kartu Product/offers dan Values di `/workflow` selalu menampilkan deskripsi (cabut rest/active/`about-rest-active.tsx`); `.about-card-body` `--font-size-sm` → `--font-size-md`.
+### Fixed
+- —
+
+## [2026-09-08]
+### Added
+- —
+### Changed
+- Frame karya seni About: rasio mengikuti aset (634×1024) lewat `aspect-ratio`, tinggi mengecil bila kolom lebih sempit; border `4px` (`--spacing-1`).
+### Fixed
+- Letterbox atas/bawah di dalam border potret About: tinggi frame sebelumnya tetap viewport meski lebar kolom terpotong.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Fade wallpaper Home: jarak fade diukur dari layout `#about` (resize), bukan `getBoundingClientRect` di setiap frame Lenis; layer `visibility: hidden` saat sudah hilang; cabut `will-change: opacity`.
+### Fixed
+- Home mentok di bawah setelah fade wallpaper ke About: scroll ke atas tersangkut karena baca layout + tulis opacity tiap frame Lenis.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- `/[locale]/projects` 500: cover Unsplash ditolak `next/image`. `images.unsplash.com` ditambah ke `remotePatterns`; tile featured `priority`.
+- Hero Work/Projects: `padding-block-start` 5rem/6rem → token `--spacing-8` / `--spacing-10` (header sudah di atas konten, bukan overlay seperti Home).
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- H1 Home terpotong di tablet: layout dua sudut (baris 2 `max-width: 100% − 36rem`) baru dari 1200px; 768–1199 memakai pola mobile + padding kanan supaya tidak ketutup tab Quick info.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- Karya seni About (`#about`) dipusatkan di tengah kolom (bukan rata kiri desktop).
+
+## [2026-09-07]
+### Added
+- **ADR-041** / **T-053** — pita footer Contact di Home (setelah `#about`); `SiteFooter` selalu di layout locale.
+### Changed
+- **ADR-033** superseded. Docs IA / key screens / nav / M1–M6 / TASKS selaras pita di semua rute.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- Overlay Next “Export AboutPage doesn't exist”: `app/[locale]/about/page.tsx` redirect ke `/{locale}#about` (ADR-040), tanpa impor `AboutPage`.
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Section About (`#about`) memakai `min-h-screen` / `min-height: 100svh` (bukan viewport minus header).
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- Wallpaper Home fade mengikuti scroll hero ↔ `#about` (**T-042.1**, chat).
+### Changed
+- `HomeHeroWallpaper` opacity terikat posisi About; video pause saat hilang. Lenis `scroll` dinotifikasi ke listener halaman.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-052.1–T-052.2** — About jadi section `#about` di Home; chip nav tetap; `/about` redirect. **ADR-040**.
+### Changed
+- Cabut `#proof` dan pita Contact dari About (Home tetap tanpa footer). JSON-LD tanpa ProfilePage. Sitemap tanpa URL `/about`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-042.2** (hero) — karya seni `public/media/about-hero.jpg` setinggi viewport + caption “This is not me”; **ADR-039**.
+### Changed
+- About: badge availability dicabut; lead satu paragraf (tanpa rest/active); copy ID/EN baru; h1 mengikuti clamp Home.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-051.1** — h1 dua baris display kiri-atas / kanan-bawah; copy ID `yang mulus`.
+### Changed
+- Clamp h1 tidak diubah. Lede tetap lantai bawah.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-050.1** — lede Home di lantai bawah first viewport.
+### Changed
+- Hero: h1 atas, deskripsi + tautan Workflow di paling bawah (`justify-between`); veil atas+bawah.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **T-049.1–T-049.2** — lede di bawah h1; skala h1 dua tingkat lebih kecil.
+### Changed
+- Urutan hero Home: h1 lalu deskripsi + tautan Workflow. Clamp desktop max `6.75rem` (dari `10.5rem`).
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-038** — h1 Home dua baris display + tautan Workflow di lede. **T-048.1–T-048.3**.
+### Changed
+- `HeroWords` kembali dua baris; `.home-hero-line-2` rata kanan. Lede CTA `ledeCta` → `/workflow`. ADR-036 bentuk wrapping superseded.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-037** — Now ke About; lede di atas h1 Home. **T-047.1–T-047.3**.
+### Changed
+- Home: kluster kiri-bawah (lede body + h1 display); veil ke zona teks. About: kicker Now + `#now`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-036** — h1 Home kalimat wrapping. **T-046.1–T-046.3**.
+### Changed
+- Copy hero ID/EN di `content/home.ts`. `HeroWords` satu blok; `.home-hero-line-2` dicabut. IA / key screens / T-042.1 mengikuti wrap.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- —
+### Fixed
+- Docs audit pasca ADR-032–035: sisa permukaan lama (teaser Home, About = Proses Kerja, tiga destinasi, Home = M1+M4, default ship light, inventaris T-042 About masih offers/proses). Baseline `02-product` / `03-user` / `04-ux` / `05-architecture`, catatan update ADR-012/014/019/020/022/025, indeks DECISIONS, Snapshot Milestone M14, `v15-visual-identity.md` cluster T-042, `PROJECT_OVERVIEW.md`, skill audit rute R1.
+
+## [2026-09-07]
+### Added
+- Route `/[locale]/workflow` (M14). Chip nav **Proses Kerja / How I Work**. **ADR-035**. **T-045.1–T-045.4**.
+### Changed
+- `/about` = About pribadi (hero + bukti AI). Offers, approach, values, langkah proses pindah ke Workflow. Label About chrome = Tentang / About.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- —
+### Changed
+- Label chrome kiri: **REZI SAKTIVA** + **Web Engineer** (`PERSON_CHROME`). About / Quick Info / JSON-LD tetap `PERSON.name` / `PERSON.jobTitle`.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-034** / **T-040.7** — Nama header pakai font display; pekerjaan di samping; chip nav tanpa Home.
+### Changed
+- Hanya nama yang tautan ke Home. `NAV_ITEMS` = About + Projects. IA / nav / key screens selaras.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-033** / **T-044.6** — Home tidak merender pita footer Contact. About dan Projects tetap.
+### Changed
+- Layout locale memakai `SiteFooterSlot`; IA / key screens / nav / M1 selaras ADR-033.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-032** / **T-044.1–T-044.5** — Home satu section (hero + Now). Klaim bukti AI pindah ke About setelah hero. Teaser karya dicabut dari Home; Work index tidak dapat section baru. M4 retired.
+### Changed
+- IA / key screens / flows / M1–M4 / MVP: bukti bukan di Home. Sheet M10 hanya dari katalog. Copy T-021.2 tidak ditulis ulang.
+### Fixed
+- —
+
+## [2026-09-07]
+### Added
+- **ADR-031** — selected chrome = outline darah + teks aksen (nav, locale, hamburger).
+### Changed
+- Cabut blood splatter viewport (ADR-030 superseded). Hapus `blood-splatter-layer.tsx`. Blob wine selected diganti border + font merah.
+
+## [2026-09-07]
+### Changed
+- **T-042.1** Wallpaper Home nempel di viewport sepanjang halaman (video tembus sampai footer). Veil tidak lagi fade ke warna body penuh. About tidak ikut.
+
+## [2026-09-04]
+### Changed
+- Hover drip: kembalikan lidah halus versi sebelumnya (tanpa polygon/miring/rambut); tetap tanpa bulatan ujung (radius kecil, bukan oval).
+
+## [2026-09-04]
+### Changed
+- Hover drip: cabut bulatan ujung; lidah meruncing + miring tidak seragam; dua rambut tipis; tanpa nampan atas.
+
+## [2026-09-04]
+### Changed
+- Hover drip tile: lidah dipersempit (~7–11px, ~4.5% lebar kartu), nampan atas 38% dicabut (sisa rim 8px), tinggi tetes 36–64% supaya foto tetap terbaca.
+
+## [2026-09-04]
+### Changed
+- **T-041.3** — Project Drawer: elevated `#141418`, radius atas 1.15rem, scrim gelap, live/repo di dalam. Reduced-motion: transisi overlay `none`. **T-041** ✅.
+- **T-041.2** — Quick Info: panel elevated `#141418`; tab tepi datar (vellum + hairline, hover darah), bukan nampan wine. Close ghost. Email primer vs Links.
+- **T-041.1** — Contact Dialog: kartu elevated token (`#141418`, border `#2C2C32`, vellum) keluarga hamburger; hex ink lama dicabut. Tombol kirim datar (hairline, tanpa 3D). Email lebih besar dari ikon sosial.
+
+## [2026-09-04]
+### Fixed
+- Cursor pisau tidak tampil saat modal/overlay terbuka: z-index 60 tertutup Contact 90/92; state scrim `is-close` menyembunyikan bilah. Pisau di-portal ke `document.body`, z-index 200, tetap pisau di atas overlay (I-beam hanya di field teks).
+
+## [2026-09-04]
+### Added
+- Cursor desktop = pisau berdarah (`public/cursors/bloody-knife.png`); hotspot ujung bilah; scrim overlay tetap X; reduced-motion/sentuh = kursor sistem.
+- Wallpaper live di hero Home: `public/media/home-hero-live.mp4` (1080p, dari sumber 4K) + poster + veil token. Reduced-motion = poster diam.
+
+### Changed
+- Ring kursor diganti pengikut pisau (`.home-cursor-knife`). Native cursor `none` saat pisau aktif.
+- Catatan kunci di **T-042.1** / **T-043.2** (implementasi maju atas permintaan eksplisit; **T-041** tetap prioritas gelombang).
+
+## [2026-09-04]
+### Fixed
+- Overlay Next.js 2 issue: (1) `<Script>` tema di `app/layout.tsx` diganti `ThemeInitScript` + `useServerInsertedHTML` (React 19 menolak `<script>` di pohon komponen). (2) Hydration `BloodSplatterLayer` — wrapper selalu di-render (jangan `return null` dari `useReducedMotion` SSR); bukan menabrak tombol footer. Nav `<1024px`: breakpoint hamburger setelah mount (bukan `useSyncExternalStore` vs snapshot server desktop).
+
+## [2026-09-04]
+### Added
+- **ADR-030** — selected chrome = blood splatter yang mengalir ke seluruh halaman (pengecualian T-038.1).
+- **T-040.6** — canvas overlay percik/tetes dari item `data-selected`; reduced-motion = bercak diam.
+
+### Changed
+- ADR-029 poin 1 & 4: splatter hanya lewat ADR-030.
+- T-038.1 / T-038.3 catatan v15 + `design-tokens.md` elevation selected.
+
+## [2026-09-04]
+### Changed
+- **T-040.5** — pita footer ghost (tanpa nampan); CTA teks datar + panah, hover darah; job tetap buka modal Contact. Legal hairline + satelit. Verifikasi Home/About/Work, desktop + 375.
+- **T-040** ✅ (T-040.1–T-040.5). Berikutnya **T-041** overlay.
+
+## [2026-09-04]
+### Changed
+- **T-040.4** — lembar hamburger = panel elevated `#141418` + selected bar stain 3D (keluarga nav). Item full-width; switcher compact; Contact di luar. Dikunci chat 2026-09-04.
+
+## [2026-09-04]
+### Changed
+- **T-040.1** — wordmark Instrument Sans lowercase + tracking; bar header tetap transparan. Contact header + hamburger jadi teks/ikon datar (tanpa 3D); hover = aksen darah. CTA footer belum (T-040.5).
+
+## [2026-09-04]
+### Changed
+- **T-040.3** — locale switcher ID/EN tanpa nampan; selected = bercak 3D yang sama dengan nav.
+
+## [2026-09-04]
+### Fixed
+- **T-040.2** — bentuk selected nav dikembalikan ke bercak radius organik + `--elev-3d` (bukan mask SVG noda).
+
+## [2026-09-04]
+### Added
+- **T-039.2** — pasangan font: Texturina (display blackletter, OFL) + Instrument Sans (grotesk body/nav/form, OFL) via `next/font`; Fontshare General Sans/Satoshi dicabut.
+### Changed
+- **T-039** ✅ (T-039.1–T-039.5).
+- **T-040.2** — nav desktop tanpa nampan; selected = bercak darah 3D (bukan pill). Locale switcher & hamburger belum.
+- **T-031** tetap ⏸️ sampai T-043.
+
+## [2026-09-04]
+### Changed
+- **T-039.1 / T-039.3 / T-039.4 / T-039.5** — token gothic-blood hidup (`#0B0B0D` / `#E8E4DC` / `#6B1C23`); light di-comment; `THEME_HOLD_FORCE_DARK`; toggle tidak di-mount; kuning overlay → `--color-accent`. **T-039.2** (font) belum.
+- Verifikasi browser Home `/id`: `html.dark`, kanvas rgb(11,11,13), toggle absen.
+
+## [2026-09-04]
+### Changed
+- **T-038** ✅ (T-038.1–T-038.5). Matriks keep/change:
+  - **Tetap:** copy, IA, overlay job, stack, Lenis, reduced-motion, cookie tema (mesin).
+  - **Hold:** light mode (comment/arsip, toggle tersembunyi).
+  - **Ganti:** palet gelap + aksen darah; selected = bercak 3D; tanpa nampan kuning; tombol datar; transisi hard-cut stutter; display blackletter (judul besar) + grotesk body.
+- **T-038.4** — blackletter hanya heading besar; body/nav/form grotesk. Family konkret di T-039.2.
+
+## [2026-09-04]
+### Changed
+- **T-038.3** — selected = bercak darah 3D (bukan tombol); nampan kuning dihilangkan; tombol chrome datar + aksen darah tipis; transisi halaman = hard cut + stutter (bukan Hess).
+
+## [2026-09-04]
+### Changed
+- **T-038.1** — pembacaan arah seni dikunci (tabel v15).
+- **T-038.2** — default ship **dark**; light **hold/comment** (jangan hapus); toggle chrome tersembunyi selama hold. ADR-021 + ADR-029 di-update. Docs UX/token/M6 diselaraskan.
+
+## [2026-09-04]
+### Added
+- **ADR-029** — migrasi identitas visual ke absurdism / surrealism / Gothic Art / dark-blood (kulit visual; IA/copy/overlay tetap; metode Q&A per permukaan).
+- **v15** [`tasks/v15-visual-identity.md`](tasks/v15-visual-identity.md) — **T-038** kunci arah; **T-039** token; **T-040** chrome; **T-041** overlay; **T-042** halaman; **T-043** gerak sistem + docs.
+### Changed
+- Fokus: **T-038** prioritas. **T-031** ⏸️ sampai **T-039**. Active Mode mengizinkan redesain visual ADR-029 (bukan copy/IA).
+- ADR-028: klausul “bukan redesain” visual diganti ADR-029; stack tetap. ADR-025: pola UX tetap; palet/chrome 3D tidak lagi wajib.
+
+## [2026-09-04]
+### Changed
+- Hero Home: klaim dua baris tidak lagi di-split ke atas/bawah viewport; Now (kicker + tautan tempat kerja) pindah ke dalam `#hero` (`#now` di bawah klaim). Seksi Now terpisah dihapus.
+
+## [2026-09-04]
+### Changed
+- Hero Home: cabut foto cutout (Unsplash). First viewport = judul dua baris + ruang kosong; header overlay 100svh tetap.
+- Potret diri hanya di About (`about-portrait`). `HERO_PORTRAIT_SRC` dihapus dari `content/home.ts`.
+- Pola UX: Home tanpa potret; About satu-satunya foto diri. `Person.image` tetap ditahan selama About Unsplash.
+
+## [2026-09-03]
+### Added
+- Tes regresi `lib/home-motion-hydration.test.ts`: `Reveal` / `WordReveal` / `HeroWords` tidak cabang `initial` lewat `useReducedMotion`; Magnetic `onLeave` ikut `skipMagneticPull`; `<body>` tanpa `suppressHydrationWarning`.
+### Changed
+- Magnetic: `onMove` dan `onLeave` memakai gate yang sama (`skipMagneticPull`) supaya `animate()` imperatif tidak jalan saat reduced motion.
+### Fixed
+- Cabut `suppressHydrationWarning` di `<body>` (script tema hanya menyentuh `<html>`).
+
+## [2026-09-03]
+### Changed
+- `MotionConfig reducedMotion="user"` di `MotionRuntime` — reduced motion lewat Motion, bukan cabang `initial` SSR/klien.
+- Reveal / WordReveal / HeroWords: `initial` sama di server dan klien. Magnetic = `span` + `animate()` DOM, bukan `motion.span` + MotionValue di `style`.
+- `suppressHydrationWarning` di `<body>` (html sudah punya) — pola Next untuk atribut yang disuntik tooling/extension.
+### Fixed
+- Hydration mismatch Home/About: `useReducedMotion()` mengubah `initial` opacity/y antara SSR dan klien (overlay menunjuk `home-page.tsx` / `about-page.tsx` / `site-header.tsx`).
+
+## [2026-09-03]
+### Changed
+- Quick Info Tools: Astryx → **shadcn/ui** di `content/data/tools.json` (ID & EN); catatan T-021.6 di `tasks/v10-page-copy.md`.
+### Fixed
+- Audit docs pasca-migrasi Astryx → shadcn: catatan Update ADR-016/021/022/024/027; ringkasan ADR-024 di `DECISIONS.md`; S4 `key-screen-patterns.md`; `design-mockups/README.md`; Known Issues `PROJECT_STATE.md`; tanggal `PROJECT_RULES.md`; indeks skill Motion di `AGENTS.md` + navigator; banner stack di `tasks/v03-development-r1.md`; Baca dulu v14 tanpa `xds.mdc` / `astryx-theme.ts`.
+
+## [2026-09-03]
+### Added
+- Token craft yang masih dipakai setelah cabut Astryx: `--size-element-*`, `--color-background-green`, `--color-text-green`, `--color-border-default` di `app/globals.css`.
+- `lib/site-chrome.ts` (`MAIN_CONTENT_ID`) + tes `lib/site-chrome.test.ts`; CI menjalankan `pnpm test`.
+### Changed
+- `data-theme` di markup SSR `<html>` (cookie `initialMode`); token craft `--color-*` hex light/dark, bukan `light-dark()`.
+- Dependabot npm: hapus ignore `@astryxdesign/*` (T-037 selesai).
+### Fixed
+- Page-vt: park `.site-chrome-main:not(.page-vt-clone *)` supaya snapshot exit tidak ikut hidden (review PR #67).
+
+## [2026-09-03]
+### Changed
+- **T-037.7:** rilis v14 (**T-032…T-037**) ✅ Done. Snapshot/Fokus: Active Mode Validation, **prioritas T-031**. Larangan “jangan pasang Tailwind” di PROJECT_STATE sudah ADR-028 (tidak dikembalikan).
+- **T-037** parent ✅. `tasks/v14-shadcn-tailwind.md` + indeks TASKS v14 Done; `v13-metadata.md` T-031 Open prioritas.
+
+## [2026-09-03]
+### Changed
+- **T-037.6:** QA vs [`baselines/t-032.1/`](baselines/t-032.1/). `pnpm typecheck` / `lint` / `build` hijau. Kanvas/fg body+html, chip, scrollbar, aksen light/dark cocok dengan `computed-tokens.json` (320 + desktop). Overlay Contact/QI/sheet buka-tutup Escape; locale `/en` + `/id` (375); reduced-motion tanpa cursor ring; page-vt lock hilang setelah enter. Capture overlay di `capture.mjs` menunggu `#ct-panel` / `#qi-panel` / `.ps-panel`.
+- Gap yang **bukan** perubahan bentuk: token craft `--color-*` tersimpan sebagai pasangan `light-dark` (computed dua hex), bukan hex tunggal Astryx; cursor ring di-unmount saat reduced-motion (T-036.5), bukan `display: none`. Foto Unsplash tetap placeholder.
+
+## [2026-09-03]
+### Changed
+- **T-037.5:** `.cursor/mcp.json` tanpa server `xds`. Tetap `shadcn` (npx `shadcn@latest mcp`), `motion`, dan `motion-plus`.
+
+## [2026-09-03]
+### Added
+- Rule `.cursor/rules/shadcn.mdc` (`alwaysApply`) — CLI `pnpm exec` / `pnpm dlx shadcn`, token Tailwind v4, tanpa StyleX/Astryx.
+### Changed
+- **T-037.4:** SoT engineering (`design-tokens.md`, `code-discipline.md`, `dependency-strategy.md`, `06-engineering/README.md`) + `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `AGENTS.md`, `PROJECT_RULES.md`, `code-discipline.mdc`, `ui-ux-mockup-check.mdc`, skill navigator. Hapus `.cursor/rules/xds.mdc`.
+
+## [2026-09-03]
+### Changed
+- **T-037.2:** `pnpm remove` `@astryxdesign/core`, `@astryxdesign/theme-neutral`, `@stylexjs/stylex`, dan dev `@astryxdesign/cli`. `package.json` + `pnpm-lock.yaml` tanpa paket itu (bukan regenerate lockfile buta).
+- **T-037.3** diverifikasi: `app/globals.css` tanpa `@import` Astryx; selector chrome/page-vt pakai `.site-chrome-header` / `.site-chrome-main` (bukan `.astryx-*` / `#astryx-app-shell-main`). Craft `.home-*` `.ct-*` `.qi-*` `.ps-*` `.page-vt-*` tetap.
+
+## [2026-09-03]
+### Added
+- Token craft (`--spacing-*`, `--color-*`, durasi, radius, easing) di `:root` `app/globals.css` supaya halaman tetap hidup tanpa file tema built.
+### Changed
+- **T-037.1:** hapus `lib/astryx-theme.ts`, `theme/astryx-theme.css`, `theme/rezisaktiva.{js,d.ts,variants.d.ts}`; script `astryx` / `theme:build` / `theme:check`; langkah CI `pnpm theme:check`.
+- Cabut wrapper `Theme` + impor `HStack`/`VStack`; pill nav jadi flex scoped; id/class chrome `site-chrome-main` / `site-chrome-header`.
+- **T-037.3:** hapus `@import` Astryx di `globals.css`; selector page-vt & header tidak lagi memakai id/class lama.
+### Fixed
+- Toggle tema menulis `data-theme` di `<html>` (sebelumnya tugas wrapper tema).
+
+## [2026-09-03]
+### Changed
+- Dependabot npm: ignore `@astryxdesign/*` sampai T-037 (ADR-028) — cegah PR grup seperti #61.
+- `next` + `eslint-config-next` 16.3.2 → 16.3.3 (patch keamanan; tanpa bump Astryx).
+### Fixed
+- PR Dependabot #61 ditutup: bump Astryx 0.5.1 tercampur dengan patch Next.
+
+## [2026-09-03]
+### Changed
+- `next.config.ts`: `images.qualities` `[75, 90]`; `allowedDevOrigins` `127.0.0.1` + `localhost` (HMR dari origin itu tidak diblokir).
+### Fixed
+- Warning Next Image `quality "90"` di luar allowlist; request `_next` dari `127.0.0.1` di `next dev`.
+
+## [2026-09-03]
+### Added
+- Tes `parseCssDurationToMs` di `lib/motion.test.ts`.
+### Changed
+- Token overlay/page-vt dibaca dari CSS (`readCssDurationMs`); konstanta durasi overlay yang tidak terpakai di `lib/motion.ts` dicabut.
+- Caption tile Work: selalu terlihat hanya di `hover: none` (bukan `any-pointer: coarse`).
+### Fixed
+- Exit Contact/Quick Info: `forceMount` + `pointer-events`/`visibility` saat tertutup, supaya transisi tutup tidak terpotong unmount Radix; `ct-lock`/`qi-lock` menunggu durasi token.
+- Clone page-vt: hapus di `onComplete` Motion, bukan `stop()` di timer.
+
+## [2026-09-03]
+### Changed
+- **T-036.6** ✅ — verifikasi gerak di `/en`: Home reveal + magnetic + cursor ring, About rest/active, tile Work, overlay Contact/QI/sheet, page-vt Home→About, reduced-motion (Lenis/ring off, reveal instan, caption tile terlihat, body About selalu terbuka, ganti halaman tanpa clone Hess).
+- Overlay Contact/QI/sheet: enter/exit pakai transisi CSS token + `@starting-style` (T-036.3 primitf). Kartu Contact tetap terpusat.
+- **T-036** parent ✅. Fokus berikutnya **T-037**.
+### Fixed
+- Dialog Contact bisa macet terbuka jika Radix Presence menunggu `animationend` keyframe yang tidak selesai; overlay tidak lagi memakai keyframe untuk Presence.
+
+## [2026-09-03]
+### Added
+- **T-036.5** `CursorRing` tanpa Astryx `Center`: tidak di-render di sentuh (`hover`+`pointer: fine`) dan `prefers-reduced-motion`; posisi `left`/`top` + CSS `translate(-50%, -50%)`. Lenis `useReducedMotion` — off sampai motion diizinkan; pause `ct-lock` / `qi-lock` / `ps-lock` / `page-vt-lock`. CSS `.home-cursor-ring { display: none }` di reduced-motion.
+### Changed
+- **T-036** ⏳ (**T-036.1–T-036.5** ✅; lanjut **T-036.6**). Parent belum Done.
+### Fixed
+- (none)
+
+## [2026-09-03]
+### Added
+- **T-036.3** Contact Dialog + Quick Info Sheet: `AnimatePresence` + `motion/react` tween (bukan spring). Durasi/easing sama dengan CSS lama (scrim 0.35s/0.45s `ease`; kartu Contact scale 0.4s `cubic-bezier(0.22, 1, 0.36, 1)`; QI slide 0.55s). Project sheet Drawer tetap CSS vaul, dikalibrasi token `--duration-sheet-panel` / `--ease-overlay` (0.55s, bukan bounce 0.5s vaul).
+- **T-036.4** Clone exit transisi halaman memakai `animate()` Motion dengan token Hess (`--duration-page-exit` 1s + `--ease-page-transition`). Enter live tetap CSS snapshot (T-025.10). `html.page-vt-lock` tetap `overflow-y: scroll`.
+### Changed
+- Token overlay/page-vt di `lib/motion.ts` + `:root` `globals.css`. Primitf Dialog/Sheet tanpa `animate-in`/`zoom-in-95` default.
+### Fixed
+- Slot Radix `asChild` butuh satu child (tombol tutup primitf tidak boleh sibling saat Motion). Lebar QI desktop `min(38rem)` menang atas `w-full` Tailwind.
+
+## [2026-09-03]
+### Added
+- **T-036.1** `Reveal` / `WordReveal` / `HeroWords` / `Magnetic` memakai `motion/react` (tween token `--duration-*` + `--ease-standard`, `useReducedMotion`). Bukan spring default. `CursorRing` masih Astryx `Center` sampai T-036.5.
+- **T-036.2** `work-tile` tanpa `useContainerReveal` / `mergeProps`. Caption+scrim hover/focus desktop, selalu terlihat di sentuh, reduced-motion instan (CSS; bukan Overlay Astryx).
+### Changed
+- Token durasi/easing Motion di `lib/motion.ts`. Layout `.home-work-head` pindah ke CSS (pengganti HStack).
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- (none)
+### Changed
+- (none)
+### Fixed
+- **T-035** Review PR #62: project sheet tidak `setState` sinkron di effect (`entered`); isi drawer di-clear setelah timer close (bukan `transitionend`); fokus overlay ke ref tombol tutup; judul drawer kosong memakai nama karya terakhir, bukan label Tutup.
+
+## [2026-09-02]
+### Added
+- **T-035.5** Verifikasi overlay Contact / Quick Info / project sheet: ID+EN, light+dark, 320px (modal muat viewport; tab QI tidak menabrak baris hero), Tab trap, Escape, reduced-motion (transisi 0s). Teaser Home + tile Work membuka sheet, bukan live URL.
+### Changed
+- **T-035** parent ✅ Done (T-035.1–T-035.5). Fokus berikutnya **T-036**.
+### Fixed
+- Contact Dialog: Tailwind `translate: -50% -50%` ditumpuk `transform: translate(-50%, -50%)` — kartu keluar viewport. Reset `translate: none` + `translate-x-0 translate-y-0`. Aturan 320/389px memakai selector `[data-slot="dialog-content"]` supaya gutter mobile tidak kalah specificity. Tab QI di reduced-motion tetap `translateY(-50%)`.
+
+## [2026-09-02]
+### Added
+- **T-035.3** Project sheet: primitf `Drawer` (vaul, dari bawah) + skin `.ps-*`. Galeri/iframe M10 tetap; tile Home + Work index membuka sheet, bukan live URL. Tanpa impor Astryx di `project-sheet.tsx` / `project-sheet-media.tsx`. `DrawerTitle` wajib.
+- **T-035.4** Integrasi overlay: event `rz-project-sheet-open` / dengar `rz-contact-open` + `rz-quick-info-open`; `ps-lock` + Lenis pause; focus restore ke tile; Escape/scrim/tombol tutup. Bukan scale-background vaul.
+### Changed
+- (none)
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- **T-035.1** Contact overlay: primitf `Dialog` shadcn + skin `.ct-*`. Form `FieldGroup`/`Field`/`Input`/`Textarea`; validasi, Terkirim, salin email, `mailto:` primer; `DialogTitle` wajib. `ct-lock` + `data-lenis-prevent` tetap.
+- **T-035.2** Quick Info: primitf `Sheet` `side="right"` + skin `.qi-*`. Tab tepi kanan, isi bio/services/tools/works/email/links; bukan form Contact; mount tetap di locale layout. `qi-lock` + event `rz-quick-info-open` tetap.
+### Changed
+- (none)
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- (none)
+### Changed
+- (none)
+### Fixed
+- **T-034** Work `h1`: clamp compact `max-width: 767px` dipasang di `.work-h1` (setelah aturan desktop) supaya kata `.page-word--compact` yang `font-size: inherit` tidak tetap di skala desktop. Aturan compact generik dipindah ke bawah definisi `.page-word--compact` agar tidak kalah urutan berkas.
+
+## [2026-09-02]
+### Added
+- **T-034.3** Work index: `Section`/`VStack`/`Grid`/`GridSpan`/`Heading`/`Text`/`Link`/`Center` Astryx → `<section>` + flex/grid Tailwind + class scoped. `work-tile` judul `h2`/`h3` + outcome `<p>`; klik tile tetap buka sheet (overlay lama sampai T-035). `useContainerReveal` tetap sampai T-036.
+- **T-034.4** Skala tipe halaman: kicker = `.home-kicker`; hero = `.home-hero-line` (168px desktop, clamp T-022 di 320); About `h1` = `.about-h1`; Work `h1` = `.work-h1` (kata compact inherit); lead = `.work-lead` warna secondary; tile outcome = `.home-work-tile-outcome` `font-size-sm`. Bukan skala default shadcn.
+- **T-034.5** Verifikasi `/id` `/en` `/id/about` `/en/about` `/id/projects` `/en/projects`: satu `h1` per halaman; grid Home/Work; rest/active About (panel buka); tile Work membuka sheet; light+dark; 320 + desktop. Hero tidak mengecil (168px).
+### Changed
+- **T-034** parent ✅ Done (T-034.1–T-034.5). Fokus berikutnya **T-035**. Selector tile: `.home-work-tile-meta .astryx-heading` / `.astryx-text` tidak dipakai lagi.
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- **T-034.1** Home: `Section`/`VStack`/`Heading`/`Text`/`Link`/`Grid` Astryx → `<section>` + flex/grid Tailwind + class scoped. Now = tautan eksternal Insvire; teaser grid tetap buka sheet; CTA “Semua proyek” = `next/link` + Magnetic lama (sampai T-036). Hero dua baris (`home-hero-line` / `home-hero-line-2`) tidak diubah. `home-motion` masih Astryx sampai T-036; `work-tile` masih Astryx sampai T-034.3.
+- **T-034.2** About: Badge shadcn + `StatusDot` lokal (pulsa CSS, token success); portrait `AspectRatio` 4/5; offer/values `Card` shadcn + rest/active; proses `Collapsible` type single default `01`; workplace `ExternalSiteLink`. Chevron lead = Lucide `ChevronDown` 16px token aksen. Copy T-021.3 tidak diubah.
+### Changed
+- Selector craft: `.home-now-title .astryx-link` → `a`; `.about-workplace .astryx-text` / `.qi-workplace .astryx-text` → `.about-workplace-prefix`. Grid Home/About `display: grid` di class scoped yang sudah ada.
+### Fixed
+- (none)
+
+## [2026-09-02]
+### Added
+- (none)
+### Changed
+- `SheetContent` punya `showOverlay` (default true). Hamburger chrome memakai `showOverlay={false}` — overlay Radix tidak di-mount.
+### Fixed
+- **T-033** review PR #59: query hamburger `(max-width: 1024px)` → `(max-width: 1023px)` supaya ≥1024px = nav desktop (ADR-020, selaras CSS `min-width: 1024px`). Overlay Sheet hamburger tidak lagi di-hide via `:has()` (Contact + theme toggle tidak bisa tertutup overlay).
+
+## [2026-09-02]
+### Added
+- **T-033.6** footer + pita Contact: `Section`/`VStack`/`Heading`/`Text`/`Link` Astryx → `<footer>` semantik + class scoped. CTA `site-footer-cta` = `Button` shadcn `size="lg"` + `ArrowRightIcon` `data-icon="inline-end"` + Magnetic lama (sampai T-036). Satelit LinkedIn/GitHub tetap (`target=_blank` `rel=noopener noreferrer`). Tombol Contact chrome di header ikut `Button` shadcn (sisa Astryx Button di chrome).
+- **T-033.7** verifikasi chrome: 320 / 375 / 1280, light+dark; hamburger <1024 + sheet item Home/How I Work/Projects + locale di dalam panel; desktop pill nav + locale di header; toggle tema persist; cookie `rz-theme` → `html.dark` / `colorScheme`; hero `100svh` overlay header (`margin-top: -80px`); footer CTA + header Contact membuka modal Contact; locale EN→ID tetap di `/about`; cookie `NEXT_LOCALE`. `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau.
+### Changed
+- **T-033** parent ✅ Done (T-033.1–T-033.7). Chrome tanpa impor `@astryxdesign` di header/footer/locale/theme (Magnetic/`Center` di `home-motion` tetap sampai T-036). Fokus berikutnya **T-034**.
+- `.site-contact-button` / `.home-contact-cta`: elevasi `--elev-3d` dipasang di class scoped (bukan `.astryx-button`). `.site-header-tools` + `.site-footer-*` pakai flex + `gap` token.
+### Fixed
+- (none)
+## [2026-09-02]
+### Added
+- **T-033.4** locale switcher: `SegmentedControl` → `ToggleGroup` + `ToggleGroupItem` (type single). Cookie `NEXT_LOCALE` + redirect `/` tetap (ADR-014). Pill kuning + separator `/` tetap; `useChipColorVars` tetap.
+- **T-033.5** theme toggle: `ToggleButton` → `Toggle` shadcn. Ikon Sun/Moon pindah ke `overlay-icons.tsx` (`theme-toggle-icons.tsx` dihapus). Persist `rz-theme` lewat `setThemeMode` (cookie + localStorage). Default & pressed tetap warna yang sama (hanya ikon yang berganti).
+### Changed
+- Selector chrome di `globals.css`: `.astryx-segmented-control-item` / `.astryx-toggle-button` → `.site-locale-switch-item` / `.site-theme-toggle-btn`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- **T-033.2** desktop nav: `TopNav` / `TopNavHeading` / `TopNavItem` → `next/link` + `Button` ghost shadcn di dalam `SlidingPillGroup` (chip kuning + pill 3D). Brand `rezisaktiva` tetap link ke `/{locale}`.
+- **T-033.3** mobile nav: `MobileNavToggle` / `SideNavItem` → `Button` hamburger + `Sheet` `modal={false}` (judul `sr-only`). Item full-width; switcher compact di dalam panel; tanpa tombol close kedua di Sheet.
+### Changed
+- `SiteChrome` tidak lagi memakai `AppShellMobileContext`. Overlay default Sheet di-hide supaya Contact + toggle tema di header tetap bisa di-tap (ADR-020).
+### Fixed
+- Brand heading di grid desktop tidak meregang memenuhi kolom kiri (`justify-self: start`).
+
+## [2026-09-02]
+### Added
+- **T-033.1** `SiteChrome`: header sticky transparan + `<main id="astryx-app-shell-main">` menggantikan `AppShell`. Skip-to-content lokal. Footer tetap sibling di luar main.
+### Changed
+- `app/[locale]/layout.tsx` tidak mengimpor `AppShell`. Konteks `AppShellMobileContext` tetap di `site-chrome.tsx` sampai T-033.2–T-033.3 (TopNav / hamburger masih Astryx).
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- (tidak ada)
+### Changed
+- `tasks/v14-shadcn-tailwind.md` Dark/light poin 1 & 5 + teks T-032.5: `html.dark` lewat `classList`, bukan `className` React di `<html>`.
+### Fixed
+- Review PR #58: `className` di `<html>` menimpa class Lenis / lock overlay saat RSC navigasi setelah cookie tema berubah. `app/layout.tsx` tidak lagi set `className`; script `beforeInteractive` `classList.toggle("dark")` dari cookie (localStorage hanya jika cookie kosong). `ThemeModeProvider` tetap `classList` saat toggle.
+
+## [2026-09-02]
+### Added
+- **T-032.6** paket `motion` `^13.1.1`. Smoke re-export `motion` / `AnimatePresence` / `useReducedMotion` dari `motion/react` di `lib/motion.ts` (bukan `framer-motion`). `home-motion.tsx` tidak di-rewrite (T-036).
+- **T-032.7** primitf shadcn via `pnpm dlx shadcn@latest add` (radix-nova): `button`, `toggle`, `toggle-group`, `card`, `badge`, `collapsible`, `aspect-ratio`, `dialog`, `sheet`, `drawer`, `input`, `textarea`, `field`. Transitif CLI: `label`, `separator`, dep `vaul`. `FieldGroup` ikut di `components/ui/field.tsx` — item registry `field-group` adalah example, tidak di-add. Tidak ada Sidebar/Chart/Sonner. `globals.css` tidak diubah CLI.
+### Changed
+- **T-032** parent ✅ Done. Dual-boot Astryx+shadcn tetap sampai T-037. Halaman produksi masih Astryx (T-033+).
+### Fixed
+- **T-032.8** `pnpm typecheck` + `pnpm lint` + `pnpm build` hijau; Astryx masih di `package.json`. SSR tema: default/`rz-theme=light` → `color-scheme:light` tanpa class `dark`; `rz-theme=dark` → `class="dark"` + `color-scheme:dark`; script `theme-init` + `classList.toggle("dark")` tetap di HTML produksi.
+
+## [2026-09-02]
+### Added
+- **T-032.5** wiring `html.dark`: `className="dark"` dari cookie `rz-theme` di `app/layout.tsx` (bersama `colorScheme` + meta `color-scheme` yang sudah ada); script `beforeInteractive` menambah class `dark` hanya di jalur migrasi 1x (cookie belum ada); `ThemeModeProvider` `classList.toggle("dark")` saat toggle. Astryx `<Theme mode>` tetap membungkus.
+### Changed
+- Kanvas `html.dark` / `html.dark body` di `globals.css` selaras navy `#0a0f1a`. Cookie tetap menang vs OS `prefers-color-scheme`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- **T-032.4** map token shadcn ke palet rezisaktiva di `app/globals.css`: `:root` / `.dark` memakai hex dari `lib/astryx-theme.ts` (kanvas `#edeae1`/`#0a0f1a`, muted/popover `#e4dfd1`/`#121a2b`, fg `#14181f`/`#edeae1`, secondary `#6e6a5f`/`#9b968a`, border `#dad5c7`/`#222b3d`, primary/accent teal `#4c7a73`/`#7fb3aa`, accent muted `#d8e2de`/`#1e302e`). `@theme inline` tetap `var(--background)` dst. `@custom-variant dark` = class `.dark` (bukan OS).
+### Changed
+- Chip `--chip-*`, `--elev-3d`, scrollbar T-025.9 tidak diubah; `.dark` ikut selector elev/scrollbar dark. Kanvas `html`/`body` tetap `data-theme` + `light-dark()` sampai T-032.5. Tidak ada override `--color-*` Astryx di `:root`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- **T-032.3** fondasi Tailwind CSS v4 + shadcn init di app yang sudah ada: `tailwindcss` + `@tailwindcss/postcss` (dev), `postcss.config.mjs`, `pnpm dlx shadcn@latest init --base radix --preset nova --yes --no-monorepo --force`. Hasil: `components.json` (style `radix-nova`, base radix, RSC, lucide, aliases `@/components` + `@/lib/utils`, CSS `app/globals.css`); `lib/utils.ts` (`cn`); deps `clsx`, `tailwind-merge`, `class-variance-authority`, `lucide-react`, `radix-ui`, `tw-animate-css`. Import CSS: `tailwindcss` + `tw-animate-css` + `shadcn/tailwind.css` di `app/globals.css` (satu file; Astryx tetap).
+### Changed
+- CLI nova sempat menulis Geist + `@layer base` `bg-background`/`font-sans`. **Dikembalikan:** Fontshare di `app/layout.tsx`; `--font-sans`/`--font-heading` = Satoshi / General Sans; kanvas `html`/`body` cream/navy tidak memakai token nova. Nilai oklch shadcn di `:root` / `.dark` + `@theme inline` dibiarkan sebagai scaffolding **T-032.4**.
+### Fixed
+- (tidak ada)
+
+## [2026-09-02]
+### Added
+- (tidak ada)
+### Changed
+- Scope **PR #58** dipersempit ke **T-032** saja (Boss Rezi). T-033…T-037 = PR terpisah. Dual-boot di `main` setelah merge T-032 disengaja sampai T-037.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **T-032.2** MCP project: `pnpm dlx shadcn@latest mcp init --client cursor` (merge; `xds` tetap). Motion AI Kit scope **project** + Cursor (hosted `motion` + `motion-plus`; bukan stdio + TOKEN). CLI `mcp init` juga memasang `shadcn` di `devDependencies`. Kit menulis `.cursor/skills/motion/`, `.cursor/rules/motion.mdc`, `.cursor/agents/motion-reviewer.md`. Tidak ada MCP Tailwind community.
+- Isi akhir `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "xds": {
+      "type": "url",
+      "url": "https://astryx.atmeta.com/mcp"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "motion": {
+      "type": "url",
+      "url": "https://mcp.motion.dev"
+    },
+    "motion-plus": {
+      "type": "url",
+      "url": "https://mcp.motion.dev/plus"
+    }
+  }
+}
+```
+
+### Changed
+- Fokus: **T-032.3** berikutnya (Tailwind v4 + `shadcn init`).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **T-032.1** baseline visual produksi (bukan mockup HTML): [`baselines/t-032.1/`](baselines/t-032.1/) — Home/About/Work + Contact/Quick Info/project sheet; light+dark; 320×720 & 1440×900; locale `en`. Token computed (`getComputedStyle` pada `html`/`body`, cookie `rz-theme`):
+
+  | Peran | Light | Dark |
+  | ----- | ----- | ---- |
+  | Kanvas (`body` bg / `--color-background-body`) | `rgb(237, 234, 225)` `#edeae1` | `rgb(10, 15, 26)` `#0a0f1a` |
+  | Fg (`body` color / `--color-text-primary`) | `rgb(20, 24, 31)` `#14181f` | `rgb(237, 234, 225)` `#edeae1` |
+  | Accent (`--color-accent`) | `#4c7a73` | `#7fb3aa` |
+  | Chip kuning (`--chip-bg` / `--chip-fg`) | `#fde047` / `#14181f` | sama (kuning tetap) |
+  | Chrome pill aktif (`--chrome-pill-*` via `useChipColorVars`, desktop) | `#0a0f1a` / `#edeae1` | `#edeae1` / `#0a0f1a` |
+  | Scrollbar thumb | `#fde047` | `#fde047` |
+  | Scrollbar track (`--rz-scrollbar-track`) | `#e4dfd1` | `#121a2b` |
+
+  Fallback CSS `--chrome-pill-*` di `:root` tetap light (`#0a0f1a` / `#edeae1`); nilai runtime desktop dari inline style chip. JSON: `baselines/t-032.1/computed-tokens.json`.
+### Changed
+- Fokus: **T-032.2** berikutnya (MCP shadcn + Motion AI Kit).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
+- Prioritas backlog: **T-032…T-037** diutamakan; **T-031** antrian setelah T-037 (Boss Rezi).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- **ADR-028** + backlog **T-032…T-037** (`tasks/v14-shadcn-tailwind.md`): migrasi Astryx → shadcn/ui + Tailwind v4 (bukan redesain; Motion; MCP shadcn + Motion AI Kit).
+### Changed
+- ADR-018 **superseded**. Evaluasi ADR-026 selesai. Fokus: T-031 dulu, lalu T-032.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- Seksi Home **Now** (status pekerjaan): kicker Sekarang/Now + tautan Insvire Technologies, setelah hero.
+### Changed
+- Pola S1 / IA Home / M1 / F1: Now masuk urutan konten Home (bukan item karya).
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- Tempat kerja saat ini: Insvire Technologies (`https://www.insvire.com/`) di About, Quick Info, dan JSON-LD `Person.worksFor`.
+### Changed
+- Mapping T-029: `worksFor` nested Organization dari `PERSON.worksFor`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
+- Katalog karya: item Personal Portfolio (situs ini) dihapus dari `content/data/projects.json`.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- Pratinjau iframe situs live di project sheet (M10), dengan fallback galeri lalu kosong.
+### Changed
+- ADR-027 + S4/F7/M10: seksi media = iframe → galeri → kosong.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
+- Katalog: Minerank + SMC Auction + SMC Migration digabung jadi **Minerank** (migrasi → lelang → blog). Teaser Home: SMMP · Cook It Real Good · Minerank. Galeri sheet memakai aset Minerank + auction.
+### Fixed
+- Tes JSON-LD tidak lagi mengunci item id `8` tanpa `href`.
+
+## [2026-09-01]
+### Added
+- `content/data/projects.json`, `services.json`, `tools.json`, `email.json`, `links.json` — fakta profil yang bisa ditambah/dikurangi tanpa mengubah copy UI.
+### Changed
+- Wrapper `content/work.ts`, `work-sheet.ts`, `contact.ts`, `quick-info.ts` membaca JSON. Quick Info, footer, Contact modal, dan JSON-LD `sameAs` mengikuti daftar tautan.
+### Fixed
+- (tidak ada)
+
+## [2026-09-01]
+### Added
+- (tidak ada)
+### Changed
+- Teaser Home: klik tile membuka project sheet (sama dengan Work index). “Semua proyek” tetap ke `/[locale]/work`. ADR-027 + IA/S4/F7/M4/M10 diselaraskan.
+- Label chrome M9: Karya/Work → **Proyek / Projects** (`lib/nav.ts`); path katalog **`/projects`**; `/work` redirect permanen. Home kicker/CTA + Quick Info ikut.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-031** Metadata API R1: ikon, kartu OG/Twitter, authors/applicationName, robots meta, manifest ringan (T-031.1–T-031.5). Bukan ulang title T-021.7 / JSON-LD T-029 / sitemap T-030. File [`tasks/v13-metadata.md`](tasks/v13-metadata.md).
+### Changed
+- Fokus TASKS / Snapshot → **T-031**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-030.1** — `app/sitemap.ts` (6 URL dari `LOCALES` × `SITE_META` via `lib/site-routes.ts`) + `app/robots.ts` (Allow `/`, Sitemap → `getSiteUrl()/sitemap.xml`). `<html lang>` mengikuti path: `proxy.ts` set `x-locale` pada `/(id|en)/…` tanpa rewrite URL; `cookies()` tema `rz-theme` tetap.
+- **T-030.2** — Baseline Lighthouse mobile lab (Chrome headless, locale `en`, production `rezisaktiva.space`, 2026-08-31). PSI API anonim 429. INP field tidak ada di lab LH 12 — lab memakai TBT. **Home** `/en`: LCP 3.9s, CLS 0.057, TBT 700ms (perf 61). **About** `/en/about`: LCP 6.3s, CLS 0.057, TBT 470ms (perf 53). **Work** `/en/work`: LCP 2.6s, CLS 0.057, TBT 570ms (perf 75). Ambang Google: LCP < 2.5s / INP < 200ms / CLS < 0.1 — CLS lolos; LCP di atas ambang (hero/portrait Unsplash remote). Tidak dioptimasi spekulatif (bukan missing `sizes`; jangan rewrite Lenis / transisi / anti-flash tema). Foto nyata = task aset terpisah.
+- **T-030.3** — Satu `<h1>` per destinasi (`/id`,`/en`,`/id/about`,`/en/work`). `next/image` → `image/webp` (Accept webp). Alt About tetap teks placeholder, bukan klaim foto diri. Nav/teaser/footer tidak dirombak.
+- **T-030.4** — Search Console = Boss Rezi (agent tidak punya akses GSC): (1) tambah properti URL-prefix `https://rezisaktiva.space`; (2) verifikasi; (3) Sitemaps → `https://rezisaktiva.space/sitemap.xml` setelah deploy; (4) cek `site:rezisaktiva.space`. Pastikan LinkedIn + GitHub menaut ke URL kanonis ber-locale (mis. `/en` atau `/id`). **Tidak** membuat Google Business Profile.
+### Changed
+- **T-030** ✅. Fokus TASKS / Snapshot → **T-023** ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-029.1** — `content/person.ts`: `name` `"Rezi"`, `alternateName` `"rezisaktiva"`, `jobTitle` `"Fullstack Product Builder"` (frasa yang sama di bio Quick Info). Email/sameAs tetap `content/contact.ts`.
+- **T-029.2** — `lib/json-ld.ts` `buildJsonLd(locale, surface)` → `@graph` WebSite + Person + WebPage/ProfilePage/CollectionPage + BreadcrumbList (About/Work) + ItemList/CreativeWork (Work). Tanpa literal copy.
+- **T-029.3** — satu `<script type="application/ld+json">` di `app/[locale]/page.tsx`, `about/page.tsx`, `work/page.tsx` (server). Overlay Contact / Quick Info / sheet tanpa graph.
+- **T-029.4** — `pnpm test` (`lib/json-ld.test.ts`, 6 tes): schema mengikuti `content/`; SMC Migration tanpa `url`; `Person.image` tidak ada. HTML lokal (`/id`+`/en` Home/About/Work): satu script per halaman, tipe sesuai paket. Rich Results Test Google tidak dijalankan (butuh URL publik, bukan localhost) — cek ulang setelah deploy/preview (T-030). Cek vs dokumen Google ProfilePage: `mainEntity` + `Person.name` ada; image placeholder sengaja di-omit.
+### Changed
+- **T-029** ✅. Fokus TASKS / Snapshot → **T-030**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Fixed
+- **T-029.1** — `Person.name` = nama yang sudah tampil (`Rezi` di h1 About), bukan `"Rezi Saktiva"` di JSON-LD selama string itu tidak ada di UI (`tasks/v11-structured-data.md`).
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-030** SEO R1 mengikuti 3 pilar (T-030.1 crawl sitemap/robots/lang; T-030.2 ukur CWV; T-030.3 hygiene on-page; T-030.4 ops Search Console). File [`tasks/v12-seo.md`](tasks/v12-seo.md). Bukan duplikat T-029; bukan halaman legal/contact baru; bukan GBP.
+### Changed
+- Fokus TASKS / Snapshot → **T-029** + **T-030**; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-029** JSON-LD schema.org dari `content/` (T-029.1 identitas; T-029.2 builder; T-029.3 pasang Home/About/Work; T-029.4 verifikasi). Paket: WebSite, Person, ProfilePage, WebPage/CollectionPage, BreadcrumbList, ItemList+CreativeWork. File [`tasks/v11-structured-data.md`](tasks/v11-structured-data.md).
+### Changed
+- Fokus TASKS / Snapshot → **T-029** ⏳; T-023 tetap ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-028.1** island server/client: `home-page.tsx` + `site-footer.tsx` shell server; CTA `site-footer-cta.tsx`; Work grid/sheet `work-index-client.tsx`.
+- **T-028.2** About: `about-rest-active.tsx` + `about-process.tsx`; `about-page.tsx` server.
+### Changed
+- **T-028.3** hapus `stub-page.tsx` (tidak diimpor); acuan playbook → `home-page.tsx`.
+- **T-028.4** token spacing chrome di `globals.css` (`--spacing-2`/`-3`/`-4`); clamp/motion/overlay tidak diubah.
+- **T-028** ✅. v03 Done. Fokus berikutnya **T-023** ⏸️.
+### Fixed
+- (tidak ada)
+
+## [2026-08-31]
+### Added
+- **T-028** rapikan `app/` bertahap (T-028.1 island server/client; T-028.2 About; T-028.3 stub mati; T-028.4 CSS token hemat). Belum dieksekusi.
+### Changed
+- **T-018.1–T-018.2** exit R1 ✅. `PROJECT_STATE.md` → Validation. Fokus TASKS = T-028.
+- `DEVELOPER_WORKFLOW.md` — hapus “fase aktif saat ini = Development” (bocoran Living Document); historis R1 tanpa T-028/Validation.
+### Fixed
+- Playbook cookie: kecualikan `proxy.ts` / `NEXT_LOCALE` (ADR-014) dari larangan `cookies()` tema.
+- T-018.1: smoke HTTP 200 + rasio kontras token; catatan Tab trap tetap dari kode.
+
+## [2026-08-28]
+### Added
+- **T-027.1** playbook `product-discovery/06-engineering/code-discipline.md` (spacing, lapisan CSS vs StyleX, Server/Client, SSG).
+- **T-027.2** rule `.cursor/rules/code-discipline.mdc` (`alwaysApply`) + indeks `AGENTS.md` / `PROJECT_RULES.md` / `DEVELOPER_WORKFLOW.md` / navigator.
+### Changed
+- **T-027.2** override `xds.mdc`: `xstyle` diblokir sampai compiler Turbopack ada; jalur R1 = className + token di `globals.css`.
+- **T-027.3** mapping `design-tokens.md`; catatan `cookies()` tema di `application-layer.md`. **T-027** ✅ (issue #52). Berikutnya **T-018**.
+### Fixed
+- (tidak ada)
+
+## [2026-08-28]
+### Added
+- (tidak ada)
+### Changed
+- **T-021.6** copy Quick Info dikunci di `content/quick-info.ts` (bio Boss Rezi; Services = About; Tools + label mockup).
+- **T-021.7** title + description dikunci di `content/site-meta.ts` (Work = Proyek/Projects). **T-021** ✅. Berikutnya **T-018**.
+### Fixed
+- (tidak ada)
+
+## [2026-08-28]
+### Added
+- Skill on-demand `.cursor/skills/docs-consistency-audit/` — audit docs sengaja (report-only); diindeks di `AGENTS.md`.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-28]
+### Added
+- (tidak ada)
+### Changed
+- **T-021.2** teaser Home: set dikunci SMMP · Cook It Real Good · SMC Auction (`HOME_TEASER_IDS` di `content/home.ts`); nama/outcome tetap dari katalog T-021.5.
+- Fokus copy R1: sisa **T-021.6** / **T-021.7**.
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- (tidak ada)
+### Changed
+- Tile Work index: hit-area `button` terpisah (heading tetap di luar tombol); `aria-haspopup` / `aria-expanded` / `aria-controls` ke `#ps-panel`.
+### Fixed
+- Project sheet: `inert` saat tertutup; unmount konten segera jika reduced-motion (tanpa `transitionend`); `onClose` di Work index distabilkan.
+
+## [2026-08-27]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- ESLint `react-hooks/set-state-in-effect` di `project-sheet.tsx`: sinkronkan `visible` saat render (bukan di effect) supaya konten sheet tetap ada selama animasi tutup — CI lint-typecheck PR #49.
+
+## [2026-08-27]
+### Added
+- Cursor ring kuning “X” (pola dialog Contact) pada scrim Quick Info dan project sheet.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- **T-026.6** — tinggi section sheet hug konten + padding; stagger reveal teks dan kartu galeri.
+### Changed
+- Project sheet tinggi 5/6 viewport (1/6 atas terbuka); radius 0.75rem di pojok kiri/kanan atas. Kartu galeri tidak lagi 100dvh.
+### Fixed
+- (tidak ada)
+
+## [2026-08-27]
+### Added
+- **T-026.5** — project sheet overlay custom lebar penuh dari bawah (chrome Quick Info); info di viewport pertama, galeri pin dengan scroll vertikal → geser horizontal.
+### Changed
+- T-026 implementasi hidup: bukan Astryx `BottomSheet` (tidak ada prop lebar penuh).
+### Fixed
+- (tidak ada)
+
+
+
+
+## [2026-08-27]
+### Added
+- **T-026.1–T-026.4** — project context sheet (M10): data slot dari CV (`content/work-sheet.ts`); `BottomSheet` Astryx di Work index; tile membuka sheet, live/repo di dalam sheet; teaser Home tetap ke `/[locale]/work`.
+### Changed
+- Fokus: T-026 ✅; T-018 menunggu sisa T-021.
+### Fixed
+- (tidak ada)
+
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- Review PR #48: v10 selaras T-026.1 / T-018; M13 tidak exclude Work index; penomoran Fokus TASKS; F7 = buka sheet; kriteria Must termasuk M10.
+
+## [2026-08-26]
+### Added
+- **ADR-026** — Astryx sampai exit R1; evaluasi shadcn hanya setelah T-018.
+- **ADR-027** — M10 Must R1 = project sheet dari bawah; **T-026** di `v03-development-r1.md` **sebelum T-018**.
+### Changed
+- T-018 menunggu T-021.1–T-021.7 **dan T-026**. Fokus TASKS: T-026 dulu.
+- Baseline produk/UX/arsitektur: M10 overlay Must R1; `/work/[slug]` tetap bukan R1.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **P2 PR #46** — selector parkir transisi (`.site-footer`) tidak lagi mengenai footer di dalam `.page-vt-clone`; pita Contact tetap di snapshot exit.
+
+## [2026-08-26]
+### Added
+- **T-025.11** — pembeda visual pada lead About saja: underline titik + chevron (tanpa copy baru).
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- **T-025.10** — anti-kedip transisi halaman di mobile setelah scroll tengah/bawah.
+### Changed
+- Clone selalu digeser `-scrollY`; Lenis+window di-reset ke 0 setelah snapshot; parkir live `visibility: hidden` + `100dvh`; `scrollTo` di awal enter dihapus.
+### Fixed
+- Halaman baru sempat nyembul di viewport yang masih di posisi scroll lama (terlihat sebagai kedip kecil saat enter).
+
+## [2026-08-26]
+### Added
+- Canonical production URL dikunci: `https://rezisaktiva.space` (`CONVERSATIONS.md`).
+### Changed
+- `.env.example`, `deployment-infrastructure.md` § Domain, katalog `NEXT_PUBLIC_SITE_URL`, catatan T-017, tautan karya portofolio di `content/work.ts` — dari contoh `vercel.app` ke domain kustom.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- Pill nav (`.site-nav-chip`) tidak kembali ke item terpilih setelah pindah halaman lewat klik: `mouseleave` hanya menahan pill jika `:focus-visible` (keyboard); fokus sisa klik di-blur saat pathname berganti. `sliding-pill-group.tsx`.
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- **T-025.9 follow-up** — thumb scrollbar = kuning `--chip-bg` (`.site-nav-chip`) di light dan dark. Latar track muted tetap.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- **T-025.9** — scrollbar dokumen (track + thumb) mengikuti tema `rezisaktiva`: thin, pill, `--rz-scrollbar-*` (muted / text-secondary / text-primary). Light+dark. Firefox `scrollbar-color` + WebKit. Tidak diterapkan ke `.ct-panel` (ink tetap). T-025.8 tidak diubah.
+- T-025 parent ✅ Done (T-025.1–T-025.9). Catatan singkat di `design-tokens.md`. Snapshot / TASKS / v03: next = T-021.6.
+### Fixed
+- Scrollbar native masih gaya OS default (abu-abu) setelah track dipertahankan di T-025.8.
+
+## [2026-08-26]
+### Added
+- **T-025.9** (open) — tampilan scrollbar native (track + thumb: bentuk, warna, ketebalan) mengikuti tema `rezisaktiva`; token CSS; light/dark; Firefox + WebKit; jangan regresi T-025.8.
+### Changed
+- T-025 parent ⏳ In Progress lagi (T-025.1–T-025.8 tetap ✅). Snapshot / TASKS / v03: T-025.9 boleh paralel dengan T-021.6.
+### Fixed
+- (tidak ada)
+
+## [2026-08-26]
+### Added
+- (tidak ada)
+### Changed
+- **T-025.8** — scrollbar track tetap terlihat selama transisi halaman. `Lenis.stop()` masih pause inersia; CSS `html.page-vt-lock` / `html.lenis.page-vt-lock.lenis-stopped` memakai `overflow-y: scroll` supaya `.lenis-stopped { overflow: clip }` tidak menelan track. Ritme exit-enter dan palet tidak diubah. Branch `feat/page-transition-hess-rhythm`.
+- T-025 parent ✅ Done (T-025.1–T-025.8). Snapshot / TASKS / v03: next = T-021.6.
+### Fixed
+- Scrollbar track hilang saat pindah halaman karena `overflow: clip` dari Lenis stopped.
+
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **PR #44 review (3–6)** — Back/Forward ikut transisi (Navigation API snapshot; fallback enter-only). Live main/footer `inert` + `aria-hidden` saat diparkir. Clone hanya main+footer, input/media dibersihkan. rAF di-cancel saat unmount idle (in-flight dibiarkan karena Strict Mode / ganti locale). T-025.8 belum disentuh.
+
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **PR #44 review** — transisi halaman: `isBusy` tidak lagi macet jika `router.push` gagal/redirect (timeout pengaman + enter saat pathname sudah meninggalkan halaman asal); klik selama transisi diantrikan (klik terakhir) bukan dibuang. Branch `feat/page-transition-hess-rhythm`. T-025.8 belum disentuh.
+
+## [2026-08-24]
+### Added
+- **T-025.8** (open) — handoff chat baru: scrollbar track tetap terlihat selama transisi halaman, acuan karolinahess.com. Branch `feat/page-transition-hess-rhythm`.
+### Changed
+- Snapshot / TASKS / v03: T-025 bukan fully Done sampai T-025.8.
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Kedip transisi halaman: halaman baru sempat tampil penuh sebelum enter; clone ikut kena CSS karena ID kembar; clone dihapus sebelum exit selesai. Live page diparkir `translateY(100vh)` sampai enter; clone tanpa ID; clone dibiarkan sampai 1s.
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Transisi halaman: View Transitions API di-drop — `TimeoutError: Transition was aborted because of timeout in DOM update` saat Next belum selesai ganti DOM. Diganti snapshot CSS (clone exit + enter `100vh`).
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.7** — Transisi halaman memakai ritme karolinahess.com (exit 1s naik+scale 0.5, enter 0.4s dari bawah, delay 0.4s, easing `.65,0,.43,1`).
+### Changed
+- ADR-025 + `design-tokens.md` §Motion: overlay wipe `--duration-medium` diganti token `--duration-page-*` / `--ease-page-transition`. Warna celah tetap `--color-background-body`.
+### Fixed
+- Transisi pindah halaman yang terasa terlalu cepat/kasar (wipe 300ms setelah rute sudah berganti).
+
+## [2026-08-24]
+### Added
+- (tidak ada)
+### Changed
+- (tidak ada)
+### Fixed
+- **T-025.4 follow-up (PR #43 review)** — About rest/active: desktop keyboard bisa Tab ke lead/kartu lalu body muncul via `:focus-within`; sentuh membuka dari seluruh kartu (watermark/padding), bukan hanya judul.
+
+## [2026-08-24]
+### Added
+- **T-025.5** — Home/Work display type lebih besar (`home-work-title`, proof body, Work h1); tile hover playable via `useContainerReveal` (caption + scrim; scale gambar); Magnetic pada CTA “lihat semua” Home. Chrome 3D + Quick Info tidak diubah.
+- **T-025.6** — QA browser (`localhost:3001`): 3 rute; Lenis on; Contact/`ct-lock` + Quick Info/`qi-lock`; page-wipe; theme light/dark; reduced-motion (Lenis off, About body visible); mobile caption + About expand klik; hamburger + elevasi 3D.
+### Changed
+- (tidak ada)
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.3** — pita Contact di `SiteFooter` (heading/body/CTA dari `HOME_COPY`, buka modal yang sama); section `#contact-cta` / CTA halaman dihapus dari Home, About, Work.
+- **T-025.4** — About rest/active: hero lead2, offer body, value explanation (hover desktop / klik mobile); proses 4 langkah `CollapsibleGroup` + watermark + ikon langkah; tipe display lebih besar. `content/about.ts` tidak diubah.
+### Changed
+- Footer legal + satelit di bawah pita Contact; divider footer longgar (tanpa garis section terpisah di atas pita).
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Added
+- **T-025.1** — ADR-025 (craft Hess/Mazur, bukan palet): About tetap M2; copy T-021 tidak diubah; Lenis + page overlay diizinkan; footer = pita Contact. Indeks DECISIONS; update `design-tokens.md` §Motion, `key-screen-patterns.md` (rest/active + footer band), `competitor-analysis.md`; task T-025 di v03 + TASKS.
+- **T-025.2** — Lenis window scroll di locale layout (pause `ct-lock`/`qi-lock`, off `prefers-reduced-motion`) + overlay wipe keyed pathname (`--duration-medium`, `pointer-events: none` saat idle).
+### Changed
+- ADR-017 / ADR-006: pointer ke ADR-025. Contact modal + Quick Info: `data-lenis-prevent`.
+### Fixed
+- (tidak ada)
+
+## [2026-08-24]
+### Fixed
+- Locale switch: fill/shadow selected + overlay hover bawaan SegmentedControl Astryx dinonaktifkan, supaya hanya satu pill yang geser (seperti nav). Nav tidak diubah.
+### Changed
+- Pill aktif chrome (Home/About/Karya + ID/EN) memakai token `--elev-3d` yang sama dengan chip locale, supaya item terpilih timbul 3D bukan hanya track kuningnya.
+
+## [2026-08-23]
+### Fixed
+- Review PR #42 (P2): StatusDot badge About tidak lagi mengekspos teks `availability` panjang ke screen reader (`aria-hidden` + label = badge). Close/copy Contact dan close Quick Info dikecualikan dari elevasi 3D; `.astryx-button:focus-visible` memakai outline agar cincin fokus tidak kalah `box-shadow`.
+
+## [2026-08-23]
+### Added
+- Elevasi timbul 3D pada chip chrome (nav, locale) dan seluruh `.astryx-button` (Contact, theme toggle, hamburger, Quick Info, CTA, close/copy modal). Token `--elev-3d` / hover / pressed di `app/globals.css`; tab Quick Info tidak lagi `box-shadow: none`.
+### Changed
+- `product-discovery/06-engineering/design-tokens.md` — elevation halaman tetap minimal; kontrol + Button memakai timbul 3D.
+
+## [2026-08-23]
+### Fixed
+- Grid Karya: tile setengah lebar yang sendirian (sebelum featured atau di akhir daftar) tidak lagi meninggalkan sel kosong di kanan; tile itu merentang penuh dengan rasio featured.
+
+## [2026-08-23]
+### Changed
+- **About hero (lanjutan T-024):** judul & paragraf diperbesar (kata H1 sempat tertahan di ukuran body Astryx; sekarang ikut skala heading). Padding atas diperketat — `min-height: 100svh` dan 6–8rem dihapus, ganti token spasi yang lebih rapat.
+
+## [2026-08-23]
+### Added
+- **T-024** — redesain visual About di kode produksi (ADR-024). Hero 2 kolom: Badge hijau availability + H1 + dua lead | foto rounded + shadow. Tiga Card offering (ikon, H3, body, hover halus). Values di pita latar muted (3 Card, judul tebal dari kutipan T-021.3). Proses grid 2×2 dengan angka watermark. CTA terpusat + Button primary besar. Mobile-first: grid 1 kolom <768px. Copy body T-021.3 tidak diubah; hanya label badge pendek bilingual.
+### Changed
+- `app/[locale]/_components/about-page.tsx`, `app/globals.css` (About), `content/about.ts` (`availabilityBadge`), ikon offering di `overlay-icons.tsx`. Task dicatat di `v03-development-r1.md`.
+
+## [2026-08-21]
+### Added
+- **ADR-024** — kode produksi (Astryx) menggantikan mockup HTML sebagai sumber kebenaran visual. `design-mockups/` jadi arsip; `design-mockups/README.md` menjelaskan itu. Pekerjaan desain pertama dengan aturan baru: halaman About (belum ada task backlog sampai dikunci).
+### Changed
+- Rule `.cursor/rules/ui-ux-mockup-check.mdc` dibalik isinya (nama file tetap): pelajari `app/`, bukan HTML mockup; verifikasi vs kode + arahan Boss Rezi.
+- Pointer di `AGENTS.md`, `PROJECT_RULES.md`, `ask-before-assuming.mdc`, skills `project-os-navigator` / `proactive-clarification`, `DEVELOPER_WORKFLOW.md`, `PROJECT_OVERVIEW.md`, `04-ux/` (IA, key screens, nav), `design-tokens.md`, catatan historis di `v03-development-r1.md`, Snapshot `PROJECT_STATE.md`.
+
+## [2026-08-21]
+### Changed
+- **Fitur unduh CV/Portofolio dipisah jadi task baru T-023 (⏸️ Deferred).** Saat code review PR T-021.4 ditemukan gap: CV yang tersedia sepenuhnya berbahasa Indonesia, tapi link yang sama akan tampil juga di locale EN — berpotensi melanggar paritas ID/EN. Boss Rezi memutuskan tunda sampai CV Inggris siap. Kode implementasi (`content/contact.ts` field CV, blok UI di `contact-modal.tsx`, `DownloadIcon`, style `.ct-cv-*`, file PDF, `ADR-023` sebagai file) **di-revert** dari branch `feat/contact-modal-cv-download` (commit revert eksplisit, bukan force-push). `ADR-023` ditulis ulang: status "Accepted (implementasi ditunda)" — keputusan penempatan (Contact modal, bukan Quick Info/route baru) tetap berlaku, hanya eksekusi yang ditunda ke T-023. `feature-modules.md` M3, `TASKS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, dan `v10-page-copy.md` (T-021.4 completion note + section T-023 baru) disesuaikan agar tidak menyatakan fitur ini "selesai".
+- Fix kontras light mode Contact modal (lihat entri Fixed di bawah) **tidak di-revert** — tetap dipakai karena independen dari fitur CV.
+
+## [2026-08-21]
+### Added
+- **T-021.4** (Contact modal copy) selesai — semua label/body form Contact modal dikonfirmasi apa adanya dari draf mockup dan dikunci di `content/contact.ts` (`titleLead`/`titleAccent`, email/pesan, submit/sent, close, detailsLabel/copyLabel/copied, socialsLabel, availability).
+- **Fitur baru (ADR-023):** tautan unduh CV/Portofolio (PDF nyata `public/Resume_rezi_updated_agustus_2026.pdf`) di Contact modal — `CV_FILE_HREF` + `cvLabel`/`cvDownload` (ID/EN) di `content/contact.ts`; blok baru (label-caps + `HStack` ikon+link) di `contact-modal.tsx` setelah Sosial, sebelum availability; `DownloadIcon` baru di `overlay-icons.tsx`. Di luar draf mockup awal, dikunci lewat diskusi + ADR terpisah karena menyentuh baseline `feature-modules.md` (M3).
+### Changed
+- `product-discovery/02-product/feature-modules.md` M3 Contact — tambah baris tautan unduh CV/Portofolio (cite ADR-023).
+### Fixed
+- **Bug kontras Contact modal di light mode**: teks "Mari", availability line, "Detail Kontak", "Sosial" tak terbaca (dark-on-dark) karena komponen `Text`/`Heading` Astryx menimpa warna lewat token tema (`--color-text-primary`) dengan CSS specificity yang dinaikkan sengaja (`:not(#\#)` x3 di `astryx.css`), padahal panel modal ini theme-independent (selalu dark-ink, lihat komentar `.ct-panel`). Fix: `className` dedicated baru (`ct-title-lead`, `ct-availability-text`) + `!important` pada rule warna `.ct-title`, `.ct-title .ct-accent`, `.ct-label`, `.ct-label-caps`, `.ct-email-link`, `.ct-socials a` di `app/globals.css`. Diverifikasi via screenshot browser di light & dark mode, ID & EN.
+
+## [2026-08-20]
+### Fixed
+- Temuan code review PR #40: title meta About EN ikut nav baru ("How I Work", bukan "My Process" lama); `content/site-meta.ts` description About sekarang string dedicated pendek (bukan reuse `ABOUT_COPY.lead1` yang sudah jadi paragraf panjang T-021.3, supaya tidak terpotong di hasil pencarian); footer LinkedIn/GitHub sekarang pakai prop `isExternalLink` Astryx (ikon + label a11y "opens in new tab") — `work-tile.tsx` tetap pakai `target`/`rel` manual (sengaja, `isExternalLink` akan render ikon nyangkut di atas gambar tile).
+
+## [2026-08-20]
+### Added
+- **T-021.3** — copy About / Proses Kerja ditulis ulang total (bukan salinan mockup) ke `content/about.ts`, dikunci lewat diskusi (Boss Rezi menulis sendiri revisinya): h1 tetap "Halo, saya Rezi.", lead + 3 offer (Product/Fullstack/**AI & Orchestration**) + Approach + 3 Values + note proses + 4 langkah (Discover/Design/Build/Ship & Iterate) + CTA "Penasaran gimana detailnya?" — semua menonjolkan orkestrasi tim AI subagent, pipeline discovery→arsitektur→build→ship, dan keputusan terdokumentasi via ADR. EN ditulis sebagai adaptasi makna, bukan terjemahan literal.
+### Verified
+- Render HTML `/id/about` dan `/en/about` dicek langsung (curl dev server) — teks kunci (lead, judul offer "AI & Orchestration", CTA) tampil persis.
+
+## [2026-08-20]
+### Added
+- **T-021.1** — copy chrome bersama terkunci: nav EN About → "How I Work" (`lib/nav.ts`, ganti dari "Process"); tombol Contact "Kontak" (ID) / "Contact" (EN); URL LinkedIn nyata (`https://www.linkedin.com/in/rezi-saktiva-bb89a12a1/`) dipasang ke `content/contact.ts` + `site-footer.tsx` (sebelumnya placeholder `#`).
+- `MENU_TOGGLE_LABEL` baru di `lib/nav.ts` — aria-label hamburger toggle sesuai state buka/tutup ("Buka menu"/"Tutup menu", "Open menu"/"Close menu"), dipasang ke `MobileNavToggle` di `site-header.tsx` (sebelumnya statis "Menu", tidak sesuai mockup).
+- **T-021.5** — copy Work index terkunci: `h1` (ID "Proyek / saya." — EN "My / Projects", mixed-language dikunci eksplisit oleh Boss Rezi, bukan terjemahan literal), `lead`, dan CTA (`ctaQuestion`/`ctaLink`) ditulis ke `content/work.ts` menggantikan draf sementara.
+### Changed
+- `site-footer.tsx` sekarang membaca `CONTACT_SOCIALS` dari `content/contact.ts` (satu sumber kebenaran URL sosial untuk footer + Contact modal), bukan hardcode `#` terpisah.
+- `v10-page-copy.md`, `TASKS.md`, `PROJECT_STATE.md` diselaraskan: T-021.1 dan T-021.5 Done.
+### Verified
+- Render HTML `/id/work` dan `/en/work` dicek langsung (curl dev server) — h1, lead, CTA, label nav, dan href LinkedIn/GitHub tampil persis sesuai yang dikunci.
+
+## [2026-08-20]
+### Fixed
+- Panel hamburger mobile tidak bisa ditutup: `display: flex` dari Astryx Stack mengalahkan atribut HTML `hidden`, jadi lembar menu tetap terlihat meski state sudah tertutup. `.site-mobile-nav[hidden]` sekarang `display: none !important`.
+
+## [2026-08-20]
+### Fixed
+- ESLint `react-hooks/refs`: jangan assign `closeMobileNavRef.current` saat render di `site-header.tsx` (CI / lint-typecheck PR #39).
+
+## [2026-08-20]
+### Fixed
+- Panel hamburger mobile bukan lagi `<dialog>` modal Astryx — chrome Contact/tema/brand tetap bisa di-tap saat menu terbuka (PR #39 review). Tutup via hamburger, Escape, atau tap di luar panel.
+
+## [2026-08-20]
+### Added
+- **T-022.1–T-022.4** — paritas desain mobile mockup → kode Next.js (chrome hamburger, Home/About/Work, Contact modal, Quick info).
+### Changed
+- Chrome <1024px: header satu baris; panel menu kuning (MobileNav Astryx di-restyle jadi dropdown, bukan drawer samping); item nav full-width termasuk state aktif; switcher ID/EN compact.
+- Home: hero clamp mengikuti mockup (tidak overflow-x); teaser judul + “lihat semua” stack di <640px; tile featured `4/3` di ponsel sempit (bukan strip 16:8).
+- About/Work/Contact/Quick info: ukuran 320/375 (modal muat viewport; tab Quick info lebih kecil agar tidak menabrak judul).
+### Fixed
+- Header mobile tidak wrap; hero “Membangun / produk.” muat di 320–375px.
+
+**Gap Astryx (tidak 1:1, T-022.4):** panel hamburger tetap `<dialog>` native (focus trap / Escape / klik di luar) dengan backdrop transparan — mockup panel `position: absolute` tanpa scrim. Compiler StyleX belum wired; override scoped CSS seperti T-013.
+
+## [2026-08-20]
+### Added
+- **T-022** — penyesuaian desain mobile (paritas mockup → kode Next.js); subtask T-022.1–T-022.4; status Todo antrian, jangan dikerjakan sampai Boss Rezi minta.
+### Changed
+- Dokumentasi desain diselaraskan mockup mobile 2026-08-20: `navigation-patterns.md` (komposisi hamburger, lantai 320px), `key-screen-patterns.md` (responsive SE/hero/teaser/modal/QI), `ux-principles.md` (target sentuh chrome), `information-architecture.md` (chrome mobile), `design-tokens.md` (layout lantai 320px).
+- Mockup menu mobile: item halaman (termasuk state aktif) `width: 100%`; switcher ID/EN compact, tidak meregang penuh.
+- Mockup HTML: layout mobile (terutama iPhone SE 320/375) dirapikan di `design-mockups/` — chrome, hero, menu hamburger, kartu karya, modal Contact, tab Quick info. Bukan task backlog bernomor; permintaan langsung Boss Rezi. App Next.js belum diubah (masih mengikuti mockup sebelumnya sampai ada task follow-up).
+### Fixed
+- Hero Home “Membangun” tidak lagi terpotong di lebar 320–375px; header Contact/tema/hamburger disejajarkan (target sentuh 36px); menu mobile satu lembar kuning; tile karya featured lebih tinggi di ponsel; modal Contact muat di viewport SE.
+
+## [2026-08-19]
+### Changed
+- CI menjalankan `pnpm theme:check` supaya `theme/` tidak drift dari `lib/astryx-theme.ts`.
+### Fixed
+- CTA halaman (`.home-contact-cta`) memakai brand + hover aksen seperti mockup, bukan `variant="primary"` teal.
+- Kanvas `html`/`body` memakai `light-dark()` dari `color-scheme` SSR supaya first paint dark tidak cream.
+
+## [2026-08-19]
+### Added
+- Tema built `rezisaktiva` (`lib/astryx-theme.ts` → `theme/astryx-theme.css` + `theme/rezisaktiva.js`), extends theme-neutral, nilai `--c-*` dari `design-mockups/shared.css`.
+### Changed
+- `app/globals.css` impor tema built (bukan `theme-neutral/theme.css`); `ThemeModeProvider` pakai `rezisaktivaTheme`; chip pill `#edeae1` (on-brand mockup).
+- `design-tokens.md` mapping kustomisasi tema sudah dieksekusi; Snapshot/TASKS Known Issues dikosongkan.
+### Fixed
+- **KI-001** — tombol theme toggle (dan Contact chrome) default `bg-brand` / hover `bg-accent`, termasuk state pressed toggle.
+- **KI-002** — kanvas light `#edeae1` (`--c-bg`); dark `#0a0f1a`; text/border/accent ikut mockup.
+
+## [2026-08-19]
+### Added
+- **KI-001** — warna tombol light/dark mode berbeda dari mockup.
+- **KI-002** — background halaman light mode berbeda dari mockup.
+### Changed
+- `PROJECT_STATE.md` Known Issues; Snapshot + `TASKS.md` Fokus merujuk KI (tidak blocker merge PR #32).
+
+## [2026-08-19]
+### Fixed
+- Hover navbar mengikuti mockup: sliding pill (`initPillGroups`) di chip Home/About/Karya + ID/EN; magnetic + hover kuning pada Contact dan theme toggle.
+
+## [2026-08-19]
+### Fixed
+- Code review PR #32: cursor ring pakai delegasi `mouseover`/`mouseout` supaya tautan/tombol baru setelah client navigation tetap dapat `is-hover`.
+- `getSiteUrl()` menolak `NEXT_PUBLIC_SITE_URL` kosong / bukan http(s) — fallback localhost, `metadataBase` tidak throw.
+- Timer Salin/Kirim di modal Contact di-`clearTimeout` (klik beruntun + unmount/tutup).
+
+## [2026-08-19]
+### Added
+- **T-015.2** — halaman `/[locale]/about` sesuai `design-mockups/about.html` (hero, offers, approach/values, proses, CTA Contact).
+- **T-016.2** — modal Contact global (ADR-019): form email+message, mailto primer, tanpa route `/contact`; wired ke nav + CTA Home/About/Work.
+- **T-017.2** — title/description/OG + canonical/hreflang dari `NEXT_PUBLIC_SITE_URL` (`lib/page-metadata.ts`).
+- **T-019.2** — halaman `/[locale]/work` sesuai `design-mockups/work.html` (6 tile); tidak ada route Work case (M10/R2).
+- **T-020.2** — Quick Info overlay (ADR-022): tab tepi kanan → drawer, focus trap, bukan form Contact.
+### Changed
+- Branch kerja: `feat/r1-about-work-contact-meta`.
+- **T-018** ditunda (keputusan Boss Rezi 2026-08-19): exit R1 menunggu copy T-021.1–T-021.7 terkunci (kontrak v10).
+### Fixed
+- Tombol Contact chrome tidak lagi tooltip “segera hadir” — modal T-016 sudah hidup.
+
+---
+
+## [2026-08-18]
+
+### Changed
+
+- Subtask copy ditarik dari v03 (tidak didaur ulang): T-014.1, T-014.3, T-015.1, T-016.1, T-017.1, T-019.1, T-020.1. Kunci + tulis teks hanya **T-021** di v10. **T-014** ✅ Done (T-014.2). Parent UI v03 tidak menunggu copy.
+
+---
+
+## [2026-08-18]
+
+### Changed
+
+- Dokumentasi v03 dipisah dari page-copy: checklist/kontrak T-021 tidak lagi di `v03-development-r1.md`. Kontrak copy ↔ UI pindah utuh ke `v10-page-copy.md`. v03 hanya tautan satu baris ke v10.
+
+---
+
+## [2026-08-18]
+
+### Added
+
+- **T-014.2** — halaman Home `/[locale]` (bukan stub): hero cutout + word reveal, credibility line, work teaser 3 tile (1 featured + 2 kolom), contact CTA; motion ADR-017 (reveal, cursor ring, magnetic); teks sementara dari mockup di `content/home.ts`.
+
+### Changed
+
+- Header AppShell transparan + z-index di atas hero supaya first viewport overlay seperti `design-mockups/home.html`. Tile teaser link ke Work index (`/[locale]/work`), bukan work-case M10.
+
+### Fixed
+
+- (none)
+
+---
+
+## [2026-08-18]
+
+### Fixed
+
+- Temuan review PR #30: kontrak copy ↔ UI — T-014.3 sumber T-021.2/T-021.5 (jangan mengarang); layout boleh paralel, parent tidak Done sebelum copy terpasang; T-021.1 wajib pasang chrome ke `lib/nav.ts` + footer; T-018.1 prasyarat T-021.1–T-021.7.
+
+## [2026-08-18]
+
+### Changed
+
+- File copy R1 dipindah dari `tasks/v03-page-copy.md` ke **`tasks/v10-page-copy.md`**. v01–v06 tetap urutan rilis yang direncanakan; copy tidak memakai slot v03/v04–v06. ID task tetap **T-021**.
+
+## [2026-08-18]
+
+### Added
+
+- **T-021** — backlog copy semua teks R1 (`tasks/v03-page-copy.md`): chrome, Home, About, Contact modal, Work index, Quick Info, meta. Dikerjakan sambil diskusi dengan Boss Rezi; output ke `content/`. Subtask `T-014.1` … `T-020.1` + `T-017.1` menunjuk ke T-021.N.
+
+### Changed
+
+- `TASKS.md`, `PROJECT_STATE.md` (fokus T-021.2 + T-014), `v03-development-r1.md`, `content/README.md`.
+
+## [2026-08-18]
+
+### Changed
+
+- Kebijakan kolaborasi AI: **cek dulu, tanya hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana). Tanya ritual dihapus — termasuk “mau pakai mockup yang sekarang atau perbarui dulu?” jika mockup sudah ada dan selaras.
+- `.cursor/rules/ask-before-assuming.mdc` — kewajiban cek kelengkapan task/mockup/dokumen; tanya hanya kondisi urgent; “tidak yakin” yang bisa diselesaikan dengan membaca bukan alasan tanya.
+- `.cursor/rules/ui-ux-mockup-check.mdc` — mockup yang ada dipakai langsung; tanya hanya jika mockup hilang, konflik, atau unplanned.
+- Skill `proactive-clarification` + `project-os-navigator`; `AGENTS.md`; `PROJECT_RULES.md`; `PROJECT_OVERVIEW.md`; `DEVELOPER_WORKFLOW.md`; catatan gate di `tasks/v03-development-r1.md`.
+- Dicatat di `CONVERSATIONS.md` (2026-08-18).
+
+## [2026-08-16]
+
+### Fixed
+
+- **T-013.4 — Bug flash tema dark/light saat reload (Major Bug).** Root cause: `lib/theme-mode.ts` `getThemeModeServerSnapshot()` hardcode `"light"` (ADR-021 poin 2, "default ship tetap light"), sementara preferensi asli hanya ada di `localStorage` (tidak terbaca server). Karena komponen `Theme` bawaan Astryx (`@astryxdesign/core/theme`) mengikat warna semua komponen ke atribut `data-theme`/`color-scheme` pada sebuah `<div>` yang di-render React sendiri (bukan cuma CSS statis) dan juga men-sync ulang atribut itu ke `<html>` lewat `useLayoutEffect` (`useRootThemeSync`), React **wajib** merender pass pertama pakai server snapshot ("light") untuk match SSR sesuai kontrak `useSyncExternalStore`, lalu memicu render koreksi sinkron begitu `useSyncExternalStore` mendeteksi mismatch client vs server. Ada browser paint nyata di antara dua render itu → user preferensi "dark" selalu lihat flash terang→gelap sesaat setiap reload. Script anti-flash blocking yang sudah ada di `app/layout.tsx` (`themeInitScript`) tidak menyelesaikan ini karena cuma menyentuh atribut `<html>`, sedangkan sumber flash sebenarnya adalah `mode` React yang salah di render pertama — efeknya malah ditimpa balik oleh layout effect Astryx sendiri.
+- **Fix:** preferensi sekarang JUGA disimpan sebagai cookie (`rz-theme`, di-set `lib/theme-mode.ts` `writeStoredThemeMode()` bersamaan dengan localStorage saat toggle). `app/layout.tsx` (sekarang Server Component `async`) membaca cookie ini lewat `cookies()` dari `next/headers` (request-scoped, aman untuk concurrent request — **bukan** disimpan ke variable module-level, supaya tidak ada risiko preferensi user A "bocor" ke response user B) dan mengalirkannya sebagai prop `initialMode` ke `ThemeModeProvider`. `ThemeModeProvider` (`app/_components/theme-mode-provider.tsx`) memakai `initialMode` ini untuk `getServerSnapshot` DAN sebagai fallback `getSnapshot` client — server & client snapshot render pertama jadi selalu identik, sehingga tidak ada lagi render koreksi `useSyncExternalStore` sama sekali (bukan cuma dipercepat/disamarkan). Default tetap "light" kalau cookie belum ada (user baru) — tidak mengubah keputusan ADR-021 poin 2. Script blocking `themeInitScript` di `layout.tsx` dipertahankan sebagai lapis pertahanan tambahan (mis. kalau cookie ke-strip proxy/CDN tapi localStorage masih ada), bukan lagi mekanisme utama.
+- **Trade-off yang perlu diketahui:** karena `app/layout.tsx` sekarang memanggil `cookies()`, seluruh app otomatis keluar dari static rendering (Next.js selalu render dinamis per-request untuk route yang pakai layout ini) — konsekuensi inheren dari pendekatan cookie-based SSR-theme, bukan sesuatu yang bisa dihindari selama preferensi tema harus diketahui server sebelum render pertama.
+- Diverifikasi manual di browser (klik tombol toggle asli, bukan set localStorage manual): reload di kondisi dark → langsung dark dari awal (HTML SSR mentah sudah `data-theme="dark"` sebelum JS jalan), reload di kondisi light → langsung light dari awal. Tidak ada flash di kedua arah.
+
+### Fixed (lanjutan, sama hari — sisa flash pada chip "selected")
+
+- Setelah fix di atas, Boss Rezi masih melihat kedipan spesifik pada chip nav-item/locale-switch yang `selected` (background hitam pekat) — bukan pada konten lain. Diinvestigasi langsung pakai CDP (`Page.addScriptToEvaluateOnNewDocument` merekam `getComputedStyle` tiap `requestAnimationFrame` sejak awal load): terbukti frame 1–5 menunjukkan warna chip **TERBALIK** (`rgb(237,233,225)` bg / `rgb(10,15,26)` teks — persis nilai `light-dark()` versi DARK), lalu ber-**animasi** (interpolasi warna kontinu, dikonfirmasi lewat `CSS.getMatchedStylesForNode`: elemen ini punya `transition-property: background-color, color` bawaan Astryx untuk efek hover) ke warna final yang benar.
+- **Root cause:** `--chrome-pill-bg`/`--chrome-pill-fg` (`app/globals.css`) didefinisikan lewat CSS `light-dark()` di `:root`, mewarisi `color-scheme` dari wrapper `<div>` Astryx yang jauh di atasnya di DOM tree. Browser sempat resolve `light-dark()` ini 1 pass memakai skema yang salah (mengikuti preferensi OS, bukan preferensi app) sebelum "settle" ke yang benar setelah kalkulasi style penuh — dan `transition` bawaan Astryx pada elemen chip membuat koreksi 1-pass itu tampak sebagai animasi warna, bukan snap instan. Fix cookie-SSR sebelumnya tidak menyentuh mekanisme ini sama sekali karena itu murni soal render React, sedangkan ini soal timing resolusi CSS `light-dark()` di browser.
+- **Fix:** hilangkan ketergantungan pada `light-dark()`/`color-scheme` CSS untuk 2 token ini sepenuhnya. `useChipColorVars()` (hook baru, `app/_components/theme-mode-provider.tsx`) menghitung warna chip langsung dari `mode` React (satu-satunya sumber kebenaran, sudah dijamin identik server & client oleh fix sebelumnya) dan disuntikkan sebagai inline `style` di elemen wrapper (`site-header.tsx` — `.site-nav-chip` & `.site-mobile-nav-chip`, `locale-switcher.tsx` — `.site-locale-switch`). `app/globals.css` `:root` sekarang cuma fallback statis default-light (bukan lagi `light-dark()`).
+- Diverifikasi via CDP frame-by-frame logger: warna chip di light mode & dark mode masing-masing konsisten sejak frame pertama (`readyState: "loading"`) sampai frame ke-60 — cuma 1 nilai unik per mode, tidak ada lagi swap/animasi.
+
+## [2026-08-16] (11)
+
+### Fixed
+
+Temuan code review PR #28 (`/code-review`) + warning dev console diperbaiki:
+
+- **Blast radius theme override (High)** — `lib/theme.ts` (custom `defineTheme` `components` override) dihapus total. Styling chip/pill chrome (nav pill, locale switch, mobile drawer, tombol Contact, theme toggle) dipindah ke `app/globals.css` sebagai CSS biasa yang di-scope lewat class wrapper (`.site-nav-chip`, `.site-locale-switch`, `.site-mobile-nav-chip`, `.site-contact-button`, `.site-theme-toggle`) + selector `[data-selected]` — bukan lagi override global yang berpotensi bocor ke `TopNavItem`/`SegmentedControl`/`SideNavItem`/`Button` lain di halaman masa depan (T-014 dst).
+- **Duplikasi warna hex (Medium)** — `CHIP_BG`/`CHIP_FG` yang dulu ada di dua tempat (`lib/theme.ts` + `app/globals.css`) sekarang cuma satu sumber: `:root { --chip-bg; --chip-fg; }` di `app/globals.css`.
+- **Warning console "Theme ... using runtime style injection"** — hilang otomatis karena tidak lagi pakai `defineTheme` custom (kembali ke `neutralTheme` bawaan, yang sudah pre-built).
+- **Flash tema untuk user dark mode (Medium)** — `app/layout.tsx` ditambah blocking script (`next/script` `beforeInteractive`) yang set `data-theme` di `<html>` dari localStorage sebelum React hydrate, sesuai pola yang direkomendasikan Astryx sendiri untuk SSR.
+
+### Catatan
+
+Sempat dicoba pendekatan `astryx theme build` (built theme, bukan runtime injection) sebagai fix warning — berhasil dan valid, tapi ditinggalkan karena solusi CSS-scoped di atas sekaligus menyelesaikan temuan blast-radius (High) juga, jadi satu perubahan untuk dua temuan.
+
+## [2026-08-16] (10)
+
+### Added
+
+- **`.cursor/rules/ask-before-assuming.mdc`** (baru, `alwaysApply: true`) — atas permintaan Boss Rezi: wajib tanya (via `AskQuestion`) kalau AI menemukan **gap** (bagian tidak lengkap/tidak konsisten), **hal belum terdokumentasi** (butuh konteks yang belum ada di baseline manapun), atau **tidak diketahui/tidak yakin** (AI sendiri tidak tahu jawaban yang benar) — berlaku untuk semua jenis pekerjaan, bukan cuma UI/UX. Melarang eksplisit: berasumsi lalu jalan terus, mengarang jawaban, diam-diam memilih opsi, melaporkan "selesai" padahal ada bagian yang belum yakin/dicek.
+
+### Changed
+
+- `.cursor/skills/proactive-clarification/SKILL.md` — prinsip dasar diperluas: bukan cuma "fork keputusan" (pilihan valid setara), tapi juga gap/belum terdokumentasi/tidak tahu, dengan pointer ke rule baru.
+- `AGENTS.md`, `PROJECT_RULES.md` — pointer ke `ask-before-assuming.mdc` ditambahkan di daftar rule dan Aturan Keras / AI Collaboration Rules.
+
+### Catatan
+
+Ditaruh sebagai rule terpisah (bukan digabung ke `ui-ux-mockup-check.mdc`) karena cakupannya umum, bukan spesifik UI/UX — mengikuti pola pemisahan satu rule per topik yang sudah ada (`xds.mdc`, `no-ai-attribution-git.mdc`, `ui-ux-mockup-check.mdc`). Alasan pakai rule `alwaysApply: true` (bukan cuma skill) sama seperti entri (9): rule di-inject otomatis tiap turn, skill butuh AI memilih untuk membaca.
+
+## [2026-08-16] (9)
+
+### Changed
+
+Atas permintaan Boss Rezi (setelah beberapa kali koreksi ketidaksesuaian navbar vs mockup): **`.cursor/rules/ui-ux-mockup-check.mdc` diperkuat jadi aturan keras** —
+
+1. Mockup HTML (`design-mockups/`) = **desain resmi/source of truth**, bukan sekadar referensi.
+2. Wajib benar-benar mempelajari mockup (layout, warna, komponen, ukuran, state) sebelum eksekusi kode UI/UX — bukan cuma cek file-nya ada.
+3. Konflik mockup vs dokumentasi (`design-tokens.md`, `product-discovery/`, ADR) → **mockup menang**, tapi dokumen tidak boleh diubah diam-diam — wajib persetujuan eksplisit Boss Rezi dulu.
+4. Hasil kode UI/UX wajib **100% akurat** ke mockup (ukuran, padding, gap, radius, font, state) — ditambah kewajiban verifikasi (screenshot/computed-style) sebelum melaporkan task selesai.
+
+Ditaruh di rule `alwaysApply: true` (bukan skill/AGENTS.md saja) karena rule jenis ini di-inject otomatis ke setiap turn percakapan AI — mekanisme paling tidak mungkin "terlewat" dibanding skill (butuh trigger) atau AGENTS.md (dibaca sekali di awal sesi). `AGENTS.md` dan `PROJECT_RULES.md` diupdate jadi pointer singkat ke rule ini (governance tetap satu sumber kebenaran, `ui-ux-mockup-check.mdc`).
+
+## [2026-08-16] (8)
+
+### Fixed
+
+Separator "/" antara ID dan EN di locale switch (`locale-switcher.tsx`) — hilang dibanding mockup (`.locale-switch span.opacity-40`). Ditambahkan `<span aria-hidden>` di antara `SegmentedControlItem` + class `.locale-switch-separator` (`app/globals.css`, opacity 0.4, warna ink sama seperti teks chip).
+
+## [2026-08-16] (7)
+
+### Fixed
+
+Follow-up kedua Boss Rezi: bagian `header-tools` (locale switch ID/EN, theme toggle, tombol Kontak) masih belum sama ukurannya — dikoreksi dengan computed-style diff yang sama (`lib/theme.ts`):
+
+- Locale switch (`segmented-control`): height 28px → **40px**, padding 6px/12px, gap 4px (dulu default Astryx, sekarang persis mockup `.locale-switch--bar`).
+- Item locale (`segmented-control-item`): padding dikoreksi jadi 2px/8px.
+- Tombol Kontak (`button` `variant:primary+size:sm`): height 28px → **32px**, padding 6px/16px (radius pill sudah dibenarkan di entri sebelumnya).
+- Theme toggle (`toggle-button`): 28px → **36px** persegi/lingkaran.
+- Gap antar elemen di `header-tools` (`site-header.tsx` endContent `HStack`): 8px → **12px** (`md:gap-3` mockup).
+
+Hasil sudah diverifikasi lewat computed-style browser — seluruh nilai (height/padding/gap/radius) sekarang cocok dengan mockup.
+
+## [2026-08-16] (6)
+
+### Fixed
+
+Follow-up review Boss Rezi (bandingkan langsung DOM mockup vs Next.js): tinggi & bentuk navbar belum sesuai mockup — diperbaiki dengan computed-style diff presisi (`design-mockups/home.html` vs implementasi):
+
+- Tinggi header 48px → **80px**, padding-inline 8px → **40px** (`lib/theme.ts`, override component `top-nav`).
+- Nav pill tadinya 3 chip kuning terpisah (tiap link py sendiri, radius penuh) → jadi **satu bar kuning menyatu** (`app/globals.css` class `.site-nav-chip`, dipasang di `HStack` centerContent `site-header.tsx`) — item aktif ("Home") tampil sebagai pill ink di dalam bar tsb, item lain transparan di atas kuning. Radius dikoreksi dari pill penuh (9999px) ke **16px** (`rounded-2xl` mockup, dikonfirmasi lewat computed style, bukan pill).
+- Tombol Contact & theme toggle: radius dikoreksi jadi pill penuh (`--radius-full`) — sebelumnya ikut radius default Button/ToggleButton Astryx (10px, kotak membulat).
+- Brand heading "rezisaktiva": font-weight 400 → 600 (`top-nav-heading` override) sesuai mockup.
+
+### Catatan
+
+Wrapper `.site-nav-chip` pakai `className` + CSS plain di `app/globals.css` (bukan `xstyle`) karena compiler StyleX masih belum wired — konsisten dengan catatan gap di entri (5) di bawah.
+
+## [2026-08-16] (5)
+
+### Added
+
+- **T-013.4** — komponen theme toggle di chrome (ADR-021): `app/[locale]/_components/theme-toggle.tsx` + `theme-toggle-icons.tsx` (ikon sun/moon, path sama dengan mockup), `app/_components/theme-mode-provider.tsx` (mode `light`/`dark` via `useSyncExternalStore` — bukan `useState`+`useEffect`, supaya tidak ada hydration mismatch atau lint `set-state-in-effect`), `lib/theme-mode.ts` (persist localStorage `rz-theme`, pola mockup). Default ship tetap light; toggle selalu terlihat di luar hamburger bersama tombol Contact.
+- **Style navbar disamakan mockup** (chip kuning theme-independent + pill aktif ink, keputusan Boss Rezi via pertanyaan terstruktur — pilih fidelity penuh): `lib/theme.ts` — custom Astryx theme (`defineTheme`, `extends: neutralTheme`) dengan override `components` untuk `top-nav-item`, `segmented-control` + `segmented-control-item`, `side-nav-item` (base = chip kuning `#FDE047` + teks ink fixed; state `selected` = pill ink/brand `light-dark()`, mengikuti arah brand `design-tokens.md`).
+
+### Changed
+
+- `app/layout.tsx` — `<Theme mode="light">` statis diganti `<ThemeModeProvider>` (client) supaya mode bisa berubah lewat toggle.
+- `app/[locale]/_components/site-header.tsx` — tambah `<ThemeToggle>` di `endContent` (antara hamburger dan tombol Contact).
+- `project-manager/tasks/v03-development-r1.md` — T-013 (T-013.1–T-013.4) ditandai selesai penuh.
+- `PROJECT_STATE.md` — fokus lanjut ke T-014; T-013.4 dihapus dari daftar backlog terbuka.
+
+### Catatan (gap engineering ditemukan, belum ada ADR)
+
+Saat implementasi ini, `xstyle`/`stylex.create()` (jalur styling custom yang direkomendasikan `.cursor/rules/xds.mdc`) dicoba untuk chip nav pill — **build langsung gagal** ("Unexpected 'stylex.create' call at runtime. Styles must be compiled by '@stylexjs/babel-plugin'."). Investigasi menunjukkan compiler StyleX (`@stylexjs/babel-plugin` + `@stylexjs/postcss-plugin`, lihat contoh resmi `apps/example-nextjs-stylex` Astryx) **belum pernah di-wire** ke build project ini (Turbopack, bukan Babel/webpack) — sejak ADR-018 mengunci Astryx+StyleX, belum ada komponen yang benar-benar memakai `xstyle` custom sampai task ini. Semua styling chip di atas akhirnya memakai `defineTheme` `components` (di-generate & di-inject Astryx sendiri, tidak butuh compiler tambahan) sebagai jalan keluar — bukan pelanggaran `xds.mdc` (masih "token Astryx langsung", bukan raw hex di komponen), tapi `xstyle` sendiri tetap non-fungsional untuk kebutuhan lain ke depan. Perlu keputusan Boss Rezi: setup compiler StyleX (berarti pindah dari Turbopack ke Babel/webpack untuk build, trade-off dev experience) — belum dieksekusi, belum ada ADR.
+
+## [2026-08-16] (4)
+
+### Fixed
+
+Follow-up dari code review PR audit dokumentasi (#27): perjelas wording R3 motion di `release-roadmap.md` (bukan mengulang klaim identitas R1); samakan terminologi "final" (bukan "override") untuk Contact modal di `v03-development-r1.md` T-016; lengkapi daftar dokumen terdampak di catatan Update ADR-019 (tambah `integration-layer.md`, `ux-principles.md`, `user-flows.md`, `user-journey.md`).
+
+## [2026-08-16] (3)
+
+### Fixed
+
+Audit konsistensi dokumentasi menyeluruh (`project-manager/`, `product-discovery/`, `.cursor/skills/`, `.cursor/rules/`, `AGENTS.md`) atas permintaan Boss Rezi — 85 temuan mentah dari 3 audit paralel, dikonsolidasi & diperbaiki:
+
+- **Static Reference project-manager stale** (masih ber-frame Product Discovery padahal Active Mode = Development): `PROJECT_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `ARCHITECTURE_OVERVIEW.md` diisi ulang; `PROJECT_RULES.md` diperbaiki (klaim "arsitektur belum dikunci", larangan kode pre-discovery usang, referensi `SKILL.md` salah path).
+- **Kontradiksi governance** `TASKS.md` vs `PROJECT_RULES.md` soal lokasi status — diselaraskan (checklist detail di `tasks/vXX-*.md`, ringkasan di `PROJECT_STATE.md`).
+- **Keputusan Contact = modal-only final** (T-016 selesai, sesuai ADR-019): route `/contact` dihapus dari `information-architecture.md`, `key-screen-patterns.md`, `application-layer.md`, `domain-model.md`; ADR-019 ditambah Update note.
+- **Sinkronisasi ADR-020/021/022 ke baseline produk**: `product-scope.md`, `feature-modules.md` (kontradiksi internal M9), `mvp-definition.md`, `roles-permissions.md`, `03-user/user-journey.md`, `03-user/insights.md`, `04-ux/user-flows.md`, `04-ux/ux-principles.md`, `05-architecture/*` diperbarui agar konsisten dengan Work index Must R1, Contact modal, theme toggle, Quick Info panel.
+- **Motion priority** (keputusan Boss Rezi: ADR-017 menang) — `mvp-definition.md` & `feature-priority.md` naikkan motion dari Could Have ke Should Have/identitas R1.
+- **`xds.mdc` stale** (masih rujuk Tailwind/`main.tsx` padahal ADR-018 replace penuh) — ditambah Project Override section.
+- **`AGENTS.md` navigasi**: path `TASKS.md`/`tasks/` diberi prefix `project-manager/`; `.cursor/rules/` dan `design-mockups/` diindeks; `ui-ux-mockup-check.mdc` contoh `contact.html` usang diperbaiki.
+- **06-engineering** (`README.md`, `dependency-strategy.md`, `design-tokens.md`) — sisa referensi Tailwind diganti Astryx (ADR-018).
+- **Misc**: `DECISIONS.md` ADR-016 diberi catatan superseded; `competitor-analysis.md` "lima acuan" diperbaiki jadi 7 (5 awal + 2 referensi desain); heading ADR-017/018 diseragamkan ke `# Decision ADR-XXX`; `v02-bootstrap.md` catatan dark mode ditandai superseded; ADR-021/ADR-022 ditambah Update note task ID (T-013.4, T-020); `success-metrics.md` "Phase aktif metrik" direformulasi agar tidak duplikasi `PROJECT_STATE.md`.
+
+Tidak ada ADR baru dibuat — seluruh perbaikan menyelaraskan dokumen ke ADR yang sudah *Accepted* (bukan keputusan baru), kecuali resolusi Contact modal-only dan motion priority yang sudah eksplisit dikonfirmasi Boss Rezi pada sesi ini.
+
+## [2026-08-16]
+### Added
+- **ADR-021** — dark mode toggle UI naik Must R1 (default ship tetap light; persist preferensi). Subtask baru **T-013.4** di `tasks/v03-development-r1.md`.
+- **ADR-022** — modul baru **M13 Quick Info panel** (overlay global, bukan route; exclude Work case). Task baru **T-020** (T-020.1 konten, T-020.2 overlay).
+- Propagasi label lokal About = "Proses Kerja"/"Process" (ADR-020 poin 3) ke `04-ux/` + `02-product/` — tanpa ADR baru.
+### Changed
+- `product-discovery/04-ux/` (navigation, IA, key screens, UX principles), `02-product/` (modules, MVP, priority, roadmap), `06-engineering/design-tokens.md`: theme toggle + M13 masuk Must R1.
+- `TASKS.md` + Snapshot: indeks T-013…T-020; fokus halaman berikutnya tetap **T-014**; T-013.4 / T-020 masuk backlog.
+- T-013 status dibuka kembali untuk T-013.4; "Dark mode toggle UI (Should/Later)" dihapus dari daftar yang tidak masuk backlog R1.
+### Fixed
+- Audit mockup vs docs: tiga gap (label nav About, toggle yang sudah hidup di mockup tapi Should/Later di docs, Quick Info yang belum pernah masuk baseline) ditutup di dokumentasi + backlog.
+
+## [2026-08-15] (2)
+### Added
+- **T-013 — Site chrome R1 selesai** (T-013.1, T-013.2, T-013.3): `app/[locale]/_components/site-header.tsx` (TopNav desktop + MobileNav drawer via `AppShell`, breakpoint lg/1024px), `site-footer.tsx`, `locale-switcher.tsx` (di-upgrade ke `SegmentedControl` ID/EN), `lib/nav.ts`. Stub `app/[locale]/about/page.tsx` dan `app/[locale]/work/page.tsx` ditambah agar nav tidak 404 sebelum T-015/T-019 digarap.
+### Changed
+- Nav mengikuti ADR-020: Home · About · Karya sebagai link; Contact jadi tombol (belum wired ke modal, menyusul T-016); <1024px nav+switcher masuk hamburger, Contact-button tetap di luar.
+### Fixed
+- Tidak memakai kelas Tailwind (`hidden lg:flex`) untuk responsive show/hide karena Tailwind sudah digantikan penuh oleh Astryx (ADR-018) dan tidak terpasang di project — diganti dengan hook `useAppShellMobile()` (Astryx-native) untuk conditional render.
+
+## [2026-08-15]
+### Added
+- ADR-020: Work index (M9) naik jadi Must R1 + nav mobile pakai hamburger — override sebagian ADR-010/ADR-012 dan `navigation-patterns.md`. Keputusan diambil Boss Rezi lewat proactive clarification saat memulai T-013.
+- Task baru **T-019 — Work index R1 (M9)** di `tasks/v03-development-r1.md` (T-019.1 konten, T-019.2 halaman `/[locale]/work`).
+### Changed
+- `feature-modules.md`, `feature-priority.md`, `mvp-definition.md`, `release-roadmap.md`: M9 dipindah dari Post-MVP/Won't ke Must R1 (M10 tetap Post-MVP/R2).
+- `information-architecture.md`, `navigation-patterns.md`: site map + primary nav tambah "Karya" (M9) sebagai link; Contact jadi tombol modal (bukan link nav); mobile <1024px pakai hamburger untuk nav+switcher (Contact-button tetap di luar hamburger).
+- `T-013.1`/`T-013.2` di `tasks/v03-development-r1.md` direvisi mengikuti ADR-020 (catatan konflik mockup sebelumnya sudah resolved).
+
+## [2026-08-15] (6)
+
+### Fixed
+
+- Temuan code review PR #24 (`design-mockups/shared.js`):
+  - Form Contact tidak lagi menampilkan status "Terkirim" saat field kosong — `novalidate` sekarang dikombinasikan dengan `form.checkValidity()`/`reportValidity()` manual di handler submit sebelum menganggap submit berhasil.
+  - Pill indikator nav & locale switch di dalam dropdown hamburger sekarang direfresh (`pillGroups[].refresh()`) saat menu dibuka — sebelumnya posisinya dihitung sekali saat elemen masih `display:none`, jadi kemungkinan tidak terlihat sampai user hover/resize.
+  - Tombol "Salin email" tidak lagi menampilkan status sukses (`is-copied`) jika `navigator.clipboard.writeText` gagal — sebelumnya class itu ditambahkan tanpa syarat di luar try/catch.
+
+## [2026-08-15] (5)
+
+### Added
+
+- Referensi bernama **karolinahess.com** dan **mazurbartek.com** diformalkan di `product-discovery/01-business/competitor-analysis.md` (baris #6, #7) — sebelumnya hanya disebut di `CONVERSATIONS.md`/sesi mockup. Dicatat sebagai Update pada ADR-006 (bukan ADR baru); ringkasan di `DECISIONS.md` diperbarui.
+
+## [2026-08-15] (4)
+
+### Added
+
+- Mockup Contact sebagai Dialog/Modal global (`design-mockups/shared.js`, `shared.css`): form email + message, blok "Detail kontak" (email + tombol copy), blok "Sosial" (LinkedIn/GitHub), availability line. Warna theme-independent (ink gelap + kuning, pola sama seperti `.qi-tab`). Cursor-ring berubah jadi ikon X saat kursor di scrim (luar kartu dialog) selama modal terbuka.
+- ADR-019 (override sebagian ADR-014 — form diizinkan di Contact).
+
+### Changed
+
+- Semua tombol/link "Contact" (nav) dan CTA "Hubungi saya"/"Ke halaman Contact" di `home.html`, `about.html`, `work.html`, `work-case.html` diubah dari `<a href="contact.html">` menjadi `<button data-contact-open>` yang membuka modal. Copy `home.contact.link` / `work.cta.link` diperbarui ("Hubungi saya" / "Get in touch") karena teks lama ("Ke halaman Contact") tidak lagi akurat. Copy `contact.lead` dirapikan (hapus klaim "tidak ada form" yang sudah tidak berlaku).
+
+### Removed
+
+- `design-mockups/contact.html` dihapus — Contact tidak lagi halaman terpisah di mockup.
+
+### Fixed
+
+- `applyLocale()` di `shared.js` sekarang juga menerjemahkan atribut `placeholder` lewat `data-i18n-placeholder` (dibutuhkan form Contact baru).
+
+## [2026-08-15] (3)
+
+### Changed
+
+- Mockup navbar mobile/tablet (`design-mockups/`): hamburger di viewport <1024px — menu berisi Home / Proses Kerja / Karya + ID/EN; Contact dan tombol tema tetap visible. Desktop (≥1024px) tetap 3 grup, chip nav di tengah. Menyimpang dari T-013.1 / `navigation-patterns.md` (tanpa hamburger); catatan di `tasks/v03-development-r1.md`.
+
+## [2026-08-15] (2)
+
+### Fixed
+
+- Mockup navbar (`design-mockups/`) — hasil code review PR redesign pill:
+  - **Overflow header mobile**: tombol tema & Contact ter-clip/tidak bisa diklik di viewport ≤~405px (mencakup hampir semua ponsel — iPhone SE/12/13, Pixel, Galaxy S). Dirapatkan padding/gap chip di tier mobile + ditambahkan `flex-wrap` sebagai fallback (header pecah jadi 2 baris tanpa clipping) untuk perangkat ultra-sempit (≤~340px). Terverifikasi tidak overflow di 320px & 375px, dan tampilan desktop/tablet tidak berubah.
+  - **Aksesibilitas keyboard**: pill preview di nav & locale switch sekarang juga muncul saat item di-fokus lewat Tab (`focus`/`blur`), sebelumnya hanya lewat mouse hover. Ditambahkan `aria-current="page"` pada link nav yang aktif.
+  - **Deteksi item aktif diperkuat**: `initPillGroups` (`shared.js`) sebelumnya mendeteksi item aktif lewat class presentasi `bg-brand` (rapuh — bisa rusak diam-diam kalau class itu dipakai untuk keperluan styling lain). Sekarang pakai atribut `data-active` sebagai sumber kebenaran, `bg-brand`/`text-on-brand` tetap disinkronkan untuk graceful degradation tanpa JS. Ditambahkan guard idempotency (`data-pill-group-ready`).
+  - Dihapus dead code: key i18n yatim (`home.kicker`, `home.sub`, `home.lead`, `home.available`, `home.cta.talk`, `home.cta.work`, `page.process`) dan CSS `.about-rule` yang tidak lagi dipakai sejak konten terkait dihapus di iterasi sebelumnya.
+
+## [2026-08-15]
+
+### Changed
+
+- Mockup navbar (`design-mockups/`, referensi untuk T-013.1 nav & T-013.2 locale switcher — belum implementasi kode): header dipecah jadi 3 grup — nav halaman (Home/Proses Kerja/Karya), locale switch (ID/EN), dan tema+Contact — masing-masing chip terpisah dengan `rounded-2xl`.
+- Ditambahkan link "Home" ke nav.
+- State selected pada nav & locale switch pakai pill indicator (`bg-brand`/`text-on-brand`) yang geser smooth (CSS transition + `shared.js` `initPillGroups`) saat hover/klik, teks tidak bold.
+- Tombol tema disamakan gaya dan animasi magnetic-nya dengan button Contact.
+- Spacing mobile dirapatkan agar header tidak overflow di viewport sempit.
+- Fix: rule `.chip-fixed-text` di `shared.css` sekarang mengecualikan elemen `.text-on-brand` agar teks tidak hilang saat pill aktif/hover.
+
+## [2026-08-14]
+
+### Changed
+
+- Laporan sesi mockup Quick info: tab kompak di tepi kanan (rounded kiri), hilang halus saat dibuka; drawer geser dari kanan dengan close kotak di header; full lebar di bawah md, ~38rem di atas md. Stack tetap Astryx (ADR-018), bukan shadcn.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab rounded kiri (bukan atas); drawer full lebar di bawah md, di atas md lebar ~38rem.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab fade+geser halus saat drawer buka; radius atas 0.75rem (setara rounded-xl drawer, karena tab diputar).
+
+## [2026-08-14] (2)
+
+### Fixed
+
+- Mockup Quick info: tab tetap pill kompak (bukan tinggi penuh) dan menempel panel sehingga ikut geser saat drawer dibuka.
+
+## [2026-08-14] (2)
+
+### Changed
+
+- Mockup Quick info: tab kanan jadi pill kompak putih (bukan strip gelap penuh), hover hijau gelap, panel buka terpisah dari tab.
+
+## [2026-08-14] (2)
+
+### Added
+
+- Mockup Quick info (pola karolinahess.com): tab kanan + drawer di Home, Proses Kerja, Karya, Contact — tidak di work-case.
+
+## [2026-08-14] (3)
+
+### Changed
+
+- Catatan: seluruh copy di `design-mockups/` masih contoh/placeholder — bukan teks yang diinginkan untuk produksi (`CONVERSATIONS.md`).
+
+## [2026-08-14] (4)
+
+### Changed
+
+- Mockup Home diarahkan ulang (Karolina type+cutout × Bartek quiet): hero dua kata oversized + foto cutout, chrome tenang, karya sebagai tile gambar.
+- Mockup About, Work, Contact, dan work-case diselaraskan ke arah yang sama.
+- Mockup About diubah mengikuti pola mazurbartek.com/about: sapaan + foto potret, bukan headline slogan.
+- Copy About disesuaikan ke gaya karolinahess.com/about: kalimat pendek, “yang bisa saya bantu”, approach, values.
+
+### Added
+
+- `design-mockups/work.html` — mockup indeks seluruh karya (dari See all / nav Karya).
+- `design-mockups/work-case.html` — mockup cerita singkat per project (dari Baca cerita).
+
+### Changed
+
+- `.cursor/rules/ui-ux-mockup-check.mdc` — jika mockup ada: jelaskan lalu tanya pakai/perbarui; jika belum ada: wajib buat mockup HTML dulu (tidak boleh skip ke kode).
+- `project-manager/tasks/v03-development-r1.md` — catatan pra-eksekusi UI/UX diselaraskan.
+- `project-manager/CONVERSATIONS.md` — alur mockup wajib.
+- `design-mockups/` — switcher ID/EN berfungsi di Home, Proses Kerja, Contact (copy paritas + locale tersimpan); See all + nav Karya → `work.html`.
+
+## [2026-08-13] (6)
+
+### Added
+
+- `project-manager/tasks/v03-development-r1.md` — backlog Development R1 (T-013 chrome, T-014 Home+teaser, T-015 About, T-016 Contact, T-017 meta, T-018 exit R1).
+
+### Changed
+
+- `project-manager/TASKS.md`, `project-manager/PROJECT_STATE.md` — indeks v0.3; Fokus/Top Next Task = **T-013**.
+
+## [2026-08-13] (5)
+
+### Fixed
+
+- README Static Reference tidak lagi menanam status fase hidup: `product-discovery/03-user/README.md`, `04-ux/README.md`, `05-architecture/README.md` (hapus “(saat ini Repository & Bootstrap)”); `06-engineering/README.md` + `product-discovery/README.md` memakai rumusan urutan historis + rujuk `PROJECT_STATE.md`.
+
+## [2026-08-13] (4)
+
+### Changed
+
+- **T-012.1** — Exit Bootstrap diverifikasi: `pnpm lint` + `typecheck` + `build` hijau lokal (route `/id`/`/en` SSG + Proxy); CI Actions hijau di PR #20 dan push `main`; Vercel Preview + Production success; struktur (`app/` `content/` `public/`), token Astryx (ADR-018), locale `/[locale]` + `proxy.ts` sesuai baseline.
+- **T-012.2** — `PROJECT_STATE.md` → fase **Development**; Active Mode fitur R1 (M1–M7); Top Next Task = susun backlog Development R1 (v0.3).
+- **T-012.3** — `tasks/v02-bootstrap.md` T-012 ✅ Done; `TASKS.md` Fokus + indeks v0.2 ✅ Done.
+
+## [2026-08-13] (3)
+
+### Changed
+
+- **T-011.2** — Project Vercel dihubungkan (import repo GitHub, Production Branch, env var) oleh Boss Rezi secara manual di dashboard Vercel; deploy pertama berhasil. `tasks/v02-bootstrap.md` T-011 ditandai ✅ Done penuh (T-011.1/.2/.3 selesai).
+- `project-manager/TASKS.md`, `project-manager/PROJECT_STATE.md` — Fokus/Snapshot/Current Focus diupdate: T-011 selesai, Top Next Task berikutnya **T-012** (Exit Bootstrap → siap Development), Blocker dikosongkan.
+
+## [2026-08-13] (2)
+
+### Added
+
+- **T-010.1** — App Router locale skeleton: `lib/locale.ts` (`LOCALES`, `DEFAULT_LOCALE`, `isLocale`), `app/[locale]/page.tsx` (stub `id`/`en`, `generateStaticParams` untuk SSG, `notFound()` untuk locale lain sesuai ADR-015 static-first).
+- **T-010.2** — `proxy.ts` (root) redirect `/` → locale default; matcher hanya `/` (path ber-locale tidak pernah disentuh, sesuai ADR-014). File dibuat sebagai `middleware.ts` lalu di-rename ke `proxy.ts` (+ fungsi `proxy`) mengikuti konvensi Next.js 16.3 (menghindari warning deprecation).
+- **T-010.3** — `app/[locale]/layout.tsx` + `app/[locale]/_components/locale-switcher.tsx`: stub switcher tipis (Astryx `Link`) yang link ke sibling path locale dan set cookie `NEXT_LOCALE` saat diklik.
+- **T-011.1** — `.github/workflows/ci.yml`: GitHub Actions (`pull_request` + `push` ke `main`) — checkout, `pnpm/action-setup`, `actions/setup-node` (cache pnpm), `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`. Tanpa `next build` di Actions (build produksi tetap di Vercel, sesuai `cicd-pipeline.md`).
+- **T-011.3** — `.env.example` (`NEXT_PUBLIC_SITE_URL` + komentar tier Local/Preview/Production, referensi ke `environment-management.md`). `.gitignore` diverifikasi sudah meng-ignore `.env` / `.env.*` kecuali `.env.example`.
+
+### Changed
+
+- `app/page.tsx` — jadi stub root (komentar dijelaskan: tidak pernah diakses langsung karena `proxy.ts` selalu redirect `/`).
+- `project-manager/tasks/v02-bootstrap.md` — T-010 ditandai ✅ Done (semua subtask); T-011 subtask T-011.1/T-011.3 ✅, T-011.2 tetap ⏳ (butuh aksi manual Boss Rezi di dashboard Vercel — langkah manual didokumentasikan di file task).
+- `project-manager/TASKS.md`, `project-manager/PROJECT_STATE.md` — update Fokus/Snapshot/Current Focus mencerminkan T-010 selesai dan T-011 menunggu Vercel manual.
+
+### Fixed
+
+- (tidak ada)
+
+### Catatan keputusan implementasi (bukan ADR — untuk konfirmasi Boss Rezi bila perlu)
+
+- **Urutan resolusi locale di `proxy.ts`:** brief task menuliskan urutan "geo → Accept-Language → preferensi cookie → fallback". Diimplementasikan dengan urutan **cookie preferensi → geo (`x-vercel-ip-country`) → Accept-Language → fallback `en`**, karena preferensi hasil switch eksplisit user seharusnya menang di kunjungan berikutnya dibanding heuristik otomatis. ADR-014 sendiri tidak eksplisit menentukan urutan antara ketiganya. Jika Boss Rezi ingin urutan literal sesuai brief, tinggal pindah blok `resolveFromCookie` ke posisi sebelum fallback di `proxy.ts` (komentar sudah dicatat di file).
+- **`middleware.ts` → `proxy.ts`:** repo pakai Next.js 16.3 yang sudah men-deprecate konvensi `middleware.ts` (rename resmi jadi `proxy.ts` + fungsi `proxy`). Dokumen `deployment-infrastructure.md`/ADR-014 menyebut "Edge Middleware" secara konseptual; nama file diimplementasikan sesuai versi Next.js yang terpasang agar tidak ada warning deprecation saat build.
+
+---
+
+## [2026-08-13] (1)
+
+### Added
+
+- Rule `.cursor/rules/ui-ux-mockup-check.mdc` — AI wajib cek ketersediaan mockup (`design-mockups/`) dan tanya user sebelum eksekusi task UI/UX.
+- Dependency Astryx (`@astryxdesign/core`, `@stylexjs/stylex`, `@astryxdesign/theme-neutral`, `@astryxdesign/cli`) sebagai component library + sistem styling R1 (**T-009.4**, **ADR-018**).
+- `.cursor/rules/xds.mdc` — agent docs Astryx (konvensi wajib AI saat menulis komponen), `alwaysApply: true`.
+- Script `astryx` di `package.json` untuk invocation CLI reliable.
+- `app/layout.tsx` membungkus subtree dengan `<Theme theme={neutralTheme} mode="light">`; `app/page.tsx` migrasi ke komponen Astryx (`Heading`, `Text`, `VStack`).
+
+### Changed
+
+- `design-tokens.md`, `dependency-strategy.md` diperbarui: kontrak styling pindah dari Tailwind + CSS variables ke Astryx (ADR-018).
+- `app/globals.css` — import Astryx reset/theme CSS, hapus setup Tailwind (`@import "tailwindcss"` dst).
+- `v02-bootstrap.md` — T-009.2 ditandai superseded oleh T-009.4 baru (bukan didaur ulang, sesuai aturan ID subtask).
+
+### Fixed
+
+- (tidak ada)
+
+---
+
+## 2026-08-12
+### Added
+- Prettier (`.prettierrc.json`, `.prettierignore`) + `eslint-config-prettier` terpasang di ESLint flat config (**T-009.1**)
+- Script `format` / `format:check` di `package.json` (**T-009.1**)
+- Tailwind CSS v4 (`@tailwindcss/postcss`, `postcss.config.mjs`) + CSS variables token (brand/accent/bg/fg/border/focus/danger/success) di `app/globals.css`, light default + fondasi `.dark` class strategy via `@custom-variant dark` (**T-009.2**)
+- `.github/dependabot.yml` — ekosistem `npm` (grouping patch/minor) + `github-actions`, update mingguan (**T-009.3**)
+### Changed
+- `app/page.tsx` — stub memakai utility Tailwind + token (`font-display`, `text-brand`, `text-fg-muted`) sebagai bukti kontrak token jalan
+- `tasks/v02-bootstrap.md` — **T-009.1** … **T-009.3** ✅; parent **T-009** ✅ Done
+- `TASKS.md` — Fokus → **T-010**
+- `PROJECT_STATE.md` — Snapshot/Fokus → next **T-010**
+
+---
+
+## 2026-08-12
+### Added
+- `content/README.md` — folder SoT konten situs berdampingan `app/` + `public/` + docs (**T-008.2**)
+- Script `typecheck` (`tsc --noEmit`) di `package.json` (**T-008.3**)
+- Stub halaman minimal di `app/` agar `pnpm build` hijau (**T-008.4**)
+### Changed
+- `package.json` — scripts lengkap: `dev`, `build`, `start`, `lint`, `typecheck` (**T-008.3**)
+- `app/page.tsx`, `app/layout.tsx`, `app/globals.css` — stub bootstrap (hapus `page.module.css` create-next-app)
+- `README.md` — tabel struktur app Bootstrap
+- `tasks/v02-bootstrap.md` — **T-008.2** … **T-008.4** ✅; parent **T-008** ✅ Done
+- `TASKS.md` — Fokus → **T-009.1**
+- `PROJECT_STATE.md` — Snapshot/Fokus → next **T-009.1**
+
+---
+
+## 2026-08-12
+### Added
+- Scaffold Next.js App Router + TypeScript (`strict`) + pnpm di root (**T-008.1**): `package.json`, `pnpm-lock.yaml`, `packageManager`, `app/`, `public/`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`
+### Changed
+- `tasks/v02-bootstrap.md` — centang **T-008.1**; parent T-008 tetap ⏳
+- `TASKS.md` — Fokus → **T-008.2**
+- `PROJECT_STATE.md` — Snapshot/Fokus → next **T-008.2**
+- `README.md` / `AGENTS.md` — status stack diselaraskan (bukan docs-only lagi)
+
+---
+
+## 2026-08-11
+### Added
+- `project-manager/tasks/v02-bootstrap.md` — backlog release Bootstrap (T-008…T-012 + subtasks, mengikuti Engineering Baseline ADR-016)
+### Changed
+- `TASKS.md` — indeks release v0.2 Bootstrap; Fokus → **T-008.1**
+- `PROJECT_STATE.md` — Snapshot/Fokus: backlog Bootstrap sudah ada, next = eksekusi T-008.1
+
+---
+
+## 2026-08-11
+### Fixed
+- Review PR #10: Decision Rules `03–05` arahkan ke `PROJECT_STATE.md` (bukan “lanjut isi” discovery)
+- Review PR #10: Exit Criteria root `product-discovery/README.md` kembali definisi (tanpa stamp status T-007)
+- Review PR #10: commit PR tanpa trailer atribusi AI
+
+---
+
+## 2026-08-11
+### Added
+- **T-007.1** — Exit criteria Product Discovery diverifikasi & disetujui (baseline 01–06 + ADR-001…016)
+### Changed
+- **T-007.2** — `PROJECT_STATE.md` → fase **Repository & Bootstrap**; Active Mode Bootstrap
+- T-007 ✅ Done; v0.1 Product Discovery release ✅; Fokus → backlog Bootstrap + scaffold Next
+### Fixed
+- Wording README fase **03–06** + `product-discovery/README.md` Exit Criteria selaras baseline (sudah ditetapkan / sudah terpenuhi)
+
+---
+
+## 2026-08-11
+### Added
+- **T-006.10** / **ADR-016** — Engineering Baseline v1.0 untuk seluruh `06-engineering/`
+### Changed
+- Status semua dokumen `06-engineering/` → Baseline v1.0 (`auth-strategy.md`, `database-orm.md` tetap N/A)
+- T-006 ✅ Done; Fokus → **T-007.1** Exit criteria Product Discovery
+
+---
+
+## 2026-08-11
+### Added
+- **T-006.7** — `dx-tooling.md` (ESLint + Prettier; tanpa husky; test belum wajib)
+- **T-006.8** — `dependency-strategy.md` (pnpm lockfile + `^` + Dependabot; Bun ditolak)
+- **T-006.9** — `design-tokens.md` (Tailwind + CSS vars; light default; dark fondasi A+)
+### Changed
+- Fokus → **T-006.10** Baseline Engineering v1.0 + ADR
+
+---
+
+## 2026-08-11
+### Added
+- **T-006.4** — `database-orm.md` (N/A — selaras ADR-015; konten di repo)
+- **T-006.5** — `cicd-pipeline.md` (opsi B: GitHub Actions lint/typecheck + Vercel deploy)
+- **T-006.6** — `environment-management.md` (Local/Preview/Production; env tipis; secret di Vercel)
+### Changed
+- Fokus → **T-006.7** `dx-tooling.md`
+
+---
+
+## 2026-08-11
+### Added
+- **T-006.1** — `monorepo-setup.md` (single-app di repo ini; Next.js App Router SSG; pnpm; bukan monorepo)
+- **T-006.2** — `deployment-infrastructure.md` (Vercel; Preview PR; Middleware locale `/`)
+- **T-006.3** — `auth-strategy.md` (N/A — selaras ADR-011/015)
+### Changed
+- T-006 → 🔄 In Progress; Fokus → **T-006.4** `database-orm.md`
+
+---
+
+## 2026-08-11
+### Fixed
+- PR #7 review: Entry Points `application-layer.md` selaras path locale ADR-014 (`/[id|en]/…`, bukan `/about` tanpa prefix)
+
+---
+
+## 2026-08-11
+### Added
+- **T-005.1** — `domain-model.md` (lean content model; DDD N/A)
+- **T-005.2** — `database-strategy.md` (N/A — konten di repo)
+- **T-005.3** — `application-layer.md` (static-first SSG)
+- **T-005.4** — `integration-layer.md` (mailto + satelit + locale redirect)
+- **T-005.5** — `background-jobs.md` (N/A)
+- **T-005.6** — `realtime-strategy.md` (N/A)
+- **T-005.7** — `auth-architecture.md` (N/A)
+- **T-005.8** / **ADR-015** — Architecture Baseline v1.0 (opsi A: SSG + konten repo)
+### Changed
+- T-005 ✅ Done; Fokus → **T-006.1** `monorepo-setup.md`
+- `PROJECT_STATE.md` → Phase 6 — Engineering Planning (06-engineering)
+- `TASKS.md` / `tasks/v01-product-discovery.md` / `DECISIONS.md`
+
+---
+
+## 2026-08-10
+### Changed
+- **T-005 / T-006** subtasks dipecah per dokumen (pola T-001/T-002): 1 file = 1 subtask + baseline/ADR di akhir
+- T-005: `T-005.1`…`T-005.7` dokumen architecture; `T-005.8` Baseline + ADR (N/A diizinkan per file)
+- T-006: `T-006.1`…`T-006.9` dokumen engineering; `T-006.10` Baseline + ADR
+- `TASKS.md` / `PROJECT_STATE.md` Fokus → **T-005.1** `domain-model.md`
+
+---
+
+## 2026-08-10
+### Fixed
+- Review ketat T-003/T-004: bedakan Home **credibility line** (1 klaim non-kartu) vs **work teaser** (1–3 kartu karya) — IA, key screens, flows, journey
+- Tutup handoff User→UX: **OQ2** Closed (Email primer ADR-014); OQ5 Closed di lapisan UX; SC1/SC2/SC5 selaras Email primer
+- README `03-user/` & `04-ux/` — hapus living status / “lanjut Phase X”; arahkan ke PROJECT_STATE + DECISIONS
+### Added
+- IA: **Share & Meta Hygiene** (title/description/OG per locale) + **Content readiness** (jangan ship tanpa teaser Home + Email Contact)
+### Changed
+- `insights.md` assumption A3: saluran Contact dikunci Email primer; inbound tetap provisional
+- Fokus tetap **T-005.1** (tidak ada perubahan phase)
+
+---
+
+## 2026-08-10
+### Fixed
+- Review UX baseline: nav+switcher always-visible mobile R1 (hilangkan opsi hamburger yang bentrok acceptance ≤1 ketukan)
+- Preferensi locale hanya untuk redirect `/` — tidak rewrite URL `/id|en/...` eksplisit
+- Notasi route diseragamkan ke `/[id/en]/...` di IA, nav, key screens; ADR-014 diperjelas
+
+---
+
+## 2026-08-10
+### Changed
+- `04-ux/information-architecture.md` — Site Map memakai notasi param `/[id/en]/...` (setara path prefix; bukan query)
+
+---
+
+## 2026-08-10
+### Added
+- **T-004.1** — Seluruh dokumen `04-ux/` Baseline v1.0 (ux-principles → key-screen-patterns)
+- **T-004.2** / **ADR-014** — UX Baseline v1.0 (path locale `/id`/`/en` + geo default + switcher; Contact Email primer; LinkedIn/GitHub satelit; tanpa WA/IG R1)
+### Changed
+- T-004 ✅ Done; Fokus → **T-005.1** isi `05-architecture/`
+- `PROJECT_STATE.md` → Phase 5 — Architecture (05-architecture)
+- `TASKS.md` / `tasks/v01-product-discovery.md` / `DECISIONS.md`
+
+---
+
+## 2026-08-07
+### Fixed
+- **T-003** review: PP9 → Should (tipis); social jobs `S1–S3` → `SJ1–SJ3`; prioritas segmen `Pri-0/1/2`; I3 case → Later (R2 magnet)
+
+---
+
+## 2026-08-07
+### Added
+- **T-003.1** — Seluruh dokumen `03-user/` Baseline v1.0 (discovery-plan → insights)
+- **T-003.2** / **ADR-013** — User Baseline v1.0 (assumption-led + riset ringan opsional; journey R1 primer + sekunder tipis)
+### Changed
+- T-003 ✅ Done; Fokus → **T-004.1** isi `04-ux/`
+- `PROJECT_STATE.md` → Phase 4 — UX Planning (04-ux)
+- `TASKS.md` / `tasks/v01-product-discovery.md` / `DECISIONS.md` / `03-user/README.md`
+
+---
+
+## 2026-08-07
+### Added
+- **T-002.8** / **ADR-012** — Product Baseline v1.0 untuk seluruh `02-product/`
+### Changed
+- Status semua dokumen `02-product/` → Baseline v1.0 (`roles-permissions.md` tetap N/A)
+- T-002 ✅ Done; Fokus → **T-003.1** isi `03-user/`
+- `PROJECT_STATE.md` → Phase 3 — User Discovery (03-user)
+
+---
+
+## 2026-08-07
+### Added
+- **T-002.7** — `roles-permissions.md` **N/A** (situs publik tanpa auth/RBAC)
+- **ADR-011** — Roles & permissions N/A; file tetap ada
+### Changed
+- Fokus → **T-002.8** Baseline Product v1.0 + ADR
+- `PROJECT_STATE.md` / `TASKS.md` / `DECISIONS.md` / `v01` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
+- **T-002.5** — `release-roadmap.md` Draft v0.1 (R1 Clarity → R2 Magnet → R3 Presence/craft)
+- **T-002.6** — `future-roadmap.md` Draft v0.1 (peluang M11/M12, distribusi, batas ekspansi)
+### Changed
+- Fokus → **T-002.7** `roles-permissions.md`
+- `PROJECT_STATE.md` / `TASKS.md` / `v01` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
+- **T-002.4** — `feature-priority.md` Draft v0.1 (MoSCoW M1–M12 untuk rilis MVP)
+### Changed
+- Fokus → **T-002.5** `release-roadmap.md`
+- `PROJECT_STATE.md` / `TASKS.md` / `v01` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
+- **T-002.1** — `product-scope.md` Draft v0.1 (Hybrid lean)
+- **T-002.2** — `mvp-definition.md` Draft v0.1
+- **T-002.3** — `feature-modules.md` Draft v0.1 (M1–M12)
+- **ADR-010** — MVP surface Hybrid lean (opsi C)
+### Changed
+- T-002 → 🟡 In progress; Fokus → **T-002.4** `feature-priority.md`
+- `PROJECT_STATE.md` / `TASKS.md` / `DECISIONS.md` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Added
+- **T-001.7** — `success-metrics.md` Draft→Baseline: dual north star (brand recall + inbound berkualitas)
+- **T-001.8** / **ADR-009** — Business Baseline v1.0 untuk seluruh `01-business/`
+### Changed
+- Status semua dokumen `01-business/` → Baseline v1.0 (`pricing-strategy.md` tetap N/A)
+- T-001 ✅ Done; Fokus → **T-002.1** `product-scope.md`
+- `PROJECT_STATE.md` — Phase 2 (02-product); `TASKS.md` / `DECISIONS.md` / `CONVERSATIONS.md` diselaraskan
+
+---
+
+## 2026-08-07
+### Changed
+- Sinkron referensi kode subtask `T-XXX.N` di laporan/aturan: `CONVERSATIONS.md`, `PROJECT_RULES.md`, `AGENTS.md`, `DEVELOPER_WORKFLOW.md`, `PROJECT_STATE.md` (Overall Progress), `pricing-strategy.md`, ADR-008, navigator skill
+### Fixed
+- Impact lama di `CONVERSATIONS.md` dan rujukan “Subtask T-001” tanpa nomor anak diselaraskan ke `T-001.N`
+
+## 2026-08-07
+### Changed
+- Konvensi ID subtask `T-XXX.N` (contoh T-001.1) — retrofit semua subtask di `tasks/v01-product-discovery.md`
+- `TASKS.md` — aturan ID subtask; Fokus sekarang `T-001.7`
+- `PROJECT_STATE.md` — Top Next / Current Focus pakai kode subtask
+- `.cursor/skills/project-os-navigator/SKILL.md` — rujuk `T-XXX.N`
+- Riwayat COMPLETE_TASK di bawah diselaraskan ke kode subtask (atas perintah Boss Rezi)
+
+## 2026-08-07
+### Added
+- `product-discovery/01-business/pricing-strategy.md` N/A v0.1 (tidak relevan untuk situs; file tetap)
+- `project-manager/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-008
+- `01-business/README.md` — pricing dicatat N/A
+- **T-001.6** dicentang (N/A); fokus lanjut **T-001.7** `success-metrics.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.7
+
+## 2026-08-07
+### Added
+- `product-discovery/01-business/business-model.md` draft v0.1 (brand + soft inbound; growth destination + magnet ringan)
+- `project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-007
+- **T-001.5** dicentang; fokus lanjut **T-001.6** `pricing-strategy.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.6
+
+## 2026-08-07
+### Added
+- `product-discovery/01-business/competitor-analysis.md` draft v0.1 (referensi bernama + pesaing kategori; prioritas clarity → presence → craft)
+- `project-manager/decisions/ADR-006-competitor-reference-lens-clarity-presence-craft.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-006
+- **T-001.4** dicentang; fokus lanjut **T-001.5** `business-model.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.5
+
+## 2026-08-06
+### Added
+- `product-discovery/01-business/target-market.md` draft v0.1 (ICP hybrid founder/PO setara; SEA; digital product/tech)
+- `project-manager/decisions/ADR-005-target-market-icp-sea-tech.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-005
+- **T-001.3** dicentang; fokus lanjut **T-001.4** `competitor-analysis.md`
+- `TASKS.md` / `PROJECT_STATE.md` — fokus berikutnya T-001.4
+
+## 2026-08-06
+### Added
+- `product-discovery/01-business/problem-statement.md` draft v0.1 (framing dual; rantai visibility → narrative → evaluasi)
+- `project-manager/decisions/ADR-004-problem-statement-dual-chain.md`
+### Changed
+- `DECISIONS.md` — indeks ADR-004
+- **T-001.2** dicentang; fokus lanjut **T-001.3** `target-market.md`
+- `PROJECT_STATE.md` / `TASKS.md` — fokus & progress diselaraskan
+
+## 2026-08-06
+
+### Added
+
+- ADR-003 — repo publik + folder `private/` untuk materi sensitif
+- `private/README.md` (isi folder di-ignore Git)
+
+### Changed
+
+- `.gitignore` — `/private/*` (kecuali README); `product-discovery/` tetap di-track
+- `README.md` — catatan privasi repo publik
+
+## 2026-08-06
+
+### Added
+
+- `product-discovery/01-business/product-vision.md` draft v0.1
+- ADR-002 — visi portofolio (brand primer, positioning, audiens, bahasa geo-aware)
+
+### Changed
+
+- **T-001.1** dicentang; fokus lanjut **T-001.2** `problem-statement.md`
+- `TASKS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, `CONVERSATIONS.md` diselaraskan
+
+## 2026-08-06
+
+### Added
+
+- Scaffold Project OS: `product-discovery/` 01–06 (placeholder), `project-manager/`, `.cursor/skills/` (3 process skills), `AGENTS.md`, `.cursorignore`
+- ADR-001 — pemisahan PD/PM + skills Cursor

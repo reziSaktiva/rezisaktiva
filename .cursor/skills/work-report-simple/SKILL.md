@@ -11,71 +11,71 @@ description: >-
 
 # Work Report — Plain Language
 
-Setelah menyelesaikan pekerjaan apapun, selalu buat laporan singkat dengan bahasa yang mudah dipahami — layaknya bawahan melaporkan hasil kepada atasan.
+After finishing any task, give Boss Rezi a short, easy-to-understand report. Keep it direct, useful, and proportional to the work.
 
 ---
 
-## Kapan Digunakan
+## When To Use
 
-Otomatis setelah:
+Use automatically after:
 
-- Membuat atau mengedit dokumen / file
-- Menyelesaikan task
-- Melakukan perubahan pada kode, konfigurasi, atau struktur project
-- Mengakhiri sesi kerja
-
----
-
-## Format Laporan
-
-### 1. Dikerjakan oleh (WAJIB, baris paling atas)
-
-Untuk project ini (belum ada subagent): gunakan **"AI utama"**.
-
-### 2. Apa yang Sudah Dikerjakan
-
-2–4 kalimat, bahasa sederhana, boleh pakai analogi.
-
-### 3. Isi / Poin Utama
-
-Bullet atau tabel singkat; bisa dipahami tanpa membuka file.
-
-### 4. Mengapa Ini Penting
-
-Satu atau dua kalimat dampaknya.
-
-### 5. Pekerjaan Berikutnya
-
-Task selanjutnya secara singkat.
+- Creating or editing documents or files
+- Completing a task
+- Changing code, configuration, or project structure
+- Ending a work session
 
 ---
 
-## Aturan Gaya Bahasa
+## Report Format
 
-- Bahasa Indonesia (kecuali diminta lain).
-- Hindari jargon tanpa penjelasan.
-- Tone: hangat, profesional, langsung ke inti.
-- Panjang proporsional dengan ukuran pekerjaan.
-- Jangan sebutkan "Saya menggunakan skill X".
-- Baris "Dikerjakan oleh" tetap wajib.
+### 1. Done By (required, first line)
+
+For this project, use **"Main agent"** unless Boss Rezi explicitly asks for another label.
+
+### 2. What Was Done
+
+Use 2–4 simple sentences. Mention the outcome, not every mechanical step.
+
+### 3. Main Points
+
+Use short bullets only when there are multiple distinct points. The report should make sense without opening files.
+
+### 4. Why It Matters
+
+One or two sentences about the practical impact.
+
+### 5. Next Work
+
+Briefly name the next relevant task or say there is no immediate follow-up if that is true.
 
 ---
 
-## Contoh Output
+## Style Rules
 
-**Dikerjakan oleh:** AI utama
+- Reply in the language Boss Rezi is currently using.
+- Avoid unexplained jargon.
+- Keep the tone warm, professional, and direct.
+- Keep length proportional to the work.
+- Do not say "I used skill X."
+- The "Done by" line is required when using the full report format, but keep the final chat concise if Boss Rezi requested a short report.
 
-**Apa yang dikerjakan:**
-Saya menyiapkan "kerangka rumah" project portofolio — folder discovery dan project manager yang siap diisi bersama.
+---
 
-**Poin utama:**
+## Example Output
 
-- `product-discovery/` fase 01–06 sudah ada dengan template TBD
-- `project-manager/` sudah punya Snapshot, task v01, dan ADR-001
-- Skills Cursor ada di `.cursor/skills/`
+**Done by:** Main agent
 
-**Mengapa penting:**
-Kita punya tempat yang jelas untuk mendokumentasikan keputusan sebelum menulis kode.
+**What was done:**
+I prepared the portfolio project operating structure so future work has a clear place to live.
 
-**Selanjutnya:**
-Isi bersama `product-discovery/01-business/product-vision.md`.
+**Main points:**
+
+- `product-discovery/` holds product baselines
+- `project-os/` holds status, tickets, specs, and ADRs
+- Cursor project skills live in `.cursor/skills/`
+
+**Why it matters:**
+Future decisions and implementation work can start from the right source instead of scattered notes.
+
+**Next:**
+Continue with the next open ticket in `project-os/AVAILABLE_TICKETS.md`.

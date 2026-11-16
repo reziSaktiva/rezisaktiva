@@ -1,6 +1,6 @@
 /**
  * Locale skeleton — path prefix `/[id|en]/...` per ADR-014.
- * Baseline R1 hanya dua locale; tambah locale baru = perubahan material (butuh ADR).
+ * R1 baseline is two locales only; adding a locale is a material change (needs an ADR).
  */
 export const LOCALES = ["id", "en"] as const;
 

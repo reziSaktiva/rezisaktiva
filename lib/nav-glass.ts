@@ -1,4 +1,4 @@
-/** Offset kaca navbar: pakai yang terbesar dari Lenis dan native. */
+/** Glass navbar offset: use the greater of Lenis and native scroll. */
 export function resolveNavGlassScrollY(
   lenisScroll: number | null | undefined,
   nativeY: number,
@@ -12,8 +12,8 @@ export function isNavGlassScrolled(y: number): boolean {
 }
 
 /**
- * Blur instan (T-055.1): on saat scrolled; selama fade-out tetap on
- * sampai opacity selesai. Reduced-motion = ikut scrolled saja.
+ * Instant blur (T-055.1): on while scrolled; during fade-out stay on
+ * until opacity finishes. Reduced-motion = scrolled only.
  */
 export function isNavGlassBlurOn(
   scrolled: boolean,

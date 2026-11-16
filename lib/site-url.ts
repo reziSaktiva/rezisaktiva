@@ -1,19 +1,19 @@
 const FALLBACK_SITE_URL = "http://localhost:3000";
 
 /**
- * Host publik yang tetap (ADR-048). Apex `rezisaktiva.space` mengarah ke sini.
- * Bukan `*.vercel.app`.
+ * Stable public host (ADR-048). Apex `rezisaktiva.space` points here.
+ * Not `*.vercel.app`.
  */
 export const PRODUCTION_SITE_URL = "https://www.rezisaktiva.space";
 
-/** Hostname deploy Vercel yang tidak boleh jadi URL kanonis. */
+/** Vercel deploy hostname that must not become the canonical URL. */
 export const VERCEL_DEPLOY_HOST = "rezisaktiva.vercel.app";
 
 /**
- * Canonical origin untuk meta/OG/JSON-LD/sitemap (T-017.2, ADR-048).
- * Build Vercel (production dan preview) selalu memakai `PRODUCTION_SITE_URL`,
- * meski `NEXT_PUBLIC_SITE_URL` kosong, localhost, atau `*.vercel.app`.
- * Lokal: nilai env, atau localhost bila kosong / bukan http(s).
+ * Canonical origin for meta/OG/JSON-LD/sitemap (T-017.2, ADR-048).
+ * Vercel builds (production and preview) always use `PRODUCTION_SITE_URL`
+ * even when `NEXT_PUBLIC_SITE_URL` is empty, localhost, or `*.vercel.app`.
+ * Local: env value, or localhost when empty / not http(s).
  */
 export function getSiteUrl(): string {
   if (
@@ -48,10 +48,10 @@ export function localePath(locale: string, pathname = ""): string {
   return `/${locale}${suffix}`;
 }
 
-/** Path katalog M9 (label Proyek / Projects). */
+/** M9 catalog path (label Proyek / Projects). */
 export const PROJECTS_PATH = "projects";
 
-/** Path cara kerja M14 (label Proses Kerja / How I Work). */
+/** M14 workflow path (label Proses Kerja / How I Work). */
 export const WORKFLOW_PATH = "workflow";
 
 export function projectsHref(locale: string): string {

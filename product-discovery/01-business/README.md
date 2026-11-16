@@ -1,86 +1,86 @@
 # 01 — Business
 
-Dokumentasi pada folder ini berfokus pada fase **Business** untuk website portofolio pribadi **rezisaktiva**.
+Documentation in this folder focuses on the **Business** phase for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Purpose
 
-* Mendefinisikan arah portofolio dari sisi tujuan pribadi/profesional.
-* Memastikan masalah/kesempatan yang dijawab bernilai nyata.
-* Menentukan audiens, positioning, dan model nilai (brand primer + soft inbound).
-* Menetapkan metrik keberhasilan — dual north star: brand recall + inbound berkualitas.
+* Define the portfolio direction from personal and professional goals.
+* Ensure the problem/opportunity being addressed has real value.
+* Define the audience, positioning, and value model (primary brand + soft inbound).
+* Define success metrics — dual north star: brand recall + qualified inbound.
 
 ---
 
 # Scope
 
-Folder ini hanya membahas aspek business.
+This folder only covers business aspects.
 
-Topik berikut tidak dibahas di sini:
+The following topics are not covered here:
 
-- Detail fitur halaman
-- UX/UI detail
-- Arsitektur teknis
-- Implementasi kode
+- Page feature details
+- UX/UI details
+- Technical architecture
+- Code implementation
 
 ---
 
 # Documents
 
-* `product-vision.md` — visi dan arah jangka panjang.
-* `problem-statement.md` — masalah/kesempatan yang ingin dijawab.
-* `target-market.md` — audiens utama dan sekunder.
-* `competitor-analysis.md` — referensi portofolio/kompetitor positioning.
-* `business-model.md` — cara portofolio menciptakan nilai (brand primer, soft inbound, magnet ringan).
-* `pricing-strategy.md` — **N/A** untuk situs ini (ADR-008); file tetap sebagai jejak keputusan.
-* `success-metrics.md` — KPI dual north star (brand recall + inbound berkualitas).
-* `../README.md` — dokumentasi fase Product Discovery.
-* `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
-* `../../project-manager/PROJECT_RULES.md` — aturan project.
-* `../../project-manager/PROJECT_STATE.md` — status dan progress.
-* `../../project-manager/DECISIONS.md` — keputusan penting (ADR).
+* `product-vision.md` — vision and long-term direction.
+* `problem-statement.md` — the problem/opportunity to address.
+* `target-market.md` — primary and secondary audiences.
+* `competitor-analysis.md` — portfolio references / positioning competitors.
+* `business-model.md` — how the portfolio creates value (primary brand, soft inbound, lightweight magnet).
+* `pricing-strategy.md` — **N/A** for this site (ADR-008); the file stays as a decision trace.
+* `success-metrics.md` — dual north star KPIs (brand recall + qualified inbound).
+* `../README.md` — Product Discovery phase documentation.
+* `../../project-os/PROJECT_OVERVIEW.md` — project summary.
+* `../../project-os/PROJECT_RULES.md` — project rules.
+* `../../project-os/PROJECT_STATE.md` — status and progress.
+* `../../project-os/DECISIONS.md` — important decisions (ADRs).
 
 ---
 
 # Workflow
 
-1. Mulai dari `product-vision.md`.
-2. Lanjutkan `problem-statement.md` dan `target-market.md`.
-3. Lengkapi `competitor-analysis.md`.
-4. Finalisasi `business-model.md`, `pricing-strategy.md`, dan `success-metrics.md`.
+1. Start with `product-vision.md`.
+2. Continue with `problem-statement.md` and `target-market.md`.
+3. Complete `competitor-analysis.md`.
+4. Finalize `business-model.md`, `pricing-strategy.md`, and `success-metrics.md`.
 
 ---
 
 # Expected Output
 
-**Baseline Business v1.0 sudah ditetapkan** (ADR-009, 2026-08-07). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `pricing-strategy.md` sebagai N/A).
+**Business Baseline v1.0 has been established** (ADR-009, 2026-08-07). Every document in this folder is filled and agreed upon (including `pricing-strategy.md` as N/A).
 
-Langkah berikutnya: lanjut **Phase 2 — Product Discovery** di `../02-product/` (mulai dari `product-scope.md` / T-002.1). Status fase aktif ada di `PROJECT_STATE.md`.
+Next step: continue to **Phase 2 — Product Discovery** in `../02-product/` (starting from `product-scope.md` / T-002.1). The active phase status lives in `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+The following criteria **have been met** for Baseline v1.0:
 
-* Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material tercatat di `DECISIONS.md` (ADR-002, ADR-004–009, dll.).
-* Boss Rezi menyetujui baseline fase ini.
+* Every document above has been filled (not TBD).
+* Material decisions are recorded in `DECISIONS.md` (ADR-002, ADR-004–009, etc.).
+* Boss Rezi has approved this phase baseline.
 
 ---
 
 # Decision Rules
 
-* Fase Business selesai — lanjut isi `02-product/` sesuai Workflow Product Discovery.
-* Perubahan material pada baseline bisnis → ADR baru + revisi dokumen terdampak.
-* Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
+* The Business phase is complete — continue filling `02-product/` according to the Product Discovery workflow.
+* Material changes to the business baseline → new ADR + revision of impacted documents.
+* Phase status/progress is recorded only in `PROJECT_STATE.md`, not in this README.
 
 ---
 
 # Related Documents
 
 * `../README.md`
-* `../../project-manager/README.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/README.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

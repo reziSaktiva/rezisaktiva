@@ -1,117 +1,117 @@
 # Environment Management
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-11). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan pengelolaan environment & secrets untuk website portofolio **rezisaktiva**.
+This document defines environment & secret management for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-R1 adalah situs **publik static-first** tanpa DB/auth produk. Environment sengaja **tipis**:
+R1 is a **public static-first** site without product DB/auth. Environment is intentionally **thin**:
 
-* Tier: Local / Preview / Production (selaras Vercel)
-* Secret produk: **minimal** — plus `RESEND_*` untuk form Contact (**ADR-047**)
-* Konfigurasi publik (URL situs, flag analytics opsional) boleh `NEXT_PUBLIC_*` bila diperlukan
+* Tiers: Local / Preview / Production (aligned with Vercel)
+* Product secrets: **minimal** — plus `RESEND_*` for the Contact form (**ADR-047**)
+* Public config (site URL, optional analytics flag) may use `NEXT_PUBLIC_*` when needed
 
 ---
 
-# Tujuan
+# Purpose
 
-* Mencegah sprawl `.env` dan secret yang tidak perlu
-* Menyelaraskan tempat menyimpan nilai: lokal vs Vercel vs GitHub Actions
-* Melindungi repo publik (ADR-003)
+* Prevent unnecessary `.env` and secret sprawl
+* Align where values are stored: local vs Vercel vs GitHub Actions
+* Protect the public repo (ADR-003)
 
 ---
 
 # Environment Tiers
 
-| Tier | Di mana nilai disetel | Peran |
-| ---- | -------------------- | ----- |
+| Tier | Where values are set | Role |
+| ---- | -------------------- | ---- |
 | **Local** | `.env.local` (gitignored) | `pnpm dev` |
-| **Preview** | Vercel project → Preview | Deployment PR |
-| **Production** | Vercel project → Production | Situs publik |
+| **Preview** | Vercel project → Preview | PR deployments |
+| **Production** | Vercel project → Production | Public site |
 
-Tidak ada staging terpisah wajib (lihat `deployment-infrastructure.md`).
+There is no required separate staging environment (see `deployment-infrastructure.md`).
 
-GitHub Actions R1 untuk lint/typecheck **tidak membutuhkan** secret produk; cukup checkout + install.
+R1 GitHub Actions for lint/typecheck **do not need** product secrets; checkout + install are enough.
 
 ---
 
 # Secret Management
 
-| Jenis | Aturan R1 |
-| ----- | --------- |
-| Secret di git | **Dilarang** (termasuk di `private/` jika tidak sengaja untuk runtime — runtime tidak membaca `private/`) |
-| Secret deploy | Hanya di **Vercel** (bila ada) |
-| Secret CI | Tidak wajib untuk pipeline B |
-| Rotasi | Bila suatu saat ada API key analytics/dll., rotate di dashboard vendor + Vercel |
+| Type | R1 Rule |
+| ---- | ------- |
+| Secrets in git | **Forbidden** (including in `private/` if accidentally intended for runtime — runtime does not read `private/`) |
+| Deploy secrets | Only in **Vercel** (if any) |
+| CI secrets | Not required for pipeline B |
+| Rotation | If an analytics/API key exists later, rotate in the vendor dashboard + Vercel |
 
-Tidak ada vault eksternal (Doppler, AWS SM) untuk R1.
+There is no external vault (Doppler, AWS SM) for R1.
 
 ---
 
 # File Strategy
 
-| File | Di repo? | Isi |
-| ---- | -------- | --- |
-| `.env.local` | Tidak (gitignore) | Nilai lokal pengembang |
-| `.env.example` | Ya | Nama variabel + komentar; **tanpa** nilai rahasia |
-| `.env` / `.env.production` committed | Tidak | Hindari commit env berisi nilai nyata |
-| Vercel dashboard | N/A | Sumber kebenaran Preview/Production |
+| File | In repo? | Contents |
+| ---- | -------- | -------- |
+| `.env.local` | No (gitignore) | Local developer values |
+| `.env.example` | Yes | Variable names + comments; **no** secret values |
+| `.env` / committed `.env.production` | No | Avoid committing env files with real values |
+| Vercel dashboard | N/A | Source of Truth for Preview/Production |
 
-Dokumentasikan variabel di `.env.example` agar bootstrap jelas tanpa membocorkan secret.
+Document variables in `.env.example` so bootstrap is clear without leaking secrets.
 
 ---
 
-# Katalog Environment Variables
+# Environment Variables Catalog
 
-R1 diharapkan **sangat pendek**. Contoh yang wajar (dikunci detail nama saat bootstrap):
+R1 is expected to be **very short**. Reasonable examples (specific names locked during bootstrap):
 
-| Variabel | Wajib R1 | Tier | Catatan |
-| -------- | -------- | ---- | ------- |
-| `NEXT_PUBLIC_SITE_URL` | Should | Lokal | Canonical URL untuk meta/OG/sitemap di mesin lokal. Build Vercel mengunci `https://www.rezisaktiva.space` (ADR-048) |
-| `RESEND_API_KEY` | Must (setelah ADR-047) | Local / Preview / Prod | Server-only. Jangan `NEXT_PUBLIC_`. |
-| `RESEND_FROM` | Must (setelah ADR-047) | Local / Preview / Prod | Mailbox terverifikasi di `rezisaktiva.space` |
-| Analytics key (`NEXT_PUBLIC_*` atau server) | Could | Preview/Prod | Hanya jika analytics diaktifkan; privacy-aware |
-| `DATABASE_URL` | Tidak | — | N/A |
-| Auth secrets (`AUTH_*`, `NEXTAUTH_*`) | Tidak | — | N/A |
-| `VERCEL_*` | Otomatis | Vercel | Disediakan platform; jangan diduplikasi di git |
+| Variable | R1 Required | Tier | Notes |
+| -------- | ----------- | ---- | ----- |
+| `NEXT_PUBLIC_SITE_URL` | Should | Local | Canonical URL for meta/OG/sitemap on local machines. Vercel build locks `https://www.rezisaktiva.space` (ADR-048) |
+| `RESEND_API_KEY` | Must (after ADR-047) | Local / Preview / Prod | Server-only. Do not use `NEXT_PUBLIC_`. |
+| `RESEND_FROM` | Must (after ADR-047) | Local / Preview / Prod | Verified mailbox on `rezisaktiva.space` |
+| Analytics key (`NEXT_PUBLIC_*` or server) | Could | Preview/Prod | Only if analytics is enabled; privacy-aware |
+| `DATABASE_URL` | No | — | N/A |
+| Auth secrets (`AUTH_*`, `NEXTAUTH_*`) | No | — | N/A |
+| `VERCEL_*` | Automatic | Vercel | Provided by platform; do not duplicate in git |
 
-Tambah variabel baru hanya jika fitur membutuhkannya; update `.env.example` + dokumen ini (atau ADR bila material).
+Add a new variable only if a feature needs it; update `.env.example` + this document (or ADR if material).
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Tier | Local / Preview / Production |
-| Secret store R1 | Vercel (+ `.env.local` lokal) |
-| Vault eksternal | Tidak |
-| Env untuk DB/auth | Tidak ada |
+| Decision | Choice |
+| -------- | ------ |
+| Tiers | Local / Preview / Production |
+| R1 secret store | Vercel (+ local `.env.local`) |
+| External vault | No |
+| Env for DB/auth | None |
 | Contact email | Resend `RESEND_API_KEY` + `RESEND_FROM` (ADR-047) |
-| CI secrets | Tidak wajib (pipeline B) |
-| Baseline Engineering | ADR-016 |
+| CI secrets | Not required (pipeline B) |
+| Engineering Baseline | ADR-016 |
 
 ---
 
 # Success Criteria
 
-1. Repo publik tidak mengandung secret
-2. Seseorang baru bisa jalan lokal dari `.env.example` + docs
-3. Tidak ada asumsi `DATABASE_URL` / auth secret di R1
+1. Public repo contains no secrets
+2. A new person can run locally from `.env.example` + docs
+3. There is no `DATABASE_URL` / auth secret assumption in R1
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
+* `README.md` — this phase documentation
 * `deployment-infrastructure.md` — Vercel tiers
-* `cicd-pipeline.md` — CI tanpa secret produk
+* `cicd-pipeline.md` — CI without product secrets
 * `database-orm.md` — N/A
 * `auth-strategy.md` — N/A
-* `../../project-manager/decisions/ADR-003-public-repo-privacy-private-folder.md`
-* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-003-public-repo-privacy-private-folder.md`
+* `../../project-os/decisions/ADR-047-contact-form-resend.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

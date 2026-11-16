@@ -204,7 +204,7 @@ let safetyTimer = 0;
 
 const SAFETY_BUFFER_MS = 750;
 const REPLACED_FROM = "__replaced__";
-/** Fallback = token T-043.1 di `:root` (bukan ritme Hess 1s / 0.4s). */
+/** Fallback = T-043.1 tokens on `:root` (not Hess 1s / 0.4s rhythm). */
 const PAGE_EXIT_FALLBACK_MS = 200;
 const PAGE_ENTER_FALLBACK_MS = 160;
 const PAGE_ENTER_DELAY_FALLBACK_MS = 200;
@@ -340,10 +340,10 @@ function retargetBusyNav(target: string): void {
 }
 
 /**
- * Transisi halaman T-043.1: hard cut + stutter frame (T-038.3), bukan Hess
- * scale dan bukan View Transitions API. State di luar React supaya remount
- * Strict Mode tidak mematikan clone. `html.page-vt-lock` tetap
- * `overflow-y: scroll` (track tidak hilang, T-025.8).
+ * Page transition T-043.1: hard cut + stutter frame (T-038.3), not Hess
+ * scale and not View Transitions API. State outside React so Strict Mode
+ * remount does not kill the clone. `html.page-vt-lock` keeps
+ * `overflow-y: scroll` (track does not disappear, T-025.8).
  */
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();

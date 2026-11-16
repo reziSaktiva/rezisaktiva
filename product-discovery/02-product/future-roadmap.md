@@ -1,88 +1,88 @@
 # Future Roadmap
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mencatat **arah dan peluang** website portofolio **rezisaktiva** setelah kerangka clarity + magnet ringan berjalan — tanpa mengunci jadwal atau mengubah positioning inti.
+This document records **directions and opportunities** for the **rezisaktiva** portfolio website after the clarity frame + lightweight magnet are running — without locking a schedule or changing the core positioning.
 
 ---
 
 # Overview
 
-Jangka panjang: situs tetap **aset brand** (product builder + fullstack + AI edge), destination resmi, dengan magnet konten yang dirawat proporsional.
+Long term: the site remains a **brand asset** (product builder + fullstack + AI edge), official destination, with content magnets maintained proportionally.
 
-Yang boleh tumbuh: kedalaman case, sinyal craft, tulisan proses, eksperimen sebagai satelit, dan (opsional) distribusi aktif — **hanya jika** tidak mengorbankan clarity dan soft inbound.
+What may grow: case depth, craft signal, process writing, experiments as satellites, and (optionally) active distribution — **only if** they do not sacrifice clarity and soft inbound.
 
-Yang tidak menjadi masa depan default: toko jasa, SaaS di situs, media empire, atau social hustle sebagai mesin utama (kecuali ADR baru).
+What is not the default future: service shop, SaaS on the site, media empire, or social hustle as the primary engine (unless a new ADR exists).
 
 ---
 
 # Long-Term Product Vision
 
-Selaras `../01-business/product-vision.md`:
+Aligned with `../01-business/product-vision.md`:
 
-* Rumah digital yang dikenang: “Rezi = product builder (fullstack + AI edge)”
-* Terus diperbarui dengan karya dan pembelajaran
-* Referensi pertama saat evaluasi kolaborasi, opportunity, atau project
-* Bilingual SEA-aware tetap pintu terbuka
-* Job/client tetap jalur sekunder soft — brand tetap primer
+* Digital home that is remembered: “Rezi = product builder (fullstack + AI edge)”
+* Continuously updated with work and learning
+* First reference for evaluating collaboration, opportunity, or project
+* Bilingual SEA-aware remains an open door
+* Job/client stays a soft secondary path — brand remains primary
 
-Roadmap masa depan **memperkaya** visi itu, bukan mengganti menjadi designer agency, AI specialist murni, atau funnel penjualan.
+The future roadmap **enriches** that vision, not replaces it with designer agency, pure AI specialist, or sales funnel.
 
 ---
 
 # Future Opportunities
 
-Peluang (belum komitmen R1–R3):
+Opportunities (not R1–R3 commitments yet):
 
-| Peluang | Nilai | Risiko jika dipaksa terlalu cepat |
-| ------- | ----- | --------------------------------- |
-| **M11 — Writing / notes** | Memperkuat cara berpikir; magnet sekunder | Jadi blog volume; geser fokus evaluasi |
-| **M12 — Experiments / playground** | Craft edge; daya tarik peer | Panggung utama jadi spectacle tanpa outcome |
-| **Lebih banyak case (M10)** | Bukti ship lebih kaya | Kualitas turun; maintenance berat |
-| **Distribusi aktif (SEA/community)** | Perluas visibility (ADR-007 opsi C ditunda) | Effort tinggi; vanity traffic |
-| **Form/booking matang (M8+)** | Memperhalus soft path | Terasa salesy jika copy agresif |
-| **Analytics privacy-first** | Belajar perilaku dengan etis | Over-measure; noise vanity |
-| **Ship-in-public ringan** | Transparansi proses | Jadi mesin utama → geser ICP fokus |
+| Opportunity | Value | Risk if forced too early |
+| ----------- | ----- | ------------------------ |
+| **M11 — Writing / notes** | Strengthens thinking; secondary magnet | Becomes blog volume; shifts evaluation focus |
+| **M12 — Experiments / playground** | Craft edge; peer attraction | Main stage becomes spectacle without outcome |
+| **More cases (M10)** | Richer shipped-work proof | Quality drops; maintenance burden |
+| **Active distribution (SEA/community)** | Expands visibility (ADR-007 option C deferred) | High effort; vanity traffic |
+| **Mature form/booking (M8+)** | Smooths soft path | Feels salesy if copy is aggressive |
+| **Privacy-first analytics** | Learn behavior ethically | Over-measurement; vanity noise |
+| **Lightweight ship-in-public** | Process transparency | Becomes main engine → shifts ICP focus |
 
-Tiap peluang naik ke rilis konkret hanya setelah evaluasi (section di bawah) + kapasitas Rezi.
+Each opportunity moves to a concrete release only after evaluation (section below) + Rezi's capacity.
 
 ---
 
 # Product Expansion
 
-## Di dalam arah ekspansi (aman)
+## Inside expansion direction (safe)
 
-* Memperdalam case/proses (lebih banyak M10 berkualitas)
-* Poles presence & craft di atas fondasi R1–R2
-* Tulisan singkat proses (M11) sebagai pelengkap, bukan bisnis media
-* Playground/eksperimen (M12) sebagai **satelit** dari destination
-* Ritme update konten proporsional (changelog ringan)
+* Deepen case/process (more high-quality M10)
+* Polish presence & craft on top of the R1–R2 foundation
+* Short process writing (M11) as complement, not media business
+* Playground/experiments (M12) as **satellite** from the destination
+* Proportional content update rhythm (lightweight changelog)
 
-## Di luar ekspansi (tetap out of direction)
+## Outside expansion (still out of direction)
 
-* Pricing publik, paket jasa, checkout (ADR-008)
-* CMS/auth/member area sebagai “produk”
-* E-commerce / SaaS publik sebagai inti situs
-* Hard-sell funnel atau lead-magnet berat
-* Mengganti positioning menjadi designer/agency atau AI specialist murni
-* Menjadikan social automation syarat sukses brand
+* Public pricing, service packages, checkout (ADR-008)
+* CMS/auth/member area as “product”
+* E-commerce / public SaaS as site core
+* Hard-sell funnel or heavy lead magnet
+* Changing positioning to designer/agency or pure AI specialist
+* Making social automation a brand success requirement
 
-Ekspansi yang mengubah model nilai → ADR + revisi business/product baseline.
+Expansion that changes the value model → ADR + business/product baseline revision.
 
 ---
 
 # Evaluation Principles
 
-Sebelum memasukkan peluang future ke backlog rilis:
+Before adding a future opportunity to the release backlog:
 
-1. **Apakah memperkuat dual north star?** (recall + inbound berkualitas)
-2. **Apakah menjaga brand primer + soft CTA?**
-3. **Apakah proporsional** dengan waktu solo builder?
-4. **Apakah clarity tetap unggul** dibanding craft/volume?
-5. **Apakah ada prasyarat?** (mis. R1/R2 exit dulu)
-6. **Apakah perlu ADR?** (model growth, audiens, atau batas produk berubah)
+1. **Does it strengthen the dual north star?** (recall + qualified inbound)
+2. **Does it preserve primary brand + soft CTA?**
+3. **Is it proportional** to solo-builder time?
+4. **Does clarity remain stronger** than craft/volume?
+5. **Are there prerequisites?** (for example R1/R2 exit first)
+6. **Does it need an ADR?** (growth model, audience, or product boundary changes)
 
-Jika “tidak” pada 1–4 → discard atau tunda. Jika “ya” pada 6 → buat ADR sebelum eksekusi.
+If “no” on 1–4 → discard or defer. If “yes” on 6 → create ADR before execution.
 
 ---
 
@@ -90,43 +90,43 @@ Jika “tidak” pada 1–4 → discard atau tunda. Jika “ya” pada 6 → bua
 
 | Item | Status |
 | ---- | ------ |
-| Visi jangka panjang | Selaras Business Baseline v1.0 |
-| Rilis inti terencana | R1–R3 di `release-roadmap.md` |
-| Future opportunities | Tercatat; belum dikomit ke nomor rilis |
-| Distribusi aktif / ship-in-public mesin | Ditunda (ADR-007) |
+| Long-term vision | Aligned with Business Baseline v1.0 |
+| Planned core releases | R1–R3 in `release-roadmap.md` |
+| Future opportunities | Recorded; not committed to release numbers |
+| Active distribution / ship-in-public engine | Deferred (ADR-007) |
 | Product Baseline | **v1.0** — ADR-012 |
 
 ---
 
 # Success Criteria
 
-Future roadmap dianggap cukup jika:
+Future roadmap is sufficient if:
 
-1. Peluang di luar R1–R3 tercatat tanpa mengaburkan MVP
-2. Batas ekspansi vs out-of-direction jelas
-3. Ada prinsip evaluasi sebelum naikkan peluang ke rilis
-4. Selaras visi, ADR-002 / ADR-007 / ADR-010
+1. Opportunities outside R1–R3 are recorded without blurring the MVP
+2. Expansion boundaries vs out-of-direction are clear
+3. Evaluation principles exist before promoting opportunities to release
+4. Aligned with vision, ADR-002 / ADR-007 / ADR-010
 
 ---
 
 # Decision Rules
 
-* Memindahkan M11/M12 atau distribusi aktif ke Must rilis dekat → keputusan eksplisit (+ ADR bila mengubah growth model).
-* Mengubah situs menjadi media/toko/SaaS → ADR wajib + revisi baseline.
-* Future roadmap **bukan** janji delivery; itu backlog arah.
-* Status progress tetap di `PROJECT_STATE.md`, bukan di README fase.
+* Moving M11/M12 or active distribution into a near-term Must release → explicit decision (+ ADR if it changes growth model).
+* Turning the site into media/store/SaaS → ADR required + baseline revision.
+* Future roadmap **is not** a delivery promise; it is a directional backlog.
+* Progress status stays in `PROJECT_STATE.md`, not in the phase README.
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
+* `README.md` — documentation for this phase
 * `release-roadmap.md` — R1–R3
-* `feature-modules.md` — M11/M12 dan magnet
-* `product-scope.md` — batas produk
-* `../01-business/product-vision.md` — visi jangka panjang
-* `../01-business/business-model.md` — growth & prinsip
-* `../../project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
-* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `feature-modules.md` — M11/M12 and magnet
+* `product-scope.md` — product boundaries
+* `../01-business/product-vision.md` — long-term vision
+* `../01-business/business-model.md` — growth & principles
+* `../../project-os/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
+* `../../project-os/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

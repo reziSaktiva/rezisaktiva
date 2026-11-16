@@ -1,52 +1,52 @@
 ---
-description: Kode produksi adalah acuan visual — pelajari app/ sebelum kerja UI/UX; mockup HTML di design-mockups/ arsip (bukan kontrak); verifikasi terhadap kode + arahan Boss Rezi (ADR-024)
+description: Production code is the visual source of truth; study app/ before UI work and treat design-mockups/ as archive
 alwaysApply: true
 ---
 
-# Kode Produksi = Sumber Kebenaran Desain UI/UX
+# Production Code Is The UI/UX Source Of Truth
 
-**ADR-024 (2026-08-21):** mockup HTML di `design-mockups/` **deprecated** sebagai kontrak visual. Folder itu arsip port R1 (HTML + Tailwind CDN). Jangan dipakai sebagai acuan utama, jangan di-update agar “ikut” desain baru, jangan memaksa paritas piksel kode ↔ mockup.
+**ADR-024 (2026-08-21):** HTML mockups in `design-mockups/` are **deprecated** as a visual contract. The folder is an archive of the R1 port (HTML + Tailwind CDN). Do not use it as the primary reference, update it to "match" a new design, or force pixel parity between code and mockup.
 
-Acuan visual hidup:
+Living visual references:
 
-1. **Kode produksi** — `app/`, token di `app/globals.css`, shadcn + Tailwind v4 (`.cursor/rules/shadcn.mdc`, ADR-028)
-2. **Arahan Boss Rezi** di chat / task / ADR baru
-3. **Pola UX** di `product-discovery/04-ux/` (blok, IA, prinsip — bukan piksel mockup)
+1. **Production code** — `app/`, tokens in `app/globals.css`, shadcn + Tailwind v4 (`.cursor/rules/shadcn.mdc`, ADR-028)
+2. **Boss Rezi's instructions** in chat, task, or new ADR
+3. **UX patterns** in `product-discovery/04-ux/` — blocks, IA, and principles, not mockup pixels
 
-Berlaku untuk task apapun yang:
+Applies to any task where:
 
-- Domain-nya UI/UX (atau sejenis: Design, Product/UX), **ATAU**
-- Scope-nya menyentuh implementasi/perubahan halaman, komponen visual, layout, atau styling — apapun nilai Domain-nya
+- The domain is UI/UX, Design, or Product/UX, **or**
+- The scope touches page implementation, visual components, layout, or styling, regardless of its listed domain.
 
-## ATURAN KERAS (tidak boleh dilanggar tanpa persetujuan eksplisit Boss Rezi)
+## Hard Rules
 
-1. **Jangan menjadikan `design-mockups/` sebagai desain resmi.** Membaca HTML/CSS mockup untuk konteks sejarah boleh; menyalin layout/spacing/state dari mockup sebagai target “100% akurat” **dilarang** untuk pekerjaan baru.
-2. **Wajib pelajari implementasi yang ada dulu** (`app/` + token + primitf yang sudah di-skin) sebelum mengubah UI. Jangan mulai dari default shadcn (zinc/slate) atau dari mockup arsip lalu “kira-kira mirip”.
-3. **Kalau arahan desain baru bertentangan dengan dokumen `product-discovery/` atau ADR yang sudah ada** — ini **urgent**: laporkan ke Boss Rezi, minta persetujuan, baru update dokumen (ADR bila material). Jangan diam-diam mengabaikan baseline UX (IA, nav, Contact modal, dst) hanya karena “desain baru”.
-4. **Jangan membuat atau memperbarui mockup HTML** sebagai langkah wajib sebelum kode. Prototipe visual berikutnya = iterasi di Next.js (shadcn + Tailwind), kecuali Boss Rezi meminta kanvas lain secara eksplisit.
+1. **Do not treat `design-mockups/` as the official design.** Reading archived HTML/CSS for historical context is allowed; copying layout, spacing, or states from it as a "100% accurate" target for new work is forbidden.
+2. **Study the existing implementation first** (`app/`, tokens, and already-skinned primitives) before changing UI. Do not start from default shadcn zinc/slate styles or from archived mockups.
+3. **If new design direction conflicts with `product-discovery/` or an accepted ADR, stop and ask Boss Rezi.** Update docs or add an ADR only after approval. Do not silently ignore baseline UX.
+4. **Do not create or update HTML mockups as a required step before code.** The next visual prototype is a Next.js iteration with shadcn + Tailwind unless Boss Rezi explicitly asks for another canvas.
 
-## Wajib Verifikasi Sebelum Menyatakan Selesai
+## Required Verification Before Reporting Done
 
-Setelah implementasi, agent **wajib memverifikasi** sebelum melaporkan task selesai — jangan andalkan “terlihat benar di kode” semata:
+After implementation, verify before reporting completion. Do not rely only on "it looks right in the code."
 
-- Bandingkan hasil dengan **halaman produksi yang sama sebelum perubahan** + **arahan yang dikunci di chat/task** (bukan dengan screenshot mockup HTML).
-- Untuk elemen yang presisinya diragukan (tinggi, padding, radius, gap, font-size), cek computed style di implementasi. Jangan menebak dari mata saja.
-- Kalau ditemukan gap vs arahan yang sudah dikunci, perbaiki dulu. Jangan menunggu Boss Rezi menemukan sendiri.
+- Compare the result with the same production page before the change plus locked chat/task instructions, not archived mockup screenshots.
+- For details where precision matters, such as height, padding, radius, gap, or font size, check computed styles in the implementation.
+- If there is a gap against locked direction, fix it before reporting. Do not wait for Boss Rezi to find it.
 
-## Langkah Wajib (sebelum eksekusi)
+## Required Steps Before Execution
 
-1. **Cek kelengkapan:** task (subtask, Baca dulu, scope) **dan** file kode + dokumen UX yang relevan. Jangan mulai kalau task/baseline bolong atau bentrok — itu urgent (`.cursor/rules/ask-before-assuming.mdc`).
-2. **Titik berangkat = kode yang ada.** Pakai tanpa tanya ritual “mau ikut mockup dulu?”.
-3. **Jika desain yang diminta di luar rencana** (halaman baru R2, pola yang menabrak ADR, dua interpretasi visual yang sama-sama valid belum dikunci): **urgent** — `AskQuestion`. Jangan mengarang layout “supaya bagus”.
-4. **Setelah eksekusi**, jalankan “Wajib Verifikasi” di atas.
+1. **Check completeness:** task, subtask, **Read first** field, scope, relevant code, and relevant UX docs. If the task or baseline is missing or conflicting, that is urgent under `.cursor/rules/ask-before-assuming.mdc`.
+2. **Start from existing code.** Do not ask the ritual question "should I follow mockups or code?"
+3. **If the requested design is outside the plan** — new page, ADR-breaking pattern, or two valid unlocked interpretations — ask Boss Rezi. Do not invent a layout just because it looks good.
+4. **After execution**, run the verification above.
 
-## Yang Dilarang (tanya ritual / perilaku lama)
+## Forbidden Patterns
 
-- Menyelaraskan UI ke `home.html` / `about.html` / `work.html` / `shared.css` mockup.
-- Bertanya “pakai mockup yang sekarang atau perbarui dulu?”
-- Menganggap konflik mockup vs dokumen = mockup yang menang.
+- Aligning UI to `home.html`, `about.html`, `work.html`, or `shared.css` mockups.
+- Asking "use the current mockup or update it first?"
+- Treating mockup-vs-doc conflict as a mockup win.
 
-## Pengecualian
+## Exception
 
-- Tidak berlaku untuk task murni Engineering/Documentation yang tidak menyentuh output visual (misal: setup CI).
-- Membuka file di `design-mockups/` untuk **jejak sejarah** (mengapa suatu pola R1 ada) tetap boleh, dengan label arsip — bukan target implementasi.
+- This does not apply to pure Engineering or Documentation tasks that do not touch visual output, such as CI setup.
+- Opening files in `design-mockups/` for historical context is allowed when clearly treated as archive, not implementation target.

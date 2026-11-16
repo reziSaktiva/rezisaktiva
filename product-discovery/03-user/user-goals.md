@@ -1,22 +1,22 @@
 # User Goals
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini merinci tujuan pengunjung website portofolio pribadi **rezisaktiva** (bukan goal bisnis Rezi).
+This document details visitor goals for the personal portfolio website **rezisaktiva** (not Rezi’s business goals).
 
 ---
 
 # Overview
 
-Goals audiens mengikuti rantai evaluasi: **paham cepat → nilai fit → kurangi risiko → soft next step**. Goal bisnis (brand recall + inbound berkualitas) ada di `success-metrics.md`; di sini fokus pada apa yang ingin dicapai **pengunjung**.
+Audience goals follow the evaluation chain: **understand quickly → assess fit → reduce risk → soft next step**. Business goals (brand recall + quality inbound) are in `success-metrics.md`; this document focuses on what **visitors** want to accomplish.
 
 ---
 
 # Purpose
 
-* Memisahkan goal tingkat tinggi vs goal situasional per persona
-* Menjadi input JTBD, scenarios, dan kriteria sukses journey
-* Menjaga non-goals agar UX tidak overbuild
+* Separate high-level goals from situational goals per persona
+* Become input for JTBD, scenarios, and journey success criteria
+* Keep non-goals clear so UX does not overbuild
 
 ---
 
@@ -26,25 +26,25 @@ Goals audiens mengikuti rantai evaluasi: **paham cepat → nilai fit → kurangi
 
 * Goal levels (outcome → session → page)
 * Goals by persona (P1–P4)
-* Motivation patterns & non-goals dari sisi user
+* Motivation patterns & non-goals from the user side
 
 ## Out of Scope
 
-* KPI bisnis / analytics targets (→ success-metrics)
-* Goal implementasi teknis
-* Goal sosial vanity (followers) sebagai poros
+* Business KPIs / analytics targets (→ success-metrics)
+* Technical implementation goals
+* Vanity social goals (followers) as an axis
 
 ---
 
 # Goal Levels
 
-| Level | Arti | Contoh |
-| ----- | ---- | ------ |
-| **Outcome** | Hasil setelah interaksi dengan brand via situs | Percaya diri Rezi adalah product builder yang relevan |
-| **Session** | Hasil satu kunjungan singkat | Bisa merangkum positioning + tahu cara kontak |
-| **Page / moment** | Hasil di permukaan tertentu | Home: “ini tentang apa”; Contact: “bisa hubungi tanpa friction” |
+| Level | Meaning | Example |
+| ----- | ------- | ------- |
+| **Outcome** | Result after interacting with the brand through the site | Confident that Rezi is a relevant product builder |
+| **Session** | Result of one short visit | Can summarize positioning + know how to make contact |
+| **Page / moment** | Result on a specific surface | Home: “what is this about”; Contact: “can reach out without friction” |
 
-Selaras dual north star: session goal clarity mendukung NS-1; soft next step mendukung NS-2.
+Aligned with the dual north star: the session goal of clarity supports NS-1; soft next step supports NS-2.
 
 ---
 
@@ -54,71 +54,71 @@ Selaras dual north star: session goal clarity mendukung NS-1; soft next step men
 
 | Level | Goal |
 | ----- | ---- |
-| Outcome | Menemukan builder yang bisa ownership sampai live |
-| Session | Pahami Rezi = product builder; lihat bukti ship ringkas; siap kontak |
-| Moment | Home clarity + Work index / sheet; Contact satu langkah |
+| Outcome | Find a builder who can own the path to live |
+| Session | Understand Rezi = product builder; see concise shipping proof; be ready to contact |
+| Moment | Home clarity + Work index / sheet; one-step Contact |
 
 ### P2 — Product owner
 
 | Level | Goal |
 | ----- | ---- |
-| Outcome | Menemukan builder yang kredibel untuk inisiatif & kolaborasi |
-| Session | Nilai product thinking + profesionalisme; kurangi risiko outreach |
-| Moment | About `#about` / Workflow; tile Work yang actionable; soft CTA |
+| Outcome | Find a credible builder for initiatives & collaboration |
+| Session | Assess product thinking + professionalism; reduce outreach risk |
+| Moment | About `#about` / Workflow; actionable Work tile; soft CTA |
 
 ### P3 — Hiring manager / tech lead
 
 | Level | Goal |
 | ----- | ---- |
-| Outcome | Putuskan apakah worth proses hire / obrolan role |
-| Session | Temukan sinyal fullstack + konteks product tanpa CV ATS |
-| Moment | About + tautan bukti satelit |
+| Outcome | Decide whether it is worth a hiring process / role conversation |
+| Session | Find fullstack + product context signals without an ATS CV |
+| Moment | About + satellite proof links |
 
-### P4 — Calon klien project
+### P4 — Prospective project client
 
 | Level | Goal |
 | ----- | ---- |
-| Outcome | Putuskan soft outreach untuk engagement |
-| Session | Cukup tahu siapa & bagaimana menghubungi |
-| Moment | Contact jelas; tanpa harga publik |
+| Outcome | Decide on soft outreach for an engagement |
+| Session | Know enough about who & how to contact |
+| Moment | Clear Contact; no public pricing |
 
 ---
 
 # Motivation Patterns
 
-| Pola | Deskripsi | Implikasi situs |
-| ---- | --------- | --------------- |
-| **Fast filter** | Buang yang tidak relevan dalam detik–menit | Positioning di atas fold Home |
-| **Risk reduction** | Cari bukti sebelum “mengganggu” orang | Work index / sheet + About sebelum Contact |
-| **Narrative coherence** | Gabungkan potongan jadi satu cerita | Satu rumah digital; satelit sekunder |
-| **Low-pressure next step** | Mau jalur kontak tanpa sales | Soft CTA; no pricing |
-| **Language comfort** | Ingin default yang pas geo | Bilingual geo-aware + switcher |
+| Pattern | Description | Site implication |
+| ------- | ----------- | ---------------- |
+| **Fast filter** | Eliminate irrelevant options in seconds–minutes | Positioning above the Home fold |
+| **Risk reduction** | Seek proof before “bothering” someone | Work index / sheet + About before Contact |
+| **Narrative coherence** | Combine fragments into one story | One digital home; satellites secondary |
+| **Low-pressure next step** | Want a contact path without sales pressure | Soft CTA; no pricing |
+| **Language comfort** | Want a default that fits geo | Bilingual geo-aware + switcher |
 
 ---
 
 # Non-Goals (User Perspective)
 
-Pengunjung **tidak** datang terutama untuk:
+Visitors **do not** primarily come to:
 
-* Membandingkan harga paket / checkout
-* Membaca blog panjang sebagai syarat evaluasi R1
-* Menggunakan produk SaaS / login area
-* Menilai design agency portfolio murni
-* Mengonsumsi konten sosial sebagai feed utama
+* Compare package pricing / checkout
+* Read a long blog as an R1 evaluation requirement
+* Use a SaaS product / login area
+* Evaluate a pure design agency portfolio
+* Consume social content as the main feed
 
 ---
 
 # Expected Output
 
-Hierarki goals yang selaras ICP dan siap dipetakan ke JTBD/journey.
+A goal hierarchy aligned with the ICP and ready to map to JTBD/journey.
 
 ---
 
 # Exit Criteria
 
-* Goal levels jelas
-* Goals P1–P4 terdokumentasi
-* Non-goals mencegah scope creep UX
+* Goal levels are clear
+* P1–P4 goals documented
+* Non-goals prevent UX scope creep
 
 ---
 
@@ -130,6 +130,6 @@ Hierarki goals yang selaras ICP dan siap dipetakan ke JTBD/journey.
 * `pain-points.md`
 * `../01-business/target-market.md`
 * `../01-business/success-metrics.md`
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

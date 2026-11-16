@@ -1,36 +1,36 @@
 # Key Screen Patterns
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-10). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-10). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan pola layar kunci (blok konten & hierarki) untuk R1 — **bukan** wireframe piksel atau design token final.
+This document defines key screen patterns (content blocks & hierarchy) for R1 — **not** pixel wireframes or final design tokens.
 
 ---
 
 # Overview
 
-Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contact** (modal), **Work index + project sheet** (S4), **Work case** (S5). Pola mendukung F1–F8.
+Five+ R1 surfaces plus **S5 R2 case page (ADR-044)**: **Chrome** (S0), **Home**, **About**, **Workflow**, **Contact** (modal), **Work index + project sheet** (S4), **Work case** (S5). Patterns support F1–F8.
 
 ---
 
 # Purpose
 
-* Memberi blueprint blok untuk copy & implementasi nanti
-* Mengunci hierarki first viewport dan Contact soft
-* Menunda craft visual ke fase berikutnya tanpa mengosongkan acceptance UX
+* Provide a block blueprint for later copy & implementation
+* Lock first-viewport hierarchy and soft Contact
+* Defer visual craft to the next phase without leaving UX acceptance empty
 
 ---
 
 # Screen Inventory
 
-| Screen | Route | Jobs utama |
-| ------ | ----- | ---------- |
-| S0 Chrome | Global | J7, navigasi F1–F7 |
+| Screen | Route | Main jobs |
+| ------ | ----- | --------- |
+| S0 Chrome | Global | J7, F1–F7 navigation |
 | S1 Home | `/[id/en]/` | J1, J2, (J7) |
-| S2 About | `/[id/en]#about` (section Home) | J4, E4 |
+| S2 About | `/[id/en]#about` (Home section) | J4, E4 |
 | S2b Workflow | `/[id/en]/workflow` | J4, E4 |
-| S3 Contact | Modal global (bukan route, final — ADR-019) | J3 |
-| S4 Work index + project sheet | `/[id/en]/projects` + overlay M10 (ADR-027) | J2 |
-| S5 Work case | `/[id/en]/projects/[slug]` (ADR-044) | J2, magnet share |
+| S3 Contact | Global modal (not route, final — ADR-019) | J3 |
+| S4 Work index + project sheet | `/[id/en]/projects` + M10 overlay (ADR-027) | J2 |
+| S5 Work case | `/[id/en]/projects/[slug]` (ADR-044) | J2, share magnet |
 
 ---
 
@@ -38,124 +38,124 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 
 ### S0 — Chrome
 
-**Blok:** nama (tautan Home, font display) + pekerjaan di samping (bukan tautan, ADR-034) · primary nav **tanpa Home** (Tentang / About, Proses Kerja / How I Work, Proyek / Projects — ADR-035) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (opsional) availability tipis di header/footer.
+**Blocks:** name (Home link, display font) + job beside it (not a link, ADR-034) · primary nav **without Home** (Tentang / About, Proses Kerja / How I Work, Proyek / Projects — ADR-035) · language switcher · **theme toggle (ADR-021)** · **Quick info panel (ADR-022)** · (optional) thin availability in header/footer.
 
-**Theme toggle (ADR-021):** kontrol dark/light di chrome saat **kedua** tema hidup. Update 2026-09-04 / T-038.2: default ship **dark**; light di-hold; toggle **disembunyikan** sampai hold dicabut. Di mobile, Contact tetap di luar hamburger.
+**Theme toggle (ADR-021):** dark/light control in chrome when **both** themes are live. Update 2026-09-04 / T-038.2: default ship **dark**; light is on hold; toggle is **hidden** until hold is lifted. On mobile, Contact remains outside the hamburger.
 
-**Quick info panel (ADR-022):** overlay global (tab tepi kanan → drawer: bio, Services, Tools, Works index, Email, Links). Bukan route baru. Tampil di semua halaman R1 **termasuk Work index**; sheet M10 (ADR-027) overlay terpisah — jangan sembunyikan Quick Info karena sheet. Bukan pengganti Contact modal atau footer satelit.
+**Quick info panel (ADR-022):** global overlay (right-edge tab → drawer: bio, Services, Tools, Works index, Email, Links). Not a new route. Shown on all R1 pages **including Work index**; sheet M10 (ADR-027) is a separate overlay — do not hide Quick Info because of the sheet. Not a replacement for Contact modal or footer satellites.
 
-**Aturan:** Contact selalu reachable dalam satu ketukan; **nav + switcher selalu visible di desktop**; di mobile (<1024px) nav halaman + switcher boleh di hamburger (ADR-020).
+**Rule:** Contact is always reachable in one tap; **nav + switcher always visible on desktop**; on mobile (<1024px), page nav + switcher may be in hamburger (ADR-020).
 
-**Footer = pita Contact (ADR-025, ADR-041):** pita terakhir di **Home** (setelah `#about`), **Workflow**, dan **Work index** — heading besar dari copy yang sudah dikunci + tombol yang membuka **modal Contact yang ada** (bukan form baru) + baris legal + satelit LinkedIn/GitHub. Tombol Kontak di header tetap.
+**Footer = Contact ribbon (ADR-025, ADR-041):** final ribbon on **Home** (after `#about`), **Workflow**, and **Work index** — large heading from locked copy + button that opens the **existing Contact modal** (not a new form) + legal row + LinkedIn/GitHub satellites. Header Contact button stays.
 
 ---
 
 ### S1 — Home
 
-**Above the fold (wajib menang):**
+**Above the fold (must win):**
 
-1. Klaim positioning: **product builder** — `h1` dua baris display di atas (baris 1 kiri-atas, baris 2 kanan-bawah, ADR-038; **tanpa potret**)
-2. Lede sempit di **lantai bawah** first viewport, tautan ke `/workflow`; wallpaper hero terbaca di tengah. Wallpaper memudar saat scroll ke `#about`, kembali saat scroll ke hero
-3. Satu arah soft (ke Workflow atau Contact) — tidak memaksa form; Contact di Home = tombol chrome + modal + pita footer setelah About (ADR-041)
+1. Positioning claim: **product builder** — two-line display `h1` at the top (line 1 top-left, line 2 bottom-right, ADR-038; **without portrait**)
+2. Narrow lede on the **lower floor** of the first viewport, link to `/workflow`; hero wallpaper readable in the center. Wallpaper fades when scrolling to `#about`, returns when scrolling back to hero
+3. One soft direction (to Workflow or Contact) — no forced form; Contact on Home = chrome button + modal + footer ribbon after About (ADR-041)
 
-**Home = hero + section About (ADR-040).** Hero 100svh. Now di `#about`. Tidak ada credibility line atau work teaser.
+**Home = hero + About section (ADR-040).** Hero 100svh. Now in `#about`. No credibility line or work teaser.
 
-**Tanpa potret di hero Home.** Karya seni di S2 `#about`. Jangan mengisi kekosongan hero dengan cutout wajah, blob, atau stock Unsplash.
+**No portrait in Home hero.** Artwork is in S2 `#about`. Do not fill hero emptiness with a face cutout, blob, or stock Unsplash.
 
-**Contact di Home (ADR-041):** tidak ada section Contact di tengah halaman. Pita footer `#contact-cta` setelah `#about`. Arah Contact = tombol chrome + modal + pita.
+**Contact on Home (ADR-041):** no Contact section in the middle of the page. Footer ribbon `#contact-cta` after `#about`. Contact path = chrome button + modal + ribbon.
 
-**Anti-pattern:** hero yang hanya nama tanpa klaim; dual CTA agresif (“Hire me” + pricing); menumpuk katalog karya di Home.
+**Anti-pattern:** hero that is only a name without a claim; aggressive dual CTA (“Hire me” + pricing); stacking work catalog on Home.
 
 ---
 
 ### S2 — About
 
-**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Target: `/[id/en]#about` di Home (ADR-040). Bukan route. Cara kerja **bukan** di sini (S2b).
+**Chrome label:** ID **"Tentang"** / EN **"About"** (ADR-035). Target: `/[id/en]#about` on Home (ADR-040). Not a route. Way of working is **not** here (S2b).
 
-**Pola rest / active (ADR-025):** **tidak** di section About (ADR-039) dan **tidak** di Workflow (ADR-042). Lead = satu paragraf selalu terlihat.
+**Rest / active pattern (ADR-025):** **not** in About section (ADR-039) and **not** in Workflow (ADR-042). Lead = one paragraph always visible.
 
-**Blok berurutan:**
+**Blocks in order:**
 
-1. Section `#about` — judul display (`h2`, clamp sama Home) + **Now** (`#now`, di antara judul dan lead) + lead penuh + **karya seni viewport** + caption “This is not me”. **Tanpa** badge availability. **Tanpa** `#proof`.
-2. Soft CTA Contact lewat chrome (tombol header / modal) dan pita footer di layout Home (ADR-041), bukan section di dalam About
+1. Section `#about` — display title (`h2`, same clamp as Home) + **Now** (`#now`, between title and lead) + full lead + **viewport artwork** + caption “This is not me”. **No** availability badge. **No** `#proof`.
+2. Soft Contact CTA through chrome (header button / modal) and footer ribbon in Home layout (ADR-041), not a section inside About
 
-**Anti-pattern:** CV kronologis sebagai satu-satunya bentuk; essay tanpa scanability; menumpuk pipeline proses di About.
+**Anti-pattern:** chronological CV as the only form; essay without scanability; stacking process pipeline in About.
 
 ### S2b — Workflow
 
-**Label chrome:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-035). Route `/[id/en]/workflow`. Isi **ADR-042** (supersede copy T-021.3 di rute ini).
+**Chrome label:** ID **"Proses Kerja"** / EN **"How I Work"** (ADR-035). Route `/[id/en]/workflow`. Content follows **ADR-042** (supersedes T-021.3 copy on this route).
 
-**Interaksi:** tab perbandingan Chaos vs Decision-Driven (`AnimatePresence`); kartu prinsip hover + `whileInView`; pipeline selalu terbaca (Human Lead vs AI); vault klik sampel ADR. **Bukan** rest/active accordion. Reduced-motion dihormati.
+**Interaction:** Chaos vs Decision-Driven comparison tabs (`AnimatePresence`); principle cards hover + `whileInView`; pipeline always readable (Human Lead vs AI); vault click opens ADR samples. **Not** rest/active accordion. Reduced-motion respected.
 
-**Kulit:** kanvas token (tanpa wallpaper bitmap). Latar hidup = **debu katedral** mote individual `position: fixed` (wallpaper). Setiap mote punya glow lembut, starburst aperture 4 arah, dan flare anamorphic horizontal (optik kamera, bukan stiker bintang). Gerbang tracery dan bunga filigree **dicabut** (**T-054.1–T-054.3** ✅, dikunci ulang chat 2026-09-08; optik mote 2026-09-08). Reduced-motion / overlay lock = frame diam. Verifikasi penuh = **T-054.4**.
+**Skin:** token canvas (no bitmap wallpaper). Living background = **cathedral dust** individual `position: fixed` motes (wallpaper). Each mote has a soft glow, 4-direction aperture starburst, and horizontal anamorphic flare (camera optics, not star stickers). Tracery gates and filigree flowers **removed** (**T-054.1–T-054.3** ✅, relocked in chat 2026-09-08; mote optics 2026-09-08). Reduced-motion / overlay lock = still frame. Full verification = **T-054.4**.
 
-**Blok berurutan:**
+**Blocks in order:**
 
-1. Hero — klaim dua baris + lede + tab *Chat Chaos* / *Decision-Driven Way*
-2. Lima prinsip — bento/kartu (Doc-First, Honest MVP, Decision Logs, Human Lead + AI, Production Truth)
-3. Pipeline Discover → Design → Build → Ship — peran manusia vs AI di setiap langkah
-4. ADR Vault — tiga sampel nyata (ADR-001 / ADR-012 / ADR-024): Status, Context, Decision, Alternatives
-5. Penutup ringkas; soft CTA Contact **bukan** section terpisah — pita footer (S0)
+1. Hero — two-line claim + lede + *Chat Chaos* / *Decision-Driven Way* tabs
+2. Five principles — bento/cards (Doc-First, Honest MVP, Decision Logs, Human Lead + AI, Production Truth)
+3. Pipeline Discover → Design → Build → Ship — human vs AI roles in each step
+4. ADR Vault — three real samples (ADR-001 / ADR-012 / ADR-024): Status, Context, Decision, Alternatives
+5. Concise close; soft Contact CTA **not** a separate section — footer ribbon (S0)
 
-**Anti-pattern:** framing “developer for hire” yang menggeser brand; CTA Contact duplikat di atas footer; ADR fiktif yang tidak ada di `decisions/`.
+**Anti-pattern:** “developer for hire” framing that shifts the brand; duplicate Contact CTA above footer; fictional ADRs that do not exist in `decisions/`.
 
 ---
 
 ### S3 — Contact
 
-> **Final (2026-08-15, ADR-019):** Contact = Dialog/Modal global, **bukan** halaman/route terpisah — keputusan T-016 sudah selesai. Form email + message diizinkan di dalam modal. Sisanya di bawah ini tetap berlaku.
+> **Final (2026-08-15, ADR-019):** Contact = global Dialog/Modal, **not** a separate page/route — T-016 decision is complete. Email + message form is allowed inside the modal. The rest below still applies.
 
-**Blok berurutan:**
+**Blocks in order:**
 
-1. Judul + salinan soft (kapan relevan menghubungi; ekspektasi diskusi)
-2. **Primer — Email** (visual & urutan pertama; mailto atau alamat + copy) — *form singkat (email + message) per ADR-019 **mengantar** ke inbox (**ADR-047**); tetap tampil sebelum blok Socials*
-3. **Satelit** — LinkedIn, GitHub (setingkat satu sama lain, di bawah Email)
-4. Availability line bila belum di Home
-5. Tanpa calendar, harga, WA, Instagram (form dikecualikan dari larangan ini per ADR-019)
+1. Title + soft copy (when it is relevant to reach out; discussion expectation)
+2. **Primary — Email** (visual & first order; mailto or address + copy) — *short form (email + message) per ADR-019 **delivers** to inbox (**ADR-047**); remains before Socials block*
+3. **Satellites** — LinkedIn, GitHub (equal to each other, below Email)
+4. Availability line if not already on Home
+5. No calendar, pricing, WA, Instagram (form is exempt from this ban per ADR-019)
 
-**Anti-pattern:** deretan ikon sosial setara Email; Contact *hanya* di footer tanpa modal/Email primer; hard sell; Contact tanpa Email yang bisa diketuk/dikunjungi. Pita footer yang **membuka modal yang sama** (ADR-025) bukan pengganti Email primer di dalam modal.
+**Anti-pattern:** social icon row equal to Email; Contact *only* in footer without modal/Email primary; hard sell; Contact without tappable/visitable Email. Footer ribbon that **opens the same modal** (ADR-025) is not a replacement for primary Email inside the modal.
 
 ---
 
 ### S4 — Work index + project sheet
 
-**Work index (`/projects`):** katalog tile (M9). **Klik tile** membuka **project sheet dari bawah** (M10, ADR-027). Dari sheet: tautan halaman case `/projects/[slug]` (**ADR-044**) plus Live sekunder (bukan Repo). Home **tidak** punya teaser karya (ADR-032).
+**Work index (`/projects`):** tile catalog (M9). **Click tile** opens **project sheet from bottom** (M10, ADR-027). From sheet: case page link `/projects/[slug]` (**ADR-044**) plus secondary Live (not Repo). Home has **no** work teaser (ADR-032).
 
-**Komponen sheet:** shadcn `Drawer` dari bawah (T-035, ADR-028), lebar penuh, di-skin `.ps-*`. **Halaman case:** route Next SSG, Server Component — bukan mengganti Drawer. Isi lebih dalam dari sheet: periode, stack, poin kerja dari CV / copy kunci (**ADR-046**).
+**Sheet component:** shadcn `Drawer` from bottom (T-035, ADR-028), full width, skinned `.ps-*`. **Case page:** Next SSG route, Server Component — not a replacement for Drawer. Content deeper than sheet: period, stack, work points from CV / locked copy (**ADR-046**).
 
-### S5 — Halaman case (R2)
+### S5 — Case page (R2)
 
-**Route:** `/[locale]/projects/[slug]`. Isi: meta sheet + kedalaman (periode, stack, sections); bukan mengulang skim overlay saja. Chip Proyek aktif. Bukan `/work/[slug]`.
+**Route:** `/[locale]/projects/[slug]`. Content: sheet meta + depth (period, stack, sections); not merely repeating overlay skim. Projects chip active. Not `/work/[slug]`.
 
 ---
 
 # Responsive Considerations
 
-* **Desktop (≥1024px):** hierarki vertikal jelas; nav horizontal; Work index tile dalam grid.
-* **Mobile (<1024px):** first viewport tetap memuat klaim inti tanpa mengandalkan hover; Work index stack vertikal; Contact Email tetap paling menonjol di modal.
-* **Ponsel sempit (komposisi chrome produksi, 2026-08-20):** lantai **320px**; acuan **375px**. Hero dua baris display (ADR-038) **muat tanpa clip atau overflow-x**. Header chrome satu baris. Work index tile boleh stack. Modal Contact **muat di viewport** (scroll di dalam kartu bila perlu). Tab Quick info tidak menabrak judul hero. Acuan visual = kode produksi (ADR-024); `design-mockups/` arsip.
-* **Locale:** layout blok sama di `id` dan `en`; beda hanya salinan.
-* Panjang salinan ID/EN boleh beda, **makna setara**.
-* Acuan visual: **kode produksi** (`app/`, token `app/globals.css`, shadcn + Tailwind — ADR-024 / ADR-028). `design-mockups/` arsip port R1, bukan keputusan desain terbaru.
+* **Desktop (≥1024px):** clear vertical hierarchy; horizontal nav; Work index tiles in grid.
+* **Mobile (<1024px):** first viewport still contains the core claim without relying on hover; Work index stacks vertically; Contact Email remains most prominent in modal.
+* **Narrow phones (production chrome composition, 2026-08-20):** **320px** floor; **375px** reference. Two-line display hero (ADR-038) **fits without clip or overflow-x**. Header chrome one row. Work index tiles may stack. Contact modal **fits in viewport** (scroll inside card if needed). Quick info tab does not collide with hero title. Visual reference = production code (ADR-024); `design-mockups/` archive.
+* **Locale:** block layout same in `id` and `en`; only copy differs.
+* ID/EN copy length may differ, with **equivalent meaning**.
+* Visual reference: **production code** (`app/`, tokens in `app/globals.css`, shadcn + Tailwind — ADR-024 / ADR-028). `design-mockups/` is an R1 port archive, not the latest design decision.
 
 ---
 
 # Success Criteria
 
-* S1 first viewport lulus uji “siapa & untuk siapa” tanpa scroll panjang
-* S1 = hero + `#about`; narasi di S2; cara kerja di S2b (ADR-042); karya di S4; magnet URL di S5 (ADR-044). Tanpa `#proof`.
-* S3 Email jelas sebagai primer; satelit terbatas LinkedIn + GitHub
-* S0 memungkinkan F3 (ganti bahasa) dari setiap screen
-* Meta/share & content readiness di `information-architecture.md` terpenuhi sebelum live
-* Pola cukup untuk handoff Architecture/Engineering tanpa wireframe wajib
+* S1 first viewport passes the “who & for whom” test without long scrolling
+* S1 = hero + `#about`; narrative in S2; way of working in S2b (ADR-042); work in S4; magnet URL in S5 (ADR-044). No `#proof`.
+* S3 Email clear as primary; satellites limited to LinkedIn + GitHub
+* S0 enables F3 (language switch) from every screen
+* Meta/share & content readiness in `information-architecture.md` met before live
+* Patterns are enough for Architecture/Engineering handoff without mandatory wireframes
 
 ---
 
 # Decision Rules
 
-* Mengubah Contact primer dari Email → keputusan Boss Rezi + update ADR bila material
-* Menambah blok form/WA/IG ke S3 R1 → ditolak kecuali ADR baru. Form yang sudah ada **mengantar** pesan (**ADR-047**); calendar/WA/IG tetap ditolak.
-* Detail visual (type, warna, motion) → 06-engineering / desain eksekusi; jangan mengunci di sini
+* Changing Contact primary from Email → Boss Rezi decision + ADR update if material
+* Adding form/WA/IG blocks to S3 R1 → rejected unless new ADR. Existing form **delivers** messages (**ADR-047**); calendar/WA/IG remain rejected.
+* Visual detail (type, color, motion) → 06-engineering / design execution; do not lock here
 
 ---
 
@@ -163,8 +163,8 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 
 | Item | Status |
 | ---- | ------ |
-| Key Screen Patterns | **Baseline v1.0** (dokumen ini) |
-| Soft CTA | Email primer; LinkedIn/GitHub satelit; tanpa WA/IG |
+| Key Screen Patterns | **Baseline v1.0** (this document) |
+| Soft CTA | Email primary; LinkedIn/GitHub satellites; no WA/IG |
 
 ---
 
@@ -176,21 +176,21 @@ Lima+ permukaan R1 plus **S5 halaman case R2 (ADR-044)**: **Chrome** (S0), **Hom
 * `user-flows.md`
 * `navigation-patterns.md`
 * `../03-user/insights.md`
-* `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
-* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
-* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
-* `../../project-manager/decisions/ADR-027-work-project-bottom-sheet-m10.md`
-* `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
-* `../../project-manager/decisions/ADR-032-home-single-section.md`
-* `../../project-manager/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
-* `../../project-manager/decisions/ADR-041-home-with-footer.md`
-* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
-* `../../project-manager/decisions/ADR-038-home-hero-two-line-workflow-link.md`
-* `../../project-manager/decisions/ADR-039-about-hero-artwork-lead.md`
-* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
-* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
-* `../../project-manager/decisions/ADR-046-case-deeper-than-sheet.md`
-* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-os/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-os/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-os/decisions/ADR-025-craft-motion-hess-mazur.md`
+* `../../project-os/decisions/ADR-027-work-project-bottom-sheet-m10.md`
+* `../../project-os/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-os/decisions/ADR-032-home-single-section.md`
+* `../../project-os/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
+* `../../project-os/decisions/ADR-041-home-with-footer.md`
+* `../../project-os/decisions/ADR-035-about-workflow-split.md`
+* `../../project-os/decisions/ADR-038-home-hero-two-line-workflow-link.md`
+* `../../project-os/decisions/ADR-039-about-hero-artwork-lead.md`
+* `../../project-os/decisions/ADR-040-about-as-home-section.md`
+* `../../project-os/decisions/ADR-042-workflow-decision-driven-page.md`
+* `../../project-os/decisions/ADR-046-case-deeper-than-sheet.md`
+* `../../project-os/decisions/ADR-047-contact-form-resend.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

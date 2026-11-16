@@ -1,123 +1,123 @@
 # Product Scope
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini menetapkan batas dan domain produk website portofolio pribadi **rezisaktiva**.
+This document defines the boundaries and product domains for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Overview
 
-**rezisaktiva** adalah situs portofolio publik yang berfungsi sebagai **satu rumah digital** untuk identitas product builder Rezi Saktiva: cerita jelas, bukti kredibel, dan jalur kontak soft.
+**rezisaktiva** is a public portfolio site that functions as **one digital home** for Rezi Saktiva's product-builder identity: clear story, credible proof, and a soft contact path.
 
-Struktur permukaan R1: **Hybrid lean** — tiga halaman **Home** (hero + section About `#about`, ADR-040), **Workflow** (`/workflow`, ADR-035 / ADR-042), dan **Work index** (`/projects`). Home = h1 atas, lede lantai bawah, pita footer (ADR-038 / ADR-041). Now di About. **Contact** = modal global (ADR-019). **Quick Info** (ADR-022) dan **theme toggle** (ADR-021) di chrome. **Project sheet (M10)** = overlay dari bawah saat tile Work index diklik (ADR-027). **R2:** halaman case `/[locale]/projects/[slug]` dari tautan di sheet (**ADR-044**).
+R1 surface structure: **Hybrid lean** — three pages: **Home** (hero + About section `#about`, ADR-040), **Workflow** (`/workflow`, ADR-035 / ADR-042), and **Work index** (`/projects`). Home = top h1, lower-floor lede, footer ribbon (ADR-038 / ADR-041). Now is in About. **Contact** = global modal (ADR-019). **Quick Info** (ADR-022) and **theme toggle** (ADR-021) live in chrome. **Project sheet (M10)** = bottom overlay when a Work index tile is clicked (ADR-027). **R2:** case pages at `/[locale]/projects/[slug]` from links in the sheet (**ADR-044**).
 
-Bukan toko jasa, bukan blog/media, bukan app dengan akun pengguna.
+Not a service shop, not a blog/media property, not an app with user accounts.
 
 ---
 
 # Product Principles
 
-1. **Clarity dulu** — pengunjung paham siapa / bukti / next step dalam satu kunjungan singkat (ADR-006).
-2. **Brand primer** — soft CTA untuk opportunity/project; tanpa hard sell atau harga publik (ADR-002, ADR-008).
-3. **Satu rumah** — situs = sumber kebenaran; GitHub/LinkedIn = satelit.
-4. **Hybrid lean** — cukup halaman untuk evaluasi; jangan overbuild Work/case di MVP.
-5. **Magnet bertahap** — case/proses singkat masuk roadmap setelah kerangka clarity, bukan syarat ship pertama.
-6. **Bilingual geo-aware** — default ID di Indonesia, EN di luar; switcher selalu ada (detail UX/Engineering).
-7. **Proporsional** — konten dan fitur cukup untuk dual north star; hindari craft spektakel atau CMS berat di awal.
+1. **Clarity first** — visitors understand who / proof / next step in one short visit (ADR-006).
+2. **Primary brand** — soft CTA for opportunity/project; no hard sell or public pricing (ADR-002, ADR-008).
+3. **One home** — site = source of truth; GitHub/LinkedIn = satellites.
+4. **Hybrid lean** — enough pages for evaluation; do not overbuild Work/case in MVP.
+5. **Gradual magnet** — short case/process enters the roadmap after the clarity frame, not as a first-ship blocker.
+6. **Bilingual geo-aware** — default ID in Indonesia, EN outside; switcher is always available (UX/Engineering details).
+7. **Proportional** — content and features are enough for the dual north star; avoid craft spectacle or heavy CMS early.
 
 ---
 
 # Core Product Domains
 
-| Domain | Apa yang dicakup | Peran di MVP |
-| ------ | ---------------- | ------------ |
-| **Identity & positioning** | Klaim product builder + fullstack + AI edge di permukaan | Inti — Home |
-| **Narrative / About** | Cerita pribadi (Now, lead, artwork) | Inti — section `#about` di Home (ADR-040) |
-| **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042) | Inti — Workflow |
-| **Work presence** | Work index (`/projects`, M9) + **project sheet overlay (M10, ADR-027)** | Inti — index + sheet |
-| **Soft contact** | Jalur menghubungi yang jelas, tidak agresif, via modal global (ADR-019) | Inti — Contact modal |
-| **Language** | Pengalaman bilingual geo-aware + switcher | Inti lintas halaman |
+| Domain | What it covers | Role in MVP |
+| ------ | -------------- | ----------- |
+| **Identity & positioning** | Product builder + fullstack + AI edge claim on the surface | Core — Home |
+| **Narrative / About** | Personal story (Now, lead, artwork) | Core — `#about` section on Home (ADR-040) |
+| **Workflow** | Way of working: principles, Human vs AI pipeline, ADR Vault (ADR-042) | Core — Workflow |
+| **Work presence** | Work index (`/projects`, M9) + **project sheet overlay (M10, ADR-027)** | Core — index + sheet |
+| **Soft contact** | Clear, non-aggressive contact path via global modal (ADR-019) | Core — Contact modal |
+| **Language** | Bilingual geo-aware experience + switcher | Core across pages |
 
 ---
 
 # Supporting Domains
 
-| Domain | Apa yang dicakup | Catatan |
-| ------ | ---------------- | ------- |
-| **Site chrome** | Nav, footer (semua rute — ADR-041), ketersediaan soft (“open to…”) | Mendukung presence |
-| **Satellite links** | GitHub, LinkedIn, dll. sebagai tautan keluar | Melengkapi, bukan mengganti situs |
-| **Shareable basics** | Meta/SEO ringan agar URL layak jadi destination | Detail tool di Engineering |
-| **Magnet ringan (post-kerangka)** | Case/proses singkat, halaman Work/detail | Supporting → naik setelah MVP clarity |
+| Domain | What it covers | Notes |
+| ------ | -------------- | ----- |
+| **Site chrome** | Nav, footer (all routes — ADR-041), soft availability (“open to…”) | Supports presence |
+| **Satellite links** | GitHub, LinkedIn, etc. as outbound links | Complements the site, does not replace it |
+| **Shareable basics** | Lightweight meta/SEO so URL is worthy as a destination | Tool details in Engineering |
+| **Lightweight magnet (post-frame)** | Short case/process, Work/detail pages | Supporting → rises after MVP clarity |
 
 ---
 
 # Product Boundaries
 
-**Di dalam produk (R1 Hybrid lean):**
+**Inside the product (R1 Hybrid lean):**
 
-* Situs publik lean: Home (termasuk `#about`), Workflow (`/workflow`, M14), Work index (`/projects`, M9); `/about` hanya redirect
-* Home = h1 atas, lede lantai bawah (bukan Now, bukan teaser karya — ADR-032 / ADR-038)
-* Contact modal global (ADR-019) + Quick Info overlay (ADR-022) — bukan halaman terpisah
-* Theme toggle dark/light di chrome (ADR-021)
-* Soft CTA kontak (email dan/atau tautan langsung; tanpa pricing)
+* Lean public site: Home (including `#about`), Workflow (`/workflow`, M14), Work index (`/projects`, M9); `/about` only redirects
+* Home = top h1, lower-floor lede (not Now, not work teaser — ADR-032 / ADR-038)
+* Global Contact modal (ADR-019) + Quick Info overlay (ADR-022) — not separate pages
+* Dark/light theme toggle in chrome (ADR-021)
+* Soft contact CTA (email and/or direct link; no pricing)
 * Bilingual geo-aware + language switcher
-* Konten dikurasi pemilik (bukan UGC, bukan marketplace)
+* Owner-curated content (not UGC, not marketplace)
 
-**Di luar batas produk (secara umum):**
+**Outside product boundaries (general):**
 
-* Autentikasi pengguna / area member
-* CMS publik atau panel admin sebagai produk
-* E-commerce, checkout, paket harga
-* Blog/media sebagai bisnis inti
-* Aplikasi kolaborasi, dashboard klien, atau SaaS
-* Mesin distribusi sosial sebagai fitur situs
+* User authentication / member area
+* Public CMS or admin panel as product
+* E-commerce, checkout, pricing packages
+* Blog/media as core business
+* Collaboration app, client dashboard, or SaaS
+* Social distribution engine as a site feature
 
 ---
 
 # Out of Scope (MVP)
 
-Untuk MVP Hybrid lean, **belum** termasuk:
+For the Hybrid lean MVP, **not included yet**:
 
-* Halaman **detail case** `/projects/[slug]` — **R2 (ADR-044)**; bukan pengganti overlay M10
+* **Case detail** page `/projects/[slug]` — **R2 (ADR-044)**; not a replacement for M10 overlay
 * Blog / writing hub
-* Form kontak berbackend, booking calendar, atau CRM
-* Playground/eksperimen web sebagai panggung utama
-* Dark-pattern lead magnet, popup agresif, rate card
-* Multi-author, komentar, atau komunitas di situs
-* Analytics berat / personalisasi invasif (prinsip: ringan & privacy-aware)
+* Backend contact form, booking calendar, or CRM
+* Web playground/experiments as the main stage
+* Dark-pattern lead magnet, aggressive popup, rate card
+* Multi-author, comments, or community on the site
+* Heavy analytics / invasive personalization (principle: lightweight & privacy-aware)
 
-Detail case dan form lanjut masuk `mvp-definition.md` (Should/Could) dan roadmap berikutnya.
+Case detail and advanced form are covered in `mvp-definition.md` (Should/Could) and the next roadmap.
 
 ---
 
 # Success Criteria
 
-Scope dianggap mengarah benar jika:
+Scope is moving in the right direction if:
 
-1. Founder/PO bisa evaluasi dasar lewat Home + About + Workflow + Work index + Contact modal tanpa merakit cerita dari GitHub/CV
-2. Homepage menjawab siapa / bukti ringkas / next step (selaras dual north star)
-3. Karya terasa hadir (katalog + sheet M10); magnet URL per karya = R2 ADR-044
-4. Soft path kontak jelas (modal, ADR-019); tidak ada harga atau hard sell
-5. Batas di dokumen ini konsisten dengan ADR-002, ADR-006, ADR-007, ADR-010, dan override ADR-019/020/021/022/032/035/040/041/042
+1. Founders/POs can do basic evaluation through Home + About + Workflow + Work index + Contact modal without assembling the story from GitHub/CV
+2. Homepage answers who / concise proof / next step (aligned with dual north star)
+3. Work feels present (catalog + M10 sheet); per-work magnet URL = R2 ADR-044
+4. Soft contact path is clear (modal, ADR-019); no pricing or hard sell
+5. Boundaries in this document are consistent with ADR-002, ADR-006, ADR-007, ADR-010, and overrides ADR-019/020/021/022/032/035/040/041/042
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `mvp-definition.md` — isi MVP
-* `feature-modules.md` — modul/halaman
-* `../01-business/product-vision.md` — visi & positioning
-* `../01-business/business-model.md` — destination + magnet bertahap
-* `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md` — keputusan struktur permukaan
-* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
-* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md` — Contact jadi modal global
-* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md` — Work index Must R1
-* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md` — theme toggle Must R1
-* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md` — Quick Info panel Must R1
-* `../../project-manager/decisions/ADR-040-about-as-home-section.md` — About = section Home
-* `../../project-manager/decisions/ADR-041-home-with-footer.md` — pita footer di Home
-* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md` — isi Workflow
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — indeks ADR
+* `README.md` — documentation for this phase
+* `mvp-definition.md` — MVP contents
+* `feature-modules.md` — modules/pages
+* `../01-business/product-vision.md` — vision & positioning
+* `../01-business/business-model.md` — destination + gradual magnet
+* `../../project-os/decisions/ADR-010-mvp-surface-hybrid-lean.md` — surface-structure decision
+* `../../project-os/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-os/decisions/ADR-019-contact-modal-with-form-override.md` — Contact becomes global modal
+* `../../project-os/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md` — Work index Must R1
+* `../../project-os/decisions/ADR-021-dark-mode-toggle-must-r1.md` — theme toggle Must R1
+* `../../project-os/decisions/ADR-022-quick-info-panel-module.md` — Quick Info panel Must R1
+* `../../project-os/decisions/ADR-040-about-as-home-section.md` — About = Home section
+* `../../project-os/decisions/ADR-041-home-with-footer.md` — footer ribbon on Home
+* `../../project-os/decisions/ADR-042-workflow-decision-driven-page.md` — Workflow contents
+* `../../project-os/PROJECT_STATE.md` — project status
+* `../../project-os/DECISIONS.md` — ADR index

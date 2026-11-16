@@ -1,149 +1,149 @@
 # Design Tokens
 
-> Status: **Baseline v1.2** — ditetapkan bersama Boss Rezi (2026-08-11; ADR-018 2026-08-13 superseded; toggle UI Must R1 via **ADR-021**, 2026-08-16; **ADR-028** / T-037.4, 2026-09-03; default ship dark + light hold **T-038.2** / ADR-029, 2026-09-04). Nilai visual **boleh diiterasi**; kontrak token saat ini = **shadcn/ui + Tailwind CSS v4** (`:root` / `.dark` di `app/globals.css`), **dark default**, light di-comment sampai hold dicabut. Perubahan material struktur/tema memerlukan ADR baru.
+> Status: **Baseline v1.2** — locked with Boss Rezi (2026-08-11; ADR-018 2026-08-13 superseded; UI toggle Must R1 via **ADR-021**, 2026-08-16; **ADR-028** / T-037.4, 2026-09-03; default ship dark + light hold **T-038.2** / ADR-029, 2026-09-04). Visual values **may iterate**; the current token contract = **shadcn/ui + Tailwind CSS v4** (`:root` / `.dark` in `app/globals.css`), **dark default**, light commented until the hold is lifted. Material structure/theme changes need a new ADR.
 
-Dokumen ini mendefinisikan sistem token & mapping implementasi untuk website portofolio **rezisaktiva**.
+This document defines the token system and implementation mapping for the **rezisaktiva** portfolio site.
 
 ---
 
 # Overview
 
-R1 memakai **shadcn/ui + Tailwind CSS v4** (**ADR-028**, menggantikan Astryx / ADR-018):
+R1 uses **shadcn/ui + Tailwind CSS v4** (**ADR-028**, replacing Astryx / ADR-018):
 
-* **Token** di `app/globals.css`: palet **gelap yang di-ship** + blok light **di-comment** (hold T-038.2); `@theme inline` memetakan `--color-background` dll. ke variabel shadcn
-* **Light** = token **di-hold** (comment/arsip) — bukan tema yang di-ship
-* **Dark** = default ship: class **`dark`** di `<html>` + `data-theme` (bukan `prefers-color-scheme` sebagai sumber token; `@custom-variant dark` mengikat ke class)
-* **Toggle dark mode di UI** = Must R1 (**ADR-021**) **saat light hidup**; selama hold = **disembunyikan** (komponen + cookie tetap)
-* Palet ship = gothic-blood (ADR-029). Palet krem/kuning lama bukan kontrak. Bukan zinc/slate default shadcn. Bukan `astryx theme` / file `theme/` built.
+* **Tokens** in `app/globals.css`: the **shipped dark** palette + the light block **commented out** (hold T-038.2); `@theme inline` maps `--color-background` and related names to shadcn variables
+* **Light** = tokens **on hold** (comment/archive) — not a shipped theme
+* **Dark** = ship default: the **`dark`** class on `<html>` + `data-theme` (not `prefers-color-scheme` as the token source; `@custom-variant dark` binds to the class)
+* **Dark-mode toggle in the UI** = Must R1 (**ADR-021**) **when light is live**; during the hold = **hidden** (component + cookie remain)
+* Shipped palette = gothic-blood (ADR-029). Old cream/yellow palettes are not the contract. Not default shadcn zinc/slate. Not `astryx theme` / a built `theme/` file.
 
-Selaras UX: clarity first, lean surface, motion hanya jika memperkuat hierarchy (UX1, UX3, Interaction §6).
+Aligned with UX: clarity first, lean surface, motion only when it strengthens hierarchy (UX1, UX3, Interaction §6).
 
-Nilai hex/font di bawah = **arah awal**, bukan brand kit final yang kaku.
+Hex/font values below are an **initial direction**, not a rigid brand kit.
 
 ---
 
-# Tujuan
+# Goals
 
-* Satu kontrak token sebelum bootstrap UI
-* Hindari hardcode warna tersebar di komponen
-* Siapkan dark tanpa memaksa polish dual-theme di MVP
-* Hormati a11y kontras (lihat `04-ux/ux-principles.md`)
+* One token contract before UI bootstrap
+* Avoid hardcoded colors scattered across components
+* Prepare dark without forcing dual-theme polish in the MVP
+* Respect a11y contrast (see `04-ux/ux-principles.md`)
 
 ---
 
 # Typography
 
-| Token | Arah R1 | Catatan |
-| ----- | ------- | ------- |
-| `--font-display` | **Texturina** (OFL, Google Fonts via `next/font`) — blackletter/textura | Hanya hero / h1 / judul section. Bukan chrome. Bukan Pirata One |
-| `--font-sans` / `--font-heading` | **Instrument Sans** (OFL) — grotesk | Body, nav, form, judul kecil. Bukan Inter/Roboto/Arial |
-| `--font-mono` | Opsional, tipis | Hanya jika ada snippet/kode di About — bukan Must |
+| Token | R1 direction | Notes |
+| ----- | ------------ | ----- |
+| `--font-display` | **Texturina** (OFL, Google Fonts via `next/font`) — blackletter/textura | Hero / h1 / section titles only. Not chrome. Not Pirata One |
+| `--font-sans` / `--font-heading` | **Instrument Sans** (OFL) — grotesque | Body, nav, form, small titles. Not Inter/Roboto/Arial |
+| `--font-mono` | Optional, thin | Only if About has a code snippet — not Must |
 
-Skala tipe (arah):
+Type scale (direction):
 
-| Step | Penggunaan |
-| ---- | ---------- |
+| Step | Use |
+| ---- | --- |
 | `text-xs`–`sm` | Meta, footer, caption |
 | `text-base` | Body |
 | `text-lg`–`xl` | Subhead / supporting |
 | `text-2xl`–`4xl` (+ display) | Heading / hero brand |
 
-Detail ukuran final + `line-height` dikunci saat implementasi; hierarki heading tetap logis per halaman (a11y UX).
+Final sizes + `line-height` lock at implementation; heading hierarchy stays logical per page (UX a11y).
 
 ---
 
 # Color — Brand
 
-Arah ship (T-039.1 / ADR-029): **kanvas hitam dingin + vellum + satu aksen wine**. Light = arsip comment, bukan kolom hidup.
+Ship direction (T-039.1 / ADR-029): **cold black canvas + vellum + one wine accent**. Light = comment archive, not a living column.
 
-| Token | Light (hold / arsip) | Dark (ship) | Peran |
-| ----- | --------------- | ---------------- | ----- |
-| `--color-brand` / teks kuat | `#14181f` | `#E8E4DC` | Heading, brand |
-| `--color-accent` | `#4c7a73` (arsip teal) | `#6B1C23` wine | Outline selected (ADR-031), hover tombol |
-| `--color-accent-muted` | arsip | `#8A242E` | Hover darah, thumb scrollbar |
-| `--chip-bg` / `--chip-fg` | `#fde047` / ink (arsip) | `#141418` / vellum | Nampan grup bila ada; **bukan** kuning sebagai identitas |
-| `--chrome-pill-*` | arsip | wine / vellum | Sisa token bercak (ADR-030 superseded); selected hidup = outline |
+| Token | Light (hold / archive) | Dark (ship) | Role |
+| ----- | ---------------------- | ----------- | ---- |
+| `--color-brand` / strong text | `#14181f` | `#E8E4DC` | Heading, brand |
+| `--color-accent` | `#4c7a73` (archived teal) | `#6B1C23` wine | Selected outline (ADR-031), button hover |
+| `--color-accent-muted` | archive | `#8A242E` | Blood hover, scrollbar thumb |
+| `--chip-bg` / `--chip-fg` | `#fde047` / ink (archive) | `#141418` / vellum | Group tray when present; **not** yellow as identity |
+| `--chrome-pill-*` | archive | wine / vellum | Leftover splatter tokens (ADR-030 superseded); live selected = outline |
 
-Pilih **satu** aksen; jangan rainbow satelit LinkedIn/GitHub vs Email (Email tetap primer visual — ADR-014).
+Pick **one** accent; do not rainbow LinkedIn/GitHub satellites vs Email (Email stays the visual primary — ADR-014).
 
 ---
 
 # Color — Neutral
 
-| Token | Light | Dark (disiapkan) | Peran |
-| ----- | ----- | ---------------- | ----- |
-| `--color-bg` | `#edeae1` (arsip) | `#0B0B0D` | Latar halaman |
-| `--color-bg-elevated` | arsip | `#141418` | Section / chrome sisa nampan |
-| `--color-fg` | `#14181f` (arsip) | `#E8E4DC` vellum | Teks utama |
-| `--color-fg-muted` | arsip | `#8F8A82` | Meta |
-| `--color-border` | arsip | `#2C2C32` | Hairline |
-| Native scrollbar (T-025.9 / T-043.2) | arsip (thumb chip lama) | Track `--color-background-muted`, thumb `--color-accent-muted`, hover `--color-focus` | Jangan disembunyikan (T-025.8); sama di overlay Contact/QI/sheet |
+| Token | Light | Dark (prepared) | Role |
+| ----- | ----- | --------------- | ---- |
+| `--color-bg` | `#edeae1` (archive) | `#0B0B0D` | Page background |
+| `--color-bg-elevated` | archive | `#141418` | Section / leftover chrome tray |
+| `--color-fg` | `#14181f` (archive) | `#E8E4DC` vellum | Primary text |
+| `--color-fg-muted` | archive | `#8F8A82` | Meta |
+| `--color-border` | archive | `#2C2C32` | Hairline |
+| Native scrollbar (T-025.9 / T-043.2) | archive (old chip thumb) | Track `--color-background-muted`, thumb `--color-accent-muted`, hover `--color-focus` | Do not hide (T-025.8); same in Contact/QI/sheet overlays |
 
 ---
 
 # Color — Feedback
 
-R1 hampir tanpa form/error inline. Token minimal:
+R1 almost has no inline form/error UI. Minimal tokens:
 
-| Token | Peran |
-| ----- | ----- |
-| `--color-focus` | Ring fokus keyboard — campur `--color-accent-muted` + vellum (T-043.2); bukan wine murni di kanvas gelap |
-| `--color-danger` | Cadangan; jarang dipakai R1 |
-| `--color-success` | Cadangan; jarang dipakai R1 |
+| Token | Role |
+| ----- | ---- |
+| `--color-focus` | Keyboard focus ring — mix `--color-accent-muted` + vellum (T-043.2); not pure wine on the dark canvas |
+| `--color-danger` | Reserve; rarely used in R1 |
+| `--color-success` | Reserve; rarely used in R1 |
 
-Jangan bangun design system feedback lengkap sebelum ada UI yang membutuhkannya.
+Do not build a full feedback design system before UI needs it.
 
 ---
 
 # Spacing, Radius, Elevation
 
-| Domain | Keputusan R1 |
-| ------ | ------------ |
-| Spacing | Skala token 4px di `globals.css` (`--spacing-*`) + Tailwind `gap-*`; konsisten ritme section |
-| Radius | Sedang untuk chip/kontrol bila perlu; **hindari** card-heavy & `rounded-full` pill cluster di hero |
-| Elevation | Halaman/kartu: shadow minimal; hierarki lewat tipe & spasi, bukan glow. **Bukan** chip 3D kuning sebagai identitas. Token `--elev-3d` boleh tersisa di CSS; selected chrome **bukan** memakainya (ADR-031). **Selected nav/switcher/hamburger:** border 1px `--color-accent` + teks `--color-text-accent`. **Tombol chrome** (Contact header/footer, hamburger): datar (T-038.3 / T-040.1 / T-040.5). |
-| Layout | First viewport = satu komposisi (brand, headline, supporting, CTA, visual) — selaras key screens. **Lantai viewport 320px**; chrome mobile satu baris. Detail komposisi = kode produksi (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
+| Domain | R1 decision |
+| ------ | ----------- |
+| Spacing | 4px token scale in `globals.css` (`--spacing-*`) + Tailwind `gap-*`; consistent section rhythm |
+| Radius | Medium for chips/controls when needed; **avoid** card-heavy layouts and `rounded-full` pill clusters in the hero |
+| Elevation | Pages/cards: minimal shadow; hierarchy through type and space, not glow. **Not** a yellow 3D chip as identity. `--elev-3d` may remain in CSS; selected chrome **does not** use it (ADR-031). **Selected nav/switcher/hamburger:** 1px `--color-accent` border + `--color-text-accent` text. **Chrome buttons** (header/footer Contact, hamburger): flat (T-038.3 / T-040.1 / T-040.5). |
+| Layout | First viewport = one composition (brand, headline, supporting, CTA, visual) — aligned with key screens. **Floor viewport 320px**; mobile chrome one row. Composition detail = production code (ADR-024) + `04-ux/key-screen-patterns.md` / `navigation-patterns.md` |
 
-Anti-pattern visual: dashboard clutter, badge overlay di hero, grid card berlebihan.
+Visual anti-patterns: dashboard clutter, badge overlays on the hero, excessive card grids.
 
 ---
 
-# Tema (Light / Dark)
+# Theme (Light / Dark)
 
-| Aspek | R1 |
-| ----- | --- |
+| Aspect | R1 |
+| ------ | --- |
 | Default ship | **Dark** (T-038.2 / ADR-021 update 2026-09-04) |
-| Token dark | **Ya** — class `.dark` di `<html>` (`html.dark`); palet gothic-blood hidup di sini (T-039) |
-| Token light | **Hold** — comment/arsip, jangan hapus |
-| Strategi | `ThemeModeProvider` + cookie `rz-theme`; selama hold, ship memaksa gelap. Jangan `next-themes` sebagai default |
-| Toggle di chrome | **Must R1** saat light hidup (**ADR-021**); **tersembunyi** selama hold |
-| `prefers-color-scheme` | Could; jangan mengganti default dark-hold tanpa keputusan Boss Rezi |
+| Dark tokens | **Yes** — `.dark` class on `<html>` (`html.dark`); gothic-blood palette lives here (T-039) |
+| Light tokens | **Hold** — comment/archive, do not delete |
+| Strategy | `ThemeModeProvider` + cookie `rz-theme`; during hold, ship forces dark. Do not use `next-themes` as the default |
+| Chrome toggle | **Must R1** when light is live (**ADR-021**); **hidden** during hold |
+| `prefers-color-scheme` | Could; do not replace the dark-hold default without Boss Rezi's decision |
 
-Toggle UI Must saat light hidup (ADR-021). **Dark sebagai default ship** dikunci T-038.2. Menghidupkan kembali light (skin gothic, bukan invert) = task + update ADR, bukan selip v15.
+UI toggle is Must when light is live (ADR-021). **Dark as ship default** is locked by T-038.2. Re-enabling light (gothic skin, not invert) = a task + ADR update, not a silent slip in v15.
 
 ---
 
 # Motion
 
-> Diperbarui **ADR-017** (2026-08-12): motion naik peran menjadi **bagian identitas visual R1**, bukan sekadar Could minimal — dengan clarity tetap prioritas tertinggi.
+> Updated **ADR-017** (2026-08-12): motion rises to a **part of the R1 visual identity**, not merely minimal Could — with clarity still the top priority.
 >
-> Diperbarui **ADR-025** (2026-08-24): kadar craft naik (Hess/Mazur: ritme + gerak, bukan palet). Lenis + transisi halaman diizinkan sebagai lapisan custom. Ritme transisi halaman memakai token khusus (`--duration-page-exit` / `--duration-page-enter` / `--delay-page-enter`) — bukan `--duration-medium`.
+> Updated **ADR-025** (2026-08-24): craft level rises (Hess/Mazur: rhythm + motion, not palette). Lenis + page transition allowed as a custom layer. Page-transition rhythm uses dedicated tokens (`--duration-page-exit` / `--duration-page-enter` / `--delay-page-enter`) — not `--duration-medium`.
 >
-> Diperbarui **T-043.1** (2026-09-08): transisi halaman = hard cut + stutter frame (T-038.3). Bukan Hess scale 1s, bukan RGB/VHS, bukan View Transitions API. Durasi pendek (UX1). `--ease-page-transition` tetap untuk overlay sheet.
+> Updated **T-043.1** (2026-09-08): page transition = hard cut + stutter frame (T-038.3). Not Hess scale 1s, not RGB/VHS, not the View Transitions API. Short duration (UX1). `--ease-page-transition` remains for sheet overlays.
 
-| Tingkat | R1 |
-| ------- | --- |
-| Must | Tidak ada motion yang mengorbankan clarity first viewport (UX1) |
-| Signature | Motion jadi bagian identitas: scroll-triggered reveal, cursor-aware micro-interaction, easing/timing halus di hero, hover CTA/tile, transisi locale switch — inspirasi teknik gerak dari p5aholic.me (bukan struktur playground-nya). **Plus (ADR-025 / ADR-042 / T-043.1):** smooth-scroll inertia (Lenis, window scroll; bukan `scroll-behavior: smooth` native); transisi halaman hard cut + stutter frame (exit ~0.2s, enter ~0.16s, steps — bukan Hess scale). Pola rest/active accordion **bukan** permukaan Workflow/About lagi. **T-043.2 / 2026-09-15:** desktop fine-pointer = `cursor-ring` (hover membesar; scrim overlay = ikon X, ADR-019); sentuh / `prefers-reduced-motion` = kursor sistem. Pisau berdarah dicabut. |
-| Pause | Lenis **berhenti** saat Contact modal (`html.ct-lock`) atau Quick Info (`html.qi-lock`) terbuka, supaya overlay tidak bergeser bersama inersia |
-| Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; transisi halaman instan (tanpa overlay); playable yang sudah ada tetap hormati media query yang sama |
-| Jangan | Parallax berat, loop noise, animasi yang mengorbankan clarity, motion yang menggantikan pesan alih-alih memperkuatnya; overlay transisi yang tetap `pointer-events: auto` setelah selesai |
+| Level | R1 |
+| ----- | --- |
+| Must | No motion that sacrifices first-viewport clarity (UX1) |
+| Signature | Motion is part of identity: scroll-triggered reveal, cursor-aware micro-interaction, fine easing/timing in the hero, CTA/tile hover, locale-switch transition — motion-technique inspiration from p5aholic.me (not its playground structure). **Plus (ADR-025 / ADR-042 / T-043.1):** smooth-scroll inertia (Lenis, window scroll; not native `scroll-behavior: smooth`); page transition hard cut + stutter frame (exit ~0.2s, enter ~0.16s, steps — not Hess scale). Rest/active accordion patterns are **not** Workflow/About surfaces anymore. **T-043.2 / 2026-09-15:** desktop fine-pointer = `cursor-ring` (grows on hover; overlay scrim = X icon, ADR-019); touch / `prefers-reduced-motion` = system cursor. Bloody-knife cursor removed. |
+| Pause | Lenis **stops** when the Contact modal (`html.ct-lock`) or Quick Info (`html.qi-lock`) is open, so overlays do not drift with inertia |
+| Reduced motion | `prefers-reduced-motion: reduce` → Lenis off; instant page change (no overlay); existing playables still honor the same media query |
+| Do not | Heavy parallax, noise loops, motion that sacrifices clarity, motion that replaces the message instead of reinforcing it; transition overlays that stay `pointer-events: auto` after finishing |
 
-Hormati `prefers-reduced-motion`. Gerak identitas = paket `motion` (`motion/react`). Lenis + page stutter tetap CSS/hook custom — bukan domain Motion, bukan View Transitions API.
+Respect `prefers-reduced-motion`. Identity motion = the `motion` package (`motion/react`). Lenis + page stutter stay custom CSS/hooks — not the Motion domain, not the View Transitions API.
 
 ---
 
-# Mapping implementasi
+# Implementation mapping
 
 ```text
 app/globals.css
@@ -153,64 +153,64 @@ html.dark + data-theme (cookie rz-theme, ThemeModeProvider)
         ↓
 shadcn (components/ui) + Tailwind utilities (token-backed)
         ↓
-className scoped + craft CSS (.home-* .ct-* .qi-* .ps-* .page-vt-*)
+scoped className + craft CSS (.home-* .ct-* .qi-* .ps-* .page-vt-*)
 ```
 
-| Lapisan | Isi |
-| ------- | --- |
-| Sumber kebenaran token | `app/globals.css` (`--background`, `--foreground`, `--spacing-*`, `--size-element-*`, `--chip-*` elevated, `--color-*` craft, `--rz-scrollbar-*`) — **ADR-024** / **ADR-028** / **ADR-029**. Kanvas/aksen ship = gothic-blood (T-039), bukan palet krem/kuning mockup. Light hold = arsip comment di file yang sama. |
-| Komponen | shadcn di `components/ui/` + permukaan `app/[locale]/_components/` — bukan hardcode hex/px |
-| Override lokal | utility Tailwind token-backed + `className` scoped. **Bukan** StyleX. Dilarang `style={{}}` inline atau hex/px acak di JSX. Playbook: `code-discipline.md` |
-| Konten MD/MDX | Tidak menyimpan hex brand; styling lewat komponen |
-| Kustomisasi brand | edit token di `globals.css` (pasangan light/dark). Bukan `pnpm theme:build` |
+| Layer | Contents |
+| ----- | -------- |
+| Token source of truth | `app/globals.css` (`--background`, `--foreground`, `--spacing-*`, `--size-element-*`, `--chip-*` elevated, `--color-*` craft, `--rz-scrollbar-*`) — **ADR-024** / **ADR-028** / **ADR-029**. Ship canvas/accent = gothic-blood (T-039), not cream/yellow mockup palettes. Light hold = comment archive in the same file. |
+| Components | shadcn in `components/ui/` + surfaces in `app/[locale]/_components/` — no hardcoded hex/px |
+| Local override | token-backed Tailwind utilities + scoped `className`. **Not** StyleX. Inline `style={{}}` or random hex/px in JSX are forbidden. Playbook: `code-discipline.md` |
+| MD/MDX content | Does not store brand hex; styling through components |
+| Brand customization | edit tokens in `globals.css` (light/dark pair). Not `pnpm theme:build` |
 | Agent docs | `.cursor/rules/shadcn.mdc` + `.cursor/rules/code-discipline.mdc` |
-| Figma / design file | Opsional Later — docs ini cukup untuk bootstrap R1 |
+| Figma / design file | Optional Later — these docs are enough for R1 bootstrap |
 
-Nilai hex ship dikunci di `globals.css` (gothic-blood). Palet krem/kuning mockup = arsip hold, bukan kontrak. Perubahan token berikutnya di file itu, bukan di mockup.
+Shipped hex values lock in `globals.css` (gothic-blood). Cream/yellow mockup palettes = hold archive, not the contract. Later token changes happen in that file, not in mockups.
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Styling | **shadcn/ui + Tailwind CSS v4** — menggantikan Astryx + StyleX (**ADR-028**; ADR-018 superseded) |
-| Theme | Token di `app/globals.css` (`:root` / `.dark`); palet ship = gothic-blood (**ADR-029**). Palet krem + pill kuning **bukan** kontrak |
-| Tema default | **Dark** (T-038.2 / ADR-021 update 2026-09-04); light di-hold |
-| Dark | Class `html.dark` + cookie `rz-theme`; toggle UI = **Must R1 (ADR-021) saat light hidup**; selama hold toggle tersembunyi |
-| Nilai visual | Kanvas + aksen di `globals.css` (SoT hidup = kode produksi, ADR-024) |
-| Motion | Bagian identitas visual (ADR-017), hierarchy-first; `motion/react` + Lenis + page overlay (ADR-025) |
-| Native scrollbar | `--rz-scrollbar-*` di `app/globals.css`, bukan `--color-*` di `:root` |
-| Override komponen | Tailwind token + className scoped; StyleX tidak dipakai — `code-discipline.md` |
-| Baseline Engineering | ADR-016; styling: ADR-018 superseded oleh **ADR-028** |
+| Decision | Choice |
+| -------- | ------ |
+| Styling | **shadcn/ui + Tailwind CSS v4** — replaces Astryx + StyleX (**ADR-028**; ADR-018 superseded) |
+| Theme | Tokens in `app/globals.css` (`:root` / `.dark`); ship palette = gothic-blood (**ADR-029**). Cream + yellow pill **not** the contract |
+| Default theme | **Dark** (T-038.2 / ADR-021 update 2026-09-04); light on hold |
+| Dark | Class `html.dark` + cookie `rz-theme`; UI toggle = **Must R1 (ADR-021) when light is live**; during hold the toggle is hidden |
+| Visual values | Canvas + accent in `globals.css` (living SoT = production code, ADR-024) |
+| Motion | Part of visual identity (ADR-017), hierarchy-first; `motion/react` + Lenis + page overlay (ADR-025) |
+| Native scrollbar | `--rz-scrollbar-*` in `app/globals.css`, not `--color-*` on `:root` |
+| Component override | Tailwind tokens + scoped className; StyleX unused — `code-discipline.md` |
+| Engineering baseline | ADR-016; styling: ADR-018 superseded by **ADR-028** |
 
 ---
 
 # Success Criteria
 
-1. Komponen tidak menghambur hex yang tidak ter-tokenisasi
-2. Dark default jelas; menambah light tidak memaksa rewrite token (light = hold)
-3. Visual mendukung clarity & soft Contact — bukan template ungu generik
+1. Components do not scatter untokenized hex
+2. Dark default is clear; adding light does not force a token rewrite (light = hold)
+3. Visuals support clarity and soft Contact — not a generic purple template
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
+* `README.md` — this phase's documentation
 * `../04-ux/ux-principles.md` — clarity, a11y, motion
-* `../04-ux/key-screen-patterns.md` — blok S0–S3
-* `monorepo-setup.md` — App Router / struktur
-* `dx-tooling.md` — lint/format (bukan token)
-* `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
-* `../../project-manager/decisions/ADR-016-engineering-baseline-v1.md`
-* `../../project-manager/decisions/ADR-018-astryx-replaces-tailwind-r1.md` — superseded
-* `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
-* `../../project-manager/decisions/ADR-029-visual-identity-gothic-blood.md`
-* `../../project-manager/decisions/ADR-017-motion-as-identity-r1.md`
-* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
-* `../../project-manager/decisions/ADR-025-craft-motion-hess-mazur.md`
-* `.cursor/rules/shadcn.mdc` — konvensi AI saat menulis UI shadcn + Tailwind
-* `code-discipline.md` — spacing, lapisan styling, Server/Client, SSG
-* `.cursor/rules/code-discipline.mdc` — ringkasan wajib agent
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../04-ux/key-screen-patterns.md` — S0–S3 blocks
+* `monorepo-setup.md` — App Router / structure
+* `dx-tooling.md` — lint/format (not tokens)
+* `../../project-os/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-os/decisions/ADR-016-engineering-baseline-v1.md`
+* `../../project-os/decisions/ADR-018-astryx-replaces-tailwind-r1.md` — superseded
+* `../../project-os/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-os/decisions/ADR-029-visual-identity-gothic-blood.md`
+* `../../project-os/decisions/ADR-017-motion-as-identity-r1.md`
+* `../../project-os/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-os/decisions/ADR-025-craft-motion-hess-mazur.md`
+* `.cursor/rules/shadcn.mdc` — AI conventions when writing shadcn + Tailwind UI
+* `code-discipline.md` — spacing, styling layers, Server/Client, SSG
+* `.cursor/rules/code-discipline.mdc` — required agent summary
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

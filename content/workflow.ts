@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy halaman Workflow / How I Work (ADR-042).
+ * Workflow / How I Work page copy (ADR-042).
  * Mengganti blok offers / approach / values / accordion T-021.3 di rute ini.
  */
 
@@ -234,7 +234,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         context:
           "Pengetahuan produk dan cara kerja project mudah campur dalam satu folder docs. Agent lalu menuliskan status ke dokumen yang seharusnya stabil.",
         decision:
-          "SoT produk tinggal di product-discovery/. Cara kerja (aturan, task, ADR) tinggal di project-manager/. Skills hanya di .cursor/skills/.",
+          "SoT produk tinggal di product-discovery/. Cara kerja (aturan, task, ADR) tinggal di project-os/. Skills hanya di .cursor/skills/.",
         alternatives: [
           "Menyatukan semua dokumen di satu folder docs/",
           "Menempatkan skills di lokasi non-Cursor",
@@ -428,7 +428,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         context:
           "Product knowledge and project process were easy to mix in one docs folder. Agents then wrote living status into documents that should stay stable.",
         decision:
-          "Product SoT lives in product-discovery/. Process (rules, tasks, ADRs) lives in project-manager/. Skills live only in .cursor/skills/.",
+          "Product SoT lives in product-discovery/. Process (rules, tasks, ADRs) lives in project-os/. Skills live only in .cursor/skills/.",
         alternatives: [
           "Merge everything into a single docs/ folder",
           "Place skills in a non-Cursor location",

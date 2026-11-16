@@ -3,9 +3,9 @@ import services from "./data/services.json";
 import tools from "./data/tools.json";
 
 /**
- * Copy Quick Info panel. Dikunci T-021.6. Bio dari About (pendek).
- * Services / tools dari `content/data/services.json` + `tools.json`.
- * Daftar karya / email / tautan dari `content/work.ts` + `contact.ts`.
+ * Quick Info panel copy. Locked T-021.6. Bio from About (short).
+ * Services / tools from `content/data/services.json` + `tools.json`.
+ * Work list / email / links from `content/work.ts` + `contact.ts`.
  */
 
 export interface QuickInfoCopy {

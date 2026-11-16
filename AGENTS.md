@@ -1,93 +1,88 @@
-# AGENTS.md — rezisaktiva
+# AGENTS.md - rezisaktiva
 
-Pintu masuk untuk AI coding agent di Cursor. Baca file ini dulu di setiap sesi kerja pada repo ini.
+Entry point for agents working in this Cursor workspace. Read this file first, then follow the pointers instead of treating this document as the product Source of Truth.
 
-## Purpose
+## Source Of Truth
 
-Dokumen ini **bukan** Source of Truth produk. Ia mengarahkan agent ke dokumen yang benar dan menegakkan aturan keras.
+| Area | Location |
+| ---- | -------- |
+| Status, phase, milestone, issues | `project-os/PROJECT_STATE.md` |
+| Open tickets | `project-os/AVAILABLE_TICKETS.md` + `project-os/tickets/` |
+| Project workflow and governance | `project-os/PROJECT_RULES.md` |
+| Decisions | `project-os/DECISIONS.md` + `project-os/decisions/` |
+| Product and engineering baselines | `product-discovery/` |
+| Architecture overview | `project-os/ARCHITECTURE_OVERVIEW.md` |
+| Developer workflow | `project-os/DEVELOPER_WORKFLOW.md` |
+| UI/UX visual truth | Production code (`app/`, shadcn + Tailwind, tokens in `app/globals.css`) + Boss Rezi's current instructions, not `design-mockups/` |
 
-**Source of Truth:**
+## Start Here
 
-| Area | Lokasi |
-| ---- | ------ |
-| Status, phase, milestone, issue | `project-manager/PROJECT_STATE.md` |
-| Backlog task | `project-manager/TASKS.md` + `project-manager/tasks/` |
-| Aturan kerja & governance | `project-manager/PROJECT_RULES.md` |
-| Keputusan (ADR) | `project-manager/DECISIONS.md` + `project-manager/decisions/` |
-| Produk & engineering | `product-discovery/` |
-| Orientasi arsitektur (ringkas) | `project-manager/ARCHITECTURE_OVERVIEW.md` |
-| Alur kerja developer | `project-manager/DEVELOPER_WORKFLOW.md` |
-| Visual UI/UX | kode produksi (`app/`, shadcn + Tailwind, token `globals.css`) + arahan Boss Rezi — **bukan** `design-mockups/` (arsip; ADR-024; gate: `.cursor/rules/ui-ux-mockup-check.mdc`) |
+1. Read the **Snapshot** at the top of `project-os/PROJECT_STATE.md`.
+2. For task work, read `project-os/AVAILABLE_TICKETS.md`, then only the relevant ticket section in `project-os/tickets/`.
+3. Follow `.cursor/skills/project-os-navigator/SKILL.md`.
+4. Check that the task, referenced docs, and production code are complete and consistent before acting. Ask Boss Rezi only for urgent gaps, wrong documents, or unplanned decisions; use `.cursor/skills/proactive-clarification/SKILL.md` for the question format.
+5. For UI work, also follow `.cursor/rules/ui-ux-mockup-check.mdc`, `.cursor/rules/shadcn.mdc`, and `.cursor/rules/code-discipline.mdc`.
+6. After finishing work, report with `.cursor/skills/work-report-simple/SKILL.md`.
 
-## Wajib di awal sesi
+## Language Rule
 
-1. Baca **Snapshot** di `project-manager/PROJECT_STATE.md`.
-2. Kalau akan mengerjakan task: buka `project-manager/TASKS.md`, lalu **hanya** satu file fase di `project-manager/tasks/` (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`) yang memuat task itu (`T-XXX` / `T-XXX.N`). Ikuti field **Baca dulu**.
-3. Ikuti skill: `.cursor/skills/project-os-navigator/SKILL.md`.
-4. Cek kelengkapan task + dokumen acuan + (untuk UI) kode produksi yang ada. Tanya Boss Rezi **hanya jika urgent** (gap, salah dokumen, atau hal di luar rencana): `.cursor/rules/ask-before-assuming.mdc` + `.cursor/skills/proactive-clarification/SKILL.md` (cara bertanya). Jangan tanya ritual.
-5. Setelah pekerjaan selesai: `.cursor/skills/work-report-simple/SKILL.md`.
-6. Untuk task yang menyentuh UI/UX: `.cursor/rules/ui-ux-mockup-check.mdc` (acuan = kode produksi + arahan; `design-mockups/` arsip — ADR-024; verifikasi sebelum lapor selesai), `.cursor/rules/shadcn.mdc` (konvensi shadcn + Tailwind saat coding), dan `.cursor/rules/code-discipline.mdc` (spacing, server/client, SSG — SoT: `product-discovery/06-engineering/code-discipline.md`).
+ADR-049 sets the project language contract:
 
-## Skills (`.cursor/skills/`)
+- Address the user as **Boss Rezi** when needed.
+- Project documents, process skills, agent rules, and developer-facing comments move to English.
+- Public site locale copy in `content/` stays bilingual.
+- `design-mockups/` stays an archive, not a visual contract.
+- `COMPLETE_TASK.md` is a frozen historical archive. Do not read, translate, or append it unless Boss Rezi explicitly asks for legacy changelog work.
 
-Satu-satunya folder skill project ini:
+## Skills
+
+Project skills live only in `.cursor/skills/`.
 
 ```
 .cursor/skills/
-├── project-os-navigator/
-├── proactive-clarification/
-├── work-report-simple/
-├── docs-consistency-audit/   → hanya saat Boss Rezi minta audit docs (bukan rutin)
-└── motion/                   → skill library Motion (ADR-028); bukan process skill
+├── project-os-navigator/     -> Project OS navigation and behavior
+├── proactive-clarification/  -> How to ask when an urgent gap exists
+├── work-report-simple/       -> Plain-language completion report
+├── docs-consistency-audit/   -> Explicit docs audits only
+└── motion/                   -> Motion skill library, not a process skill
 ```
 
-Tidak ada `.claude/skills/` atau `CLAUDE.md` — project ini Cursor-first (ADR-001).
+This project is Cursor-first. Do not create or rely on `.claude/` or `CLAUDE.md`.
 
-## Rules (`.cursor/rules/`)
-
-Rule aktif (`alwaysApply: true`), semua berlaku sejak Development:
+## Always-On Rules
 
 ```
 .cursor/rules/
-├── no-ai-attribution-git.mdc   → tanpa atribusi AI di commit/branch/PR
-├── shadcn.mdc                  → konvensi wajib shadcn/ui + Tailwind v4 (ADR-028)
-├── code-discipline.mdc         → spacing, lapisan styling, Server vs
-│                                  Client, SSG; kerja baru di app/
-├── ui-ux-mockup-check.mdc      → kode produksi = acuan visual (ADR-024); mockup HTML
-│                                  arsip; pelajari app/ dulu; verifikasi vs kode + arahan
-└── ask-before-assuming.mdc     → cek dulu; tanya Boss Rezi hanya jika urgent (gap, salah
-                                   dokumen, atau hal di luar rencana) — jangan berasumsi
-                                   pada yang unplanned, jangan tanya ritual
+├── no-ai-attribution-git.mdc -> no AI/tool attribution in commits, branches, or PRs
+├── shadcn.mdc                -> shadcn/ui + Tailwind v4 conventions
+├── code-discipline.mdc       -> spacing, styling layers, Server/Client, SSG
+├── ui-ux-mockup-check.mdc    -> production code is the visual source of truth
+├── ask-before-assuming.mdc   -> ask only for urgent gaps, wrong docs, or unplanned work
+└── motion.mdc                -> use the Motion skill for animation changes
 ```
 
-## Stack & layout (saat ini)
+## Hard Rules
 
-Next.js (App Router) + TypeScript + pnpm di root — single-app (ADR-016). Styling: shadcn/ui + Tailwind CSS v4 (ADR-028). Docs tetap di `product-discovery/` + `project-manager/`. Acuan visual: kode produksi (ADR-024); `design-mockups/` arsip. Detail stack: `product-discovery/06-engineering/`.
+- Boss Rezi owns final decisions.
+- Documentation First: read the relevant baseline before code or prose changes.
+- Implementation follows `Active Conversation Mode` in `project-os/PROJECT_STATE.md` unless Boss Rezi explicitly asks otherwise.
+- Status and progress belong in `PROJECT_STATE.md`, `AVAILABLE_TICKETS.md`, and ticket files, not static references.
+- Use parent IDs `T-XXX` and subtask IDs `T-XXX.N`; do not reuse IDs.
+- Keep secrets protected by `.cursorignore`.
 
-## Aturan keras
+## After Changes
 
-* **Boss Rezi** adalah pemilik keputusan akhir.
-* **Documentation First** — dokumentasi acuan sebelum kode.
-* **Implementasi kode mengikuti `Active Conversation Mode`** di `project-manager/PROJECT_STATE.md` (kecuali diminta eksplisit di luar mode itu).
-* Status/progress hanya di `PROJECT_STATE.md` / `TASKS.md` — bukan di README Static Reference. ID: parent `T-XXX`, subtask `T-XXX.N`.
-* `COMPLETE_TASK.md`: append saja; jangan dibaca penuh kecuali diperintah (rewrite sejarah hanya jika Boss Rezi memerintahkan eksplisit).
-* Saat selesai checklist: sebut kode subtask `T-XXX.N` di COMPLETE_TASK / Fokus.
-* Cek kelengkapan dulu; tanya Boss Rezi hanya jika gap, salah dokumen, atau hal di luar rencana (`.cursor/rules/ask-before-assuming.mdc`). Jangan tanya ritual.
-* Proteksi secret: `.cursorignore`.
-
-## Setelah mengubah sesuatu
-
-1. Update file fase di `project-manager/tasks/` + `project-manager/TASKS.md` bila relevan.
-2. Update `PROJECT_STATE.md` hanya jika phase/milestone/fokus/blocker berubah.
-3. Append `COMPLETE_TASK.md`.
-4. Buat ADR bila keputusan material.
-5. Laporkan dengan `work-report-simple`.
+1. Update the relevant ticket file in `project-os/tickets/` and `project-os/AVAILABLE_TICKETS.md` when status changes.
+2. Update `PROJECT_STATE.md` only when phase, milestone, focus, blockers, or known issues change.
+3. Do not append `COMPLETE_TASK.md`; record new work in the ticket, `AVAILABLE_TICKETS.md`, and git history.
+4. Add or update an ADR for material decisions.
+5. Keep the final report short and plain.
 
 ## Related
 
-* `project-manager/README.md`
-* `product-discovery/README.md`
-* `.cursor/skills/project-os-navigator/SKILL.md`
+- `project-os/README.md`
+- `product-discovery/README.md`
+- `.cursor/skills/project-os-navigator/SKILL.md`
 
 <!-- BEGIN:nextjs-agent-rules -->
 

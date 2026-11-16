@@ -1,10 +1,17 @@
 /**
- * Honeypot. Nama ini sengaja bukan token autofill (`company`, `name`, …)
- * supaya browser tidak mengisinya dan form mengaku terkirim.
+ * Honeypot. This field name is deliberately not an autofill token (`company`, `name`, …)
+ * so browsers do not fill it and the form falsely reports as sent.
  */
 export const CONTACT_HONEYPOT_FIELD = "rz_hp";
 
-/** Maksimal kiriman per alamat IP dalam satu jendela. */
+/**
+ * Resend inbox subject for Contact form mail (ADR-047).
+ * Kept Indonesian so Boss Rezi can sort/filter the operational inbox; visitor-facing
+ * locale copy stays bilingual in `content/`.
+ */
+export const CONTACT_EMAIL_SUBJECT = "Pesan dari situs rezisaktiva";
+
+/** Maximum submissions per IP address within one window. */
 export const CONTACT_RATE_LIMIT = 5;
 export const CONTACT_RATE_WINDOW_MS = 10 * 60 * 1000;
 
@@ -48,7 +55,7 @@ function readText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
-/** `true` bila kiriman ini masih di dalam batas. */
+/** `true` when this submission is still within the limit. */
 export function allowContactAttempt(
   hits: Map<string, number[]>,
   key: string,
@@ -68,7 +75,7 @@ export function allowContactAttempt(
   return true;
 }
 
-/** IP yang dipasang platform. Jangan pakai hop pertama `x-forwarded-for` (bisa dipalsukan). */
+/** Platform-assigned IP. Do not use the first `x-forwarded-for` hop (can be spoofed). */
 export function contactClientKey(headers: Headers): string {
   const realIp = headers.get("x-real-ip")?.trim();
   if (realIp) {

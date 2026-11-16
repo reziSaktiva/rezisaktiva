@@ -6,7 +6,7 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
-/** ADR-040: `/about` bukan halaman — redirect ke Home `#about`. */
+/** ADR-040: `/about` is not a page — redirect to Home `#about`. */
 export default async function AboutRedirect({
   params,
 }: {

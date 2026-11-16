@@ -1,22 +1,22 @@
 # User Personas
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mendalami persona pengunjung website portofolio pribadi **rezisaktiva**.
+This document deepens visitor personas for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Overview
 
-Dua persona primer setara (archetype, bukan nama fiksi wajib) diturunkan dari segmen S1/S2. Persona sekunder ringkas untuk hiring manager dan calon klien — mendukung journey sekunder tipis tanpa menggeser brand.
+Two equal primary personas (archetypes, not mandatory fictional names) are derived from segments S1/S2. Concise secondary personas for hiring managers and prospective clients support a thin secondary journey without shifting the brand.
 
 ---
 
 # Purpose
 
-* Memberi wajah konkret untuk goals, pains, scenarios, dan journey
-* Menjaga penekanan evaluasi berbeda tanpa dua brand
-* Menjadi acuan salinan UX (tone, bukti, CTA)
+* Give concrete faces to goals, pains, scenarios, and journey
+* Preserve different evaluation emphases without two brands
+* Become a reference for UX copy (tone, proof, CTA)
 
 ---
 
@@ -24,25 +24,25 @@ Dua persona primer setara (archetype, bukan nama fiksi wajib) diturunkan dari se
 
 ## In Scope
 
-* 2 persona primer (setara)
-* 2 persona sekunder ringkas (hiring / klien project)
-* Prinsip pemakaian persona di fase berikutnya
+* 2 primary personas (equal)
+* 2 concise secondary personas (hiring / project clients)
+* Persona usage principles for the next phase
 
 ## Out of Scope
 
-* Persona konsumen massal / follower social sebagai driver
-* Persona “Rezi sebagai user aplikasi” (pemilik brand bukan visitor role sistem)
-* Detail UI preference spekulatif
+* Mass consumer / social follower persona as a driver
+* “Rezi as app user” persona (brand owner is not a system visitor role)
+* Speculative UI preference detail
 
 ---
 
 # Persona Principles
 
-1. **Archetype over fiction** — label peran + konteks; nama fiksi opsional, bukan syarat
-2. **Satu brand, dua penekanan** — lapisan pesan sama; pertanyaan di kepala boleh beda
-3. **Job > demografi** — usia/gender tidak jadi poros; konteks produk & keputusan yang diutamakan
-4. **Evidence jujur** — AI edge sebagai lapisan, bukan klaim specialist murni
-5. **Soft next step** — sukses persona = paham + cukup percaya untuk kontak, bukan “closing”
+1. **Archetype over fiction** — role label + context; fictional names are optional, not required
+2. **One brand, two emphases** — same message layer; different questions in their heads are allowed
+3. **Job > demographics** — age/gender are not the axis; product & decision context are prioritized
+4. **Honest evidence** — AI edge as a layer, not a pure specialist claim
+5. **Soft next step** — persona success = understands + trusts enough to contact, not “closing”
 
 ---
 
@@ -52,67 +52,67 @@ Dua persona primer setara (archetype, bukan nama fiksi wajib) diturunkan dari se
 
 | Field | Detail |
 | ----- | ------ |
-| **Segmen** | S1 |
-| **Konteks** | Ide atau produk awal; lean; sering jadi decision maker tunggal |
-| **Motivasi kunjungan** | “Apa dia bisa bantu saya ship?” |
-| **Pertanyaan di kepala** | Pernah nge-ship apa? Bisa ngomong product, bukan cuma kode? Cara hubungi gampang? |
-| **Bukti yang dicari** | Outcome singkat, end-to-end ownership, narasi builder (bukan list stack) |
-| **Kekhawatiran** | Terjebak hire yang hanya coding tanpa ownership produk |
-| **Sukses kunjungan** | Dalam hitungan menit: paham positioning; simpan URL atau soft outreach |
-| **Bahasa** | Nyaman ID; EN sebagai cadangan / konteks regional |
-| **Risiko salah pesan** | Situs terasa CV developer / tech bingo |
+| **Segment** | S1 |
+| **Context** | Idea or early product; lean; often a single decision maker |
+| **Visit motivation** | “Can he help me ship?” |
+| **Questions in mind** | What has he shipped? Can he talk product, not just code? Is it easy to contact him? |
+| **Proof sought** | Concise outcomes, end-to-end ownership, builder narrative (not a stack list) |
+| **Worry** | Getting stuck with a hire who only codes without product ownership |
+| **Visit success** | Within minutes: understand positioning; save URL or soft outreach |
+| **Language** | Comfortable in ID; EN as backup / regional context |
+| **Wrong-message risk** | Site feels like a developer CV / tech bingo |
 
-### P2 — Product owner di perusahaan / startup (SEA)
+### P2 — Product owner in a company / startup (SEA)
 
 | Field | Detail |
 | ----- | ------ |
-| **Segmen** | S2 |
-| **Konteks** | Ada produk/roadmap; butuh builder untuk inisiatif; sering kolaborasi dengan tim |
-| **Motivasi kunjungan** | “Apa dia fit untuk inisiatif kami — dan enak diajak kerja?” |
-| **Pertanyaan di kepala** | Thinking-nya product-kah? Kredibel di konteks digital product? Bisa kolaborasi? |
-| **Bukti yang dicari** | Cara berpikir, ship history, sinyal komunikasi profesional |
-| **Kekhawatiran** | Builder yang “cowboy” atau tidak bisa selaras proses tim |
-| **Sukses kunjungan** | Cukup sinyal kolaborasi + outcome; kontak tanpa pressure sales |
-| **Bahasa** | ID/EN tergantung konteks kerja; switcher penting |
-| **Risiko salah pesan** | Terlalu indie hustle / personal brand kosong tanpa substansi |
+| **Segment** | S2 |
+| **Context** | Has a product/roadmap; needs a builder for an initiative; often collaborates with a team |
+| **Visit motivation** | “Is he a fit for our initiative — and easy to work with?” |
+| **Questions in mind** | Is the thinking product-oriented? Credible in digital product context? Collaborative? |
+| **Proof sought** | Way of thinking, shipping history, professional communication signals |
+| **Worry** | A “cowboy” builder or someone who cannot align with team process |
+| **Visit success** | Enough collaboration + outcome signal; contact without sales pressure |
+| **Language** | ID/EN depending on work context; switcher matters |
+| **Wrong-message risk** | Too much indie hustle / empty personal brand without substance |
 
-**Hubungan P1 ↔ P2:** sama-sama mengevaluasi fit product builder; P1 lebih sensitif ke kecepatan & ownership end-to-end; P2 lebih sensitif ke kolaborasi & kredibilitas profesional.
+**P1 ↔ P2 relationship:** both evaluate product builder fit; P1 is more sensitive to speed & end-to-end ownership; P2 is more sensitive to collaboration & professional credibility.
 
 ---
 
 # Secondary Personas
 
-### P3 — Hiring manager / tech lead (ringkas)
+### P3 — Hiring manager / tech lead (concise)
 
-* **Segmen:** S3
-* **Job singkat:** Cek apakah Rezi masuk akal untuk role atau kolaborasi teknis/produk
-* **Yang dibutuhkan dari situs:** Sinyal fullstack + product thinking; About yang koheren; tautan bukti (GitHub sebagai satelit)
-* **Bukan yang dicari:** CV ATS panjang atau positioning “developer for hire” sebagai brand utama
-* **Implikasi:** Secondary journey tipis — jangan redesign Home jadi job board
+* **Segment:** S3
+* **Short job:** Check whether Rezi makes sense for a role or technical/product collaboration
+* **What the site must provide:** Fullstack + product thinking signals; coherent About; proof links (GitHub as satellite)
+* **Not looking for:** Long ATS CV or “developer for hire” positioning as the main brand
+* **Implication:** Thin secondary journey — do not redesign Home into a job board
 
-### P4 — Calon klien project / freelance (ringkas)
+### P4 — Prospective project client / freelance (concise)
 
-* **Segmen:** S4
-* **Job singkat:** Putuskan apakah worth soft outreach untuk engagement terbatas
-* **Yang dibutuhkan:** Kejelasan siapa Rezi, contoh outcome, Contact mudah
-* **Bukan yang dicari:** Pricing publik, paket paket, hard funnel (ADR-008)
-* **Implikasi:** Soft CTA cukup di R1; form/booking = Could Have
+* **Segment:** S4
+* **Short job:** Decide whether it is worth soft outreach for a limited engagement
+* **What they need:** Clarity on who Rezi is, sample outcomes, easy Contact
+* **Not looking for:** Public pricing, package bundles, hard funnel (ADR-008)
+* **Implication:** Soft CTA is enough in R1; form/booking = Could Have
 
-Peer (S5) dan founder luar SEA (S6) tidak dibuatkan persona penuh — cukup di segments; kebutuhan mereka tertutup clarity + bilingual.
+Peers (S5) and founders outside SEA (S6) do not get full personas — segments are enough; their needs are covered by clarity + bilingual support.
 
 ---
 
 # Expected Output
 
-Persona primer & sekunder yang konsisten dengan ADR-005 dan siap dipakai di goals/JTBD/journey.
+Primary & secondary personas consistent with ADR-005 and ready to use in goals/JTBD/journey.
 
 ---
 
 # Exit Criteria
 
-* P1 & P2 setara dan terdokumentasi
-* P3 & P4 cukup untuk secondary journey
-* Prinsip “satu brand, dua penekanan” jelas
+* P1 & P2 are equal and documented
+* P3 & P4 are enough for the secondary journey
+* The “one brand, two emphases” principle is clear
 
 ---
 
@@ -123,7 +123,7 @@ Persona primer & sekunder yang konsisten dengan ADR-005 dan siap dipakai di goal
 * `user-goals.md`
 * `user-scenarios.md`
 * `../01-business/target-market.md`
-* `../../project-manager/decisions/ADR-005-target-market-icp-sea-tech.md`
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-005-target-market-icp-sea-tech.md`
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

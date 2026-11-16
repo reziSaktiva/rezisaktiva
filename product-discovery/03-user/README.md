@@ -1,88 +1,88 @@
 # 03 — User
 
-Dokumentasi pada folder ini berfokus pada fase **User** untuk website portofolio pribadi **rezisaktiva**.
+Documentation in this folder focuses on the **User** phase for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Purpose
 
-* Memahami siapa yang mengunjungi portofolio.
-* Menangkap goals, pain points, dan jobs-to-be-done.
-* Mensintesis insight untuk UX dan Product.
+* Understand who visits the portfolio.
+* Capture goals, pain points, and jobs-to-be-done.
+* Synthesize insights for UX and Product.
 
 ---
 
 # Scope
 
-Folder ini hanya membahas aspek user.
+This folder only covers user aspects.
 
-Topik berikut tidak dibahas di sini:
+The following topics are not covered here:
 
-- Desain UI final
-- Arsitektur teknis
-- Implementasi kode
+- Final UI design
+- Technical architecture
+- Code implementation
 
 ---
 
 # Documents
 
-* `discovery-plan.md` — rencana discovery user.
-* `user-segments.md` — segmen pengunjung.
-* `user-personas.md` — persona.
-* `user-goals.md` — tujuan pengguna.
+* `discovery-plan.md` — user discovery plan.
+* `user-segments.md` — visitor segments.
+* `user-personas.md` — personas.
+* `user-goals.md` — user goals.
 * `pain-points.md` — pain points.
 * `jobs-to-be-done.md` — JTBD.
-* `user-scenarios.md` — skenario penggunaan.
+* `user-scenarios.md` — usage scenarios.
 * `user-journey.md` — journey.
-* `insights.md` — sintesis insight.
-* `../README.md` — dokumentasi fase Product Discovery.
-* `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
-* `../../project-manager/PROJECT_RULES.md` — aturan project.
-* `../../project-manager/PROJECT_STATE.md` — status dan progress.
-* `../../project-manager/DECISIONS.md` — keputusan penting (ADR).
+* `insights.md` — insight synthesis.
+* `../README.md` — Product Discovery phase documentation.
+* `../../project-os/PROJECT_OVERVIEW.md` — project summary.
+* `../../project-os/PROJECT_RULES.md` — project rules.
+* `../../project-os/PROJECT_STATE.md` — status and progress.
+* `../../project-os/DECISIONS.md` — important decisions (ADRs).
 
 ---
 
 # Workflow
 
-1. Mulai dari `discovery-plan.md`.
-2. Definisikan `user-segments.md` dan `user-personas.md`.
-3. Lengkapi goals, pain points, JTBD, scenarios, journey.
-4. Tutup dengan `insights.md`.
+1. Start from `discovery-plan.md`.
+2. Define `user-segments.md` and `user-personas.md`.
+3. Complete goals, pain points, JTBD, scenarios, and journey.
+4. Close with `insights.md`.
 
 ---
 
 # Expected Output
 
-**User Baseline v1.0 sudah ditetapkan** (ADR-013, 2026-08-07). Seluruh dokumen di folder ini terisi dan disepakati.
+**User Baseline v1.0 has been established** (ADR-013, 2026-08-07). All documents in this folder are filled in and agreed.
 
-Metode acuan fase: assumption-led + rencana riset ringan opsional; journey R1 primer + sekunder tipis (hiring / klien).
+Reference method for the phase: assumption-led + optional lightweight research plan; primary R1 journey + thin secondary path (hiring / clients).
 
-Langkah berikutnya (historis fase): lanjut **Phase 4 — UX Discovery** di `../04-ux/`. Status fase aktif ada di `PROJECT_STATE.md`.
+Next step (historical phase): continue to **Phase 4 — UX Discovery** in `../04-ux/`. The active phase status is in `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+The following criteria **have been met** for Baseline v1.0:
 
-* Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material tercatat di `DECISIONS.md` (ADR-013, dll.).
-* Boss Rezi menyetujui baseline fase ini.
+* All documents above are filled in (not TBD).
+* Material decisions are recorded in `DECISIONS.md` (ADR-013, etc.).
+* Boss Rezi approved this phase baseline.
 
 ---
 
 # Decision Rules
 
-* Baseline User terkunci — jangan memakai README ini sebagai penunjuk fase aktif; ikuti `PROJECT_STATE.md`.
-* Perubahan material pada baseline user → ADR baru + revisi dokumen terdampak.
-* Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
+* The User baseline is locked — do not use this README as the active phase pointer; follow `PROJECT_STATE.md`.
+* Material changes to the user baseline → new ADR + revision of impacted documents.
+* Phase status/progress is recorded only in `PROJECT_STATE.md`, not in this README.
 
 ---
 
 # Related Documents
 
 * `../README.md`
-* `../../project-manager/README.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/README.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

@@ -16,7 +16,7 @@ function notifyPageScroll(): void {
   });
 }
 
-/** Lenis frame + native scroll. Wallpaper Home ikut lerp, bukan hanya event native. */
+/** Lenis frame + native scroll. Home wallpaper lerps too, not native events only. */
 export function subscribePageScroll(listener: PageScrollListener): () => void {
   pageScrollListeners.add(listener);
   return () => {
@@ -31,7 +31,7 @@ export function readWindowScrollY(): number {
   return window.scrollY || document.documentElement.scrollTop || 0;
 }
 
-/** Setelah clone terpasang: Lenis + native ke 0 supaya halaman baru tidak nyembul di viewport yang masih di tengah/bawah (mobile). */
+/** After clone mounts: Lenis + native to 0 so the new page does not pop in mid/bottom viewport (mobile). */
 export function freezeWindowScrollAtTop(): void {
   if (lenisForTransition) {
     lenisForTransition.stop();
@@ -140,7 +140,7 @@ function subscribeNever(): () => void {
 }
 
 /**
- * Window Lenis — sibling, tidak membungkus halaman (`SiteChrome` min-height auto).
+ * Window Lenis — sibling, does not wrap the page (`SiteChrome` min-height auto).
  * Off jika `prefers-reduced-motion`. Pause `ct-lock` / `qi-lock` / `ps-lock` /
  * `page-vt-lock` (ADR-025, T-036.5).
  */

@@ -2,13 +2,13 @@ import type { Metadata, MetadataRoute } from "next";
 import { PERSON } from "@/content/person";
 import brandChrome from "@/lib/brand-chrome.json";
 
-/** Kanvas gelap T-039 / ADR-029. Dipakai manifest + theme-color. */
+/** Dark canvas T-039 / ADR-029. Used by manifest + theme-color. */
 export const SITE_CANVAS_COLOR = brandChrome.canvas;
 
 /**
- * Ikon di HTML head (T-031). 192/512 = kelipatan 48px untuk crawler.
- * `metadata.icons` menimpa file-based `icon`/`apple-icon`, jadi Apple 180
- * wajib disebut di sini. Favicon 32 tetap dari `app/favicon.ico`.
+ * Icons in HTML head (T-031). 192/512 are multiples of 48px for crawlers.
+ * `metadata.icons` overrides file-based `icon`/`apple-icon`, so Apple 180
+ * must be listed here. Favicon 32 still comes from `app/favicon.ico`.
  */
 export const SITE_HEAD_ICONS = {
   icon: [
@@ -19,8 +19,8 @@ export const SITE_HEAD_ICONS = {
 } as const satisfies Metadata["icons"];
 
 /**
- * Manifest ringan T-031.2. Bukan PWA (tanpa SW / install-prompt).
- * `display: browser` = tab biasa. Warna = kanvas gelap T-039.
+ * Lightweight manifest T-031.2. Not a PWA (no SW / install prompt).
+ * `display: browser` = normal tab. Colors = dark canvas T-039.
  */
 export const SITE_MANIFEST_ICONS = [
   {

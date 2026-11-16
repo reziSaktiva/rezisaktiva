@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   allowContactAttempt,
+  CONTACT_EMAIL_SUBJECT,
   CONTACT_HONEYPOT_FIELD,
   CONTACT_RATE_LIMIT,
   contactClientKey,
@@ -40,7 +41,7 @@ describe("decideContactPayload", () => {
   it("rejects a missing, oversized, or malformed body", () => {
     expect(decideContactPayload(null)).toEqual({ kind: "invalid" });
     expect(decideContactPayload([])).toEqual({ kind: "invalid" });
-    expect(decideContactPayload({ ...valid, email: "bukan-email" })).toEqual({
+    expect(decideContactPayload({ ...valid, email: "not-an-email" })).toEqual({
       kind: "invalid",
     });
     expect(decideContactPayload({ ...valid, message: "   " })).toEqual({
@@ -73,10 +74,16 @@ describe("contactClientKey", () => {
   });
 });
 
+describe("CONTACT_EMAIL_SUBJECT", () => {
+  it("keeps the production Resend subject Indonesian for inbox sorting", () => {
+    expect(CONTACT_EMAIL_SUBJECT).toBe("Pesan dari situs rezisaktiva");
+  });
+});
+
 describe("handleContactPost", () => {
   const base = {
     to: "inbox@example.com",
-    subject: "Pesan",
+    subject: CONTACT_EMAIL_SUBJECT,
   };
 
   it("accepts a honeypot hit without sending", async () => {
@@ -136,7 +143,7 @@ describe("handleContactPost", () => {
       from: "hello@rezisaktiva.space",
       to: "inbox@example.com",
       replyTo: "ada@example.com",
-      subject: "Pesan",
+      subject: CONTACT_EMAIL_SUBJECT,
       text: valid.message,
     });
   });

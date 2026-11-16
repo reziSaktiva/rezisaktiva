@@ -1,47 +1,47 @@
 ---
-description: Cek dulu kelengkapan task/kode/dokumen; tanya Boss Rezi hanya jika urgent (gap, salah tulis dokumen, atau hal di luar rencana) — jangan berasumsi atau lanjut diam-diam pada yang unplanned
+description: Check task/code/docs first; ask Boss Rezi only for urgent gaps, wrong documents, or unplanned decisions
 alwaysApply: true
 ---
 
-# Cek Dulu — Tanya Hanya Jika Urgent
+# Check First — Ask Only If Urgent
 
-Berlaku untuk **semua** jenis pekerjaan di project ini: dokumentasi, kode/implementasi, arsitektur, konfigurasi/infrastruktur, keputusan desain UI/UX, maupun interaksi lain dengan Boss Rezi.
+Applies to **all** work in this project: documentation, code, architecture, configuration, infrastructure, UI/UX decisions, and other interactions with Boss Rezi.
 
-## Kewajiban sebelum kerja
+## Before Work
 
-AI wajib **memastikan sendiri** tidak ada gap pada:
+The agent must verify there is no gap in:
 
-- **Task** — subtask, field Baca dulu, scope, ketergantungan
-- **UI/UX** — implementasi di `app/` (bukan mockup HTML arsip; ADR-024) + arahan yang dikunci
-- **Dokumen acuan** yang disebut task — tidak bolong, tidak saling bentrok untuk pekerjaan ini
+- **Task** — subtask, **Read first** field, scope, and dependencies.
+- **UI/UX** — production implementation in `app/` plus locked instructions, not archived HTML mockups (ADR-024).
+- **Referenced docs** — complete and non-conflicting for the task.
 
-Kalau semuanya lengkap dan selaras dengan rencana (task, ADR, baseline): **lanjut kerja**. Jangan tanya konfirmasi ritual.
+If the task, ADRs, baselines, and production code are complete and aligned: **work**. Do not ask ritual confirmation questions.
 
-## Tanya hanya jika urgent
+## Ask Only If Urgent
 
-Berhenti dan tanya Boss Rezi (pakai `AskQuestion`, bukan menyisipkan pertanyaan di tengah teks biasa) **hanya** jika salah satu ini benar:
+Stop and ask Boss Rezi, using the project clarification pattern, **only** when one of these is true:
 
-1. **Gap** — bagian tidak lengkap, tidak konsisten, atau bolong antara task, kode, atau keputusan (contoh: task merujuk file yang tidak ada; arahan desain menabrak ADR UX).
-2. **Salah tulis / salah dokumen** — kesalahan di dokumen yang bisa mengarahkan kerja ke rencana yang salah.
-3. **Tidak direncanakan** — keputusan, fitur, halaman, atau perilaku yang dibutuhkan untuk lanjut **tidak ada** di rencana (task, ADR, `PROJECT_RULES.md`, `product-discovery/`). Termasuk dua interpretasi yang sama-sama valid dan **belum** dikunci di baseline.
+1. **Gap** — something is incomplete, inconsistent, or missing between the task, code, docs, or decisions.
+2. **Wrong document** — a typo or stale document would steer the work toward the wrong plan.
+3. **Unplanned** — a decision, feature, page, or behavior required to continue is not covered by the task, ADR, `PROJECT_RULES.md`, or `product-discovery/`. This includes two valid interpretations that are not locked in the baseline.
 
-Itu satu-satunya alasan tanya. Ketidakyakinan yang bisa diselesaikan dengan membaca dokumen/CLI/kode **bukan** alasan tanya — baca dulu.
+Those are the only reasons to ask. Uncertainty that can be resolved by reading docs, code, or CLI output is not a reason to ask.
 
-## Yang Dilarang
+## Forbidden
 
-- **Tanya ritual** — contoh: tanya “pakai mockup HTML dulu atau kode?” (mockup sudah arsip, ADR-024); fork yang sudah ada di ADR; detail eksekusi yang tidak mengubah rencana.
-- **Berasumsi lalu jalan terus** pada gap / salah dokumen / hal unplanned, walau asumsinya “kelihatannya masuk akal”.
-- **Mengarang jawaban** yang terdengar meyakinkan tapi sebenarnya belum diverifikasi (lihat juga `.cursor/rules/ui-ux-mockup-check.mdc` § Wajib Verifikasi untuk kasus UI/UX).
-- **Diam-diam memilih salah satu opsi** di antara beberapa kemungkinan **unplanned** tanpa konfirmasi.
-- **Melaporkan "selesai"/"sesuai"/"aman"** padahal ada gap yang belum disebutkan.
-- Menunggu Boss Rezi menemukan sendiri masalah yang sebenarnya sudah/bisa disadari oleh agent lebih dulu.
+- **Ritual questions** — for example asking whether to use archived mockups or production code when ADR-024 already answers it; re-asking forks already settled by ADR; asking about execution details that do not change the plan.
+- **Assuming through urgent gaps** even when the assumption seems reasonable.
+- **Inventing answers** that sound confident but have not been verified.
+- **Silently choosing** between multiple unplanned valid options.
+- **Reporting done, aligned, or safe** while a known gap is still unreported.
+- Waiting for Boss Rezi to discover a problem the agent already noticed or could have noticed.
 
-## Cara Bertanya
+## How To Ask
 
-Gunakan `AskQuestion` dengan pilihan konkret dan konteks singkat — ikuti format & kualitas pilihan di `.cursor/skills/proactive-clarification/SKILL.md` (opsi terbaik di kelasnya, maksimal 4–5 pilihan, satu topik per pertanyaan). Kalau situasinya murni “saya tidak tahu jawabannya” (bukan pilihan antar opsi), jelaskan gap-nya secara eksplisit di chat dan minta arahan — jangan tetap menebak.
+Use `.cursor/skills/proactive-clarification/SKILL.md`: concrete options, brief context, best-in-class choices, at most 4–5 options, one topic per question. If the situation is simply "I do not know the answer" rather than a choice among options, explain the gap explicitly and ask for direction.
 
-## Relasi dengan Dokumen/Skill Lain
+## Related Docs And Skills
 
-- `.cursor/skills/proactive-clarification/SKILL.md` — cara menyusun pertanyaan yang baik **saat** tanya memang wajib (urgent).
-- `.cursor/rules/ui-ux-mockup-check.mdc` — acuan visual = kode produksi + arahan (ADR-024); `design-mockups/` arsip; tanya hanya jika desain menabrak baseline atau belum dikunci.
-- `AGENTS.md` § Aturan keras — versi ringkas dari rule ini.
+- `.cursor/skills/proactive-clarification/SKILL.md` — how to ask when asking is truly required.
+- `.cursor/rules/ui-ux-mockup-check.mdc` — production code is the visual Source of Truth; `design-mockups/` is an archive.
+- `AGENTS.md` — the concise door and language rule.

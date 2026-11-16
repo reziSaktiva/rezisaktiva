@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-/** Ikon overlay Contact / Quick Info — path mengikuti `design-mockups/shared.js`. */
+/** Contact / Quick Info overlay icons — paths follow `design-mockups/shared.js`. */
 
 export function MenuIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -37,7 +37,7 @@ export function CloseIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-/** Chrome theme toggle — path sama dengan ikon sun/moon produksi sebelumnya. */
+/** Chrome theme toggle — same paths as the previous production sun/moon icons. */
 export function SunIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -202,7 +202,7 @@ export function SparkleIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-/** About process steps (T-025.4) — ikon per langkah, bukan foto stok. */
+/** About process steps (T-025.4) — icon per step, not stock photos. */
 export function DiscoverIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

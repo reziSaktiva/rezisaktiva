@@ -1,100 +1,100 @@
 ---
 name: proactive-clarification
 description: >-
-  Cara menyusun pertanyaan ke Boss Rezi saat kondisi urgent (gap, salah
-  dokumen, atau hal di luar rencana). Bukan untuk tanya ritual sebelum setiap
-  tugas. Gunakan bersama rule ask-before-assuming.
+  How to ask Boss Rezi when an urgent condition exists: a gap, wrong document,
+  or unplanned decision. Not for ritual questions before every task. Use with
+  the ask-before-assuming rule.
 ---
 
 # Proactive Clarification
 
-Cek dulu kelengkapan task, kode produksi (jika UI), dan dokumen acuan. Jika lengkap dan selaras rencana: **kerja**, jangan tanya.
+First check the task, production code when UI is involved, and referenced docs. If they are complete and aligned with the plan: **work**, do not ask.
 
-Tanya hanya jika **urgent** — lihat `.cursor/rules/ask-before-assuming.mdc`. Skill ini mengatur **cara** bertanya, bukan kewajiban tanya di setiap tugas.
+Ask only when the situation is **urgent** under `.cursor/rules/ask-before-assuming.mdc`. This skill defines **how** to ask; it does not make questions a default opening step.
 
 ---
 
-## Prinsip Dasar
+## Core Principle
 
-**Cek sendiri dulu. Tanya hanya jika urgent.** Berlaku untuk semua jenis tugas, tapi tanya **bukan** langkah pembuka default.
+**Check first. Ask only when urgent.** This applies to every task type, but asking is not the default first move.
 
 Urgent:
 
-- **Gap** — tidak lengkap / tidak konsisten / bolong antar task, mockup, kode, keputusan
-- **Salah dokumen** — kesalahan tulis yang mengarahkan kerja ke rencana yang salah
-- **Tidak direncanakan** — yang dibutuhkan untuk lanjut tidak ada di task/ADR/baseline, termasuk dua interpretasi valid yang belum dikunci
+- **Gap** — something is incomplete, inconsistent, or missing between the task, code, docs, or decisions.
+- **Wrong document** — a typo or stale document would steer the work toward the wrong plan.
+- **Unplanned** — something required to continue is not covered by the task, ADR, or baseline, including two valid interpretations that have not been locked.
 
-Bukan urgent (jangan tanya):
+Not urgent; do not ask:
 
-- Keputusan sudah ada di ADR / `DECISIONS.md` / Baca dulu / kode produksi yang ada (ADR-024)
-- Detail eksekusi yang tidak mengubah rencana
-- Ketidakyakinan yang bisa diselesaikan dengan membaca dokumen, kode, atau CLI
+- A decision is already in an ADR, `DECISIONS.md`, the task's **Read first** field, or production code.
+- Execution detail does not change the plan.
+- Uncertainty can be resolved by reading docs, code, or CLI output.
 
-Jangan berasumsi pada yang urgent lalu jalan terus. Jangan mengarang. Jangan diam-diam memilih opsi unplanned.
-
----
-
-## Kapan Harus Bertanya
-
-Hanya jika kondisi urgent di atas. Fork keputusan yang **sudah** dikunci di baseline: pakai baseline, jangan tanya ulang.
-
-Contoh yang **bukan** tanya (rencana sudah ada): framework Next.js (ADR), halaman Home sudah ada di `app/` untuk iterasi visual, locale ID/EN sudah dikunci.
-
-Contoh yang **wajib** tanya: task merujuk file kode yang tidak ada; arahan desain bentrok dengan ADR dan dokumen harus diubah; scope di luar R1 yang belum ada tasknya.
+Do not assume your way through an urgent condition. Do not invent missing answers. Do not silently choose between unplanned options.
 
 ---
 
-## Cara Bertanya
+## When To Ask
 
-### 1. Identifikasi yang urgent
+Only ask for the urgent conditions above. If a decision fork is already locked in the baseline, use the baseline and do not re-ask.
 
-- Apa yang bolong / salah / di luar rencana?
-- Apa dampaknya terhadap output?
-- Apa saja opsi terbaik yang relevan?
+Examples that do **not** need a question because the plan already exists: Next.js framework choice, iterating from the existing Home page in `app/`, locked ID/EN locale behavior.
 
-### 2. Sajikan Pilihan Terbaik
+Examples that **do** require a question: a task references a missing code file, design direction conflicts with an accepted ADR, or requested scope needs a new page/behavior that is not in any task or baseline.
 
-Maks 4–5 pilihan terbaik di kelasnya, dengan konteks singkat. Pakai `AskQuestion`.
+---
+
+## How To Ask
+
+### 1. Identify The Urgent Issue
+
+- What is missing, wrong, or outside the plan?
+- How does it affect the output?
+- What are the best relevant options?
+
+### 2. Present The Best Options
+
+Offer at most 4–5 curated options, each with brief context. Use `AskQuestion` when available.
 
 **Format:**
 
 ```
-Saya berhenti karena ini di luar rencana / ada gap:
+I am stopping because this is outside the plan / there is a gap:
 
-**[Apa yang bolong atau konflik]**
+**[What is missing or conflicting]**
 
-Pilihan:
-- **[Opsi A]** — [mengapa menarik, kapan cocok]
-- **[Opsi B]** — [mengapa menarik, kapan cocok]
-- **[Opsi C]** — [mengapa menarik, kapan cocok]
+Options:
+- **[Option A]** — [why it is attractive, when it fits]
+- **[Option B]** — [why it is attractive, when it fits]
+- **[Option C]** — [why it is attractive, when it fits]
 ```
 
-### 3. Satu Topik per Pertanyaan
+### 3. One Topic Per Question
 
-Jangan tumpuk semua pertanyaan sekaligus. Tanyakan yang paling berdampak dulu.
-
----
-
-## Kualitas Pilihan
-
-- **Relevan** — sesuai konteks project (fase, skala portofolio)
-- **Terbaik di kelasnya** — proven, aktif dipakai
-- **Dikurasi** — buang yang outdated / tidak relevan
-- **Berisi konteks** — satu kalimat mengapa menarik
+Do not stack unrelated questions. Ask the most blocking question first.
 
 ---
 
-## Setelah Mendapat Jawaban
+## Option Quality
 
-1. Konfirmasi pilihan dalam satu kalimat.
-2. Jika keputusan material, catat ADR sesuai `PROJECT_RULES.md` — jangan tanya ritual “perlu ADR?”.
-3. Lanjutkan eksekusi.
+- **Relevant** — fits the project phase and portfolio scale.
+- **Best in class** — proven and actively used.
+- **Curated** — excludes outdated or irrelevant choices.
+- **Contextual** — includes one useful sentence about why each option matters.
 
 ---
 
-## Aturan Kritis
+## After Boss Rezi Answers
 
-- Jangan skip tanya jika benar-benar gap / salah dokumen / unplanned.
-- Jangan tanya ritual atau hal trivial yang tidak mengubah rencana.
-- Jangan listing opsi outdated / tidak relevan.
-- Jika user bilang "terserah" — pilihkan opsi terbaik dengan alasan, konfirmasi, lalu jalan.
+1. Confirm the selected direction in one sentence.
+2. If the decision is material, record an ADR according to `PROJECT_RULES.md`; do not ask the ritual question "do we need an ADR?"
+3. Continue execution.
+
+---
+
+## Critical Rules
+
+- Do not skip the question when there is a real gap, wrong document, or unplanned decision.
+- Do not ask ritual or trivial questions that do not change the plan.
+- Do not list outdated or irrelevant options.
+- If Boss Rezi says "up to you," choose the best option with a reason, confirm it, then proceed.

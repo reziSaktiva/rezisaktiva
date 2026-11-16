@@ -1,126 +1,126 @@
 # DX Tooling
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-11). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-11). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan tooling developer experience untuk website portofolio **rezisaktiva**.
+This document defines developer experience tooling for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-R1 memakai stack DX yang familiar dan selaras ekosistem Next:
+R1 uses a familiar DX stack aligned with the Next ecosystem:
 
 * **Lint:** ESLint (`eslint-config-next` + TypeScript)
 * **Format:** Prettier
-* **Quality gate:** GitHub Actions (lint + typecheck) — sudah dikunci di `cicd-pipeline.md`
-* **Pre-commit hooks:** **Tidak** untuk R1
-* **Test runner:** **Belum wajib** R1
+* **Quality gate:** GitHub Actions (lint + typecheck) — already locked in `cicd-pipeline.md`
+* **Pre-commit hooks:** **No** for R1
+* **Test runner:** **Not required yet** for R1
 
-Biome ditimbang dan **tidak dipilih** (familiaritas + rule Next + ekosistem plugin).
+Biome was considered and **not chosen** (familiarity + Next rules + plugin ecosystem).
 
 ---
 
-# Tujuan
+# Purpose
 
-* Menjaga kualitas kode tanpa setup berlebih untuk solo + agent
-* Satu jalur jelas: format lokal → lint/typecheck di CI → deploy Vercel
-* Menghindari drift format antar mesin tanpa memaksa husky
+* Maintain code quality without excessive setup for solo + agent work
+* One clear path: local format → lint/typecheck in CI → Vercel deploy
+* Avoid format drift across machines without forcing husky
 
 ---
 
 # Lint & Format
 
-| Tool | Peran R1 |
-| ---- | -------- |
-| **ESLint** | Lint JS/TS/React; basis `eslint-config-next` |
-| **Prettier** | Format (indent, quotes, trailing comma, dll.) |
-| Integrasi | Matikan aturan format bentrok di ESLint (eslint-config-prettier) agar Prettier pemilik format |
+| Tool | R1 Role |
+| ---- | ------- |
+| **ESLint** | Lint JS/TS/React; based on `eslint-config-next` |
+| **Prettier** | Format (indent, quotes, trailing comma, etc.) |
+| Integration | Disable conflicting format rules in ESLint (eslint-config-prettier) so Prettier owns format |
 
-### Konvensi bootstrap (detail dikunci saat scaffold)
+### Bootstrap conventions (details locked during scaffold)
 
-* Satu config ESLint flat (atau setara yang didukung Next saat bootstrap)
-* Satu `.prettierrc` / `prettier.config` di root
-* Script `package.json`: `lint`, `format` / `format:check`, `typecheck`
-* Editor: format-on-save via Prettier disarankan; bukan syarat CI
+* One flat ESLint config (or equivalent supported by Next during bootstrap)
+* One `.prettierrc` / `prettier.config` in root
+* `package.json` scripts: `lint`, `format` / `format:check`, `typecheck`
+* Editor: format-on-save via Prettier is recommended; not a CI requirement
 
-### Yang tidak dipakai R1
+### Not used in R1
 
-* Biome sebagai pengganti ESLint/Prettier
-* ESLint-only tanpa Prettier (risiko format tidak konsisten)
+* Biome as a replacement for ESLint/Prettier
+* ESLint-only without Prettier (risk of inconsistent format)
 
 ---
 
 # Pre-commit Hooks
 
-**Tidak ada** husky / lint-staged / Lefthook untuk R1.
+There is **no** husky / lint-staged / Lefthook for R1.
 
-| Alasan | Catatan |
-| ------ | ------- |
-| CI sudah gate | PR wajib hijau lint + typecheck (`cicd-pipeline.md`) |
-| Overhead | Hook menambah friction untuk agent & commit docs-only |
-| Nanti | Boleh ditambah jika drift format lokal menjadi masalah nyata |
+| Reason | Notes |
+| ------ | ----- |
+| CI already gates | PRs should be green on lint + typecheck (`cicd-pipeline.md`) |
+| Overhead | Hooks add friction for agents & docs-only commits |
+| Later | May be added if local format drift becomes a real problem |
 
-Disiplin lokal: jalankan `pnpm lint` / `pnpm format` sebelum PR bila mengubah app code.
+Local discipline: run `pnpm lint` / `pnpm format` before PR when changing app code.
 
 ---
 
 # Test Runner
 
-**Belum wajib** untuk R1.
+**Not required yet** for R1.
 
-| Jenis | Status R1 |
-| ----- | --------- |
-| Unit (Vitest/Jest) | Could / Later — tambah saat ada logic yang layak diuji |
-| E2E (Playwright) | Could / Later — terutama locale redirect & jalur Contact |
-| Visual regression | Tidak Must R1 |
+| Type | R1 Status |
+| ---- | --------- |
+| Unit (Vitest/Jest) | Could / Later — add when there is logic worth testing |
+| E2E (Playwright) | Could / Later — especially locale redirect & Contact path |
+| Visual regression | Not R1 Must |
 
-CI sudah menyiapkan slot “test bila ada” — menambahkan runner tidak mengubah model pipeline B.
+CI already has a “test if present” slot — adding a runner does not change pipeline model B.
 
 ---
 
 # Workspace Scripts
 
-Script yang diharapkan di root `package.json` saat bootstrap:
+Expected scripts in root `package.json` during bootstrap:
 
-| Script | Wajib R1 | Peran |
-| ------ | -------- | ----- |
-| `dev` | Ya | Next dev server |
-| `build` | Ya | Production build |
-| `start` | Ya | Serve build (atau setara) |
-| `lint` | Ya | ESLint |
-| `typecheck` | Ya | `tsc --noEmit` (atau setara) |
-| `format` / `format:check` | Ya | Prettier write / check |
-| `test` | Bila ada | Hanya setelah runner ditambah |
+| Script | R1 Required | Role |
+| ------ | ----------- | ---- |
+| `dev` | Yes | Next dev server |
+| `build` | Yes | Production build |
+| `start` | Yes | Serve build (or equivalent) |
+| `lint` | Yes | ESLint |
+| `typecheck` | Yes | `tsc --noEmit` (or equivalent) |
+| `format` / `format:check` | Yes | Prettier write / check |
+| `test` | If present | Only after a runner is added |
 
-Package manager: **pnpm** (lihat `monorepo-setup.md`, `dependency-strategy.md`).
+Package manager: **pnpm** (see `monorepo-setup.md`, `dependency-strategy.md`).
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
+| Decision | Choice |
+| -------- | ------ |
 | Lint + format | **ESLint + Prettier** |
-| Biome | Tidak untuk R1 |
-| Pre-commit | Tidak (CI saja) |
-| Test runner | Belum wajib |
-| Baseline Engineering | ADR-016 |
+| Biome | No for R1 |
+| Pre-commit | No (CI only) |
+| Test runner | Not required yet |
+| Engineering Baseline | ADR-016 |
 
 ---
 
 # Success Criteria
 
-1. PR app code tanpa lint/typecheck hijau tidak ideal untuk merge
-2. Format konsisten lewat Prettier tanpa bentrok ESLint
-3. Bootstrap tidak memasang husky/Vitest “default” tanpa kebutuhan
+1. App-code PRs without green lint/typecheck are not ideal to merge
+2. Format is consistent through Prettier without ESLint conflict
+3. Bootstrap does not install husky/Vitest “by default” without need
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `cicd-pipeline.md` — quality gate Actions
+* `README.md` — this phase documentation
+* `cicd-pipeline.md` — Actions quality gate
 * `monorepo-setup.md` — pnpm / Next / scripts
 * `dependency-strategy.md` — lockfile & updates
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

@@ -1,14 +1,14 @@
 # Real-time Strategy
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada realtime produk untuk R1. File tetap ada sebagai jejak — lihat ADR-015.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-11). There is no product realtime for R1. This file remains as a trace record — see ADR-015.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat.
+This document is **intentionally filled as N/A** so the decision is recorded.
 
 ---
 
 # Overview
 
-Portofolio R1 tidak membutuhkan WebSocket, SSE, presence, live collab, atau update push ke pengunjung. Konten berubah lewat **deploy baru**, bukan channel realtime.
+The R1 portfolio does not need WebSocket, SSE, presence, live collaboration, or push updates to visitors. Content changes through a **new deploy**, not through a realtime channel.
 
 ---
 
@@ -16,38 +16,38 @@ Portofolio R1 tidak membutuhkan WebSocket, SSE, presence, live collab, atau upda
 
 ## In Scope
 
-* Menyatakan N/A sadar
+* State the deliberate N/A
 
 ## Out of Scope
 
-* Pemilihan vendor realtime (Pusher, Ably, dll.)
+* Realtime vendor selection (Pusher, Ably, etc.)
 * Protocol design
 
 ---
 
 # Approach
 
-**N/A** — tidak ada channel realtime.
+**N/A** — there is no realtime channel.
 
-Interaksi “live” yang ada hanya di sisi klien browser (navigasi, switcher bahasa) — bukan arsitektur realtime server.
+The only “live” interactions are client-side browser interactions (navigation, language switcher) — not server realtime architecture.
 
 ---
 
 # Future Considerations
 
-Playground eksperimen atau live demo sebagai panggung utama = di luar MVP (product out of scope). Bila suatu saat dibutuhkan:
+An experimental playground or live demo as the main stage = outside the MVP (product out of scope). If it is ever needed:
 
-* ADR baru + revisi dokumen ini
-* Jangan mengasumsikan realtime default
+* New ADR + revision of this document
+* Do not assume realtime by default
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Realtime R1 | N/A |
-| Bentuk sistem | Static-first SSG (ADR-015) |
+| Decision | Choice |
+| -------- | ------ |
+| R1 realtime | N/A |
+| System shape | Static-first SSG (ADR-015) |
 
 ---
 
@@ -56,6 +56,6 @@ Playground eksperimen atau live demo sebagai panggung utama = di luar MVP (produ
 * `README.md`
 * `application-layer.md`
 * `../02-product/mvp-definition.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

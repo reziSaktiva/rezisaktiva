@@ -10,22 +10,21 @@ import {
 } from "@/lib/locale";
 
 /**
- * Redirect `/` (path tanpa locale) ke locale default.
+ * Redirect `/` (path without locale) to the default locale.
  *
- * Sesuai ADR-014, preferensi cookie hanya dipakai untuk redirect `/` / URL
- * tanpa locale — path yang sudah ber-locale **tidak di-rewrite**. Matcher juga
- * mencakup `/(id|en)/:path*` hanya untuk meneruskan `x-locale` ke root layout
- * (`<html lang>`), bukan untuk mengubah URL.
+ * Per ADR-014, cookie preference is only used for `/` / non-locale URL
+ * redirects — paths that already include a locale are **not** rewritten. The matcher
+ * also covers `/(id|en)/:path*` only to forward `x-locale` to the root layout
+ * (`<html lang>`), not to change the URL.
  *
- * Keputusan implementasi (tidak eksplisit di ADR-014, dicatat untuk Boss Rezi):
- * urutan sinyal yang dipakai = preferensi cookie (hasil switch eksplisit)
+ * Implementation decision (not explicit in ADR-014, recorded for Boss Rezi):
+ * signal order = cookie preference (explicit switch result)
  * → geo (`x-vercel-ip-country`, Vercel-native) → `Accept-Language` → fallback
- * "en". Preferensi diletakkan pertama karena merepresentasikan pilihan
- * eksplisit user yang seharusnya menang dibanding heuristik otomatis (geo/
- * Accept-Language) pada kunjungan berikutnya. Task brief awal menuliskan
- * urutan "geo → Accept-Language → preferensi → fallback"; jika Boss Rezi
- * ingin urutan literal tersebut, cukup pindahkan blok `resolveFromCookie`
- * ke akhir sebelum fallback.
+ * `"en"`. Preference comes first because it represents an explicit user choice
+ * that should beat automatic heuristics (geo/Accept-Language) on the next visit.
+ * The initial task brief listed "geo → Accept-Language → preference → fallback";
+ * if Boss Rezi wants that literal order, move the `resolveFromCookie` block
+ * to just before the fallback.
  */
 function resolveFromCookie(request: NextRequest): Locale | null {
   const cookieValue = request.cookies.get(LOCALE_COOKIE)?.value;
@@ -38,7 +37,7 @@ function resolveFromCookie(request: NextRequest): Locale | null {
 function resolveFromGeo(request: NextRequest): Locale | null {
   const country =
     request.headers.get("x-vercel-ip-country") ??
-    // @ts-expect-error -- `geo` tersedia di runtime Vercel Edge, tidak selalu di tipe NextRequest.
+    // @ts-expect-error -- `geo` is available on the Vercel Edge runtime, not always on NextRequest types.
     request.geo?.country ??
     null;
   if (!country) return null;
@@ -78,7 +77,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Path ber-locale tidak di-rewrite (ADR-014). Header hanya untuk `<html lang>` di root layout.
+  // Locale paths are not rewritten (ADR-014). Header is only for `<html lang>` in the root layout.
   const locale = localeFromPathname(pathname);
   if (locale) {
     const requestHeaders = new Headers(request.headers);

@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Titik status lokal (T-034.2). shadcn tidak punya padanan StatusDot Astryx.
+ * Local status dot (T-034.2). shadcn has no Astryx StatusDot equivalent.
  * Pulsa CSS; token success; hormati prefers-reduced-motion.
  */
 export function StatusDot({
