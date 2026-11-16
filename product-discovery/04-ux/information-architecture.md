@@ -80,7 +80,7 @@ Label chrome: **Proses Kerja** (`id`) / **How I Work** (`en`) — ADR-035; route
 ### Contact (modal global, ADR-019 — bukan halaman/route)
 
 1. Ajakan soft + konteks kapan relevan
-2. **Primer:** Email (mailto atau alamat jelas); form singkat (email + message) diizinkan di dalam modal per ADR-019
+2. **Primer:** Email (mailto atau alamat jelas); form singkat (email + message) di modal **mengantar** ke inbox (**ADR-047**); `mailto:` cadangan
 3. **Satelit:** LinkedIn, GitHub
 4. Availability line (bila tidak di Home)
 5. **Tidak di R1:** calendar, WA, Instagram, pricing
@@ -144,7 +144,7 @@ Destination hygiene adalah Must produk (SC6 / M7). Acceptance UX sebelum Enginee
 Sebelum R1 dianggap siap live:
 
 1. **Home** — hero positioning terisi (lede + klaim) + section About (Now + lead)
-2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); LinkedIn & GitHub satelit hanya jika URL valid
+2. **Contact** — **Email primer** wajib terlihat dan berfungsi (`mailto:` atau alamat jelas); form modal mengantar lewat Resend (**ADR-047**); LinkedIn & GitHub satelit hanya jika URL valid
 3. **About** — section di Home (bukan halaman); narasi pribadi (bukan placeholder Lorem)
 4. **Workflow** — hero + prinsip + pipeline Human/AI + ADR Vault (ADR-042)
 5. Jangan ship Home tanpa klaim positioning **atau** Contact tanpa Email — keduanya menutup J2/J3
@@ -194,6 +194,7 @@ Sebelum R1 dianggap siap live:
 * `../02-product/mvp-definition.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`

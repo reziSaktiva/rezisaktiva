@@ -15,7 +15,7 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 # Purpose
 
 * Mendaftar integrasi yang diizinkan di R1
-* Menjaga Contact soft tanpa backend form
+* Menjaga Contact soft: form mengantar lewat Resend (ADR-047); `mailto:` cadangan; tanpa CRM/calendar
 * Menyerahkan detail vendor ke Engineering bila perlu
 
 ---
@@ -24,14 +24,18 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 
 | Integrasi | Jenis | R1 | Catatan |
 | --------- | ----- | -- | ------- |
-| **Email (mailto)** | Protokol klien | Must | Primer Contact (ADR-014) |
+| **Email (mailto)** | Protokol klien | Must | Primer visual + cadangan (ADR-014 / ADR-047) |
 | **LinkedIn** | Tautan keluar | Must (satelit) | Bukan OAuth |
 | **GitHub** | Tautan keluar | Must (satelit) | Bukti teknis; satelit |
 | **Geo / locale redirect** | Edge atau hosting | Must fondasi | Aturan UX ADR-014; vendor di Eng |
 | **Bukti karya (repo/live)** | Tautan keluar | Should | Dari sheet M10, bukan teaser Home (ADR-032) |
 | **Analytics ringan** | Pihak ketiga opsional | Could | Privacy-aware; bukan SoT persona |
-| Form modal client-side | Client-side (email + message) | Must (dalam Contact modal, ADR-019) | Tanpa backend wajib; bisa mailto atau submit ringan |
-| Form backend berat / calendar | — | Out R1 | Could produk; butuh ADR bila Must |
+| **Resend** | API transactional email | Must (Validation, ADR-047) | Form modal → Route Handler; kunci server |
+| Form modal client-side | Overlay UI | Must (ADR-019) | Submit mengantar lewat Resend (ADR-047) |
+| Form backend berat / calendar | — | Out | Calendar tetap Could; form Resend bukan CRM |
+| CMS / headless | — | Out | Opsi C ditolak |
+| WA / Instagram API | — | Out R1 | ADR-014 |
+| Auth provider | — | Out | ADR-011 |
 | CMS / headless | — | Out | Opsi C ditolak |
 | WA / Instagram API | — | Out R1 | ADR-014 |
 | Auth provider | — | Out | ADR-011 |
@@ -51,6 +55,7 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 | Kasus | Respons |
 | ----- | ------- |
 | Mailto tidak tersedia | Alamat email terlihat & bisa disalin |
+| Resend / Handler gagal | Form tampilkan gagal; `mailto:` + salin tetap |
 | Tautan satelit/sheet mati | Jangan tampilkan item sampai URL diperbaiki (content readiness) |
 | Geo deteksi gagal | Fallback `Accept-Language` → lalu `en` bila tidak ada sinyal ID (ADR-014) |
 | Analytics gagal/diblokir | Situs tetap berfungsi penuh tanpa analytics |
@@ -61,8 +66,9 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 
 | Keputusan | Pilihan |
 | --------- | ------- |
-| Integrasi R1 | Mailto + form modal client-side (ADR-019) + satelit + locale redirect (+ analytics opsional) |
-| Backend form / calendar | Tidak di R1 |
+| Integrasi R1 | Mailto + satelit + locale redirect (+ analytics opsional) |
+| Form Contact | Resend + Route Handler (ADR-047); bukan CMS |
+| Backend form / calendar | Calendar tidak; form Resend bukan CRM |
 | CMS | Tidak |
 
 ---
@@ -70,7 +76,7 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 # Success Criteria
 
 1. Inventory integrasi selaras soft CTA & i18n
-2. Tidak mensyaratkan API server produk
+2. Tidak mensyaratkan API server **produk** (Contact Resend = pengecualian infrastruktur, ADR-047)
 3. Engineering punya daftar jelas apa yang boleh di-wire
 
 ---
@@ -83,6 +89,7 @@ R1 **hampir tanpa integrasi runtime**. Tidak ada payment, CRM, auth provider, at
 * `../04-ux/information-architecture.md`
 * `../03-user/insights.md`
 * `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
 * `../../project-manager/PROJECT_STATE.md`

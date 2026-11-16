@@ -14,6 +14,23 @@ Log diskusi penting antar sesi. Append entri baru di bagian atas (setelah format
 
 ---
 
+## [2026-11-16] — Kanonis www, bukan vercel.app
+**Phase:** Validation
+**Summary:** Google menampilkan `rezisaktiva.vercel.app`. HTML production menulis canonical, JSON-LD, dan sitemap ke `http://localhost:3000` karena `NEXT_PUBLIC_SITE_URL` tidak terpasang saat build. Apex sudah berakhir di `www`.
+**Key Decision/Insight:** **ADR-048** — host kanonis `https://www.rezisaktiva.space`. Build Vercel tidak lagi memakai localhost atau hostname Vercel. `rezisaktiva.vercel.app` redirect permanen ke www.
+**Impact:** `lib/site-url.ts`, `next.config.ts`, deployment + environment docs. Search Console setelah deploy.
+
+## [2026-09-15] — Form Contact → Resend
+**Phase:** Validation
+**Summary:** Boss Rezi ingin pesan form sampai inbox. Ada opsi gratis (Resend API vs Web3Forms). Dipilih Resend.
+**Key Decision/Insight:** **ADR-047** — POST Route Handler; From domain `rezisaktiva.space`; To Gmail konten; mailto cadangan. Bukan Server Action di page.
+**Impact:** `decisions/ADR-047-contact-form-resend.md`, 02/04/05/06, T-059.
+
+## [2026-09-15] — Form Contact vs kirim email sungguhan
+**Phase:** Validation
+**Summary:** Boss Rezi ingin membahas bagaimana pengunjung mengirim email lewat form Contact. Saat ini submit hanya validasi klien + label “Terkirim”; tidak ada backend. Jalur inbound yang benar-benar bekerja: tautan `mailto:`, salin alamat, LinkedIn/GitHub.
+**Key Decision/Insight:** Dikunci **ADR-047** (lihat entri di atas). Form UI-only “Terkirim” palsu tidak lagi rencana.
+
 ## [2026-09-15] — Hover CTA footer tanpa nampan muted
 **Phase:** Validation
 **Summary:** Boss Rezi minta hover tombol “Hubungi saya” di pita footer diperbaiki. Variant ghost shadcn memakai `hover:bg-muted` (#141418) sehingga muncul chip gelap di atas kanvas body.

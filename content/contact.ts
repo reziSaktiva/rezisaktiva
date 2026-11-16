@@ -25,7 +25,9 @@ export interface ContactCopy {
   messageLabel: string;
   messagePlaceholder: string;
   submit: string;
+  sending: string;
   sent: string;
+  failed: string;
   close: string;
   detailsLabel: string;
   copyLabel: string;
@@ -43,7 +45,9 @@ export const CONTACT_COPY: Record<Locale, ContactCopy> = {
     messageLabel: "Pesan",
     messagePlaceholder: "Ceritakan sedikit soal project kamu",
     submit: "Kirim",
+    sending: "Mengirim…",
     sent: "Terkirim",
+    failed: "Tidak terkirim. Salin email di samping, atau coba lagi.",
     close: "Tutup",
     detailsLabel: "Detail kontak",
     copyLabel: "Salin email",
@@ -60,7 +64,9 @@ export const CONTACT_COPY: Record<Locale, ContactCopy> = {
     messageLabel: "Message",
     messagePlaceholder: "Tell me more about your project",
     submit: "Submit",
+    sending: "Sending…",
     sent: "Sent",
+    failed: "Not sent. Copy the email beside this, or try again.",
     close: "Close",
     detailsLabel: "Contact details",
     copyLabel: "Copy email",

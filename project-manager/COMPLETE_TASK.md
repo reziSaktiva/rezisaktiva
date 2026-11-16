@@ -14,9 +14,26 @@ Format entri:
 - ...
 ```
 
-## [2026-09-15]
+## [2026-11-16]
 ### Fixed
-- PR #77 review: redact PII di screenshot admin; dismiss locale dropdown di hamburger (Escape + text node); tautan live Minerank termasuk smc.auction; URL di copy case/sheet jadi tautan; tes EN + file galeri.
+- **T-059** — form Contact: batas 5 kiriman per IP / 10 menit; honeypot `rz_hp` (bukan `company`, supaya tidak terisi otomatis lalu mengaku terkirim). Tes mencakup secret absen, penolakan Resend, dan honeypot tanpa kirim.
+
+## [2026-11-16]
+### Fixed
+- **ADR-048** — canonical, JSON-LD, sitemap, dan robots di build Vercel memakai `https://www.rezisaktiva.space`. `rezisaktiva.vercel.app` diarahkan permanen ke host itu. Production yang live sebelumnya menulis `http://localhost:3000`.
+
+## [2026-11-16]
+### Added
+- **T-059.3** — `POST /api/contact` mengantar lewat Resend. Validasi email/pesan, honeypot, Reply-To pengunjung, To = email kontak. Tanpa secret, jawaban 503 dan isi pesan tidak dicatat.
+- **T-059.4** — Modal Contact: Mengirim / Terkirim hanya setelah server menerima / gagal. `mailto:` dan salin tetap terlihat.
+
+### Changed
+- Fokus **T-059**: sisa **T-059.2** (domain + Preview/lokal; Production sudah diisi) dan **T-059.5** (bukti masuk inbox setelah deploy).
+
+## [2026-09-15]
+### Added
+- **ADR-047** / **T-059.1**: form Contact mengantar email lewat Resend (Route Handler; halaman tetap SSG). Task **T-059.2–T-059.5** terbuka.
+
 
 ## [2026-09-15]
 ### Fixed

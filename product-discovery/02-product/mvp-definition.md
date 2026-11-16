@@ -33,7 +33,7 @@ Selaras dual north star: brand recall/clarity + jalur inbound berkualitas (`succ
 | **Home** | Positioning jelas (lede + klaim) + section About `#about` + pita footer; arah ke Workflow / Contact |
 | **About** | Section Home (bukan halaman): sapaan + Now + lead + artwork (ADR-040 / ADR-039). Chip chrome: Tentang / About (ADR-035). `/about` redirect. Tanpa `#proof` |
 | **Workflow** | Cara kerja: prinsip, pipeline Human vs AI, ADR Vault (ADR-042). Label chrome: Proses Kerja / How I Work. Route `/[locale]/workflow` (ADR-035) |
-| **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung (LinkedIn, dll.); tanpa pricing |
+| **Contact** | Soft CTA — modal global (ADR-019), bukan halaman/route terpisah; email dan/atau tautan langsung; form mengantar lewat Resend (**ADR-047**); tanpa pricing |
 | **Work index (M9)** | Halaman katalog karya `/[locale]/projects` — Must R1 (ADR-020). Presence bukti karya (M4 teaser Home retired, ADR-032) |
 | **Project sheet (M10)** | Overlay dari bawah (bukan route); tile index membuka sheet — **Must R1 (ADR-027)** |
 | **Navigasi** | Tentang / About · Proses Kerja / How I Work · Proyek (M9) sebagai chip; Contact sebagai tombol pembuka modal (ADR-019) + switcher bahasa; tanpa chip Home (ADR-034); mobile <1024px pakai hamburger (override ADR-020) |
@@ -127,6 +127,7 @@ MVP dianggap cukup jika:
 * `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
 * `../../project-manager/decisions/ADR-017-motion-as-identity-r1.md` — motion sebagai identitas visual
 * `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
 * `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
 * `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
 * `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`

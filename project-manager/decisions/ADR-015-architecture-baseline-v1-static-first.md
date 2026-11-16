@@ -28,6 +28,10 @@ Accepted
 5. Framework, hosting, CI, tokens → **06-engineering** (T-006); harus menghormati bentuk A.
 6. Perubahan material setelah ini → **ADR baru** + revisi dokumen terdampak.
 
+### Update — 2026-09-15 (ADR-047)
+
+Halaman tetap SSG. **Pengecualian:** `POST` Contact → Resend. Bukan CMS, bukan SSR default, bukan API bisnis.
+
 ### Reason
 
 - Portofolio Hybrid lean publik tidak membutuhkan DB, auth, jobs, atau realtime untuk memenuhi dual north star.
