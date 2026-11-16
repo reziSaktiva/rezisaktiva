@@ -2,13 +2,13 @@ import { Resend } from "resend";
 import { CONTACT_EMAIL } from "@/content/contact";
 import {
   allowContactAttempt,
+  CONTACT_EMAIL_SUBJECT,
   contactClientKey,
   handleContactPost,
 } from "@/lib/contact-mail";
 
 export const runtime = "nodejs";
 
-const SUBJECT = "Message from rezisaktiva site";
 const contactHits = new Map<string, number[]>();
 
 export async function POST(request: Request) {
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     apiKey: process.env.RESEND_API_KEY,
     from: process.env.RESEND_FROM,
     to: CONTACT_EMAIL,
-    subject: SUBJECT,
+    subject: CONTACT_EMAIL_SUBJECT,
     send: async (message) => {
       const resend = new Resend(message.apiKey);
       const { error } = await resend.emails.send({

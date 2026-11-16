@@ -4,6 +4,13 @@
  */
 export const CONTACT_HONEYPOT_FIELD = "rz_hp";
 
+/**
+ * Resend inbox subject for Contact form mail (ADR-047).
+ * Kept Indonesian so Boss Rezi can sort/filter the operational inbox; visitor-facing
+ * locale copy stays bilingual in `content/`.
+ */
+export const CONTACT_EMAIL_SUBJECT = "Pesan dari situs rezisaktiva";
+
 /** Maximum submissions per IP address within one window. */
 export const CONTACT_RATE_LIMIT = 5;
 export const CONTACT_RATE_WINDOW_MS = 10 * 60 * 1000;

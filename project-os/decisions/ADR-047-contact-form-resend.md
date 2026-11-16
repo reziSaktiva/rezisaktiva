@@ -23,6 +23,7 @@ Accepted
 7. **Still forbidden in Contact:** calendar, WA, Instagram, pricing, public CV download (ADR-043).
 8. **Spam:** server validation (email + message length) + honeypot. Captcha only if real spam. Do not log message body in Vercel.
 9. Implementation = **T-059**.
+10. **Inbox subject** stays Indonesian (`CONTACT_EMAIL_SUBJECT` = `Pesan dari situs rezisaktiva`) for operational sorting/filtering. Visitor-facing Contact UI copy remains bilingual in `content/`.
 
 This **does not** supersede ADR-019 for modal/form UI. It locks message *delivery*. M8 (form portion) rises from Could to Must; booking/calendar stays Could.
 
