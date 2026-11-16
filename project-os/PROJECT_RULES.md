@@ -66,7 +66,7 @@ Only change them when there is a **structural** change, and record the change in
 
 Includes:
 
-* Semua `README.md`
+* All `README.md` files
 * `PROJECT_OVERVIEW.md`
 * `ARCHITECTURE_OVERVIEW.md`
 * `PROJECT_RULES.md`

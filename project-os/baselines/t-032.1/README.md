@@ -1,32 +1,32 @@
-# Baseline visual T-032.1
+# Visual baseline T-032.1
 
-Acuan **T-037.6**. Bukan mockup HTML. Sumber: kode produksi `http://localhost:3000` (locale `en`), cookie `rz-theme`, `prefers-reduced-motion: reduce`. Diambil 2026-09-01.
+Reference for **T-037.6**. Not an HTML mockup. Source: production code at `http://localhost:3000` (locale `en`), cookie `rz-theme`, `prefers-reduced-motion: reduce`. Captured 2026-09-01.
 
 ## Viewport
 
-| Kunci nama file | Ukuran |
-| --------------- | ------ |
+| Filename key | Size |
+| ------------ | ---- |
 | `320` | 320 × 720 |
 | `desktop` | 1440 × 900 |
 
-Halaman = `fullPage`. Overlay (Contact, Quick Info, project sheet) = viewport saja.
+Pages = `fullPage`. Overlays (Contact, Quick Info, project sheet) = viewport only.
 
-## File
+## Files
 
-Pola: `{light\|dark}-{320\|desktop}-{home\|about\|work\|contact\|quick-info\|project-sheet}.png`
+Pattern: `{light\|dark}-{320\|desktop}-{home\|about\|work\|contact\|quick-info\|project-sheet}.png`
 
-Project sheet = tile pertama di `/en/projects` (Social Media Management Platform).
+Project sheet = first tile on `/en/projects` (Social Media Management Platform).
 
-Capture overlay menunggu `#ct-panel`, `#qi-panel`, `.ps-panel` (bukan `.ct-wrap.is-open` / `.qi-wrap.is-open` / `.ps-wrap.is-open` — primitf shadcn T-035).
+Overlay capture waits for `#ct-panel`, `#qi-panel`, `.ps-panel` (not `.ct-wrap.is-open` / `.qi-wrap.is-open` / `.ps-wrap.is-open` — shadcn primitives from T-035).
 
-Token computed: [`computed-tokens.json`](computed-tokens.json). Ringkasan juga di `COMPLETE_TASK.md` (entri 2026-09-01 T-032.1).
+Computed tokens: [`computed-tokens.json`](computed-tokens.json). Summary also in `COMPLETE_TASK.md` (2026-09-01 T-032.1 entry).
 
-## Ulangi capture
+## Re-run capture
 
-Dev server harus hidup. Playwright tidak jadi dependency repo:
+The dev server must be running. Playwright is not a repo dependency:
 
 ```bash
 PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs BASE_URL=http://localhost:3000 node capture.mjs
 ```
 
-Default `PLAYWRIGHT_MODULE` menunjuk install sementara `/tmp/pw-t032` (boleh diganti).
+Default `PLAYWRIGHT_MODULE` points at a temporary install `/tmp/pw-t032` (override as needed).

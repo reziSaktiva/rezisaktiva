@@ -2,9 +2,9 @@
 
 > **Frozen historical archive (ADR-049).** Do not translate this file. Do not add new entries here unless Boss Rezi explicitly asks for legacy changelog work; use `project-os/tickets/`, `project-os/AVAILABLE_TICKETS.md`, and git history for new work.
 
-⚠️ **Peringatan untuk AI:** Jangan membaca riwayat di bawah kecuali Boss Rezi memerintahkan secara eksplisit. Selalu **append entri baru di bagian paling atas** (setelah header ini).
+⚠️ **Warning for AI:** Do not read the history below unless Boss Rezi explicitly orders it. Always **append new entries at the very top** (after this header).
 
-Format entri:
+Entry format:
 
 ```
 ## [YYYY-MM-DD]

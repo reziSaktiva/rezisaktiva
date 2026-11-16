@@ -15,7 +15,7 @@ Accepted
 ### Decision
 
 1. Rename the former Project Manager folder to `project-os/`. This amends ADR-001's operating-system folder name while keeping `product-discovery/` as the product Source of Truth and `.cursor/skills/` as the only project skill location.
-2. Replace `AVAILABLE_TICKETS.md` plus `tickets/` with `AVAILABLE_TICKETS.md` and `tickets/`. `AVAILABLE_TICKETS.md` lists unfinished work only; `tickets/` keeps both open and closed ticket history.
+2. Replace `TASKS.md` plus the old `tasks/` phase folders with `AVAILABLE_TICKETS.md` and `tickets/`. `AVAILABLE_TICKETS.md` lists unfinished work only; `tickets/` keeps both open and closed ticket history.
 3. Keep task IDs `T-001` through `T-059` unchanged. The next new task ID is `T-060`; `T-059` remains the open Contact to Resend product ticket.
 4. Add `specs/` for multi-session programs. This English Project OS program is `S-001`; one-session work does not require a spec.
 5. Add a short `context/` pointer layer in a later ticket. It must index existing sources, not duplicate product baselines.

@@ -1,9 +1,9 @@
 # content/
 
-Source of Truth konten situs portofolio (MD/MDX atau setara).
+Source of Truth for portfolio site content (MD/MDX or equivalent modules).
 
-* Dibaca saat build (SSG) — bukan CMS/database runtime.
-* Bukan tempat untuk docs discovery (`product-discovery/`) atau status kerja (`project-os/`).
-* Isi konten R1: dikunci lewat **T-021** (`project-os/tickets/r1.md`, diskusi dengan Boss Rezi), lalu ditulis ke folder ini.
+* Read at build time (SSG) — not a runtime CMS/database.
+* Not the place for discovery docs (`product-discovery/`) or work status (`project-os/`).
+* R1 content was locked via **T-021** (`project-os/tickets/r1.md`, discussion with Boss Rezi), then written into this folder.
 
-Acuan: `product-discovery/06-engineering/monorepo-setup.md`, ADR-016.
+References: `product-discovery/06-engineering/monorepo-setup.md`, ADR-016.

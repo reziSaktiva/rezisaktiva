@@ -1,33 +1,33 @@
 # rezisaktiva
 
-Website portofolio pribadi **Rezi Saktiva**.
+Personal portfolio site for **Rezi Saktiva**.
 
-Project ini dikelola dengan **Project Operating System**:
+This project is managed with a **Project Operating System**:
 
-| Folder | Peran |
-| ------ | ----- |
-| [`product-discovery/`](product-discovery/) | **Apa** yang dibangun — business → engineering |
-| [`project-os/`](project-os/) | **Bagaimana** dikerjakan — aturan, status, ADR, task |
-| [`.cursor/skills/`](.cursor/skills/) | Skills agent Cursor untuk navigasi Project OS |
+| Folder | Role |
+| ------ | ---- |
+| [`product-discovery/`](product-discovery/) | **What** is built — business → engineering |
+| [`project-os/`](project-os/) | **How** work is done — rules, status, ADRs, tickets |
+| [`.cursor/skills/`](.cursor/skills/) | Cursor agent skills for navigating Project OS |
 
-## Status saat ini
+## Current status
 
-Lihat Snapshot di [`project-os/PROJECT_STATE.md`](project-os/PROJECT_STATE.md).
+See the Snapshot in [`project-os/PROJECT_STATE.md`](project-os/PROJECT_STATE.md).
 
-## Mulai di sini
+## Start here
 
-1. Baca [`AGENTS.md`](AGENTS.md) (pintu masuk AI agent).
-2. Isi discovery bersama mulai dari [`product-discovery/01-business/product-vision.md`](product-discovery/01-business/product-vision.md).
+1. Read [`AGENTS.md`](AGENTS.md) (AI agent entry door).
+2. Fill discovery together starting from [`product-discovery/01-business/product-vision.md`](product-discovery/01-business/product-vision.md).
 
-## Struktur app (Bootstrap)
+## App structure (Bootstrap)
 
-| Folder | Peran |
-| ------ | ----- |
+| Folder | Role |
+| ------ | ---- |
 | `app/` | Next.js App Router |
-| `content/` | SoT konten situs (MD/MDX) |
-| `public/` | Aset statis |
-| `private/` | Materi sensitif (tidak di-bundle) |
+| `content/` | Site content Source of Truth (MD/MDX or equivalent modules) |
+| `public/` | Static assets |
+| `private/` | Sensitive material (not bundled) |
 
-## Catatan
+## Notes
 
-App Next.js + pnpm sudah di-scaffold di root (Bootstrap). Status & fokus kerja: lihat Snapshot di [`project-os/PROJECT_STATE.md`](project-os/PROJECT_STATE.md).
+The Next.js + pnpm app is already scaffolded at the repo root (Bootstrap). Status and work focus: see the Snapshot in [`project-os/PROJECT_STATE.md`](project-os/PROJECT_STATE.md).

@@ -12,7 +12,7 @@ theme/rezisaktiva.d.ts
 theme/rezisaktiva.variants.d.ts
 *.tsbuildinfo
 
-# Dokumentasi & konten non-app-code — bukan scope format DX tooling (dx-tooling.md)
+# Docs and non-app content — outside DX tooling format scope (dx-tooling.md)
 product-discovery/
 project-os/
 private/

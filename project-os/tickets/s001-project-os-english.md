@@ -238,7 +238,7 @@ This file tracks the multi-session work approved in ADR-049. Public site locale 
 
 - Translated developer comments/strings in `app/`, `lib/`, `proxy.ts`, and file-header comments in `content/*.ts` (locale copy objects unchanged).
 - `design-mockups/` and `content/` locale strings left untouched.
-- `app/api/contact/route.ts` Resend email subject set to English (`Message from rezisaktiva site`) — confirm with Boss Rezi if ID subject is preferred for inbox sorting.
+- Resend inbox subject remains Indonesian via `CONTACT_EMAIL_SUBJECT` (`Pesan dari situs rezisaktiva`) for operational sorting; covered by unit test.
 
 ---
 
@@ -261,4 +261,4 @@ This file tracks the multi-session work approved in ADR-049. Public site locale 
 - Agent docs / process skills / always-on rules scanned clean of Indonesian prose.
 - Fixed `PROJECT_STATE.md` Snapshot (was still pointing Project OS next work at T-063). Added English language banners on `CONVERSATIONS.md` and `BRAINSTORM.md` (past entries unchanged). Removed T-072 helper artifacts (`.r1-*`, `.translation-*`).
 - **T-059** still open in `tickets/r2.md` for Contact → Resend (T-059.2, T-059.5). Open queue is T-059 only.
-- Open product note from T-073: Resend subject is currently English (`Message from rezisaktiva site`); Boss Rezi may restore Indonesian for inbox sorting.
+- **PR #85 review follow-up:** finished remaining English gaps (`README.md`, `content/README.md`, `R1_COMPLETE.md`, baseline README, `PROJECT_RULES` leftover, `COMPLETE_TASK` AI warning header, `.prettierignore` comment); fixed ADR-049 decision #2 wording (`TASKS.md` → tickets); restored Indonesian Resend subject as `CONTACT_EMAIL_SUBJECT` with a unit test.

@@ -1,28 +1,28 @@
-# R1 sudah selesai
+# R1 is complete
 
-Ringkasan beku: **R1 Hybrid lean** (kerangka clarity) sudah terkirim. Bukan living status — fase aktif tetap di [`PROJECT_STATE.md`](PROJECT_STATE.md). Backlog: [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md).
+Frozen summary: **R1 Hybrid lean** (clarity frame) has shipped. Not living status — the active phase stays in [`PROJECT_STATE.md`](PROJECT_STATE.md). Queue: [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md).
 
 | Field | Value |
 | ----- | ----- |
 | Exit | **T-018** — 2026-08-31 |
-| Polish terakhir | **T-055** / v20 — 2026-09-11 (navbar); **T-054** / v19 — 2026-09-14 (Workflow) |
-| Backlog R1 | **T-001 … T-055** tertutup (✅ atau ❌) |
-| Dibatalkan | **T-023** unduh CV publik (**ADR-043**) — ID tidak didaur ulang |
-| Bukan R1 | Halaman case `/work/[slug]`, blog, CMS, pricing — R2 butuh ADR |
+| Last polish | **T-055** / v20 — 2026-09-11 (navbar); **T-054** / v19 — 2026-09-14 (Workflow) |
+| R1 backlog | **T-001 … T-055** closed (✅ or ❌) |
+| Cancelled | **T-023** public CV download (**ADR-043**) — ID not reused |
+| Not R1 | Case pages `/work/[slug]`, blog, CMS, pricing — R2 needs an ADR |
 
-## Yang live
+## What is live
 
-- **Home** — lede, h1 dua baris, section About `#about`, pita footer
-- **Workflow** — `/workflow` decision-driven + latar Cathedral Breath
-- **Work index** — `/projects` + project sheet dari bawah
-- **Contact** — modal global (`mailto:` + sosial); tanpa unduh CV
-- **Quick Info** — sheet kanan
-- **Chrome** — nav, locale, meta/SEO/OG; default dark (light hold)
+- **Home** — lede, two-line h1, About section `#about`, footer ribbon
+- **Workflow** — `/workflow` decision-driven + Cathedral Breath background
+- **Work index** — `/projects` + bottom project sheet
+- **Contact** — global modal (`mailto:` + social); no CV download
+- **Quick Info** — right sheet
+- **Chrome** — nav, locale, meta/SEO/OG; default dark (light on hold)
 
 ## Exit criteria (T-018)
 
-Reviewer singkat bisa merangkum product builder + fullstack + AI edge; Contact soft path jelas; situs layak jadi link utama; scope tetap Hybrid lean.
+A short reviewer can summarize product builder + fullstack + AI edge; Contact soft path is clear; the site is fit as the primary link; scope stays Hybrid lean.
 
-## Berikutnya
+## Next
 
-**T-056** / magnet R2 (**ADR-044**) ✅. Fase aktif: Validation — [`PROJECT_STATE.md`](PROJECT_STATE.md).
+**T-056** / R2 magnet (**ADR-044**) ✅. Active phase: Validation — [`PROJECT_STATE.md`](PROJECT_STATE.md).
