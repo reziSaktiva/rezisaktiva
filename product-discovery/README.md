@@ -1,23 +1,23 @@
 # Product Discovery
 
-Product Discovery adalah fase untuk memahami **apa yang akan dibangun, mengapa harus dibangun, dan bagaimana solusi tersebut memberikan nilai** — dalam konteks website portofolio pribadi **rezisaktiva**.
+Product Discovery is the phase for understanding **what will be built, why it should be built, and how the solution creates value** in the context of the personal portfolio website **rezisaktiva**.
 
-Pada fase ini **tidak ada implementasi kode**. Seluruh fokus diarahkan pada riset, perencanaan, dokumentasi, dan pengambilan keputusan agar proses pengembangan berjalan lebih cepat dan meminimalkan perubahan besar di kemudian hari.
+This phase has **no code implementation**. The entire focus is research, planning, documentation, and decision-making so the development process can move faster and minimize major changes later.
 
 ---
 
 # Objectives
 
-Tujuan utama Product Discovery adalah:
+The main objectives of Product Discovery are:
 
-* Memahami tujuan dan positioning portofolio.
-* Menentukan audiens yang ingin dijangkau.
-* Mendefinisikan ruang lingkup website (halaman, konten, interaksi).
-* Menyusun prioritas untuk MVP.
-* Merancang pengalaman pengguna (UX).
-* Menentukan arsitektur yang sesuai (bila diperlukan).
-* Mendokumentasikan keputusan teknis sebelum implementasi.
-* Menyediakan dokumentasi sebagai acuan implementasi.
+* Understand the portfolio goals and positioning.
+* Define the audience to reach.
+* Define the website scope (pages, content, interactions).
+* Set MVP priorities.
+* Design the user experience (UX).
+* Define the appropriate architecture when needed.
+* Document technical decisions before implementation.
+* Provide documentation as the implementation reference.
 
 ---
 
@@ -37,7 +37,7 @@ Architecture
 Engineering
 ```
 
-Setiap tahap harus diselesaikan terlebih dahulu sebelum melanjutkan ke tahap berikutnya.
+Each stage must be completed before moving to the next one.
 
 ---
 
@@ -60,67 +60,67 @@ product-discovery/
 
 ## 01 — Business
 
-Fokus pada tujuan, positioning, dan arah portofolio sebagai “produk”.
+Focuses on the goals, positioning, and direction of the portfolio as a “product”.
 
 ## 02 — Product
 
-Fokus pada definisi scope website, MVP, dan prioritas fitur/halaman.
+Focuses on defining the website scope, MVP, and feature/page priorities.
 
 ## 03 — User
 
-Fokus pada siapa yang mengunjungi/menggunakan portofolio.
+Focuses on who visits/uses the portfolio.
 
 ## 04 — UX
 
-Fokus pada information architecture, navigasi, dan pola layar.
+Focuses on information architecture, navigation, and screen patterns.
 
 ## 05 — Architecture
 
-Fokus pada arsitektur sistem secara konseptual (sesuai kompleksitas yang dipilih).
+Focuses on the conceptual system architecture, according to the chosen complexity.
 
 ## 06 — Engineering
 
-Fokus pada keputusan teknis sebelum implementasi dimulai.
+Focuses on technical decisions before implementation begins.
 
 ---
 
 # Documentation Rules
 
-* Setiap keputusan penting dicatat pada `../project-manager/PROJECT_STATE.md` dan `../project-manager/DECISIONS.md` sesuai kebutuhan.
-* Hindari implementasi kode sebelum dokumentasi utama selesai.
-* Semua perubahan melalui diskusi dan keputusan yang jelas.
-* Dokumentasi menjadi Source of Truth sebelum implementasi dimulai.
-* README fase **tidak** memuat status ✅/⏳/progress % — itu milik `PROJECT_STATE.md`.
+* Every important decision is recorded in `../project-os/PROJECT_STATE.md` and `../project-os/DECISIONS.md` as needed.
+* Avoid code implementation before the main documentation is complete.
+* All changes go through clear discussion and decisions.
+* Documentation becomes the Source of Truth before implementation begins.
+* Phase READMEs **do not** contain ✅/⏳/progress % status — that belongs in `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Fase Product Discovery dianggap selesai apabila:
+The Product Discovery phase is considered complete when:
 
-* Business Baseline v1.0 ditetapkan (lihat ADR-009).
-* Product Baseline v1.0 ditetapkan (lihat ADR-012).
-* User Baseline v1.0 ditetapkan (lihat ADR-013).
-* UX Baseline v1.0 ditetapkan (lihat ADR-014).
-* Architecture Baseline v1.0 ditetapkan (lihat ADR-015).
-* Engineering Planning Baseline v1.0 ditetapkan (lihat ADR-016).
-* Keputusan penting tercatat di `DECISIONS.md`.
-* Dokumentasi siap menjadi acuan implementasi.
+* Business Baseline v1.0 is established (see ADR-009).
+* Product Baseline v1.0 is established (see ADR-012).
+* User Baseline v1.0 is established (see ADR-013).
+* UX Baseline v1.0 is established (see ADR-014).
+* Architecture Baseline v1.0 is established (see ADR-015).
+* Engineering Planning Baseline v1.0 is established (see ADR-016).
+* Important decisions are recorded in `DECISIONS.md`.
+* Documentation is ready to serve as the implementation reference.
 
-Status penyelesaian fase aktif ada di `PROJECT_STATE.md` (bukan di README ini).
+Active phase completion status is in `PROJECT_STATE.md` (not in this README).
 
 ---
 
 # Next Phase
 
-Setelah Exit Criteria terpenuhi, urutan historis project: **Repository & Bootstrap**, lalu **Development**. Status fase aktif ada di `PROJECT_STATE.md` (bukan di README ini).
+After the Exit Criteria are met, the project’s historical sequence is: **Repository & Bootstrap**, then **Development**. Active phase status is in `PROJECT_STATE.md` (not in this README).
 
 ---
 
 # Related Documents
 
-* `../project-manager/README.md`
-* `../project-manager/PROJECT_OVERVIEW.md`
-* `../project-manager/PROJECT_RULES.md`
-* `../project-manager/PROJECT_STATE.md`
-* `../project-manager/DECISIONS.md`
+* `../project-os/README.md`
+* `../project-os/PROJECT_OVERVIEW.md`
+* `../project-os/PROJECT_RULES.md`
+* `../project-os/PROJECT_STATE.md`
+* `../project-os/DECISIONS.md`

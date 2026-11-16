@@ -1,99 +1,99 @@
 # Navigation Patterns
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-10). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-10). Material changes after this require a new ADR.
 
-Dokumen ini menetapkan pola navigasi website portofolio **rezisaktiva**.
+This document establishes navigation patterns for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-Navigasi R1 **lean dan selalu tersedia**: destinasi konten + switcher bahasa berbasis path. Tidak ada mega-menu, tidak ada nav terpisah untuk hiring.
+R1 navigation is **lean and always available**: content destinations + path-based language switcher. No mega-menu, no separate nav for hiring.
 
-> **Override (2026-08-15, ADR-020; 2026-08-16, ADR-021 / ADR-022; label + path 2026-09-01):** dokumen ini di-override sebagian. Nav termasuk **Proyek / Projects** (Work index, M9, path `/projects`); Contact bukan link nav melainkan tombol modal (ADR-019); mobile <1024px hamburger. Toggle tema Must R1 (ADR-021). Quick info = overlay sekunder (ADR-022). `/[locale]/work` redirect permanen ke `/projects`.
+> **Override (2026-08-15, ADR-020; 2026-08-16, ADR-021 / ADR-022; label + path 2026-09-01):** this document is partially overridden. Nav includes **Proyek / Projects** (Work index, M9, path `/projects`); Contact is not a nav link but a modal button (ADR-019); mobile <1024px hamburger. Theme toggle is Must R1 (ADR-021). Quick info = secondary overlay (ADR-022). `/[locale]/work` permanently redirects to `/projects`.
 
 ---
 
 # Purpose
 
-* Menjamin F1–F6 tidak tersumbat chrome
-* Menyelaraskan M5 (Language) & M6 (Site chrome) dengan IA
-* Memberi acceptance mobile vs desktop tanpa visual token final
+* Ensure F1–F6 are not blocked by chrome
+* Align M5 (Language) & M6 (Site chrome) with IA
+* Provide mobile vs desktop acceptance without final visual tokens
 
 ---
 
 # Primary Navigation
 
-| Item | Target | Catatan |
-| ---- | ------ | ------- |
-| Brand / nama | `/[id/en]/` (Home) | Nama chrome `REZI SAKTIVA` font display; hanya nama yang tautan. Pekerjaan chrome `Web Engineer` di samping, bukan tautan (ADR-034) |
-| Home | `/[id/en]/` | **Tidak di chip** (ADR-034); destinasi = nama di header |
-| About | `/[id/en]#about` | Label chrome: **ID "Tentang"** / **EN "About"** (ADR-040; section Home) |
-| Workflow | `/[id/en]/workflow` | Label chrome: **ID "Proses Kerja"** / **EN "How I Work"** (ADR-035; label lama About) |
-| Proyek / Projects (Work index, M9) | `/[id/en]/projects` | Path 2026-09-01; `/work` redirect |
-| Contact | Tombol pembuka modal (ADR-019) | **Bukan link nav** (override ADR-020); selalu terlihat di luar hamburger, ≤1 ketukan dari halaman manapun |
-| Language switcher | Sibling path locale | Label jelas `ID` / `EN` (atau setara); selalu terlihat; satu ketukan |
+| Item | Target | Notes |
+| ---- | ------ | ----- |
+| Brand / name | `/[id/en]/` (Home) | Chrome name `REZI SAKTIVA` display font; only the name is a link. Chrome job `Web Engineer` beside it, not a link (ADR-034) |
+| Home | `/[id/en]/` | **Not a chip** (ADR-034); destination = name in header |
+| About | `/[id/en]#about` | Chrome label: **ID "Tentang"** / **EN "About"** (ADR-040; Home section) |
+| Workflow | `/[id/en]/workflow` | Chrome label: **ID "Proses Kerja"** / **EN "How I Work"** (ADR-035; old About label) |
+| Proyek / Projects (Work index, M9) | `/[id/en]/projects` | Path 2026-09-01; `/work` redirects |
+| Contact | Modal-opening button (ADR-019) | **Not a nav link** (ADR-020 override); always visible outside hamburger, ≤1 tap from any page |
+| Language switcher | Sibling locale path | Clear label `ID` / `EN` (or equivalent); always visible; one tap |
 
-**Penempatan:** header/sticky top pada desktop; pola yang sama di mobile (lihat bawah).
+**Placement:** header/sticky top on desktop; same pattern on mobile (see below).
 
-**State:** halaman aktif ditandai (aria-current / gaya aktif — detail Eng).
+**State:** active page marked (aria-current / active style — Eng detail).
 
 ---
 
 # Secondary Navigation
 
-| Area | Isi | Peran |
-| ---- | --- | ----- |
-| **In-page (Home)** | Arah soft lewat chrome (nav + tombol Contact) + pita footer setelah About | Memperkuat next step tanpa section Contact di tengah halaman (ADR-041) |
-| **Footer** | Brand singkat · pita Contact · **LinkedIn** · **GitHub** · legal ringan | Satelit & hygiene; **bukan** pengganti Contact primer. Ada di Home, Workflow, Work index (ADR-041) |
-| **Work index tiles** | Membuka project sheet (M10) | Overlay dari bawah (ADR-027); tautan case di dalam sheet (**ADR-044**); Live sekunder; tanpa Repo |
-| **Quick info panel (M13)** | Tab tepi kanan → drawer: bio, Services, Tools, Proyek/Projects, Email, Links | Overlay global (bukan route). Tidak menggantikan Contact modal (ADR-019) atau footer satelit — **ADR-022** |
-| **Tidak ada** | Nav Work terpisah dari Proyek, Blog, Services sebagai halaman, Pricing, WA, Instagram | Out of scope R1 |
+| Area | Content | Role |
+| ---- | ------- | ---- |
+| **In-page (Home)** | Soft direction through chrome (nav + Contact button) + footer ribbon after About | Strengthens next step without a Contact section in the middle of the page (ADR-041) |
+| **Footer** | Short brand · Contact ribbon · **LinkedIn** · **GitHub** · light legal | Satellites & hygiene; **not** a replacement for primary Contact. Present on Home, Workflow, Work index (ADR-041) |
+| **Work index tiles** | Open project sheet (M10) | Bottom overlay (ADR-027); case link inside sheet (**ADR-044**); Live secondary; no Repo |
+| **Quick info panel (M13)** | Right-edge tab → drawer: bio, Services, Tools, Proyek/Projects, Email, Links | Global overlay (not route). Does not replace Contact modal (ADR-019) or footer satellites — **ADR-022** |
+| **None** | Work nav separate from Proyek, Blog, Services as page, Pricing, WA, Instagram | Out of R1 scope |
 
-Switcher **bukan** secondary — ia bagian chrome primer (UX6).
+Switcher is **not** secondary — it is part of primary chrome (UX6).
 
 ---
 
 # Language Switching Pattern
 
-1. User di `/[id|en]/{page}` (path ber-locale)
-2. Aktifkan switcher → navigasi ke sibling `/[en|id]/{page}` (page yang sama)
-3. Jika page tidak ada di locale target (tidak diharapkan di R1) → fallback Home locale target
-4. Preferensi setelah switch disimpan (cookie/local — Eng) dan **hanya** dipakai saat redirect `/` / URL tanpa locale — tidak rewrite URL ber-locale yang dibuka langsung
-5. Konten harus tersedia di kedua locale dengan **makna setara**
+1. User is on `/[id|en]/{page}` (locale-bearing path)
+2. Activate switcher → navigate to sibling `/[en|id]/{page}` (same page)
+3. If page does not exist in target locale (not expected in R1) → fallback to target locale Home
+4. Preference after switch is saved (cookie/local — Eng) and **only** used on `/` redirects / URLs without locale — it does not rewrite directly opened locale paths
+5. Content must be available in both locales with **equivalent meaning**
 
 ---
 
 # Mobile Considerations
 
-> **Override (ADR-020, 2026-08-15)** — poin di bawah ini menggantikan aturan "selalu terlihat tanpa hamburger" untuk breakpoint <1024px.
+> **Override (ADR-020, 2026-08-15)** — the points below replace the “always visible without hamburger” rule for breakpoints <1024px.
 
-* Breakpoint **<1024px**: nav halaman (Tentang / Proses Kerja / Proyek, tanpa Home — ADR-034 / ADR-035) + language switcher masuk **hamburger menu** (panel, bukan halaman baru).
-* **Tetap selalu terlihat di luar hamburger** (tidak pernah tersembunyi): tombol Contact (pembuka modal, ADR-019). **Toggle tema (ADR-021):** Must di luar hamburger **saat light hidup**; selama hold T-038.2 toggle **tidak** ditampilkan. Default ship **dark**.
-* ≥1024px (desktop): nav halaman, switcher, dan tombol Contact selalu terlihat di header — tidak ada hamburger. Toggle hanya jika hold light sudah dicabut.
-* Footer satelit (pita Contact) ada di Home / Workflow / Work index sebagai pelengkap, bukan pengganti Contact (ADR-041).
-* Target sentuh memadai; switcher tidak berbagi tap target dengan nav lain.
-* **Komposisi panel hamburger** (chrome produksi; kulit T-040.4): panel elevated (bukan nampan kuning/aksen); **item nav halaman selebar panel**; selected = outline darah + teks aksen (ADR-031), bukan pill kecil; **switcher bahasa = Dropdown Menu compact** (ID/EN, tidak meregang penuh). Acuan = kode, bukan mockup HTML (ADR-024).
-* **Chrome satu baris** di ponsel: brand kiri; hamburger + tema + Contact kanan. Tidak wrap jadi dua baris. Lantai lebar **320px** (iPhone SE 1) wajib rapi; **375px** (SE 2/3) acuan ponsel utama.
-* Acuan visual: **kode produksi** (chrome di `app/[locale]/_components/`, tema built) — **ADR-024**. `design-mockups/` arsip; pixel/spacing tidak lagi mengikuti HTML mockup.
+* Breakpoint **<1024px**: page nav (Tentang / Proses Kerja / Proyek, without Home — ADR-034 / ADR-035) + language switcher enter the **hamburger menu** (panel, not a new page).
+* **Still always visible outside hamburger** (never hidden): Contact button (modal opener, ADR-019). **Theme toggle (ADR-021):** Must outside hamburger **when light is live**; during T-038.2 hold, toggle is **not** shown. Default ship **dark**.
+* ≥1024px (desktop): page nav, switcher, and Contact button always visible in header — no hamburger. Toggle only if the light hold has been lifted.
+* Footer satellites (Contact ribbon) exist on Home / Workflow / Work index as complement, not Contact replacement (ADR-041).
+* Adequate touch targets; switcher does not share a tap target with other nav.
+* **Hamburger panel composition** (production chrome; T-040.4 skin): elevated panel (not yellow/accent tray); **page nav items full panel width**; selected = blood outline + accent text (ADR-031), not a small pill; **language switcher = compact Dropdown Menu** (ID/EN, not full-width stretched). Reference = code, not HTML mockup (ADR-024).
+* **One-row chrome** on phones: brand left; hamburger + theme + Contact right. Does not wrap into two rows. Width floor **320px** (iPhone SE 1) must be tidy; **375px** (SE 2/3) is the main phone reference.
+* Visual reference: **production code** (chrome in `app/[locale]/_components/`, built theme) — **ADR-024**. `design-mockups/` is archive; pixel/spacing no longer follows the HTML mockup.
 
 ---
 
 # Success Criteria
 
-* Contact bisa dicapai **≤ satu ketukan** dari halaman mana pun (desktop & mobile) — tombol selalu di luar hamburger
-* Home / About / Workflow / Proyek ≤1 ketukan di desktop; di mobile (<1024px) boleh lewat hamburger (1 ketukan buka menu + 1 ketukan item — override ADR-020)
-* Switcher **selalu terlihat** di desktop; di mobile ikut masuk hamburger bersama nav halaman (override ADR-020) sebagai Dropdown Menu compact, bukan full-width
-* Panel hamburger: item halaman full-width; halaman aktif tertandai sebagai bar penuh
-* Footer tidak menggantikan peran Contact
-* Tidak ada item nav untuk permukaan non-R1 di luar Proyek (M9, sudah masuk R1 via ADR-020)
+* Contact can be reached in **≤ one tap** from any page (desktop & mobile) — button always outside hamburger
+* Home / About / Workflow / Proyek ≤1 tap on desktop; on mobile (<1024px) may go through hamburger (1 tap to open menu + 1 tap item — ADR-020 override)
+* Switcher **always visible** on desktop; on mobile enters hamburger with page nav (ADR-020 override) as compact Dropdown Menu, not full-width
+* Hamburger panel: page items full-width; active page marked as a full bar
+* Footer does not replace Contact’s role
+* No nav item for non-R1 surfaces outside Proyek (M9, already added to R1 via ADR-020)
 
 ---
 
 # Decision Rules
 
-* Menambah item primary nav → tinjau Product scope + ADR bila material (Proyek/M9 sudah ditambah via ADR-020)
-* Memindahkan Email hanya ke footer tanpa halaman/modal Contact → ditolak (I4, ADR-010)
+* Adding a primary nav item → review Product scope + ADR if material (Proyek/M9 already added via ADR-020)
+* Moving Email only to footer without Contact page/modal → rejected (I4, ADR-010)
 
 ---
 
@@ -101,7 +101,7 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 
 | Item | Status |
 | ---- | ------ |
-| Navigation Patterns | **Baseline v1.0** (dokumen ini) — override sebagian oleh ADR-020 (hamburger); ADR-021 toggle; ADR-022 Quick info; ADR-034 tanpa chip Home; ADR-035 About vs Workflow; ADR-041 footer di semua rute; acuan visual hidup = kode (ADR-024) |
+| Navigation Patterns | **Baseline v1.0** (this document) — partially overridden by ADR-020 (hamburger); ADR-021 toggle; ADR-022 Quick info; ADR-034 no Home chip; ADR-035 About vs Workflow; ADR-041 footer on all routes; live visual reference = code (ADR-024) |
 
 ---
 
@@ -113,14 +113,14 @@ Switcher **bukan** secondary — ia bagian chrome primer (UX6).
 * `user-flows.md`
 * `key-screen-patterns.md`
 * `../02-product/feature-modules.md`
-* `../../project-manager/decisions/ADR-014-ux-baseline-v1.md`
-* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
-* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
-* `../../project-manager/decisions/ADR-041-home-with-footer.md`
-* `../../project-manager/decisions/ADR-034-chrome-name-home-chip.md`
-* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
-* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
-* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-014-ux-baseline-v1.md`
+* `../../project-os/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-os/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-os/decisions/ADR-033-home-without-footer.md` (superseded ADR-041)
+* `../../project-os/decisions/ADR-041-home-with-footer.md`
+* `../../project-os/decisions/ADR-034-chrome-name-home-chip.md`
+* `../../project-os/decisions/ADR-035-about-workflow-split.md`
+* `../../project-os/decisions/ADR-040-about-as-home-section.md`
+* `../../project-os/decisions/ADR-042-workflow-decision-driven-page.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

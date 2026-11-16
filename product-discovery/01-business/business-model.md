@@ -1,186 +1,186 @@
 # Business Model
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini menjelaskan bagaimana website portofolio **rezisaktiva** menciptakan dan menangkap nilai — sebagai **aset brand**, bukan bisnis SaaS atau toko jasa di situs.
+This document explains how the **rezisaktiva** portfolio website creates and captures value — as a **brand asset**, not a SaaS business or service shop on the site.
 
 ---
 
 # Overview
 
-Model nilai situs: **Brand primer**; jalur **job opportunity** dan **client/project** sebagai sekunder dengan soft CTA (ADR-002).
+Site value model: **primary brand**; **job opportunity** and **client/project** paths are secondary with soft CTA (ADR-002).
 
-Situs tidak menjual produk atau paket harga di permukaan. Nilainya: satu rumah digital yang membuat founder/PO (dan audiens sekunder) memahami siapa Rezi, melihat bukti, dan bisa menghubungi dengan percaya diri.
+The site does not sell products or service packages on the surface. Its value: one digital home that helps founders/POs (and secondary audiences) understand who Rezi is, see proof, and contact with confidence.
 
-**Pertumbuhan (terkunci):** Destination + magnet ringan (opsi B / ADR-007) — rumah resmi + case/proses singkat di situs; bukan blog besar dan bukan social hustle sebagai mesin MVP.
+**Growth (locked):** Destination + lightweight magnet (option B / ADR-007) — official home + short case/process on the site; not a big blog and not social hustle as the MVP engine.
 
 ---
 
 # Value Creation
 
-Situs menciptakan nilai dengan:
+The site creates value by:
 
-1. **Mengonsolidasikan identitas** — product builder + fullstack + AI edge dalam satu cerita (bukan potongan LinkedIn/GitHub/CV)
-2. **Mempercepat evaluasi** — founder/PO menjawab “cocok atau tidak?” lebih cepat (selaras ADR-004)
-3. **Membangun brand equity** — recognition & recall jangka panjang (“Rezi = product builder…”)
-4. **Membuka pintu natural** — soft path ke kolaborasi, opportunity, atau project tanpa hard sell
-5. **Magnet ringan** — case/proses singkat yang layak dibaca & dishare, memperkuat narrative tanpa jadi media
+1. **Consolidating identity** — product builder + fullstack + AI edge in one story (not LinkedIn/GitHub/CV fragments)
+2. **Speeding evaluation** — founders/POs answer “fit or not?” faster (aligned with ADR-004)
+3. **Building brand equity** — long-term recognition & recall (“Rezi = product builder…”)
+4. **Opening a natural door** — soft path to collaboration, opportunity, or project without hard sell
+5. **Lightweight magnet** — short case/process worth reading & sharing, strengthening narrative without becoming media
 
-Nilai untuk Rezi: aset brand + inbound berkualitas.  
-Nilai untuk pengunjung: kejelasan fit + bukti + kontak.
+Value for Rezi: brand asset + qualified inbound.  
+Value for visitors: fit clarity + proof + contact.
 
 ---
 
 # Customer Segments
 
-“Customer” di sini = orang yang mendapat nilai dari kunjungan / interaksi dengan situs (bukan pembeli produk).
+“Customer” here = people who get value from visiting / interacting with the site (not product buyers).
 
 ---
 
 ## Primary Segment
 
-**Founder / product owner** di digital product/tech, fokus SEA — dua archetipe setara (early founder/indie + PO perusahaan/startup). Lihat `target-market.md` + ADR-005.
+**Founder / product owner** in digital product/tech, focused on SEA — two equal archetypes (early founder/indie + company/startup PO). See `target-market.md` + ADR-005.
 
-Mereka “membayar” dengan perhatian dan (bila fit) outreach — bukan dengan harga di situs.
+They “pay” with attention and (if fit) outreach — not with prices on the site.
 
 ---
 
 ## Secondary Segments
 
-| Segmen | Nilai yang mereka ambil | Nilai yang kembali ke Rezi |
-| ------ | ----------------------- | -------------------------- |
-| Hiring manager / tech lead | Sinyal fit role (soft) | Job opportunity inbound |
-| Calon klien project | Karya + cara kerja sebelum hire | Client/project inbound |
-| Peer / community | Apresiasi craft; share | Recognition & brand spread |
-| Founder/PO luar SEA | Sama evaluasi, via bilingual | Opportunity sekunder |
+| Segment | Value they take | Value returned to Rezi |
+| ------- | --------------- | ---------------------- |
+| Hiring manager / tech lead | Role-fit signal (soft) | Job opportunity inbound |
+| Potential project client | Work + way of working before hire | Client/project inbound |
+| Peer / community | Craft appreciation; share | Recognition & brand spread |
+| Founder/PO outside SEA | Same evaluation, via bilingual | Secondary opportunity |
 
 ---
 
 # Revenue Model
 
-**Tidak ada revenue langsung dari situs** pada arah v0.1.
+**There is no direct revenue from the site** in the v0.1 direction.
 
-| Jalur | Hubungan dengan situs | Catatan |
-| ----- | --------------------- | ------- |
-| **Brand equity** | Primer | Aset tidak berwujud; fondasi jangka panjang |
-| **Job opportunity** | Sekunder, soft | Terjadi di luar situs (chat, interview); situs memicu evaluasi |
-| **Client / project** | Sekunder, soft | Engagement dinegosiasi di luar situs; bukan checkout |
-| **Produk / toko / SaaS di situs** | Out of scope | Lihat visi — bukan bisnis inti situs |
-| **Pricing publik di situs** | Tidak | Detail → `pricing-strategy.md` (kemungkinan N/A untuk situs) |
+| Path | Relationship to site | Notes |
+| ---- | -------------------- | ----- |
+| **Brand equity** | Primary | Intangible asset; long-term foundation |
+| **Job opportunity** | Secondary, soft | Happens outside the site (chat, interview); site triggers evaluation |
+| **Client / project** | Secondary, soft | Engagement negotiated outside the site; not checkout |
+| **Product / store / SaaS on site** | Out of scope | See vision — not the site's core business |
+| **Public pricing on site** | No | Details → `pricing-strategy.md` (likely N/A for the site) |
 
-Monetisasi nyata (gaji, fee project) adalah **hasil sampingan berkualitas** dari brand + soft inbound — bukan funnel penjualan di halaman.
+Real monetization (salary, project fee) is a **qualified side effect** of brand + soft inbound — not a sales funnel on the page.
 
 ---
 
 # Pricing Philosophy
 
-Untuk **situs** itu sendiri: **tidak ada harga yang ditampilkan**.
+For the **site** itself: **no prices are displayed**.
 
-- Tidak ada paket jasa, rate card publik, atau “buy now”
-- Nilai ditegaskan lewat cerita, bukti, dan soft CTA kontak
-- Bila suatu saat ada diskusi fee/salary, itu terjadi **setelah** evaluasi manusia — di luar halaman portofolio
+- No service packages, public rate card, or “buy now”
+- Value is emphasized through story, proof, and soft contact CTA
+- If fee/salary discussion ever happens, it happens **after** human evaluation — outside the portfolio page
 
-Filsafat harga engagement (project/job) bila relevan → dokumen `pricing-strategy.md` (boleh N/A untuk fase ini).
+Engagement pricing philosophy (project/job), if relevant → `pricing-strategy.md` (may be N/A for this phase).
 
 ---
 
 # Customer Value Proposition
 
-Untuk founder / PO yang mencari builder:
+For founders / POs looking for a builder:
 
-| Janji | Bukti di situs |
-| ----- | -------------- |
-| Paham cepat siapa Rezi | Clarity-first (ADR-006) |
-| Percaya bisa bawa ide → live | Cerita product builder + case/proses |
-| Kredibel teknis | Fondasi fullstack |
-| Relevan terkini | AI sebagai edge (jujur, bukan specialist murni) |
-| Mudah langkah berikutnya | Soft CTA kontak; bilingual SEA-aware |
+| Promise | Proof on the site |
+| ------- | ----------------- |
+| Quickly understand who Rezi is | Clarity-first (ADR-006) |
+| Trust he can bring ideas → live | Product builder story + case/process |
+| Technical credibility | Fullstack foundation |
+| Current relevance | AI as edge (honest, not pure specialist) |
+| Easy next step | Soft contact CTA; bilingual SEA-aware |
 
-Bukan janji: “hire designer”, “AI agency”, atau “paket fixed-price di website”.
+Not a promise: “hire designer,” “AI agency,” or “fixed-price packages on the website.”
 
 ---
 
 # Cost Considerations
 
-Biaya untuk menjaga model ini (bukan COGS produk):
+Costs to maintain this model (not product COGS):
 
-| Jenis | Contoh | Catatan |
-| ----- | ------ | ------- |
-| **Waktu** | Menulis case/proses, update karya, rawat narasi | Biaya utama; magnet ringan butuh ritme update |
-| **Hosting / domain / tool** | Domain, hosting, analytics ringan | Harus proporsional; jangan over-engineer di discovery |
-| **Opportunity cost** | Waktu yang tidak dipakai ke project lain | MVP: clarity + soft presence dulu; craft bertahap |
-| **Distribusi aktif** | Social/community hustle | **Bukan** biaya MVP (bukan opsi C); bisa menyusul |
+| Type | Example | Notes |
+| ---- | ------- | ----- |
+| **Time** | Writing case/process, updating work, maintaining narrative | Main cost; lightweight magnet needs update rhythm |
+| **Hosting / domain / tool** | Domain, hosting, lightweight analytics | Must be proportional; do not over-engineer in discovery |
+| **Opportunity cost** | Time not used for other projects | MVP: clarity + soft presence first; craft gradually |
+| **Active distribution** | Social/community hustle | **Not** an MVP cost (not option C); can follow later |
 
-Prinsip: investasi cukup agar rumah brand hidup; hindari biaya yang hanya untuk spektakel atau funnel berat.
+Principle: invest enough to keep the brand home alive; avoid costs that only serve spectacle or heavy funnels.
 
 ---
 
 # Growth Strategy
 
-**Terkunci: Destination + magnet ringan (B / ADR-007).**
+**Locked: Destination + lightweight magnet (B / ADR-007).**
 
-| Lapisan | Apa artinya | MVP? |
-| ------- | ----------- | ---- |
-| **Destination** | Satu URL resmi; orang diarahkan ke sini dari CV, chat, GitHub, dsb. | Ya — inti |
-| **Magnet ringan** | Case study / proses singkat di situs; layak dibaca & dishare | Ya — bertahap setelah kerangka clarity |
-| **Distribusi aktif** (C) | Posting social / community SEA secara sistematis | Belum — opsional belakangan |
-| **Ship-in-public sebagai mesin** (D) | Build di depan publik sebagai growth utama | Tidak — risiko geser fokus evaluasi founder/PO |
+| Layer | Meaning | MVP? |
+| ----- | ------- | ---- |
+| **Destination** | One official URL; people are directed here from CV, chat, GitHub, etc. | Yes — core |
+| **Lightweight magnet** | Short case study / process on the site; worth reading & sharing | Yes — gradual after the clarity frame |
+| **Active distribution** (C) | Systematic SEA social/community posting | Not yet — optional later |
+| **Ship-in-public as engine** (D) | Build in public as the main growth loop | No — risks shifting founder/PO evaluation focus |
 
-Implikasi:
+Implications:
 
-* Situs harus layak dijadikan “link utama”
-* Konten magnet mendukung narrative (ADR-004), bukan mengejar volume blog
-* Growth diukur dari brand recall + inbound berkualitas, bukan vanity traffic saja → `success-metrics.md`
+* The site must be worthy as the “main link”
+* Magnet content supports the narrative (ADR-004), not blog volume
+* Growth is measured by brand recall + qualified inbound, not vanity traffic alone → `success-metrics.md`
 
 ---
 
 # Business Principles
 
-1. **Brand dulu** — jangan korbankan kejelasan identitas demi CTA agresif
-2. **Soft inbound** — job/client welcome; situs bukan sales page
-3. **Satu rumah** — GitHub/LinkedIn satelit; situs panggung utama
-4. **Clarity → presence → craft** — urutan investasi UX/konten (ADR-006)
-5. **Magnet tanpa media empire** — case/proses singkat; bukan blog sebagai bisnis
-6. **Jujur di klaim** — AI edge di atas fondasi product/engineering; tidak overclaim
-7. **SEA-aware, pintu terbuka** — bilingual; fokus ICP tanpa menutup luar SEA
+1. **Brand first** — do not sacrifice identity clarity for aggressive CTA
+2. **Soft inbound** — job/client welcome; site is not a sales page
+3. **One home** — GitHub/LinkedIn satellites; site is the main stage
+4. **Clarity → presence → craft** — UX/content investment order (ADR-006)
+5. **Magnet without media empire** — short case/process; not blog as business
+6. **Honest claims** — AI edge on top of product/engineering foundation; no overclaiming
+7. **SEA-aware, open door** — bilingual; focused ICP without closing off outside SEA
 
 ---
 
 # Assumptions
 
-* Founder/PO akan mengklik satu URL jika dipercaya sebagai sumber kebenaran
-* Soft CTA cukup untuk memicu outreach yang relevan (tanpa pricing publik)
-* Case/proses singkat menambah kepercayaan lebih dari daftar tech stack
-* Waktu Rezi cukup untuk merawat destination + magnet ringan secara berkelanjutan
-* Distribusi aktif belum wajib untuk validasi arah brand di fase awal
-* Tidak ada kebutuhan monetisasi langsung di situs untuk “bisnis model berhasil”
+* Founders/POs will click one URL if trusted as the source of truth
+* Soft CTA is enough to trigger relevant outreach (without public pricing)
+* Short case/process builds more trust than a tech-stack list
+* Rezi has enough time to maintain destination + lightweight magnet sustainably
+* Active distribution is not required yet to validate the early brand direction
+* Direct site monetization is not needed for the “business model” to work
 
 ---
 
 # Success Criteria
 
-Business model dianggap mengarah benar jika:
+The business model is moving in the right direction if:
 
-1. Situs terasa **aset brand**, bukan toko jasa atau CV online semata
-2. Inbound job/client muncul sebagai **efek samping berkualitas**, tanpa hard sell
-3. Magnet ringan (case/proses) ada dan mendukung evaluasi founder/PO
-4. Biaya waktu/uang tetap proporsional; MVP tidak macet di craft atau distribusi
-5. Keputusan konten/CTA bisa ditelusuri ke prinsip di dokumen ini + ADR-002 / ADR-007
+1. The site feels like a **brand asset**, not a service shop or CV online alone
+2. Job/client inbound appears as a **qualified side effect**, without hard sell
+3. Lightweight magnet (case/process) exists and supports founder/PO evaluation
+4. Time/money costs stay proportional; MVP does not get stuck on craft or distribution
+5. Content/CTA decisions can be traced to the principles in this document + ADR-002 / ADR-007
 
-Metrik kuantitatif → `success-metrics.md`.
+Quantitative metrics → `success-metrics.md`.
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `product-vision.md` — visi dan model nilai situs
-* `problem-statement.md` — rantai masalah yang dijawab
-* `target-market.md` — segmen & ICP
-* `competitor-analysis.md` — referensi & diferensiasi
-* `pricing-strategy.md` — harga (boleh N/A untuk situs)
-* `success-metrics.md` — KPI
-* `../../project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md` — keputusan material
-* `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — brand primer
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — indeks ADR
+* `README.md` — documentation for this phase
+* `product-vision.md` — site vision and value model
+* `problem-statement.md` — problem chain being answered
+* `target-market.md` — segments & ICP
+* `competitor-analysis.md` — references & differentiation
+* `pricing-strategy.md` — pricing (may be N/A for the site)
+* `success-metrics.md` — KPIs
+* `../../project-os/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md` — material decision
+* `../../project-os/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — primary brand
+* `../../project-os/PROJECT_STATE.md` — project status
+* `../../project-os/DECISIONS.md` — ADR index

@@ -1,99 +1,99 @@
 # Pricing Strategy
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-07). Pricing tidak relevan sebagai strategi untuk website portofolio **rezisaktiva**. Perubahan material setelah ini memerlukan ADR baru.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-07). Pricing is not relevant as a strategy for the **rezisaktiva** portfolio website. Material changes after this require a new ADR.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat (bukan dokumen yang terlupa). File tidak dihapus — lihat ADR-008.
+This document is **intentionally filled as N/A** so the decision is recorded (not a forgotten document). The file is not deleted — see ADR-008.
 
 ---
 
 # Overview
 
-Website **rezisaktiva** adalah aset **brand** dengan soft inbound (job/client). Tidak ada produk, paket jasa, rate card, atau checkout di situs.
+The **rezisaktiva** website is a **brand** asset with soft inbound (job/client). There is no product, service package, rate card, or checkout on the site.
 
-Oleh karena itu **tidak ada pricing strategy untuk situs** pada fase Business Discovery / arah v0.1.
+Therefore there is **no pricing strategy for the site** in the Business Discovery / v0.1 direction.
 
 ---
 
 # Current Status
 
-| Aspek | Status |
-| ----- | ------ |
-| Harga di situs | Tidak ada / tidak akan ditampilkan |
-| Paket jasa publik | Out of scope |
-| Rate card / fee publik | Tidak |
-| Monetisasi langsung situs | Tidak (ADR-007) |
-| Dokumen ini | **N/A — keputusan sadar** |
+| Aspect | Status |
+| ------ | ------ |
+| Pricing on the site | None / will not be displayed |
+| Public service packages | Out of scope |
+| Public rate card / fee | No |
+| Direct site monetization | No (ADR-007) |
+| This document | **N/A — intentional decision** |
 
-Diskusi fee, salary, atau terms engagement — bila terjadi — dilakukan **setelah** evaluasi manusia (chat/call), di luar halaman portofolio.
+Fee, salary, or engagement terms discussions — if they happen — are handled **after** human evaluation (chat/call), outside the portfolio page.
 
 ---
 
 # Pricing Philosophy
 
-Untuk **situs**:
+For the **site**:
 
-1. **Tidak menampilkan harga** — menjaga model brand primer + soft CTA
-2. **Tidak productize jasa di halaman** — bukan landing freelance dengan paket
-3. **Nilai ditegaskan lewat cerita & bukti**, bukan lewat angka
+1. **Do not display pricing** — maintain the primary brand + soft CTA model
+2. **Do not productize services on the page** — this is not a freelance landing page with packages
+3. **Emphasize value through story & proof**, not numbers
 
-Untuk **engagement di luar situs** (job/project): filosofi detail dan angka **tidak ditetapkan di discovery ini** — di luar scope dokumen pricing situs.
+For **engagement outside the site** (job/project): detailed philosophy and numbers **are not defined in this discovery** — outside the scope of the site-pricing document.
 
 ---
 
 # Future Monetization
 
-Bukan rencana aktif v0.1. Jika suatu saat dipertimbangkan (misalnya template, tulisan berbayar, atau offering lain), itu memerlukan:
+Not an active v0.1 plan. If it is considered later (for example templates, paid writing, or another offering), it requires:
 
-* Perubahan visi / business model (ADR baru)
-* Revisi dokumen ini dari N/A menjadi strategi nyata
+* Vision / business model change (new ADR)
+* Revision of this document from N/A into an actual strategy
 
-Sampai itu terjadi, asumsi tetap: **situs ≠ kanal penjualan berharga**.
+Until that happens, the assumption remains: **site ≠ priced sales channel**.
 
 ---
 
 # Assumptions
 
-* Soft inbound cukup tanpa harga publik
-* Menampilkan harga akan menggeser persepsi ke “jasa/toko” dan melemahkan brand primer
-* Fee/salary bersifat kontekstual per opportunity — tidak cocok sebagai konten tetap di portofolio
-* Menyimpan file N/A lebih aman untuk jejak keputusan daripada menghapus file
+* Soft inbound is enough without public pricing
+* Displaying prices would shift perception to “service/store” and weaken the primary brand
+* Fee/salary is contextual per opportunity — not suitable as fixed portfolio content
+* Keeping the N/A file is safer for decision traceability than deleting it
 
 ---
 
 # Future Considerations
 
-* Bila Boss Rezi ingin mencatat kisaran fee secara privat → `private/` (bukan dokumen publik ini)
-* Bila model nilai situs berubah ke productized offering → buka kembali dokumen ini + ADR
-* `pricing-strategy.md` tetap ada di struktur `01-business/` sebagai penanda “sudah diputuskan N/A”
+* If Boss Rezi wants to record a private fee range → `private/` (not this public document)
+* If the site's value model changes to a productized offering → reopen this document + ADR
+* `pricing-strategy.md` stays in the `01-business/` structure as a marker: “decided N/A”
 
 ---
 
 # Success Criteria
 
-Dokumen pricing dianggap selesai (N/A) jika:
+The pricing document is considered complete (N/A) if:
 
-1. Jelas bahwa **tidak ada harga di situs** dan itu disengaja
-2. Tidak ada angka fee/salary prematur di repo discovery publik
-3. Rujukan ke ADR-002 / ADR-007 / ADR-008 konsisten
-4. Subtask **T-001.6** untuk file ini bisa dicentang sebagai **N/A completed**
+1. It is clear that **there is no pricing on the site** and that this is intentional
+2. There are no premature fee/salary numbers in the public discovery repo
+3. References to ADR-002 / ADR-007 / ADR-008 are consistent
+4. Subtask **T-001.6** for this file can be checked as **N/A completed**
 
 ---
 
 # Decision Rules
 
-* Jangan menambah rate card atau paket harga ke situs tanpa ADR yang mengubah model nilai
-* Jangan menghapus file ini hanya karena N/A — jejak keputusan penting bagi sesi/agent berikutnya
-* Angka engagement sensitif → `private/` atau saluran non-repo, bukan di sini
+* Do not add a rate card or pricing package to the site without an ADR that changes the value model
+* Do not delete this file only because it is N/A — the decision trace matters for future sessions/agents
+* Sensitive engagement numbers → `private/` or non-repo channel, not here
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `business-model.md` — model nilai & revenue (tanpa harga situs)
-* `product-vision.md` — brand primer; out of scope hard sell
-* `../../project-manager/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md` — keputusan material
-* `../../project-manager/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
-* `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md`
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — indeks ADR
+* `README.md` — documentation for this phase
+* `business-model.md` — value & revenue model (without site pricing)
+* `product-vision.md` — primary brand; hard sell out of scope
+* `../../project-os/decisions/ADR-008-pricing-strategy-na-for-portfolio-site.md` — material decision
+* `../../project-os/decisions/ADR-007-business-model-brand-soft-inbound-growth-magnet.md`
+* `../../project-os/decisions/ADR-002-portfolio-vision-positioning-audience-language.md`
+* `../../project-os/PROJECT_STATE.md` — project status
+* `../../project-os/DECISIONS.md` — ADR index

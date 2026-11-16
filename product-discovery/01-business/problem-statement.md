@@ -1,126 +1,126 @@
 # Problem Statement
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan masalah dan kesempatan yang ingin dijawab oleh website portofolio pribadi **rezisaktiva** — dari sisi pemilik brand (Rezi) dan sisi audiens primer (founder / product owner).
+This document defines the problem and opportunity that the personal portfolio website **rezisaktiva** aims to answer — from the brand owner's side (Rezi) and the primary audience's side (founder / product owner).
 
 ---
 
 # Overview
 
-Tanpa satu rumah digital yang terarah, Rezi punya akun di banyak platform tetapi hampir tidak membentuk kehadiran yang dikenal atau menonjol. Di sisi lain, founder / product owner yang ingin menilai apakah Rezi cocok sebagai product builder kesulitan mendapatkan cerita, bukti, dan jalur kontak yang koheren dalam satu tempat.
+Without one focused digital home, Rezi has accounts on many platforms but almost no presence that makes him known or stand out. On the other side, founders / product owners who want to assess whether Rezi fits as a product builder struggle to get a coherent story, proof, and contact path in one place.
 
-Portofolio **rezisaktiva** menjawab rantai masalah itu: **visibility → narrative → evaluasi & kontak**.
+The **rezisaktiva** portfolio answers that problem chain: **visibility → narrative → evaluation & contact**.
 
 ---
 
 # Current Situation
 
-* Rezi memiliki akun di LinkedIn, GitHub, CV, Instagram, Threads, dan X — tetapi **belum ada platform yang membuatnya dikenal atau menonjol** sebagai product builder.
-* Aktivitas nyata hampir hanya di **GitHub**, dan itu pun karena kebutuhan kerja sebagai developer — bukan karena membangun brand publik.
-* Tidak ada situs portofolio milik sendiri sebagai **sumber kebenaran publik** untuk identitas, karya, cara berpikir, dan cara menghubungi.
-* Akibatnya: kehadiran tersebar, sinyal lemah, dan cerita profesional mudah terbaca sebagai “developer di GitHub” — bukan “product builder yang bisa bawa ide sampai live”.
+* Rezi has accounts on LinkedIn, GitHub, CV, Instagram, Threads, and X — but **no platform yet makes him known or stand out** as a product builder.
+* Real activity is mostly on **GitHub**, and even that is driven by work needs as a developer — not by building a public brand.
+* There is no owned portfolio site as a **public source of truth** for identity, work, ways of thinking, and contact path.
+* As a result: presence is scattered, signals are weak, and the professional story is easily read as “developer on GitHub” — not “product builder who can bring ideas to live products.”
 
 ---
 
 # Core Problems
 
-Masalah inti digambarkan sebagai **rantai** (bukan satu titik sakit saja):
+The core problem is described as a **chain** (not just one pain point):
 
-### 1. Visibility lemah
+### 1. Weak visibility
 
-Orang jarang menemukan atau mengingat Rezi sebagai sosok yang menonjol. Akun ada, tetapi tidak aktif membangun signal brand di luar konteks kerja.
+People rarely find or remember Rezi as someone who stands out. The accounts exist, but they are not actively building brand signal outside the work context.
 
-### 2. Narrative belum koheren
+### 2. Narrative is not yet coherent
 
-Bila seseorang menemukan Rezi (misalnya lewat GitHub atau CV), framing yang muncul cenderung teknis/developer — belum membentuk cerita **product builder** dengan bukti fullstack dan AI edge yang sengaja dikurasi.
+When someone finds Rezi (for example through GitHub or a CV), the framing tends to be technical/developer — it does not yet form a **product builder** story with intentionally curated fullstack proof and AI edge.
 
-### 3. Evaluasi & kontak bergesekan
+### 3. Evaluation & contact have friction
 
-Founder / product owner sulit menjawab dengan cepat: siapa Rezi, apa yang sudah di-ship, apakah fit untuk ide mereka, dan bagaimana menghubungi dengan percaya diri — karena bukti tersebar dan tidak ada “rumah” yang merangkai semuanya.
+Founders / product owners struggle to quickly answer: who Rezi is, what he has shipped, whether he is a fit for their idea, and how to contact him with confidence — because the proof is scattered and there is no “home” that connects everything.
 
 ---
 
 # Who Experiences These Problems
 
-| Pihak | Apa yang dialami |
-| ----- | ---------------- |
-| **Rezi (pemilik brand)** | Brand publik belum terkendali; usaha tersebar tidak menghasilkan recognition; sulit menunjuk satu URL sebagai referensi identitas profesional |
-| **Founder / product owner (primer)** | Sulit menilai fit builder dengan cepat; harus merakit cerita dari potongan (repo, CV, chat) |
-| **Hiring manager / tech lead (sekunder)** | Bisa melihat sinyal developer (GitHub), tetapi kurang konteks product thinking & outcome |
-| **Calon klien project (sekunder)** | Tidak ada tempat yang jelas untuk melihat karya + cara kerja sebelum outreach |
+| Party | What they experience |
+| ----- | -------------------- |
+| **Rezi (brand owner)** | Public brand is not yet controlled; scattered effort does not produce recognition; hard to point to one URL as the professional identity reference |
+| **Founder / product owner (primary)** | Hard to assess builder fit quickly; must assemble the story from fragments (repo, CV, chat) |
+| **Hiring manager / tech lead (secondary)** | Can see developer signals (GitHub), but lacks product thinking & outcome context |
+| **Potential project client (secondary)** | No clear place to see work + ways of working before outreach |
 
 ---
 
 # Business Impact
 
-Jika rantai masalah ini tidak dipecahkan:
+If this problem chain is not solved:
 
-* **Brand tidak terbentuk** — kehadiran digital ada secara teknis, tetapi tidak menjadi aset yang dikenang
-* **Opportunity terlewat atau terlambat** — orang yang relevan tidak menemukan, atau menemukan tanpa cukup keyakinan untuk kontak
-* **Pesan salah default** — GitHub aktif sebagai developer mengunci persepsi “coder”, bukan product builder
-* **Biaya komunikasi tinggi** — setiap evaluasi mengulang penjelasan dari nol lewat chat/CV
+* **The brand does not form** — digital presence exists technically, but does not become a memorable asset
+* **Opportunities are missed or delayed** — relevant people either do not find Rezi, or find him without enough confidence to contact
+* **The wrong message becomes the default** — active GitHub as a developer locks the perception into “coder,” not product builder
+* **Communication cost stays high** — every evaluation repeats the explanation from zero through chat/CV
 
-Dampak positif yang ingin dibuka: satu rumah digital yang memperkuat brand primer, sekaligus membuka jalur soft untuk opportunity dan project (selaras ADR-002).
+The positive impact to unlock: one digital home that strengthens the primary brand, while opening a soft path for opportunities and projects (aligned with ADR-002).
 
 ---
 
 # Why Existing Solutions Are Not Enough
 
-| Solusi yang ada | Mengapa belum cukup |
-| --------------- | ------------------- |
-| **LinkedIn** | Akun ada, tetapi tidak aktif sebagai panggung brand; format feed/profil tidak dirancang sebagai cerita product builder yang curated |
-| **GitHub** | Aktif karena kerja — bagus sebagai bukti teknis, lemah sebagai narasi identitas & outcome produk |
-| **CV** | Statis, biasanya dikirim setelah ada konteks; bukan discovery surface publik |
-| **Instagram / Threads / X** | Akun ada, tetapi tidak dipakai untuk membangun recognition profesional |
-| **Profil tersebar digabung manual** | Memaksa audiens merakit cerita sendiri — justru memperbesar gesekan evaluasi |
+| Existing solution | Why it is not enough yet |
+| ----------------- | ------------------------ |
+| **LinkedIn** | The account exists, but is not active as a brand stage; feed/profile format is not designed as a curated product builder story |
+| **GitHub** | Active because of work — strong as technical proof, weak as identity & product-outcome narrative |
+| **CV** | Static, usually sent after context exists; not a public discovery surface |
+| **Instagram / Threads / X** | Accounts exist, but are not used to build professional recognition |
+| **Manually combined scattered profiles** | Forces the audience to assemble the story themselves — increasing evaluation friction |
 
-Yang kurang: **satu sumber kebenaran milik sendiri** yang mengontrol narasi, mengkurasi bukti, dan menyediakan jalur kontak — tanpa menggantikan GitHub/LinkedIn sebagai satelit.
+What is missing: **one owned source of truth** that controls the narrative, curates proof, and provides a contact path — without replacing GitHub/LinkedIn as satellites.
 
 ---
 
 # Opportunity
 
-Membangun **rezisaktiva** sebagai rumah digital yang:
+Build **rezisaktiva** as a digital home that:
 
-1. Memberi Rezi kontrol atas cerita brand (**product builder** + bukti fullstack + AI edge)
-2. Memberi founder / PO satu tempat untuk evaluasi cepat (cerita, bukti, kontak)
-3. Mengubah kehadiran “punya akun tapi tidak menonjol” menjadi aset brand jangka panjang
-4. Menjaga job opportunity dan client/project sebagai **jalur sekunder soft**, bukan hard sell
+1. Gives Rezi control over the brand story (**product builder** + fullstack proof + AI edge)
+2. Gives founders / POs one place for quick evaluation (story, proof, contact)
+3. Turns a “has accounts but does not stand out” presence into a long-term brand asset
+4. Keeps job opportunities and client/project as **soft secondary paths**, not hard sell
 
 ---
 
 # Success Criteria
 
-Problem dianggap terjawab (arahnya) jika:
+The problem is considered answered (directionally) if:
 
-1. Ada **satu URL publik** yang Rezi bisa tunjuk sebagai referensi identitas profesional
-2. Setelah kunjungan singkat, orang bisa merangkum: “Rezi = product builder (fullstack + AI edge)”
-3. Founder / PO dapat menilai fit dasar **tanpa** harus merakit cerita dari GitHub + CV + chat
-4. Soft inbound (kolaborasi / opportunity / project) menjadi mungkin secara natural — tanpa CTA agresif
+1. There is **one public URL** Rezi can point to as the professional identity reference
+2. After a short visit, people can summarize: “Rezi = product builder (fullstack + AI edge)”
+3. Founders / POs can assess basic fit **without** assembling the story from GitHub + CV + chat
+4. Soft inbound (collaboration / opportunity / project) becomes possible naturally — without aggressive CTA
 
-Metrik kuantitatif (trafik, inquiry, dll.) ditetapkan di `success-metrics.md`.
+Quantitative metrics (traffic, inquiry, etc.) are defined in `success-metrics.md`.
 
 ---
 
 # Out of Scope
 
-Problem statement ini **tidak** mencakup:
+This problem statement **does not** cover:
 
-* Membangun fame di semua social platform sekaligus sebagai tujuan inti situs
-* Mengganti GitHub/LinkedIn — situs melengkapi, bukan menghapus satelit
-* Funnel penjualan agresif atau lead-magnet berat
-* Menjadi media/blog besar atau agency design portfolio
-* Menyelesaikan seluruh personal branding di luar situs (konten sosial harian, dll.) — itu di luar MVP visi situs
+* Building fame across all social platforms at once as the site's core goal
+* Replacing GitHub/LinkedIn — the site complements satellites, not removes them
+* Aggressive sales funnel or heavy lead magnet
+* Becoming a major media/blog or agency design portfolio
+* Solving all personal branding outside the site (daily social content, etc.) — that is outside the site's MVP vision
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `product-vision.md` — visi dan positioning
-* `target-market.md` — pendalaman audiens
-* `../../project-manager/decisions/ADR-004-problem-statement-dual-chain.md` — keputusan material
-* `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — visi & audiens
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — indeks ADR
+* `README.md` — documentation for this phase
+* `product-vision.md` — vision and positioning
+* `target-market.md` — deeper audience context
+* `../../project-os/decisions/ADR-004-problem-statement-dual-chain.md` — material decision
+* `../../project-os/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — vision & audience
+* `../../project-os/PROJECT_STATE.md` — project status
+* `../../project-os/DECISIONS.md` — ADR index

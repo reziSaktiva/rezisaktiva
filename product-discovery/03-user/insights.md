@@ -1,22 +1,22 @@
 # Insights
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mensintesis insight User Discovery untuk website portofolio **rezisaktiva**.
+This document synthesizes User Discovery insights for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-Insight digabung dari assumption-led discovery (metode B) yang diselaraskan dengan Business & Product Baseline. Riset ringan opsional dicatat sebagai langkah berikutnya — tidak menunda kunci fase ini.
+Insights are combined from assumption-led discovery (method B), aligned with the Business & Product Baselines. Optional lightweight research is recorded as a next step — it does not delay locking this phase.
 
 ---
 
 # Purpose
 
-* Menutup fase User dengan keputusan yang actionable
-* Mereview asumsi (A1–A6)
-* Menyerahkan implikasi jelas ke UX / Architecture
+* Close the User phase with actionable decisions
+* Review assumptions (A1–A6)
+* Hand clear implications to UX / Architecture
 
 ---
 
@@ -24,66 +24,66 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 
 ## In Scope
 
-* Observasi kunci, insight, assumption review
-* Implikasi produk (tanpa mengubah baseline terkunci kecuali ADR)
+* Key observations, insights, assumption review
+* Product implications (without changing the locked baseline except through ADR)
 * Open questions & decision gate
 
 ## Out of Scope
 
-* Spesifikasi UI/visual
-* Keputusan stack engineering
-* Mengubah MVP surface tanpa ADR baru
+* UI/visual specification
+* Engineering stack decisions
+* Changing MVP surfaces without a new ADR
 
 ---
 
 # Key Observations
 
-1. ICP dual founder/PO sudah terkunci — User phase memperdalam, bukan mengganti.
-2. Gesekan terbesar hari ini ada di **merakit narasi** dan **menilai fit cepat**, bukan di ketiadaan akun sosial.
-3. Hybrid lean (Home termasuk About section / Workflow / Work index / Contact) cukup untuk job Must R1 bila clarity & soft CTA kuat. **Update (ADR-032 / ADR-035 / ADR-040):** teaser Home retired; `#proof` dicabut; destinasi halaman = Home, Workflow, Work index.
-4. Hiring/klien butuh jalur, tetapi **bukan** brand kedua.
-5. Case detail adalah desire (PP11/J6), bukan blocker clarity — selaras ADR-010 (R2).
-6. Evidence baseline = asumsi + validasi Boss Rezi; confidence journey live masih sedang sampai ada draft/live + riset ringan.
+1. The dual founder/PO ICP is already locked — the User phase deepens it, not replaces it.
+2. The biggest friction today is **assembling the narrative** and **judging fit quickly**, not the absence of social accounts.
+3. Hybrid lean (Home including About section / Workflow / Work index / Contact) is enough for Must R1 jobs if clarity & soft CTA are strong. **Update (ADR-032 / ADR-035 / ADR-040):** Home teaser retired; `#proof` removed; page destinations = Home, Workflow, Work index.
+4. Hiring/clients need a path, but **not** a second brand.
+5. Case detail is a desire (PP11/J6), not a clarity blocker — aligned with ADR-010 (R2).
+6. Baseline evidence = assumptions + Boss Rezi validation; live journey confidence remains medium until draft/live + lightweight research.
 
 ---
 
 # Insights
 
-| ID | Insight | Konsekuensi |
+| ID | Insight | Consequence |
 | -- | ------- | ----------- |
-| I1 | **Clarity is the product of the first visit** — pengunjung membayar dengan perhatian singkat | UX harus memenangkan Orient dalam viewport awal |
-| I2 | **Satu lapisan pesan, dua penekanan evaluasi** — P1 ↔ P2 beda pertanyaan, sama brand | Jangan split Home jadi dua mode; bedakan lewat About / Workflow / Work index (bukan teaser Home — ADR-032 / ADR-035) |
-| I3 | **Karya mengantar trust; case memperdalam** — memaksa case di R1 menunda destination | Presence = Work index + sheet M10 (teaser Home retired, ADR-032). Jangan paksa halaman case di R1. |
-| I4 | **Soft path menentukan NS-2** — tanpa Contact yang tenang, clarity tidak jadi inbound | Contact = first-class surface, bukan footer afterthought |
-| I5 | **Secondary success = signal, not conversion UI** — P3/P4 sukses jika menemukan bukti/kontak | Jangan tambah job board / pricing untuk “melayani” mereka |
-| I6 | **Bahasa adalah bagian journey, bukan chrome kosmetik** — J7 memengaruhi bounce early | Geo-default + switcher masuk acceptance UX R1 |
-| I7 | **Current-state pain = fragmented proof** — situs menang jika jadi assembler cerita | Kurasi sadar > meniru layout GitHub |
+| I1 | **Clarity is the product of the first visit** — visitors pay with brief attention | UX must win Orient in the first viewport |
+| I2 | **One message layer, two evaluation emphases** — P1 ↔ P2 ask different questions, same brand | Do not split Home into two modes; differentiate through About / Workflow / Work index (not Home teaser — ADR-032 / ADR-035) |
+| I3 | **Work carries trust; cases deepen it** — forcing cases into R1 delays the destination | Presence = Work index + sheet M10 (Home teaser retired, ADR-032). Do not force case pages in R1. |
+| I4 | **The soft path determines NS-2** — without calm Contact, clarity does not become inbound | Contact = first-class surface, not a footer afterthought |
+| I5 | **Secondary success = signal, not conversion UI** — P3/P4 succeed if they find proof/contact | Do not add a job board / pricing to “serve” them |
+| I6 | **Language is part of the journey, not cosmetic chrome** — J7 affects early bounce | Geo-default + switcher enter R1 UX acceptance |
+| I7 | **Current-state pain = fragmented proof** — the site wins if it assembles the story | Conscious curation > imitating GitHub layout |
 
 ---
 
 # Assumption Review
 
-| ID | Status saat baseline | Catatan |
-| -- | -------------------- | ------- |
-| A1 Dual primer setara | Accepted (ADR-005) | Tetap; pantau tone bias di salinan |
-| A2 Clarity tanpa case penuh | Accepted untuk R1 | Validasi setelah teaser live; PP11 known |
-| A3 Soft CTA cukup | Provisional (saluran dikunci) | **Email primer** (ADR-014); form/calendar tetap Could; validasi inbound setelah R1 |
-| A4 Secondary thin cukup | Accepted untuk fase ini | Jika hiring jadi sumber utama opportunity → ADR |
-| A5 Bilingual mengurangi alienasi | Accepted arah (ADR-002) | Detail deteksi geo di UX/Eng |
-| A6 Riset ringan pasca-baseline | Planned | 3–5 chat; tidak memblokir ADR-013 |
+| ID | Baseline status | Notes |
+| -- | --------------- | ----- |
+| A1 Equal dual primary | Accepted (ADR-005) | Keep; monitor tone bias in copy |
+| A2 Clarity without full cases | Accepted for R1 | Validate after teaser live; PP11 known |
+| A3 Soft CTA enough | Provisional (channel locked) | **Email primary** (ADR-014); form/calendar remain Could; validate inbound after R1 |
+| A4 Secondary thin enough | Accepted for this phase | If hiring becomes the main opportunity source → ADR |
+| A5 Bilingual reduces alienation | Accepted direction (ADR-002) | Geo detection detail in UX/Eng |
+| A6 Lightweight research after baseline | Planned | 3–5 chats; does not block ADR-013 |
 
 ---
 
 # Product Implications
 
-> **Catatan (2026-08-15/16):** Statement di bawah adalah kondisi saat Baseline User v1.0 dikunci (2026-08-07). Sejak itu, ADR-019/020/021/022 (fase Development) menambah Must baru (Contact modal, Work index, theme toggle, Quick Info) — perubahan tersebut berasal dari keputusan UX/produk lanjutan, bukan temuan fase User, sehingga tidak mengubah kesimpulan I1–I7 di atas.
+> **Note (2026-08-15/16):** The statement below reflects the state when User Baseline v1.0 was locked (2026-08-07). Since then, ADR-019/020/021/022 (Development phase) added new Musts (Contact modal, Work index, theme toggle, Quick Info) — those changes came from later UX/product decisions, not User phase findings, so they do not change conclusions I1–I7 above.
 >
-> **Catatan (2026-09-08):** ADR-040 membuat About = section Home (tanpa `#proof`); ADR-042 mengganti isi Workflow. Insight I1–I7 tetap acuan fase User; permukaan hidup mengikuti ADR terbaru.
+> **Note (2026-09-08):** ADR-040 makes About = Home section (without `#proof`); ADR-042 replaces Workflow content. Insights I1–I7 remain the User phase reference; live surfaces follow the latest ADR.
 
-* **Tidak ada perubahan Must** terhadap ADR-010–012 dari temuan User (per baseline 2026-08-07).
-* Perkuat penekanan: Home clarity, About risk-reducer, Workflow cara kerja, Work index + sheet sebagai presence, Contact soft.
-* Could Have (form/calendar) hanya jika A3 terbukti lemah setelah live.
-* R2 magnet tetap jawaban untuk J6 — jangan naikkan ke Must diam-diam.
+* **No Must changes** to ADR-010–012 from User findings (per 2026-08-07 baseline).
+* Strengthen the emphasis: Home clarity, About as risk-reducer, Workflow as way of working, Work index + sheet as presence, Contact soft.
+* Could Have (form/calendar) only if A3 proves weak after live.
+* R2 magnet remains the answer for J6 — do not silently promote it to Must.
 
 ---
 
@@ -91,58 +91,58 @@ Insight digabung dari assumption-led discovery (metode B) yang diselaraskan deng
 
 ## For UX Discovery
 
-* Susun IA & flows dari SC1–SC5 dan target journey R1
-* Prioritaskan first-screen messaging, About / Workflow / Work index, Contact soft
-* Rancang secondary path tanpa nav/IA terpisah untuk hiring
-* Spec bilingual geo-aware + switcher sebagai acceptance
-* Pakai opportunity areas di `user-journey.md` sebagai backlog pertanyaan desain
+* Build IA & flows from SC1–SC5 and the target R1 journey
+* Prioritize first-screen messaging, About / Workflow / Work index, soft Contact
+* Design the secondary path without separate nav/IA for hiring
+* Specify bilingual geo-aware behavior + switcher as acceptance
+* Use opportunity areas in `user-journey.md` as the design question backlog
 
 ## For Architecture Discovery
 
-* Publik read-only site; tidak ada auth/RBAC (ADR-011)
-* Butuh fondasi i18n dan destination hygiene (meta, URL stabil)
-* Integrasi Contact = mailto/tautan dulu; form hanya jika diputuskan nanti
-* Analytics ringan privacy-aware sebagai pendukung validasi A3 — bukan SoT persona
+* Public read-only site; no auth/RBAC (ADR-011)
+* Needs i18n foundation and destination hygiene (meta, stable URL)
+* Contact integration = mailto/link first; form only if decided later
+* Privacy-aware lightweight analytics as support for A3 validation — not persona SoT
 
 ---
 
 # Open Questions
 
-| # | Pertanyaan | Kapan dijawab |
-| - | ---------- | ------------- |
-| OQ1 | Apakah teaser 1–3 item cukup tanpa case untuk P2 yang risk-averse? | **Closed sebagian (ADR-032):** teaser Home retired; presence = Work index + sheet M10. Validasi P2 tetap observasi pasca-live |
-| OQ2 | Soft CTA mana yang paling natural (email vs LinkedIn vs keduanya)? | **Closed (ADR-014)** — Email primer; LinkedIn & GitHub satelit; tanpa WA/IG di R1 |
-| OQ3 | Seberapa agresif availability line tanpa terasa sales? | UX copy / eksekusi konten |
-| OQ4 | Apakah hiring inbound cukup besar sehingga secondary path perlu diperkuat? | Observasi pasca-R1 |
-| OQ5 | Aturan default bahasa di edge cases (VPN, bahasa browser)? | **Closed di lapisan UX** (IA Entry Points); detail deteksi geo → Engineering |
+| # | Question | When answered |
+| - | -------- | ------------- |
+| OQ1 | Is a 1–3 item teaser enough without cases for risk-averse P2? | **Partly closed (ADR-032):** Home teaser retired; presence = Work index + sheet M10. P2 validation remains a post-live observation |
+| OQ2 | Which soft CTA is most natural (email vs LinkedIn vs both)? | **Closed (ADR-014)** — Email primary; LinkedIn & GitHub satellites; no WA/IG in R1 |
+| OQ3 | How assertive should the availability line be without feeling salesy? | UX copy / content execution |
+| OQ4 | Is hiring inbound large enough that the secondary path should be strengthened? | Post-R1 observation |
+| OQ5 | Default-language rules in edge cases (VPN, browser language)? | **Closed at UX layer** (IA Entry Points); geo detection details → Engineering |
 
 ---
 
 # Decision Gate
 
-Baseline User v1.0 **siap dikunci** jika Boss Rezi menyetujui:
+User Baseline v1.0 is **ready to lock** if Boss Rezi approves:
 
-1. Metode assumption-led + riset ringan opsional
-2. Journey R1 primer + sekunder tipis
-3. Insight I1–I7 sebagai acuan UX
-4. Tidak ada Must produk baru dari fase ini
+1. Assumption-led method + optional lightweight research
+2. Primary R1 journey + thin secondary path
+3. Insights I1–I7 as the UX reference
+4. No new product Must from this phase
 
-→ Dikunci lewat **ADR-013**.
+→ Locked through **ADR-013**.
 
 ---
 
 # Expected Output
 
-Sintesis yang menutup T-003 dan membuka T-004 (UX) tanpa menebak ICP ulang.
+A synthesis that closes T-003 and opens T-004 (UX) without guessing the ICP again.
 
 ---
 
 # Exit Criteria
 
-* Insight & assumption review lengkap
-* Implikasi UX/Architecture tertulis
-* Open questions tidak disembunyikan
-* ADR Baseline User Accepted
+* Insight & assumption review complete
+* UX/Architecture implications written
+* Open questions are not hidden
+* User Baseline ADR Accepted
 
 ---
 
@@ -152,6 +152,6 @@ Sintesis yang menutup T-003 dan membuka T-004 (UX) tanpa menebak ICP ulang.
 * `discovery-plan.md`
 * `user-journey.md`
 * `../02-product/mvp-definition.md`
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

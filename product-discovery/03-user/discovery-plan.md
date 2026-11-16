@@ -1,24 +1,24 @@
 # Discovery Plan
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini merencanakan bagaimana User Discovery untuk website portofolio pribadi **rezisaktiva** dijalankan dan dibatasi.
+This document plans how User Discovery for the personal portfolio website **rezisaktiva** is run and bounded.
 
 ---
 
 # Overview
 
-User Discovery fase ini **assumption-led**: sintesis dari Business Baseline (ADR-002, ADR-004, ADR-005, ADR-009) dan Product Baseline (ADR-010–012), divalidasi oleh Boss Rezi. Ditambah **rencana riset ringan opsional** yang tidak memblokir Baseline User v1.0.
+User Discovery in this phase is **assumption-led**: a synthesis from the Business Baseline (ADR-002, ADR-004, ADR-005, ADR-009) and Product Baseline (ADR-010–012), validated by Boss Rezi. It also includes an **optional lightweight research plan** that does not block User Baseline v1.0.
 
-Bukan riset formal wajib (interview/survei sebagai gerbang baseline).
+It is not mandatory formal research (interviews/surveys as the baseline gate).
 
 ---
 
 # Purpose
 
-* Menetapkan tujuan, pertanyaan, asumsi, sumber, dan metode discovery user.
-* Menjaga kejujuran evidence: apa yang diasumsikan vs apa yang akan divalidasi kemudian.
-* Menghubungkan output user ke UX (fase berikutnya) tanpa menggeser scope Hybrid lean.
+* Establish the objectives, questions, assumptions, sources, and methods for user discovery.
+* Keep evidence honest: what is assumed vs what will be validated later.
+* Connect user outputs to UX (the next phase) without shifting the Hybrid lean scope.
 
 ---
 
@@ -26,160 +26,160 @@ Bukan riset formal wajib (interview/survei sebagai gerbang baseline).
 
 ## In Scope
 
-* Inventaris asumsi tentang pengunjung primer & sekunder
-* Sintesis segments, personas, goals, pains, JTBD, scenarios, journey (R1 + sekunder tipis)
-* Rencana validasi ringan opsional pasca-baseline
-* Confidence level dan aturan evidence
+* Inventory of assumptions about primary and secondary visitors
+* Synthesis of segments, personas, goals, pains, JTBD, scenarios, journey (R1 + thin secondary)
+* Optional lightweight validation plan after baseline
+* Confidence level and evidence rules
 
 ## Out of Scope
 
-* Interview/survei wajib sebelum kunci baseline
-* Analytics produksi / instrumentasi kuantitatif penuh (nanti di Engineering)
-* Riset untuk audiens di luar ICP yang sudah dikunci ADR-005
-* Redesign scope produk (sudah terkunci ADR-010–012)
+* Mandatory interviews/surveys before locking the baseline
+* Production analytics / full quantitative instrumentation (later in Engineering)
+* Research for audiences outside the ICP locked by ADR-005
+* Product scope redesign (already locked by ADR-010–012)
 
 ---
 
 # Discovery Objectives
 
-1. Memperdalam (bukan mengganti) ICP dual founder/PO dari `target-market.md`
-2. Menjelaskan jobs & friction pengunjung saat mengevaluasi Rezi sebagai product builder
-3. Memetakan journey R1 Clarity (Home `#about` / Workflow / Work index → Contact) plus jalur sekunder tipis
-4. Menghasilkan insight yang actionable untuk UX tanpa menambah Must MVP
-5. Mencatat asumsi berisiko tinggi dan cara validasi ringan opsional
+1. Deepen (not replace) the dual founder/PO ICP from `target-market.md`
+2. Explain visitor jobs and friction when evaluating Rezi as a product builder
+3. Map the R1 Clarity journey (Home `#about` / Workflow / Work index → Contact) plus a thin secondary path
+4. Produce insights that are actionable for UX without adding new Must MVP scope
+5. Record high-risk assumptions and optional lightweight validation methods
 
 ---
 
 # Discovery Questions
 
-| # | Pertanyaan | Dipakai di |
-| - | ---------- | ---------- |
-| Q1 | Siapa yang datang, dan apa intent mereka dalam 1–3 menit pertama? | segments, personas, goals |
-| Q2 | Apa yang harus mereka pahami agar merasa “ini relevan untuk saya”? | goals, JTBD, journey |
-| Q3 | Di mana gesekan evaluasi & kontak terjadi hari ini (tanpa situs milik sendiri)? | pain-points, current-state journey |
-| Q4 | Job mana yang wajib dilayani R1 vs boleh menunggu R2 magnet? | JTBD priority, scenarios |
-| Q5 | Apa yang hiring manager / calon klien butuhkan tanpa menggeser pesan brand? | secondary journey |
-| Q6 | Asumsi mana yang paling berisiko jika salah? | assumption inventory, open questions |
+| # | Question | Used in |
+| - | -------- | ------- |
+| Q1 | Who arrives, and what is their intent in the first 1–3 minutes? | segments, personas, goals |
+| Q2 | What must they understand to feel “this is relevant to me”? | goals, JTBD, journey |
+| Q3 | Where do evaluation and contact friction happen today (without an owned site)? | pain-points, current-state journey |
+| Q4 | Which jobs must R1 serve vs which can wait for the R2 magnet? | JTBD priority, scenarios |
+| Q5 | What do hiring managers / prospective clients need without shifting the brand message? | secondary journey |
+| Q6 | Which assumptions are riskiest if wrong? | assumption inventory, open questions |
 
 ---
 
 # Assumption Inventory
 
-| ID | Asumsi | Risiko jika salah | Mitigasi |
-| -- | ------ | ----------------- | -------- |
-| A1 | Dua archetipe primer setara (early founder & PO) membaca lapisan pesan yang sama | Pesan terlalu “indie” atau terlalu “korporat” | Salinan netral product-builder; teaser outcome, bukan tone tunggal |
-| A2 | Kunjungan singkat cukup untuk clarity jika Home + About section + Workflow + Work index + Contact koheren | Pengunjung tetap bingung tanpa case detail | Presence = Work index + sheet; Workflow = cara kerja; teaser Home retired (ADR-032 / ADR-020 / ADR-035 / ADR-040). Magnet case di R2 (bukan blocker R1). |
-| A3 | Soft CTA (email/tautan) cukup untuk inbound berkualitas di R1 | Opportunity hilang karena friction form/booking | Could Have form/calendar di product; validasi setelah live |
-| A4 | Hiring manager / klien project terlayani oleh sinyal sekunder di permukaan yang sama | Mereka bounce karena “bukan CV developer” | Secondary journey tipis: sinyal fullstack + cara kerja tanpa rebrand |
-| A5 | Bilingual geo-aware mengurangi alienasi SEA vs non-SEA | Default bahasa salah → bounce | Detail di UX/Engineering; switcher selalu ada (ADR-002) |
-| A6 | Validasi peer/chat singkat setelah live cukup memperbaiki salinan | Asumsi ICP meleset material | Rencana riset ringan di bawah; ADR baru bila ICP berubah |
+| ID | Assumption | Risk if wrong | Mitigation |
+| -- | ---------- | ------------- | ---------- |
+| A1 | Two primary archetypes are equal (early founder & PO) and read the same message layer | Message becomes too “indie” or too “corporate” | Neutral product-builder copy; outcome teaser, not a single tone |
+| A2 | A short visit is enough for clarity if Home + About section + Workflow + Work index + Contact are coherent | Visitors remain confused without case detail | Presence = Work index + sheet; Workflow = way of working; Home teaser retired (ADR-032 / ADR-020 / ADR-035 / ADR-040). Case magnet in R2 (not an R1 blocker). |
+| A3 | Soft CTA (email/links) is enough for quality inbound in R1 | Opportunities are lost because of form/booking friction | Could Have form/calendar in product; validate after live |
+| A4 | Hiring manager / project client can be served by secondary signals on the same surfaces | They bounce because it is “not a developer CV” | Thin secondary journey: fullstack signal + way of working without rebrand |
+| A5 | Bilingual geo-aware behavior reduces SEA vs non-SEA alienation | Wrong default language → bounce | Details in UX/Engineering; switcher always available (ADR-002) |
+| A6 | Short peer/chat validation after live is enough to improve copy | ICP assumptions are materially off | Lightweight research plan below; new ADR if ICP changes |
 
 ---
 
 # Discovery Sources
 
-| Sumber | Peran | Catatan |
-| ------ | ----- | ------- |
-| `01-business/` Baseline v1.0 | Sumber primer asumsi audiens & masalah | ADR-002, 004, 005, 009 |
-| `02-product/` Baseline v1.0 | Batas surface & journey yang relevan | Hybrid lean; R1–R3 |
-| Pengalaman Boss Rezi | Validasi framing & prioritas | Decision owner |
-| Satelit publik (GitHub, LinkedIn, CV) | Bukti current-state friction | Bukan panggung utama |
-| Peer / chat singkat (opsional) | Validasi salinan & clarity pasca-draft/live | Tidak memblokir baseline |
-| Analytics ringan (nanti) | Arah perilaku, bukan SoT persona | Privacy-aware; fase Engineering |
+| Source | Role | Notes |
+| ------ | ---- | ----- |
+| `01-business/` Baseline v1.0 | Primary source for audience and problem assumptions | ADR-002, 004, 005, 009 |
+| `02-product/` Baseline v1.0 | Boundary for relevant surfaces and journeys | Hybrid lean; R1–R3 |
+| Boss Rezi’s experience | Framing and priority validation | Decision owner |
+| Public satellites (GitHub, LinkedIn, CV) | Evidence of current-state friction | Not the main stage |
+| Peer / short chats (optional) | Validate copy and clarity after draft/live | Does not block baseline |
+| Lightweight analytics (later) | Behavioral direction, not persona SoT | Privacy-aware; Engineering phase |
 
 ---
 
 # Discovery Method
 
-**Metode terkunci: Assumption-led + rencana riset ringan (opsi B).**
+**Locked method: Assumption-led + lightweight research plan (option B).**
 
-1. **Sintesis desk** — turunkan segments/personas/goals/pains/JTBD/scenarios/journey dari baseline bisnis+produk.
-2. **Review Boss Rezi** — kunci Baseline User v1.0 via ADR.
-3. **Riset ringan opsional (tidak memblokir baseline):**
-   - 3–5 percakapan singkat dengan founder/PO / peer di jaringan SEA
-   - Minta mereka buka draft/live situs (atau deskripsi permukaan R1) dan jawab: “Siapa Rezi? Cocok untuk apa? Mau kontak?”
-   - Catat mismatch salinan / bukti / CTA; revisi dokumen atau salinan UX bila material → ADR bila mengubah ICP/journey inti
-4. **Tidak dilakukan di fase ini:** survei massal, usability lab formal, paid panel.
+1. **Desk synthesis** — derive segments/personas/goals/pains/JTBD/scenarios/journey from business+product baselines.
+2. **Boss Rezi review** — lock User Baseline v1.0 through an ADR.
+3. **Optional lightweight research (does not block baseline):**
+   - 3–5 short conversations with founders/POs / peers in the SEA network
+   - Ask them to open the draft/live site (or a description of the R1 surfaces) and answer: “Who is Rezi? Good for what? Would you contact him?”
+   - Record copy / proof / CTA mismatches; revise documents or UX copy if material → ADR if changing ICP/core journey
+4. **Not done in this phase:** mass surveys, formal usability lab, paid panel.
 
 ---
 
 # Evidence Rules
 
-* Baseline User boleh dikunci dari **asumsi terdokumentasi + validasi Boss Rezi**.
-* Klaim “user selalu / tidak pernah…” tanpa sumber → tandai sebagai asumsi (A#).
-* Temuan riset opsional yang bertentangan dengan ICP terkunci → eskalasi ADR, jangan diam-diam mengganti.
-* Insight untuk UX harus mengacu job/pain yang ada di dokumen fase ini.
+* User Baseline may be locked from **documented assumptions + Boss Rezi validation**.
+* Claims like “users always / never...” without a source → mark as an assumption (A#).
+* Optional research findings that conflict with the locked ICP → escalate to ADR, do not silently replace it.
+* Insights for UX must reference jobs/pains that exist in this phase’s documents.
 
 ---
 
 # Confidence Level
 
-| Area | Confidence | Alasan |
+| Area | Confidence | Reason |
 | ---- | ---------- | ------ |
-| ICP & segments primer | Tinggi | Terkunci ADR-005 + `target-market.md` |
-| Goals & pains inti (rantai evaluasi) | Tinggi | Selaras ADR-004 / problem-statement |
-| Journey R1 primer | Sedang–tinggi | Diturunkan dari Hybrid lean; belum diuji live |
-| Kebutuhan sekunder (hiring / klien) | Sedang | Dilayani tipis; bukan optimasi utama |
-| Soft CTA cukup vs form/booking | Sedang | Asumsi A3; validasi setelah R1 live |
-| Detail emosional per persona | Sedang | Sintesis; riset ringan bisa mempertajam |
+| Primary ICP & segments | High | Locked by ADR-005 + `target-market.md` |
+| Core goals & pains (evaluation chain) | High | Aligned with ADR-004 / problem-statement |
+| Primary R1 journey | Medium-high | Derived from Hybrid lean; not live-tested yet |
+| Secondary needs (hiring / clients) | Medium | Served thinly; not the main optimization |
+| Soft CTA enough vs form/booking | Medium | Assumption A3; validate after R1 live |
+| Persona emotional details | Medium | Synthesis; lightweight research can sharpen |
 
 ---
 
 # Quality Criteria for Insights
 
-Insight layak masuk `insights.md` jika:
+An insight is suitable for `insights.md` if it:
 
-1. Menjelaskan perilaku atau keputusan pengunjung (bukan preferensi desain spekulatif)
-2. Mengait ke dual north star (clarity dan/atau inbound berkualitas)
-3. Tidak mendorong fitur di luar Product Baseline tanpa menandai “post-R1 / ADR”
-4. Bisa diterjemahkan ke pertanyaan UX (hierarki, salinan, CTA, bukti)
+1. Explains visitor behavior or decisions (not speculative design preference)
+2. Connects to the dual north star (clarity and/or quality inbound)
+3. Does not push features outside the Product Baseline without marking “post-R1 / ADR”
+4. Can be translated into a UX question (hierarchy, copy, CTA, proof)
 
 ---
 
 # Discovery Risks
 
-| Risiko | Dampak | Respons |
-| ------ | ------ | ------- |
-| Overfit ke satu archetipe | Alienasi archetipe setara lainnya | Jaga dual primer setara (ADR-005) |
-| Mengisi gap dengan case wajib di R1 | Scope creep vs ADR-010 | Teaser only; case di R2 |
-| Menunda baseline menunggu interview | Discovery macet | Riset opsional eksplisit non-blocking |
-| Secondary journey menggeser brand ke “CV hire” | NS-1 lemah | Pesan tetap product builder; sinyal sekunder di lapisan bukti |
+| Risk | Impact | Response |
+| ---- | ------ | -------- |
+| Overfitting to one archetype | Alienates the other equal archetype | Keep the dual primary equal (ADR-005) |
+| Filling the gap with mandatory R1 cases | Scope creep vs ADR-010 | Teaser only; cases in R2 |
+| Delaying baseline while waiting for interviews | Discovery stalls | Research is explicitly optional and non-blocking |
+| Secondary journey shifts the brand to “CV hire” | NS-1 weakens | Message remains product builder; secondary signal in proof layer |
 
 ---
 
 # Expected Output
 
-* Seluruh dokumen `03-user/` terisi dan saling rujuk
-* Asumsi ber-ID (A1–A6) dan pertanyaan terbuka terdokumentasi
-* Rencana riset ringan opsional tertulis (tidak wajib selesai sebelum baseline)
-* Baseline User v1.0 + ADR
+* All `03-user/` documents are filled in and cross-referenced
+* Assumptions with IDs (A1–A6) and open questions are documented
+* Optional lightweight research plan is written (not required before baseline)
+* User Baseline v1.0 + ADR
 
 ---
 
 # Success Criteria
 
-1. Boss Rezi menyetujui metode assumption-led + riset ringan opsional
-2. Journey R1 + sekunder tipis tercermin di scenarios/journey/insights
-3. Tidak ada Must baru yang bertentangan dengan ADR-010–012
-4. UX phase bisa mulai dari insight tanpa menebak ICP ulang
+1. Boss Rezi approves the assumption-led method + optional lightweight research
+2. R1 journey + thin secondary path are reflected in scenarios/journey/insights
+3. No new Must contradicts ADR-010–012
+4. UX phase can start from insights without guessing the ICP again
 
 ---
 
 # Exit Criteria
 
-* Dokumen fase ini terisi (bukan TBD)
-* ADR Baseline User Accepted
-* Open questions material tercatat (bukan disembunyikan)
+* Documents for this phase are filled in (not TBD)
+* User Baseline ADR Accepted
+* Material open questions are recorded (not hidden)
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `user-segments.md` / `user-personas.md` — siapa pengunjung
-* `insights.md` — sintesis & assumption review
-* `../01-business/target-market.md` — ICP bisnis
-* `../02-product/mvp-definition.md` — permukaan R1
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md` — kunci fase User
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `README.md` — documentation for this phase
+* `user-segments.md` / `user-personas.md` — who the visitors are
+* `insights.md` — synthesis & assumption review
+* `../01-business/target-market.md` — business ICP
+* `../02-product/mvp-definition.md` — R1 surfaces
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md` — User phase lock
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

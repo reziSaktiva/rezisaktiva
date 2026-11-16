@@ -1,22 +1,22 @@
 # Feature Modules
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini memetakan modul/fitur/halaman website portofolio **rezisaktiva** untuk fase Product — bukan wireframe UX dan bukan stack Engineering.
+This document maps modules/features/pages for the **rezisaktiva** portfolio website in the Product phase — not UX wireframes and not the Engineering stack.
 
 ---
 
 # Overview
 
-Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work index) + **About sebagai section `#about` di Home** (ADR-040) + **Contact, Quick Info, dan project sheet sebagai overlay** + **lintas-halaman** (bahasa, chrome, tema). Home = hero + `#about` + pita footer (ADR-038 / ADR-040 / ADR-041). Now = About. Cara kerja = M14 `/workflow` (ADR-035; isi ADR-042). M10 di R1 = overlay (ADR-027). **R2** menambah halaman case `/[locale]/projects/[slug]` tanpa mencabut sheet (**ADR-044**).
+Modules follow Hybrid lean: **three pages** (Home, Workflow, Work index) + **About as section `#about` on Home** (ADR-040) + **Contact, Quick Info, and project sheet as overlays** + **cross-page layers** (language, chrome, theme). Home = hero + `#about` + footer ribbon (ADR-038 / ADR-040 / ADR-041). Now = About. Way of working = M14 `/workflow` (ADR-035; content ADR-042). M10 in R1 = overlay (ADR-027). **R2** adds case pages at `/[locale]/projects/[slug]` without removing the sheet (**ADR-044**).
 
-> **Catatan override (2026-08-15, ADR-020; 2026-08-26, ADR-027; 2026-09-14, ADR-044):** M9 (Work index) Must R1. **M10** = overlay sheet dari bawah (Must R1, T-026). Halaman case **R2** = `/[locale]/projects/[slug]` (hibrid; tile tetap sheet).
+> **Override note (2026-08-15, ADR-020; 2026-08-26, ADR-027; 2026-09-14, ADR-044):** M9 (Work index) is Must R1. **M10** = bottom sheet overlay (Must R1, T-026). Case pages **R2** = `/[locale]/projects/[slug]` (hybrid; tiles still open sheet).
 >
-> **Update (2026-08-16):** M6 menyertakan toggle tema Must R1 (**ADR-021**). Modul baru **M13 — Quick Info panel** (**ADR-022**) — overlay global, bukan halaman.
+> **Update (2026-08-16):** M6 includes theme toggle Must R1 (**ADR-021**). New module **M13 — Quick Info panel** (**ADR-022**) — global overlay, not a page.
 >
-> **Update (2026-08-21):** M3 sempat merencanakan tautan unduh CV/Portofolio di modal (**ADR-023**). **Update (2026-09-14, ADR-043):** keputusan itu **dicabut** — tidak ada unduhan CV publik.
+> **Update (2026-08-21):** M3 previously planned CV/Portfolio download links in the modal (**ADR-023**). **Update (2026-09-14, ADR-043):** that decision was **revoked** — no public CV download.
 >
-> **Update (2026-09-08, ADR-040 / ADR-042):** M2 = section Home, bukan halaman. `/about` redirect. `#proof` dicabut. Isi `/workflow` = lima blok decision-driven.
+> **Update (2026-09-08, ADR-040 / ADR-042):** M2 = Home section, not a page. `/about` redirects. `#proof` revoked. `/workflow` content = five decision-driven blocks.
 
 ---
 
@@ -24,101 +24,101 @@ Modul disusun mengikuti Hybrid lean: **tiga halaman** (Home, Workflow, Work inde
 
 ## M1 — Home (Identity & Destination)
 
-**Tujuan:** First impression + clarity: siapa Rezi, next step.
+**Goal:** First impression + clarity: who Rezi is, next step.
 
-**Isi inti:**
+**Core contents:**
 
-* Hero / klaim positioning (h1 atas; lede lantai bawah; tautan Workflow di lede)
-* Soft arah ke About dan Contact (chrome + pita footer setelah `#about` — ADR-041)
+* Hero / positioning claim (top h1; lower-floor lede; Workflow link in lede)
+* Soft direction to About and Contact (chrome + footer ribbon after `#about` — ADR-041)
 
-**Bukan:** Now (itu M2 About, ADR-037), katalog lengkap, blog feed, pricing, credibility line, work teaser (ADR-032 — siapa di M2; cara kerja di M14; karya di M9). `#proof` dicabut ADR-040.
+**Not:** Now (that is M2 About, ADR-037), full catalog, blog feed, pricing, credibility line, work teaser (ADR-032 — who in M2; way of working in M14; work in M9). `#proof` revoked by ADR-040.
 
 ---
 
 ## M2 — About (Narrative)
 
-**Tujuan:** Memperdalam cerita siapa Rezi agar founder/PO percaya fit kolaborasi.
+**Goal:** Deepen the story of who Rezi is so founders/POs trust collaboration fit.
 
-**Label chrome:** ID **"Tentang"** / EN **"About"** (ADR-035). Chip mengarah ke `/{locale}#about` di Home; `/[locale]/about` redirect (ADR-040). ID modul tetap M2.
+**Chrome label:** ID **"Tentang"** / EN **"About"** (ADR-035). Chip points to `/{locale}#about` on Home; `/[locale]/about` redirects (ADR-040). Module ID remains M2.
 
-**Isi inti:**
+**Core contents:**
 
-* Sapaan (`h2`)
-* **Now** — status pekerjaan saat ini (kicker + tautan perusahaan, ADR-037); di antara judul dan lead
-* Lead pribadi satu paragraf (ADR-039)
-* Karya seni viewport + caption “This is not me”
-* Konteks pengalaman (di dalam lead, bukan CV kronologis)
+* Greeting (`h2`)
+* **Now** — current work status (kicker + company link, ADR-037); between title and lead
+* One-paragraph personal lead (ADR-039)
+* Viewport artwork + caption “This is not me”
+* Experience context (inside lead, not chronological CV)
 
-**Bukan:** `#proof` / klaim bukti AI sebagai section (ADR-040); cara kerja (itu **M14 Workflow**, ADR-042).
+**Not:** `#proof` / AI proof claim as section (ADR-040); way of working (that is **M14 Workflow**, ADR-042).
 
 ---
 
 ## M3 — Contact (Soft Path)
 
-**Tujuan:** Membuka inbound berkualitas tanpa hard sell.
+**Goal:** Open qualified inbound without hard sell.
 
-**Isi inti:**
+**Core contents:**
 
-* Ajakan soft + konteks kapan relevan menghubungi
-* Jalur primer: email dan/atau tautan langsung
-* Form singkat di modal **mengantar** pesan ke inbox (Resend, **ADR-047**)
-* Tautan satelit (LinkedIn, GitHub, dll.)
-* Opsional: availability line
+* Soft invitation + context for when contact is relevant
+* Primary path: email and/or direct link
+* Short modal form **delivers** message to inbox (Resend, **ADR-047**)
+* Satellite links (LinkedIn, GitHub, etc.)
+* Optional: availability line
 
-**Bukan (MVP):** calendar wajib, CRM, rate card, tautan unduh CV/Portofolio publik (**ADR-043**; ADR-023 superseded). Form tanpa backend (hanya “Terkirim” palsu) **dicabut** oleh ADR-047.
+**Not (MVP):** mandatory calendar, CRM, rate card, public CV/Portfolio download link (**ADR-043**; ADR-023 superseded). Form without backend (fake “Sent”) was **revoked** by ADR-047.
 
 ---
 
 ## M4 — Work Teaser (retired)
 
-**Status:** **Retired** (ADR-032, 2026-09-07). Bukan section Home lagi.
+**Status:** **Retired** (ADR-032, 2026-09-07). No longer a Home section.
 
-Presence bukti karya = **M9 Work index** + **M10 project sheet**. ID M4 tidak didaur ulang.
+Work proof presence = **M9 Work index** + **M10 project sheet**. M4 ID is not reused.
 
 ---
 
 ## M5 — Language (Bilingual Geo-Aware)
 
-**Tujuan:** Relevan SEA + pintu terbuka luar SEA (ADR-002).
+**Goal:** SEA relevance + open door outside SEA (ADR-002).
 
-**Isi inti:**
+**Core contents:**
 
-* Default bahasa menurut geo (ID di Indonesia, EN di luar)
-* Language switcher selalu tersedia
-* Konten inti tersedia di kedua bahasa (makna setara)
+* Default language by geo (ID in Indonesia, EN outside)
+* Language switcher always available
+* Core content available in both languages (equivalent meaning)
 
-**Detail:** deteksi geo, URL (`/id` vs cookie), fallback — fase UX / Engineering.
+**Details:** geo detection, URL (`/id` vs cookie), fallback — UX / Engineering phase.
 
 ---
 
 ## M6 — Site Chrome & Satellites
 
-**Tujuan:** Navigasi dan presence rumah brand.
+**Goal:** Navigation and brand-home presence.
 
-**Isi inti:**
+**Core contents:**
 
-* Nav: Tentang / About, Proses Kerja / How I Work, Proyek (M9) + switcher; Contact = tombol pembuka modal (ADR-019), bukan link; tanpa chip Home (ADR-034 / ADR-035)
-* **Toggle tema (dark/light)** di chrome — Must R1 (**ADR-021**) **saat kedua tema hidup**; update 2026-09-04: default ship dark, light hold, toggle tersembunyi; di mobile Contact tetap di luar hamburger
-* Footer: identitas singkat, satelit, legal ringan, pita Contact di semua rute termasuk Home (ADR-041)
-* Konsistensi soft availability di chrome (opsional)
-* Mobile (<1024px): nav halaman + switcher di balik hamburger; Contact-button + toggle tema tetap selalu terlihat (override ADR-020; toggle = ADR-021)
+* Nav: Tentang / About, Proses Kerja / How I Work, Proyek (M9) + switcher; Contact = modal-opening button (ADR-019), not link; no Home chip (ADR-034 / ADR-035)
+* **Theme toggle (dark/light)** in chrome — Must R1 (**ADR-021**) **when both themes are live**; update 2026-09-04: default ship dark, light hold, toggle hidden; on mobile Contact remains outside hamburger
+* Footer: short identity, satellites, lightweight legal, Contact ribbon on all routes including Home (ADR-041)
+* Consistent soft availability in chrome (optional)
+* Mobile (<1024px): page nav + switcher behind hamburger; Contact-button + theme toggle remain always visible (override ADR-020; toggle = ADR-021)
 
-Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), didefinisikan di Supporting Modules di bawah (pola sama seperti M9 — Must R1 tapi bukan Core Module M1–M6).
+Quick Info (M13) is **not** part of M6 — it is its own content overlay (same pattern as M9 — Must R1 but not Core Module M1–M6).
 
 ---
 
 # Supporting Modules
 
-| Modul | Peran | Kapan |
-| ----- | ----- | ----- |
-| **M7 — Destination meta** | Title/description/OG dasar agar link layak dishare | MVP (Should/Must hygiene) |
-| **M8 — Contact form / booking** | Form modal → Resend (**ADR-047**). Booking/calendar tetap di luar | Form = **Must** (Validation); calendar = Could |
-| **M9 — Work index** | Halaman daftar karya | **Must R1** (override ADR-020, 2026-08-15) |
-| **M10 — Case / process detail** | **R1:** overlay dari bawah (preview live/galeri, services, location or company, year, description); tile membuka sheet; Live sekunder, tanpa Repo. **R2 (ADR-044):** tautan “baca selengkapnya” ke halaman `/[locale]/projects/[slug]`; sheet **tetap** | **Must R1** overlay (ADR-027); **Must R2** halaman case (ADR-044, T-056) |
-| **M11 — Writing / notes** | Tulisan singkat proses | Future — bukan inti visi MVP |
-| **M12 — Experiments / playground** | Satelit craft | Future — jangan jadi panggung utama |
-| **M13 — Quick Info panel** | Overlay global: tab tepi kanan → drawer (bio, Services, Tools, Works index, Email, Links — tautan/rujukan cepat, bukan form inbound); bukan route; tampil di semua halaman R1 termasuk Work index (sheet M10 overlay terpisah; Quick Info tidak disembunyikan); bukan pengganti Contact modal (ADR-019) atau footer satelit (M6) | **Must R1** (ADR-022; klarifikasi vs M10 overlay: ADR-027) |
-| **M14 — Workflow** | Halaman cara kerja: hero + tab perbandingan, lima prinsip, pipeline Human vs AI, ADR Vault. Route `/[locale]/workflow`. Label chrome Proses Kerja / How I Work | **Must R1** (ADR-035, isi **ADR-042**) |
+| Module | Role | When |
+| ------ | ---- | ---- |
+| **M7 — Destination meta** | Basic title/description/OG so links are worth sharing | MVP (Should/Must hygiene) |
+| **M8 — Contact form / booking** | Modal form → Resend (**ADR-047**). Booking/calendar remains outside | Form = **Must** (Validation); calendar = Could |
+| **M9 — Work index** | Work listing page | **Must R1** (override ADR-020, 2026-08-15) |
+| **M10 — Case / process detail** | **R1:** bottom overlay (live preview/gallery, services, location or company, year, description); tile opens sheet; Live secondary, no Repo. **R2 (ADR-044):** “baca selengkapnya” link to `/[locale]/projects/[slug]`; sheet **stays** | **Must R1** overlay (ADR-027); **Must R2** case page (ADR-044, T-056) |
+| **M11 — Writing / notes** | Short process writing | Future — not core MVP vision |
+| **M12 — Experiments / playground** | Craft satellite | Future — do not make it the main stage |
+| **M13 — Quick Info panel** | Global overlay: right-edge tab → drawer (bio, Services, Tools, Works index, Email, Links — quick links/references, not inbound form); not route; visible on all R1 pages including Work index (M10 sheet is separate overlay; Quick Info is not hidden); not a replacement for Contact modal (ADR-019) or footer satellites (M6) | **Must R1** (ADR-022; clarification vs M10 overlay: ADR-027) |
+| **M14 — Workflow** | Way-of-working page: hero + comparison tabs, five principles, Human vs AI pipeline, ADR Vault. Route `/[locale]/workflow`. Chrome label Proses Kerja / How I Work | **Must R1** (ADR-035, content **ADR-042**) |
 
 ---
 
@@ -127,63 +127,63 @@ Quick Info (M13) **bukan** bagian M6 — overlay berkonten sendiri (ADR-022), di
 ```text
 M5 Language ─── wraps ───► M1 Home, M2 About, M14 Workflow, M3 Contact, M6 Chrome, M9 Work index
                               │
-                              └── CTA soft ► M3 Contact
+                              └── soft CTA ► M3 Contact
 
 M6 Chrome ── includes ► Theme toggle (ADR-021)
-M13 Quick Info ── overlay (bukan route) ──► semua halaman R1 (Quick Info tetap di Work index; sheet M10 overlay terpisah)
+M13 Quick Info ── overlay (not route) ──► all R1 pages (Quick Info remains on Work index; M10 sheet overlay is separate)
 
 M9 Work index (Must R1, ADR-020) ──► M10 project sheet overlay (Must R1, ADR-027)
-                              └──► halaman case `/projects/[slug]` (Must R2, ADR-044) — dari tautan di sheet
+                              └──► case page `/projects/[slug]` (Must R2, ADR-044) — from link in sheet
 ```
 
-* M1 adalah pintu destination (lede + klaim); M2 memperdalam siapa + Now + lead/artwork; M14 memperdalam cara kerja; M3 menutup soft path.
-* M4 retired (ADR-032); bukti karya = M9 + M10; magnet URL = halaman case (ADR-044).
-* M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); halaman `/[locale]/projects/[slug]` = **R2 (ADR-044)** — bukan `/work/[slug]`.
-* M13 overlay glanceable — tidak menggantikan M3 atau footer M6 (ADR-022).
+* M1 is the destination door (lede + claim); M2 deepens who + Now + lead/artwork; M14 deepens way of working; M3 closes the soft path.
+* M4 retired (ADR-032); work proof = M9 + M10; magnet URL = case page (ADR-044).
+* M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); page `/[locale]/projects/[slug]` = **R2 (ADR-044)** — not `/work/[slug]`.
+* M13 glanceable overlay — does not replace M3 or M6 footer (ADR-022).
 
 ---
 
 # Module Design Principles
 
-1. **Satu pekerjaan per modul** — Home = clarity; About = narasi pribadi; Workflow = cara kerja; Contact = path.
-2. **Kurasi ketat** — teaser sedikit yang kuat > daftar panjang.
-3. **Soft by default** — Contact tidak berubah jadi sales page.
-4. **Bahasa sebagai lapisan** — bukan afterthought; konten inti dual.
-5. **Magnet hibrid R2** — M10 R1 = sheet; halaman case = `/projects/[slug]` dari tautan sheet (**ADR-044**). Jangan cabut sheet.
-6. **Satelit tetap satelit** — GitHub/LinkedIn mendukung, tidak menggantikan M1–M3.
-7. **Detail interaksi di UX** — dokumen ini tidak mengunci wireframe atau komponen UI.
+1. **One job per module** — Home = clarity; About = personal narrative; Workflow = way of working; Contact = path.
+2. **Strict curation** — a few strong teasers > long list.
+3. **Soft by default** — Contact does not become a sales page.
+4. **Language as a layer** — not an afterthought; core content is dual.
+5. **Hybrid R2 magnet** — M10 R1 = sheet; case page = `/projects/[slug]` from sheet link (**ADR-044**). Do not remove the sheet.
+6. **Satellites stay satellites** — GitHub/LinkedIn support, not replace M1–M3.
+7. **Interaction details in UX** — this document does not lock wireframes or UI components.
 
 ---
 
 # Success Criteria
 
-Modul dianggap cukup terdefinisi jika:
+Modules are sufficiently defined if:
 
-1. Setiap Must Have MVP bisa dipetakan ke M1–M7 + M9 + M10 + M13 + M14
+1. Every MVP Must Have can map to M1–M7 + M9 + M10 + M13 + M14
 2. M9 Must R1 (ADR-020); M10 overlay Must R1 (ADR-027); M13 overlay Must R1 (ADR-022)
-3. Tidak ada modul yang bertentangan dengan brand primer / no-pricing
-4. Siap dipecah ke MoSCoW di `feature-priority.md` dan rilis di `release-roadmap.md`
+3. No module conflicts with primary brand / no-pricing
+4. Ready to split into MoSCoW in `feature-priority.md` and releases in `release-roadmap.md`
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `product-scope.md` — batas produk
+* `README.md` — documentation for this phase
+* `product-scope.md` — product boundaries
 * `mvp-definition.md` — Must/Should/Could
-* `feature-priority.md` — prioritas (berikutnya)
-* `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
-* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
-* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
-* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/decisions/ADR-023-cv-download-contact-modal.md` — superseded ADR-043
-* `../../project-manager/decisions/ADR-043-no-public-cv-download.md`
-* `../../project-manager/decisions/ADR-032-home-single-section.md`
-* `../../project-manager/decisions/ADR-035-about-workflow-split.md`
-* `../../project-manager/decisions/ADR-040-about-as-home-section.md`
-* `../../project-manager/decisions/ADR-041-home-with-footer.md`
-* `../../project-manager/decisions/ADR-042-workflow-decision-driven-page.md`
-* `../../project-manager/decisions/ADR-044-r2-hybrid-case-pages.md`
-* `../../project-manager/decisions/ADR-047-contact-form-resend.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `feature-priority.md` — priority (next)
+* `../../project-os/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-os/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-os/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-os/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-os/decisions/ADR-023-cv-download-contact-modal.md` — superseded ADR-043
+* `../../project-os/decisions/ADR-043-no-public-cv-download.md`
+* `../../project-os/decisions/ADR-032-home-single-section.md`
+* `../../project-os/decisions/ADR-035-about-workflow-split.md`
+* `../../project-os/decisions/ADR-040-about-as-home-section.md`
+* `../../project-os/decisions/ADR-041-home-with-footer.md`
+* `../../project-os/decisions/ADR-042-workflow-decision-driven-page.md`
+* `../../project-os/decisions/ADR-044-r2-hybrid-case-pages.md`
+* `../../project-os/decisions/ADR-047-contact-form-resend.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

@@ -1,158 +1,158 @@
 # Target Market
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mendalami audiens website portofolio pribadi **rezisaktiva** — siapa yang ingin merasa “situs ini relevan untuk keputusan saya”, dan bagaimana situs harus berbicara kepada mereka.
+This document deepens the audience definition for the personal portfolio website **rezisaktiva** — who should feel “this site is relevant to my decision,” and how the site should speak to them.
 
 ---
 
 # Overview
 
-Audiens primer adalah **founder / product owner** di ruang **digital product / tech**, dengan dua archetipe setara: early founder / indie builder, dan product owner di perusahaan atau startup. Fokus geografis inti: **SEA** (Indonesia + tetangga); luar SEA tetap terbuka sebagai sekunder.
+The primary audience is **founders / product owners** in the **digital product / tech** space, with two equal archetypes: early founder / indie builder, and product owner in a company or startup. Core geographic focus: **SEA** (Indonesia + neighboring countries); outside SEA remains open as secondary.
 
-Audiens sekunder (hiring manager / tech lead, calon klien project, peer) didukung tanpa menggeser pesan utama — selaras model brand primer + soft CTA (ADR-002).
+Secondary audiences (hiring manager / tech lead, potential project client, peer) are supported without shifting the primary message — aligned with the primary brand + soft CTA model (ADR-002).
 
 ---
 
 # Primary Target Market
 
-**Founder / product owner** yang mengevaluasi apakah Rezi cocok sebagai **product builder** untuk membawa ide atau inisiatif sampai produk live.
+**Founder / product owner** evaluating whether Rezi is a fit as a **product builder** to bring an idea or initiative to a live product.
 
-Dua archetipe **setara** (tanpa prioritas satu di atas yang lain):
+Two **equal** archetypes (without prioritizing one over the other):
 
-| Archetype | Siapa | Apa yang mereka cari di situs |
-| --------- | ----- | ----------------------------- |
-| **Early founder / indie builder** | Punya ide atau produk awal; sering lean / kecil tim | Bukti bisa eksekusi end-to-end; kejelasan thinking; jalur kontak natural |
-| **Product owner di perusahaan / startup** | Sudah punya produk atau roadmap; butuh builder untuk fitur / inisiatif | Kredibilitas ship & kolaborasi; konteks product thinking; sinyal komunikasi yang pas |
+| Archetype | Who | What they look for on the site |
+| --------- | --- | ------------------------------ |
+| **Early founder / indie builder** | Has an idea or early product; often lean / small team | Proof of end-to-end execution; clarity of thinking; natural contact path |
+| **Product owner in a company / startup** | Already has a product or roadmap; needs a builder for a feature / initiative | Ship & collaboration credibility; product thinking context; fitting communication signal |
 
-**Domain:** digital product / tech — SaaS, app, platform, tools (bukan lintas industri tanpa batas).
+**Domain:** digital product / tech — SaaS, app, platform, tools (not unlimited cross-industry scope).
 
-**Geo inti:** SEA (Indonesia sebagai home base + tetangga seperti SG, MY, dan regional terkait).
+**Core geo:** SEA (Indonesia as home base + neighbors such as SG, MY, and related regional context).
 
 ---
 
 # Secondary Target Markets
 
-| Segmen | Peran terhadap situs | Catatan |
-| ------ | -------------------- | ------- |
-| **Hiring manager / tech lead** | Evaluasi fit untuk role (job opportunity, soft) | Boleh melihat sinyal fullstack; pesan tetap product builder, bukan “CV developer murni” |
-| **Calon klien project / freelance** | Evaluasi apakah cocok di-hire per engagement | Soft path; tidak jadi framing hard-sell |
-| **Peer / community builder** | Apresiasi craft; memperkuat brand jangka panjang | Bukan driver CTA; mendukung recognition |
-| **Founder / PO di luar SEA** | Sama kebutuhan evaluasi, konteks geo berbeda | Didukung lewat bilingual; bukan fokus optimasi konten utama |
+| Segment | Role for the site | Notes |
+| ------- | ----------------- | ----- |
+| **Hiring manager / tech lead** | Evaluate fit for a role (job opportunity, soft) | Can see fullstack signals; message remains product builder, not “pure developer CV” |
+| **Potential project / freelance client** | Evaluate whether Rezi is fit to hire per engagement | Soft path; does not become hard-sell framing |
+| **Peer / community builder** | Appreciate craft; strengthen long-term brand | Not a CTA driver; supports recognition |
+| **Founder / PO outside SEA** | Same evaluation need, different geo context | Supported through bilingual content; not the main content optimization focus |
 
 ---
 
 # Ideal Audience Profile (ICP)
 
-Profil ideal pengunjung yang situs ini “dibangun untuk”:
+The ideal visitor this site is “built for”:
 
-* **Peran:** Founder, co-founder, indie builder, atau product owner
-* **Konteks produk:** Digital product / tech (SaaS, app, platform, tools)
-* **Tahap:** Early (ide → MVP/live) **atau** produk yang sudah jalan dan butuh eksekusi inisiatif baru — keduanya valid
-* **Geo:** Beroperasi atau berjejaring di **SEA**; nyaman dengan konteks bilingual ID/EN
-* **Motivasi kunjungan:** Menilai “apakah Rezi cocok sebagai builder untuk ide / inisiatif saya?”
-* **Bukti yang mereka butuhkan:** Cerita product builder yang koheren, bukti ship (fullstack sebagai fondasi), sinyal AI edge yang jujur, cara menghubungi yang jelas
-* **Bukan ICP:** Orang yang hanya mencari designer agency, AI specialist murni tanpa fondasi product/engineering, atau funnel vendor dengan pricing agresif
+* **Role:** Founder, co-founder, indie builder, or product owner
+* **Product context:** Digital product / tech (SaaS, app, platform, tools)
+* **Stage:** Early (idea → MVP/live) **or** an existing product that needs execution for a new initiative — both are valid
+* **Geo:** Operating or networking in **SEA**; comfortable with ID/EN bilingual context
+* **Visit motivation:** Assess “is Rezi a fit as a builder for my idea / initiative?”
+* **Proof they need:** Coherent product builder story, shipped-work proof (fullstack as foundation), honest AI-edge signal, clear contact path
+* **Not ICP:** People only looking for a designer agency, pure AI specialist without a product/engineering foundation, or vendor funnel with aggressive pricing
 
 ---
 
 # Audience Persona
 
-Dua persona primer setara (bukan “satu persona + bayangan”):
+Two equal primary personas (not “one persona + shadow”):
 
 ### Persona 1 — Early founder / indie builder (SEA)
 
-* **Konteks:** Ide atau produk awal; resource terbatas; butuh seseorang yang bisa bawa eksekusi sampai live
-* **Pertanyaan di kepala:** “Dia pernah nge-ship apa? Bisa ngomong product, bukan cuma kode? Cara hubungi gampang nggak?”
-* **Sukses kunjungan:** Paham siapa Rezi dalam hitungan menit; cukup percaya diri untuk soft outreach
-* **Risiko salah pesan:** Terasa seperti daftar tech stack / CV developer tanpa outcome
+* **Context:** Idea or early product; limited resources; needs someone who can carry execution to live
+* **Question in mind:** “What has he shipped? Can he talk product, not just code? Is it easy to contact him?”
+* **Successful visit:** Understands who Rezi is within minutes; has enough confidence for soft outreach
+* **Risk of wrong message:** Feels like a tech stack list / developer CV without outcomes
 
-### Persona 2 — Product owner di perusahaan / startup (SEA)
+### Persona 2 — Product owner in a company / startup (SEA)
 
-* **Konteks:** Ada produk atau roadmap; mencari builder untuk fitur, rebuild, atau inisiatif berorientasi outcome
-* **Pertanyaan di kepala:** “Thinking-nya product-kah? Bisa kolaborasi dengan tim? Kredibel untuk konteks digital product?”
-* **Sukses kunjungan:** Melihat bukti + cara kerja yang relevan; merasa komunikasi akan mulus
-* **Risiko salah pesan:** Terlalu “indie hustle” tanpa sinyal profesionalisme kolaborasi
+* **Context:** Has a product or roadmap; looking for a builder for a feature, rebuild, or outcome-oriented initiative
+* **Question in mind:** “Is his thinking product-oriented? Can he collaborate with a team? Is he credible for digital product context?”
+* **Successful visit:** Sees relevant proof + ways of working; feels communication will be smooth
+* **Risk of wrong message:** Too much “indie hustle” without collaborative professionalism signals
 
-Kedua persona membaca lapisan yang sama (product builder → fullstack → AI edge); yang beda adalah penekanan evaluasi, bukan dua brand berbeda.
+Both personas read the same layers (product builder → fullstack → AI edge); what differs is the evaluation emphasis, not two different brands.
 
 ---
 
 # Visitor Roles
 
-Peran orang saat berinteraksi dengan situs (bukan role aplikasi):
+Roles people have when interacting with the site (not application roles):
 
-| Role | Tujuan di situs |
-| ---- | --------------- |
-| **Evaluator primer** | Founder / PO menilai fit builder |
-| **Evaluator sekunder** | Hiring manager / tech lead / calon klien menilai peluang engagement |
-| **Browser / peer** | Mengapresiasi craft; menyebarkan recognition |
-| **Pemilik brand (Rezi)** | Menunjuk satu URL sebagai sumber kebenaran publik |
+| Role | Goal on the site |
+| ---- | ---------------- |
+| **Primary evaluator** | Founder / PO assessing builder fit |
+| **Secondary evaluator** | Hiring manager / tech lead / potential client assessing engagement opportunity |
+| **Browser / peer** | Appreciates craft; spreads recognition |
+| **Brand owner (Rezi)** | Points to one URL as the public source of truth |
 
-Tidak ada login/role sistem pada scope visi saat ini — ini pemetaan intent pengunjung.
+There is no login/system role in the current vision scope — this maps visitor intent.
 
 ---
 
 # Common Pain Points
 
-Selaras rantai di `problem-statement.md`:
+Aligned with the chain in `problem-statement.md`:
 
-| Pain | Siapa yang merasakan | Implikasi untuk situs |
-| ---- | -------------------- | --------------------- |
-| Sulit menilai fit builder dengan cepat | Founder / PO (primer) | Satu cerita + bukti + kontak di satu tempat |
-| Bukti tersebar (GitHub, CV, chat) | Primer + sekunder | Kurasi sadar; GitHub sebagai satelit, bukan panggung utama |
-| Framing default “developer” | Rezi + audiens | Narasi product builder di permukaan |
-| Tidak jelas bagaimana / kapan menghubungi | Primer + klien / hiring | Soft CTA yang jelas, tidak agresif |
-| Konten terasa “global generic” atau “lokal sempit” | Audiens SEA | Relevan SEA tanpa menutup pintu luar SEA (bilingual) |
+| Pain | Who feels it | Site implication |
+| ---- | ------------ | ---------------- |
+| Hard to assess builder fit quickly | Founder / PO (primary) | One story + proof + contact in one place |
+| Proof is scattered (GitHub, CV, chat) | Primary + secondary | Intentional curation; GitHub as satellite, not main stage |
+| Default “developer” framing | Rezi + audience | Product builder narrative on the surface |
+| Unclear how / when to contact | Primary + client / hiring | Clear soft CTA, not aggressive |
+| Content feels “global generic” or “narrowly local” | SEA audience | SEA-relevant without closing the door outside SEA (bilingual) |
 
 ---
 
 # Goals of the Audience
 
-Apa yang ingin dicapai audiens lewat kunjungan (bukan goal bisnis Rezi):
+What the audience wants to achieve through the visit (not Rezi's business goals):
 
-1. **Pahami cepat** — siapa Rezi dan apa positioning-nya
-2. **Nilai fit** — cocok atau tidak untuk ide / role / project mereka
-3. **Kurangi risiko** — bukti ship dan cara berpikir sebelum outreach
-4. **Ambil langkah berikutnya** — kontak / follow / simpan URL — tanpa tekanan penjualan
+1. **Understand quickly** — who Rezi is and what his positioning is
+2. **Assess fit** — whether he fits their idea / role / project
+3. **Reduce risk** — shipped-work proof and thinking style before outreach
+4. **Take the next step** — contact / follow / save URL — without sales pressure
 
-Goal Rezi (brand, inbound berkualitas) ada di `product-vision.md` dan nanti `success-metrics.md`.
+Rezi's goals (brand, qualified inbound) are in `product-vision.md` and later `success-metrics.md`.
 
 ---
 
 # Out of Scope
 
-Target market ini **tidak** mengoptimasi situs terutama untuk:
+This target market does **not** primarily optimize the site for:
 
-* Audiens non-tech / lintas industri tanpa batas sebagai fokus utama
+* Non-tech / unlimited cross-industry audience as the main focus
 * Pure designer hire / design agency shoppers
-* Enterprise procurement berat atau funnel B2B sales klasik
-* Mass consumer / follower social sebagai KPI inti
-* Hanya pasar luar SEA sebagai prioritas konten (mereka welcome, bukan inti optimasi)
-* Hanya satu archetipe primer (early founder **atau** PO perusahaan) — keduanya sengaja setara
+* Heavy enterprise procurement or classic B2B sales funnel
+* Mass consumer / social followers as a core KPI
+* Only outside-SEA markets as the content priority (they are welcome, not the optimization core)
+* Only one primary archetype (early founder **or** company PO) — both are intentionally equal
 
 ---
 
 # Success Criteria
 
-Target market dianggap “mengarah benar” jika:
+The target market is considered “moving in the right direction” if:
 
-1. Konten & contoh terasa relevan untuk **founder / PO digital product di SEA** (kedua archetipe)
-2. Hiring manager, klien project, dan peer tetap bisa menemukan sinyal berguna **tanpa** menggeser pesan primer
-3. Pengunjung luar SEA tidak tersisih (bilingual), tetapi narasi tidak dikorbankan demi “global generic”
-4. Setelah kunjungan singkat, ICP bisa menjawab: “Ini untuk orang seperti saya yang lagi menilai builder”
+1. Content & examples feel relevant for **digital product founders / POs in SEA** (both archetypes)
+2. Hiring managers, project clients, and peers can still find useful signals **without** shifting the primary message
+3. Visitors outside SEA are not excluded (bilingual), but the narrative is not sacrificed for “global generic”
+4. After a short visit, the ICP can answer: “This is for someone like me who is evaluating a builder”
 
-Detail metrik kuantitatif → `success-metrics.md`.
+Quantitative metric details → `success-metrics.md`.
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `product-vision.md` — visi dan positioning
-* `problem-statement.md` — masalah/kesempatan yang dijawab
-* `../../project-manager/decisions/ADR-005-target-market-icp-sea-tech.md` — keputusan material
-* `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — audiens primer/sekunder baseline
-* `../../project-manager/decisions/ADR-004-problem-statement-dual-chain.md` — rantai masalah
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — indeks ADR
+* `README.md` — documentation for this phase
+* `product-vision.md` — vision and positioning
+* `problem-statement.md` — the problem/opportunity being addressed
+* `../../project-os/decisions/ADR-005-target-market-icp-sea-tech.md` — material decision
+* `../../project-os/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — primary/secondary audience baseline
+* `../../project-os/decisions/ADR-004-problem-statement-dual-chain.md` — problem chain
+* `../../project-os/PROJECT_STATE.md` — project status
+* `../../project-os/DECISIONS.md` — ADR index

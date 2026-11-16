@@ -1,22 +1,22 @@
 # User Scenarios
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini menggambarkan skenario penggunaan konkret untuk pengunjung website portofolio **rezisaktiva**.
+This document describes concrete usage scenarios for visitors to the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-Skenario berfokus pada **R1 Clarity** (primer) plus **jalur sekunder tipis** untuk hiring manager dan calon klien. Bukan skenario R2 case detail sebagai Must.
+Scenarios focus on **R1 Clarity** (primary) plus a **thin secondary path** for hiring managers and prospective clients. They are not R2 case-detail scenarios as a Must.
 
 ---
 
 # Purpose
 
-* Menguji apakah permukaan Hybrid lean menyelesaikan job Must
-* Memberi narasi siap pakai untuk journey map & UX flows
-* Menjaga secondary path tetap tipis
+* Test whether the Hybrid lean surfaces solve Must jobs
+* Provide ready-to-use narratives for journey maps & UX flows
+* Keep the secondary path thin
 
 ---
 
@@ -24,92 +24,92 @@ Skenario berfokus pada **R1 Clarity** (primer) plus **jalur sekunder tipis** unt
 
 ## In Scope
 
-* Format skenario + core scenarios P1–P4
-* Happy path R1 dan variasi sekunder
+* Scenario format + core scenarios P1–P4
+* R1 happy path and secondary variations
 
 ## Out of Scope
 
-* Script usability test formal
-* Skenario CMS/auth
-* Skenario blog/social engine
+* Formal usability test script
+* CMS/auth scenarios
+* Blog/social engine scenarios
 
 ---
 
 # Scenario Format
 
-Setiap skenario memuat: ID, persona, trigger, langkah ringkas, job terkait, hasil sukses, failure mode.
+Each scenario includes: ID, persona, trigger, concise steps, related job, success outcome, failure mode.
 
 ---
 
 # Core Scenarios
 
-### SC1 — Founder menilai fit cepat (P1, primer)
+### SC1 — Founder evaluates fit quickly (P1, primary)
 
-* **Trigger:** Dapat link rezisaktiva dari peer / bio / chat
-* **Langkah:** Buka Home → baca positioning → skim About (`#about`) bila perlu → Work index/sheet bila butuh bukti karya → Contact (**Email primer**; LinkedIn/GitHub satelit bila perlu)
+* **Trigger:** Gets a rezisaktiva link from peer / bio / chat
+* **Steps:** Open Home → read positioning → skim About (`#about`) if needed → Work index/sheet if work proof is needed → Contact (**Email primary**; LinkedIn/GitHub satellite if needed)
 * **Jobs:** J1, J2, J3
-* **Sukses:** Bisa bilang “Rezi = product builder…”; outreach soft terkirim atau URL disimpan
-* **Failure:** Home terasa tech-stack list; tidak ada jalur kontak jelas
+* **Success:** Can say “Rezi = product builder…”; soft outreach sent or URL saved
+* **Failure:** Home feels like a tech-stack list; no clear contact path
 
-### SC2 — PO evaluasi kolaborasi (P2, primer)
+### SC2 — PO evaluates collaboration (P2, primary)
 
-* **Trigger:** Cari builder untuk inisiatif roadmap; buka situs dari referral/search
-* **Langkah:** Home clarity → About (`#about`, cara berpikir) → Workflow dan/atau Work index → Contact (**Email primer**)
+* **Trigger:** Looking for a builder for a roadmap initiative; opens site from referral/search
+* **Steps:** Home clarity → About (`#about`, way of thinking) → Workflow and/or Work index → Contact (**Email primary**)
 * **Jobs:** J1, J2, J4, J3
-* **Sukses:** Cukup sinyal profesional + product thinking; soft outreach
-* **Failure:** Tone terlalu indie kosong; About tidak menambah kepercayaan
+* **Success:** Enough professional + product thinking signal; soft outreach
+* **Failure:** Tone is too empty-indie; About does not add trust
 
-### SC3 — Ganti bahasa lalu lanjut evaluasi (P1/P2)
+### SC3 — Switch language then continue evaluation (P1/P2)
 
-* **Trigger:** Default bahasa terasa kurang pas
-* **Langkah:** Pakai switcher → lanjut SC1/SC2
+* **Trigger:** Default language feels less fitting
+* **Steps:** Use switcher → continue SC1/SC2
 * **Jobs:** J7 (+ J1–J3)
-* **Sukses:** Evaluasi berlanjut tanpa bounce karena bahasa
-* **Failure:** Switcher hilang / salinan ID–EN tidak setara makna
+* **Success:** Evaluation continues without language bounce
+* **Failure:** Switcher missing / ID–EN copy has unequal meaning
 
-### SC4 — Hiring manager cek sinyal (P3, sekunder tipis)
+### SC4 — Hiring manager checks signals (P3, thin secondary)
 
-* **Trigger:** Screening kandidat / potensi kolaborasi; buka URL portofolio
-* **Langkah:** Home positioning → About → ikuti tautan bukti satelit (GitHub) bila perlu → putuskan lanjut/skip
+* **Trigger:** Screening a candidate / potential collaboration; opens portfolio URL
+* **Steps:** Home positioning → About → follow satellite proof links (GitHub) if needed → decide continue/skip
 * **Jobs:** J5, J1
-* **Sukses:** Cukup sinyal untuk next step hiring **tanpa** situs berubah jadi CV ATS
-* **Failure:** Tidak ada sinyal teknis sama sekali; atau brand tergeser jadi “developer for hire” only
+* **Success:** Enough signal for next hiring step **without** the site becoming an ATS CV
+* **Failure:** No technical signal at all; or brand shifts to “developer for hire” only
 
-### SC5 — Calon klien soft outreach (P4, sekunder tipis)
+### SC5 — Prospective client soft outreach (P4, thin secondary)
 
-* **Trigger:** Butuh bantuan project terbatas; evaluasi cepat
-* **Langkah:** Home / Work index → Contact (**Email primer**, tanpa cari harga)
+* **Trigger:** Needs help on a limited project; quick evaluation
+* **Steps:** Home / Work index → Contact (**Email primary**, without looking for pricing)
 * **Jobs:** J3, J2
-* **Sukses:** Outreach terkirim; ekspektasi: diskusi dulu, bukan checkout
-* **Failure:** Mencari pricing page dan frustrasi — diterima sebagai non-goal (ADR-008); salinan Contact harus mengarahkan ke percakapan
+* **Success:** Outreach sent; expectation: discuss first, not checkout
+* **Failure:** Looking for pricing page and frustrated — accepted as a non-goal (ADR-008); Contact copy must steer toward conversation
 
-### SC6 — Share satu URL ke tim (P1/P2, social)
+### SC6 — Share one URL to team (P1/P2, social)
 
-* **Trigger:** Mau align dengan cofounder/tim sebelum kontak
-* **Langkah:** Buka situs → share URL → rekan melakukan SC1/SC2 singkat
+* **Trigger:** Wants to align with cofounder/team before contact
+* **Steps:** Open site → share URL → colleague runs a short SC1/SC2
 * **Jobs:** SJ1, J1
-* **Sukses:** Rekan paham positioning dari URL yang sama
-* **Failure:** Halaman tidak layak dishare (meta/clarity lemah)
+* **Success:** Colleague understands positioning from the same URL
+* **Failure:** Page is not share-worthy (weak meta/clarity)
 
-### SC7 — (Later) Baca case singkat (bukan R1 Must)
+### SC7 — (Later) Read a short case (not R1 Must)
 
-* **Trigger:** Setelah kerangka live; ingin detail proses
+* **Trigger:** After the framework is live; wants process detail
 * **Jobs:** J6
-* **Catatan:** Ditunda ke R2 magnet; di R1 presence = Work index + sheet (bukan teaser Home)
+* **Note:** Deferred to R2 magnet; in R1 presence = Work index + sheet (not Home teaser)
 
 ---
 
 # Expected Output
 
-Set skenario yang menutup job Must R1 dan jalur sekunder tipis.
+A scenario set that closes Must R1 jobs and the thin secondary path.
 
 ---
 
 # Exit Criteria
 
-* SC primer (SC1–SC3) + sekunder (SC4–SC5) terdokumentasi
-* SC7 eksplisit Later
-* Failure modes mengunci anti-pattern UX
+* Primary SC (SC1–SC3) + secondary (SC4–SC5) documented
+* SC7 explicitly Later
+* Failure modes lock UX anti-patterns
 
 ---
 
@@ -120,6 +120,6 @@ Set skenario yang menutup job Must R1 dan jalur sekunder tipis.
 * `user-journey.md`
 * `user-personas.md`
 * `../02-product/mvp-definition.md`
-* `../../project-manager/decisions/ADR-013-user-baseline-v1.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-013-user-baseline-v1.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

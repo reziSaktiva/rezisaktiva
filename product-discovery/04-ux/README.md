@@ -1,84 +1,84 @@
 # 04 — UX
 
-Dokumentasi pada folder ini berfokus pada fase **UX** untuk website portofolio pribadi **rezisaktiva**.
+Documentation in this folder focuses on the **UX** phase for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Purpose
 
-* Menetapkan prinsip UX portofolio.
-* Merancang information architecture dan navigasi.
-* Mendefinisikan user flows dan pola layar kunci.
+* Establish the portfolio UX principles.
+* Design the information architecture and navigation.
+* Define user flows and key screen patterns.
 
 ---
 
 # Scope
 
-Folder ini hanya membahas aspek ux.
+This folder only covers UX aspects.
 
-Topik berikut tidak dibahas di sini:
+The following topics are not covered here:
 
-- Visual design tokens final (boleh di 06)
-- Implementasi kode
-- Arsitektur backend detail
+- Final visual design tokens (may be in 06)
+- Code implementation
+- Detailed backend architecture
 
 ---
 
 # Documents
 
-* `ux-principles.md` — prinsip UX.
-* `information-architecture.md` — struktur informasi & halaman.
-* `user-flows.md` — alur pengguna.
-* `navigation-patterns.md` — pola navigasi.
-* `key-screen-patterns.md` — pola layar utama.
-* `../README.md` — dokumentasi fase Product Discovery.
-* `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
-* `../../project-manager/PROJECT_RULES.md` — aturan project.
-* `../../project-manager/PROJECT_STATE.md` — status dan progress.
-* `../../project-manager/DECISIONS.md` — keputusan penting (ADR).
+* `ux-principles.md` — UX principles.
+* `information-architecture.md` — information structure & pages.
+* `user-flows.md` — user flows.
+* `navigation-patterns.md` — navigation patterns.
+* `key-screen-patterns.md` — key screen patterns.
+* `../README.md` — Product Discovery phase documentation.
+* `../../project-os/PROJECT_OVERVIEW.md` — project summary.
+* `../../project-os/PROJECT_RULES.md` — project rules.
+* `../../project-os/PROJECT_STATE.md` — status and progress.
+* `../../project-os/DECISIONS.md` — important decisions (ADRs).
 
 ---
 
 # Workflow
 
-1. Mulai dari `ux-principles.md`.
-2. Susun `information-architecture.md`.
-3. Detailkan `user-flows.md` dan `navigation-patterns.md`.
-4. Tutup dengan `key-screen-patterns.md`.
+1. Start from `ux-principles.md`.
+2. Draft `information-architecture.md`.
+3. Detail `user-flows.md` and `navigation-patterns.md`.
+4. Close with `key-screen-patterns.md`.
 
 ---
 
 # Expected Output
 
-**UX Baseline v1.0 sudah ditetapkan** (ADR-014, 2026-08-10). Seluruh dokumen di folder ini terisi dan disepakati.
+**UX Baseline v1.0 has been established** (ADR-014, 2026-08-10). All documents in this folder are filled in and agreed.
 
-Acuan fase: prinsip UX1–UX7; IA tiga halaman (Home termasuk `#about`, Workflow, Work index) + path locale; flows F1–F7 (F7 = project sheet Must, ADR-027); Contact Email primer.
+Phase reference: UX1–UX7 principles; three-page IA (Home including `#about`, Workflow, Work index) + locale paths; flows F1–F7 (F7 = project sheet Must, ADR-027); Contact Email primary.
 
-Langkah berikutnya (historis fase): lanjut **Phase 5 — Architecture** di `../05-architecture/`. Status fase aktif ada di `PROJECT_STATE.md`.
+Next step (historical phase): continue to **Phase 5 — Architecture** in `../05-architecture/`. The active phase status is in `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+The following criteria **have been met** for Baseline v1.0:
 
-* Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material tercatat di `DECISIONS.md` (ADR-014, dll.).
-* Boss Rezi menyetujui baseline fase ini.
+* All documents above are filled in (not TBD).
+* Material decisions are recorded in `DECISIONS.md` (ADR-014, etc.).
+* Boss Rezi approved this phase baseline.
 
 ---
 
 # Decision Rules
 
-* Baseline UX terkunci — jangan memakai README ini sebagai penunjuk fase aktif; ikuti `PROJECT_STATE.md`.
-* Perubahan material setelah baseline → ADR baru + revisi dokumen terdampak.
-* Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
+* The UX baseline is locked — do not use this README as the active phase pointer; follow `PROJECT_STATE.md`.
+* Material changes after baseline → new ADR + revision of impacted documents.
+* Phase status/progress is recorded only in `PROJECT_STATE.md`, not in this README.
 
 ---
 
 # Related Documents
 
 * `../README.md`
-* `../../project-manager/README.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/README.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

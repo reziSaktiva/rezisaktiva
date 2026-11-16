@@ -1,120 +1,120 @@
 # Dependency Strategy
 
-> Status: **Baseline v1.1** — ditetapkan bersama Boss Rezi (2026-08-11; styling **ADR-028** / T-037.4). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.1** — established with Boss Rezi (2026-08-11; styling **ADR-028** / T-037.4). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan strategi dependency untuk website portofolio **rezisaktiva**.
+This document defines the dependency strategy for the **rezisaktiva** portfolio website.
 
 ---
 
 # Overview
 
-R1 = **single-app** + **pnpm** (sudah dikunci di `monorepo-setup.md`).
+R1 = **single app** + **pnpm** (already locked in `monorepo-setup.md`).
 
-* Lockfile **wajib** di-commit
-* Range versi di `package.json`: **caret (`^`)**
-* Update otomatis ringan via **Dependabot** (Renovate boleh sebagai alternatif setara)
-* Bun ditimbang sebagai package manager dan **tidak dipilih** (tetap pnpm)
+* Lockfile is **required** to be committed
+* Version ranges in `package.json`: **caret (`^`)**
+* Lightweight automatic updates via **Dependabot** (Renovate may be an equivalent alternative)
+* Bun was considered as package manager and **not chosen** (stay on pnpm)
 
 ---
 
-# Tujuan
+# Purpose
 
-* Install reproducible di lokal, CI, dan Vercel
-* Patch keamanan tidak bergantung pada ingatan manual saja
-* Mencegah sprawl dependency di luar kebutuhan situs lean
+* Reproducible install locally, in CI, and on Vercel
+* Security patches do not depend on manual memory alone
+* Prevent dependency sprawl beyond the needs of the lean site
 
 ---
 
 # Versioning
 
-| Aspek | Keputusan R1 |
-| ----- | ------------ |
-| Range default | **`^`** (semver compatible) |
-| Exact pin | Hanya jika ada bug/kompatibilitas spesifik (catat alasan di PR) |
-| `engines` | Node LTS yang didukung Next saat bootstrap (opsional di `package.json`) |
-| Package manager | **pnpm** — deklarasikan via `packageManager` field bila memakai Corepack |
+| Aspect | R1 Decision |
+| ------ | ----------- |
+| Default range | **`^`** (semver compatible) |
+| Exact pin | Only for a specific bug/compatibility issue (record the reason in the PR) |
+| `engines` | Node LTS supported by Next during bootstrap (optional in `package.json`) |
+| Package manager | **pnpm** — declare via `packageManager` field if using Corepack |
 
-Major upgrade framework (Next, React, shadcn/Tailwind) = PR terpisah + cek Preview Vercel.
+Major framework upgrades (Next, React, shadcn/Tailwind) = separate PR + Vercel Preview check.
 
 ---
 
 # Lockfile
 
-| File | Aturan |
-| ---- | ------ |
-| `pnpm-lock.yaml` | **Wajib committed** |
-| `package-lock.json` / `yarn.lock` / `bun.lock*` | **Tidak** — satu package manager saja |
-| Install di CI/Vercel | Hormati lockfile (`pnpm install --frozen-lockfile` di Actions bila tersedia) |
+| File | Rule |
+| ---- | ---- |
+| `pnpm-lock.yaml` | **Required committed** |
+| `package-lock.json` / `yarn.lock` / `bun.lock*` | **No** — one package manager only |
+| Install in CI/Vercel | Respect lockfile (`pnpm install --frozen-lockfile` in Actions when available) |
 
-Jangan regenerate lockfile tanpa review diff dependency.
+Do not regenerate the lockfile without reviewing the dependency diff.
 
 ---
 
-# Penempatan Dependency
+# Dependency Placement
 
-Satu `package.json` di **root** (bukan monorepo workspace).
+One `package.json` at the **root** (not a monorepo workspace).
 
-| Jenis | Contoh | Catatan |
-| ----- | ------ | ------- |
-| `dependencies` | `next`, `react`, `react-dom`, `motion`, `lenis`, primitf shadcn (Radix/`vaul` lewat source `components/ui`) | Runtime / bundle produksi |
-| `devDependencies` | `typescript`, `eslint`, `prettier`, `tailwindcss`, `@tailwindcss/postcss`, `shadcn`, types | Build, lint, format, CLI komponen |
-| Peer / optional rumit | Hindari kecuali library memaksa | Situs lean |
+| Type | Example | Notes |
+| ---- | ------- | ----- |
+| `dependencies` | `next`, `react`, `react-dom`, `motion`, `lenis`, shadcn primitives (Radix/`vaul` through source `components/ui`) | Runtime / production bundle |
+| `devDependencies` | `typescript`, `eslint`, `prettier`, `tailwindcss`, `@tailwindcss/postcss`, `shadcn`, types | Build, lint, format, component CLI |
+| Complex peer / optional | Avoid unless forced by a library | Lean site |
 
-Jangan menambah library “karena template” (auth, ORM, state global) — selaras N/A di auth/DB.
+Do not add a library “because of a template” (auth, ORM, global state) — aligned with auth/DB N/A.
 
-Preferensi: dependency sedikit, intentional; prefer API platform (Next/Vercel) sebelum library baru.
+Preference: few, intentional dependencies; prefer platform APIs (Next/Vercel) before adding a new library.
 
-**Satu sistem styling (ADR-028, 2026-09-01):** shadcn/ui + Tailwind CSS v4 menggantikan Astryx + StyleX (ADR-018 superseded). Bukan coexist, bukan hybrid. Paket `@astryxdesign/*` dan `@stylexjs/stylex` dicabut di T-037.
+**One styling system (ADR-028, 2026-09-01):** shadcn/ui + Tailwind CSS v4 replaces Astryx + StyleX (ADR-018 superseded). Not coexistence, not hybrid. Packages `@astryxdesign/*` and `@stylexjs/stylex` were removed in T-037.
 
-**ADR-026 (historis):** timing “jangan pindah di tengah R1” tetap valid sebagai jejak; evaluasi pasca-T-018 selesai via ADR-028.
+**ADR-026 (historical):** the timing rule “do not switch mid-R1” remains valid as a trace; post-T-018 evaluation was completed via ADR-028.
 
 ---
 
 # Update Policy
 
-| Jalur | Kebijakan R1 |
-| ----- | ------------ |
-| **Dependabot** (default) | Aktifkan untuk `npm`/`pnpm` ecosystem + GitHub Actions bila relevan |
-| Frekuensi | Mingguan atau grup patch/minor; major = review manual |
-| Security advisories | Prioritaskan PR keamanan |
-| Renovate | Alternatif setara jika lebih disukai nanti — jangan jalankan keduanya bersamaan |
-| Update manual | Tetap boleh untuk Next/React/Tailwind besar |
+| Path | R1 Policy |
+| ---- | --------- |
+| **Dependabot** (default) | Enable for the `npm`/`pnpm` ecosystem + GitHub Actions when relevant |
+| Frequency | Weekly or grouped patch/minor; major = manual review |
+| Security advisories | Prioritize security PRs |
+| Renovate | Equivalent alternative if preferred later — do not run both at once |
+| Manual update | Still allowed for large Next/React/Tailwind updates |
 
-Setelah merge update: pastikan CI hijau + Preview Vercel OK.
+After merging an update: ensure CI is green + Vercel Preview OK.
 
-Bun **bukan** bagian strategi update R1; reopen package manager memerlukan update `monorepo-setup.md` + ADR bila material.
+Bun is **not** part of the R1 update strategy; reopening the package manager requires updating `monorepo-setup.md` + ADR if material.
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Package manager | **pnpm** (tetap; Bun ditolak untuk R1) |
+| Decision | Choice |
+| -------- | ------ |
+| Package manager | **pnpm** (kept; Bun rejected for R1) |
 | Lockfile | `pnpm-lock.yaml` committed |
 | Version range | `^` |
-| Auto-update | **Dependabot** (Renovate alternatif) |
-| Exact pin default | Tidak |
-| Baseline Engineering | ADR-016 |
+| Auto-update | **Dependabot** (Renovate alternative) |
+| Exact pin default | No |
+| Engineering Baseline | ADR-016 |
 | Styling/component library | **shadcn/ui + Tailwind CSS v4** — **ADR-028** (ADR-018 superseded) |
 
 ---
 
 # Success Criteria
 
-1. Clone + `pnpm install` menghasilkan tree yang sama (lockfile)
-2. Ada jalur patch keamanan tanpa menunggu “ingat update”
-3. Tidak ada lockfile ganda atau asumsi Bun sebagai installer R1
+1. Clone + `pnpm install` produce the same tree (lockfile)
+2. There is a security patch path without waiting to “remember to update”
+3. No duplicate lockfile or Bun-as-R1-installer assumption
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `monorepo-setup.md` — bentuk repo & pnpm
-* `cicd-pipeline.md` — install di Actions
-* `dx-tooling.md` — ESLint / Prettier sebagai devDeps
-* `deployment-infrastructure.md` — install di Vercel
-* `../../project-manager/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `README.md` — this phase documentation
+* `monorepo-setup.md` — repo shape & pnpm
+* `cicd-pipeline.md` — install in Actions
+* `dx-tooling.md` — ESLint / Prettier as devDeps
+* `deployment-infrastructure.md` — install on Vercel
+* `../../project-os/decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

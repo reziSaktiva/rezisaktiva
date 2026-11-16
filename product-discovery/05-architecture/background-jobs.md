@@ -1,41 +1,41 @@
 # Background Jobs
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada job/async produk untuk R1. File tetap ada sebagai jejak — lihat ADR-015.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-11). There are no product jobs/async flows for R1. This file remains as a trace record — see ADR-015.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat.
+This document is **intentionally filled as N/A** so the decision is recorded.
 
 ---
 
 # Overview
 
-Situs **rezisaktiva** R1 bersifat statis publik. Tidak ada antrian, worker, cron produk, email transactional server-side, atau pipeline async yang menjadi bagian arsitektur aplikasi.
+The **rezisaktiva** R1 site is public and static. There is no queue, worker, product cron, server-side transactional email, or async pipeline that is part of the application architecture.
 
-Build/CI di hosting (generate SSG) adalah **proses engineering**, bukan background job domain produk.
+Hosting Build/CI (SSG generation) is an **engineering process**, not a product-domain background job.
 
 ---
 
 # Scope
 
-## In Scope (dokumen ini)
+## In Scope (this document)
 
-* Menyatakan N/A sadar untuk job produk R1
+* State the deliberate N/A for R1 product jobs
 
 ## Out of Scope
 
-* Desain queue (SQS, Bull, dll.)
-* Retry/idempotency untuk workflow bisnis
+* Queue design (SQS, Bull, etc.)
+* Retry/idempotency for business workflows
 
 ---
 
 # Job Types
 
-**N/A** — tidak ada job tipe produk.
+**N/A** — there are no product job types.
 
-| Yang mirip “job” | Klasifikasi |
-| ---------------- | ----------- |
-| CI build / SSG generate | Engineering pipeline (T-006) |
+| “Job-like” item | Classification |
+| --------------- | -------------- |
+| CI build / SSG generation | Engineering pipeline (T-006) |
 | Deploy | Engineering |
-| Newsletter / drip | Out of product scope R1 |
+| Newsletter / drip | Out of R1 product scope |
 
 ---
 
@@ -47,19 +47,19 @@ Build/CI di hosting (generate SSG) adalah **proses engineering**, bukan backgrou
 
 # Future Considerations
 
-Jika form kontak berbackend, sync CMS, atau notifikasi masuk Must:
+If a backend contact form, CMS sync, or notifications become Must:
 
-* ADR baru + isi ulang dokumen ini
-* Jangan menambah worker “karena template ada”
+* New ADR + refill this document
+* Do not add a worker “because the template exists”
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Background jobs R1 | N/A |
-| Bentuk sistem | Static-first SSG (ADR-015) |
+| Decision | Choice |
+| -------- | ------ |
+| R1 background jobs | N/A |
+| System shape | Static-first SSG (ADR-015) |
 
 ---
 
@@ -67,6 +67,6 @@ Jika form kontak berbackend, sync CMS, atau notifikasi masuk Must:
 
 * `README.md`
 * `application-layer.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

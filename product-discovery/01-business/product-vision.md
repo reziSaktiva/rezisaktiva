@@ -1,128 +1,128 @@
 # Product Vision
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini mendefinisikan visi dan arah jangka panjang website portofolio pribadi **rezisaktiva**.
+This document defines the vision and long-term direction for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Overview
 
-**rezisaktiva** adalah website portofolio pribadi Rezi Saktiva. Situs ini berfungsi sebagai panggung identitas profesional: menampilkan karya, cara berpikir, dan kredibilitas sebagai **product builder** — dengan fondasi pengalaman fullstack dan kemampuan AI sebagai pembeda terkini.
+**rezisaktiva** is Rezi Saktiva's personal portfolio website. The site functions as a professional identity stage: showcasing work, ways of thinking, and credibility as a **product builder** — with fullstack experience as the foundation and AI capability as the current differentiator.
 
-Model nilai situs: **Brand primer**, dengan jalur **job opportunity** dan **client/project** sebagai sekunder (soft CTA), tanpa terasa agresif menjual.
+The site's value model: **primary brand**, with **job opportunity** and **client/project** paths as secondary (soft CTA), without feeling aggressively sales-driven.
 
 ---
 
 # Vision
 
-Menjadi rumah digital yang membuat orang langsung paham siapa Rezi Saktiva: seorang **product builder** yang bisa membawa ide sampai produk live — kredibel karena track record fullstack, relevan karena cara kerja berorientasi AI.
+Become a digital home that helps people quickly understand who Rezi Saktiva is: a **product builder** who can bring ideas to live products — credible through a fullstack track record, relevant through an AI-oriented way of working.
 
 ---
 
 # Mission
 
-Membangun portofolio yang:
+Build a portfolio that:
 
-* Menampilkan identitas dan karya dengan jelas dan memorable
-* Memberi bukti kredibilitas (pengalaman, project, cara kerja) tanpa basa-basi
-* Membuka pintu natural untuk kolaborasi, opportunity, dan project — tanpa mengorbankan kualitas brand
+* Presents identity and work clearly and memorably
+* Provides credibility proof (experience, projects, ways of working) without filler
+* Opens a natural path to collaboration, opportunities, and projects — without sacrificing brand quality
 
 ---
 
 # Problem We Want to Solve
 
-Tanpa kehadiran digital yang terarah, founder / product owner sulit menilai dengan cepat: apakah Rezi cocok sebagai builder untuk ide mereka, apa yang sudah pernah di-ship, dan bagaimana cara menghubungi — sementara profil tersebar (CV, chat, repo) tidak membentuk satu cerita yang koheren.
+Without a focused digital presence, founders / product owners struggle to quickly assess whether Rezi is the right builder for their ideas, what he has shipped, and how to contact him — while scattered profiles (CV, chats, repos) do not form one coherent story.
 
-Portofolio ini menjawab kebutuhan itu dengan satu sumber kebenaran publik untuk identitas, bukti karya, dan jalur kontak.
+This portfolio answers that need with one public source of truth for identity, work proof, and contact path.
 
 ---
 
 # Value Proposition
 
-Untuk founder / product owner yang mencari builder yang bisa mengeksekusi produk:
+For founders / product owners looking for a builder who can execute products:
 
-* **Cerita jelas** — product builder, bukan sekadar daftar tech stack
-* **Bukti kuat** — pengalaman fullstack ~6 tahun sebagai fondasi kredibilitas
-* **Edge terkini** — AI sebagai cara kerja dan kapabilitas baru, bukan klaim “AI specialist murni”
-* **Akses mudah** — bilingual geo-aware + soft CTA untuk opportunity dan project
+* **Clear story** — product builder, not just a tech stack list
+* **Strong proof** — ~6 years of fullstack experience as the credibility foundation
+* **Current edge** — AI as a way of working and new capability, not a claim of being a pure “AI specialist”
+* **Easy access** — bilingual geo-aware + soft CTA for opportunities and projects
 
 ---
 
 # Target Market
 
-Audiens yang ingin merasa “situs ini relevan untuk keputusan saya”.
+The audience that should feel “this site is relevant to my decision.”
 
 ---
 
 ## Primary Target
 
-**Founder / product owner** — orang yang punya ide atau produk dan mencari builder yang bisa membawa eksekusi sampai live. Mereka menilai: kejelasan thinking, bukti ship, dan apakah komunikasi/kolaborasi terasa pas.
+**Founder / product owner** — people with an idea or product who are looking for a builder who can bring execution to live. They evaluate: clarity of thinking, proof of shipped work, and whether communication/collaboration feels right.
 
 ---
 
 ## Secondary Target
 
-* **Hiring manager / tech lead** — evaluasi fit untuk role (job opportunity, soft)
-* **Calon klien project/freelance** — evaluasi apakah cocok di-hire per engagement (client, soft)
-* **Peer / community builder** — apresiasi craft; memperkuat brand jangka panjang
+* **Hiring manager / tech lead** — evaluating role fit (job opportunity, soft)
+* **Potential project/freelance client** — evaluating whether Rezi is a fit to hire per engagement (client, soft)
+* **Peer / community builder** — appreciating craft; strengthening the long-term brand
 
 ---
 
 # Product Positioning
 
-| Lapisan | Isi |
-| ------- | --- |
-| **Cerita brand** | Product builder — bawa ide sampai produk live |
-| **Bukti kredibel** | Fullstack developer (~6 tahun) |
-| **Differentiator** | AI sebagai edge (cara kerja & kapabilitas terbaru) |
-| **Bukan** | Pure designer, design agency, atau AI specialist tanpa fondasi product/engineering |
+| Layer | Content |
+| ----- | ------- |
+| **Brand story** | Product builder — brings ideas to live products |
+| **Credible proof** | Fullstack developer (~6 years) |
+| **Differentiator** | AI as an edge (way of working & latest capability) |
+| **Not** | Pure designer, design agency, or AI specialist without a product/engineering foundation |
 
-**Model situs:** Brand primer · Job + Client sekunder (soft CTA).
+**Site model:** Primary brand · Job + Client secondary (soft CTA).
 
-**Bahasa:** Bilingual geo-aware — default **Indonesia** jika pengunjung di Indonesia; default **English** jika di luar Indonesia; **language switcher** selalu tersedia. Detail deteksi & URL diputuskan di fase UX / Engineering.
+**Language:** Bilingual geo-aware — default **Indonesia** for visitors in Indonesia; default **English** for visitors outside Indonesia; **language switcher** is always available. Detection & URL details are decided in the UX / Engineering phase.
 
 ---
 
 # Long-Term Vision
 
-Portofolio menjadi aset brand jangka panjang: terus diperbarui dengan karya dan pembelajaran, tetap menjadi referensi pertama saat orang mencari atau mengevaluasi Rezi — baik untuk kolaborasi produk, opportunity kerja, maupun project.
+The portfolio becomes a long-term brand asset: continuously updated with work and learning, and remaining the first reference when people search for or evaluate Rezi — for product collaboration, job opportunities, or projects.
 
-Seiring waktu, situs bisa berkembang (misalnya case study lebih dalam, tulisan singkat tentang proses build) tanpa mengubah positioning inti: product builder dengan fondasi fullstack dan AI edge.
+Over time, the site can grow (for example deeper case studies, short writing about the build process) without changing the core positioning: product builder with a fullstack foundation and AI edge.
 
 ---
 
 # Out of Scope
 
-Untuk arah visi ini, **bukan** tujuan utama:
+For this vision direction, the main goals are **not**:
 
-* Portofolio desain visual / agency design
-* Toko / e-commerce / produk SaaS publik sebagai bisnis inti situs
-* Funnel penjualan agresif (pricing keras, hard sell, lead-magnet berat)
-* Blog/media besar sebagai fokus utama (tulisan boleh ada nanti, bukan inti MVP visi)
-* Klaim identitas “designer” sebagai positioning utama
+* Visual design portfolio / design agency
+* Store / e-commerce / public SaaS product as the site's core business
+* Aggressive sales funnel (hard pricing, hard sell, heavy lead magnet)
+* Large blog/media as the main focus (writing can exist later, but is not the core MVP vision)
+* Claiming “designer” identity as the primary positioning
 
 ---
 
 # Success Definition
 
-Portofolio dianggap berhasil arahnya jika:
+The portfolio is moving in the right direction if:
 
-1. **Brand recall** — setelah kunjungan singkat, orang bisa merangkum: “Rezi = product builder (fullstack + AI edge)”
-2. **Relevansi primer** — founder / product owner merasa konten menjawab pertanyaan evaluasi mereka
-3. **Inbound berkualitas** — muncul kontak/outreach untuk kolaborasi, opportunity, atau project (tanpa CTA agresif)
-4. **Konsistensi** — pesan di situs selaras dengan cara Rezi bekerja dan berbicara di luar situs
+1. **Brand recall** — after a short visit, people can summarize: “Rezi = product builder (fullstack + AI edge)”
+2. **Primary relevance** — founders / product owners feel the content answers their evaluation questions
+3. **Qualified inbound** — contact/outreach appears for collaboration, opportunity, or project (without aggressive CTA)
+4. **Consistency** — the site's message matches the way Rezi works and speaks outside the site
 
-Metrik detail (trafik, conversion, dll.) ditetapkan di `success-metrics.md`.
+Detailed metrics (traffic, conversion, etc.) are defined in `success-metrics.md`.
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `problem-statement.md` — pendalaman masalah/kesempatan
-* `target-market.md` — pendalaman audiens
-* `../../project-manager/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — keputusan material
-* `../../project-manager/decisions/ADR-009-business-baseline-v1-dual-north-star.md` — Business Baseline v1.0
-* `../../project-manager/PROJECT_STATE.md` — status project
-* `../../project-manager/DECISIONS.md` — indeks ADR
+* `README.md` — documentation for this phase
+* `problem-statement.md` — deeper problem/opportunity context
+* `target-market.md` — deeper audience context
+* `../../project-os/decisions/ADR-002-portfolio-vision-positioning-audience-language.md` — material decision
+* `../../project-os/decisions/ADR-009-business-baseline-v1-dual-north-star.md` — Business Baseline v1.0
+* `../../project-os/PROJECT_STATE.md` — project status
+* `../../project-os/DECISIONS.md` — ADR index

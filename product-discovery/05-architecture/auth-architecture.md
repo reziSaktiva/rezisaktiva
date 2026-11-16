@@ -1,16 +1,16 @@
 # Auth Architecture
 
-> Status: **N/A (Baseline v1.0)** — ditetapkan bersama Boss Rezi (2026-08-11). Tidak ada autentikasi produk untuk R1. File tetap ada sebagai jejak — selaras ADR-011 / ADR-015.
+> Status: **N/A (Baseline v1.0)** — established with Boss Rezi (2026-08-11). There is no product authentication for R1. This file remains as a trace record — aligned with ADR-011 / ADR-015.
 
-Dokumen ini **sengaja diisi sebagai N/A** agar keputusan tercatat.
+This document is **intentionally filled as N/A** so the decision is recorded.
 
 ---
 
 # Overview
 
-Situs **rezisaktiva** adalah portofolio **publik read-only**. Tidak ada login pengunjung, session server, OAuth in-app, RBAC, atau area privat sebagai fitur produk (ADR-011).
+The **rezisaktiva** site is a **public read-only** portfolio. There is no visitor login, server session, in-app OAuth, RBAC, or private area as a product feature (ADR-011).
 
-Cookie/local untuk **preferensi locale** (setelah switcher) **bukan** autentikasi — hanya memengaruhi redirect `/` (ADR-014).
+Cookie/local storage for **locale preference** (after using the switcher) is **not** authentication — it only affects the `/` redirect (ADR-014).
 
 ---
 
@@ -18,59 +18,59 @@ Cookie/local untuk **preferensi locale** (setelah switcher) **bukan** autentikas
 
 ## In Scope
 
-* Menyatakan N/A auth produk
-* Membedakan preferensi locale vs auth
+* State product auth as N/A
+* Distinguish locale preference from auth
 
 ## Out of Scope
 
 * IdP, JWT, session store, MFA
-* Preview-gated draft sebagai Must R1
+* Preview-gated drafts as an R1 Must
 
 ---
 
 # Auth Approach
 
-**N/A** — tidak ada auth approach produk.
+**N/A** — there is no product auth approach.
 
-| Mekanisme | Status |
+| Mechanism | Status |
 | --------- | ------ |
-| Login pengunjung | Tidak |
-| Authz / RBAC | Tidak (ADR-011) |
-| Preferensi locale cookie/local | Bukan auth |
-| Akses repo / hosting dashboard | Di luar produk (proses pemilik) |
+| Visitor login | No |
+| Authz / RBAC | No (ADR-011) |
+| Locale preference cookie/local storage | Not auth |
+| Repo / hosting dashboard access | Outside the product (owner process) |
 
 ---
 
 # Session Strategy
 
-**N/A** untuk session pengguna produk.
+**N/A** for product user sessions.
 
 ---
 
 # Future Considerations
 
-Draft preview terlindungi, CMS editor, atau area klien:
+Protected draft preview, CMS editor, or client area:
 
-* ADR baru + ubah status dokumen ini dari N/A
-* Dampak ke Product scope / UX / Engineering
-* Jangan menambah auth “karena template folder ada”
+* New ADR + change this document status from N/A
+* Impact to Product scope / UX / Engineering
+* Do not add auth “because the template folder exists”
 
 ---
 
 # Decision Log
 
-| Keputusan | Pilihan |
-| --------- | ------- |
-| Auth produk R1 | N/A |
-| Selaras | ADR-011, ADR-015 |
+| Decision | Choice |
+| -------- | ------ |
+| R1 product auth | N/A |
+| Aligned with | ADR-011, ADR-015 |
 
 ---
 
 # Success Criteria
 
-1. Jelas tidak ada auth/session produk
-2. Preferensi locale tidak diklasifikasi sebagai auth
-3. Engineering: auth-strategy R1 = N/A kecuali ADR baru
+1. It is clear there is no product auth/session
+2. Locale preference is not classified as auth
+3. Engineering: R1 auth-strategy = N/A unless a new ADR changes it
 
 ---
 
@@ -78,7 +78,7 @@ Draft preview terlindungi, CMS editor, atau area klien:
 
 * `README.md`
 * `../02-product/roles-permissions.md`
-* `../../project-manager/decisions/ADR-011-roles-permissions-na-for-portfolio-site.md`
-* `../../project-manager/decisions/ADR-015-architecture-baseline-v1-static-first.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-011-roles-permissions-na-for-portfolio-site.md`
+* `../../project-os/decisions/ADR-015-architecture-baseline-v1-static-first.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

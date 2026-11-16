@@ -1,45 +1,45 @@
 # Release Roadmap
 
-> Status: **Baseline v1.0** — ditetapkan bersama Boss Rezi (2026-08-07). Perubahan material setelah ini memerlukan ADR baru.
+> Status: **Baseline v1.0** — established with Boss Rezi (2026-08-07). Material changes after this require a new ADR.
 
-Dokumen ini merencanakan **rilis produk** website portofolio **rezisaktiva** — urutan nilai yang di-ship, bukan jadwal kalender kaku dan bukan sprint engineering detail.
+This document plans **product releases** for the **rezisaktiva** portfolio website — the order of value to ship, not a rigid calendar schedule and not engineering sprint details.
 
 ---
 
 # Overview
 
-Strategi rilis: **bertahap menurut clarity → presence → craft** (ADR-006), dengan growth **destination + magnet ringan** (ADR-007).
+Release strategy: **phased by clarity → presence → craft** (ADR-006), with **destination + lightweight magnet** growth (ADR-007).
 
 * **R1 — MVP Clarity** = Hybrid lean Must (+ Should): Home (hero + `#about`, ADR-040) / Workflow (M14, ADR-035 / ADR-042) / Work index (M9) + **project sheet overlay (M10, ADR-027)** + Contact modal (ADR-019) + bilingual + meta + theme toggle (ADR-021) + Quick Info (M13, ADR-022)
-* **R2 — Magnet lanjutan** = halaman case `/[locale]/projects/[slug]` **dan** sheet M10 tetap (**ADR-044**); Work index sudah live sejak R1
-* **R3 — Presence & craft** = poles pengalaman, Could terpilih (motion, form bila perlu)
+* **R2 — Next magnet** = case pages `/[locale]/projects/[slug]` **and** M10 sheet remains (**ADR-044**); Work index has been live since R1
+* **R3 — Presence & craft** = experience polish, selected Could items (motion, form if needed)
 
-Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawah + dual north star (`success-metrics.md`).
+Exact dates are **not locked** in discovery; each release exits by the criteria below + dual north star (`success-metrics.md`).
 
 ---
 
 # Roadmap Principles
 
-1. **Milestone > kalender spekulatif** — ship saat kriteria terpenuhi, bukan karena tanggal.
-2. **Clarity dulu** — R1 tidak menunggu case penuh atau craft spektakel.
-3. **Satu destination** — setiap rilis menjaga URL resmi layak jadi link utama.
-4. **Magnet setelah kerangka** — R2 mengaktifkan ADR-007 tanpa menggeser positioning.
-5. **Soft CTA tetap** — tidak ada rilis yang menambah pricing / hard sell (ADR-008).
-6. **Bilingual sejak R1** — bahasa bukan afterthought (ADR-002).
-7. **Proporsional** — jangan parallel-build R2/R3 sebelum R1 live & tervalidasi arah.
+1. **Milestone > speculative calendar** — ship when criteria are met, not because of a date.
+2. **Clarity first** — R1 does not wait for full cases or craft spectacle.
+3. **One destination** — every release keeps the official URL worthy as the main link.
+4. **Magnet after frame** — R2 activates ADR-007 without shifting positioning.
+5. **Soft CTA stays** — no release adds pricing / hard sell (ADR-008).
+6. **Bilingual from R1** — language is not an afterthought (ADR-002).
+7. **Proportional** — do not parallel-build R2/R3 before R1 is live & directionally validated.
 
 ---
 
 # Release Strategy
 
-| Aspek | Keputusan draft |
-| ----- | --------------- |
-| Model | Milestone releases (R1 → R2 → R3), bukan continuous feature dump tanpa tema |
-| Basis prioritas | `feature-priority.md` MoSCoW |
-| Validasi | Selaras fase metrik: Validation (R1) → Traction (R2) → Growth (R3+) |
-| Konten | Konten Must R1 siap sebelum “R1 done”; case R2 boleh ditulis paralel *setelah* kerangka R1 jelas |
-| Tech/stack | Diputus di Engineering; roadmap ini tidak mengunci framework/hosting |
-| Hotfix | Bug/clarity blocker boleh patch di luar nomor rilis tanpa naik scope |
+| Aspect | Draft decision |
+| ------ | -------------- |
+| Model | Milestone releases (R1 → R2 → R3), not continuous feature dump without theme |
+| Priority basis | `feature-priority.md` MoSCoW |
+| Validation | Aligned with metric phases: Validation (R1) → Traction (R2) → Growth (R3+) |
+| Content | R1 Must content ready before “R1 done”; R2 case can be written in parallel *after* R1 frame is clear |
+| Tech/stack | Decided in Engineering; this roadmap does not lock framework/hosting |
+| Hotfix | Bug/clarity blocker can patch outside release numbers without increasing scope |
 
 ---
 
@@ -47,114 +47,114 @@ Tanggal pasti **tidak dikunci** di discovery; exit tiap rilis = kriteria di bawa
 
 ## R1 — MVP Clarity (Hybrid lean)
 
-**Tujuan:** Destination layak evaluasi founder/PO; soft path inbound siap.
+**Goal:** Destination is worthy for founder/PO evaluation; soft inbound path is ready.
 
-| Termasuk | Modul / item |
-| -------- | ------------ |
-| Must | M1 Home, M2 About, M3 Contact (modal global, ADR-019), M5 Language, M6 Chrome (termasuk **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020; M4 teaser Home retired ADR-032), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022), **M14 Workflow** (ADR-035) |
-| Should | Availability line, paritas ID/EN, tile Work → sheet, a11y dasar |
-| Bukan | Route `/work/[slug]`, blog, CMS, pricing |
+| Included | Modules / items |
+| -------- | --------------- |
+| Must | M1 Home, M2 About, M3 Contact (global modal, ADR-019), M5 Language, M6 Chrome (including **theme toggle, ADR-021**), M7 Meta, **M9 Work index** (ADR-020; M4 Home teaser retired ADR-032), **M10 project sheet overlay** (ADR-027), **M13 Quick Info** (ADR-022), **M14 Workflow** (ADR-035) |
+| Should | Availability line, ID/EN parity, Work tile → sheet, basic a11y |
+| Not | Route `/work/[slug]`, blog, CMS, pricing |
 
 **Exit R1:**
 
-1. Reviewer singkat bisa merangkum: product builder + fullstack + AI edge (NS-1 arah)
-2. Contact soft path jelas (NS-2 path siap)
-3. Situs layak dijadikan link utama (CV / chat / GitHub)
-4. Scope tetap Hybrid lean (ADR-010)
+1. Short reviewer can summarize: product builder + fullstack + AI edge (NS-1 direction)
+2. Contact soft path is clear (NS-2 path ready)
+3. Site is worthy as the main link (CV / chat / GitHub)
+4. Scope remains Hybrid lean (ADR-010)
 
-Selaras **Phase 1 — Validation** di `success-metrics.md`.
+Aligned with **Phase 1 — Validation** in `success-metrics.md`.
 
 ---
 
-## R2 — Magnet ringan
+## R2 — Lightweight magnet
 
-**Tujuan:** Memperkuat narrative & shareability dengan case/proses singkat di situs.
+**Goal:** Strengthen narrative & shareability with short case/process on the site.
 
-| Termasuk | Modul / item |
-| -------- | ------------ |
-| Inti | Hibrid **ADR-044**: tile → sheet; “baca selengkapnya” → `/[locale]/projects/[slug]` (SSG); overlay M10 tetap |
-| Opsional | Kedalaman copy per karya bertahap; OG per-karya bukan blocker |
-| Bukan | Blog volume, newsletter machine, distribusi sosial wajib, cabut sheet, path `/work/[slug]` |
+| Included | Modules / items |
+| -------- | --------------- |
+| Core | **ADR-044** hybrid: tile → sheet; “baca selengkapnya” → `/[locale]/projects/[slug]` (SSG); M10 overlay remains |
+| Optional | Gradual copy depth per work; per-work OG is not blocker |
+| Not | Blog volume, newsletter machine, mandatory social distribution, removing sheet, path `/work/[slug]` |
 
 **Exit R2:**
 
-1. ≥1 magnet live yang mendukung evaluasi founder/PO
-2. Tile Work index terhubung ke sheet / detail (bukan hanya tautan eksternal; teaser Home retired ADR-032)
-3. Traction signals mulai mungkin (recall berulang + inbound kontekstual) — selaras **Phase 2 — Traction**
+1. ≥1 live magnet supports founder/PO evaluation
+2. Work index tile connects to sheet / detail (not only external links; Home teaser retired ADR-032)
+3. Traction signals become possible (repeated recall + contextual inbound) — aligned with **Phase 2 — Traction**
 
-Prasyarat: R1 exit terpenuhi (atau waiver eksplisit Boss Rezi).
+Prerequisite: R1 exit has been met (or explicit Boss Rezi waiver).
 
 ---
 
 ## R3 — Presence & craft
 
-**Tujuan:** Menaikkan kesan rumah brand dan kualitas interaksi tanpa mengubah model nilai.
+**Goal:** Raise the feeling of a brand home and interaction quality without changing the value model.
 
-| Termasuk (pilih sesuai kapasitas) | Modul / item |
-| --------------------------------- | ------------ |
-| Could terkurasi | Motion/craft **lanjutan** (di atas baseline identitas R1, ADR-017 — bukan mengulang klaim R1); M8 form/booking jika soft path kurang |
-| Poles | IA/UX refine, performa, a11y lanjut, konsistensi visual |
-| Bukan wajib | M11 writing hub, M12 playground sebagai panggung utama, social automation |
+| Included (choose by capacity) | Modules / items |
+| ----------------------------- | --------------- |
+| Curated Could | **Advanced** motion/craft (on top of R1 identity baseline, ADR-017 — not repeating R1 claim); M8 form/booking if soft path is weak |
+| Polish | IA/UX refinement, performance, advanced a11y, visual consistency |
+| Not required | M11 writing hub, M12 playground as main stage, social automation |
 
 **Exit R3:**
 
-1. Presence terasa “rumah brand”, bukan hanya kerangka lean yang cukup
-2. Craft memperkuat cerita — tidak mengaburkan positioning
-3. Siap ritme update konten proporsional (**Phase 3 — Growth** arah)
+1. Presence feels like a “brand home,” not just a sufficient lean frame
+2. Craft strengthens the story — it does not obscure positioning
+3. Ready for proportional content update rhythm (**Phase 3 — Growth** direction)
 
 ---
 
-## Di luar nomor rilis (catatan)
+## Outside release numbers (note)
 
-| Item | Penempatan |
-| ---- | ---------- |
-| Discovery → Bootstrap → implementasi R1 | Proses project (`T-007`, Engineering) — bukan “R0 produk” wajib di sini |
-| M11 Writing, M12 Experiments, distribusi aktif | `future-roadmap.md` |
-| Pricing / CMS / auth member | Out of product direction (bukan backlog rilis) |
+| Item | Placement |
+| ---- | --------- |
+| Discovery → Bootstrap → R1 implementation | Project process (`T-007`, Engineering) — not mandatory “product R0” here |
+| M11 Writing, M12 Experiments, active distribution | `future-roadmap.md` |
+| Pricing / CMS / member auth | Out of product direction (not release backlog) |
 
 ---
 
 # Roadmap Review
 
-* Baseline v1.0 dikunci (ADR-012); M9 R1 = ADR-020; M10 overlay R1 = **ADR-027**. Halaman case R2 = **ADR-044** (`/projects/[slug]`, hibrid).
-* Setelah live, review exit R1 sebelum memulai build R2 secara serius.
-* Tanggal/estimasi minggu boleh ditambah di Engineering planning — bukan syarat dokumen ini.
+* Baseline v1.0 locked (ADR-012); M9 R1 = ADR-020; M10 overlay R1 = **ADR-027**. R2 case pages = **ADR-044** (`/projects/[slug]`, hybrid).
+* After live, review R1 exit before starting serious R2 build.
+* Dates/week estimates may be added in Engineering planning — not required by this document.
 
 ---
 
 # Success Criteria
 
-Roadmap rilis dianggap cukup jika:
+Release roadmap is sufficient if:
 
-1. R1–R3 punya tujuan, isi modul, dan exit yang jelas
-2. Selaras MoSCoW + ADR-006 / ADR-007 / ADR-010
-3. Tidak mengunci tanggal spekulatif atau stack teknis
-4. `future-roadmap.md` menampung peluang di luar R1–R3
+1. R1–R3 have clear goals, module contents, and exits
+2. Aligned with MoSCoW + ADR-006 / ADR-007 / ADR-010
+3. Does not lock speculative dates or technical stack
+4. `future-roadmap.md` holds opportunities outside R1–R3
 
 ---
 
 # Decision Rules
 
-* Menambah Must ke R1 di luar Hybrid lean → keputusan eksplisit + ADR bila material.
-* Melewatkan R2 selamanya bertentangan ADR-007 (magnet) — boleh ditunda, jangan dihapus tanpa ADR.
-* Hard sell / harga di sembarang rilis → ditolak (ADR-008).
-* Detail sprint/ticket → setelah Engineering baseline; dokumen ini tetap SoT urutan nilai.
+* Adding Must items to R1 outside Hybrid lean → explicit decision + ADR if material.
+* Skipping R2 forever conflicts with ADR-007 (magnet) — it can be deferred, not removed without ADR.
+* Hard sell / pricing in any release → rejected (ADR-008).
+* Sprint/ticket details → after Engineering baseline; this document remains the source of truth for value order.
 
 ---
 
 # Related Documents
 
-* `README.md` — dokumentasi fase ini
-* `mvp-definition.md` — definisi MVP (R1)
+* `README.md` — documentation for this phase
+* `mvp-definition.md` — MVP definition (R1)
 * `feature-priority.md` — MoSCoW
 * `feature-modules.md` — M1–M14 (M4 retired)
-* `future-roadmap.md` — peluang jangka panjang
+* `future-roadmap.md` — long-term opportunities
 * `../01-business/success-metrics.md` — Validation / Traction / Growth
-* `../../project-manager/decisions/ADR-010-mvp-surface-hybrid-lean.md`
-* `../../project-manager/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
-* `../../project-manager/decisions/ADR-019-contact-modal-with-form-override.md`
-* `../../project-manager/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
-* `../../project-manager/decisions/ADR-021-dark-mode-toggle-must-r1.md`
-* `../../project-manager/decisions/ADR-022-quick-info-panel-module.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/decisions/ADR-010-mvp-surface-hybrid-lean.md`
+* `../../project-os/decisions/ADR-012-product-baseline-v1.md` — Product Baseline v1.0
+* `../../project-os/decisions/ADR-019-contact-modal-with-form-override.md`
+* `../../project-os/decisions/ADR-020-work-index-must-r1-nav-mobile-override.md`
+* `../../project-os/decisions/ADR-021-dark-mode-toggle-must-r1.md`
+* `../../project-os/decisions/ADR-022-quick-info-panel-module.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`

@@ -1,84 +1,84 @@
 # 02 — Product
 
-Dokumentasi pada folder ini berfokus pada fase **Product** untuk website portofolio pribadi **rezisaktiva**.
+Documentation in this folder focuses on the **Product** phase for the personal portfolio website **rezisaktiva**.
 
 ---
 
 # Purpose
 
-* Mendefinisikan scope website portofolio.
-* Menetapkan MVP dan prioritas fitur/halaman.
-* Menyusun roadmap rilis awal.
+* Define the portfolio website scope.
+* Define the MVP and feature/page priorities.
+* Build the initial release roadmap.
 
 ---
 
 # Scope
 
-Folder ini hanya membahas aspek product.
+This folder only covers product aspects.
 
-Topik berikut tidak dibahas di sini:
+The following topics are not covered here:
 
-- Detail UX wireframe
-- Arsitektur teknis
-- Implementasi kode
+- UX wireframe details
+- Technical architecture
+- Code implementation
 
 ---
 
 # Documents
 
-* `product-scope.md` — batas dan domain produk.
-* `mvp-definition.md` — definisi MVP.
-* `feature-modules.md` — modul/fitur/halaman.
-* `feature-priority.md` — prioritas MoSCoW.
-* `release-roadmap.md` — rencana rilis.
-* `future-roadmap.md` — peluang jangka panjang.
-* `roles-permissions.md` — peran & akses bila ada area non-publik.
-* `../README.md` — dokumentasi fase Product Discovery.
-* `../../project-manager/PROJECT_OVERVIEW.md` — ringkasan project.
-* `../../project-manager/PROJECT_RULES.md` — aturan project.
-* `../../project-manager/PROJECT_STATE.md` — status dan progress.
-* `../../project-manager/DECISIONS.md` — keputusan penting (ADR).
+* `product-scope.md` — product boundaries and domains.
+* `mvp-definition.md` — MVP definition.
+* `feature-modules.md` — modules/features/pages.
+* `feature-priority.md` — MoSCoW priority.
+* `release-roadmap.md` — release plan.
+* `future-roadmap.md` — long-term opportunities.
+* `roles-permissions.md` — roles & access if non-public areas exist.
+* `../README.md` — Product Discovery phase documentation.
+* `../../project-os/PROJECT_OVERVIEW.md` — project summary.
+* `../../project-os/PROJECT_RULES.md` — project rules.
+* `../../project-os/PROJECT_STATE.md` — status and progress.
+* `../../project-os/DECISIONS.md` — important decisions (ADRs).
 
 ---
 
 # Workflow
 
-1. Mulai dari `product-scope.md` dan `mvp-definition.md`.
-2. Detailkan `feature-modules.md` lalu `feature-priority.md`.
-3. Susun `release-roadmap.md` dan `future-roadmap.md`.
-4. Isi `roles-permissions.md` bila relevan (boleh N/A untuk site statis publik).
+1. Start with `product-scope.md` and `mvp-definition.md`.
+2. Detail `feature-modules.md`, then `feature-priority.md`.
+3. Build `release-roadmap.md` and `future-roadmap.md`.
+4. Fill `roles-permissions.md` if relevant (may be N/A for a public static site).
 
 ---
 
 # Expected Output
 
-**Product Baseline v1.0 sudah ditetapkan** (ADR-012, 2026-08-07). Seluruh dokumen di folder ini terisi dan disepakati (termasuk `roles-permissions.md` sebagai N/A).
+**Product Baseline v1.0 has been established** (ADR-012, 2026-08-07). Every document in this folder is filled and agreed upon (including `roles-permissions.md` as N/A).
 
-Langkah berikutnya: lanjut **Phase 3 — User Discovery** di `../03-user/`. Status fase aktif ada di `PROJECT_STATE.md`.
+Next step: continue to **Phase 3 — User Discovery** in `../03-user/`. The active phase status lives in `PROJECT_STATE.md`.
 
 ---
 
 # Exit Criteria
 
-Kriteria berikut **sudah terpenuhi** untuk Baseline v1.0:
+The following criteria **have been met** for Baseline v1.0:
 
-* Seluruh dokumen di atas sudah diisi (bukan TBD).
-* Keputusan material tercatat di `DECISIONS.md` (ADR-010, ADR-011, ADR-012, dll.).
-* Boss Rezi menyetujui baseline fase ini.
+* Every document above has been filled (not TBD).
+* Material decisions are recorded in `DECISIONS.md` (ADR-010, ADR-011, ADR-012, etc.).
+* Boss Rezi has approved this phase baseline.
 
 ---
 
 # Decision Rules
 
-* Fase Product selesai — lanjut isi `03-user/` sesuai Workflow Product Discovery.
-* Perubahan material pada baseline produk → ADR baru + revisi dokumen terdampak.
-* Status/progress fase hanya dicatat di `PROJECT_STATE.md`, bukan di README ini.
+* The Product phase is complete — continue filling `03-user/` according to the Product Discovery workflow.
+* Material changes to the product baseline → new ADR + revision of impacted documents.
+* Phase status/progress is recorded only in `PROJECT_STATE.md`, not in this README.
 
 ---
 
 # Related Documents
 
 * `../README.md`
-* `../../project-manager/README.md`
-* `../../project-manager/PROJECT_STATE.md`
-* `../../project-manager/DECISIONS.md`
+* `../../project-os/README.md`
+* `../../project-os/PROJECT_STATE.md`
+* `../../project-os/DECISIONS.md`
