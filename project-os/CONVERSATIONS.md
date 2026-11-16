@@ -16,6 +16,12 @@ Important cross-session discussion log. Append new entries at the top (after the
 
 ---
 
+## [2026-11-16] — Fitted wave and review skills
+**Phase:** Validation
+**Summary:** Boss Rezi asked for Postific's wave, review, clarification, and docs-audit skills after the Project OS update, fitted to this portfolio. The wave and review skills were added. Clarification and the docs audit stayed on the versions already written for this repo.
+**Key Decision/Insight:** **ADR-050** — waves run from `main` with pnpm and this ticket shape. No staging ladder, Bun, or design-artifact review. Ask-only-when-urgent stays.
+**Impact:** `.cursor/skills/wave-plan/`, `.cursor/skills/wave-work/`, `.cursor/skills/review-work/`, `AGENTS.md`, `PROJECT_RULES.md`.
+
 ## [2026-11-16] — Kanonis www, bukan vercel.app
 **Phase:** Validation
 **Summary:** Google menampilkan `rezisaktiva.vercel.app`. HTML production menulis canonical, JSON-LD, dan sitemap ke `http://localhost:3000` karena `NEXT_PUBLIC_SITE_URL` tidak terpasang saat build. Apex sudah berakhir di `www`.

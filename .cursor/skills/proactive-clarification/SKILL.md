@@ -46,6 +46,8 @@ Examples that **do** require a question: a task references a missing code file, 
 
 ## How To Ask
 
+When `wave-plan` is the skill Boss Rezi invoked, that skill batches its own wave decisions. This skill still governs the shape of each question.
+
 ### 1. Identify The Urgent Issue
 
 - What is missing, wrong, or outside the plan?
@@ -54,7 +56,9 @@ Examples that **do** require a question: a task references a missing code file, 
 
 ### 2. Present The Best Options
 
-Offer at most 4–5 curated options, each with brief context. Use `AskQuestion` when available.
+Offer at most 4–5 curated options, each with brief context. Put the recommended option first and mark it "(Recommended)" with one sentence why. Use `AskQuestion` when available.
+
+Do not ask something the ticket, an ADR, the baseline, or the code already answers. Read it and use that answer.
 
 **Format:**
 

@@ -26,6 +26,7 @@ Use this page to find implementation and developer-workflow references. It does 
 - [`../decisions/ADR-024-production-code-visual-sot.md`](../decisions/ADR-024-production-code-visual-sot.md) — production code as visual Source of Truth.
 - [`../decisions/ADR-028-shadcn-tailwind-replaces-astryx.md`](../decisions/ADR-028-shadcn-tailwind-replaces-astryx.md) — current UI stack.
 - [`../decisions/ADR-049-project-os-english-agent-ecosystem.md`](../decisions/ADR-049-project-os-english-agent-ecosystem.md) — English Project OS program.
+- [`../decisions/ADR-050-portfolio-wave-and-review-skills.md`](../decisions/ADR-050-portfolio-wave-and-review-skills.md) — fitted wave and UI review skills.
 
 ## Agent Instructions
 
