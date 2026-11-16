@@ -38,7 +38,7 @@ Those are the only reasons to ask. Uncertainty that can be resolved by reading d
 
 ## How To Ask
 
-Use `.cursor/skills/proactive-clarification/SKILL.md`: concrete options, brief context, best-in-class choices, at most 4–5 options, one topic per question. If the situation is simply "I do not know the answer" rather than a choice among options, explain the gap explicitly and ask for direction.
+Use `.cursor/skills/proactive-clarification/SKILL.md`: concrete options, brief context, best-in-class choices, at most 4–5 options, one topic per question. If the situation is simply "I do not know the answer" rather than a choice among options, explain the gap explicitly and ask for direction. When Boss Rezi invoked `wave-plan`, that skill may batch its own independent wave decisions in one round.
 
 ## Related Docs And Skills
 

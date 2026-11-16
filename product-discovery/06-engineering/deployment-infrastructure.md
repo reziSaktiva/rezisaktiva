@@ -34,7 +34,7 @@ R1 is deployed to **Vercel**, connected to the same public repo (Git-based deplo
 | CDN | Included in the Vercel platform |
 | Product-owned server/DB/queue | No |
 
-**Why Vercel (for R1):** native Next.js, preview per PR, simple domain/TLS, Middleware fits locale rules at `/`.
+**Why Vercel (for R1):** native Next.js, preview per PR, simple domain/TLS, Middleware fits locale rules at `/`. A documentation-only change skips that build (**ADR-051**).
 
 Alternatives considered and **not chosen** for R1: Cloudflare Pages, Netlify, GitHub Pages.
 
@@ -45,7 +45,7 @@ Alternatives considered and **not chosen** for R1: Cloudflare Pages, Netlify, Gi
 | Environment | Role |
 | ----------- | ---- |
 | **Production** | Public site (main domain) |
-| **Preview** | Deployment per PR / branch — review before merge |
+| **Preview** | Deployment per PR / branch when the site or deploy config changed. Documentation-only changes are skipped (**ADR-051**) |
 | **Local** | `pnpm dev` on the developer machine |
 
 There is no required separate staging for R1; Vercel Preview is enough as the quality gate.
@@ -59,7 +59,8 @@ R1 product secrets are expected to be **minimal** — public site without auth/D
 Conceptual flow:
 
 ```text
-[Push / PR] → [Vercel build: pnpm install + next build]
+[Push / PR] → [Documentation-only diff: cancel the build (ADR-051)]
+           → [Otherwise Vercel build: pnpm install + next build]
                     → [SSG pages + assets]
                     → [CDN / Production or Preview URL]
 ```

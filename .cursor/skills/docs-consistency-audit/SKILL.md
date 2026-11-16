@@ -19,8 +19,6 @@ This skill is for deliberate, thorough audits. It is not a routine end-of-task c
 
 Interpret Boss Rezi's request as one of these scopes:
 
-| Argumen | Artinya |
-| -------- | ------- |
 | Argument | Meaning |
 | -------- | ------- |
 | `project-os` | `PROJECT_STATE.md`, `AVAILABLE_TICKETS.md`, `tickets/*.md`, `specs/*.md`, `context/*.md`, `DECISIONS.md`, `decisions/ADR-*.md`, and static Project OS references (`PROJECT_RULES.md`, `PROJECT_OVERVIEW.md`, `ARCHITECTURE_OVERVIEW.md`, `DEVELOPER_WORKFLOW.md`, `README.md`) |
@@ -63,7 +61,7 @@ For large scopes such as `all` or full `product-discovery`, use careful batching
 
 Check documents in scope for:
 
-1. **Status/progress drift** — the same task or subtask has conflicting status in `AVAILABLE_TICKETS.md`, `tickets/*.md`, or `PROJECT_STATE.md`.
+1. **Status/progress drift** — the same task or subtask has conflicting status in `AVAILABLE_TICKETS.md`, `tickets/*.md`, or `PROJECT_STATE.md`. Queue drift counts here too: an open `- [ ]` item missing from the queue, or a finished ticket still listed as open.
 2. **Count/index drift** — status counts, open/closed breakdowns, or subtask counts do not match the actual ticket files.
 3. **ADR amendment not reflected** — a newer ADR amends an older decision but affected baselines, tickets, skills, or rules still describe the old version.
 4. **Terminology drift** — different terms for the same concept: Boss Rezi, P1–P4, S1–S6, M1–M14, chrome, Quick Info, project sheet, locale ID/EN, or R1 routes.

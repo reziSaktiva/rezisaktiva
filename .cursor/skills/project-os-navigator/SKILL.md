@@ -160,6 +160,8 @@ YYYY-MM-DD
 - Do not reuse task or subtask IDs (`T-XXX` / `T-XXX.N`).
 - Official project skills live only in `.cursor/skills/`.
 - Full docs audits with `docs-consistency-audit` run only when Boss Rezi explicitly asks.
+- `wave-plan` and `wave-work` run only when Boss Rezi asks for a wave (ADR-050). They do not replace one-ticket work.
+- `review-work` runs only when Boss Rezi asks to accept finished UI.
 
 ---
 
@@ -181,7 +183,7 @@ rezisaktiva/
 ├── design-mockups/           -> archived HTML mockups, not visual Source of Truth
 ├── app/                      -> Next.js App Router code
 ├── AGENTS.md
-├── .cursor/skills/           -> process skills + Motion library
+├── .cursor/skills/           -> process skills + Motion library; index in AGENTS.md
 └── .cursor/rules/            -> active rules
 ```
 

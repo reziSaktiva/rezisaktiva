@@ -44,6 +44,9 @@ Project skills live only in `.cursor/skills/`.
 ├── proactive-clarification/  -> How to ask when an urgent gap exists
 ├── work-report-simple/       -> Plain-language completion report
 ├── docs-consistency-audit/   -> Explicit docs audits only
+├── wave-plan/                -> Prepare an approved batch of ready tickets
+├── wave-work/                -> Run a wave Boss Rezi already approved
+├── review-work/              -> UI acceptance walkthrough when Boss Rezi asks
 └── motion/                   -> Motion skill library, not a process skill
 ```
 

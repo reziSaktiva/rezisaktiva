@@ -6,7 +6,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-09-03 |
+| Last Updated | 2026-11-16 |
 
 ---
 
@@ -106,6 +106,8 @@ Only add new entries at the top; do not rewrite history — **unless Boss Rezi e
 * Check task completeness and reference documents first (for UI: existing production code, not HTML mockups). **Ask Boss Rezi only when urgent** (gap, wrong document, or something outside the plan) — not as a ritual, and not for uncertainty that can be resolved by reading. Do not assume, invent, or quietly continue on unplanned work. `.cursor/rules/ask-before-assuming.mdc` + `.cursor/skills/proactive-clarification/SKILL.md` (how to ask when asking is required).
 * After work is complete, report with `.cursor/skills/work-report-simple/SKILL.md`.
 * Run a broad documentation audit **only when explicitly requested**: `.cursor/skills/docs-consistency-audit/SKILL.md` (report-only; do not trigger automatically).
+* Plan or run a wave only when Boss Rezi asks: `.cursor/skills/wave-plan/SKILL.md`, then `.cursor/skills/wave-work/SKILL.md` (ADR-050). Ordinary one-ticket work stays on the navigator.
+* Walk through finished UI for acceptance only when Boss Rezi asks: `.cursor/skills/review-work/SKILL.md` (ADR-050).
 * Code implementation follows the `Active Conversation Mode` in `PROJECT_STATE.md` (for example: R1 code is allowed when Active Mode = Development), unless Boss Rezi explicitly asks for work outside that mode.
 * Do not silently fix documentation inconsistencies — mention them to the user first.
 * **UI/UX tasks must follow `.cursor/rules/ui-ux-mockup-check.mdc`** — the visual reference is production code + Boss Rezi's direction (**ADR-024**). `design-mockups/` is an archive, not a contract. Verify against implementation + locked direction, not against HTML mockups. Designs that conflict with the UX baseline / two unlocked valid interpretations = urgent, ask Boss Rezi first.

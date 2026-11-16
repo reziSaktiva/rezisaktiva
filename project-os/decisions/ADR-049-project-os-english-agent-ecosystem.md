@@ -48,3 +48,5 @@ Accepted
 - `product-discovery/`
 - `project-os/decisions/` and `project-os/DECISIONS.md`
 - Source comments and developer-facing strings outside `content/` and `design-mockups/`
+
+Later on 2026-11-16, **T-059** closed after the production send. Point 3 still locks the IDs: do not reuse them, and the next new task ID is `T-060`. Current status is in `PROJECT_STATE.md`.
