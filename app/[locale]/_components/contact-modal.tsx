@@ -54,7 +54,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
   const lastFocus = useRef<HTMLElement | null>(null);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [company, setCompany] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed">(
     "idle",
   );
@@ -65,7 +65,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
     window.clearTimeout(copyResetTimer.current);
     setCopied(false);
     setStatus("idle");
-    setCompany("");
+    setHoneypot("");
     close();
   }, [close]);
 
@@ -128,7 +128,7 @@ export function ContactModal({ locale }: { locale: Locale }) {
         body: JSON.stringify({
           email,
           message,
-          [CONTACT_HONEYPOT_FIELD]: company,
+          [CONTACT_HONEYPOT_FIELD]: honeypot,
         }),
       });
       const data = (await response.json().catch(() => null)) as {
@@ -203,8 +203,8 @@ export function ContactModal({ locale }: { locale: Locale }) {
                   autoComplete="off"
                   aria-hidden="true"
                   name={CONTACT_HONEYPOT_FIELD}
-                  value={company}
-                  onChange={(event) => setCompany(event.target.value)}
+                  value={honeypot}
+                  onChange={(event) => setHoneypot(event.target.value)}
                 />
                 <FieldGroup className="gap-0">
                   <Field className="gap-0">

@@ -16,6 +16,10 @@ Format entri:
 
 ## [2026-11-16]
 ### Fixed
+- **T-059** — form Contact: batas 5 kiriman per IP / 10 menit; honeypot `rz_hp` (bukan `company`, supaya tidak terisi otomatis lalu mengaku terkirim). Tes mencakup secret absen, penolakan Resend, dan honeypot tanpa kirim.
+
+## [2026-11-16]
+### Fixed
 - **ADR-048** — canonical, JSON-LD, sitemap, dan robots di build Vercel memakai `https://www.rezisaktiva.space`. `rezisaktiva.vercel.app` diarahkan permanen ke host itu. Production yang live sebelumnya menulis `http://localhost:3000`.
 
 ## [2026-11-16]
