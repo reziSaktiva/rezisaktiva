@@ -8,7 +8,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 
 **Berikutnya**
 
-**T-059** form Contact → Resend (**ADR-047**). **T-059.1** ✅. Berikutnya **T-059.2** (DNS + secret) lalu Handler + UI. **T-058** ✅. Tile anonim Gamestalgia menunggu kunci judul/highlight.
+**T-059** form Contact → Resend (**ADR-047**). **T-059.1**, **T-059.3**, **T-059.4** ✅. Berikutnya **T-059.2** (domain + secret Preview/lokal; Production sudah diisi) lalu **T-059.5** (inbox setelah deploy). **T-058** ✅. Tile anonim Gamestalgia menunggu kunci judul/highlight.
 
 **Baru selesai**
 
@@ -27,7 +27,7 @@ Indeks backlog project **rezisaktiva**. Detail task ada di `tasks/`.
 | Discovery | [`tasks/discovery.md`](tasks/discovery.md) | T-001 … T-007 | ✅ Done |
 | Bootstrap | [`tasks/bootstrap.md`](tasks/bootstrap.md) | T-008 … T-012 | ✅ Done |
 | R1 | [`tasks/r1.md`](tasks/r1.md) | T-013 … T-055 | ✅ Done (**T-023** ❌) |
-| R2 | [`tasks/r2.md`](tasks/r2.md) | T-056 … | **T-056**–**T-058** Done; **T-059** 🟡 |
+| R2 | [`tasks/r2.md`](tasks/r2.md) | T-056 … | **T-056**–**T-058** Done; **T-059** 🟡 (T-059.3–T-059.4 ✅) |
 
 Peta file: [`tasks/README.md`](tasks/README.md).
 

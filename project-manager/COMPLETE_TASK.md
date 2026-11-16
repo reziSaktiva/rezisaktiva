@@ -14,6 +14,14 @@ Format entri:
 - ...
 ```
 
+## [2026-11-16]
+### Added
+- **T-059.3** — `POST /api/contact` mengantar lewat Resend. Validasi email/pesan, honeypot, Reply-To pengunjung, To = email kontak. Tanpa secret, jawaban 503 dan isi pesan tidak dicatat.
+- **T-059.4** — Modal Contact: Mengirim / Terkirim hanya setelah server menerima / gagal. `mailto:` dan salin tetap terlihat.
+
+### Changed
+- Fokus **T-059**: sisa **T-059.2** (domain + Preview/lokal; Production sudah diisi) dan **T-059.5** (bukti masuk inbox setelah deploy).
+
 ## [2026-09-15]
 ### Added
 - **ADR-047** / **T-059.1**: form Contact mengantar email lewat Resend (Route Handler; halaman tetap SSG). Task **T-059.2–T-059.5** terbuka.

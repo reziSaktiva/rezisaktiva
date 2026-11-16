@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live)
 * **Active Mode:** Validation — **T-059** 🟡 (ADR-047); **T-058** ✅; **T-057** ✅; **T-056** ✅; R1 tetap exited
-* **Top Next Tasks:** **T-059.2** — DNS Resend + secret Vercel — [`TASKS.md`](TASKS.md) / [`tasks/r2.md`](tasks/r2.md)
+* **Top Next Tasks:** **T-059.2** — domain Resend + secret Preview/lokal (Production sudah diisi) lalu **T-059.5** inbox — [`TASKS.md`](TASKS.md) / [`tasks/r2.md`](tasks/r2.md)
 * **Blocker:** Tidak ada
 * **Known Issues:** Tidak ada (KI-001 / KI-002 tertutup: tema `rezisaktiva` = mockup `shared.css`)
 * **Backlog task lengkap:** [`TASKS.md`](TASKS.md) + [`tasks/README.md`](tasks/README.md) (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`) + [`R1_COMPLETE.md`](R1_COMPLETE.md)
