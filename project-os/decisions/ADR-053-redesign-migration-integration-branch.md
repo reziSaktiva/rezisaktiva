@@ -6,7 +6,7 @@ Redesign migration: integration branch, Vercel Preview, single cutover
 
 ### Status
 
-Proposed (needs Boss Rezi's confirmation of the branch name and the preview domain)
+Accepted (2026-11-17). Boss Rezi confirmed the branch name `redesign/monolith`; the stable preview domain stays optional (T-076.3).
 
 ### Date
 
@@ -46,8 +46,8 @@ Proposed (needs Boss Rezi's confirmation of the branch name and the preview doma
 
 ### Impact / Follow-up
 
-- Boss Rezi confirms the branch name and whether to attach a branch domain.
+- Branch `redesign/monolith` is created and pushed (2026-11-17). Whether to attach a branch domain is decided in T-076.3.
 - Check in the Vercel dashboard: production branch is `main`, Preview env vars for Resend, Preview `noindex`.
 - Capture a performance and Core Web Vitals baseline on production before cutover (ADR-052 point 8).
-- `product-discovery/06-engineering/deployment-infrastructure.md` and `project-os/DEVELOPER_WORKFLOW.md` gain a short "redesign branch" note when this ADR is accepted.
-- Wave planning for the migration uses the `wave-plan` and `wave-work` skills (ADR-050) once tickets exist.
+- `product-discovery/06-engineering/deployment-infrastructure.md` and `project-os/DEVELOPER_WORKFLOW.md` gain a short "redesign branch" note (T-075.4).
+- Wave planning for the migration uses the `wave-plan` and `wave-work` skills (ADR-050) using the S-002 tickets (T-075 to T-086).

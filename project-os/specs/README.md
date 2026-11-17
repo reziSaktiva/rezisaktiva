@@ -9,6 +9,7 @@ Specs are not a second backlog. They define the goal, scope, constraints, and co
 | Spec | Scope | Status |
 | ---- | ----- | ------ |
 | `S-001` | Project OS English agent ecosystem | Done |
+| `S-002` | Monolith redesign migration (ADR-052, ADR-053) | Open |
 
 ## Rules
 
@@ -22,3 +23,5 @@ Specs are not a second backlog. They define the goal, scope, constraints, and co
 * `../AVAILABLE_TICKETS.md`
 * `../tickets/s001-project-os-english.md`
 * `S-001.md`
+* `S-002.md`
+* `../tickets/s002-monolith-redesign.md`

@@ -21,6 +21,13 @@ Use this page to find UX and visual-design references. Production code and appro
 - [`../decisions/ADR-029-visual-identity-gothic-blood.md`](../decisions/ADR-029-visual-identity-gothic-blood.md) — gothic-blood visual identity.
 - [`../decisions/ADR-031-selected-chrome-outline.md`](../decisions/ADR-031-selected-chrome-outline.md) — selected chrome state.
 
+## Redesign (S-002)
+
+- [`../decisions/ADR-052-monolith-editorial-design.md`](../decisions/ADR-052-monolith-editorial-design.md) — Monolith is the single public design.
+- [`../decisions/ADR-053-redesign-migration-integration-branch.md`](../decisions/ADR-053-redesign-migration-integration-branch.md) — branch, Preview, cutover.
+- [`../specs/S-002.md`](../specs/S-002.md) and [`../tickets/s002-monolith-redesign.md`](../tickets/s002-monolith-redesign.md) — program and tickets.
+- [`../../design-mockups/`](../../design-mockups/) — v5 mockups, the redesign reference until cutover.
+
 ## Current Production Surfaces
 
 - [`../../app/`](../../app/) — production Next.js app.
