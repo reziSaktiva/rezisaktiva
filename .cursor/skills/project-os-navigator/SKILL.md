@@ -180,7 +180,7 @@ rezisaktiva/
 │   ├── CONVERSATIONS.md
 │   └── BRAINSTORM.md
 ├── product-discovery/        -> product Source of Truth
-├── design-mockups/           -> archived HTML mockups, not visual Source of Truth
+├── design-mockups/           -> archived HTML mockups; S-002 redesign reference (v5) until cutover (ADR-052), never pixel-exact
 ├── app/                      -> Next.js App Router code
 ├── AGENTS.md
 ├── .cursor/skills/           -> process skills + Motion library; index in AGENTS.md

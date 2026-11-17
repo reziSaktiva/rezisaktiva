@@ -13,7 +13,7 @@ Entry point for agents working in this Cursor workspace. Read this file first, t
 | Product and engineering baselines | `product-discovery/` |
 | Architecture overview | `project-os/ARCHITECTURE_OVERVIEW.md` |
 | Developer workflow | `project-os/DEVELOPER_WORKFLOW.md` |
-| UI/UX visual truth | Production code (`app/`, shadcn + Tailwind, tokens in `app/globals.css`) + Boss Rezi's current instructions, not `design-mockups/` |
+| UI/UX visual truth | Production code (`app/`, shadcn + Tailwind, tokens in `app/globals.css`) + Boss Rezi's current instructions. Exception until cutover (T-086): S-002 redesign work uses the v5 `design-mockups/` as a reference (not pixel-exact; ADR-052) |
 
 ## Start Here
 
@@ -31,7 +31,7 @@ ADR-049 sets the project language contract:
 - Address the user as **Boss Rezi** when needed.
 - Project documents, process skills, agent rules, and developer-facing comments move to English.
 - Public site locale copy in `content/` stays bilingual.
-- `design-mockups/` stays an archive, not a visual contract.
+- `design-mockups/` is an archive, not a visual contract, except as the S-002 redesign reference until cutover (ADR-052); never pixel-exact.
 - `COMPLETE_TASK.md` is a frozen historical archive. Do not read, translate, or append it unless Boss Rezi explicitly asks for legacy changelog work.
 
 ## Skills
@@ -59,7 +59,7 @@ This project is Cursor-first. Do not create or rely on `.claude/` or `CLAUDE.md`
 ├── no-ai-attribution-git.mdc -> no AI/tool attribution in commits, branches, or PRs
 ├── shadcn.mdc                -> shadcn/ui + Tailwind v4 conventions
 ├── code-discipline.mdc       -> spacing, styling layers, Server/Client, SSG
-├── ui-ux-mockup-check.mdc    -> production code is the visual source of truth
+├── ui-ux-mockup-check.mdc    -> production code is the visual source of truth (S-002 exception: v5 mockups)
 ├── redesign-branch-flow.mdc  -> S-002 redesign: branch from and open PRs into redesign/monolith, never main
 ├── ask-before-assuming.mdc   -> ask only for urgent gaps, wrong docs, or unplanned work
 └── motion.mdc                -> use the Motion skill for animation changes

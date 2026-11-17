@@ -4,13 +4,12 @@ Open work only. Completed ticket history lives in `tickets/`.
 
 ## Current Focus
 
-**S-002** Monolith redesign migration ([`specs/S-002.md`](specs/S-002.md), ADR-052, ADR-053). Start with Wave A: **T-075** and **T-076**. Ticket details: [`tickets/s002-monolith-redesign.md`](tickets/s002-monolith-redesign.md). Earlier history: [`tickets/r2.md`](tickets/r2.md).
+**S-002** Monolith redesign migration ([`specs/S-002.md`](specs/S-002.md), ADR-052, ADR-053). T-075 is done. Wave A continues with **T-076** (Boss Rezi dashboard checks) and then **T-077**. Ticket details: [`tickets/s002-monolith-redesign.md`](tickets/s002-monolith-redesign.md). Earlier history: [`tickets/r2.md`](tickets/r2.md).
 
 ## Open Tickets
 
 | Ticket | Title | Branch | Blocked by |
 | ------ | ----- | ------ | ---------- |
-| **T-075** | Docs and agent rules alignment | `main` | — |
 | **T-076** | Preview safety and performance baseline | dashboard | — |
 | **T-077** | Open surface decisions (Boss Rezi Q&A) | `main` | — |
 | **T-078** | Design foundation: tokens, fonts, global layer | `redesign/monolith` | T-075, T-077.3 |
