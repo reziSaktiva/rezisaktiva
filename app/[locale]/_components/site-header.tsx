@@ -16,7 +16,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useChipColorVars } from "@/app/_components/theme-mode-provider";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { isInsideLocaleMenuGuard } from "@/lib/overlay-dismiss";
 import { cn } from "@/lib/utils";
@@ -157,7 +156,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const hash = useLocationHash();
   const isMobile = useMobileNavBreakpoint();
-  const chipColorVars = useChipColorVars();
   const { open } = useContactModal();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
@@ -203,7 +201,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
       {!isMobile ? (
         <SlidingPillGroup
           className="site-nav-chip"
-          style={chipColorVars}
           itemSelector=".site-nav-item"
           layoutKey={pathname}
         >
@@ -301,7 +298,6 @@ export function SiteTopNav({ locale }: { locale: Locale }) {
                 <SlidingPillGroup
                   orientation="vertical"
                   className="site-mobile-nav-chip"
-                  style={chipColorVars}
                   itemSelector=".site-mobile-nav-item"
                   layoutKey={pathname}
                 >
