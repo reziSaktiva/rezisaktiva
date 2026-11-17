@@ -10,5 +10,4 @@ Serve the repo root (`python3 -m http.server`) and open `design-mockups/home.htm
 Pages: `home.html`, `workflow.html`, `work.html` (grid + sticky title + floating nav), `work-case.html`, `contact.html` (sticky portrait + info panel + form). Content and images come from
 `content/` and `public/`.
 
-Status: for Boss Rezi's review only. Production code (`app/`) stays the visual source of truth until
-a direction is approved (ADR-024).
+Status: during S-002 (Monolith redesign, ADR-052, ADR-053) the v5 mockups here are the working reference for redesign work until cutover (T-086). They are a reference, not a pixel-exact contract. Production code (`app/`) stays the visual source of truth for anything outside S-002 (ADR-024), and after cutover this folder returns to archive.
