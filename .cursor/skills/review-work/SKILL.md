@@ -19,7 +19,7 @@ Automated checks and the standards review inside `wave-work` are separate. They 
 
 - **In scope:** a screen, component, layout, overlay, or flow a visitor sees. The evidence is the running page.
 - **Out of scope:** docs, specs, ADRs, tickets, backend, data, config, and CI. Do not ask Boss Rezi to approve those here. List them in the final report as reviewed by him separately.
-- `design-mockups/` is an archive. Do not open it as the thing to approve. Production code and the live screen are the evidence.
+- `design-mockups/` is an archive (S-002 redesign work: the v5 mockups are a reference, ADR-052). Do not open it as the thing to approve. Production code and the live screen are the evidence.
 
 ## Boundaries
 

@@ -7,7 +7,7 @@ Read this only when the brief points here. Do not paste it into the brief.
 When the lane changes a screen, layout, or overlay:
 
 - Follow `.cursor/rules/shadcn.mdc`, `.cursor/rules/code-discipline.mdc`, and `.cursor/rules/ui-ux-mockup-check.mdc`.
-- Production code in `app/` and tokens in `app/globals.css` are the visual source. `design-mockups/` is an archive.
+- Production code in `app/` and tokens in `app/globals.css` are the visual source. `design-mockups/` is an archive, except as the S-002 redesign reference until cutover (ADR-052); never pixel-exact.
 - Verify the changed flow in the browser on the affected locale route, including the empty or error state the ticket names.
 
 ## Motion

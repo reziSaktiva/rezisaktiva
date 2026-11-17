@@ -50,6 +50,8 @@ Alternatives considered and **not chosen** for R1: Cloudflare Pages, Netlify, Gi
 
 There is no required separate staging for R1; Vercel Preview is enough as the quality gate.
 
+**Redesign branch (S-002, ADR-053):** the Monolith redesign lives on the integration branch `redesign/monolith`. Vercel Preview of that branch is the staging; no new environment or Vercel project is created. Production stays on `main` until cutover (T-086). PRs go into `redesign/monolith`. Preview must be `noindex` and must not send real contact mail.
+
 R1 product secrets are expected to be **minimal** — public site without auth/DB. **Validation exception:** `RESEND_API_KEY` + `RESEND_FROM` (**ADR-047**).
 
 ---
