@@ -37,6 +37,17 @@
 }
 
 /*
+ * Font family tokens. `inline` so utilities (`font-wordmark`, `font-condensed`,
+ * `font-inter`) resolve `var(--font-archivo)` etc. where they are used: the
+ * next/font variables live on `<body>`, not `:root`.
+ */
+@theme inline {
+  --font-wordmark: var(--font-archivo), "Arial Black", sans-serif;
+  --font-condensed: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-inter: var(--font-inter), system-ui, sans-serif;
+}
+
+/*
  * Chrome chip/pill (`site-header.tsx`, `locale-switcher.tsx`) — class
  * scoped + token di `:root` (`var(--spacing-*)`, `var(--radius-full)`).
  * Chrome color/layout stays on the wrapper (`.site-*`).

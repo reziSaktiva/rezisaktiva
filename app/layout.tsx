@@ -9,7 +9,13 @@ import {
   THEME_MODE_STORAGE_KEY,
 } from "@/lib/theme-mode";
 import { ThemeModeProvider } from "./_components/theme-mode-provider";
-import { instrumentSans, texturina } from "./fonts";
+import {
+  archivo,
+  barlowCondensed,
+  inter,
+  instrumentSans,
+  texturina,
+} from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -89,7 +95,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="color-scheme" content={initialMode} />
       </head>
       <body
-        className={`${instrumentSans.variable} ${texturina.variable} ${instrumentSans.className}`}
+        className={`${archivo.variable} ${barlowCondensed.variable} ${inter.variable} ${instrumentSans.variable} ${texturina.variable} ${instrumentSans.className}`}
       >
         <ThemeModeProvider initialMode={initialMode}>
           {children}
