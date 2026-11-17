@@ -8,6 +8,8 @@ Home h1 back to two-line display; lede links to Workflow
 
 Accepted
 
+Amended by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): hero shape changes; wording open for T-084.2.
+
 ### Date
 
 2026-09-07

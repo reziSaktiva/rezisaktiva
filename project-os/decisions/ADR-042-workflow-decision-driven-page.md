@@ -8,6 +8,8 @@ Workflow page = decision-driven (not offers / values / T-021.3 accordion)
 
 Accepted
 
+Amended by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): section structure follows the mockup; wording unchanged.
+
 ### Date
 
 2026-09-08

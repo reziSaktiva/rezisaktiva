@@ -8,6 +8,8 @@ Dark mode toggle UI becomes Must R1 (override `design-tokens.md` + Product basel
 
 Accepted
 
+Superseded by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): toggle removed, single theme.
+
 ### Date
 
 2026-08-16
