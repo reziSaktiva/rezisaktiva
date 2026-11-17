@@ -6,7 +6,7 @@ Selected chrome: blood outline + accent text (replaces ADR-030 splatter)
 
 ### Status
 
-Accepted
+Superseded by [ADR-052](ADR-052-monolith-editorial-design.md) (2026-11-17). Stays in force on production until cutover ([ADR-053](ADR-053-redesign-migration-integration-branch.md)).
 
 ### Date
 

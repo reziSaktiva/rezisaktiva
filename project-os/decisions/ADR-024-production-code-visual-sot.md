@@ -36,3 +36,7 @@ Accepted
 ### Update - 2026-09-03 (ADR-028)
 
 The visual SoT decision (production code + Boss Rezi direction; `design-mockups/` archive) **remains**. Component/token mechanism changes to shadcn/ui + Tailwind CSS v4 - not Astryx (ADR-018 superseded). Living reference = `app/` + `app/globals.css` tokens + already-skinned primitives.
+
+### Update - 2026-11-17 (ADR-052)
+
+During the Monolith redesign migration, `design-mockups/` (v5) is the working visual and interaction reference until cutover ([ADR-052](ADR-052-monolith-editorial-design.md), [ADR-053](ADR-053-redesign-migration-integration-branch.md)). After cutover, production code is the visual source of truth again and the mockups return to archive.
