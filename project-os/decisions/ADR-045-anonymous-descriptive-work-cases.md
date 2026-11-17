@@ -8,6 +8,8 @@ Public work may use descriptive titles without product/client brand
 
 Accepted
 
+Note ([ADR-054](ADR-054-s002-surface-decisions.md), 2026-11-17, at cutover): the "tile / sheet / case" wording is stale because the sheet is removed; the descriptive-title rule is unchanged.
+
 ### Date
 
 2026-09-15

@@ -8,6 +8,8 @@ R2 magnet = hybrid: M10 sheet remains; shareable case page at `/[locale]/project
 
 Accepted
 
+Amended by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): the bottom sheet is removed; the case route stays.
+
 ### Date
 
 2026-09-14
