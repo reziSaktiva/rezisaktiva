@@ -32,7 +32,7 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 - [ ] **T-075.5** — Check `.cursor/rules/` and `.cursor/skills/` for text that contradicts ADR-052 and list or fix each hit.
 - [x] **T-075.6** — Add the always-on rule `.cursor/rules/redesign-branch-flow.mdc` (with the `.claude/rules/` pointer) and the `AGENTS.md` tree and Hard Rules lines: redesign branches start from `redesign/monolith`, are named `redesign/t-0XX-name`, and open PRs with `--base redesign/monolith`.
 - [x] **T-075.7** — Add `.github/workflows/redesign-base-guard.yml`: fail any pull request into `main` from a `redesign/*` branch other than `redesign/monolith`.
-- [ ] **T-075.8** — Boss Rezi sets the GitHub rules (Settings → Rules): on `main`, require a pull request and the `guard` check; on `redesign/monolith`, require a pull request and passing CI. Note: requiring pull requests on `main` also blocks direct pushes, so docs-only changes then go through PRs too. Record the final settings here.
+- [x] **T-075.8** — GitHub rulesets set on 2026-11-17 (applied through the GitHub API with Boss Rezi's go-ahead): `main: PR required` (id 27440700) and `redesign/monolith: PR required` (id 27440702). Both: pull request required with 0 approvals, no deletion, no force push. Required checks: `lint-typecheck` on both, plus `guard` on `main`. Bypass: repository admin role, **pull request only** (no direct pushes). Direct pushes to either branch are now blocked, so docs-only changes and the `main` → `redesign/monolith` sync also go through pull requests. Review under Settings → Rules.
 
 ---
 
