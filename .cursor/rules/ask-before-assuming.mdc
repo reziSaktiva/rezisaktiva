@@ -12,7 +12,7 @@ Applies to **all** work in this project: documentation, code, architecture, conf
 The agent must verify there is no gap in:
 
 - **Task** — subtask, **Read first** field, scope, and dependencies.
-- **UI/UX** — production implementation in `app/` plus locked instructions, not archived HTML mockups (ADR-024).
+- **UI/UX** — production implementation in `app/` plus locked instructions, not archived HTML mockups (ADR-024). S-002 redesign work also uses the v5 mockups as a reference until cutover (ADR-052).
 - **Referenced docs** — complete and non-conflicting for the task.
 
 If the task, ADRs, baselines, and production code are complete and aligned: **work**. Do not ask ritual confirmation questions.
@@ -43,5 +43,5 @@ Use `.cursor/skills/proactive-clarification/SKILL.md`: concrete options, brief c
 ## Related Docs And Skills
 
 - `.cursor/skills/proactive-clarification/SKILL.md` — how to ask when asking is truly required.
-- `.cursor/rules/ui-ux-mockup-check.mdc` — production code is the visual Source of Truth; `design-mockups/` is an archive.
+- `.cursor/rules/ui-ux-mockup-check.mdc` — production code is the visual Source of Truth; `design-mockups/` is an archive, except as the S-002 redesign reference until cutover (ADR-052).
 - `AGENTS.md` — the concise door and language rule.

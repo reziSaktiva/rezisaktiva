@@ -78,6 +78,8 @@ Lint/format tool details → `dx-tooling.md` (T-006.7).
 * No CD via `vercel deploy` from Actions for R1
 * No required manual multi-stage promotion
 
+**Redesign branch (S-002, ADR-053):** the Monolith redesign lives on the integration branch `redesign/monolith`. Vercel Preview of that branch is the staging; no new environment or Vercel project is created. Production stays on `main` until cutover (T-086). PRs go into `redesign/monolith`. Preview must be `noindex` and must not send real contact mail.
+
 ---
 
 # Secrets & Environment

@@ -10,7 +10,7 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 
 ## T-075 — Docs and agent rules alignment
 
-* **Status:** ⬜ Open
+* **Status:** ✅ Done (2026-11-17)
 * **Domain:** Documentation
 * **Branch:** `main`
 * **Read first:** ADR-052, ADR-053, `.cursor/rules/ui-ux-mockup-check.mdc`, `.cursor/rules/redesign-branch-flow.mdc`, `AGENTS.md`, `project-os/DEVELOPER_WORKFLOW.md`, `design-mockups/README.md`, `project-os/context/ctx-design.md`
@@ -25,11 +25,11 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 
 ### Subtasks
 
-- [ ] **T-075.1** — Update `.cursor/rules/ui-ux-mockup-check.mdc`: during S-002, v5 mockups are the reference for redesign work; verification compares code against the mockup behavior and approved decisions; after cutover the original rule returns.
-- [ ] **T-075.2** — Update the `AGENTS.md` UI/UX row and `project-os/DEVELOPER_WORKFLOW.md` step 3 accordingly.
-- [ ] **T-075.3** — Update `design-mockups/README.md` and `project-os/context/ctx-design.md` (S-002, ADR-052, ADR-053).
-- [ ] **T-075.4** — Add a short "redesign branch" note to `product-discovery/06-engineering/deployment-infrastructure.md` and `cicd-pipeline.md` (Preview as staging, no new environment).
-- [ ] **T-075.5** — Check `.cursor/rules/` and `.cursor/skills/` for text that contradicts ADR-052 and list or fix each hit.
+- [x] **T-075.1** — Update `.cursor/rules/ui-ux-mockup-check.mdc`: during S-002, v5 mockups are the reference for redesign work; verification compares code against the mockup behavior and approved decisions; after cutover the original rule returns.
+- [x] **T-075.2** — Update the `AGENTS.md` UI/UX row and `project-os/DEVELOPER_WORKFLOW.md` step 3 accordingly.
+- [x] **T-075.3** — Update `design-mockups/README.md` and `project-os/context/ctx-design.md` (S-002, ADR-052, ADR-053).
+- [x] **T-075.4** — Add a short "redesign branch" note to `product-discovery/06-engineering/deployment-infrastructure.md` and `cicd-pipeline.md` (Preview as staging, no new environment).
+- [x] **T-075.5** — Check `.cursor/rules/` and `.cursor/skills/` for text that contradicts ADR-052 and list or fix each hit.
 - [x] **T-075.6** — Add the always-on rule `.cursor/rules/redesign-branch-flow.mdc` (with the `.claude/rules/` pointer) and the `AGENTS.md` tree and Hard Rules lines: redesign branches start from `redesign/monolith`, are named `redesign/t-0XX-name`, and open PRs with `--base redesign/monolith`.
 - [x] **T-075.7** — Add `.github/workflows/redesign-base-guard.yml`: fail any pull request into `main` from a `redesign/*` branch other than `redesign/monolith`.
 - [x] **T-075.8** — GitHub rulesets set on 2026-11-17 (applied through the GitHub API with Boss Rezi's go-ahead): `main: PR required` (id 27440700) and `redesign/monolith: PR required` (id 27440702). Both: pull request required with 0 approvals, no deletion, no force push. Required checks: `lint-typecheck` on both, plus `guard` on `main`. Bypass: repository admin role, **pull request only** (no direct pushes). Direct pushes to either branch are now blocked, so docs-only changes and the `main` → `redesign/monolith` sync also go through pull requests. Review under Settings → Rules.
@@ -56,8 +56,19 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 - [ ] **T-076.1** — Boss Rezi confirms in the Vercel dashboard: production branch is `main`; a Preview deployment exists for `redesign/monolith`; Preview responses are `noindex`. Record the result here.
 - [ ] **T-076.2** — Decide the Preview Resend setup (test inbox in Preview-scoped env vars, or empty key so the mailto fallback shows). Record it; confirm it on the branch Preview later in T-083.
 - [ ] **T-076.3** — Optional: assign a stable domain (for example `next.rezisaktiva.space`) to the branch in Vercel. Record the final review URL here.
-- [ ] **T-076.4** — Capture a production baseline: Lighthouse (mobile and desktop) and Core Web Vitals for Home, Workflow, Work, one case. Store the numbers and date in this ticket.
-- [ ] **T-076.5** — Confirm the `ignoreCommand` still builds the branch when `app/` changes and skips docs-only commits.
+- [x] **T-076.4** — Production baseline captured 2026-11-17 (lab only, Lighthouse 12; field data unavailable because the keyless PageSpeed API returned 429). Scores are Perf/A11y/BP/SEO, runs were parallel so TBT may be slightly inflated. See the table below.
+- [ ] **T-076.5** — Confirm the `ignoreCommand` still builds the branch when `app/` changes and skips docs-only commits. Local dry run 2026-11-17 passed (`app/` only: build, docs only: skip, docs plus `app/`: build; `vercel.json` points at `scripts/vercel-ignore-build.sh`). Still open: Boss Rezi confirms the same on a real Vercel deployment.
+
+**T-076.4 baseline, production `/en/...`, 2026-11-17, Lighthouse 12 lab (Perf/A11y/BP/SEO):**
+
+| Page | Mobile | LCP | CLS | TBT | Desktop | LCP | CLS | TBT |
+| ---- | ------ | --- | --- | --- | ------- | --- | --- | --- |
+| Home | 51/100/100/100 | 4.2 s | 0.037 | 1650 ms | 85/96/100/100 | 1.4 s | 0 | 20 ms |
+| Workflow | 61/100/100/100 | 3.5 s | 0.037 | 1800 ms | 80/100/100/100 | 0.9 s | 0 | 360 ms |
+| Work index | 77/100/100/100 | 4.9 s | 0.036 | 90 ms | 96/96/100/100 | 1.2 s | 0 | 0 ms |
+| Case (`/en/projects/minerank`) | 72/96/79/100 | 6.8 s | 0.036 | 20 ms | 89/96/78/100 | 1.9 s | 0 | 0 ms |
+
+Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best Practices 78 to 79 on the case page. Compare against these in T-085.3.
 
 ---
 

@@ -6,7 +6,7 @@
 
 1. Read the Snapshot in `PROJECT_STATE.md`.
 2. Check `AVAILABLE_TICKETS.md` → open **only** one phase file in `project-os/tickets/` (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md`).
-3. Check task completeness **and** related production code (`app/`) before touching UI/UX (`.cursor/rules/ui-ux-mockup-check.mdc`, ADR-024). `design-mockups/` is an archive. Ask Boss Rezi only if there is a gap, baseline conflict, or something outside the plan (`.cursor/rules/ask-before-assuming.mdc`).
+3. Check task completeness **and** related production code (`app/`) before touching UI/UX (`.cursor/rules/ui-ux-mockup-check.mdc`, ADR-024). `design-mockups/` is an archive, except for S-002 redesign work, where the v5 mockups are the reference until cutover (T-086): compare behavior and approved decisions, not pixels (ADR-052). Ask Boss Rezi only if there is a gap, baseline conflict, or something outside the plan (`.cursor/rules/ask-before-assuming.mdc`).
 4. Implement according to the `product-discovery/` baseline + shadcn/Tailwind (`.cursor/rules/shadcn.mdc`, ADR-028) + code discipline (`.cursor/rules/code-discipline.mdc`).
 5. Record material decisions as ADRs if they are not documented yet.
 6. Update `AVAILABLE_TICKETS.md` / `PROJECT_STATE.md` / the relevant ticket (mention the subtask code when relevant). `COMPLETE_TASK.md` is frozen (ADR-049).

@@ -1,6 +1,6 @@
 # Design Context
 
-Use this page to find UX and visual-design references. Production code and approved ADRs are the design source; archived mockups are not a contract.
+Use this page to find UX and visual-design references. Production code and approved ADRs are the design source; archived mockups are not a contract. Exception: during S-002 (ADR-052, ADR-053) the v5 mockups are the redesign reference until cutover (T-086), not pixel-exact contracts.
 
 ## UX Baseline
 
@@ -36,5 +36,5 @@ Use this page to find UX and visual-design references. Production code and appro
 
 ## Design Guardrails
 
-- [`../../design-mockups/`](../../design-mockups/) is an archive only.
+- [`../../design-mockups/`](../../design-mockups/) is an archive only, except as the S-002 redesign reference until cutover (T-086).
 - New UI work must follow production code, approved ADRs, and the active project rules.
