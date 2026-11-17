@@ -51,3 +51,4 @@ Accepted (2026-11-17). Boss Rezi confirmed the branch name `redesign/monolith`; 
 - Capture a performance and Core Web Vitals baseline on production before cutover (ADR-052 point 8).
 - `product-discovery/06-engineering/deployment-infrastructure.md` and `project-os/DEVELOPER_WORKFLOW.md` gain a short "redesign branch" note (T-075.4).
 - Wave planning for the migration uses the `wave-plan` and `wave-work` skills (ADR-050) using the S-002 tickets (T-075 to T-086).
+- **Branch rules (2026-11-17):** GitHub rulesets require a pull request and passing checks on `main` and `redesign/monolith`; no direct pushes, force pushes, or deletions; the admin bypass is pull-request only (T-075.8). This makes the rules in point 2 enforceable, not just agreed.

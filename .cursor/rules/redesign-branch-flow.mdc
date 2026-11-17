@@ -23,13 +23,8 @@ Applies to any code work on the Monolith redesign: tickets **T-078 to T-085** an
    ```
 4. **Verify before reporting.** Run `gh pr view --json baseRefName,headRefName` and state the base branch in the report. If the base is `main`, change it (`gh pr edit --base redesign/monolith`) before doing anything else.
 5. **One pull request per ticket or surface.** Merge only after CI and the Vercel Preview pass and Boss Rezi has reviewed the Preview. Do not merge without explicit approval.
-6. **Docs-only work stays on `main`** (ADRs, specs, tickets, rules, `design-mockups/`). After it lands, merge `main` into `redesign/monolith`:
-   ```bash
-   git checkout redesign/monolith
-   git merge main
-   ```
-   Production fixes go to `main` first, then the same merge.
-7. **Commit, then push.** Do not push or merge without Boss Rezi's go-ahead.
+6. **Docs-only work reaches `main` through a pull request** (branch `docs/short-name`, base `main`). It stays on `main` (ADRs, specs, tickets, rules, `design-mockups/`). After it lands, sync the integration branch with a pull request whose head is `main` and whose base is `redesign/monolith`. Production fixes go to `main` first, then the same sync.
+7. **Direct pushes to `main` and `redesign/monolith` are blocked** by GitHub rulesets (T-075.8). Both need a pull request and a passing `lint-typecheck` check; `main` also needs `guard`. Commit, then push your own branch. Do not push or merge without Boss Rezi's go-ahead.
 
 ## Guard
 
