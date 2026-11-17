@@ -10,11 +10,14 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { readCssDurationMs } from "@/lib/motion";
+import { animate } from "@/lib/motion";
 import { MAIN_CONTENT_ID } from "@/lib/site-chrome";
-import { freezeWindowScrollAtTop, prefersReducedMotion, readWindowScrollY } from "./smooth-scroll";
+import {
+  freezeWindowScrollAtTop,
+  prefersReducedMotion,
+} from "./smooth-scroll";
 
-type NavigateFn = (href: string) => void;
+type NavigateFn = (href: string, label?: string) => void;
 
 const PageTransitionContext = createContext<NavigateFn | null>(null);
 
@@ -71,70 +74,22 @@ function resolveInternalHref(anchor: HTMLAnchorElement): string | null {
   return `${url.pathname}${url.search}${url.hash}`;
 }
 
-function sanitizeClone(root: ParentNode): void {
-  root.querySelectorAll("script, iframe").forEach((node) => node.remove());
-  root.querySelectorAll("input, textarea, select").forEach((node) => {
-    if (node instanceof HTMLInputElement) {
-      if (
-        node.type === "checkbox" ||
-        node.type === "radio" ||
-        node.type === "range" ||
-        node.type === "color"
-      ) {
-        return;
-      }
-      node.value = "";
-      node.defaultValue = "";
-    }
-    if (node instanceof HTMLTextAreaElement) {
-      node.value = "";
-      node.defaultValue = "";
-    }
-    if (node instanceof HTMLSelectElement) {
-      node.selectedIndex = -1;
-    }
-  });
-  root.querySelectorAll("video, audio").forEach((node) => {
-    if (!(node instanceof HTMLMediaElement)) {
-      return;
-    }
-    node.pause();
-    node.removeAttribute("autoplay");
-    node.removeAttribute("src");
-    node.querySelectorAll("source").forEach((source) => source.remove());
-    node.load();
-  });
+/** Curtain label: the link text (as in the mockup), capped, or the wordmark. */
+function labelFromAnchor(anchor: HTMLAnchorElement): string | undefined {
+  const raw =
+    anchor.dataset.t ?? anchor.textContent?.trim().split("\n")[0]?.trim();
+  return raw ? raw.slice(0, CURTAIN_LABEL_MAX) : undefined;
 }
 
-function captureOutgoing(scrollY: number): HTMLElement {
-  const layer = document.createElement("div");
-  layer.className = "page-vt-clone";
-  layer.setAttribute("aria-hidden", "true");
-  layer.inert = true;
-
-  const shifter = document.createElement("div");
-  shifter.className = "page-vt-clone-shift";
-  shifter.style.transform = `translateY(${-scrollY}px)`;
-
-  const main = document.getElementById(MAIN_CONTENT_ID);
-  const footer = document.querySelector(".site-footer");
-  if (main) {
-    shifter.appendChild(main.cloneNode(true));
-  }
-  if (footer) {
-    shifter.appendChild(footer.cloneNode(true));
-  }
-  sanitizeClone(shifter);
-  layer.appendChild(shifter);
-  layer.querySelectorAll("[id]").forEach((node) => {
-    node.removeAttribute("id");
-  });
-  document.body.appendChild(layer);
-  return layer;
-}
-
-function clearClones(): void {
-  document.querySelectorAll(".page-vt-clone").forEach((node) => node.remove());
+/**
+ * Curtain (T-079.6): fine pointers only, and never with reduced motion.
+ * Touch devices and reduced-motion visitors get a plain route change.
+ */
+function curtainEnabled(): boolean {
+  return (
+    !prefersReducedMotion() &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  );
 }
 
 function setLiveParked(parked: boolean): void {
@@ -153,74 +108,74 @@ function setLiveParked(parked: boolean): void {
   }
 }
 
-function clearFilmOverlay(): void {
-  document.querySelectorAll(".page-vt-film").forEach((node) => node.remove());
-}
+const CURTAIN_LABEL_MAX = 14;
+const CURTAIN_DEFAULT_LABEL = "Rezi";
+/** `--ease-monolith-io` in `app/globals.css`. */
+const EASE_MONOLITH_IO = [0.76, 0, 0.24, 1] as const;
+const COVER_S = 0.8;
+const HOLD_MS = 120;
+const LEAVE_S = 0.8;
+/** Fail-safe if the route never commits: curtain must not trap the page. */
+const SAFETY_MS = 6000;
 
-function mountFilmOverlay(): void {
-  if (prefersReducedMotion() || document.querySelector(".page-vt-film")) {
-    return;
-  }
-  const film = document.createElement("div");
-  film.className = "page-vt-film";
-  film.setAttribute("aria-hidden", "true");
-  document.body.appendChild(film);
-}
-
-function applyDocumentLock(lock: boolean, parkLive = true): void {
-  const root = document.documentElement;
-  if (lock) {
-    // page-vt-lock pauses Lenis (inertia) but CSS keeps overflow-y: scroll
-    // so the scrollbar track stays visible (T-025.8). Do not set overflow
-    // hidden/clip here.
-    root.classList.add("page-vt-lock");
-    root.classList.remove("page-vt-entering");
-    if (parkLive) {
-      setLiveParked(true);
-    }
-    freezeWindowScrollAtTop();
-    return;
-  }
-  clearFilmOverlay();
-  root.classList.remove("page-vt-lock", "page-vt-entering");
-  setLiveParked(false);
-}
-
-type PendingNav = {
+type Pending = {
   epoch: number;
-  from: string;
   target: string;
-  startedAt: number;
-  clone: HTMLElement | null;
+  curtain: HTMLElement;
+  /** True once the curtain fully covers the viewport and the route is pushed. */
+  covered: boolean;
 };
 
-let pendingNav: PendingNav | null = null;
+let pending: Pending | null = null;
 let isBusy = false;
 let navEpoch = 0;
-let queuedHref: string | null = null;
+let queuedHref: { href: string; label?: string } | null = null;
 let startQueuedNav: NavigateFn | null = null;
-let rafId = 0;
 let safetyTimer = 0;
-
-const SAFETY_BUFFER_MS = 750;
-const REPLACED_FROM = "__replaced__";
-/** Fallback = T-043.1 tokens on `:root` (not Hess 1s / 0.4s rhythm). */
-const PAGE_EXIT_FALLBACK_MS = 200;
-const PAGE_ENTER_FALLBACK_MS = 160;
-const PAGE_ENTER_DELAY_FALLBACK_MS = 200;
-
-function cancelRaf(): void {
-  if (rafId) {
-    window.cancelAnimationFrame(rafId);
-    rafId = 0;
-  }
-}
 
 function clearSafetyTimer(): void {
   if (safetyTimer) {
     window.clearTimeout(safetyTimer);
     safetyTimer = 0;
   }
+}
+
+function removeCurtains(): void {
+  document.querySelectorAll(".page-curtain").forEach((node) => node.remove());
+}
+
+function mountCurtain(label: string, covered: boolean): HTMLElement {
+  removeCurtains();
+  const curtain = document.createElement("div");
+  curtain.className = "page-curtain";
+  curtain.setAttribute("aria-hidden", "true");
+  curtain.inert = true;
+  const word = document.createElement("b");
+  word.className = "page-curtain-word wordmark";
+  word.textContent = label;
+  curtain.appendChild(word);
+  if (covered) {
+    curtain.dataset.covered = "true";
+  }
+  document.body.appendChild(curtain);
+  return curtain;
+}
+
+function curtainWord(curtain: HTMLElement): HTMLElement | null {
+  const word = curtain.firstElementChild;
+  return word instanceof HTMLElement ? word : null;
+}
+
+function lockDocument(): void {
+  // page-vt-lock pauses Lenis (inertia) while CSS keeps `overflow-y: scroll`
+  // so the scrollbar track stays (T-025.8). Do not set overflow hidden.
+  document.documentElement.classList.add("page-vt-lock");
+  setLiveParked(true);
+}
+
+function releaseDocument(): void {
+  document.documentElement.classList.remove("page-vt-lock");
+  setLiveParked(false);
 }
 
 function flushQueuedNav(): void {
@@ -230,155 +185,133 @@ function flushQueuedNav(): void {
     return;
   }
   queueMicrotask(() => {
-    startQueuedNav?.(next);
+    startQueuedNav?.(next.href, next.label);
   });
 }
 
-function releaseLock(): void {
+function finish(): void {
   clearSafetyTimer();
-  cancelRaf();
-  applyDocumentLock(false);
-  pendingNav = null;
+  removeCurtains();
+  releaseDocument();
+  pending = null;
   isBusy = false;
-}
-
-function finishEnter(): void {
-  releaseLock();
   flushQueuedNav();
-}
-
-function failSafeUnlock(): void {
-  clearClones();
-  clearFilmOverlay();
-  releaseLock();
-  flushQueuedNav();
-}
-
-function safetyTimeoutMs(): number {
-  return (
-    readCssDurationMs("--duration-page-exit", PAGE_EXIT_FALLBACK_MS) +
-    readCssDurationMs("--delay-page-enter", PAGE_ENTER_DELAY_FALLBACK_MS) +
-    readCssDurationMs("--duration-page-enter", PAGE_ENTER_FALLBACK_MS) +
-    SAFETY_BUFFER_MS
-  );
 }
 
 function armSafety(epoch: number): void {
   clearSafetyTimer();
   safetyTimer = window.setTimeout(() => {
     safetyTimer = 0;
-    if (pendingNav?.epoch !== epoch) {
+    if (pending?.epoch !== epoch) {
       return;
     }
-    failSafeUnlock();
-  }, safetyTimeoutMs());
+    finish();
+  }, SAFETY_MS);
 }
 
-function armTransition(options: {
-  from: string;
-  target: string;
-  clone: HTMLElement | null;
-  pushHref?: string;
-  push?: (href: string) => void;
-}): number {
-  isBusy = true;
-  queuedHref = null;
-  clearSafetyTimer();
-  cancelRaf();
-  if (!options.clone) {
-    clearClones();
+/** Cover the viewport from below, then run `onCovered` (push the route). */
+function runCover(
+  epoch: number,
+  curtain: HTMLElement,
+  onCovered: () => void,
+): void {
+  const word = curtainWord(curtain);
+  void animate(
+    curtain,
+    { y: ["100%", "0%"] },
+    { duration: COVER_S, ease: EASE_MONOLITH_IO },
+  ).finished.then(() => {
+    if (pending?.epoch !== epoch) {
+      return;
+    }
+    pending.covered = true;
+    freezeWindowScrollAtTop();
+    onCovered();
+  });
+  if (word) {
+    void animate(word, { opacity: [0, 1] }, { duration: 0.4, delay: 0.25 });
   }
+}
 
-  applyDocumentLock(true, Boolean(options.clone));
-
-  navEpoch += 1;
-  const epoch = navEpoch;
-  pendingNav = {
-    epoch,
-    from: options.from,
-    target: options.target,
-    startedAt: performance.now(),
-    clone: options.clone,
-  };
-
-  const clone = options.clone;
-  if (clone) {
-    rafId = window.requestAnimationFrame(() => {
-      rafId = 0;
-      if (pendingNav?.epoch !== epoch) {
+/** Reveal the new route: curtain leaves upward, then everything is released. */
+function runLeave(epoch: number, curtain: HTMLElement): void {
+  window.setTimeout(() => {
+    if (pending?.epoch !== epoch) {
+      return;
+    }
+    setLiveParked(false);
+    void animate(
+      curtain,
+      { y: ["0%", "-100%"] },
+      { duration: LEAVE_S, ease: EASE_MONOLITH_IO },
+    ).finished.then(() => {
+      if (pending?.epoch !== epoch) {
         return;
       }
-      // T-043.1: discrete stutter on the snapshot, then hard-cut to live.
-      // Clone stays until enter so the last held frame is the cut point.
-      clone.classList.add("page-vt-stutter-exit");
-      if (options.push && options.pushHref) {
-        options.push(options.pushHref);
-      }
-      mountFilmOverlay();
+      finish();
     });
-  } else {
-    mountFilmOverlay();
-  }
-
-  armSafety(epoch);
-  return epoch;
+  }, HOLD_MS);
 }
 
-function retargetBusyNav(target: string): void {
+function beginTransition(
+  target: string,
+  label: string,
+  options: { covered: boolean; push?: () => void },
+): void {
+  isBusy = true;
+  queuedHref = null;
   navEpoch += 1;
-  if (!pendingNav) {
+  const epoch = navEpoch;
+  lockDocument();
+  const curtain = mountCurtain(label, options.covered);
+  pending = { epoch, target, curtain, covered: options.covered };
+  armSafety(epoch);
+
+  if (options.covered) {
+    // Back/forward: the browser already navigated, cover instantly.
+    freezeWindowScrollAtTop();
     return;
   }
-  pendingNav.epoch = navEpoch;
-  pendingNav.from = REPLACED_FROM;
-  pendingNav.target = target;
-  pendingNav.startedAt = performance.now();
-  pendingNav.clone = null;
-  clearClones();
-  applyDocumentLock(true);
-  armSafety(navEpoch);
+  runCover(epoch, curtain, () => options.push?.());
 }
 
 /**
- * Page transition T-043.1: hard cut + stutter frame (T-038.3), not Hess
- * scale and not View Transitions API. State outside React so Strict Mode
- * remount does not kill the clone. `html.page-vt-lock` keeps
- * `overflow-y: scroll` (track does not disappear, T-025.8).
+ * Page transition T-079.6: a curtain (ink, with the link label in the
+ * wordmark face) rises over the page, the route changes underneath, and the
+ * curtain leaves upward. Replaces the hard-cut stutter (T-043.1). State lives
+ * outside React so Strict Mode remounts do not drop a running transition.
+ * `html.page-vt-lock` keeps Lenis stopped for the duration (Lenis lane reads
+ * it through `isPageTransitionLocked`). Off for reduced motion and touch.
  */
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const isFirstPath = useRef(true);
 
-  const navigate = useCallback(
-    (href: string) => {
+  const navigate = useCallback<NavigateFn>(
+    (href, label) => {
       const target = normalizePath(href);
       const from = normalizePath(window.location.pathname);
       if (target === from) {
         return;
       }
 
-      if (prefersReducedMotion()) {
+      if (!curtainEnabled()) {
         router.push(href, { scroll: false });
         return;
       }
 
       if (isBusy) {
-        if (pendingNav && target === pendingNav.target) {
+        if (pending && target === pending.target) {
           return;
         }
-        queuedHref = href;
+        queuedHref = { href, label };
         return;
       }
 
-      clearClones();
-      const clone = captureOutgoing(readWindowScrollY());
-      armTransition({
-        from,
-        target,
-        clone,
-        pushHref: href,
-        push: (next) => router.push(next, { scroll: false }),
+      beginTransition(target, label ?? CURTAIN_DEFAULT_LABEL, {
+        covered: false,
+        push: () => router.push(href, { scroll: false }),
       });
     },
     [router],
@@ -388,14 +321,8 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     startQueuedNav = navigate;
   }, [navigate]);
 
-  useEffect(() => {
-    return () => {
-      if (!isBusy) {
-        cancelRaf();
-      }
-    };
-  }, []);
-
+  // Back/forward (traverse): the browser navigates by itself, so the curtain
+  // only needs to cover and then leave once the new path commits.
   useEffect(() => {
     const navigation = window.navigation;
     if (!navigation) {
@@ -406,10 +333,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       if (event.hashChange || event.downloadRequest) {
         return;
       }
-      if (event.navigationType !== "traverse") {
-        return;
-      }
-      if (prefersReducedMotion()) {
+      if (event.navigationType !== "traverse" || !curtainEnabled()) {
         return;
       }
 
@@ -419,81 +343,35 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       } catch {
         return;
       }
-      const from = normalizePath(window.location.pathname);
-      if (target === from) {
+      if (target === normalizePath(window.location.pathname)) {
         return;
       }
-
       if (isBusy) {
-        retargetBusyNav(target);
+        // Retarget the running transition at the new destination.
+        if (pending) {
+          pending.target = target;
+        }
         return;
       }
-
-      clearClones();
-      const clone = captureOutgoing(readWindowScrollY());
-      armTransition({ from, target, clone });
+      beginTransition(target, CURTAIN_DEFAULT_LABEL, { covered: true });
     };
 
     navigation.addEventListener("navigate", onNavigate);
     return () => navigation.removeEventListener("navigate", onNavigate);
   }, []);
 
+  // The route committed: if the curtain covers the page, let it leave.
   useLayoutEffect(() => {
-    const path = normalizePath(pathname);
-
     if (isFirstPath.current) {
       isFirstPath.current = false;
-      if (!pendingNav) {
-        return;
-      }
-    } else if (!pendingNav) {
-      if (prefersReducedMotion()) {
-        return;
-      }
-      armTransition({ from: "", target: path, clone: null });
-    }
-
-    if (!pendingNav) {
       return;
     }
-    if (pendingNav.from !== "" && path === pendingNav.from) {
+    if (!pending || !pending.covered) {
       return;
     }
-
-    const epoch = pendingNav.epoch;
-    const hasClone = Boolean(pendingNav.clone);
-    const enterDelay = hasClone
-      ? readCssDurationMs("--delay-page-enter", PAGE_ENTER_DELAY_FALLBACK_MS)
-      : 0;
-    const enterMs = readCssDurationMs(
-      "--duration-page-enter",
-      PAGE_ENTER_FALLBACK_MS,
-    );
-    const wait = Math.max(
-      0,
-      enterDelay - (performance.now() - pendingNav.startedAt),
-    );
-
-    const enterTimer = window.setTimeout(() => {
-      if (pendingNav?.epoch !== epoch) {
-        return;
-      }
-      // Hard cut: drop the snapshot in the same turn the live page appears.
-      document.documentElement.classList.add("page-vt-entering");
-      clearClones();
-      setLiveParked(false);
-    }, wait);
-    const doneTimer = window.setTimeout(() => {
-      if (pendingNav?.epoch !== epoch) {
-        return;
-      }
-      finishEnter();
-    }, wait + enterMs);
-
-    return () => {
-      window.clearTimeout(enterTimer);
-      window.clearTimeout(doneTimer);
-    };
+    // Any commit while covered ends the wait (a redirect may land elsewhere
+    // than `target`).
+    runLeave(pending.epoch, pending.curtain);
   }, [pathname]);
 
   useEffect(() => {
@@ -517,7 +395,7 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         return;
       }
       event.preventDefault();
-      navigate(href);
+      navigate(href, labelFromAnchor(anchor));
     };
 
     document.addEventListener("click", onClick, true);
