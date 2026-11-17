@@ -7,6 +7,36 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
+ * T-078.1 — Monolith tokens (ADR-052, ADR-054). Single theme: no dark variant.
+ * Names are new (`ink`, `paper`, ...) so they never collide with the legacy
+ * gothic-blood tokens below, which keep serving unmigrated surfaces until
+ * their surface is migrated. Source values: `design-mockups/shared.css` (v5).
+ *
+ * Utilities that come out of this block: `bg-ink`, `text-paper`, `bg-cream`,
+ * `text-mute`, `text-soft`, `border-rule`, `border-rule-inv`, `px-gutter`,
+ * `ease-monolith`, `ease-monolith-io`, `rounded-sharp`.
+ *
+ * CUTOVER MAP (when the last legacy surface is gone): point the shadcn
+ * semantic tokens at these (`--background` = paper, `--foreground` = ink,
+ * `--muted-foreground` = mute, `--border` = rule, `--radius` = 0) and delete
+ * `legacy-identity.css`.
+ */
+@theme {
+  --color-ink: #020202;
+  --color-paper: #f8f8f8;
+  --color-cream: #f7f3eb;
+  --color-mute: #6b6b6b;
+  --color-soft: #2b2b2b;
+  --color-rule: rgb(2 2 2 / 0.2);
+  --color-rule-inv: rgb(248 248 248 / 0.2);
+  --spacing-gutter: clamp(18px, 2.8vw, 40px);
+  --ease-monolith: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-monolith-io: cubic-bezier(0.76, 0, 0.24, 1);
+  /* Monolith is sharp: no radius except the pill (`--radius-full`). */
+  --radius-sharp: 0px;
+}
+
+/*
  * Chrome chip/pill (`site-header.tsx`, `locale-switcher.tsx`) — class
  * scoped + token di `:root` (`var(--spacing-*)`, `var(--radius-full)`).
  * Chrome color/layout stays on the wrapper (`.site-*`).
