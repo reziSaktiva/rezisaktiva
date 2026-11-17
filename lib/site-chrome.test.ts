@@ -27,28 +27,25 @@ describe("craft tokens after Astryx removal", () => {
     }
   });
 
-  it("parks live main without parking the page-vt clone", () => {
-    const lock =
-      "html.page-vt-lock:not(.page-vt-entering) .site-chrome-main:not(.page-vt-clone *)";
-    const enter =
-      "html.page-vt-entering .site-chrome-main:not(.page-vt-clone *)";
-    expect(globalsCss.includes(lock)).toBe(true);
-    expect(globalsCss.includes(enter)).toBe(true);
-    expect(
-      globalsCss.includes(
-        "html.page-vt-lock:not(.page-vt-entering) .site-chrome-main,",
-      ),
-    ).toBe(false);
+  it("keeps the document lock for Lenis and drops the stutter layers", () => {
+    expect(globalsCss.includes("html.page-vt-lock,")).toBe(true);
+    expect(globalsCss.includes("html.lenis.page-vt-lock.lenis-stopped")).toBe(
+      true,
+    );
+    expect(globalsCss.includes("@keyframes page-vt-stutter-exit")).toBe(false);
+    expect(globalsCss.includes(".page-vt-film")).toBe(false);
+    expect(globalsCss.includes(".page-vt-clone")).toBe(false);
   });
 
-  it("uses hard-cut stutter tokens instead of Hess scale (T-043.1)", () => {
-    expect(globalsCss.includes("--duration-page-exit: 0.2s;")).toBe(true);
-    expect(globalsCss.includes("--duration-page-enter: 0.16s;")).toBe(true);
-    expect(globalsCss.includes("@keyframes page-vt-stutter-exit")).toBe(true);
-    expect(globalsCss.includes("@keyframes page-vt-stutter-enter")).toBe(true);
-    expect(globalsCss.includes("@keyframes page-vt-enter")).toBe(false);
-    expect(globalsCss.includes("scale(0.5)")).toBe(false);
-    expect(globalsCss.includes(".page-vt-film")).toBe(true);
-    expect(globalsCss.includes("@keyframes page-vt-film-flicker")).toBe(true);
+  it("styles the curtain (T-079.6)", () => {
+    expect(globalsCss.includes(".page-curtain {")).toBe(true);
+    expect(globalsCss.includes(".page-curtain-word")).toBe(true);
+  });
+
+  it("gives the native cursor back inside overlays (T-079.6)", () => {
+    expect(
+      globalsCss.includes("html.has-cursor:not(.native-cursor)"),
+    ).toBe(true);
+    expect(globalsCss.includes('.site-cursor[data-mode="native"]')).toBe(true);
   });
 });
