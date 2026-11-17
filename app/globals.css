@@ -3,7 +3,11 @@
 @import "shadcn/tailwind.css";
 @import "lenis/dist/lenis.css";
 
-/* `.dark` class (not OS). Tokens = T-032.4; `html.dark` from cookie = T-032.5. */
+/*
+ * Single theme (ADR-054, T-078.4): nothing sets `.dark` anymore, so `dark:`
+ * utilities in shadcn primitives are inert. The variant is still declared so
+ * Tailwind does not fall back to its `prefers-color-scheme` default.
+ */
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -205,8 +209,7 @@
    * Not page hierarchy glow (see design-tokens.md): top highlight,
    * bibir tebal di bawah, lalu drop shadow.
    * Deliberately NOT `light-dark()` — that pattern once flashed on chips
-   * (2026-08-16). Dark values set via `html[data-theme="dark"]`
-   * dan class `.dark` (T-032.5).
+   * (2026-08-16). Single theme since ADR-054: these are the only values.
    */
   --elev-3d:
     inset 0 1px 0 rgb(255 255 255 / 0.22),
@@ -245,7 +248,7 @@
   --muted-foreground: #8f8a82;
   --accent: #141418;
   --accent-foreground: #e8e4dc;
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.704 0.191 22.216);
   --border: #2c2c32;
   --input: #2c2c32;
   --ring: #6b1c23;
@@ -322,9 +325,8 @@
   --size-element-lg: 36px;
   --size-touch: var(--spacing-11);
   /*
-   * Craft `--color-*` = hex light di `:root`, hex dark di
-   * `html[data-theme="dark"]` / `.dark` — not `light-dark()` (chip flash
-   * 2026-08-16). Teal aksen craft (`--color-accent`) separate from
+   * Craft `--color-*` = plain hex on `:root` (single theme, ADR-054) —
+   * not `light-dark()` (chip flash 2026-08-16). Teal aksen craft (`--color-accent`) separate from
    * shadcn `--accent` (muted) mapped in `@theme inline`.
    */
   --color-background-surface: #0b0b0d;
@@ -364,65 +366,8 @@
   --ring: var(--color-focus);
   --sidebar-ring: var(--color-focus);
   --shadow-low:
-    0 2px 4px oklch(0 0 0 / 5%), 0 4px 8px oklch(0 0 0 / 10%),
-    inset 0 0 0 1px transparent;
-  --rz-scrollbar-track: var(--color-background-muted);
-  --rz-scrollbar-thumb: var(--color-accent-muted);
-  --rz-scrollbar-thumb-hover: var(--color-focus);
-}
-
-html[data-theme="dark"],
-html[style*="color-scheme: dark"],
-html[style*="color-scheme:dark"],
-.dark {
-  --color-background-surface: #0b0b0d;
-  --color-background-body: #0b0b0d;
-  --color-background-canvas: var(--color-background-body);
-  --color-background-card: #0b0b0d;
-  --color-background-popover: #141418;
-  --color-background-muted: #141418;
-  --color-background-inverted: #e8e4dc;
-  --color-background-green: #84c9803d;
-  --color-accent: #6b1c23;
-  --color-accent-muted: #8a242e;
-  --color-on-accent: #e8e4dc;
-  --color-text-accent: #8a242e;
-  --color-icon-accent: #8a242e;
-  --color-text-primary: #e8e4dc;
-  --color-text-secondary: #8f8a82;
-  --color-text-disabled: #525252;
-  --color-text-green: #9fe59b;
-  --color-icon-primary: #e8e4dc;
-  --color-icon-secondary: #8f8a82;
-  --color-on-dark: #e8e4dc;
-  --color-border: #2c2c32;
-  --color-border-emphasized: #2c2c32;
-  --color-border-default: var(--color-border);
-  --color-success: #9fe59b;
-  --color-focus: color-mix(
-    in srgb,
-    var(--color-accent-muted) 58%,
-    var(--color-text-primary)
-  );
-  --ring: var(--color-focus);
-  --sidebar-ring: var(--color-focus);
-  --shadow-low:
     0 2px 4px oklch(0 0 0 / 25%), 0 4px 8px oklch(0 0 0 / 40%),
     inset 0 0 0 1px oklch(1 0 0 / 8%);
-  --elev-3d:
-    inset 0 1px 0 rgb(255 255 255 / 0.22),
-    inset 0 -1.5px 2px rgb(0 0 0 / 0.42),
-    0 1px 0 rgb(0 0 0 / 0.55),
-    0 8px 18px rgb(0 0 0 / 0.45);
-  --elev-3d-hover:
-    inset 0 1px 0 rgb(255 255 255 / 0.28),
-    inset 0 -1.5px 2px rgb(0 0 0 / 0.38),
-    0 2px 0 rgb(0 0 0 / 0.5),
-    0 12px 24px rgb(0 0 0 / 0.5);
-  --elev-3d-pressed:
-    inset 0 2px 5px rgb(0 0 0 / 0.45),
-    inset 0 1px 0 rgb(255 255 255 / 0.1),
-    0 1px 2px rgb(0 0 0 / 0.35);
   --rz-scrollbar-track: var(--color-background-muted);
   --rz-scrollbar-thumb: var(--color-accent-muted);
   --rz-scrollbar-thumb-hover: var(--color-focus);
@@ -432,10 +377,14 @@ html[style*="color-scheme:dark"],
  * Page canvas. Values = `--c-bg` / `--c-fg` mockup
  * (`design-mockups/shared.css`) — KI-002.
  *
- * `light-dark()` di `html, body` = `color-scheme` mesh before theme CSS.
- * `data-theme` ada di markup SSR (`app/layout.tsx`); `ThemeModeProvider`
- * syncs that attribute on toggle without reload.
+ * Legacy canvas is dark; `color-scheme` is declared here (not inline on
+ * `<html>`) so native controls and scrollbars match until the last legacy
+ * surface is migrated.
  */
+html {
+  color-scheme: dark;
+}
+
 html,
 body {
   background-color: #0b0b0d;
@@ -456,16 +405,6 @@ body {
   --font-family-heading: var(--font-heading);
   --font-family-display: var(--font-display);
   font-family: var(--font-family-body);
-}
-
-html[data-theme="light"],
-html[data-theme="light"] body,
-html[data-theme="dark"],
-html[data-theme="dark"] body,
-html.dark,
-html.dark body {
-  background-color: #0b0b0d;
-  color: #e8e4dc;
 }
 
 /*
@@ -947,23 +886,8 @@ html::-webkit-scrollbar-button,
 
 /*
  * T-040.1 / T-040.5 — flat chrome buttons (T-038.3). No 3D, no fill.
- * Hover/focus = thin blood accent (color). Theme toggle hold: inner rules
- * remain, not mounted.
+ * Hover/focus = thin blood accent (color).
  */
-.site-theme-toggle-btn,
-.site-theme-toggle-btn[data-state="on"],
-.site-theme-toggle-btn[aria-pressed="true"] {
-  background-image: none !important;
-  background-color: var(--color-background-inverted) !important;
-  color: var(--color-background-surface) !important;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transform: none;
-  transition:
-    background-color var(--duration-medium-min) var(--ease-standard),
-    color var(--duration-medium-min) var(--ease-standard),
-    box-shadow var(--duration-medium-min) var(--ease-standard);
-}
 .site-contact-button {
   height: var(--size-touch);
   min-height: var(--size-touch);
@@ -981,12 +905,6 @@ html::-webkit-scrollbar-button,
   transform: none;
   transition: color var(--duration-medium-min) var(--ease-standard);
 }
-.site-theme-toggle,
-.site-theme-toggle-btn {
-  width: 2.25rem;
-  height: 2.25rem;
-}
-
 @media (min-width: 1024px) {
   .site-contact-button {
     height: var(--size-element-md);
@@ -994,11 +912,6 @@ html::-webkit-scrollbar-button,
     padding-block: var(--spacing-1-5);
     padding-inline: var(--spacing-4);
     font-size: inherit;
-  }
-  .site-theme-toggle,
-  .site-theme-toggle-btn {
-    width: var(--size-element-lg);
-    height: var(--size-element-lg);
   }
 }
 
@@ -1062,18 +975,6 @@ html::-webkit-scrollbar-button,
     gap: 0.4rem !important;
   }
 }
-.site-theme-toggle {
-  display: inline-flex;
-  flex-shrink: 0;
-}
-.site-theme-toggle-btn:hover,
-.site-theme-toggle-btn[data-state="on"]:hover,
-.site-theme-toggle-btn[aria-pressed="true"]:hover {
-  background-image: none !important;
-  background-color: var(--color-accent) !important;
-  color: var(--color-on-accent) !important;
-}
-
 .site-contact-button:hover,
 .site-contact-button:focus-visible,
 .home-contact-cta:hover,
@@ -4528,38 +4429,4 @@ html.page-vt-entering .site-footer:not(.page-vt-clone *) {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-}
-
-.dark {
-  --background: #0b0b0d;
-  --foreground: #e8e4dc;
-  --card: #0b0b0d;
-  --card-foreground: #e8e4dc;
-  --popover: #141418;
-  --popover-foreground: #e8e4dc;
-  --primary: #6b1c23;
-  --primary-foreground: #e8e4dc;
-  --secondary: #141418;
-  --secondary-foreground: #e8e4dc;
-  --muted: #141418;
-  --muted-foreground: #8f8a82;
-  --accent: #141418;
-  --accent-foreground: #e8e4dc;
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: #2c2c32;
-  --input: #2c2c32;
-  --ring: #6b1c23;
-  --chart-1: #6b1c23;
-  --chart-2: #8f8a82;
-  --chart-3: #141418;
-  --chart-4: #2c2c32;
-  --chart-5: #e8e4dc;
-  --sidebar: #0b0b0d;
-  --sidebar-foreground: #e8e4dc;
-  --sidebar-primary: #6b1c23;
-  --sidebar-primary-foreground: #e8e4dc;
-  --sidebar-accent: #141418;
-  --sidebar-accent-foreground: #e8e4dc;
-  --sidebar-border: #2c2c32;
-  --sidebar-ring: #6b1c23;
 }
