@@ -45,7 +45,9 @@
 }
 
 /*
- * Font family tokens. `inline` so utilities (`font-wordmark`, `font-condensed`,
+ * Font family tokens. Theme variables declared `inline` are NOT emitted as CSS
+ * variables, so the `@utility` classes below use the next/font variables and the
+ * same fallback stacks directly. `inline` so utilities (`font-wordmark`, `font-condensed`,
  * `font-body`) resolve `var(--font-archivo)` etc. where they are used: the
  * next/font variables live on `<body>`, not `:root`.
  */
@@ -76,7 +78,7 @@
 @utility monolith {
   background-color: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-body);
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
@@ -85,7 +87,7 @@
 }
 
 @utility wordmark {
-  font-family: var(--font-wordmark);
+  font-family: var(--font-archivo), "Arial Black", sans-serif;
   font-weight: 900;
   font-stretch: 125%;
   font-variation-settings: "wdth" 125;
@@ -95,7 +97,7 @@
 }
 
 @utility display {
-  font-family: var(--font-condensed);
+  font-family: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
   font-weight: 900;
   letter-spacing: -0.01em;
   line-height: 0.92;
