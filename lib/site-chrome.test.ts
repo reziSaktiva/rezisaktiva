@@ -3,10 +3,9 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { MAIN_CONTENT_ID } from "./site-chrome";
 
-const globalsCss = readFileSync(
-  path.join(process.cwd(), "app/globals.css"),
-  "utf8",
-);
+const globalsCss = ["app/globals.css", "app/legacy-identity.css"]
+  .map((file) => readFileSync(path.join(process.cwd(), file), "utf8"))
+  .join("\n");
 
 describe("MAIN_CONTENT_ID", () => {
   it("matches the live main landmark used by skip-link and page-vt", () => {
@@ -31,7 +30,8 @@ describe("craft tokens after Astryx removal", () => {
   it("parks live main without parking the page-vt clone", () => {
     const lock =
       "html.page-vt-lock:not(.page-vt-entering) .site-chrome-main:not(.page-vt-clone *)";
-    const enter = "html.page-vt-entering .site-chrome-main:not(.page-vt-clone *)";
+    const enter =
+      "html.page-vt-entering .site-chrome-main:not(.page-vt-clone *)";
     expect(globalsCss.includes(lock)).toBe(true);
     expect(globalsCss.includes(enter)).toBe(true);
     expect(

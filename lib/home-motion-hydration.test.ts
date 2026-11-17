@@ -51,7 +51,9 @@ describe("motion hydration (PR #68 review)", () => {
   it("skips Magnetic animate() on leave when reduced motion", () => {
     const magnetic = exportFn(homeMotion, "Magnetic", "CursorRing");
     expect(magnetic).toContain("skipMagneticPull");
-    expect(magnetic).toMatch(/const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/);
+    expect(magnetic).toMatch(
+      /const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/,
+    );
   });
 });
 
@@ -66,10 +68,9 @@ describe("workflow motion hydration", () => {
 });
 
 describe("pointer ring contract", () => {
-  const globals = readFileSync(
-    path.join(process.cwd(), "app/globals.css"),
-    "utf8",
-  );
+  const globals = ["app/globals.css", "app/legacy-identity.css"]
+    .map((file) => readFileSync(path.join(process.cwd(), file), "utf8"))
+    .join("\n");
 
   it("keeps the overlay close glyph and portals the ring", () => {
     expect(homeMotion).toContain('const closeScrim = "[data-overlay-scrim]"');

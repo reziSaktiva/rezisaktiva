@@ -117,12 +117,12 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-078.1** — Map the mockup tokens (ink, paper, cream, mute, rules, gutter, easings, radii = sharp) to Tailwind v4 theme variables.
-- [ ] **T-078.2** — Load Archivo (wordmark, width 125, weight 900), Barlow Condensed and Inter through `next/font`; update `app/fonts.ts`.
-- [ ] **T-078.3** — Add the type scale and utilities (`wordmark`, `display`, `copy`, `big`, `small`) and the paper-grain band as documented classes.
-- [ ] **T-078.4** — Define the dark / light behavior per T-077.3 and keep the anti-flash script working or remove it.
-- [ ] **T-078.5** — Fence old identity styles so they can be deleted surface by surface (naming or file split); no visual change yet on migrated surfaces' neighbors.
-- [ ] **T-078.6** — Verify: lint, typecheck, build, Preview.
+- [x] **T-078.1** — Map the mockup tokens (ink, paper, cream, mute, rules, gutter, easings, radii = sharp) to Tailwind v4 theme variables.
+- [x] **T-078.2** — Load Archivo (wordmark, width 125, weight 900), Barlow Condensed and Inter through `next/font`; update `app/fonts.ts`.
+- [x] **T-078.3** — Add the type scale and utilities (`wordmark`, `display`, `copy`, `big`, `small`) and the paper-grain band as documented classes.
+- [x] **T-078.4** — Define the dark / light behavior per T-077.3 and keep the anti-flash script working or remove it.
+- [x] **T-078.5** — Fence old identity styles so they can be deleted surface by surface (naming or file split); no visual change yet on migrated surfaces' neighbors.
+- [ ] **T-078.6** — Verify: lint, typecheck, build, Preview. Local checks passed 2026-11-17 (typecheck, lint, test, build, Home and `/en/workflow` in the browser). Still open: Boss Rezi confirms on the Preview, and Inter loading is not yet confirmed (Tailwind generates `monolith` utilities only once a component uses them).
 
 ---
 
