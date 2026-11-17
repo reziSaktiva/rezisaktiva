@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Rezi Saktiva</title>
+<meta name="description" content="Rezi Saktiva — fullstack product builder in Bandung." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Barlow+Condensed:wght@400;500;600;700;900&family=Inter:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body data-page="contact">
+<div id="chrome-header"></div>
+<main>
+
+<section class="ct">
+  <div class="ct__img"><img src="../public/media/about-hero.jpg" alt="Black-and-white photo of Rezi with eyes redacted"></div>
+  <div class="ct__panel">
+    <h1 class="display" data-lines data-hero-lines>Let’s talk<br>directly.</h1>
+    <p class="copy fade" data-now>If you’re starting something new, weighing up an idea, or want a second opinion on how to build it, write to me. A few honest lines about what you’re trying to do is plenty.</p>
+    <p class="copy fade" data-now>I reply by email. I’ll tell you plainly whether I’m the right person for it, what I’d do first, and what I’d leave out.</p>
+    <div class="ct__rows">
+      <div class="ct__row fade"><span class="ct__k">Based in</span><span class="ct__v">Bandung,<br>Indonesia</span></div>
+      <div class="ct__row fade"><span class="ct__k">Email</span><a class="ct__v" href="mailto:rezisaktiva08@gmail.com">rezisaktiva08@gmail.com</a></div>
+      <div class="ct__row fade"><span class="ct__k">Elsewhere</span><span class="ct__vs"><a class="ct__v" href="https://github.com/reziSaktiva" target="_blank" rel="noopener">GitHub</a><a class="ct__v" href="https://www.linkedin.com/in/rezi-saktiva-bb89a12a1/" target="_blank" rel="noopener">LinkedIn</a></span></div>
+      <div class="ct__row fade"><span class="ct__k">Right now</span><a class="ct__v" href="https://www.insvire.com/" target="_blank" rel="noopener">Insvire Technologies</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="cf" id="form">
+  <h2 class="cf__h display" data-lines>Tell me about<br>the project</h2>
+  <div class="cf__side">
+    <p class="copy fade">The more I know about the goal, the people using it and what’s in the way, the sooner I can say something useful.</p>
+    <p class="copy fade">Nothing here needs to be polished. Rough notes are fine.</p>
+  </div>
+  <form class="cf__form" id="cform" novalidate>
+    <div class="fld"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" placeholder="Enter your full name*" required autocomplete="name"><span class="err">Please tell me your name.</span></div>
+    <div class="fld"><label for="f-mail">Email address</label><input id="f-mail" name="email" type="email" placeholder="Enter your email address*" required autocomplete="email"><span class="err">I need a valid email to reply to.</span></div>
+    <div class="fld"><label for="f-org">Company or website <span style="opacity:.5">(optional)</span></label><input id="f-org" name="org" type="text" placeholder="Where do you work, or where does it live?"></div>
+    <div class="fld"><label for="f-type">What do you need?</label><select id="f-type" name="type" required><option value="" selected disabled>Select what you need*</option><option>Product and scope</option><option>Fullstack build</option><option>AI and orchestration</option><option>Something else</option></select><span class="err">Pick the closest fit.</span></div>
+    <div class="fld"><label for="f-msg">Project details</label><textarea id="f-msg" name="msg" placeholder="What are you building, and what’s getting in the way?*" required></textarea><span class="err">A line or two is enough.</span></div>
+    <button class="fsend" type="submit"><span>Send message</span><span>→</span></button>
+    <div class="cf__ok" tabindex="-1" role="status"><h3 class="display">Got it.</h3><p class="copy" style="color:rgba(248,248,248,.7)">Thanks — I’ll reply by email. (Mockup: nothing was actually sent.)</p></div>
+  </form>
+</section>
+</main>
+<div id="chrome-footer"></div>
+<script src="shared.js"></script>
+</body>
+</html>
