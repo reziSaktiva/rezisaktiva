@@ -8,6 +8,8 @@ New module M13 - Quick Info panel (global overlay, Must R1)
 
 Accepted
 
+Superseded by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): Quick Info panel retired.
+
 ### Date
 
 2026-08-16

@@ -8,6 +8,8 @@ M10 Must R1 = bottom project context sheet (not case route, not direct jump to l
 
 Accepted
 
+Superseded by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): project bottom sheet removed.
+
 ### Date
 
 2026-08-26

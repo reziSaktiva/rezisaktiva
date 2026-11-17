@@ -4,7 +4,7 @@
 
 * **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live) · **S-002 Monolith redesign migration started** (2026-11-17)
 * **Active Mode:** Redesign migration (**S-002**, ADR-052 / ADR-053) on branch `redesign/monolith`; production unchanged until **T-086**. Before that: Validation — **T-059** ✅ (ADR-047, production send confirmed); **S-001** ✅ Project OS English (ADR-049); **T-058** ✅; **T-057** ✅; **T-056** ✅; R1 remains exited
-* **Top Next Tasks:** **T-076** (Preview safety and baseline), **T-077** (open surface decisions) — [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md)
+* **Top Next Tasks:** **T-076** (Preview safety and baseline), **T-078** (design foundation) — [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md)
 * **Blocker:** None
 * **Known Issues:** None (KI-001 / KI-002 closed: `rezisaktiva` theme = `shared.css` mockup)
 * **Ticket queue:** [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md) lists open work only. Ticket history lives in [`tickets/`](tickets/) (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md` / `s001-project-os-english.md` / `s002-monolith-redesign.md`) + [`R1_COMPLETE.md`](R1_COMPLETE.md)
