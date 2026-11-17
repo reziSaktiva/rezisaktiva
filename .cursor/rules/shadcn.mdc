@@ -52,6 +52,6 @@ Contact uses `Dialog`, Quick Info uses a right `Sheet`, and project details use 
 
 ## SELF-CHECK
 
-Before finishing: no `@astryxdesign` / `@stylexjs` imports, no `space-y-*` for rhythm, tokens come from `globals.css`, and the result follows production code + Boss Rezi's instructions, not archived mockups or default shadcn demos.
+Before finishing: no `@astryxdesign` / `@stylexjs` imports, no `space-y-*` for rhythm, tokens come from `globals.css`, and the result follows production code + Boss Rezi's instructions, not default shadcn demos or archived mockups (S-002 redesign work: v5 mockups are a reference until cutover, ADR-052).
 
 Spacing, Server vs Client, SSG: `.cursor/rules/code-discipline.mdc` + `product-discovery/06-engineering/code-discipline.md`.

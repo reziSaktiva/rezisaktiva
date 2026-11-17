@@ -1,11 +1,23 @@
 ---
-description: Production code is the visual source of truth; study app/ before UI work and treat design-mockups/ as archive
+description: Production code is the visual source of truth; study app/ before UI work and treat design-mockups/ as archive, except during S-002 (ADR-052)
 alwaysApply: true
 ---
 
 # Production Code Is The UI/UX Source Of Truth
 
 **ADR-024 (2026-08-21):** HTML mockups in `design-mockups/` are **deprecated** as a visual contract. The folder is an archive of the R1 port (HTML + Tailwind CDN). Do not use it as the primary reference, update it to "match" a new design, or force pixel parity between code and mockup.
+
+## S-002 Redesign Exception (ADR-052, until cutover T-086)
+
+During S-002 (Monolith redesign), the v5 mockups in `design-mockups/` are the **working visual and interaction reference** for redesign work (tickets T-078 onward, PRs into `redesign/monolith`). This temporarily amends ADR-024.
+
+- The mockups are a **reference, not a pixel-exact contract**. Tokens, spacing, and components may adapt to shadcn/ui + Tailwind v4 (`.cursor/rules/shadcn.mdc`).
+- Verification compares the code against the mockup **behavior** and the approved decisions (T-077 and ADR-052), not pixel parity.
+- Production code stays the visual truth for anything outside S-002.
+- If a mockup conflicts with an accepted ADR, a T-077 decision, or `product-discovery/`, the decision wins. Stop and ask Boss Rezi if unclear.
+- At cutover (T-086) the rule below applies again in full and the mockups return to archive.
+
+Outside S-002 scope, and again after cutover, the original rule applies:
 
 Living visual references:
 
@@ -29,7 +41,7 @@ Applies to any task where:
 
 After implementation, verify before reporting completion. Do not rely only on "it looks right in the code."
 
-- Compare the result with the same production page before the change plus locked chat/task instructions, not archived mockup screenshots.
+- Compare the result with the same production page before the change plus locked chat/task instructions, not archived mockup screenshots. For S-002 redesign work, also compare against the v5 mockup behavior and the approved T-077 decisions (not pixels).
 - For details where precision matters, such as height, padding, radius, gap, or font size, check computed styles in the implementation.
 - If there is a gap against locked direction, fix it before reporting. Do not wait for Boss Rezi to find it.
 
@@ -49,4 +61,4 @@ After implementation, verify before reporting completion. Do not rely only on "i
 ## Exception
 
 - This does not apply to pure Engineering or Documentation tasks that do not touch visual output, such as CI setup.
-- Opening files in `design-mockups/` for historical context is allowed when clearly treated as archive, not implementation target.
+- Opening files in `design-mockups/` for historical context is allowed when clearly treated as archive, not implementation target. Exception: S-002 redesign work (see above).
