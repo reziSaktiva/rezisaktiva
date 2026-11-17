@@ -1,16 +1,6 @@
 "use client";
 
-import { ChevronDownIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { LOCALE_COOKIE, LOCALES, type Locale } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 import { useTransitionNavigate } from "./page-transition";
@@ -20,80 +10,78 @@ const LABELS: Record<Locale, string> = {
   en: "EN",
 };
 
+const FULL_LABELS: Record<Locale, string> = {
+  id: "Bahasa Indonesia",
+  en: "English",
+};
+
 function hrefForLocale(pathname: string, target: Locale): string {
   const segments = pathname.split("/").filter(Boolean);
   segments[0] = target;
   return `/${segments.join("/")}`;
 }
 
+function storeLocale(target: Locale): void {
+  document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=31536000`;
+}
+
 /**
- * Language switcher — always in chrome (T-013.2, polish T-010.3).
- * Click stores preference in `NEXT_LOCALE` cookie; middleware uses it only
- * for `/` redirect (never rewrites locale paths) per ADR-014.
- * Path still resolves to the sibling locale (Home↔Home, About↔About, etc.)
- * per `navigation-patterns.md`.
- *
- * shadcn Dropdown Menu (ID/EN radio); gothic-blood skin via `.site-locale-*`.
+ * Language switch in the masthead and the mobile sheet (T-079.1): an inline
+ * `ID / EN` pair, no dropdown. Click stores the preference in the
+ * `NEXT_LOCALE` cookie; middleware uses it only for the `/` redirect (never
+ * rewrites locale paths) per ADR-014. The path still resolves to the sibling
+ * locale (Home to Home, About to About, ...) per `navigation-patterns.md`.
+ * Both buttons are real buttons: keyboard reachable, current one is
+ * `aria-pressed`.
  */
 export function LocaleSwitcher({
   locale,
-  variant = "bar",
-  onOpenChange,
+  className,
+  buttonClassName,
+  tabIndex,
 }: {
   locale: Locale;
-  /** `menu` = compact in the hamburger panel. */
-  variant?: "bar" | "menu";
-  onOpenChange?: (open: boolean) => void;
+  className?: string;
+  buttonClassName?: string;
+  tabIndex?: number;
 }) {
   const pathname = usePathname();
   const navigate = useTransitionNavigate();
-  const isMenu = variant === "menu";
 
-  const handleChange = (value: string) => {
-    if (!LOCALES.includes(value as Locale) || value === locale) {
+  const handleChange = (target: Locale) => {
+    if (target === locale) {
       return;
     }
-    const target = value as Locale;
-    document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=31536000`;
+    storeLocale(target);
     navigate(`${hrefForLocale(pathname, target)}${window.location.hash}`);
   };
 
   return (
-    <DropdownMenu modal={false} onOpenChange={onOpenChange}>
-      <DropdownMenuTrigger asChild>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          aria-label="Bahasa / Language"
-          className={cn(
-            "site-locale-trigger",
-            isMenu && "site-locale-trigger--menu",
-          )}
-        >
-          {LABELS[locale]}
-          <ChevronDownIcon data-icon="inline-end" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align={isMenu ? "center" : "end"}
-        className="site-locale-menu"
-        data-lenis-prevent=""
-      >
-        <DropdownMenuGroup>
-          <DropdownMenuRadioGroup value={locale} onValueChange={handleChange}>
-            {LOCALES.map((value) => (
-              <DropdownMenuRadioItem
-                key={value}
-                value={value}
-                aria-label={LABELS[value]}
-              >
-                {LABELS[value]}
-              </DropdownMenuRadioItem>
-            ))}
-          </DropdownMenuRadioGroup>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div
+      role="group"
+      aria-label="Bahasa / Language"
+      className={cn("mh-locale", className)}
+    >
+      {LOCALES.map((value, index) => (
+        <span key={value} className="mh-locale-item">
+          {index > 0 ? (
+            <i className="mh-locale-sep" aria-hidden="true">
+              /
+            </i>
+          ) : null}
+          <button
+            type="button"
+            lang={value}
+            aria-label={FULL_LABELS[value]}
+            aria-pressed={value === locale}
+            tabIndex={tabIndex}
+            className={cn("mh-locale-button", buttonClassName)}
+            onClick={() => handleChange(value)}
+          >
+            {LABELS[value]}
+          </button>
+        </span>
+      ))}
+    </div>
   );
 }

@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import type { Locale } from "@/lib/locale";
 import { SKIP_TO_CONTENT_LABEL } from "@/lib/nav";
 import { MAIN_CONTENT_ID } from "@/lib/site-chrome";
-import { SiteNavGlass, SiteTopNav } from "./site-header";
+import { SiteHeader } from "./site-header";
 
 export { MAIN_CONTENT_ID };
 
@@ -23,9 +23,9 @@ function SiteSkipLink({ locale }: { locale: Locale }) {
 }
 
 /**
- * Pengganti AppShell (T-033.1): header sticky + `<main>`. Footer sibling
- * di layout locale (ADR-041). Nav di `SiteTopNav`; kaca desktop on-scroll
- * di `SiteNavGlass` (T-055.2 / T-055.3).
+ * AppShell replacement (T-033.1): masthead header + `<main>`. Footer is a
+ * sibling in the locale layout (ADR-041). Header, dock and mobile sheet live
+ * in `SiteHeader` (T-079.1).
  */
 export function SiteChrome({
   locale,
@@ -37,10 +37,7 @@ export function SiteChrome({
   return (
     <div className="site-chrome">
       <SiteSkipLink locale={locale} />
-      <header className="site-chrome-header">
-        <SiteNavGlass />
-        <SiteTopNav locale={locale} />
-      </header>
+      <SiteHeader locale={locale} />
       <main id={MAIN_CONTENT_ID} className="site-chrome-main" tabIndex={-1}>
         {children}
       </main>

@@ -1,26 +1,22 @@
 "use client";
 
-import {
-  useEffect,
-  useId,
-  useState,
-  useSyncExternalStore,
-  type MouseEvent,
-} from "react";
+import { useEffect, useId, useState, type MouseEvent } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
-import { isInsideLocaleMenuGuard } from "@/lib/overlay-dismiss";
-import { cn } from "@/lib/utils";
-import type { Locale } from "@/lib/locale";
 import { PERSON_CHROME } from "@/content/person";
+import {
+  BANDUNG_TIME_PLACEHOLDER,
+  formatBandungTime,
+} from "@/lib/bandung-time";
+import type { Locale } from "@/lib/locale";
 import {
   CONTACT_LABEL,
   MENU_LABEL,
@@ -31,337 +27,36 @@ import {
   isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
-import {
-  isNavGlassBlurOn,
-  isNavGlassFadeOut,
-  isNavGlassScrolled,
-  navGlassOpacityTarget,
-  nextNavGlassFadingOut,
-  resolveNavGlassScrollY,
-} from "@/lib/nav-glass";
-import {
-  DURATION_MEDIUM_MAX,
-  EASE_OVERLAY,
-  motion,
-  useReducedMotion,
-} from "@/lib/motion";
-import { Magnetic } from "./home-motion";
+import { nextDockState } from "@/lib/site-dock";
+import { cn } from "@/lib/utils";
 import { LocaleSwitcher } from "./locale-switcher";
-import { CloseIcon, MenuIcon } from "./overlay-icons";
-import { SlidingPillGroup } from "./sliding-pill-group";
 import {
-  readWindowScrollY,
   scrollToPageId,
-  subscribePageScroll,
   whenPageTransitionUnlocked,
 } from "./smooth-scroll";
 
 /**
- * Site chrome — T-013 (ADR-020) + ADR-034 + ADR-035: About /
- * How I Work / Work chips; brand name = Home link (not a Home chip). Contact =
- * modal button (T-016, ADR-019).
- * <1024px: page nav + switcher in hamburger; Contact button + theme
- * toggle stay outside (ADR-020 overrides `navigation-patterns.md`).
+ * Site header (T-079.1, ADR-052, ADR-054): masthead with a giant wordmark,
+ * Bandung local time and the nav; a scroll-up dock; a full-screen sheet on
+ * phones. Reference: `design-mockups/shared.js` (not pixel-exact).
  *
- * T-033.2–T-033.6: TopNav / hamburger → Button + Sheet; locale → DropdownMenu;
- * tema → Toggle; Contact chrome + footer CTA → Button shadcn.
- * T-040.1 / ADR-034: nama display + role di samping; Contact/hamburger datar.
- * T-040.4: lembar hamburger = panel elevated; selected = outline (ADR-031).
- * T-055.2 / T-055.3: kaca on-scroll (`SiteNavGlass`) di desktop + compact
- * — not a chip / hamburger panel restyle.
+ * - Brand = Home link (ADR-034/035); nav = About / How I Work / Work (ADR-040:
+ *   About is `#about` on Home). Contact stays the modal (ADR-019) until T-083
+ *   turns it into a page.
+ * - The masthead is in flow and blends with `difference`, so it reads on both
+ *   the legacy dark surfaces and the paper surfaces that replace them.
+ * - The dock is a visual duplicate for pointer users: `aria-hidden`, links out
+ *   of the tab order. Keyboard and screen readers use the masthead nav, which
+ *   is always in the DOM; on phones the Menu button opens the sheet (Radix
+ *   Dialog: focus trap, Escape, `aria-modal`).
+ * - Styling lives in `app/globals.css` (`.mh-*`).
  */
 
-const NAV_GLASS_TWEEN = {
-  type: "tween" as const,
-  duration: DURATION_MEDIUM_MAX,
-  ease: EASE_OVERLAY,
-};
+const WORDMARK = PERSON_CHROME.name.split(" ")[0] ?? PERSON_CHROME.name;
+const LOCATION_LABEL = "Bandung, Indonesia";
 
-const NAV_GLASS_CUT = { type: "tween" as const, duration: 0 };
-
-function subscribeNavGlassScroll(onStoreChange: () => void): () => void {
-  const unsubscribe = subscribePageScroll(onStoreChange);
-  window.addEventListener("scroll", onStoreChange, { passive: true });
-  return () => {
-    unsubscribe();
-    window.removeEventListener("scroll", onStoreChange);
-  };
-}
-
-function getNavGlassScrolled(): boolean {
-  const nativeY = window.scrollY || document.documentElement.scrollTop || 0;
-  return isNavGlassScrolled(
-    resolveNavGlassScrollY(null, nativeY, readWindowScrollY()),
-  );
-}
-
-function useNavGlassScrolled(): boolean {
-  return useSyncExternalStore(
-    subscribeNavGlassScroll,
-    getNavGlassScrolled,
-    () => false,
-  );
-}
-
-/**
- * Header glass layer (T-055.1): desktop + compact <1024px. Opacity fade
- * `--duration-medium-max` + `--ease-overlay`; blur on/off instant.
- */
-export function SiteNavGlass() {
-  const scrolled = useNavGlassScrolled();
-  const reduceMotion = useReducedMotion() === true;
-  const [fadingOut, setFadingOut] = useState(false);
-  const [wasScrolled, setWasScrolled] = useState(false);
-  const nextFadingOut = nextNavGlassFadingOut(
-    wasScrolled,
-    scrolled,
-    fadingOut,
-    reduceMotion,
-  );
-  if (nextFadingOut !== fadingOut) {
-    setFadingOut(nextFadingOut);
-  }
-  if (wasScrolled !== scrolled) {
-    setWasScrolled(scrolled);
-  }
-  const blurOn = isNavGlassBlurOn(scrolled, nextFadingOut, reduceMotion);
-
-  return (
-    <motion.div
-      className="site-nav-glass"
-      aria-hidden="true"
-      data-blur={blurOn ? "true" : undefined}
-      initial={false}
-      animate={{ opacity: scrolled ? 1 : 0 }}
-      transition={reduceMotion ? NAV_GLASS_CUT : NAV_GLASS_TWEEN}
-      onAnimationStart={(definition) => {
-        if (reduceMotion) {
-          setFadingOut(false);
-          return;
-        }
-        const opacityTarget = navGlassOpacityTarget(definition);
-        if (opacityTarget === undefined) {
-          return;
-        }
-        setFadingOut(isNavGlassFadeOut(opacityTarget));
-      }}
-      onAnimationComplete={() => {
-        setFadingOut(false);
-      }}
-    />
-  );
-}
-
-export function SiteTopNav({ locale }: { locale: Locale }) {
-  const pathname = usePathname();
-  const hash = useLocationHash();
-  const isMobile = useMobileNavBreakpoint();
-  const { open } = useContactModal();
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
-  const [mobileNavPath, setMobileNavPath] = useState(pathname);
-  const mobileNavId = useId();
-
-  useEffect(() => {
-    if (!isHomePath(pathname, locale) || window.location.hash !== "#about") {
-      return;
-    }
-    // Wait for page-vt-lock to clear — rAF alone races freezeWindowScrollAtTop
-    // and stopped Lenis after Workflow/Projects → About (ADR-040).
-    return whenPageTransitionUnlocked(() => {
-      scrollToPageId("about");
-    });
-  }, [pathname, locale]);
-
-  if (mobileNavPath !== pathname) {
-    setMobileNavPath(pathname);
-    if (mobileNavOpen) {
-      setMobileNavOpen(false);
-    }
-  }
-  if (!isMobile && mobileNavOpen) {
-    setMobileNavOpen(false);
-  }
-
-  return (
-    <nav
-      aria-label="Main navigation"
-      className={cn("site-top-nav", isMobile && "site-top-nav--compact")}
-    >
-      <div className="site-brand flex items-baseline gap-3">
-        <NextLink
-          href={homeHref(locale)}
-          className="site-brand-heading"
-          aria-current={isHomePath(pathname, locale) ? "page" : undefined}
-        >
-          {PERSON_CHROME.name}
-        </NextLink>
-        <span className="site-brand-role">{PERSON_CHROME.jobTitle}</span>
-      </div>
-      {!isMobile ? (
-        <SlidingPillGroup
-          className="site-nav-chip"
-          itemSelector=".site-nav-item"
-          layoutKey={pathname}
-        >
-          {NAV_ITEMS.map((item) => {
-            const selected = isNavItemActive(pathname, locale, item, hash);
-            return (
-              <Button
-                key={item.key}
-                variant="ghost"
-                size="sm"
-                asChild
-                className="site-nav-item"
-                data-selected={selected ? "true" : undefined}
-                aria-current={selected ? "page" : undefined}
-              >
-                <NextLink
-                  href={item.href(locale)}
-                  onClick={(event) => {
-                    handleAboutNavClick(event, item.key, locale, pathname);
-                  }}
-                >
-                  {NAV_LABELS[locale][item.key]}
-                </NextLink>
-              </Button>
-            );
-          })}
-        </SlidingPillGroup>
-      ) : null}
-      <div className="site-header-tools">
-        {!isMobile && <LocaleSwitcher locale={locale} />}
-        {isMobile ? (
-          <>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="site-nav-toggle"
-              aria-label={
-                mobileNavOpen
-                  ? MENU_TOGGLE_LABEL[locale].close
-                  : MENU_TOGGLE_LABEL[locale].open
-              }
-              aria-expanded={mobileNavOpen}
-              aria-controls={mobileNavId}
-              onClick={() => setMobileNavOpen((isOpen) => !isOpen)}
-            >
-              {mobileNavOpen ? <CloseIcon /> : <MenuIcon />}
-            </Button>
-            <Sheet
-              open={mobileNavOpen}
-              onOpenChange={(open) => {
-                setMobileNavOpen(open);
-                if (!open) {
-                  setLocaleMenuOpen(false);
-                }
-              }}
-              modal={false}
-            >
-              <SheetContent
-                id={mobileNavId}
-                side="top"
-                showCloseButton={false}
-                showOverlay={false}
-                aria-describedby={undefined}
-                className={cn(
-                  "site-mobile-nav gap-2 border-0 p-0 shadow-none",
-                  "inset-x-auto bottom-auto h-auto w-auto max-w-none sm:max-w-none",
-                )}
-                onOpenAutoFocus={(event) => event.preventDefault()}
-                onCloseAutoFocus={(event) => event.preventDefault()}
-                onPointerDownOutside={(event) => {
-                  if (isInsideLocaleMenuGuard(event.target)) {
-                    event.preventDefault();
-                  }
-                }}
-                onFocusOutside={(event) => {
-                  if (isInsideLocaleMenuGuard(event.target)) {
-                    event.preventDefault();
-                  }
-                }}
-                onInteractOutside={(event) => {
-                  if (isInsideLocaleMenuGuard(event.target)) {
-                    event.preventDefault();
-                  }
-                }}
-                onEscapeKeyDown={(event) => {
-                  if (localeMenuOpen) {
-                    event.preventDefault();
-                  }
-                }}
-              >
-                <SheetHeader className="sr-only">
-                  <SheetTitle>{MENU_LABEL[locale]}</SheetTitle>
-                </SheetHeader>
-                <SlidingPillGroup
-                  orientation="vertical"
-                  className="site-mobile-nav-chip"
-                  itemSelector=".site-mobile-nav-item"
-                  layoutKey={pathname}
-                >
-                  {NAV_ITEMS.map((item) => {
-                    const selected = isNavItemActive(
-                      pathname,
-                      locale,
-                      item,
-                      hash,
-                    );
-                    return (
-                      <Button
-                        key={item.key}
-                        variant="ghost"
-                        asChild
-                        className="site-mobile-nav-item"
-                        data-selected={selected ? "true" : undefined}
-                        aria-current={selected ? "page" : undefined}
-                        onClick={() => setMobileNavOpen(false)}
-                      >
-                        <NextLink
-                          href={item.href(locale)}
-                          onClick={(event) => {
-                            handleAboutNavClick(
-                              event,
-                              item.key,
-                              locale,
-                              pathname,
-                            );
-                          }}
-                        >
-                          {NAV_LABELS[locale][item.key]}
-                        </NextLink>
-                      </Button>
-                    );
-                  })}
-                </SlidingPillGroup>
-                <LocaleSwitcher
-                  locale={locale}
-                  variant="menu"
-                  onOpenChange={setLocaleMenuOpen}
-                />
-              </SheetContent>
-            </Sheet>
-          </>
-        ) : null}
-        <Magnetic>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={open}
-            className="site-contact-button"
-          >
-            {CONTACT_LABEL[locale]}
-          </Button>
-        </Magnetic>
-      </div>
-    </nav>
-  );
-}
-
-/** Hamburger <1024px (ADR-020). Aligns with desktop `@media (min-width: 1024px)`. */
-const MOBILE_NAV_QUERY = "(max-width: 1023px)";
+/** Matches `max-width: 767px` in the `.mh-*` CSS (below Tailwind `md`). */
+const DESKTOP_QUERY = "(min-width: 768px)";
 
 function useLocationHash(): string {
   const [hash, setHash] = useState("");
@@ -376,6 +71,54 @@ function useLocationHash(): string {
   }, []);
 
   return hash;
+}
+
+function useBandungClock(): string {
+  const [time, setTime] = useState(BANDUNG_TIME_PLACEHOLDER);
+
+  useEffect(() => {
+    const tick = () => {
+      setTime(formatBandungTime(new Date()));
+    };
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  return time;
+}
+
+function useDockVisible(): boolean {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    let state = { visible: false, lastY: window.scrollY };
+    const onScroll = () => {
+      state = nextDockState(state, window.scrollY, window.innerHeight);
+      setVisible(state.visible);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return visible;
+}
+
+/** Closes the sheet when the viewport grows past the phone layout. */
+function useCloseOnDesktop(open: boolean, close: () => void): void {
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const media = window.matchMedia(DESKTOP_QUERY);
+    const onChange = () => {
+      if (media.matches) {
+        close();
+      }
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, [open, close]);
 }
 
 function handleAboutNavClick(
@@ -393,18 +136,246 @@ function handleAboutNavClick(
   scrollToPageId("about");
 }
 
-function useMobileNavBreakpoint(): boolean {
-  const [isMobile, setIsMobile] = useState(false);
+function NavLinks({
+  locale,
+  pathname,
+  hash,
+  tabIndex,
+  onNavigate,
+}: {
+  locale: Locale;
+  pathname: string;
+  hash: string;
+  tabIndex?: number;
+  onNavigate?: () => void;
+}) {
+  return (
+    <>
+      {NAV_ITEMS.map((item) => {
+        const selected = isNavItemActive(pathname, locale, item, hash);
+        const label = NAV_LABELS[locale][item.key];
+        return (
+          <NextLink
+            key={item.key}
+            href={item.href(locale)}
+            className="mh-roll"
+            data-t={label}
+            aria-current={selected ? "page" : undefined}
+            tabIndex={tabIndex}
+            onClick={(event) => {
+              handleAboutNavClick(event, item.key, locale, pathname);
+              onNavigate?.();
+            }}
+          >
+            <span>{label}</span>
+          </NextLink>
+        );
+      })}
+    </>
+  );
+}
+
+export function SiteHeader({ locale }: { locale: Locale }) {
+  const pathname = usePathname();
+  const hash = useLocationHash();
+  const time = useBandungClock();
+  const dockVisible = useDockVisible();
+  const { open: openContact } = useContactModal();
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [sheetPath, setSheetPath] = useState(pathname);
+  const closeSheet = () => setSheetOpen(false);
+  const sheetId = useId();
+  const contactLabel = CONTACT_LABEL[locale];
+  const menuLabel = MENU_TOGGLE_LABEL[locale];
 
   useEffect(() => {
-    const media = window.matchMedia(MOBILE_NAV_QUERY);
-    const sync = () => {
-      setIsMobile(media.matches);
-    };
-    sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
-  }, []);
+    if (!isHomePath(pathname, locale) || window.location.hash !== "#about") {
+      return;
+    }
+    // Wait for page-vt-lock to clear: scrolling while the curtain holds the
+    // document is eaten by freezeWindowScrollAtTop (ADR-040).
+    return whenPageTransitionUnlocked(() => {
+      scrollToPageId("about");
+    });
+  }, [pathname, locale]);
 
-  return isMobile;
+  if (sheetPath !== pathname) {
+    setSheetPath(pathname);
+    if (sheetOpen) {
+      setSheetOpen(false);
+    }
+  }
+
+  useCloseOnDesktop(sheetOpen, closeSheet);
+
+  const brandLabel = `${PERSON_CHROME.name}, ${NAV_LABELS[locale].home}`;
+  const homeCurrent = isHomePath(pathname, locale) ? "page" : undefined;
+
+  return (
+    <>
+      <header className="mh-header">
+        <div className="mh-masthead">
+          <NextLink
+            href={homeHref(locale)}
+            className="mh-brand wordmark"
+            aria-label={brandLabel}
+            aria-current={homeCurrent}
+          >
+            {WORDMARK}
+          </NextLink>
+          <p className="mh-meta">
+            <span>{LOCATION_LABEL}</span>
+            <i aria-hidden="true">/</i>
+            <span className="mh-clock" aria-hidden="true">
+              {time}
+            </span>
+          </p>
+          <nav aria-label="Main navigation" className="mh-nav">
+            <NavLinks
+              locale={locale}
+              pathname={pathname}
+              hash={hash}
+            />
+            <button
+              type="button"
+              className="mh-roll"
+              data-t={contactLabel}
+              onClick={openContact}
+            >
+              <span>{contactLabel}</span>
+            </button>
+            <LocaleSwitcher locale={locale} />
+          </nav>
+          <button
+            type="button"
+            className="mh-menu-btn"
+            aria-expanded={sheetOpen}
+            aria-controls={sheetId}
+            aria-haspopup="dialog"
+            aria-label={menuLabel.open}
+            onClick={() => setSheetOpen(true)}
+          >
+            {MENU_LABEL[locale]}
+          </button>
+        </div>
+      </header>
+
+      <div
+        className="mh-dock"
+        aria-hidden="true"
+        data-visible={dockVisible ? "true" : "false"}
+      >
+        <NextLink
+          href={homeHref(locale)}
+          className="mh-dock-brand wordmark"
+          tabIndex={-1}
+        >
+          {WORDMARK}
+        </NextLink>
+        <div className="mh-dock-nav">
+          <NavLinks
+            locale={locale}
+            pathname={pathname}
+            hash={hash}
+            tabIndex={-1}
+          />
+        </div>
+        <button
+          type="button"
+          className="mh-dock-menu"
+          tabIndex={-1}
+          onClick={() => setSheetOpen(true)}
+        >
+          {MENU_LABEL[locale]}
+        </button>
+      </div>
+
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+        <SheetContent
+          id={sheetId}
+          side="top"
+          showCloseButton={false}
+          showOverlay={false}
+          aria-describedby={undefined}
+          className={cn(
+            "z-150 gap-0 border-0 bg-ink p-gutter text-paper shadow-none md:hidden",
+            "data-[side=top]:h-dvh data-[side=top]:border-b-0",
+            "data-[state=open]:animate-in data-[state=closed]:animate-out",
+            "data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top",
+            "animation-duration-500 [--tw-ease:var(--ease-monolith-io)]",
+            "motion-reduce:animate-none",
+          )}
+          onOpenAutoFocus={(event) => event.preventDefault()}
+        >
+          <SheetHeader className="sr-only">
+            <SheetTitle>{MENU_LABEL[locale]}</SheetTitle>
+          </SheetHeader>
+          <SheetClose asChild>
+            <button type="button" className="mh-sheet-close">
+              {menuLabel.close}
+            </button>
+          </SheetClose>
+          <nav aria-label="Menu" className="mh-sheet-nav">
+            <SheetLink
+              href={homeHref(locale)}
+              label={NAV_LABELS[locale].home}
+              current={isHomePath(pathname, locale)}
+              onNavigate={closeSheet}
+            />
+            {NAV_ITEMS.map((item) => (
+              <SheetLink
+                key={item.key}
+                href={item.href(locale)}
+                label={NAV_LABELS[locale][item.key]}
+                current={isNavItemActive(pathname, locale, item, hash)}
+                onNavigate={closeSheet}
+                onClick={(event) =>
+                  handleAboutNavClick(event, item.key, locale, pathname)
+                }
+              />
+            ))}
+            <button
+              type="button"
+              className="mh-sheet-link"
+              onClick={() => {
+                closeSheet();
+                openContact();
+              }}
+            >
+              {contactLabel}
+            </button>
+          </nav>
+          <LocaleSwitcher locale={locale} className="mh-sheet-locale" />
+        </SheetContent>
+      </Sheet>
+    </>
+  );
+}
+
+function SheetLink({
+  href,
+  label,
+  current,
+  onNavigate,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  current: boolean;
+  onNavigate: () => void;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+}) {
+  return (
+    <NextLink
+      href={href}
+      className="mh-sheet-link"
+      aria-current={current ? "page" : undefined}
+      onClick={(event) => {
+        onClick?.(event);
+        onNavigate();
+      }}
+    >
+      {label}
+    </NextLink>
+  );
 }
