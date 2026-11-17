@@ -8,7 +8,7 @@ import {
 
 /**
  * T-078.2 — Monolith families (ADR-052). Variables are set on `<body>` in
- * `app/layout.tsx` and consumed by the `--font-wordmark|condensed|inter`
+ * `app/layout.tsx` and consumed by the `--font-wordmark|condensed|body`
  * theme tokens in `app/globals.css`.
  * Wordmark: Archivo, variable `wdth` axis so the 125 width is real (not synthetic).
  * Display: Barlow Condensed (static weights). Body: Inter (variable).
