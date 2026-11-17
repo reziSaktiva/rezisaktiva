@@ -145,13 +145,13 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-079.1** — Masthead header (big wordmark, Bandung local time, nav) and the scroll-up dock; mobile sheet menu; locale switch placement.
-- [ ] **T-079.2** — Footer with the dark contour-field background, wordmark, links, and the "write to me" magnetic button.
-- [ ] **T-079.3** — `ContourField` WebGL component: client-only, lazy, pauses off-screen, reacts to the pointer, static fallback when WebGL or reduced motion applies.
-- [ ] **T-079.4** — Lenis smooth-scroll provider: wheel only on fine pointers, native fallback for touch, reduced motion, dialogs and anchors; works with sticky and pinned sections.
-- [ ] **T-079.5** — Reveal primitives with Motion: split-line reveal, scrubbed words, clip-path image reveal with parallax, pinned scrubbed section, marquee.
-- [ ] **T-079.6** — Curtain page transition between routes and the custom cursor (with labels), both opt-out for reduced motion and touch.
-- [ ] **T-079.7** — Verify on Preview: desktop, tablet, 390 px phone, keyboard only, reduced motion.
+- [x] **T-079.1** — Masthead header (big wordmark, Bandung local time, nav) and the scroll-up dock; mobile sheet menu; locale switch placement.
+- [x] **T-079.2** — Footer with the dark contour-field background, wordmark, links, and the "write to me" magnetic button.
+- [x] **T-079.3** — `ContourField` WebGL component: client-only, lazy, pauses off-screen, reacts to the pointer, static fallback when WebGL or reduced motion applies.
+- [x] **T-079.4** — Lenis smooth-scroll provider: wheel only on fine pointers, native fallback for touch, reduced motion, dialogs and anchors; works with sticky and pinned sections.
+- [x] **T-079.5** — Reveal primitives with Motion: split-line reveal, scrubbed words, clip-path image reveal with parallax, pinned scrubbed section, marquee.
+- [x] **T-079.6** — Curtain page transition between routes and the custom cursor (with labels), both opt-out for reduced motion and touch.
+- [ ] **T-079.7** — Verify on Preview: desktop, tablet, 390 px phone, keyboard only, reduced motion. Local checks 2026-11-17: typecheck, lint, test (87), build pass; Home and `/en/workflow` render on desktop and 375 px with no console errors; header, mobile sheet, curtain and footer exercised by the lanes. Not yet exercised: keyboard-only walk, reduced motion and touch in the browser, tablet width, Preview. Open for Boss Rezi's Preview check.
 
 ---
 
