@@ -1,0 +1,24 @@
+name: Redesign base guard
+
+# S-002 / ADR-053: redesign work merges into redesign/monolith, never straight into main.
+# Only the cutover pull request (redesign/monolith -> main, T-086) may target main.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+    branches: [main]
+
+jobs:
+  guard:
+    name: guard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Block redesign branches that target main
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [[ "$HEAD_REF" == redesign/* && "$HEAD_REF" != "redesign/monolith" ]]; then
+            echo "::error::Branch '$HEAD_REF' is redesign work. Retarget this pull request to redesign/monolith (gh pr edit --base redesign/monolith). Only redesign/monolith may target main, at cutover (T-086)."
+            exit 1
+          fi
+          echo "Base guard passed for '$HEAD_REF'."

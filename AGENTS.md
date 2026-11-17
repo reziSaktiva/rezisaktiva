@@ -60,6 +60,7 @@ This project is Cursor-first. Do not create or rely on `.claude/` or `CLAUDE.md`
 ├── shadcn.mdc                -> shadcn/ui + Tailwind v4 conventions
 ├── code-discipline.mdc       -> spacing, styling layers, Server/Client, SSG
 ├── ui-ux-mockup-check.mdc    -> production code is the visual source of truth
+├── redesign-branch-flow.mdc  -> S-002 redesign: branch from and open PRs into redesign/monolith, never main
 ├── ask-before-assuming.mdc   -> ask only for urgent gaps, wrong docs, or unplanned work
 └── motion.mdc                -> use the Motion skill for animation changes
 ```
@@ -72,6 +73,7 @@ This project is Cursor-first. Do not create or rely on `.claude/` or `CLAUDE.md`
 - Status and progress belong in `PROJECT_STATE.md`, `AVAILABLE_TICKETS.md`, and ticket files, not static references.
 - Use parent IDs `T-XXX` and subtask IDs `T-XXX.N`; do not reuse IDs.
 - Keep secrets protected by `.cursorignore`.
+- S-002 redesign code never goes to `main`: branch `redesign/t-0XX-name` from `redesign/monolith` and open the PR with `gh pr create --base redesign/monolith` (`.cursor/rules/redesign-branch-flow.mdc`).
 
 ## After Changes
 

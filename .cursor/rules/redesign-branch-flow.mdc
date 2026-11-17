@@ -1,0 +1,40 @@
+---
+description: S-002 redesign work branches from redesign/monolith and opens pull requests into redesign/monolith, never main
+alwaysApply: true
+---
+
+# Redesign Branch Flow (S-002, ADR-052, ADR-053)
+
+Applies to any code work on the Monolith redesign: tickets **T-078 to T-085** and any change that belongs to the new design.
+
+## Rules
+
+1. **Never commit redesign code to `main`.** `main` is production. Only the cutover pull request (**T-086**) brings `redesign/monolith` into `main`, after Boss Rezi approves it.
+2. **Start from the integration branch.**
+   ```bash
+   git checkout redesign/monolith
+   git pull
+   git checkout -b redesign/t-0XX-short-name
+   ```
+   Name every feature branch `redesign/t-0XX-short-name` (lowercase, ticket ID, short topic). No AI or tool names (`no-ai-attribution-git.mdc`).
+3. **Open the pull request into `redesign/monolith`.** GitHub and `gh` default to `main`, so always set the base:
+   ```bash
+   gh pr create --base redesign/monolith
+   ```
+4. **Verify before reporting.** Run `gh pr view --json baseRefName,headRefName` and state the base branch in the report. If the base is `main`, change it (`gh pr edit --base redesign/monolith`) before doing anything else.
+5. **One pull request per ticket or surface.** Merge only after CI and the Vercel Preview pass and Boss Rezi has reviewed the Preview. Do not merge without explicit approval.
+6. **Docs-only work stays on `main`** (ADRs, specs, tickets, rules, `design-mockups/`). After it lands, merge `main` into `redesign/monolith`:
+   ```bash
+   git checkout redesign/monolith
+   git merge main
+   ```
+   Production fixes go to `main` first, then the same merge.
+7. **Commit, then push.** Do not push or merge without Boss Rezi's go-ahead.
+
+## Guard
+
+`.github/workflows/redesign-base-guard.yml` fails any pull request into `main` from a `redesign/*` branch other than `redesign/monolith`. The guard is a safety net, not a replacement for these rules.
+
+## If unsure
+
+Stop and ask Boss Rezi (`ask-before-assuming.mdc`) rather than opening a pull request against `main`.

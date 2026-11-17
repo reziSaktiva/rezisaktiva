@@ -13,7 +13,7 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 * **Status:** ⬜ Open
 * **Domain:** Documentation
 * **Branch:** `main`
-* **Read first:** ADR-052, ADR-053, `.cursor/rules/ui-ux-mockup-check.mdc`, `AGENTS.md`, `project-os/DEVELOPER_WORKFLOW.md`, `design-mockups/README.md`, `project-os/context/ctx-design.md`
+* **Read first:** ADR-052, ADR-053, `.cursor/rules/ui-ux-mockup-check.mdc`, `.cursor/rules/redesign-branch-flow.mdc`, `AGENTS.md`, `project-os/DEVELOPER_WORKFLOW.md`, `design-mockups/README.md`, `project-os/context/ctx-design.md`
 
 ### Contract
 
@@ -30,6 +30,9 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 - [ ] **T-075.3** — Update `design-mockups/README.md` and `project-os/context/ctx-design.md` (S-002, ADR-052, ADR-053).
 - [ ] **T-075.4** — Add a short "redesign branch" note to `product-discovery/06-engineering/deployment-infrastructure.md` and `cicd-pipeline.md` (Preview as staging, no new environment).
 - [ ] **T-075.5** — Check `.cursor/rules/` and `.cursor/skills/` for text that contradicts ADR-052 and list or fix each hit.
+- [x] **T-075.6** — Add the always-on rule `.cursor/rules/redesign-branch-flow.mdc` (with the `.claude/rules/` pointer) and the `AGENTS.md` tree and Hard Rules lines: redesign branches start from `redesign/monolith`, are named `redesign/t-0XX-name`, and open PRs with `--base redesign/monolith`.
+- [x] **T-075.7** — Add `.github/workflows/redesign-base-guard.yml`: fail any pull request into `main` from a `redesign/*` branch other than `redesign/monolith`.
+- [ ] **T-075.8** — Boss Rezi sets the GitHub rules (Settings → Rules): on `main`, require a pull request and the `guard` check; on `redesign/monolith`, require a pull request and passing CI. Note: requiring pull requests on `main` also blocks direct pushes, so docs-only changes then go through PRs too. Record the final settings here.
 
 ---
 
