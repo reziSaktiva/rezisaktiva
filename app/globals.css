@@ -998,31 +998,6 @@ html::-webkit-scrollbar-button,
   outline-offset: 2px;
 }
 
-.site-theme-toggle-btn {
-  min-width: 0;
-  padding: 0;
-  box-shadow: var(--elev-3d) !important;
-}
-
-.site-theme-toggle-btn:hover {
-  box-shadow: var(--elev-3d-hover) !important;
-}
-
-.site-theme-toggle-btn:active {
-  box-shadow: var(--elev-3d-pressed) !important;
-}
-
-.site-theme-toggle-btn:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-  box-shadow: var(--elev-3d) !important;
-}
-
-.site-theme-toggle-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
 /*
  * Home (T-014.2) — layout/spacing/motion mengikuti `design-mockups/home.html`
  * + `shared.css`. Compiler StyleX not wired yet, so scoped overrides via
