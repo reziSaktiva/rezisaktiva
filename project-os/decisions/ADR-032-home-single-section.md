@@ -8,6 +8,8 @@ Home = one section (hero + Now); AI proof on About; work only on Work index
 
 Accepted
 
+Amended by [ADR-054](ADR-054-s002-surface-decisions.md) (2026-11-17, at cutover): the Work teaser returns on Home.
+
 ### Date
 
 2026-09-07

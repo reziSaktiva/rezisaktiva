@@ -74,7 +74,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ## T-077 — Open surface decisions (Boss Rezi Q&A)
 
-* **Status:** ⬜ Open
+* **Status:** ✅ Done (2026-11-17, ADR-054)
 * **Domain:** Product / UX
 * **Branch:** `main` (decisions recorded as ADRs or ticket notes)
 * **Read first:** ADR-052 point 7, ADR-021, ADR-027, ADR-032, ADR-037, ADR-038, ADR-040, ADR-041, ADR-042, ADR-044, ADR-045, `product-discovery/04-ux/`, `design-mockups/`
@@ -89,13 +89,13 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-077.1** — Quick Info panel: keep, move, or retire. Record the result.
-- [ ] **T-077.2** — Project bottom sheet versus a direct case page (ADR-027 / ADR-044): choose the tile behavior and what stays of the sheet.
-- [ ] **T-077.3** — Light / dark toggle (ADR-021): remove, keep hidden, or keep as a feature of the new design.
-- [ ] **T-077.4** — Home information architecture: what the hero, About and footer contain, and how it relates to ADR-032 / 037 / 038 / 040 / 041.
-- [ ] **T-077.5** — Workflow structure: which sections of the mockup replace ADR-042's five sections.
-- [ ] **T-077.6** — Public project list (current four, hidden items, order) and imagery plan (screenshots only, portrait with the "This is not me" caption, any new photography).
-- [ ] **T-077.7** — Record each outcome as an ADR or a dated note here, then unblock the matching surface tickets.
+- [x] **T-077.1** — Quick Info panel: keep, move, or retire. Record the result.
+- [x] **T-077.2** — Project bottom sheet versus a direct case page (ADR-027 / ADR-044): choose the tile behavior and what stays of the sheet.
+- [x] **T-077.3** — Light / dark toggle (ADR-021): remove, keep hidden, or keep as a feature of the new design.
+- [x] **T-077.4** — Home information architecture: what the hero, About and footer contain, and how it relates to ADR-032 / 037 / 038 / 040 / 041.
+- [x] **T-077.5** — Workflow structure: which sections of the mockup replace ADR-042's five sections.
+- [x] **T-077.6** — Public project list (current four, hidden items, order) and imagery plan (screenshots only, portrait with the "This is not me" caption, any new photography).
+- [x] **T-077.7** — Record each outcome as an ADR or a dated note here, then unblock the matching surface tickets.
 
 ---
 
