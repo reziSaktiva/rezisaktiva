@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -9,6 +9,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
 import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { PERSON_CHROME } from "@/content/person";
@@ -30,10 +31,7 @@ import {
 import { nextDockState } from "@/lib/site-dock";
 import { cn } from "@/lib/utils";
 import { LocaleSwitcher } from "./locale-switcher";
-import {
-  scrollToPageId,
-  whenPageTransitionUnlocked,
-} from "./smooth-scroll";
+import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
 
 /**
  * Site header (T-079.1, ADR-052, ADR-054): masthead with a giant wordmark,
@@ -184,7 +182,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetPath, setSheetPath] = useState(pathname);
   const closeSheet = () => setSheetOpen(false);
-  const sheetId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const contactLabel = CONTACT_LABEL[locale];
   const menuLabel = MENU_TOGGLE_LABEL[locale];
 
@@ -212,7 +210,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const homeCurrent = isHomePath(pathname, locale) ? "page" : undefined;
 
   return (
-    <>
+    <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <header className="mh-header">
         <div className="mh-masthead">
           <NextLink
@@ -231,11 +229,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             </span>
           </p>
           <nav aria-label="Main navigation" className="mh-nav">
-            <NavLinks
-              locale={locale}
-              pathname={pathname}
-              hash={hash}
-            />
+            <NavLinks locale={locale} pathname={pathname} hash={hash} />
             <button
               type="button"
               className="mh-roll"
@@ -246,17 +240,16 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             </button>
             <LocaleSwitcher locale={locale} />
           </nav>
-          <button
-            type="button"
-            className="mh-menu-btn"
-            aria-expanded={sheetOpen}
-            aria-controls={sheetId}
-            aria-haspopup="dialog"
-            aria-label={menuLabel.open}
-            onClick={() => setSheetOpen(true)}
-          >
-            {MENU_LABEL[locale]}
-          </button>
+          <SheetTrigger asChild>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className="mh-menu-btn"
+              aria-label={menuLabel.open}
+            >
+              {MENU_LABEL[locale]}
+            </button>
+          </SheetTrigger>
         </div>
       </header>
 
@@ -290,65 +283,72 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         </button>
       </div>
 
-      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-        <SheetContent
-          id={sheetId}
-          side="top"
-          showCloseButton={false}
-          showOverlay={false}
-          aria-describedby={undefined}
-          className={cn(
-            "z-150 gap-0 border-0 bg-ink p-gutter text-paper shadow-none md:hidden",
-            "data-[side=top]:h-dvh data-[side=top]:border-b-0",
-            "data-[state=open]:animate-in data-[state=closed]:animate-out",
-            "data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top",
-            "animation-duration-500 [--tw-ease:var(--ease-monolith-io)]",
-            "motion-reduce:animate-none",
-          )}
-          onOpenAutoFocus={(event) => event.preventDefault()}
-        >
-          <SheetHeader className="sr-only">
-            <SheetTitle>{MENU_LABEL[locale]}</SheetTitle>
-          </SheetHeader>
-          <SheetClose asChild>
-            <button type="button" className="mh-sheet-close">
-              {menuLabel.close}
-            </button>
-          </SheetClose>
-          <nav aria-label="Menu" className="mh-sheet-nav">
+      <SheetContent
+        side="top"
+        showCloseButton={false}
+        showOverlay={false}
+        aria-describedby={undefined}
+        className={cn(
+          "z-150 gap-0 border-0 bg-ink p-gutter text-paper shadow-none md:hidden",
+          "data-[side=top]:h-dvh data-[side=top]:border-b-0",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out",
+          "data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top",
+          "animation-duration-500 [--tw-ease:var(--ease-monolith-io)]",
+          "motion-reduce:animate-none",
+        )}
+        onCloseAutoFocus={(event) => {
+          // Radix would focus the trigger with a scroll, which jumps the
+          // page to the masthead (after About, or after opening from the
+          // dock). Refocus without scrolling, and leave focus alone when
+          // something else (the Contact modal) already took it.
+          event.preventDefault();
+          const active = document.activeElement;
+          if (!active || active === document.body) {
+            menuButtonRef.current?.focus({ preventScroll: true });
+          }
+        }}
+      >
+        <SheetHeader className="sr-only">
+          <SheetTitle>{MENU_LABEL[locale]}</SheetTitle>
+        </SheetHeader>
+        <SheetClose asChild>
+          <button type="button" className="mh-sheet-close">
+            {menuLabel.close}
+          </button>
+        </SheetClose>
+        <nav aria-label="Menu" className="mh-sheet-nav">
+          <SheetLink
+            href={homeHref(locale)}
+            label={NAV_LABELS[locale].home}
+            current={isHomePath(pathname, locale)}
+            onNavigate={closeSheet}
+          />
+          {NAV_ITEMS.map((item) => (
             <SheetLink
-              href={homeHref(locale)}
-              label={NAV_LABELS[locale].home}
-              current={isHomePath(pathname, locale)}
+              key={item.key}
+              href={item.href(locale)}
+              label={NAV_LABELS[locale][item.key]}
+              current={isNavItemActive(pathname, locale, item, hash)}
               onNavigate={closeSheet}
+              onClick={(event) =>
+                handleAboutNavClick(event, item.key, locale, pathname)
+              }
             />
-            {NAV_ITEMS.map((item) => (
-              <SheetLink
-                key={item.key}
-                href={item.href(locale)}
-                label={NAV_LABELS[locale][item.key]}
-                current={isNavItemActive(pathname, locale, item, hash)}
-                onNavigate={closeSheet}
-                onClick={(event) =>
-                  handleAboutNavClick(event, item.key, locale, pathname)
-                }
-              />
-            ))}
-            <button
-              type="button"
-              className="mh-sheet-link"
-              onClick={() => {
-                closeSheet();
-                openContact();
-              }}
-            >
-              {contactLabel}
-            </button>
-          </nav>
-          <LocaleSwitcher locale={locale} className="mh-sheet-locale" />
-        </SheetContent>
-      </Sheet>
-    </>
+          ))}
+          <button
+            type="button"
+            className="mh-sheet-link"
+            onClick={() => {
+              closeSheet();
+              openContact();
+            }}
+          >
+            {contactLabel}
+          </button>
+        </nav>
+        <LocaleSwitcher locale={locale} className="mh-sheet-locale" />
+      </SheetContent>
+    </Sheet>
   );
 }
 
