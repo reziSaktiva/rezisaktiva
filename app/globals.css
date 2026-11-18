@@ -517,3 +517,432 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 .site-cursor[data-mode="label"] > span {
   opacity: 1;
 }
+
+/* ==========================================================================
+ * T-081 — Work index and case pages (ADR-052, ADR-054 point 2).
+ * Prefixes: `pcard-*` shared project card (Work index, later Home), `wk-*`
+ * Work index, `wcase-*` case page. Values follow `design-mockups/shared.css`
+ * (v5, `.wk`, `.wcard`, `.chero`, `.cmeta`, `.cbody`, `.stack`, `.gal`,
+ * `.next`); reference, not pixel-exact.
+ * ========================================================================== */
+
+/* Project card: clip-revealed grayscale shot, blur + name veil on hover/focus. */
+.pcard {
+  position: relative;
+  display: block;
+  aspect-ratio: 585 / 609;
+  color: var(--color-paper);
+}
+
+.pcard-media {
+  position: absolute;
+  inset: 0;
+  background-color: #cfcfcf;
+}
+
+.pcard-img {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.8s var(--ease-monolith);
+}
+
+.pcard:hover .pcard-img,
+.pcard:focus-visible .pcard-img {
+  filter: grayscale(0.4) blur(9px) brightness(0.5);
+}
+
+.pcard-veil {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: clamp(18px, 2.2vw, 32px);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.55s var(--ease-monolith),
+    transform 0.7s var(--ease-monolith);
+}
+
+.pcard:hover .pcard-veil,
+.pcard:focus-visible .pcard-veil {
+  opacity: 1;
+  transform: none;
+}
+
+.pcard-name {
+  font-size: clamp(34px, 3.6vw, 56px);
+}
+
+.pcard-meta {
+  max-width: 48ch;
+  font-size: 13px;
+  line-height: 1.25;
+  opacity: 0.8;
+}
+
+.pcard:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+  .pcard-veil {
+    opacity: 1;
+    transform: none;
+    background: linear-gradient(0deg, rgb(2 2 2 / 0.7), transparent 55%);
+  }
+}
+
+/* Work index: sticky giant title under the two-column grid. */
+.wk {
+  position: relative;
+  padding-bottom: clamp(70px, 9vw, 130px);
+}
+
+/* Hatched side rails (mockup `.wk::before/::after`). */
+.wk::before,
+.wk::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(14px, 2.4vw, 34px);
+  border-inline: 1px solid var(--color-rule);
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 6px,
+    rgb(2 2 2 / 0.1) 6px 7px
+  );
+}
+
+.wk::before {
+  left: calc(var(--spacing-gutter) * 0.4);
+}
+
+.wk::after {
+  right: calc(var(--spacing-gutter) * 0.4);
+}
+
+.wk-head {
+  position: sticky;
+  top: 74px;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  height: clamp(310px, 28vw, 450px);
+  padding: clamp(40px, 5vw, 80px) var(--spacing-gutter) 0;
+  text-align: center;
+}
+
+.wk-title {
+  font-size: clamp(72px, 14vw, 230px);
+  line-height: 0.82;
+}
+
+.wk-lead {
+  max-width: 40ch;
+}
+
+.wk-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2.2vw, 32px);
+  padding-inline: clamp(var(--spacing-gutter), 7.8vw, 112px);
+}
+
+@media (max-width: 767px) {
+  .wk::before,
+  .wk::after {
+    display: none;
+  }
+
+  .wk-head {
+    height: auto;
+    padding-bottom: clamp(40px, 10vw, 60px);
+  }
+
+  .wk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Paper behind the masthead on Work surfaces (body is still the legacy ink). */
+.site-chrome:has(.wk, .wcase) {
+  background-color: var(--color-paper);
+}
+
+/* Case page: the masthead floats over the dark hero, like the mockup. */
+.site-chrome:has(.wcase) .mh-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+}
+
+.wcase-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.wcase-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.wcase-hero-img {
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.5);
+}
+
+/* Bottom scrim so the title stays legible on light screenshots. */
+.wcase-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgb(2 2 2 / 0.75), transparent 60%);
+}
+
+.wcase-hero-in {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 var(--spacing-gutter) 34px;
+}
+
+.wcase-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: clamp(36px, 5vw, 64px) var(--spacing-gutter);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.wcase-meta-item {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.wcase-meta-item dd {
+  margin: 0;
+}
+
+.wcase-tlink {
+  display: inline-flex;
+  gap: 8px;
+  width: fit-content;
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.wcase-body {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+  padding: clamp(60px, 8vw, 120px) var(--spacing-gutter);
+}
+
+.wcase-lede {
+  position: sticky;
+  top: 100px;
+  grid-column: 1 / 7;
+}
+
+.wcase-points {
+  grid-column: 8 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 64px);
+  counter-reset: wcase-point;
+}
+
+.wcase-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wcase-point {
+  counter-increment: wcase-point;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 0;
+  border-top: 1px solid var(--color-rule);
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.18;
+  color: var(--color-soft);
+  opacity: 0.35;
+  transition: opacity 0.5s var(--ease-monolith);
+}
+
+.wcase-point::before {
+  content: counter(wcase-point, decimal-leading-zero);
+  font-family: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  font-size: 16px;
+  color: var(--color-mute);
+}
+
+.wcase-point[data-on="true"],
+.wcase-point:hover,
+.wcase-point:focus-within {
+  opacity: 1;
+}
+
+.wcase-point a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.wcase-stack {
+  padding: 0 var(--spacing-gutter) clamp(50px, 6vw, 90px);
+}
+
+.wcase-chip {
+  padding: 7px 14px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Gallery: a staggered 12-column layout that repeats every four shots. */
+.wcase-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(40px, 6vw, 100px) 24px;
+  align-items: start;
+  padding: 0 var(--spacing-gutter) clamp(80px, 10vw, 150px);
+}
+
+.wcase-shot {
+  background-color: #ddd;
+}
+
+.wcase-shot-img {
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.6s;
+}
+
+.wcase-shot:hover .wcase-shot-img {
+  filter: none;
+}
+
+.wcase-shot:nth-child(4n + 1) {
+  grid-column: 1 / 10;
+  aspect-ratio: 16 / 10;
+}
+
+.wcase-shot:nth-child(4n + 2) {
+  z-index: 1;
+  grid-column: 9 / 13;
+  aspect-ratio: 4 / 5;
+  margin-top: -12vw;
+}
+
+.wcase-shot:nth-child(4n + 3) {
+  grid-column: 2 / 8;
+  aspect-ratio: 4 / 3;
+}
+
+.wcase-shot:nth-child(4n + 4) {
+  grid-column: 9 / 13;
+  align-self: end;
+  aspect-ratio: 1;
+}
+
+/* Next project: ink wipes up behind the giant name on hover/focus. */
+.wcase-next {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  padding: clamp(90px, 13vw, 200px) var(--spacing-gutter);
+  text-align: center;
+  background-color: var(--color-paper);
+}
+
+.wcase-next::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-ink);
+  transform: translateY(100%);
+  transition: transform 0.8s var(--ease-monolith-io);
+}
+
+.wcase-next > * {
+  transition: color 0.5s 0.1s;
+}
+
+.wcase-next:hover::before,
+.wcase-next:focus-visible::before {
+  transform: none;
+}
+
+.wcase-next:hover > *,
+.wcase-next:focus-visible > * {
+  color: var(--color-paper);
+}
+
+.wcase-next:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: -8px;
+}
+
+.wcase-tlink:focus-visible,
+.wcase-point a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (max-width: 899px) {
+  .wcase-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wcase-lede,
+  .wcase-points {
+    position: static;
+    grid-column: 1 / -1;
+  }
+
+  .wcase-shot:nth-child(n) {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pcard-img,
+  .pcard-veil,
+  .wcase-point,
+  .wcase-shot-img,
+  .wcase-next::before,
+  .wcase-next > * {
+    transition: none;
+  }
+}
