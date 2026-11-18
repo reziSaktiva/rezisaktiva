@@ -32,7 +32,7 @@ describe("buildJsonLd", () => {
     });
     expect(person.description).toBe(QUICK_INFO_COPY.id.bio);
     expect(person.knowsAbout).toEqual([...QUICK_INFO_COPY.id.services]);
-    expect(ABOUT_COPY.id.h1.join(" ")).toContain(PERSON.name);
+    expect(ABOUT_COPY.id.title.join(" ")).toContain(PERSON.name);
     expect(QUICK_INFO_COPY.id.bio).toContain(PERSON.jobTitle);
   });
 

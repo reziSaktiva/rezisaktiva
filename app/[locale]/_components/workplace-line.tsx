@@ -20,10 +20,13 @@ export function ExternalSiteLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn("about-external-link", className)}
+      className={cn(
+        "inline-flex items-center gap-1 underline-offset-4 hover:underline focus-visible:underline",
+        className,
+      )}
     >
       {children}
-      <ExternalLink aria-hidden size={12} className="about-external-icon" />
+      <ExternalLink aria-hidden size={12} />
       <span className="sr-only">{newTabLabel}</span>
     </a>
   );
@@ -40,7 +43,7 @@ export function WorkplaceLine({
 
   return (
     <span className={cn("flex flex-wrap items-center gap-2", className)}>
-      <span className="about-workplace-prefix">{copy.prefix}</span>
+      <span>{copy.prefix}</span>
       <ExternalSiteLink href={PERSON.worksFor.url} newTabLabel={copy.newTab}>
         {PERSON.worksFor.name}
       </ExternalSiteLink>

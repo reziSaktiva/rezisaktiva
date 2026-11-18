@@ -1,13 +1,21 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Copy section About di Home. Lead dikunci Boss Rezi 2026-09-07 (ADR-039).
- * Cara kerja ada di `content/workflow.ts` (ADR-035).
+ * About section on Home (`#about`, ADR-040; S-002 Monolith, T-080.2).
+ * Lead locked by Boss Rezi 2026-09-07 (ADR-039), split in two for the
+ * scrubbed lead and the supporting copy; no words added or dropped.
+ * The Workflow link label is the former Home lede CTA (ADR-038).
+ * How I work lives in `content/workflow.ts` (ADR-035).
  */
 
 export interface AboutCopy {
-  h1: readonly string[];
+  /** Section `h2`, one entry per visual line. */
+  title: readonly string[];
+  /** Scrubbed lead (first sentence of the ADR-039 lead). */
   lead: string;
+  /** Supporting copy (second sentence of the ADR-039 lead). */
+  body: string;
+  workflowCta: string;
   portraitAlt: string;
   portraitCaption: string;
 }
@@ -16,17 +24,19 @@ export const ABOUT_PORTRAIT_SRC = "/media/about-hero.jpg";
 
 export const ABOUT_COPY: Record<Locale, AboutCopy> = {
   id: {
-    h1: ["Halo,", "saya", "Rezi."],
-    lead: "Fokus saya bukan sekadar menulis baris kode, melainkan merancang arsitektur sistem dan efisiensi eksekusi memanfaatkan perangkat modern untuk mengubah ide Anda menjadi produk aktif secepat mungkin tanpa mengorbankan kualitas. Berbekal pengalaman full-stack selama lebih dari enam tahun, saat ini saya mengelola pipeline sub-agent AI dari tahap discovery hingga deployment, menggabungkan eksekusi teknis dengan sudut pandang bisnis yang tajam untuk menilai kelayakan serta nilai strategis dari setiap fitur yang saya bangun.",
-    portraitAlt:
-      "Foto hitam-putih Rezi, mata ditutup coretan hitam",
+    title: ["Halo,", "saya Rezi."],
+    lead: "Fokus saya bukan sekadar menulis baris kode, melainkan merancang arsitektur sistem dan efisiensi eksekusi memanfaatkan perangkat modern untuk mengubah ide Anda menjadi produk aktif secepat mungkin tanpa mengorbankan kualitas.",
+    body: "Berbekal pengalaman full-stack selama lebih dari enam tahun, saat ini saya mengelola pipeline sub-agent AI dari tahap discovery hingga deployment, menggabungkan eksekusi teknis dengan sudut pandang bisnis yang tajam untuk menilai kelayakan serta nilai strategis dari setiap fitur yang saya bangun.",
+    workflowCta: "Lihat cara saya bekerja",
+    portraitAlt: "Foto hitam-putih Rezi, mata ditutup coretan hitam",
     portraitCaption: "This is not me",
   },
   en: {
-    h1: ["Hello,", "I'm", "Rezi."],
-    lead: "Rather than just typing lines of code, my focus is on system architecture and execution efficiency using modern tools to transform your idea into a live product as quickly as possible without compromising quality. Backed by over six years of full-stack experience, I now orchestrate an AI sub-agent pipeline spanning from discovery to deployment, combining technical execution with a sharp commercial perspective to evaluate both the feasibility and strategic value of every feature I build.",
-    portraitAlt:
-      "Black-and-white photo of Rezi with eyes redacted",
+    title: ["Hello,", "I'm Rezi."],
+    lead: "Rather than just typing lines of code, my focus is on system architecture and execution efficiency using modern tools to transform your idea into a live product as quickly as possible without compromising quality.",
+    body: "Backed by over six years of full-stack experience, I now orchestrate an AI sub-agent pipeline spanning from discovery to deployment, combining technical execution with a sharp commercial perspective to evaluate both the feasibility and strategic value of every feature I build.",
+    workflowCta: "See how I work",
+    portraitAlt: "Black-and-white photo of Rezi with eyes redacted",
     portraitCaption: "This is not me",
   },
 };

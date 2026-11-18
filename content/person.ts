@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/locale";
 
 /**
  * Identity already shown in the UI (T-029.1).
- * `name` = About h1 (`ABOUT_COPY.h1`), not an unwritten legal name.
+ * `name` = About title (`ABOUT_COPY.title`), not an unwritten legal name.
  * `jobTitle` = same phrase in Quick Info bio — not a new string.
  * `worksFor` = workplace shown in About section (`#now`) and Quick Info.
  * Email / sameAs from `content/data/email.json` + `links.json`. JSON-LD is not written in this file.
