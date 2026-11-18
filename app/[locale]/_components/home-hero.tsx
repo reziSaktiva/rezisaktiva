@@ -33,11 +33,13 @@ export function HomeHero({
 }) {
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
-  const progress = useTransform(scrollY, (y) =>
-    typeof window === "undefined"
-      ? 0
-      : Math.min(Math.max(y / (window.innerHeight * 0.9), 0), 1),
-  );
+  const progress = useTransform(scrollY, (y) => {
+    // innerHeight can be 0 (hidden or background tab at load): 0 / 0 is NaN,
+    // which would reach the style as `blur(NaNpx)` / `opacity: NaN`.
+    const range = typeof window === "undefined" ? 0 : window.innerHeight * 0.9;
+    if (!(range > 0)) return 0;
+    return Math.min(Math.max(y / range, 0), 1);
+  });
   const blur = useTransform(progress, (p) =>
     p <= 0.001 ? "none" : `blur(${(p * 18).toFixed(1)}px)`,
   );
