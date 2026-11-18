@@ -517,3 +517,198 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 .site-cursor[data-mode="label"] > span {
   opacity: 1;
 }
+
+/*
+ * T-080.1 / T-080.2 — Home hero and About (ADR-052, ADR-054 point 4).
+ * Class prefix `home-*` (new names; the legacy Home rules they replace were
+ * deleted from `legacy-identity.css`). Values follow
+ * `design-mockups/shared.css` (v5), adapted. Home IA: hero, About, Work
+ * (T-080.3, after About), footer.
+ */
+.home-page {
+  /*
+   * Masthead height (`.mh-masthead`): top padding plus the taller of the
+   * brand line box (wordmark, line-height 0.8) and the nav row. The hero
+   * slides under the in-flow masthead by this much, like the mockup's
+   * absolute header. If the masthead geometry changes, update this.
+   */
+  --home-masthead-h: calc(
+    26px + max(clamp(56px, 6.6vw, 100px) * 0.8, clamp(30px, 4vw, 56px) + 17px)
+  );
+}
+
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  min-height: 560px;
+  margin-top: calc(-1 * var(--home-masthead-h));
+  padding-top: var(--home-masthead-h);
+  overflow: hidden;
+  background-color: var(--color-paper);
+}
+
+.home-hero-title {
+  display: grid;
+  font-size: clamp(30px, 3.8vw, 60px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+/* Lines rise out of a mask. CSS, so the SSR statement animates pre-hydration. */
+.home-hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.home-hero-line > span {
+  display: block;
+  animation: home-line-in 1.1s var(--ease-monolith) 0.3s both;
+}
+
+/* First child of the h1 is the sr-only full sentence. */
+.home-hero-line:nth-child(3) > span {
+  animation-delay: 0.39s;
+}
+
+.home-hero-line:nth-child(4) > span {
+  animation-delay: 0.48s;
+}
+
+@keyframes home-line-in {
+  from {
+    transform: translateY(110%);
+  }
+}
+
+.home-hero-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 var(--spacing-gutter) 24px;
+}
+
+.home-hero-lede {
+  max-width: 38ch;
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .home-hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-hero-lede {
+    text-align: left;
+  }
+}
+
+/* About: portrait left, title + scrubbed lead right, supporting copy below. */
+.home-about {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto 1fr;
+  gap: clamp(30px, 5vw, 70px) 24px;
+  align-items: start;
+  padding: clamp(80px, 11vw, 170px) var(--spacing-gutter);
+  background-color: var(--color-paper);
+}
+
+.home-about-media {
+  grid-column: 1 / 6;
+  grid-row: 1 / span 2;
+}
+
+.home-about-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.home-about-text {
+  grid-column: 7 / 13;
+  gap: clamp(28px, 4vw, 56px);
+  padding-top: 4px;
+}
+
+.home-about-lead {
+  max-width: 22ch;
+}
+
+.home-about-small {
+  grid-column: 7 / 12;
+}
+
+@media (max-width: 900px) {
+  .home-about {
+    grid-template-rows: none;
+    row-gap: 32px;
+  }
+
+  .home-about-media,
+  .home-about-text,
+  .home-about-small {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+/* Outline pill; an ink wave fills it on hover/focus (mockup `.pill`). */
+.home-pill {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 24px;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: color 0.45s var(--ease-monolith);
+}
+
+.home-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background-color: var(--color-ink);
+  transform: translateY(101%);
+  transition:
+    transform 0.6s var(--ease-monolith),
+    border-radius 0.6s var(--ease-monolith);
+}
+
+.home-pill:hover,
+.home-pill:focus-visible {
+  color: var(--color-paper);
+}
+
+.home-pill:hover::before,
+.home-pill:focus-visible::before {
+  border-radius: 0;
+  transform: none;
+}
+
+.home-pill:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-line > span {
+    animation: none;
+  }
+
+  .home-pill,
+  .home-pill::before {
+    transition: none;
+  }
+}
