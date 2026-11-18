@@ -946,3 +946,330 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
     transition: none;
   }
 }
+
+
+/*
+ * ===== T-082 Workflow page (Monolith) =====
+ * Scoped `workflow-*` classes for `/[locale]/workflow`. Values follow
+ * `design-mockups/shared.css` (`.phead`, `.cmp`, `.pcard`, `.adr`, `.pill`).
+ * Spacing between children is `gap`; sections set their own padding.
+ */
+/*
+ * The masthead is in flow and its height varies with the wordmark size, so on
+ * this page it overlays the paper head instead (mockup: absolute masthead).
+ * Scoped with `:has()`; the chrome lane may replace this with a global rule.
+ */
+.site-chrome:has(.workflow-page) .mh-header {
+  position: absolute;
+  inset: 0 0 auto;
+}
+
+.workflow-head {
+  gap: clamp(26px, 4vw, 56px);
+  padding-block: clamp(170px, 20vw, 290px) clamp(40px, 6vw, 80px);
+}
+
+.workflow-close {
+  padding-block: clamp(80px, 11vw, 170px);
+}
+
+/* Two-pane compare: hovered pane widens on fine pointers. */
+.workflow-cmp {
+  min-height: 78svh;
+}
+
+.workflow-cmp-pane {
+  padding-block: clamp(36px, 5vw, 80px);
+  transition: flex-grow 0.9s var(--ease-monolith);
+}
+
+.workflow-cmp-pane--chaos {
+  background-color: color-mix(in srgb, var(--color-ink) 14%, var(--color-paper));
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 64rem) {
+  .workflow-cmp-pane:hover {
+    flex-grow: 1.7;
+  }
+}
+
+.workflow-cmp-title {
+  font-size: clamp(44px, 6vw, 96px);
+}
+
+.workflow-cmp-pane--chaos .workflow-cmp-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.05em;
+  text-decoration-color: color-mix(in srgb, var(--color-ink) 40%, transparent);
+}
+
+.workflow-cmp-point {
+  padding-block: 14px;
+  border-top: 1px solid var(--color-rule-inv);
+}
+
+.workflow-cmp-pane--chaos .workflow-cmp-point {
+  border-top-color: color-mix(in srgb, var(--color-ink) 25%, transparent);
+}
+
+.workflow-cmp-point-title {
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1;
+}
+
+.workflow-cmp-point-body {
+  max-width: 42ch;
+  font-size: 13px;
+  line-height: 1.2;
+  opacity: 0.65;
+}
+
+/* Sticky stacking rule cards: each card sits 26px lower and one layer up. */
+.workflow-rules {
+  padding-top: clamp(40px, 6vw, 90px);
+}
+
+.workflow-rule {
+  position: sticky;
+  top: calc(56px + var(--workflow-rule-k, 0) * 26px);
+  z-index: calc(var(--workflow-rule-k, 0) + 1);
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 24px;
+  align-content: start;
+  align-items: start;
+  min-height: 62svh;
+  padding-block: clamp(26px, 3.2vw, 48px) clamp(60px, 9vw, 120px);
+  background-color: var(--color-paper);
+  box-shadow: 0 -1px 0 var(--color-rule);
+}
+
+.workflow-rule:nth-of-type(2) {
+  --workflow-rule-k: 1;
+  background-color: var(--color-cream);
+}
+
+.workflow-rule:nth-of-type(3) {
+  --workflow-rule-k: 2;
+  background-color: color-mix(in srgb, var(--color-ink) 7%, var(--color-paper));
+}
+
+.workflow-rule:nth-of-type(4) {
+  --workflow-rule-k: 3;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.workflow-rule:nth-of-type(5) {
+  --workflow-rule-k: 4;
+}
+
+.workflow-rule-num {
+  font-size: clamp(54px, 7vw, 110px);
+  line-height: 0.8;
+}
+
+.workflow-rule-title {
+  font-size: clamp(36px, 5.6vw, 92px);
+}
+
+.workflow-rule-body {
+  max-width: 40ch;
+  font-size: clamp(14px, 1.3vw, 18px);
+  line-height: 1.2;
+  opacity: 0.75;
+}
+
+@media (max-width: 56.25rem) {
+  .workflow-rule {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Method: roles side by side; static fallback list for touch / reduced motion. */
+.workflow-method-roles {
+  grid-template-columns: 1fr 1fr;
+}
+
+.workflow-method-role-body {
+  max-width: 36ch;
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.15;
+}
+
+.workflow-method-static {
+  gap: clamp(30px, 5vw, 70px);
+  padding-block: clamp(70px, 9vw, 140px);
+}
+
+.workflow-method-step {
+  padding-block: clamp(22px, 3vw, 40px);
+  border-top: 1px solid var(--color-rule);
+}
+
+@media (max-width: 47.5rem) {
+  .workflow-method-roles {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ADR accordion on ink. */
+.workflow-adr {
+  gap: clamp(30px, 5vw, 70px);
+  padding-block: clamp(70px, 9vw, 140px);
+}
+
+.workflow-adr .copy {
+  max-width: 44ch;
+}
+
+.workflow-adr-item {
+  border-top: 1px solid var(--color-rule-inv);
+}
+
+.workflow-adr-item:last-child {
+  border-bottom: 1px solid var(--color-rule-inv);
+}
+
+.workflow-adr-trigger {
+  display: grid;
+  grid-template-columns: clamp(90px, 12vw, 180px) 1fr auto;
+  gap: 20px;
+  align-items: baseline;
+  padding-block: clamp(18px, 2.4vw, 32px);
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+  text-decoration: none;
+  transition: padding 0.5s var(--ease-monolith);
+}
+
+.workflow-adr-trigger:hover {
+  padding-left: 14px;
+  text-decoration: none;
+}
+
+.workflow-adr-trigger:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 4px;
+}
+
+.workflow-adr-trigger [data-slot="accordion-trigger-icon"] {
+  display: none;
+}
+
+.workflow-adr-id {
+  font-size: clamp(20px, 2vw, 28px);
+  color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+}
+
+.workflow-adr-title {
+  font-size: clamp(34px, 5.4vw, 84px);
+}
+
+.workflow-adr-plus {
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.5s var(--ease-monolith);
+}
+
+.workflow-adr-trigger[aria-expanded="true"] .workflow-adr-plus {
+  transform: rotate(45deg);
+}
+
+.workflow-adr-panel {
+  height: auto;
+  padding-bottom: clamp(26px, 3vw, 44px);
+}
+
+.workflow-adr-cols {
+  grid-template-columns: clamp(90px, 12vw, 180px) repeat(3, 1fr);
+  gap: 20px;
+}
+
+.workflow-adr-dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+}
+
+.workflow-adr-dd {
+  max-width: 34ch;
+  font-size: 14px;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--color-paper) 75%, transparent);
+}
+
+@media (max-width: 56.25rem) {
+  .workflow-adr-trigger {
+    grid-template-columns: 1fr auto;
+  }
+
+  .workflow-adr-id {
+    grid-column: 1 / -1;
+  }
+
+  .workflow-adr-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pill call to action: ink fill rises on hover. */
+.workflow-pill {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  padding: 15px 24px;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-full, 999px);
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: color 0.45s var(--ease-monolith);
+}
+
+.workflow-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-ink);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform: translateY(101%);
+  transition:
+    transform 0.6s var(--ease-monolith),
+    border-radius 0.6s var(--ease-monolith);
+}
+
+.workflow-pill:hover::before,
+.workflow-pill:focus-visible::before {
+  transform: none;
+  border-radius: 0;
+}
+
+.workflow-pill:hover,
+.workflow-pill:focus-visible {
+  color: var(--color-paper);
+}
+
+.workflow-pill:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workflow-cmp-pane,
+  .workflow-adr-trigger,
+  .workflow-adr-plus,
+  .workflow-pill,
+  .workflow-pill::before {
+    transition: none;
+  }
+
+  .workflow-adr-panel,
+  [data-slot="accordion-content"]:has(> .workflow-adr-panel) {
+    animation: none;
+  }
+}
+/* ===== end T-082 Workflow page ===== */

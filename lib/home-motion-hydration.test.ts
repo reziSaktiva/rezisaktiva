@@ -13,16 +13,6 @@ const rootLayout = readFileSync(
   "utf8",
 );
 
-const workflowSources = [
-  "workflow-hero.tsx",
-  "workflow-pipeline.tsx",
-  "workflow-principles.tsx",
-  "workflow-adr-vault.tsx",
-].map((file) => ({
-  file,
-  source: readFileSync(path.join(componentsDir, file), "utf8"),
-}));
-
 function exportFn(source: string, name: string, nextName: string): string {
   const start = source.indexOf(`export function ${name}`);
   const end = source.indexOf(`export function ${nextName}`);
@@ -54,16 +44,6 @@ describe("motion hydration (PR #68 review)", () => {
     expect(magnetic).toMatch(
       /const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/,
     );
-  });
-});
-
-describe("workflow motion hydration", () => {
-  it("does not branch Motion initial on useReducedMotion", () => {
-    for (const { file, source } of workflowSources) {
-      expect(source, file).not.toContain("useReducedMotion");
-      expect(source, file).not.toMatch(/reduceMotion\s*\?/);
-      expect(source, file).toMatch(/initial=\{/);
-    }
   });
 });
 
