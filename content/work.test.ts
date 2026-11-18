@@ -4,12 +4,18 @@ import { describe, expect, it } from "vitest";
 import {
   PROJECT_SLUG_PATTERN,
   PROJECTS_CATALOG,
+  WORK_ITEMS,
   getPublicProjectBySlug,
   publicProjectRows,
   toWorkItem,
 } from "./work";
-import { WORK_SHEET_COPY, projectActionHrefs } from "./work-sheet";
-import { WORK_CASE_COPY, getWorkCase } from "./work-case";
+import {
+  WORK_CASE_COPY,
+  caseStack,
+  getWorkCase,
+  nextWorkItem,
+  projectActionHrefs,
+} from "./work-case";
 import projects from "./data/projects.json";
 
 describe("project slugs (T-056.2)", () => {
@@ -47,10 +53,42 @@ describe("project slugs (T-056.2)", () => {
   });
 });
 
-describe("case sheet labels (T-056.2)", () => {
-  it("locks the in-sheet link copy", () => {
-    expect(WORK_SHEET_COPY.id.readMoreLabel).toBe("Baca selengkapnya");
-    expect(WORK_SHEET_COPY.en.readMoreLabel).toBe("Read the full case");
+describe("work index cards (T-081.1)", () => {
+  it("lists the public projects in catalog order in both locales", () => {
+    for (const locale of ["id", "en"] as const) {
+      expect(WORK_ITEMS[locale].map((item) => item.id)).toEqual([
+        "1",
+        "2",
+        "3",
+        "7",
+      ]);
+    }
+  });
+
+  it("gives every card a case route that resolves to the same project", () => {
+    for (const item of WORK_ITEMS.en) {
+      const { caseHref } = projectActionHrefs("en", item);
+      const slug = caseHref.split("/").at(-1)!;
+      expect(getPublicProjectBySlug(slug)?.id).toBe(item.id);
+    }
+  });
+});
+
+describe("next project link (T-081.2)", () => {
+  it("walks the public order and wraps to the first project", () => {
+    const items = WORK_ITEMS.en;
+    expect(nextWorkItem(items, "1")?.id).toBe("2");
+    expect(nextWorkItem(items, "3")?.id).toBe("7");
+    expect(nextWorkItem(items, "7")?.id).toBe("1");
+  });
+
+  it("never points at a hidden project", () => {
+    for (const item of WORK_ITEMS.id) {
+      const next = nextWorkItem(WORK_ITEMS.id, item.id);
+      expect(next).toBeDefined();
+      expect(projects.hiddenIds).not.toContain(next!.id);
+    }
+    expect(nextWorkItem(WORK_ITEMS.id, "6")).toBeUndefined();
   });
 });
 
@@ -152,6 +190,17 @@ describe("work case depth (T-058)", () => {
     expect(JSON.stringify(getWorkCase("id", "7")).toLowerCase()).not.toMatch(
       /curious/,
     );
+  });
+
+  it("merges project and section stacks into one chip row without duplicates", () => {
+    const minerank = getWorkCase("en", "3")!;
+    const chips = caseStack(minerank);
+    expect(new Set(chips).size).toBe(chips.length);
+    for (const section of minerank.sections) {
+      for (const tech of section.stack) {
+        expect(chips).toContain(tech);
+      }
+    }
   });
 
   it("locks case chrome labels", () => {

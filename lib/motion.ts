@@ -28,10 +28,6 @@ export const DURATION_MEDIUM_MAX = 0.4;
 /** Seconds — `--duration-slow-min` 525ms (`.home-reveal`, `.page-word`). */
 export const DURATION_SLOW_MIN = 0.525;
 
-/** Word/hero stagger — mockup `120ms + i * 80ms`. */
-export const WORD_REVEAL_DELAY = 0.12;
-export const WORD_REVEAL_STAGGER = 0.08;
-
 /**
  * Parse `0.55s` / `550ms` from computed style. Source of truth for overlay/page-vt
  * duration remains CSS tokens in `globals.css`.

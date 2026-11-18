@@ -13,16 +13,6 @@ const rootLayout = readFileSync(
   "utf8",
 );
 
-const workflowSources = [
-  "workflow-hero.tsx",
-  "workflow-pipeline.tsx",
-  "workflow-principles.tsx",
-  "workflow-adr-vault.tsx",
-].map((file) => ({
-  file,
-  source: readFileSync(path.join(componentsDir, file), "utf8"),
-}));
-
 function exportFn(source: string, name: string, nextName: string): string {
   const start = source.indexOf(`export function ${name}`);
   const end = source.indexOf(`export function ${nextName}`);
@@ -32,38 +22,12 @@ function exportFn(source: string, name: string, nextName: string): string {
 }
 
 describe("motion hydration (PR #68 review)", () => {
-  it("does not branch Reveal / WordReveal / HeroWords initial on useReducedMotion", () => {
-    const reveal = exportFn(homeMotion, "Reveal", "WordReveal");
-    const words = exportFn(homeMotion, "WordReveal", "HeroWords");
-    const hero = exportFn(homeMotion, "HeroWords", "Magnetic");
-
-    for (const block of [reveal, words, hero]) {
-      expect(block).not.toContain("useReducedMotion");
-      expect(block).not.toMatch(/reduceMotion\s*\?/);
-    }
-
-    expect(reveal).toContain("initial={{ opacity: 0, y: 18 }}");
-    expect(words).toContain("initial={{");
-    expect(words).toContain("opacity: 0");
-    expect(hero).toContain('initial={{ opacity: 0, y: "0.4em" }}');
-  });
-
   it("skips Magnetic animate() on leave when reduced motion", () => {
     const magnetic = exportFn(homeMotion, "Magnetic", "CursorRing");
     expect(magnetic).toContain("skipMagneticPull");
     expect(magnetic).toMatch(
       /const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/,
     );
-  });
-});
-
-describe("workflow motion hydration", () => {
-  it("does not branch Motion initial on useReducedMotion", () => {
-    for (const { file, source } of workflowSources) {
-      expect(source, file).not.toContain("useReducedMotion");
-      expect(source, file).not.toMatch(/reduceMotion\s*\?/);
-      expect(source, file).toMatch(/initial=\{/);
-    }
   });
 });
 

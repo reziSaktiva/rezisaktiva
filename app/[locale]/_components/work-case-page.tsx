@@ -1,18 +1,37 @@
+import NextImage from "next/image";
+import NextLink from "next/link";
 import { notFound } from "next/navigation";
+import { WORK_ITEMS, type WorkItem } from "@/content/work";
 import {
-  WORK_SHEET_COPY,
-  getWorkSheet,
+  WORK_CASE_COPY,
+  caseStack,
+  getWorkCase,
+  nextWorkItem,
   projectActionHrefs,
-  workSheetImages,
-} from "@/content/work-sheet";
-import { WORK_CASE_COPY, getWorkCase } from "@/content/work-case";
+} from "@/content/work-case";
+import { liveHostLabel } from "@/lib/linkify";
 import type { Locale } from "@/lib/locale";
-import type { WorkItem } from "@/content/work";
-import { Reveal, WordReveal } from "./home-motion";
+import { projectCaseHref } from "@/lib/site-url";
+import { workPhotoProps } from "@/lib/work-image";
 import { LinkedText } from "./linked-text";
-import { ProjectSheetMedia } from "./project-sheet-media";
-import { WorkLiveLinks } from "./work-live-links";
+import { ClipReveal, SplitLines } from "./reveal";
+import { WorkCasePoint } from "./work-case-point";
 
+/** Hero title lines: two words per line, like the mockup's manual breaks. */
+function titleLines(name: string): string[] {
+  const words = name.split(/\s+/).filter(Boolean);
+  const lines: string[] = [];
+  for (let i = 0; i < words.length; i += 2) {
+    lines.push(words.slice(i, i + 2).join(" "));
+  }
+  return lines;
+}
+
+/**
+ * Case page (T-081.2, ADR-046): parallax hero, meta row, sticky lede with
+ * highlighted points, stack chips, gallery with reveals, next-project link.
+ * Live stays a secondary link in the meta row; no repo link (ADR-044).
+ */
 export function WorkCasePage({
   locale,
   item,
@@ -20,107 +39,133 @@ export function WorkCasePage({
   locale: Locale;
   item: WorkItem;
 }) {
-  const labels = WORK_SHEET_COPY[locale];
-  const caseCopy = WORK_CASE_COPY[locale];
-  const sheet = getWorkSheet(locale, item.id);
-  if (!sheet) {
+  const copy = WORK_CASE_COPY[locale];
+  const depth = getWorkCase(locale, item.id);
+  if (!depth) {
     notFound();
   }
-  const depth = getWorkCase(locale, item.id);
-  const images = workSheetImages(item.id);
-  const { liveHref, liveHrefs } = projectActionHrefs(locale, item);
+  const { liveHrefs } = projectActionHrefs(locale, item);
+  const stack = caseStack(depth);
+  const next = nextWorkItem(WORK_ITEMS[locale], item.id);
 
   return (
-    <div className="work-page case-page flex flex-col">
-      <section className="work-hero">
-        <div className="home-container flex flex-col gap-8">
-          <h1 className="work-h1">
-            <WordReveal words={[item.name]} variant="compact" />
-          </h1>
-          <Reveal>
-            <p className="work-lead">{item.outcome}</p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="work-grid-section case-body">
-        <div className="home-container flex flex-col gap-8">
-          <div className="qi-cols">
-            <div className="flex flex-col gap-3">
-              <p className="qi-label">{labels.servicesLabel}</p>
-              <ul className="qi-list">
-                {sheet.services.map((service) => (
-                  <li key={service}>{service}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className="qi-label">{labels.locationLabel}</p>
-              <p>{sheet.locationOrCompany}</p>
-              <p className="qi-label">
-                {depth?.period ? caseCopy.periodLabel : labels.yearLabel}
-              </p>
-              <p>{depth?.period ?? item.year}</p>
-            </div>
-          </div>
-
-          {depth ? (
-            <div className="flex flex-col gap-8 case-depth">
-              {depth.stack.length > 0 ? (
-                <div className="flex flex-col gap-3">
-                  <p className="qi-label">{caseCopy.stackLabel}</p>
-                  <ul className="case-stack">
-                    {depth.stack.map((tech) => (
-                      <li key={tech}>{tech}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {depth.sections.map((section, index) => (
-                <div
-                  key={section.title ?? `section-${index}`}
-                  className="flex flex-col gap-3"
-                >
-                  {section.title ? (
-                    <h2 className="case-section-title">{section.title}</h2>
-                  ) : null}
-                  {section.stack.length > 0 ? (
-                    <ul className="case-stack">
-                      {section.stack.map((tech) => (
-                        <li key={tech}>{tech}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                  <ul className="qi-list">
-                    {section.bullets.map((bullet) => (
-                      <li key={bullet}>
-                        <LinkedText text={bullet} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col gap-3">
-              <p className="qi-label">{labels.descriptionLabel}</p>
-              <p className="qi-bio ps-description">
-                <LinkedText text={sheet.description} />
-              </p>
-            </div>
-          )}
-
-          <WorkLiveLinks hrefs={liveHrefs} label={labels.liveLabel} />
-
-          <ProjectSheetMedia
-            liveHref={liveHref}
-            images={images}
-            previewTitle={`${item.name} — ${labels.previewLabel}`}
-            previewLabel={labels.previewLabel}
-            imagesLabel={labels.imagesLabel}
+    <article className="monolith wcase" data-masthead="overlay">
+      <section className="wcase-hero on-ink">
+        <ClipReveal className="wcase-hero-media" parallax={0.08}>
+          <NextImage
+            {...workPhotoProps(item.imageSrc, "100vw")}
+            className="wcase-hero-img"
+            loading="eager"
+            fetchPriority="high"
           />
+        </ClipReveal>
+        <div className="wcase-hero-in">
+          <p className="small">{item.year}</p>
+          <h1 className="display type-xl">
+            <SplitLines lines={titleLines(item.name)} immediate delay={0.3} />
+          </h1>
         </div>
       </section>
-    </div>
+
+      <dl className="wcase-meta">
+        <div className="wcase-meta-item">
+          <dt className="small">{copy.servicesLabel}</dt>
+          <dd>{depth.services.join(", ")}</dd>
+        </div>
+        <div className="wcase-meta-item">
+          <dt className="small">{copy.locationLabel}</dt>
+          <dd>{depth.locationOrCompany}</dd>
+        </div>
+        <div className="wcase-meta-item">
+          <dt className="small">
+            {depth.period ? copy.periodLabel : copy.yearLabel}
+          </dt>
+          <dd>{depth.period ?? item.year}</dd>
+        </div>
+        {liveHrefs.length > 0 ? (
+          <div className="wcase-meta-item">
+            <dt className="small">{copy.liveLabel}</dt>
+            <dd className="flex flex-wrap gap-3">
+              {liveHrefs.map((href) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="wcase-tlink"
+                >
+                  {liveHostLabel(href)} <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </dd>
+          </div>
+        ) : null}
+      </dl>
+
+      <section className="wcase-body">
+        <div className="wcase-lede">
+          <h2 className="display type-md">{item.outcome}</h2>
+        </div>
+        <div className="wcase-points">
+          {depth.sections.map((section, index) => (
+            <div
+              key={section.title ?? `section-${index}`}
+              className="flex flex-col gap-3"
+            >
+              {section.title ? (
+                <h3 className="small">{section.title}</h3>
+              ) : null}
+              <ol className="wcase-list">
+                {section.bullets.map((bullet, bulletIndex) => (
+                  <WorkCasePoint key={`${bulletIndex}-${bullet}`}>
+                    <LinkedText text={bullet} />
+                  </WorkCasePoint>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {stack.length > 0 ? (
+        <section className="wcase-stack" aria-label={copy.stackLabel}>
+          <h2 className="sr-only">{copy.stackLabel}</h2>
+          <ul className="flex flex-wrap gap-2">
+            {stack.map((tech) => (
+              <li key={tech} className="wcase-chip">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {depth.gallery.length > 0 ? (
+        <section className="wcase-gallery" aria-label={copy.imagesLabel}>
+          {depth.gallery.map((src) => (
+            <ClipReveal key={src} className="wcase-shot">
+              <NextImage
+                {...workPhotoProps(
+                  src,
+                  "(max-width: 899px) 100vw, (max-width: 1400px) 75vw, 1100px",
+                )}
+                className="wcase-shot-img"
+              />
+            </ClipReveal>
+          ))}
+        </section>
+      ) : null}
+
+      {next ? (
+        <NextLink
+          href={projectCaseHref(locale, next.slug)}
+          className="wcase-next"
+          data-cursor={copy.nextCursorLabel}
+        >
+          <span className="small">{copy.nextLabel}</span>
+          <span className="display type-xl">{next.name}</span>
+        </NextLink>
+      ) : null}
+    </article>
   );
 }

@@ -179,12 +179,12 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-080.1** — Hero: contour field, three-line statement, lede, scroll cue, blur on scroll.
-- [ ] **T-080.2** — About section: portrait reveal, scrubbed lead, supporting copy, link to Workflow.
-- [ ] **T-080.3** — Work section: sticky title under staggered cards, hover blur with description.
-- [ ] **T-080.4** — Marquee, pinned method section, decision log accordion (data from `content/`).
-- [ ] **T-080.5** — Delete the old Home components and styles this replaces.
-- [ ] **T-080.6** — Verify against the mockup and the ADR-052 gates; Boss Rezi reviews the Preview.
+- [x] **T-080.1** — Hero: contour field, three-line statement, lede, scroll cue, blur on scroll. **Done 2026-11-18** (`home-hero.tsx`): three-line `h1` and scroll cue are a T-084.2 placeholder.
+- [x] **T-080.2** — About section: portrait reveal, scrubbed lead, supporting copy, link to Workflow. **Done 2026-11-18**: keeps the current redacted photo and caption with the clip reveal (wave decision). The lead and supporting copy are the existing About text, split at the sentence.
+- [x] **T-080.3** — Work section: sticky title under staggered cards, hover blur with description. **Done 2026-11-18** (`home-work.tsx`, shared `project-card.tsx`): cards 1, 2, 3, 7 link to case pages. The title and link labels are a T-084.2 placeholder.
+- [ ] **T-080.4** — Marquee, pinned method section, decision log accordion (data from `content/`). **Not built 2026-11-18:** ADR-054 point 4 keeps the marquee, method and decision log on Workflow only, not Home. Close or reword with Boss Rezi.
+- [x] **T-080.5** — Delete the old Home components and styles this replaces. **Done 2026-11-18:** removed `home-hero-wallpaper.tsx`, `status-dot.tsx`, the hero media, the unused `home-motion.tsx` exports, and the old Home/About rules in `app/legacy-identity.css`. `home-motion.tsx` stays because it is shared.
+- [ ] **T-080.6** — Verify against the mockup and the ADR-052 gates; Boss Rezi reviews the Preview. Wave 2026-11-18: local production build checked, with no console errors. Still open: Boss Rezi reviews the Preview.
 
 ---
 
@@ -206,11 +206,11 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-081.1** — Work index: floating glass nav, sticky giant title, two-column card grid with hover blur and name.
-- [ ] **T-081.2** — Case page: parallax hero, meta row, sticky lede with highlighted points, stack chips, gallery with reveals, next-project link.
-- [ ] **T-081.3** — Apply the T-077.2 outcome (sheet kept, changed, or removed) and update routing, links, and metadata.
-- [ ] **T-081.4** — Update or add unit tests for the work catalog and slugs.
-- [ ] **T-081.5** — Delete the replaced work components and styles; verify on Preview.
+- [ ] **T-081.1** — Work index: floating glass nav, sticky giant title, two-column card grid with hover blur and name. Wave 2026-11-18: index, sticky giant title and 2-column card grid done. **Still open: the floating glass nav** needs a header (chrome) change.
+- [x] **T-081.2** — Case page: parallax hero, meta row, sticky lede with highlighted points, stack chips, gallery with reveals, next-project link. **Done 2026-11-18.**
+- [x] **T-081.3** — Apply the T-077.2 outcome (sheet kept, changed, or removed) and update routing, links, and metadata. **Done 2026-11-18:** the sheet is removed and tiles go straight to `/[locale]/projects/[slug]` (ADR-054 point 2). `content/work-sheet.ts` was folded into `work-case.ts`.
+- [x] **T-081.4** — Update or add unit tests for the work catalog and slugs. **Done 2026-11-18:** work tests were updated and `pnpm test` passes.
+- [ ] **T-081.5** — Delete the replaced work components and styles; verify on Preview. Wave 2026-11-18: deletion done (sheet, tile, live-links components and old styles). Still open: Preview check.
 
 ---
 
@@ -232,11 +232,11 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-082.1** — Page head and the two-pane compare section with hover expand.
-- [ ] **T-082.2** — Sticky stacking rule cards.
-- [ ] **T-082.3** — Pinned method section (reuse the T-079.5 primitive) and the ADR accordion.
-- [ ] **T-082.4** — Closing call to action pointing to the Contact page.
-- [ ] **T-082.5** — Remove the old Workflow components and the old living background; verify on Preview.
+- [x] **T-082.1** — Page head and the two-pane compare section with hover expand. **Done 2026-11-18:** the pane titles are a T-084.4 placeholder.
+- [x] **T-082.2** — Sticky stacking rule cards. **Done 2026-11-18:** the rule cards use the existing five principles ("Five rules" stays open for T-084.4).
+- [x] **T-082.3** — Pinned method section (reuse the T-079.5 primitive) and the ADR accordion. **Done 2026-11-18:** the accordion holds the real ADR-001, ADR-012 and ADR-024.
+- [x] **T-082.4** — Closing call to action pointing to the Contact page. **Done 2026-11-18:** the CTA opens the Contact modal until T-083 replaces it with the page.
+- [ ] **T-082.5** — Remove the old Workflow components and the old living background; verify on Preview. Wave 2026-11-18: removal done (old `workflow-*` components, cathedral background and its test). Still open: Preview check.
 
 ---
 

@@ -8,7 +8,6 @@ import {
   type MotionValue,
 } from "motion/react";
 import { useRef } from "react";
-import { cn } from "@/lib/utils";
 import { splitWords, wordRange } from "@/lib/reveal-math";
 
 type ScrubWordsProps = {
@@ -47,10 +46,19 @@ export function ScrubWords({ text, className }: ScrubWordsProps) {
   }
 
   return (
-    <p ref={ref} className={className} aria-label={text}>
+    <p ref={ref} className={className}>
+      {/* aria-label is not supported on <p>; screen readers get this copy. */}
+      <span className="sr-only">{text}</span>
+      {/* A real space between words keeps soft-wrap opportunities. */}
       {words.map((word, i) => (
-        <span key={`${i}-${word}`} aria-hidden="true" className={cn(i > 0 && "ml-[0.25em]")}>
-          <Word word={word} index={i} count={words.length} progress={scrollYProgress} />
+        <span key={`${i}-${word}`} aria-hidden="true">
+          {i > 0 ? " " : null}
+          <Word
+            word={word}
+            index={i}
+            count={words.length}
+            progress={scrollYProgress}
+          />
         </span>
       ))}
     </p>

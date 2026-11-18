@@ -191,6 +191,16 @@
   mix-blend-mode: difference;
 }
 
+/*
+ * Overlay mode: a page whose first section is full-bleed sets
+ * `data-masthead="overlay"` on its root, and the masthead floats over it
+ * (mockup: absolute masthead) instead of pushing it down.
+ */
+.site-chrome:has([data-masthead="overlay"]) .mh-header {
+  position: absolute;
+  inset: 0 0 auto;
+}
+
 .mh-masthead {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -516,4 +526,1026 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 
 .site-cursor[data-mode="label"] > span {
   opacity: 1;
+}
+
+/* ==========================================================================
+ * T-081 — Work index and case pages (ADR-052, ADR-054 point 2).
+ * Prefixes: `pcard-*` shared project card (Work index, later Home), `wk-*`
+ * Work index, `wcase-*` case page. Values follow `design-mockups/shared.css`
+ * (v5, `.wk`, `.wcard`, `.chero`, `.cmeta`, `.cbody`, `.stack`, `.gal`,
+ * `.next`); reference, not pixel-exact.
+ * ========================================================================== */
+
+/* Project card: clip-revealed grayscale shot, blur + name veil on hover/focus. */
+.pcard {
+  position: relative;
+  display: block;
+  aspect-ratio: 585 / 609;
+  color: var(--color-paper);
+}
+
+.pcard-media {
+  position: absolute;
+  inset: 0;
+  background-color: #cfcfcf;
+}
+
+.pcard-img {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.8s var(--ease-monolith);
+}
+
+.pcard:hover .pcard-img,
+.pcard:focus-visible .pcard-img {
+  filter: grayscale(0.4) blur(9px) brightness(0.5);
+}
+
+.pcard-veil {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: clamp(18px, 2.2vw, 32px);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.55s var(--ease-monolith),
+    transform 0.7s var(--ease-monolith);
+}
+
+.pcard:hover .pcard-veil,
+.pcard:focus-visible .pcard-veil {
+  opacity: 1;
+  transform: none;
+}
+
+.pcard-name {
+  font-size: clamp(34px, 3.6vw, 56px);
+}
+
+.pcard-meta {
+  max-width: 48ch;
+  font-size: 13px;
+  line-height: 1.25;
+  opacity: 0.8;
+}
+
+.pcard:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+  .pcard-veil {
+    opacity: 1;
+    transform: none;
+    background: linear-gradient(0deg, rgb(2 2 2 / 0.7), transparent 55%);
+  }
+}
+
+/* Work index: sticky giant title under the two-column grid. */
+.wk {
+  position: relative;
+  padding-bottom: clamp(70px, 9vw, 130px);
+}
+
+/* Hatched side rails (mockup `.wk::before/::after`). */
+.wk::before,
+.wk::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(14px, 2.4vw, 34px);
+  border-inline: 1px solid var(--color-rule);
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 6px,
+    rgb(2 2 2 / 0.1) 6px 7px
+  );
+}
+
+.wk::before {
+  left: calc(var(--spacing-gutter) * 0.4);
+}
+
+.wk::after {
+  right: calc(var(--spacing-gutter) * 0.4);
+}
+
+.wk-head {
+  position: sticky;
+  top: 74px;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  height: clamp(310px, 28vw, 450px);
+  padding: clamp(40px, 5vw, 80px) var(--spacing-gutter) 0;
+  text-align: center;
+}
+
+.wk-title {
+  font-size: clamp(72px, 14vw, 230px);
+  line-height: 0.82;
+}
+
+.wk-lead {
+  max-width: 40ch;
+}
+
+.wk-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2.2vw, 32px);
+  padding-inline: clamp(var(--spacing-gutter), 7.8vw, 112px);
+}
+
+@media (max-width: 767px) {
+  .wk::before,
+  .wk::after {
+    display: none;
+  }
+
+  .wk-head {
+    height: auto;
+    padding-bottom: clamp(40px, 10vw, 60px);
+  }
+
+  .wk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Paper behind the masthead on Work surfaces (body is still the legacy ink). */
+.site-chrome:has(.wk, .wcase) {
+  background-color: var(--color-paper);
+}
+
+.wcase-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.wcase-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.wcase-hero-img {
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.5);
+}
+
+/* Bottom scrim so the title stays legible on light screenshots. */
+.wcase-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgb(2 2 2 / 0.75), transparent 60%);
+}
+
+.wcase-hero-in {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 var(--spacing-gutter) 34px;
+}
+
+.wcase-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: clamp(36px, 5vw, 64px) var(--spacing-gutter);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.wcase-meta-item {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.wcase-meta-item dd {
+  margin: 0;
+}
+
+.wcase-tlink {
+  display: inline-flex;
+  gap: 8px;
+  width: fit-content;
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.wcase-body {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+  padding: clamp(60px, 8vw, 120px) var(--spacing-gutter);
+}
+
+.wcase-lede {
+  position: sticky;
+  top: 100px;
+  grid-column: 1 / 7;
+}
+
+.wcase-points {
+  grid-column: 8 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 64px);
+  counter-reset: wcase-point;
+}
+
+.wcase-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wcase-point {
+  counter-increment: wcase-point;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 0;
+  border-top: 1px solid var(--color-rule);
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.18;
+  color: var(--color-soft);
+  opacity: 0.35;
+  transition: opacity 0.5s var(--ease-monolith);
+}
+
+.wcase-point::before {
+  content: counter(wcase-point, decimal-leading-zero);
+  font-family: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  font-size: 16px;
+  color: var(--color-mute);
+}
+
+.wcase-point[data-on="true"],
+.wcase-point:hover,
+.wcase-point:focus-within {
+  opacity: 1;
+}
+
+.wcase-point a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.wcase-stack {
+  padding: 0 var(--spacing-gutter) clamp(50px, 6vw, 90px);
+}
+
+.wcase-chip {
+  padding: 7px 14px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Gallery: a staggered 12-column layout that repeats every four shots. */
+.wcase-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(40px, 6vw, 100px) 24px;
+  align-items: start;
+  padding: 0 var(--spacing-gutter) clamp(80px, 10vw, 150px);
+}
+
+.wcase-shot {
+  background-color: #ddd;
+}
+
+.wcase-shot-img {
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.6s;
+}
+
+.wcase-shot:hover .wcase-shot-img {
+  filter: none;
+}
+
+.wcase-shot:nth-child(4n + 1) {
+  grid-column: 1 / 10;
+  aspect-ratio: 16 / 10;
+}
+
+.wcase-shot:nth-child(4n + 2) {
+  z-index: 1;
+  grid-column: 9 / 13;
+  aspect-ratio: 4 / 5;
+  margin-top: -12vw;
+}
+
+.wcase-shot:nth-child(4n + 3) {
+  grid-column: 2 / 8;
+  aspect-ratio: 4 / 3;
+}
+
+.wcase-shot:nth-child(4n + 4) {
+  grid-column: 9 / 13;
+  align-self: end;
+  aspect-ratio: 1;
+}
+
+/* Next project: ink wipes up behind the giant name on hover/focus. */
+.wcase-next {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  padding: clamp(90px, 13vw, 200px) var(--spacing-gutter);
+  text-align: center;
+  background-color: var(--color-paper);
+}
+
+.wcase-next::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-ink);
+  transform: translateY(100%);
+  transition: transform 0.8s var(--ease-monolith-io);
+}
+
+.wcase-next > * {
+  transition: color 0.5s 0.1s;
+}
+
+.wcase-next:hover::before,
+.wcase-next:focus-visible::before {
+  transform: none;
+}
+
+.wcase-next:hover > *,
+.wcase-next:focus-visible > * {
+  color: var(--color-paper);
+}
+
+.wcase-next:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: -8px;
+}
+
+.wcase-tlink:focus-visible,
+.wcase-point a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (max-width: 899px) {
+  .wcase-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wcase-lede,
+  .wcase-points {
+    position: static;
+    grid-column: 1 / -1;
+  }
+
+  .wcase-shot:nth-child(n) {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pcard-img,
+  .pcard-veil,
+  .wcase-point,
+  .wcase-shot-img,
+  .wcase-next::before,
+  .wcase-next > * {
+    transition: none;
+  }
+}
+
+
+/*
+ * ===== T-082 Workflow page (Monolith) =====
+ * Scoped `workflow-*` classes for `/[locale]/workflow`. Values follow
+ * `design-mockups/shared.css` (`.phead`, `.cmp`, `.pcard`, `.adr`, `.pill`).
+ * Spacing between children is `gap`; sections set their own padding.
+ */
+.workflow-head {
+  gap: clamp(26px, 4vw, 56px);
+  padding-block: clamp(170px, 20vw, 290px) clamp(40px, 6vw, 80px);
+}
+
+.workflow-close {
+  padding-block: clamp(80px, 11vw, 170px);
+}
+
+/* Two-pane compare: hovered pane widens on fine pointers. */
+.workflow-cmp {
+  min-height: 78svh;
+}
+
+.workflow-cmp-pane {
+  padding-block: clamp(36px, 5vw, 80px);
+  transition: flex-grow 0.9s var(--ease-monolith);
+}
+
+.workflow-cmp-pane--chaos {
+  background-color: color-mix(in srgb, var(--color-ink) 14%, var(--color-paper));
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 64rem) {
+  .workflow-cmp-pane:hover {
+    flex-grow: 1.7;
+  }
+}
+
+.workflow-cmp-title {
+  font-size: clamp(44px, 6vw, 96px);
+}
+
+.workflow-cmp-pane--chaos .workflow-cmp-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.05em;
+  text-decoration-color: color-mix(in srgb, var(--color-ink) 40%, transparent);
+}
+
+.workflow-cmp-point {
+  padding-block: 14px;
+  border-top: 1px solid var(--color-rule-inv);
+}
+
+.workflow-cmp-pane--chaos .workflow-cmp-point {
+  border-top-color: color-mix(in srgb, var(--color-ink) 25%, transparent);
+}
+
+.workflow-cmp-point-title {
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1;
+}
+
+.workflow-cmp-point-body {
+  max-width: 42ch;
+  font-size: 13px;
+  line-height: 1.2;
+  opacity: 0.65;
+}
+
+/* Sticky stacking rule cards: each card sits 26px lower and one layer up. */
+.workflow-rules {
+  padding-top: clamp(40px, 6vw, 90px);
+}
+
+.workflow-rule {
+  position: sticky;
+  top: calc(56px + var(--workflow-rule-k, 0) * 26px);
+  z-index: calc(var(--workflow-rule-k, 0) + 1);
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 24px;
+  align-content: start;
+  align-items: start;
+  min-height: 62svh;
+  padding-block: clamp(26px, 3.2vw, 48px) clamp(60px, 9vw, 120px);
+  background-color: var(--color-paper);
+  box-shadow: 0 -1px 0 var(--color-rule);
+}
+
+.workflow-rule:nth-of-type(2) {
+  --workflow-rule-k: 1;
+  background-color: var(--color-cream);
+}
+
+.workflow-rule:nth-of-type(3) {
+  --workflow-rule-k: 2;
+  background-color: color-mix(in srgb, var(--color-ink) 7%, var(--color-paper));
+}
+
+.workflow-rule:nth-of-type(4) {
+  --workflow-rule-k: 3;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.workflow-rule:nth-of-type(5) {
+  --workflow-rule-k: 4;
+}
+
+.workflow-rule-num {
+  font-size: clamp(54px, 7vw, 110px);
+  line-height: 0.8;
+}
+
+.workflow-rule-title {
+  font-size: clamp(36px, 5.6vw, 92px);
+}
+
+.workflow-rule-body {
+  max-width: 40ch;
+  font-size: clamp(14px, 1.3vw, 18px);
+  line-height: 1.2;
+  opacity: 0.75;
+}
+
+@media (max-width: 56.25rem) {
+  .workflow-rule {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Method: roles side by side; static fallback list for touch / reduced motion. */
+.workflow-method-roles {
+  grid-template-columns: 1fr 1fr;
+}
+
+.workflow-method-role-body {
+  max-width: 36ch;
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.15;
+}
+
+.workflow-method-static {
+  gap: clamp(30px, 5vw, 70px);
+  padding-block: clamp(70px, 9vw, 140px);
+}
+
+.workflow-method-step {
+  padding-block: clamp(22px, 3vw, 40px);
+  border-top: 1px solid var(--color-rule);
+}
+
+@media (max-width: 47.5rem) {
+  .workflow-method-roles {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ADR accordion on ink. */
+.workflow-adr {
+  gap: clamp(30px, 5vw, 70px);
+  padding-block: clamp(70px, 9vw, 140px);
+}
+
+.workflow-adr .copy {
+  max-width: 44ch;
+}
+
+.workflow-adr-item {
+  border-top: 1px solid var(--color-rule-inv);
+}
+
+.workflow-adr-item:last-child {
+  border-bottom: 1px solid var(--color-rule-inv);
+}
+
+.workflow-adr-trigger {
+  display: grid;
+  grid-template-columns: clamp(90px, 12vw, 180px) 1fr auto;
+  gap: 20px;
+  align-items: baseline;
+  padding-block: clamp(18px, 2.4vw, 32px);
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+  text-decoration: none;
+  transition: padding 0.5s var(--ease-monolith);
+}
+
+.workflow-adr-trigger:hover {
+  padding-left: 14px;
+  text-decoration: none;
+}
+
+.workflow-adr-trigger:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 4px;
+}
+
+.workflow-adr-trigger [data-slot="accordion-trigger-icon"] {
+  display: none;
+}
+
+.workflow-adr-id {
+  font-size: clamp(20px, 2vw, 28px);
+  color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+}
+
+.workflow-adr-title {
+  font-size: clamp(34px, 5.4vw, 84px);
+}
+
+.workflow-adr-plus {
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.5s var(--ease-monolith);
+}
+
+.workflow-adr-trigger[aria-expanded="true"] .workflow-adr-plus {
+  transform: rotate(45deg);
+}
+
+.workflow-adr-panel {
+  height: auto;
+  padding-bottom: clamp(26px, 3vw, 44px);
+}
+
+.workflow-adr-cols {
+  grid-template-columns: clamp(90px, 12vw, 180px) repeat(3, 1fr);
+  gap: 20px;
+}
+
+.workflow-adr-dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+}
+
+.workflow-adr-dd {
+  max-width: 34ch;
+  font-size: 14px;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--color-paper) 75%, transparent);
+}
+
+@media (max-width: 56.25rem) {
+  .workflow-adr-trigger {
+    grid-template-columns: 1fr auto;
+  }
+
+  .workflow-adr-id {
+    grid-column: 1 / -1;
+  }
+
+  .workflow-adr-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pill call to action: ink fill rises on hover. */
+.workflow-pill {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  padding: 15px 24px;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-full, 999px);
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: color 0.45s var(--ease-monolith);
+}
+
+.workflow-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-ink);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform: translateY(101%);
+  transition:
+    transform 0.6s var(--ease-monolith),
+    border-radius 0.6s var(--ease-monolith);
+}
+
+.workflow-pill:hover::before,
+.workflow-pill:focus-visible::before {
+  transform: none;
+  border-radius: 0;
+}
+
+.workflow-pill:hover,
+.workflow-pill:focus-visible {
+  color: var(--color-paper);
+}
+
+.workflow-pill:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workflow-cmp-pane,
+  .workflow-adr-trigger,
+  .workflow-adr-plus,
+  .workflow-pill,
+  .workflow-pill::before {
+    transition: none;
+  }
+
+  .workflow-adr-panel,
+  [data-slot="accordion-content"]:has(> .workflow-adr-panel) {
+    animation: none;
+  }
+}
+/* ===== end T-082 Workflow page ===== */
+
+
+/*
+ * T-080.1 / T-080.2 — Home hero and About (ADR-052, ADR-054 point 4).
+ * Class prefix `home-*` (new names; the legacy Home rules they replace were
+ * deleted from `legacy-identity.css`). Values follow
+ * `design-mockups/shared.css` (v5), adapted. Home IA: hero, About, Work
+ * (T-080.3, after About), footer.
+ */
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background-color: var(--color-paper);
+}
+
+.home-hero-title {
+  display: grid;
+  font-size: clamp(30px, 3.8vw, 60px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+/* Lines rise out of a mask. CSS, so the SSR statement animates pre-hydration. */
+.home-hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.home-hero-line > span {
+  display: block;
+  animation: home-line-in 1.1s var(--ease-monolith) 0.3s both;
+}
+
+/* First child of the h1 is the sr-only full sentence. */
+.home-hero-line:nth-child(3) > span {
+  animation-delay: 0.39s;
+}
+
+.home-hero-line:nth-child(4) > span {
+  animation-delay: 0.48s;
+}
+
+@keyframes home-line-in {
+  from {
+    transform: translateY(110%);
+  }
+}
+
+.home-hero-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 var(--spacing-gutter) 24px;
+}
+
+.home-hero-lede {
+  max-width: 38ch;
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .home-hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-hero-lede {
+    text-align: left;
+  }
+}
+
+/* About: portrait left, title + scrubbed lead right, supporting copy below. */
+.home-about {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto 1fr;
+  gap: clamp(30px, 5vw, 70px) 24px;
+  align-items: start;
+  padding: clamp(80px, 11vw, 170px) var(--spacing-gutter);
+  background-color: var(--color-paper);
+}
+
+.home-about-media {
+  grid-column: 1 / 6;
+  grid-row: 1 / span 2;
+}
+
+.home-about-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.home-about-text {
+  grid-column: 7 / 13;
+  gap: clamp(28px, 4vw, 56px);
+  padding-top: 4px;
+}
+
+.home-about-lead {
+  max-width: 22ch;
+}
+
+.home-about-small {
+  grid-column: 7 / 12;
+}
+
+@media (max-width: 900px) {
+  .home-about {
+    grid-template-rows: none;
+    row-gap: 32px;
+  }
+
+  .home-about-media,
+  .home-about-text,
+  .home-about-small {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+/* Outline pill; an ink wave fills it on hover/focus (mockup `.pill`). */
+.home-pill {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 24px;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: color 0.45s var(--ease-monolith);
+}
+
+.home-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background-color: var(--color-ink);
+  transform: translateY(101%);
+  transition:
+    transform 0.6s var(--ease-monolith),
+    border-radius 0.6s var(--ease-monolith);
+}
+
+.home-pill:hover,
+.home-pill:focus-visible {
+  color: var(--color-paper);
+}
+
+.home-pill:hover::before,
+.home-pill:focus-visible::before {
+  border-radius: 0;
+  transform: none;
+}
+
+.home-pill:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+/*
+ * T-080.3 — Home Work section (mockup `.work`): ink band, sticky giant title
+ * (difference blend) under staggered `pcard`s, link to the Work index.
+ */
+.home-work {
+  position: relative;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.home-work-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  padding-inline: var(--spacing-gutter);
+  text-align: center;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.home-work-title {
+  font-size: clamp(72px, 15vw, 250px);
+  line-height: 0.84;
+  color: var(--color-paper);
+}
+
+.home-work-cards {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(60px, 9vw, 150px) 24px;
+  margin-top: -42svh;
+  padding: 0 var(--spacing-gutter) clamp(80px, 10vw, 150px);
+}
+
+/* Staggered columns and aspects (mockup `.card:nth-child(n)`). */
+.home-work-card {
+  aspect-ratio: 4 / 5;
+}
+
+.home-work-card:nth-child(1) {
+  grid-column: 8 / 13;
+  margin-top: 8vh;
+}
+
+.home-work-card:nth-child(2) {
+  grid-column: 2 / 8;
+  aspect-ratio: 5 / 4;
+}
+
+.home-work-card:nth-child(3) {
+  grid-column: 7 / 12;
+}
+
+.home-work-card:nth-child(4) {
+  grid-column: 1 / 6;
+  aspect-ratio: 1;
+}
+
+.home-work-card:focus-visible {
+  outline-color: var(--color-paper);
+}
+
+.home-work-more {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding-bottom: clamp(70px, 9vw, 130px);
+}
+
+/* Inverted pill on the ink band. */
+.home-work .home-pill::before {
+  background-color: var(--color-paper);
+}
+
+.home-work .home-pill:hover,
+.home-work .home-pill:focus-visible {
+  color: var(--color-ink);
+}
+
+.home-work .home-pill:focus-visible {
+  outline-color: var(--color-paper);
+}
+
+@media (max-width: 760px) {
+  .home-work-cards {
+    margin-top: -20svh;
+  }
+
+  .home-work-card:nth-child(n) {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-line > span {
+    animation: none;
+  }
+
+  .home-pill,
+  .home-pill::before {
+    transition: none;
+  }
 }

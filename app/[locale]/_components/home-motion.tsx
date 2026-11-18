@@ -10,130 +10,20 @@ import {
 import { createPortal } from "react-dom";
 import {
   DURATION_FAST_MAX,
-  DURATION_MEDIUM_MAX,
-  DURATION_SLOW_MIN,
   EASE_STANDARD,
-  WORD_REVEAL_DELAY,
-  WORD_REVEAL_STAGGER,
   animate,
-  motion,
   useReducedMotion,
 } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 
 function hasFineHover(): boolean {
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 }
-
-const REVEAL_TWEEN = {
-  type: "tween" as const,
-  duration: DURATION_SLOW_MIN,
-  ease: EASE_STANDARD,
-};
-
-const HERO_TWEEN = {
-  type: "tween" as const,
-  duration: DURATION_MEDIUM_MAX,
-  ease: EASE_STANDARD,
-};
 
 const MAGNETIC_TWEEN = {
   type: "tween" as const,
   duration: DURATION_FAST_MAX,
   ease: EASE_STANDARD,
 };
-
-/**
- * Scroll-triggered fade/slide — pola `.home-reveal` (ADR-017).
- * Tween `--duration-slow-min` + `--ease-standard`, not spring.
- */
-export function Reveal({
-  children,
-  className,
-  axis = "vertical",
-}: {
-  children: ReactNode;
-  className?: string;
-  axis?: "vertical" | "horizontal";
-}) {
-  return (
-    <motion.div
-      className={cn(
-        "home-reveal",
-        axis === "horizontal" && "home-work-head",
-        className,
-      )}
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={REVEAL_TWEEN}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-/**
- * Word reveal — mockup `runWordReveal()` (120ms + i * 80ms).
- * `inline` = About h1; `compact` = Work h1 (page-line-compact).
- */
-export function WordReveal({
-  words,
-  variant = "inline",
-}: {
-  words: readonly string[];
-  variant?: "inline" | "compact";
-}) {
-  const compact = variant === "compact";
-
-  return (
-    <>
-      {words.map((word, index) => (
-        <motion.span
-          key={`${word}-${index}`}
-          className={cn("page-word", compact && "page-word--compact")}
-          initial={{
-            opacity: 0,
-            y: "0.4em",
-            filter: compact ? "blur(0px)" : "blur(4px)",
-          }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{
-            ...REVEAL_TWEEN,
-            delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
-          }}
-        >
-          {word}
-          {variant === "inline" && index < words.length - 1 ? " " : ""}
-        </motion.span>
-      ))}
-    </>
-  );
-}
-
-/**
- * Hero word reveal — two display lines (ADR-038). Token tween as before.
- */
-export function HeroWords({ lines }: { lines: readonly [string, string] }) {
-  return (
-    <>
-      {lines.map((line, index) => (
-        <motion.span
-          key={line}
-          className={cn("home-hero-line", index === 1 && "home-hero-line-2")}
-          initial={{ opacity: 0, y: "0.4em" }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            ...HERO_TWEEN,
-            delay: WORD_REVEAL_DELAY + index * WORD_REVEAL_STAGGER,
-          }}
-        >
-          {line}
-        </motion.span>
-      ))}
-    </>
-  );
-}
 
 /**
  * Magnetic pull on hover — mockup `.magnetic` (cursor-aware, ADR-017).

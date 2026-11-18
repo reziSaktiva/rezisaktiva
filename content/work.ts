@@ -6,15 +6,16 @@ import projects from "./data/projects.json";
 /**
  * R1 work catalog + Work index page copy. Facts in
  * `content/data/projects.json` — locked T-021.5 from resume, do not invent.
- * Kebab-case slug + case page body = same sheet slot (T-056.2).
+ * Kebab-case slug = case route `/[locale]/projects/[slug]` (T-056.2).
  *
  * `liveHrefs` / `href` = live sites (not GitHub). Empty = no link.
- * Work tile opens M10 sheet (T-026); Live on sheet and case page.
+ * Work cards link straight to the case page; Live is a secondary link on the
+ * case page (ADR-054 point 2, T-081.3).
  *
  * Hide work: add id to `hiddenIds` in JSON (data kept).
  * `hiddenIds` items have no public `/projects/[slug]` route (ADR-044).
  * Public work without brand names: descriptive title/slug, no branded live/repo (ADR-045).
- * Case page deeper than sheet (ADR-046): period, stack, bullets from CV.
+ * Case depth (ADR-046): period, stack, bullets from CV — `work-case.ts`.
  */
 
 export const PROJECT_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -87,6 +88,10 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
   en: publicProjectRows().map((item) => toWorkItem(item, "en")),
 };
 
+/**
+ * Work index copy. The Monolith index (T-081.1) shows `h1` as the sticky giant
+ * title and `lead` under it. `ctaQuestion` / `ctaLink` are kept for T-084.3.
+ */
 export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {
   id: {
     h1: ["Proyek", "saya."],
