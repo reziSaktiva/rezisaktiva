@@ -36,6 +36,7 @@
   --color-rule: rgb(2 2 2 / 0.2);
   --color-rule-inv: rgb(248 248 248 / 0.2);
   --spacing-gutter: clamp(18px, 2.8vw, 40px);
+  --spacing-masthead-gap: clamp(12px, 2vw, 24px);
   --ease-monolith: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-monolith-io: cubic-bezier(0.76, 0, 0.24, 1);
   /* Monolith is sharp: no radius except the pill (`--radius-full`). */
@@ -193,7 +194,7 @@
 .mh-masthead {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  column-gap: 24px;
+  column-gap: var(--spacing-masthead-gap);
   align-items: start;
   padding: 26px var(--spacing-gutter) 0;
 }
