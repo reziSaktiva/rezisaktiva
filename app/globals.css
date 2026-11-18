@@ -193,6 +193,7 @@
 .mh-masthead {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
+  column-gap: 24px;
   align-items: start;
   padding: 26px var(--spacing-gutter) 0;
 }

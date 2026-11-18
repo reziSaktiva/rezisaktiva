@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, type MouseEvent } from "react";
+import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -185,6 +185,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const [sheetPath, setSheetPath] = useState(pathname);
   const closeSheet = () => setSheetOpen(false);
   const sheetId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const contactLabel = CONTACT_LABEL[locale];
   const menuLabel = MENU_TOGGLE_LABEL[locale];
 
@@ -247,6 +248,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             <LocaleSwitcher locale={locale} />
           </nav>
           <button
+            ref={menuButtonRef}
             type="button"
             className="mh-menu-btn"
             aria-expanded={sheetOpen}
@@ -305,7 +307,16 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             "animation-duration-500 [--tw-ease:var(--ease-monolith-io)]",
             "motion-reduce:animate-none",
           )}
-          onOpenAutoFocus={(event) => event.preventDefault()}
+          onCloseAutoFocus={(event) => {
+            // The sheet opens from plain buttons, not a Radix Trigger, so
+            // Radix has nowhere to return focus. Send it back to the Menu
+            // button unless something else (the Contact modal) took it.
+            event.preventDefault();
+            const active = document.activeElement;
+            if (!active || active === document.body) {
+              menuButtonRef.current?.focus();
+            }
+          }}
         >
           <SheetHeader className="sr-only">
             <SheetTitle>{MENU_LABEL[locale]}</SheetTitle>
