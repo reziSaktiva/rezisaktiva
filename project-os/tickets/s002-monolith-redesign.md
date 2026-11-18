@@ -53,9 +53,9 @@ This file tracks the program approved in [ADR-052](../decisions/ADR-052-monolith
 
 ### Subtasks
 
-- [ ] **T-076.1** — Boss Rezi confirms in the Vercel dashboard: production branch is `main`; a Preview deployment exists for `redesign/monolith`; Preview responses are `noindex`. Record the result here.
-- [ ] **T-076.2** — Decide the Preview Resend setup (test inbox in Preview-scoped env vars, or empty key so the mailto fallback shows). Record it; confirm it on the branch Preview later in T-083.
-- [ ] **T-076.3** — Optional: assign a stable domain (for example `next.rezisaktiva.space`) to the branch in Vercel. Record the final review URL here.
+- [ ] **T-076.1** — Boss Rezi confirms in the Vercel dashboard: production branch is `main`; a Preview deployment exists for `redesign/monolith`; Preview responses are `noindex`. Record the result here. Agent check 2026-11-18: the branch alias `https://rezisaktiva-git-redesign-monolith-rezisaktivas-projects.vercel.app` exists, sends `x-robots-tag: noindex`, and sits behind Vercel SSO (302 to `vercel.com/sso-api`). Still open: Boss Rezi confirms the production branch is `main` in the dashboard.
+- [ ] **T-076.2** — Decide the Preview Resend setup (test inbox in Preview-scoped env vars, or empty key so the mailto fallback shows). Record it; confirm it on the branch Preview later in T-083. **Decided 2026-11-18: empty key.** No `RESEND_*` variables in Preview scope, so the Preview form shows the mailto fallback and cannot send real mail. Production variables stay unchanged. Still open: Boss Rezi confirms in the Vercel dashboard that no Preview-scoped Resend key is set.
+- [x] **T-076.3** — Optional: assign a stable domain (for example `next.rezisaktiva.space`) to the branch in Vercel. Record the final review URL here. **Skipped 2026-11-18** (Boss Rezi). Review URL: `https://rezisaktiva-git-redesign-monolith-rezisaktivas-projects.vercel.app` (noindex, Vercel SSO).
 - [x] **T-076.4** — Production baseline captured 2026-11-17 (lab only, Lighthouse 12; field data unavailable because the keyless PageSpeed API returned 429). Scores are Perf/A11y/BP/SEO, runs were parallel so TBT may be slightly inflated. See the table below.
 - [ ] **T-076.5** — Confirm the `ignoreCommand` still builds the branch when `app/` changes and skips docs-only commits. Local dry run 2026-11-17 passed (`app/` only: build, docs only: skip, docs plus `app/`: build; `vercel.json` points at `scripts/vercel-ignore-build.sh`). Still open: Boss Rezi confirms the same on a real Vercel deployment.
 
@@ -122,7 +122,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 - [x] **T-078.3** — Add the type scale and utilities (`wordmark`, `display`, `copy`, `big`, `small`) and the paper-grain band as documented classes.
 - [x] **T-078.4** — Define the dark / light behavior per T-077.3 and keep the anti-flash script working or remove it.
 - [x] **T-078.5** — Fence old identity styles so they can be deleted surface by surface (naming or file split); no visual change yet on migrated surfaces' neighbors.
-- [ ] **T-078.6** — Verify: lint, typecheck, build, Preview. Local checks passed 2026-11-17 (typecheck, lint, test, build, Home and `/en/workflow` in the browser). Still open: Boss Rezi confirms on the Preview, and Inter loading is not yet confirmed (Tailwind generates `monolith` utilities only once a component uses them).
+- [ ] **T-078.6** — Verify: lint, typecheck, build, Preview. Local checks passed 2026-11-17 (typecheck, lint, test, build, Home and `/en/workflow` in the browser). Still open: Boss Rezi confirms on the Preview, and Inter loading is not yet confirmed (Tailwind generates `monolith` utilities only once a component uses them). Wave check 2026-11-18 on a local production build of `redesign/monolith` (`ae62458`): typecheck, lint (0 errors; 2 warnings in the `design-mockups/shared.js` archive), test (87), build pass; Archivo, Barlow Condensed and **Inter are loaded and in use** on `/en`; no console errors. Still open: Boss Rezi confirms on the Preview.
 
 ---
 
@@ -152,6 +152,12 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 - [x] **T-079.5** — Reveal primitives with Motion: split-line reveal, scrubbed words, clip-path image reveal with parallax, pinned scrubbed section, marquee.
 - [x] **T-079.6** — Curtain page transition between routes and the custom cursor (with labels), both opt-out for reduced motion and touch.
 - [ ] **T-079.7** — Verify on Preview: desktop, tablet, 390 px phone, keyboard only, reduced motion. Local checks 2026-11-17: typecheck, lint, test (87), build pass; Home and `/en/workflow` render on desktop and 375 px with no console errors; header, mobile sheet, curtain and footer exercised by the lanes. Not yet exercised: keyboard-only walk, reduced motion and touch in the browser, tablet width, Preview. Open for Boss Rezi's Preview check.
+  - Wave check 2026-11-18, local production build of `ae62458`:
+    - **Desktop (1366 px), keyboard only: pass.** Tab order is skip link, wordmark, nav, Contact, ID/EN, then content and footer. Every stop shows a visible ring. The Contact dialog moves focus in, traps Tab, and Escape returns focus to Contact. The scroll-up dock shows on scroll up and is `aria-hidden` with `tabindex=-1` links. A keyboard route change to `/en/workflow` leaves no curtain over the page.
+    - **Tablet (768 px): fail, cosmetic.** The header clock `.mh-clock` touches the first nav link (0 px gap; the clock's right edge equals About's left edge). No horizontal overflow.
+    - **Phone (390 px, touch emulation): Lenis off, custom cursor off, no horizontal overflow.** **Mobile sheet keyboard check fails:** the sheet opens on Enter, but focus stays on the Menu trigger outside the sheet, Tab walks the page behind it (main is not hidden), and Escape does not close it. The cause is `onOpenAutoFocus={(event) => event.preventDefault()}` in `app/[locale]/_components/site-header.tsx`. Fix in T-079.8.
+    - **Reduced motion: not exercised in the browser** (the pane cannot emulate `prefers-reduced-motion`). Code guards are present in `smooth-scroll.tsx`, `page-transition.tsx`, `contour-field.tsx`, `motion-runtime.tsx` (`reducedMotion="user"`) and the `reveal/` primitives. Boss Rezi checks this on the Preview with the OS setting.
+- [ ] **T-079.8** — Fix the T-079.7 findings: (1) the mobile sheet moves focus inside on open (drop or replace the prevented `onOpenAutoFocus`), traps Tab, and closes on Escape; (2) give `.mh-clock` a gap from the nav at 768 px. Recheck keyboard at 390 px and the header at 768 px.
 
 ---
 
@@ -257,7 +263,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 - [ ] **T-083.2** — Form fields and validation (name, email, optional company, need, details); inline errors; sending, success, and failure states wired to the existing Route Handler. Update the Route Handler only if the payload changes.
 - [ ] **T-083.3** — Replace every place that opened the modal (nav, footer, Workflow CTA, cases) with links to the page; remove the modal and its provider.
 - [ ] **T-083.4** — Update metadata, sitemap and `robots`; add the amended contact line to ADR-047 and `PROJECT_STATE.md`.
-- [ ] **T-083.5** — Verify on Preview: real send through the Preview setup from T-076.2, missing-secret failure, ID and EN, mailto fallback.
+- [ ] **T-083.5** — Verify on Preview: real send through the Preview setup from T-076.2, missing-secret failure, ID and EN, mailto fallback. Note 2026-11-18: T-076.2 chose an empty Preview key, so the Preview shows only the missing-secret path and the mailto fallback; the real send moves to the T-086.4 production smoke check.
 
 ---
 
