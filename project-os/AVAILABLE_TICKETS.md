@@ -13,9 +13,9 @@ Open work only. Completed ticket history lives in `tickets/`.
 | **T-076** | Preview safety and performance baseline | dashboard | — |
 | **T-078** | Design foundation: tokens, fonts, global layer | `redesign/monolith` | — |
 | **T-079** | Chrome and motion system | `redesign/monolith` | T-078 |
-| **T-080** | Home | `redesign/monolith` | T-079, T-084.2 |
-| **T-081** | Work index and case pages | `redesign/monolith` | T-079, T-084.3 |
-| **T-082** | Workflow page | `redesign/monolith` | T-079, T-084.4 |
+| **T-080** | Home | `redesign/monolith` | Built with placeholder copy; T-080.4 scope (ADR-054), Preview review, copy swap T-084.2 |
+| **T-081** | Work index and case pages | `redesign/monolith` | Built with placeholder copy; glass nav (T-081.1), Preview review, copy swap T-084.3 |
+| **T-082** | Workflow page | `redesign/monolith` | Built with placeholder copy; Preview review, copy swap T-084.4 |
 | **T-083** | Contact page | `redesign/monolith` | T-079, T-076.2, T-084.5 |
 | **T-084** | Approved copy, ID and EN, per surface | `redesign/monolith` | Boss Rezi approval per block |
 | **T-085** | Quality gates, cleanup, SEO | `redesign/monolith` | T-080 to T-083 |
