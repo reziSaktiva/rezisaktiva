@@ -44,7 +44,6 @@ export function ProjectCard({
     <NextLink
       href={href}
       className={cn("pcard", className)}
-      data-t={name}
       data-cursor={cursorLabel}
     >
       <ClipReveal className="pcard-media">

@@ -12,7 +12,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const copy = HOME_COPY[locale];
 
   return (
-    <div className="home-page monolith flex flex-col">
+    <div className="home-page monolith flex flex-col" data-masthead="overlay">
       <HomeHero
         lines={copy.heroLines}
         lede={copy.lede}

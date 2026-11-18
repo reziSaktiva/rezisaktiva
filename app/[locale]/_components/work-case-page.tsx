@@ -49,7 +49,7 @@ export function WorkCasePage({
   const next = nextWorkItem(WORK_ITEMS[locale], item.id);
 
   return (
-    <article className="monolith wcase">
+    <article className="monolith wcase" data-masthead="overlay">
       <section className="wcase-hero on-ink">
         <ClipReveal className="wcase-hero-media" parallax={0.08}>
           <NextImage
@@ -116,8 +116,8 @@ export function WorkCasePage({
                 <h3 className="small">{section.title}</h3>
               ) : null}
               <ol className="wcase-list">
-                {section.bullets.map((bullet) => (
-                  <WorkCasePoint key={bullet}>
+                {section.bullets.map((bullet, bulletIndex) => (
+                  <WorkCasePoint key={`${bulletIndex}-${bullet}`}>
                     <LinkedText text={bullet} />
                   </WorkCasePoint>
                 ))}
@@ -160,7 +160,6 @@ export function WorkCasePage({
         <NextLink
           href={projectCaseHref(locale, next.slug)}
           className="wcase-next"
-          data-t={next.name}
           data-cursor={copy.nextCursorLabel}
         >
           <span className="small">{copy.nextLabel}</span>

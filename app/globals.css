@@ -191,6 +191,16 @@
   mix-blend-mode: difference;
 }
 
+/*
+ * Overlay mode: a page whose first section is full-bleed sets
+ * `data-masthead="overlay"` on its root, and the masthead floats over it
+ * (mockup: absolute masthead) instead of pushing it down.
+ */
+.site-chrome:has([data-masthead="overlay"]) .mh-header {
+  position: absolute;
+  inset: 0 0 auto;
+}
+
 .mh-masthead {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -679,12 +689,6 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
   background-color: var(--color-paper);
 }
 
-/* Case page: the masthead floats over the dark hero, like the mockup. */
-.site-chrome:has(.wcase) .mh-header {
-  position: absolute;
-  inset: 0 0 auto 0;
-}
-
 .wcase-hero {
   position: relative;
   height: 100svh;
@@ -954,16 +958,6 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
  * `design-mockups/shared.css` (`.phead`, `.cmp`, `.pcard`, `.adr`, `.pill`).
  * Spacing between children is `gap`; sections set their own padding.
  */
-/*
- * The masthead is in flow and its height varies with the wordmark size, so on
- * this page it overlays the paper head instead (mockup: absolute masthead).
- * Scoped with `:has()`; the chrome lane may replace this with a global rule.
- */
-.site-chrome:has(.workflow-page) .mh-header {
-  position: absolute;
-  inset: 0 0 auto;
-}
-
 .workflow-head {
   gap: clamp(26px, 4vw, 56px);
   padding-block: clamp(170px, 20vw, 290px) clamp(40px, 6vw, 80px);
@@ -1282,18 +1276,6 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
  * `design-mockups/shared.css` (v5), adapted. Home IA: hero, About, Work
  * (T-080.3, after About), footer.
  */
-.home-page {
-  /*
-   * Masthead height (`.mh-masthead`): top padding plus the taller of the
-   * brand line box (wordmark, line-height 0.8) and the nav row. The hero
-   * slides under the in-flow masthead by this much, like the mockup's
-   * absolute header. If the masthead geometry changes, update this.
-   */
-  --home-masthead-h: calc(
-    26px + max(clamp(56px, 6.6vw, 100px) * 0.8, clamp(30px, 4vw, 56px) + 17px)
-  );
-}
-
 .home-hero {
   position: relative;
   isolation: isolate;
@@ -1301,8 +1283,6 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
   flex-direction: column;
   height: 100svh;
   min-height: 560px;
-  margin-top: calc(-1 * var(--home-masthead-h));
-  padding-top: var(--home-masthead-h);
   overflow: hidden;
   background-color: var(--color-paper);
 }

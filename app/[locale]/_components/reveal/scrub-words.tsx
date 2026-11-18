@@ -46,12 +46,19 @@ export function ScrubWords({ text, className }: ScrubWordsProps) {
   }
 
   return (
-    <p ref={ref} className={className} aria-label={text}>
+    <p ref={ref} className={className}>
+      {/* aria-label is not supported on <p>; screen readers get this copy. */}
+      <span className="sr-only">{text}</span>
       {/* A real space between words keeps soft-wrap opportunities. */}
       {words.map((word, i) => (
         <span key={`${i}-${word}`} aria-hidden="true">
           {i > 0 ? " " : null}
-          <Word word={word} index={i} count={words.length} progress={scrollYProgress} />
+          <Word
+            word={word}
+            index={i}
+            count={words.length}
+            progress={scrollYProgress}
+          />
         </span>
       ))}
     </p>

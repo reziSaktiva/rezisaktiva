@@ -45,10 +45,8 @@ export function WorkflowAdrLog({ copy }: { copy: WorkflowCopy }) {
                 <div className="flex flex-col gap-2">
                   <dt className="workflow-adr-dt">{copy.vaultStatusLabel}</dt>
                   <dd className="workflow-adr-dd">
-                    {adr.status}.{" "}
-                    {adr.status === "Accepted"
-                      ? copy.vaultAcceptedHint
-                      : copy.vaultSupersededHint}
+                    {copy.vaultStatus[adr.status].label}.{" "}
+                    {copy.vaultStatus[adr.status].hint}
                   </dd>
                 </div>
                 <div className="flex flex-col gap-2">

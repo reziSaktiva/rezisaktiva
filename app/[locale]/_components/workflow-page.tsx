@@ -16,7 +16,7 @@ export function WorkflowPage({ locale }: { locale: Locale }) {
   const copy = WORKFLOW_COPY[locale];
 
   return (
-    <div className="monolith workflow-page flex flex-col">
+    <div className="monolith workflow-page flex flex-col" data-masthead="overlay">
       <section className="workflow-head flex flex-col px-gutter">
         <div className="flex flex-col gap-4">
           <p className="small">{copy.kicker}</p>

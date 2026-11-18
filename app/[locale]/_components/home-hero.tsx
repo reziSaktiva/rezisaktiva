@@ -1,12 +1,8 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { ContourField } from "./contour-field";
+import { useMediaQuery } from "./use-media-query";
 
 /**
  * Home hero (T-080.1, ADR-052 / ADR-054 point 4): light contour field, the
@@ -31,7 +27,9 @@ export function HomeHero({
   lede: string;
   scrollCue: string;
 }) {
-  const reduce = useReducedMotion();
+  // Server and hydration render as "motion allowed" so the style matches;
+  // reduced-motion visitors switch to the static hero right after.
+  const reduce = useMediaQuery("(prefers-reduced-motion: reduce)");
   const { scrollY } = useScroll();
   const progress = useTransform(scrollY, (y) => {
     // innerHeight can be 0 (hidden or background tab at load): 0 / 0 is NaN,

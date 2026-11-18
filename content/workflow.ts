@@ -13,11 +13,7 @@ import type { Locale } from "@/lib/locale";
 export type WorkflowCompareMode = "chaos" | "driven";
 
 export type WorkflowPrincipleTag =
-  | "STRATEGY"
-  | "SCOPE"
-  | "DOCUMENTATION"
-  | "ARCHITECTURE"
-  | "TRUTH";
+  "STRATEGY" | "SCOPE" | "DOCUMENTATION" | "ARCHITECTURE" | "TRUTH";
 
 export type WorkflowAdrStatus = "Accepted" | "Superseded";
 
@@ -81,8 +77,8 @@ export interface WorkflowCopy {
   vaultContextLabel: string;
   vaultDecisionLabel: string;
   vaultAlternativesLabel: string;
-  vaultAcceptedHint: string;
-  vaultSupersededHint: string;
+  /** Localized label and hint per ADR status (a new status must be added here). */
+  vaultStatus: Record<WorkflowAdrStatus, { label: string; hint: string }>;
   adrs: readonly WorkflowAdrSample[];
   closeKicker: string;
   closeTitle: string;
@@ -237,9 +233,17 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
-    vaultAcceptedHint: "Keputusan aktif. Perubahan berikutnya butuh ADR baru.",
-    vaultSupersededHint:
-      "Diganti ADR yang lebih baru. Jejak tetap dibaca, tidak dihapus.",
+    // T-084.4 placeholder: status labels "Diterima" / "Digantikan".
+    vaultStatus: {
+      Accepted: {
+        label: "Diterima",
+        hint: "Keputusan aktif. Perubahan berikutnya butuh ADR baru.",
+      },
+      Superseded: {
+        label: "Digantikan",
+        hint: "Diganti ADR yang lebih baru. Jejak tetap dibaca, tidak dihapus.",
+      },
+    },
     adrs: [
       {
         id: "ADR-001",
@@ -438,9 +442,16 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
-    vaultAcceptedHint: "Active decision. The next change needs a new ADR.",
-    vaultSupersededHint:
-      "Replaced by a newer ADR. The trail stays readable; it is not deleted.",
+    vaultStatus: {
+      Accepted: {
+        label: "Accepted",
+        hint: "Active decision. The next change needs a new ADR.",
+      },
+      Superseded: {
+        label: "Superseded",
+        hint: "Replaced by a newer ADR. The trail stays readable; it is not deleted.",
+      },
+    },
     adrs: [
       {
         id: "ADR-001",
