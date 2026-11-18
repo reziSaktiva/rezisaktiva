@@ -1459,6 +1459,106 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
   outline-offset: 4px;
 }
 
+/*
+ * T-080.3 — Home Work section (mockup `.work`): ink band, sticky giant title
+ * (difference blend) under staggered `pcard`s, link to the Work index.
+ */
+.home-work {
+  position: relative;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.home-work-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  padding-inline: var(--spacing-gutter);
+  text-align: center;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.home-work-title {
+  font-size: clamp(72px, 15vw, 250px);
+  line-height: 0.84;
+  color: var(--color-paper);
+}
+
+.home-work-cards {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(60px, 9vw, 150px) 24px;
+  margin-top: -42svh;
+  padding: 0 var(--spacing-gutter) clamp(80px, 10vw, 150px);
+}
+
+/* Staggered columns and aspects (mockup `.card:nth-child(n)`). */
+.home-work-card {
+  aspect-ratio: 4 / 5;
+}
+
+.home-work-card:nth-child(1) {
+  grid-column: 8 / 13;
+  margin-top: 8vh;
+}
+
+.home-work-card:nth-child(2) {
+  grid-column: 2 / 8;
+  aspect-ratio: 5 / 4;
+}
+
+.home-work-card:nth-child(3) {
+  grid-column: 7 / 12;
+}
+
+.home-work-card:nth-child(4) {
+  grid-column: 1 / 6;
+  aspect-ratio: 1;
+}
+
+.home-work-card:focus-visible {
+  outline-color: var(--color-paper);
+}
+
+.home-work-more {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding-bottom: clamp(70px, 9vw, 130px);
+}
+
+/* Inverted pill on the ink band. */
+.home-work .home-pill::before {
+  background-color: var(--color-paper);
+}
+
+.home-work .home-pill:hover,
+.home-work .home-pill:focus-visible {
+  color: var(--color-ink);
+}
+
+.home-work .home-pill:focus-visible {
+  outline-color: var(--color-paper);
+}
+
+@media (max-width: 760px) {
+  .home-work-cards {
+    margin-top: -20svh;
+  }
+
+  .home-work-card:nth-child(n) {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-hero-line > span {
     animation: none;

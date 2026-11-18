@@ -363,117 +363,6 @@ html::-webkit-scrollbar-button,
   outline: none;
 }
 
-.home-contact-cta:hover,
-.home-contact-cta:focus-visible {
-  background: none !important;
-  background-image: none !important;
-  background-color: transparent !important;
-  color: var(--color-accent-muted) !important;
-  box-shadow: none !important;
-}
-
-.home-contact-cta:active {
-  box-shadow: none !important;
-  transform: none;
-}
-
-.home-contact-cta:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-/*
- * Home (T-014.2) — layout/spacing/motion mengikuti `design-mockups/home.html`
- * + `shared.css`. Compiler StyleX not wired yet, so scoped overrides via
- * class (chrome T-013 pattern), Astryx tokens for color/spacing, hero clamp
- * mirrors mockup because no matching token step exists.
- *
- * Header overlay (T-040.1 / T-055.2–T-055.3): sticky. Topmost without
- * wash; on-scroll glass on desktop and compact. Contrast = vellum on dark canvas.
- */
-
-.home-container {
-  width: 100%;
-  max-width: 1400px;
-  margin-inline: auto;
-  padding-inline: var(--spacing-6);
-}
-
-@media (min-width: 768px) {
-  .home-container {
-    padding-inline: var(--spacing-10);
-  }
-}
-
-.home-kicker {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-.home-contact-title {
-  font-family: var(--font-family-display);
-  font-size: 2.25rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.01em;
-  line-height: 0.9;
-  color: var(--color-text-primary);
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .home-contact-title {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .home-contact-title {
-    font-size: 6rem;
-  }
-}
-
-.home-contact-body {
-  max-width: 28rem;
-  line-height: 1.625;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-.home-contact-cta {
-  align-self: flex-start;
-  height: auto;
-  min-height: var(--size-element-lg);
-  padding-block: var(--spacing-2);
-  padding-inline: 0;
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  background: none !important;
-  background-image: none !important;
-  background-color: transparent !important;
-  color: var(--color-text-primary) !important;
-  border-radius: 0;
-  box-shadow: none !important;
-  cursor: pointer;
-  transform: none;
-  gap: var(--spacing-2);
-  transition: color var(--duration-medium-min) var(--ease-standard);
-}
-
-.home-contact-cta svg {
-  width: 1.125rem;
-  height: 1.125rem;
-  transition: transform var(--duration-medium-min) var(--ease-standard);
-}
-
-.home-contact-cta:hover svg,
-.home-contact-cta:focus-visible svg {
-  transform: translateX(0.25rem);
-}
-
 .home-magnetic {
   display: inline-flex;
 }
@@ -544,29 +433,12 @@ html::-webkit-scrollbar-button,
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-@media (max-width: 767px) {
-  .home-work-tile-meta {
-    padding: 1rem 1rem 0.9rem;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .home-cursor-ring {
     display: none;
   }
 
-  .home-work-tile:has(.home-work-tile-meta) .home-work-tile-media {
-    transition: none !important;
-    animation: none !important;
-  }
-
-  .home-reveal,
   .home-magnetic,
-  .home-work-tile img,
-  .home-work-tile-scrim,
-  .home-work-tile-meta,
-  .page-word,
-  .about-offer-card,
   .avail-dot,
   .ct-panel,
   .ct-scrim,
@@ -605,27 +477,6 @@ html::-webkit-scrollbar-button,
  * Visual from design-mockups/about.html, work.html, shared.css.
  * Compiler StyleX not wired — scoped class + token, T-013/T-014 pattern.
  */
-
-.page-word {
-  display: inline;
-  font-family: var(--font-family-display);
-}
-
-.page-word--compact {
-  display: block;
-  font-size: clamp(2.75rem, 8vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
-  font-weight: var(--font-weight-semibold);
-  filter: none;
-}
-
-@media (max-width: 767px) {
-  .page-word--compact {
-    font-size: clamp(2.35rem, 11vw, 3.5rem);
-    line-height: 1.02;
-  }
-}
 
 .avail-dot {
   width: 7px;
@@ -674,14 +525,12 @@ html::-webkit-scrollbar-button,
   opacity: 1;
 }
 
-.about-page,
 .work-page,
 .case-page {
   font-family: var(--font-family-body);
   width: 100%;
 }
 
-.about-section,
 .work-hero,
 .work-grid-section {
   width: 100%;
@@ -691,274 +540,10 @@ html::-webkit-scrollbar-button,
 }
 
 @media (min-width: 768px) {
-  .about-section,
   .work-hero,
   .work-grid-section {
     padding-inline: var(--spacing-10);
   }
-}
-
-.about-split {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr !important;
-  gap: 3rem !important;
-}
-
-@media (min-width: 1024px) {
-  .about-split {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 6rem !important;
-  }
-
-  .about-split--narrow {
-    grid-template-columns: 0.8fr 1.2fr !important;
-    gap: 5rem !important;
-  }
-}
-
-.about-availability-badge {
-  height: var(--spacing-5);
-  gap: var(--spacing-1);
-  background-color: var(--color-background-green);
-  color: var(--color-text-green);
-  border-color: transparent;
-}
-
-.about-status-dot {
-  display: inline-flex;
-  width: 8px;
-  height: 8px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background-color: var(--color-success);
-}
-
-.about-status-dot.is-pulsing {
-  animation: about-status-pulse 2s ease-in-out infinite;
-}
-
-@keyframes about-status-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-status-dot.is-pulsing {
-    animation: none;
-  }
-}
-
-.about-section {
-  padding-block: 6rem;
-}
-
-@media (min-width: 768px) {
-  .about-section {
-    padding-block: 9rem;
-  }
-}
-
-.about-proof-body {
-  margin: 0;
-  font-family: var(--font-family-display);
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
-  max-width: 56rem;
-}
-
-.about-section-title {
-  margin: 0;
-  font-family: var(--font-family-display);
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-}
-
-.about-offer-grid,
-.about-values-grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr !important;
-}
-
-@media (min-width: 768px) {
-  .about-offer-grid,
-  .about-values-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-}
-
-.about-offer-card,
-.about-value-card {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  transition:
-    transform var(--duration-medium) var(--ease-standard),
-    box-shadow var(--duration-medium) var(--ease-standard);
-}
-
-.about-offer-mark {
-  position: absolute;
-  inset-inline-end: var(--spacing-3);
-  inset-block-start: var(--spacing-2);
-  font-family: var(--font-family-display);
-  font-size: clamp(3.5rem, 10vw, 5.5rem);
-  font-weight: var(--font-weight-semibold);
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  color: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-  pointer-events: none;
-  user-select: none;
-}
-
-.about-offer-copy {
-  position: relative;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .about-offer-card:hover,
-  .about-value-card:hover {
-    transform: translateY(calc(var(--spacing-1) * -1));
-    box-shadow: var(--shadow-low);
-  }
-}
-
-.about-card-title {
-  margin: 0;
-  font-family: var(--font-family-heading);
-  font-size: clamp(var(--font-size-xl), 2.4vw, 1.75rem);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
-}
-
-.about-card-body {
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-md);
-  line-height: 1.55;
-}
-
-.about-values-band {
-  width: 100%;
-  background-color: var(--color-background-muted);
-}
-
-.about-approach {
-  margin: 0;
-  font-family: var(--font-family-heading);
-  font-size: clamp(1.35rem, 3.2vw, 2.25rem);
-  line-height: 1.3;
-  letter-spacing: -0.03em;
-  max-width: 46rem;
-}
-
-.about-value-title {
-  margin: 0;
-  font-family: var(--font-family-heading);
-  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-.about-process-note {
-  max-width: 40rem;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-.about-process-trigger {
-  width: 100%;
-  margin: 0;
-  border: 0;
-  background: transparent;
-  padding-inline: 0;
-  cursor: pointer;
-  text-align: start;
-  color: inherit;
-  font: inherit;
-}
-
-.about-process-trigger:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 4px;
-  border-radius: var(--radius-md);
-}
-
-.about-process-chevron {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-  color: var(--color-icon-secondary);
-  transition: transform var(--duration-fast) var(--ease-standard);
-}
-
-.about-process-chevron.is-open {
-  transform: rotate(180deg);
-}
-
-.about-offer-icon,
-.about-process-icon {
-  flex-shrink: 0;
-  color: var(--color-accent);
-}
-
-.about-offer-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.about-process-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.about-process-num {
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.06em;
-  color: var(--color-text-secondary);
-  min-width: 1.75rem;
-}
-
-.about-process-panel {
-  position: relative;
-  overflow: hidden;
-  padding-block-end: var(--spacing-4);
-  padding-inline-end: var(--spacing-10);
-}
-
-.about-process-mark {
-  position: absolute;
-  inset-inline-end: var(--spacing-2);
-  inset-block-end: calc(var(--spacing-2) * -1);
-  font-family: var(--font-family-display);
-  font-size: clamp(5rem, 16vw, 9rem);
-  font-weight: var(--font-weight-semibold);
-  line-height: 0.8;
-  letter-spacing: -0.06em;
-  color: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-  pointer-events: none;
-  user-select: none;
-}
-
-.about-process-copy {
-  position: relative;
-  max-width: 40rem;
-  margin: 0;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-md);
-  line-height: 1.55;
 }
 
 .site-footer {

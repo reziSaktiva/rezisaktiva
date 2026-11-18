@@ -2,6 +2,7 @@ import { HOME_COPY } from "@/content/home";
 import type { Locale } from "@/lib/locale";
 import { AboutSection } from "./about-page";
 import { HomeHero } from "./home-hero";
+import { HomeWork } from "./home-work";
 
 /**
  * Home (ADR-054 point 4): hero, About, Work cards, footer. The footer comes
@@ -18,7 +19,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         scrollCue={copy.scrollCue}
       />
       <AboutSection locale={locale} />
-      {/* T-080.3: the Home Work section goes here, after About. */}
+      <HomeWork locale={locale} />
     </div>
   );
 }

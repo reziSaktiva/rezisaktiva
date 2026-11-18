@@ -22,22 +22,6 @@ function exportFn(source: string, name: string, nextName: string): string {
 }
 
 describe("motion hydration (PR #68 review)", () => {
-  it("does not branch Reveal / WordReveal / HeroWords initial on useReducedMotion", () => {
-    const reveal = exportFn(homeMotion, "Reveal", "WordReveal");
-    const words = exportFn(homeMotion, "WordReveal", "HeroWords");
-    const hero = exportFn(homeMotion, "HeroWords", "Magnetic");
-
-    for (const block of [reveal, words, hero]) {
-      expect(block).not.toContain("useReducedMotion");
-      expect(block).not.toMatch(/reduceMotion\s*\?/);
-    }
-
-    expect(reveal).toContain("initial={{ opacity: 0, y: 18 }}");
-    expect(words).toContain("initial={{");
-    expect(words).toContain("opacity: 0");
-    expect(hero).toContain('initial={{ opacity: 0, y: "0.4em" }}');
-  });
-
   it("skips Magnetic animate() on leave when reduced motion", () => {
     const magnetic = exportFn(homeMotion, "Magnetic", "CursorRing");
     expect(magnetic).toContain("skipMagneticPull");
