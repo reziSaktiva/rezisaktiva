@@ -4,13 +4,12 @@ import { ABOUT_COPY, ABOUT_PORTRAIT_SRC } from "@/content/about";
 import { PERSON_WORKPLACE_COPY } from "@/content/person";
 import type { Locale } from "@/lib/locale";
 import { workflowHref } from "@/lib/site-url";
-import { ArrowUpIcon } from "./overlay-icons";
 import { ClipReveal, ScrubWords, SplitLines } from "./reveal";
 import { WorkplaceLine } from "./workplace-line";
 
 /**
  * About section on Home (`#about`, ADR-040; T-080.2, ADR-052). Portrait with
- * the clip reveal and the "This is not me" caption, `h2` title lines, scrubbed
+ * the clip reveal (no caption, Boss Rezi 2026-11-18), `h2` title lines, scrubbed
  * lead, supporting copy, the Now line (`#now`, ADR-037) and the Workflow link.
  * Server shell; the reveals are client islands. The only `h1` is the hero's.
  */
@@ -20,7 +19,7 @@ export function AboutSection({ locale }: { locale: Locale }) {
 
   return (
     <section id="about" aria-labelledby="about-title" className="home-about">
-      <figure className="home-about-media flex flex-col gap-3">
+      <div className="home-about-media flex flex-col">
         <ClipReveal className="home-about-portrait">
           <NextImage
             src={ABOUT_PORTRAIT_SRC}
@@ -31,11 +30,7 @@ export function AboutSection({ locale }: { locale: Locale }) {
             className="object-cover grayscale"
           />
         </ClipReveal>
-        <figcaption className="small flex items-center gap-2">
-          <ArrowUpIcon className="size-3.5" />
-          {copy.portraitCaption}
-        </figcaption>
-      </figure>
+      </div>
 
       <div className="home-about-text flex flex-col">
         <h2 id="about-title" className="display type-lg">

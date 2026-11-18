@@ -17,7 +17,6 @@ export interface AboutCopy {
   body: string;
   workflowCta: string;
   portraitAlt: string;
-  portraitCaption: string;
 }
 
 export const ABOUT_PORTRAIT_SRC = "/media/about-hero.jpg";
@@ -29,7 +28,6 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     body: "Berbekal pengalaman full-stack selama lebih dari enam tahun, saat ini saya mengelola pipeline sub-agent AI dari tahap discovery hingga deployment, menggabungkan eksekusi teknis dengan sudut pandang bisnis yang tajam untuk menilai kelayakan serta nilai strategis dari setiap fitur yang saya bangun.",
     workflowCta: "Lihat cara saya bekerja",
     portraitAlt: "Foto hitam-putih Rezi, mata ditutup coretan hitam",
-    portraitCaption: "This is not me",
   },
   en: {
     title: ["Hello,", "I'm Rezi."],
@@ -37,6 +35,5 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     body: "Backed by over six years of full-stack experience, I now orchestrate an AI sub-agent pipeline spanning from discovery to deployment, combining technical execution with a sharp commercial perspective to evaluate both the feasibility and strategic value of every feature I build.",
     workflowCta: "See how I work",
     portraitAlt: "Black-and-white photo of Rezi with eyes redacted",
-    portraitCaption: "This is not me",
   },
 };
