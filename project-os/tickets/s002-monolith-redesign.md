@@ -273,6 +273,9 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 * **Domain:** Content
 * **Branch:** `redesign/monolith` (files in `content/`)
 * **Read first:** ADR-052 point 6, ADR-049 (language rule), `content/README.md`, the mockup page for the surface, the current `content/*.ts`, ADR-045, ADR-046
+* **Order and voice (Boss Rezi, 2026-11-18):**
+  - **Order:** this ticket runs last, after the other S-002 build and quality work and before cutover (T-086). Until then, surfaces ship with placeholder copy reused from the live `content/`, marked `T-084.x placeholder`.
+  - **Voice:** write as a professional recruiter or HRD reviewer would want to read the site. Visitors should picture Boss Rezi's skill at building applications from the work itself: the problem, the scope he owned, the decisions (real ADRs), and results already in the CV facts. No self-praise or explaining his skill. The Contract's "no new claims" rule still applies.
 
 ### Contract
 
