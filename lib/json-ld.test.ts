@@ -75,6 +75,22 @@ describe("buildJsonLd", () => {
     expect(crumbs.map((item) => item.name)).toEqual(["Home", "Proses Kerja"]);
   });
 
+  it("builds Contact as ContactPage with breadcrumbs", () => {
+    const doc = buildJsonLd("en", "contact");
+    const types = doc["@graph"].map((node) => node["@type"]);
+    expect(types).toEqual([
+      "Person",
+      "WebSite",
+      "ContactPage",
+      "BreadcrumbList",
+    ]);
+    const page = findNode(doc, "ContactPage");
+    expect(page?.url).toBe(`${getSiteUrl()}/en/contact`);
+    const crumbs = findNode(doc, "BreadcrumbList")
+      ?.itemListElement as JsonLdNode[];
+    expect(crumbs.map((item) => item.name)).toEqual(["Home", "Contact"]);
+  });
+
   it("points CreativeWork url at the public case page, live as sameAs", () => {
     const doc = buildJsonLd("id", "work");
     const works = findAllNodes(doc, "CreativeWork");

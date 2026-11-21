@@ -2,6 +2,7 @@ import { SITE_META, type SiteSurface } from "@/content/site-meta";
 import { publicProjectRows } from "@/content/work";
 import { LOCALES, type Locale } from "@/lib/locale";
 import {
+  CONTACT_PATH,
   getSiteUrl,
   localePath,
   projectCaseHref,
@@ -18,6 +19,9 @@ function surfacePath(surface: SiteSurface): string {
   }
   if (surface === "workflow") {
     return WORKFLOW_PATH;
+  }
+  if (surface === "contact") {
+    return CONTACT_PATH;
   }
   return surface;
 }

@@ -4,10 +4,10 @@ import type { Locale } from "@/lib/locale";
 /**
  * Title + description destinasi R1. Dikunci T-021.7 (2026-08-28);
  * About vs Workflow dipisah ADR-035 (2026-09-07); About jadi section Home
- * (ADR-040). Contact = modal, no page title.
+ * (ADR-040). Contact = page `/contact` (T-083); placeholder meta until T-084.6.
  */
 
-export type SiteSurface = "home" | "workflow" | "work";
+export type SiteSurface = "home" | "workflow" | "work" | "contact";
 
 export interface SurfaceMeta {
   title: string;
@@ -30,6 +30,11 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
       description:
         "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis.",
     },
+    contact: {
+      title: "rezisaktiva — Kontak",
+      description:
+        "Tulis ke Rezi soal proyek, ide, atau pendapat kedua. Balasan lewat email, dari Bandung.",
+    },
   },
   en: {
     home: {
@@ -45,6 +50,11 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
       title: "rezisaktiva — Projects",
       description:
         "Here are a few projects I’ve crafted from the ground up.",
+    },
+    contact: {
+      title: "rezisaktiva — Contact",
+      description:
+        "Write to Rezi about a project, an idea, or a second opinion. Replies by email, from Bandung.",
     },
   },
 };

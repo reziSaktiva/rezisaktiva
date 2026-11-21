@@ -4,11 +4,12 @@ import { projectsHref, workflowHref } from "@/lib/site-url";
 /**
  * R1 nav chip items (About / Workflow / Work) per ADR-020 + ADR-034 +
  * ADR-035 + ADR-040 — Home is not on the chip; the brand name is the Home link.
- * About = `#about` on Home. Contact is not a nav link (ADR-019). `home` stays
- * in `NAV_LABELS` for breadcrumb JSON-LD (T-029).
+ * About = `#about` on Home. Contact is its own page (`/contact`, T-083) and sits
+ * after the chips, not in `NAV_ITEMS`. `home` and `contact` stay in `NAV_LABELS`
+ * for the chrome and breadcrumb JSON-LD (T-029).
  */
-export type NavKey = "home" | "about" | "workflow" | "work";
-export type NavChipKey = Exclude<NavKey, "home">;
+export type NavKey = "home" | "about" | "workflow" | "work" | "contact";
+export type NavChipKey = Exclude<NavKey, "home" | "contact">;
 
 export interface NavItemConfig {
   key: NavChipKey;
@@ -40,18 +41,15 @@ export const NAV_LABELS: Record<Locale, Record<NavKey, string>> = {
     about: "Tentang",
     workflow: "Proses Kerja",
     work: "Proyek",
+    contact: "Kontak",
   },
   en: {
     home: "Home",
     about: "About",
     workflow: "How I Work",
     work: "Projects",
+    contact: "Contact",
   },
-};
-
-export const CONTACT_LABEL: Record<Locale, string> = {
-  id: "Kontak",
-  en: "Contact",
 };
 
 export const MENU_LABEL: Record<Locale, string> = {
