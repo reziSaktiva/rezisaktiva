@@ -1,32 +1,35 @@
 /**
- * T-031.1 — raster tipografi brand (gothic-blood, tanpa wajah).
- * Font: Texturina 700 (OFL). Warna = `lib/brand-chrome.json` (T-039).
+ * T-085.5 - Monolith brand raster: the REZI wordmark (Archivo 900, width 125),
+ * ink #020202 on paper #f8f8f8. Rendered with headless Google Chrome from a
+ * vendored Archivo variable woff2 (OFL). Tokens mirror `--color-ink` /
+ * `--color-paper` in `app/globals.css`.
  *
  *   node scripts/generate-brand-metadata-assets.mjs
+ *   CHROME_PATH=/path/to/chrome node scripts/generate-brand-metadata-assets.mjs
  */
 import { Buffer } from "node:buffer";
+import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { inflateSync } from "node:zlib";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { createRequire } from "node:module";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { createElement as h } from "react";
-
-const require = createRequire(import.meta.url);
-const { ImageResponse } = require("next/og");
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BRAND_DIR = path.join(ROOT, "public", "brand");
 const APP_DIR = path.join(ROOT, "app");
-const TOKEN_PATH = path.join(ROOT, "lib", "brand-chrome.json");
-
-/** Static instance: Texturina wght 700 + opsz 72 (display/textura). OFL di vendor/. */
 const FONT_PATH = path.join(
   ROOT,
   "scripts",
   "vendor",
-  "texturina-display-700.ttf",
+  "archivo-variable-latin.woff2",
 );
+
+const INK = "#020202";
+const PAPER = "#f8f8f8";
+const DEFAULT_CHROME =
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 function paethPredictor(a, b, c) {
   const p = a + b - c;
@@ -187,147 +190,80 @@ function rgbaToBmpIco(width, height, rgba) {
   return Buffer.concat([header, entry, dib]);
 }
 
-async function loadFont() {
-  return readFile(FONT_PATH);
+function findChrome() {
+  const chrome = process.env.CHROME_PATH ?? DEFAULT_CHROME;
+  if (!existsSync(chrome)) {
+    throw new Error(
+      `Google Chrome not found at "${chrome}". Install Chrome or set CHROME_PATH.`,
+    );
+  }
+  return chrome;
 }
 
-async function renderPng(element, width, height, fonts) {
-  const response = new ImageResponse(element, {
-    width,
-    height,
-    fonts,
-  });
-  return Buffer.from(await response.arrayBuffer());
+/** Wordmark page: centered REZI at `fontPx`, optional small caption. */
+function pageHtml(width, height, fontPx, caption) {
+  const fontUrl = pathToFileURL(FONT_PATH).href;
+  const capPx = Math.round(fontPx * 0.12);
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:ArchivoLocal;src:url("${fontUrl}") format("woff2");font-weight:100 900;font-stretch:62% 125%;}
+html,body{margin:0;width:${width}px;height:${height}px;background:${PAPER};overflow:hidden}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;color:${INK};font-family:ArchivoLocal,sans-serif}
+.w{font-weight:900;font-stretch:125%;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:${fontPx}px;line-height:1;letter-spacing:-0.02em;padding-left:0.02em}
+.c{margin-top:${capPx * 2}px;font-weight:500;font-stretch:100%;font-variation-settings:"wdth" 100;font-size:${capPx}px;letter-spacing:0.18em;text-transform:uppercase}
+</style></head><body><div class="w">REZI</div>${caption ? `<div class="c">${caption}</div>` : ""}</body></html>`;
 }
 
-function markIcon(size, canvas, wine, vellum) {
-  const border = Math.max(1, Math.round(size * 0.04));
-  const inset = Math.max(3, Math.round(size * 0.14));
-  const fontSize = Math.round(size * 0.42);
-  return h(
-    "div",
-    {
-      style: {
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: canvas,
-      },
-    },
-    h(
-      "div",
-      {
-        style: {
-          width: size - inset * 2,
-          height: size - inset * 2,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          border: `${border}px solid ${wine}`,
-          color: vellum,
-          fontFamily: "Texturina",
-          fontSize,
-          fontWeight: 700,
-          lineHeight: 1,
-        },
-      },
-      "R",
-    ),
+async function render(chrome, tmp, name, width, height, fontPx, caption) {
+  const html = path.join(tmp, `${name}.html`);
+  const out = path.join(tmp, `${name}.png`);
+  await writeFile(html, pageHtml(width, height, fontPx, caption));
+  execFileSync(
+    chrome,
+    [
+      "--headless=new",
+      "--disable-gpu",
+      "--hide-scrollbars",
+      "--force-device-scale-factor=1",
+      `--window-size=${width},${height}`,
+      `--screenshot=${out}`,
+      pathToFileURL(html).href,
+    ],
+    { stdio: "ignore" },
   );
-}
-
-function ogCard(canvas, wine, vellum) {
-  return h(
-    "div",
-    {
-      style: {
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: canvas,
-      },
-    },
-    h(
-      "div",
-      {
-        style: {
-          width: 1104,
-          height: 534,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          border: `2px solid ${wine}`,
-          color: vellum,
-          fontFamily: "Texturina",
-          fontSize: 92,
-          fontWeight: 700,
-          letterSpacing: "-0.02em",
-        },
-      },
-      "rezisaktiva",
-    ),
-  );
+  return readFile(out);
 }
 
 async function main() {
-  const tokens = JSON.parse(await readFile(TOKEN_PATH, "utf8"));
-  const { canvas, wine, vellum } = tokens;
-  const fontData = await loadFont();
-  const fonts = [
-    {
-      name: "Texturina",
-      data: fontData,
-      weight: 700,
-      style: "normal",
-    },
-  ];
+  const chrome = findChrome();
+  if (!existsSync(FONT_PATH)) {
+    throw new Error(`Missing vendored font: ${FONT_PATH}`);
+  }
+  const tmp = await mkdtemp(path.join(os.tmpdir(), "brand-assets-"));
+  try {
+    await mkdir(BRAND_DIR, { recursive: true });
+    // Wordmark at width 125 is roughly 2.6em wide; sizes keep it inside each square.
+    const icon32 = await render(chrome, tmp, "i32", 32, 32, 9, "");
+    const icon192 = await render(chrome, tmp, "i192", 192, 192, 54, "");
+    const icon512 = await render(chrome, tmp, "i512", 512, 512, 144, "");
+    const apple180 = await render(chrome, tmp, "a180", 180, 180, 50, "");
+    const og = await render(chrome, tmp, "og", 1200, 630, 300, "Portfolio");
+    const decoded32 = decodePngRgba(icon32);
+    const ico = rgbaToBmpIco(decoded32.width, decoded32.height, decoded32.rgba);
 
-  await mkdir(BRAND_DIR, { recursive: true });
-
-  const icon32 = await renderPng(
-    markIcon(32, canvas, wine, vellum),
-    32,
-    32,
-    fonts,
-  );
-  const icon192 = await renderPng(
-    markIcon(192, canvas, wine, vellum),
-    192,
-    192,
-    fonts,
-  );
-  const icon512 = await renderPng(
-    markIcon(512, canvas, wine, vellum),
-    512,
-    512,
-    fonts,
-  );
-  const apple180 = await renderPng(
-    markIcon(180, canvas, wine, vellum),
-    180,
-    180,
-    fonts,
-  );
-  const og = await renderPng(ogCard(canvas, wine, vellum), 1200, 630, fonts);
-  const decoded32 = decodePngRgba(icon32);
-  const ico = rgbaToBmpIco(decoded32.width, decoded32.height, decoded32.rgba);
-
-  await writeFile(path.join(BRAND_DIR, "icon-32.png"), icon32);
-  await writeFile(path.join(BRAND_DIR, "icon-192.png"), icon192);
-  await writeFile(path.join(BRAND_DIR, "icon-512.png"), icon512);
-  await writeFile(path.join(BRAND_DIR, "apple-touch.png"), apple180);
-  await writeFile(path.join(BRAND_DIR, "og.png"), og);
-  await writeFile(path.join(APP_DIR, "favicon.ico"), ico);
-  await writeFile(path.join(APP_DIR, "icon.png"), icon32);
-  await writeFile(path.join(APP_DIR, "apple-icon.png"), apple180);
-
-  console.log(
-    "Wrote public/brand/* + app/favicon.ico (BMP ICO) + app/icon.png + app/apple-icon.png",
-  );
+    await writeFile(path.join(BRAND_DIR, "icon-32.png"), icon32);
+    await writeFile(path.join(BRAND_DIR, "icon-192.png"), icon192);
+    await writeFile(path.join(BRAND_DIR, "icon-512.png"), icon512);
+    await writeFile(path.join(BRAND_DIR, "apple-touch.png"), apple180);
+    await writeFile(path.join(BRAND_DIR, "og.png"), og);
+    await writeFile(path.join(APP_DIR, "favicon.ico"), ico);
+    await writeFile(path.join(APP_DIR, "icon.png"), icon32);
+    await writeFile(path.join(APP_DIR, "apple-icon.png"), apple180);
+    console.log(
+      "Wrote public/brand/* + app/favicon.ico + app/icon.png + app/apple-icon.png",
+    );
+  } finally {
+    await rm(tmp, { recursive: true, force: true });
+  }
 }
 
 main().catch((error) => {

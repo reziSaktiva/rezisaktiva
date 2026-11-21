@@ -1,9 +1,12 @@
 import type { Metadata, MetadataRoute } from "next";
 import { PERSON } from "@/content/person";
-import brandChrome from "@/lib/brand-chrome.json";
 
-/** Dark canvas T-039 / ADR-029. Used by manifest + theme-color. */
-export const SITE_CANVAS_COLOR = brandChrome.canvas;
+/**
+ * Monolith paper (`--color-paper` in `app/globals.css`, T-085.5). The masthead
+ * and page body sit on paper, so browser chrome matches it. Used by manifest
+ * `theme_color` / `background_color` and the `theme-color` meta tag.
+ */
+export const SITE_CANVAS_COLOR = "#f8f8f8";
 
 /**
  * Icons in HTML head (T-031). 192/512 are multiples of 48px for crawlers.
@@ -20,7 +23,7 @@ export const SITE_HEAD_ICONS = {
 
 /**
  * Lightweight manifest T-031.2. Not a PWA (no SW / install prompt).
- * `display: browser` = normal tab. Colors = dark canvas T-039.
+ * `display: browser` = normal tab. Colors = Monolith paper.
  */
 export const SITE_MANIFEST_ICONS = [
   {

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   icons: SITE_HEAD_ICONS,
 };
 
-/** T-031.4 — browser chrome. Static dark (T-038.2 hold); does not read cookie. */
+/** T-031.4 / T-085.5 — browser chrome matches the paper masthead; static, no cookie. */
 export const viewport: Viewport = {
   themeColor: SITE_CANVAS_COLOR,
 };
