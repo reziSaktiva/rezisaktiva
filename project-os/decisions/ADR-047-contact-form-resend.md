@@ -27,6 +27,15 @@ Accepted
 
 This **does not** supersede ADR-019 for modal/form UI. It locks message *delivery*. M8 (form portion) rises from Could to Must; booking/calendar stays Could.
 
+### Amendment (T-083, 2026-11-21)
+
+Applies from the S-002 cutover (**T-086**); production keeps the modal until then.
+
+- **Contact page replaces the modal** (ADR-052 point 5): the form lives on `/[locale]/contact`. This lifts the "not a `/contact` route" part of point 3 and replaces the modal wording in point 1. Header, mobile menu, footer and Workflow CTA link to the page.
+- **Payload:** name, email, optional company or website, need (one of `product`, `build`, `ai`, `other`), details, honeypot. Point 8 server validation now covers every field (required name, valid email, known need, length limits).
+- **Inbox text** lists the fields with Indonesian labels, then the message, like the Indonesian subject in point 10.
+- **Unchanged:** Resend through the Route Handler, server-only key, Reply-To = visitor, "sent" only after `ok: true`, visible `mailto:` fallback. The copy-email button is gone; the address stays visible as a `mailto:` link.
+
 ### Reason
 
 - Form saying “Terkirim” without delivering misleads (inbound friction).
