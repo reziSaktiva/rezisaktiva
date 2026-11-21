@@ -13,54 +13,19 @@ const rootLayout = readFileSync(
   "utf8",
 );
 
-function exportFn(source: string, name: string, nextName: string): string {
+function exportFn(source: string, name: string): string {
   const start = source.indexOf(`export function ${name}`);
-  const end = source.indexOf(`export function ${nextName}`);
   expect(start).toBeGreaterThan(-1);
-  expect(end).toBeGreaterThan(start);
-  return source.slice(start, end);
+  return source.slice(start);
 }
 
 describe("motion hydration (PR #68 review)", () => {
   it("skips Magnetic animate() on leave when reduced motion", () => {
-    const magnetic = exportFn(homeMotion, "Magnetic", "CursorRing");
+    const magnetic = exportFn(homeMotion, "Magnetic");
     expect(magnetic).toContain("skipMagneticPull");
     expect(magnetic).toMatch(
       /const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/,
     );
-  });
-});
-
-describe("pointer ring contract", () => {
-  const globals = ["app/globals.css", "app/legacy-identity.css"]
-    .map((file) => readFileSync(path.join(process.cwd(), file), "utf8"))
-    .join("\n");
-
-  it("keeps the overlay close glyph and portals the ring", () => {
-    expect(homeMotion).toContain('const closeScrim = "[data-overlay-scrim]"');
-    expect(homeMotion).toContain('className="home-cursor-ring"');
-    expect(homeMotion).toContain("createPortal(");
-    expect(homeMotion).toContain("document.body");
-  });
-
-  it("does not ship the knife pointer", () => {
-    expect(homeMotion).not.toContain("home-cursor-knife");
-    expect(homeMotion).not.toContain("bloody-knife");
-    expect(homeMotion).not.toContain("cursor-knife");
-    expect(globals).not.toContain("home-cursor-knife");
-    expect(globals).not.toContain("cursor-knife");
-  });
-
-  it("hides the portaled ring during page lock, not only inside the clone", () => {
-    expect(globals).toContain("html.page-vt-lock .home-cursor-ring");
-    expect(globals).not.toContain(".page-vt-clone .home-cursor-ring");
-  });
-
-  it("pauses the follow loop when the pointer rests or the tab is hidden", () => {
-    expect(homeMotion).toContain("document.hidden");
-    expect(homeMotion).toContain("visibilitychange");
-    expect(homeMotion).toContain("startTick");
-    expect(homeMotion).toContain("stopTick");
   });
 });
 

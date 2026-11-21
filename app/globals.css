@@ -2,8 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "lenis/dist/lenis.css";
-/* Fenced old identity; delete surface by surface (T-078.5). Must stay an import at the top. */
-@import "./legacy-identity.css";
 
 /*
  * Single theme (ADR-054, T-078.4): nothing sets `.dark` anymore, so `dark:`
@@ -14,18 +12,11 @@
 
 /*
  * T-078.1 — Monolith tokens (ADR-052, ADR-054). Single theme: no dark variant.
- * Names are new (`ink`, `paper`, ...) so they never collide with the legacy
- * gothic-blood tokens below, which keep serving unmigrated surfaces until
- * their surface is migrated. Source values: `design-mockups/shared.css` (v5).
+ * Source values: `design-mockups/shared.css` (v5).
  *
  * Utilities that come out of this block: `bg-ink`, `text-paper`, `bg-cream`,
  * `text-mute`, `text-soft`, `border-rule`, `border-rule-inv`, `px-gutter`,
  * `ease-monolith`, `ease-monolith-io`, `rounded-sharp`.
- *
- * CUTOVER MAP (when the last legacy surface is gone): point the shadcn
- * semantic tokens at these (`--background` = paper, `--foreground` = ink,
- * `--muted-foreground` = mute, `--border` = rule, `--radius` = 0) and delete
- * `legacy-identity.css`.
  */
 @theme {
   --color-ink: #020202;
@@ -56,6 +47,152 @@
   --font-wordmark: var(--font-archivo), "Arial Black", sans-serif;
   --font-condensed: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+/*
+ * shadcn semantic tokens (T-085.6 cutover, ADR-054). The primitives in
+ * `components/ui/` read these; they point at the Monolith palette. Single
+ * theme: no dark values.
+ */
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: var(--color-paper);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-paper);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-paper);
+  --secondary: var(--color-cream);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-cream);
+  --muted-foreground: var(--color-mute);
+  --accent: var(--color-cream);
+  --accent-foreground: var(--color-ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--color-rule);
+  --input: var(--color-rule);
+  --ring: var(--color-ink);
+  --radius: 0px;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Document base. Every surface paints its own band, so the canvas only shows
+ * in overscroll and behind the page curtain: ink, like the footer and the
+ * browser chrome color.
+ */
+html,
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Skip-to-content: visually hidden until focused (AppShell a11y). */
+.site-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  z-index: 9999;
+}
+
+.site-skip-link:focus,
+.site-skip-link:focus-visible {
+  position: fixed;
+  top: 8px;
+  inset-inline-start: 8px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 8px 16px;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  text-decoration: none;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.site-chrome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.site-chrome-main {
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+/* `Magnetic` wrapper (home-motion.tsx), used by the footer CTA. */
+.home-magnetic {
+  display: inline-flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-magnetic {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/*
+ * Page transition lock (T-079.6): `html.page-vt-lock` is set while the curtain
+ * runs (it pauses Lenis). Lenis.stop() adds `.lenis-stopped { overflow: clip }`
+ * which hides the scrollbar track, so keep `overflow-y: scroll`. Specificity
+ * must beat `.lenis.lenis-stopped`.
+ */
+html.page-vt-lock,
+html.lenis.page-vt-lock.lenis-stopped {
+  overflow-x: clip;
+  overflow-y: scroll;
 }
 
 /*
@@ -230,8 +367,9 @@
   opacity: 0.4;
 }
 
+/* 0.65 keeps AA (4.5:1) for the dimmed text on paper, ink and the glass bar. */
 .mh-clock {
-  opacity: 0.5;
+  opacity: 0.65;
 }
 
 .mh-nav {
@@ -294,7 +432,7 @@
 }
 
 .mh-locale-button {
-  opacity: 0.5;
+  opacity: 0.65;
   transition: opacity 0.3s var(--ease-monolith);
   cursor: pointer;
 }
@@ -308,6 +446,19 @@
 .mh-dock-menu {
   display: none;
   cursor: pointer;
+}
+
+/* Small text buttons get a 44px-tall touch area without changing layout. */
+.mh-menu-btn,
+.mh-sheet-close {
+  position: relative;
+}
+
+.mh-menu-btn::before,
+.mh-sheet-close::before {
+  content: "";
+  position: absolute;
+  inset: -14px -10px;
 }
 
 .mh-menu-btn {
@@ -430,6 +581,132 @@
   .mh-roll::after,
   .mh-dock {
     transition: none;
+  }
+}
+
+/*
+ * T-081.1 — Work index glass bar (mockup `.wbar`, not pixel-exact). Replaces
+ * the masthead + dock on `/[locale]/projects` only (`siteHeaderVariant`).
+ * Fixed and always visible; each pill is frosted paper over the cards.
+ * `--wbar-top` / `--wbar-height` also set the `.wk-head` sticky offset.
+ */
+.site-chrome {
+  --wbar-top: 14px;
+  --wbar-height: 48px;
+}
+
+.wbar {
+  position: fixed;
+  top: var(--wbar-top);
+  right: var(--spacing-gutter);
+  left: var(--spacing-gutter);
+  z-index: 90;
+  /* Brand | nav | end. Side tracks never shrink below their pills, so the
+     centered nav cannot slide under them at tablet widths. */
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+  align-items: center;
+  gap: 16px;
+  color: var(--color-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  -webkit-font-smoothing: antialiased;
+  pointer-events: none;
+}
+
+.wbar > * {
+  pointer-events: auto;
+}
+
+.wbar-glass {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--wbar-height);
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .wbar-glass {
+    background-color: var(--color-paper);
+  }
+}
+
+.wbar-brand {
+  justify-self: start;
+  padding: 0 20px;
+  font-size: 22px;
+}
+
+.wbar-nav {
+  justify-self: center;
+  gap: 22px;
+  padding: 0 26px;
+  font-size: 13px;
+}
+
+.wbar-end {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Own pill (not `.home-pill`), so Home pill changes never reach the bar. */
+.wbar-cta {
+  padding: 0 22px;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition:
+    background-color 0.45s var(--ease-monolith),
+    color 0.45s var(--ease-monolith);
+}
+
+.wbar-cta:hover,
+.wbar-cta:focus-visible {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.wbar-locale {
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+.wbar-menu {
+  display: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.wbar a:focus-visible,
+.wbar button:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .wbar-nav,
+  .wbar-cta,
+  .wbar-locale {
+    display: none;
+  }
+
+  .wbar-menu {
+    display: inline-flex;
+  }
+
+  /* Phones: brand left, Menu right; the empty nav track collapses. */
+  .wbar {
+    grid-template-columns: 1fr auto;
   }
 }
 
@@ -637,9 +914,10 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
   right: calc(var(--spacing-gutter) * 0.4);
 }
 
+/* Sticks just below the fixed glass bar (T-081.1). */
 .wk-head {
   position: sticky;
-  top: 74px;
+  top: calc(var(--wbar-top) + var(--wbar-height) + 12px);
   z-index: 0;
   display: flex;
   flex-direction: column;
@@ -1183,7 +1461,8 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 .workflow-adr-dt {
   font-size: 11px;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+  /* 55%: AA for 11px text on ink (45% measured 4.25:1). */
+  color: color-mix(in srgb, var(--color-paper) 55%, transparent);
 }
 
 .workflow-adr-dd {
@@ -1406,7 +1685,7 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 }
 
 .contact-optional {
-  opacity: 0.5;
+  opacity: 0.65;
 }
 
 .contact-input,
@@ -1434,9 +1713,12 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
   cursor: pointer;
 }
 
-/* Placeholder option reads like an input placeholder until a need is picked. */
+/*
+ * Placeholder option reads like an input placeholder until a need is picked.
+ * `--color-mute` is 4.3:1 on the grey field; the ink mix keeps AA (~5.3:1).
+ */
 .contact-select select[data-empty] {
-  color: var(--color-mute);
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
 }
 
 .contact-select [data-slot="native-select-icon"] {
@@ -1445,7 +1727,7 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 }
 
 .contact-input::placeholder {
-  color: var(--color-mute);
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
 }
 
 .contact-input:hover,

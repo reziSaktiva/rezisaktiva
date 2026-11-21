@@ -1,11 +1,26 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { MAIN_CONTENT_ID } from "./site-chrome";
+import { MAIN_CONTENT_ID, siteHeaderVariant } from "./site-chrome";
 
-const globalsCss = ["app/globals.css", "app/legacy-identity.css"]
-  .map((file) => readFileSync(path.join(process.cwd(), file), "utf8"))
-  .join("\n");
+describe("siteHeaderVariant", () => {
+  it("uses the glass bar on the Work index only", () => {
+    expect(siteHeaderVariant("/en/projects", "en")).toBe("bar");
+    expect(siteHeaderVariant("/id/projects/", "id")).toBe("bar");
+  });
+
+  it("keeps the masthead on case pages and other routes", () => {
+    expect(siteHeaderVariant("/en/projects/some-case", "en")).toBe("masthead");
+    expect(siteHeaderVariant("/en", "en")).toBe("masthead");
+    expect(siteHeaderVariant("/en/contact", "en")).toBe("masthead");
+    expect(siteHeaderVariant("/id/projects", "en")).toBe("masthead");
+  });
+});
+
+const globalsCss = readFileSync(
+  path.join(process.cwd(), "app/globals.css"),
+  "utf8",
+);
 
 describe("MAIN_CONTENT_ID", () => {
   it("matches the live main landmark used by skip-link and page-vt", () => {
@@ -13,20 +28,7 @@ describe("MAIN_CONTENT_ID", () => {
   });
 });
 
-describe("craft tokens after Astryx removal", () => {
-  it("defines size, status, and border aliases used by chrome/About/footer", () => {
-    for (const token of [
-      "--size-element-sm:",
-      "--size-element-md:",
-      "--size-element-lg:",
-      "--color-background-green:",
-      "--color-text-green:",
-      "--color-border-default:",
-    ]) {
-      expect(globalsCss.includes(token)).toBe(true);
-    }
-  });
-
+describe("chrome CSS contract", () => {
   it("keeps the document lock for Lenis and drops the stutter layers", () => {
     expect(globalsCss.includes("html.page-vt-lock,")).toBe(true);
     expect(globalsCss.includes("html.lenis.page-vt-lock.lenis-stopped")).toBe(

@@ -13,7 +13,11 @@ import { pinStepIndex } from "@/lib/reveal-math";
 export type PinStep = {
   /** Oversized word shown while this step is active. */
   word: string;
-  /** Supporting content for the step. */
+  /**
+   * Supporting content for the step. Every body stays in the accessibility
+   * tree (only the active one is visible), so keep it static text: hidden
+   * bodies must not hold links or controls.
+   */
   body: ReactNode;
 };
 
@@ -57,6 +61,7 @@ export function PinScrub({ steps, header, className, stepHeight = 100 }: PinScru
             {steps.map((step, i) => (
               <motion.span
                 key={step.word}
+                initial={false}
                 className="font-condensed absolute top-1/2 left-0 text-[clamp(96px,21vw,340px)] leading-[0.8] whitespace-nowrap uppercase"
                 animate={{
                   opacity: i === active ? 1 : 0,
@@ -68,17 +73,21 @@ export function PinScrub({ steps, header, className, stepHeight = 100 }: PinScru
               </motion.span>
             ))}
           </div>
+          {/*
+            One copy per step. Inactive bodies are only faded, not hidden from
+            assistive tech, so a reader in browse mode gets all steps in order;
+            the sr-only heading stands in for the aria-hidden big word.
+          */}
           <div className="mt-8 grid">
             {steps.map((step, i) => (
               <motion.div
                 key={step.word}
+                initial={false}
                 className="col-start-1 row-start-1"
                 animate={{ opacity: i === active ? 1 : 0, y: i === active ? 0 : 14 }}
                 transition={{ duration: dur, ease: EASE }}
-                aria-hidden={i !== active}
-                inert={i !== active}
               >
-                <span className="sr-only">{step.word}</span>
+                <h3 className="sr-only">{step.word}</h3>
                 {step.body}
               </motion.div>
             ))}

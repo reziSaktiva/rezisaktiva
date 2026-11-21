@@ -21,7 +21,8 @@ export function SplitLines({ lines, className, delay = 0, immediate = false }: S
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -8% 0px" });
   const reduce = useReducedMotion();
-  const shown = immediate || inView;
+  // Reduced motion shows the final state at once, not on viewport entry.
+  const shown = reduce || immediate || inView;
 
   return (
     <span ref={ref} className={cn("block", className)}>

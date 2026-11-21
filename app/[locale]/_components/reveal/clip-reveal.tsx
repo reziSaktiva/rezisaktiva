@@ -3,12 +3,12 @@
 import {
   motion,
   useInView,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "motion/react";
 import { useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useMediaQuery } from "../use-media-query";
 
 type ClipRevealProps = {
   /** Usually a `next/image` with `fill`. It is parallaxed inside the mask. */
@@ -24,7 +24,8 @@ const EASE_IO = [0.76, 0, 0.24, 1] as const;
 export function ClipReveal({ children, className, parallax = 0.085 }: ClipRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
-  const reduce = useReducedMotion();
+  // Hydration-safe reduced-motion read (the parallax `style` must match SSR).
+  const reduce = useMediaQuery("(prefers-reduced-motion: reduce)");
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const pct = parallax * 100;
   const y = useTransform(scrollYProgress, [0, 1], [`${pct}%`, `${-pct}%`]);

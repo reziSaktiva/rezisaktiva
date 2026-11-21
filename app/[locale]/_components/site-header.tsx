@@ -26,6 +26,7 @@ import {
   isHomePath,
   isNavItemActive,
 } from "@/lib/nav";
+import { siteHeaderVariant } from "@/lib/site-chrome";
 import { nextDockState } from "@/lib/site-dock";
 import { contactHref } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
@@ -45,7 +46,10 @@ import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
  *   of the tab order. Keyboard and screen readers use the masthead nav, which
  *   is always in the DOM; on phones the Menu button opens the sheet (Radix
  *   Dialog: focus trap, Escape, `aria-modal`).
- * - Styling lives in `app/globals.css` (`.mh-*`).
+ * - Work index (T-081.1, `siteHeaderVariant`): a floating frosted glass bar
+ *   (brand / nav / Contact + locale / Menu on phones) replaces the masthead
+ *   and the dock. Its nav is the real, focusable nav on that page.
+ * - Styling lives in `app/globals.css` (`.mh-*`, `.wbar*`).
  */
 
 const WORDMARK = PERSON_CHROME.name.split(" ")[0] ?? PERSON_CHROME.name;
@@ -69,25 +73,31 @@ function useLocationHash(): string {
   return hash;
 }
 
-function useBandungClock(): string {
+function useBandungClock(enabled: boolean): string {
   const [time, setTime] = useState(BANDUNG_TIME_PLACEHOLDER);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
     const tick = () => {
       setTime(formatBandungTime(new Date()));
     };
     tick();
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [enabled]);
 
   return time;
 }
 
-function useDockVisible(): boolean {
+function useDockVisible(enabled: boolean): boolean {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
     let state = { visible: false, lastY: window.scrollY };
     const onScroll = () => {
       state = nextDockState(state, window.scrollY, window.innerHeight);
@@ -95,7 +105,7 @@ function useDockVisible(): boolean {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [enabled]);
 
   return visible;
 }
@@ -174,8 +184,10 @@ function NavLinks({
 export function SiteHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const hash = useLocationHash();
-  const time = useBandungClock();
-  const dockVisible = useDockVisible();
+  // The Work glass bar shows neither the clock nor the dock: skip their work.
+  const masthead = siteHeaderVariant(pathname, locale) === "masthead";
+  const time = useBandungClock(masthead);
+  const dockVisible = useDockVisible(masthead);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetPath, setSheetPath] = useState(pathname);
   const closeSheet = () => setSheetOpen(false);
@@ -208,85 +220,122 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const brandLabel = `${PERSON_CHROME.name}, ${NAV_LABELS[locale].home}`;
   const homeCurrent = isHomePath(pathname, locale) ? "page" : undefined;
 
+  const menuTrigger = (className: string) => (
+    <SheetTrigger asChild>
+      <button
+        ref={menuButtonRef}
+        type="button"
+        className={className}
+        aria-label={menuLabel.open}
+      >
+        {MENU_LABEL[locale]}
+      </button>
+    </SheetTrigger>
+  );
+
   return (
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-      <header className="mh-header">
-        <div className="mh-masthead">
+      {!masthead ? (
+        <header className="wbar">
           <NextLink
             href={homeHref(locale)}
-            className="mh-brand wordmark"
+            className="wbar-brand wbar-glass wordmark"
             aria-label={brandLabel}
-            aria-current={homeCurrent}
           >
             {WORDMARK}
           </NextLink>
-          <p className="mh-meta">
-            <span>{LOCATION_LABEL}</span>
-            <i aria-hidden="true">/</i>
-            <span className="mh-clock" aria-hidden="true">
-              {time}
-            </span>
-          </p>
-          <nav aria-label="Main navigation" className="mh-nav">
+          <nav aria-label="Main navigation" className="wbar-nav wbar-glass">
             <NavLinks locale={locale} pathname={pathname} hash={hash} />
+          </nav>
+          <div className="wbar-end">
             <NextLink
               href={contactPath}
-              className="mh-roll"
-              data-t={contactLabel}
-              aria-current={contactCurrent ? "page" : undefined}
+              className="wbar-cta wbar-glass"
             >
-              <span>{contactLabel}</span>
+              {contactLabel}
             </NextLink>
-            <LocaleSwitcher locale={locale} />
-          </nav>
-          <SheetTrigger asChild>
+            <LocaleSwitcher
+              locale={locale}
+              className="wbar-locale wbar-glass"
+            />
+            {menuTrigger("wbar-menu wbar-glass")}
+          </div>
+        </header>
+      ) : (
+        <>
+          <header className="mh-header">
+            <div className="mh-masthead">
+              <NextLink
+                href={homeHref(locale)}
+                className="mh-brand wordmark"
+                aria-label={brandLabel}
+                aria-current={homeCurrent}
+              >
+                {WORDMARK}
+              </NextLink>
+              <p className="mh-meta">
+                <span>{LOCATION_LABEL}</span>
+                <i aria-hidden="true">/</i>
+                <span className="mh-clock" aria-hidden="true">
+                  {time}
+                </span>
+              </p>
+              <nav aria-label="Main navigation" className="mh-nav">
+                <NavLinks locale={locale} pathname={pathname} hash={hash} />
+                <NextLink
+                  href={contactPath}
+                  className="mh-roll"
+                  data-t={contactLabel}
+                  aria-current={contactCurrent ? "page" : undefined}
+                >
+                  <span>{contactLabel}</span>
+                </NextLink>
+                <LocaleSwitcher locale={locale} />
+              </nav>
+              {menuTrigger("mh-menu-btn")}
+            </div>
+          </header>
+
+          <div
+            className="mh-dock"
+            aria-hidden="true"
+            data-visible={dockVisible ? "true" : "false"}
+          >
+            <NextLink
+              href={homeHref(locale)}
+              className="mh-dock-brand wordmark"
+              tabIndex={-1}
+            >
+              {WORDMARK}
+            </NextLink>
+            <div className="mh-dock-nav">
+              <NavLinks
+                locale={locale}
+                pathname={pathname}
+                hash={hash}
+                tabIndex={-1}
+              />
+            </div>
             <button
-              ref={menuButtonRef}
               type="button"
-              className="mh-menu-btn"
-              aria-label={menuLabel.open}
+              className="mh-dock-menu"
+              tabIndex={-1}
+              onClick={() => setSheetOpen(true)}
             >
               {MENU_LABEL[locale]}
             </button>
-          </SheetTrigger>
-        </div>
-      </header>
-
-      <div
-        className="mh-dock"
-        aria-hidden="true"
-        data-visible={dockVisible ? "true" : "false"}
-      >
-        <NextLink
-          href={homeHref(locale)}
-          className="mh-dock-brand wordmark"
-          tabIndex={-1}
-        >
-          {WORDMARK}
-        </NextLink>
-        <div className="mh-dock-nav">
-          <NavLinks
-            locale={locale}
-            pathname={pathname}
-            hash={hash}
-            tabIndex={-1}
-          />
-        </div>
-        <button
-          type="button"
-          className="mh-dock-menu"
-          tabIndex={-1}
-          onClick={() => setSheetOpen(true)}
-        >
-          {MENU_LABEL[locale]}
-        </button>
-      </div>
+          </div>
+        </>
+      )}
 
       <SheetContent
         side="top"
         showCloseButton={false}
         showOverlay={false}
         aria-describedby={undefined}
+        // Radix hides the rest of the page but does not set `aria-modal`;
+        // `SmoothScroll` also reads it to pause Lenis while the sheet is open.
+        aria-modal="true"
         className={cn(
           "z-150 gap-0 border-0 bg-ink p-gutter text-paper shadow-none md:hidden",
           "data-[side=top]:h-dvh data-[side=top]:border-b-0",

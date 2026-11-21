@@ -29,7 +29,7 @@ export function WorkflowCompare({
             )}
           >
             <div className="flex flex-col gap-3">
-              <p className="small text-current opacity-55">{pane.kicker}</p>
+              <p className="small text-current opacity-65">{pane.kicker}</p>
               <h2 className="display workflow-cmp-title">{pane.label}</h2>
             </div>
             <ul className="flex flex-col">

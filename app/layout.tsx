@@ -3,13 +3,7 @@ import { headers } from "next/headers";
 import { DEFAULT_LOCALE, LOCALE_REQUEST_HEADER, isLocale } from "@/lib/locale";
 import { SITE_CANVAS_COLOR, SITE_HEAD_ICONS } from "@/lib/site-manifest";
 import { getSiteUrl } from "@/lib/site-url";
-import {
-  archivo,
-  barlowCondensed,
-  inter,
-  instrumentSans,
-  texturina,
-} from "./fonts";
+import { archivo, barlowCondensed, inter } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,14 +15,14 @@ export const metadata: Metadata = {
   icons: SITE_HEAD_ICONS,
 };
 
-/** T-031.4 — browser chrome. Static dark (T-038.2 hold); does not read cookie. */
+/** T-031.4 / T-085.5 — browser chrome matches the paper masthead; static, no cookie. */
 export const viewport: Viewport = {
   themeColor: SITE_CANVAS_COLOR,
 };
 
 /**
  * Single theme (ADR-054): no cookie, no anti-flash script, no `data-theme`.
- * Lenis, `qi-lock` / `ps-lock`, and `page-vt-lock` write classes on
+ * Lenis and `page-vt-lock` write classes on
  * `documentElement` via `classList`, so `<html>` never gets a React `className`.
  * The root layout no longer reads `cookies()`; only the locale request header.
  */
@@ -40,7 +34,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang={htmlLang} suppressHydrationWarning>
       <body
-        className={`${archivo.variable} ${barlowCondensed.variable} ${inter.variable} ${instrumentSans.variable} ${texturina.variable} ${instrumentSans.className}`}
+        className={`${archivo.variable} ${barlowCondensed.variable} ${inter.variable}`}
       >
         {children}
       </body>
