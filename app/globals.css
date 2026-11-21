@@ -2,8 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "lenis/dist/lenis.css";
-/* Fenced old identity; delete surface by surface (T-078.5). Must stay an import at the top. */
-@import "./legacy-identity.css";
 
 /*
  * Single theme (ADR-054, T-078.4): nothing sets `.dark` anymore, so `dark:`
@@ -14,18 +12,11 @@
 
 /*
  * T-078.1 — Monolith tokens (ADR-052, ADR-054). Single theme: no dark variant.
- * Names are new (`ink`, `paper`, ...) so they never collide with the legacy
- * gothic-blood tokens below, which keep serving unmigrated surfaces until
- * their surface is migrated. Source values: `design-mockups/shared.css` (v5).
+ * Source values: `design-mockups/shared.css` (v5).
  *
  * Utilities that come out of this block: `bg-ink`, `text-paper`, `bg-cream`,
  * `text-mute`, `text-soft`, `border-rule`, `border-rule-inv`, `px-gutter`,
  * `ease-monolith`, `ease-monolith-io`, `rounded-sharp`.
- *
- * CUTOVER MAP (when the last legacy surface is gone): point the shadcn
- * semantic tokens at these (`--background` = paper, `--foreground` = ink,
- * `--muted-foreground` = mute, `--border` = rule, `--radius` = 0) and delete
- * `legacy-identity.css`.
  */
 @theme {
   --color-ink: #020202;
@@ -56,6 +47,152 @@
   --font-wordmark: var(--font-archivo), "Arial Black", sans-serif;
   --font-condensed: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+/*
+ * shadcn semantic tokens (T-085.6 cutover, ADR-054). The primitives in
+ * `components/ui/` read these; they point at the Monolith palette. Single
+ * theme: no dark values.
+ */
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: var(--color-paper);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-paper);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-paper);
+  --secondary: var(--color-cream);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-cream);
+  --muted-foreground: var(--color-mute);
+  --accent: var(--color-cream);
+  --accent-foreground: var(--color-ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--color-rule);
+  --input: var(--color-rule);
+  --ring: var(--color-ink);
+  --radius: 0px;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Document base. Every surface paints its own band, so the canvas only shows
+ * in overscroll and behind the page curtain: ink, like the footer and the
+ * browser chrome color.
+ */
+html,
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Skip-to-content: visually hidden until focused (AppShell a11y). */
+.site-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  z-index: 9999;
+}
+
+.site-skip-link:focus,
+.site-skip-link:focus-visible {
+  position: fixed;
+  top: 8px;
+  inset-inline-start: 8px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 8px 16px;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  text-decoration: none;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.site-chrome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.site-chrome-main {
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+/* `Magnetic` wrapper (home-motion.tsx), used by the footer CTA. */
+.home-magnetic {
+  display: inline-flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-magnetic {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/*
+ * Page transition lock (T-079.6): `html.page-vt-lock` is set while the curtain
+ * runs (it pauses Lenis). Lenis.stop() adds `.lenis-stopped { overflow: clip }`
+ * which hides the scrollbar track, so keep `overflow-y: scroll`. Specificity
+ * must beat `.lenis.lenis-stopped`.
+ */
+html.page-vt-lock,
+html.lenis.page-vt-lock.lenis-stopped {
+  overflow-x: clip;
+  overflow-y: scroll;
 }
 
 /*
