@@ -12,6 +12,9 @@ import { cn } from "@/lib/utils";
  *   viewport, so first paint is never blocked (the wrapper paints a static
  *   CSS contour pattern straight from SSR).
  * - Pauses when off-screen or when the tab is hidden (no rAF while idle).
+ * - Auto drift runs for `AUTO_MOTION_SECONDS`, then settles still (WCAG 2.2.2,
+ *   Boss Rezi 2026-11-21). After that the loop only runs while a fine pointer
+ *   ripple is active (user-initiated motion).
  * - Reacts to a fine pointer (ripple of sharper contour lines near it).
  * - `prefers-reduced-motion`: one static frame, no loop, no pointer.
  * - No WebGL (or context lost): the static CSS fallback stays visible.
@@ -43,6 +46,8 @@ const FRAGMENT_SOURCE = [
   "gl_FragColor=vec4(c,1.);}",
 ].join("");
 
+/** Seconds of automatic drift before the field settles (WCAG 2.2.2: < 5 s). */
+const AUTO_MOTION_SECONDS = 4.5;
 /** Time offset used for the single reduced-motion frame. */
 const STATIC_TIME = 40;
 /** Render scale vs CSS pixels: the field is soft, so 0.75x is enough. */
@@ -179,8 +184,16 @@ export function ContourField({
         smoothX += (pointerX - smoothX) * 0.09;
         smoothY += (pointerY - smoothY) * 0.09;
         influence += ((pointerInside ? 1 : 0) - influence) * 0.06;
-        draw((now - startedAt) / 1000);
-        raf = requestAnimationFrame(frame);
+        const elapsed = (now - startedAt) / 1000;
+        draw(Math.min(elapsed, AUTO_MOTION_SECONDS));
+        // Keep looping while drifting or while the pointer ripple eases.
+        if (
+          elapsed < AUTO_MOTION_SECONDS ||
+          pointerInside ||
+          influence > 0.002
+        ) {
+          raf = requestAnimationFrame(frame);
+        }
       };
 
       const sync = () => {
@@ -219,6 +232,10 @@ export function ContourField({
           1,
           Math.max(0, 1 - (event.clientY - rect.top) / rect.height),
         );
+        // The loop stops once the field settles; a pointer wakes it again.
+        if (pointerInside && !raf && startedAt && !document.hidden) {
+          raf = requestAnimationFrame(frame);
+        }
       };
 
       const onContextLost = (event: Event) => {
