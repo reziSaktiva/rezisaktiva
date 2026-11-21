@@ -367,8 +367,9 @@ html.lenis.page-vt-lock.lenis-stopped {
   opacity: 0.4;
 }
 
+/* 0.65 keeps AA (4.5:1) for the dimmed text on paper, ink and the glass bar. */
 .mh-clock {
-  opacity: 0.5;
+  opacity: 0.65;
 }
 
 .mh-nav {
@@ -431,7 +432,7 @@ html.lenis.page-vt-lock.lenis-stopped {
 }
 
 .mh-locale-button {
-  opacity: 0.5;
+  opacity: 0.65;
   transition: opacity 0.3s var(--ease-monolith);
   cursor: pointer;
 }
@@ -445,6 +446,19 @@ html.lenis.page-vt-lock.lenis-stopped {
 .mh-dock-menu {
   display: none;
   cursor: pointer;
+}
+
+/* Small text buttons get a 44px-tall touch area without changing layout. */
+.mh-menu-btn,
+.mh-sheet-close {
+  position: relative;
+}
+
+.mh-menu-btn::before,
+.mh-sheet-close::before {
+  content: "";
+  position: absolute;
+  inset: -14px -10px;
 }
 
 .mh-menu-btn {
@@ -1429,7 +1443,8 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 .workflow-adr-dt {
   font-size: 11px;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+  /* 55%: AA for 11px text on ink (45% measured 4.25:1). */
+  color: color-mix(in srgb, var(--color-paper) 55%, transparent);
 }
 
 .workflow-adr-dd {
@@ -1652,7 +1667,7 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 }
 
 .contact-optional {
-  opacity: 0.5;
+  opacity: 0.65;
 }
 
 .contact-input,
@@ -1680,9 +1695,12 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
   cursor: pointer;
 }
 
-/* Placeholder option reads like an input placeholder until a need is picked. */
+/*
+ * Placeholder option reads like an input placeholder until a need is picked.
+ * `--color-mute` is 4.3:1 on the grey field; the ink mix keeps AA (~5.3:1).
+ */
 .contact-select select[data-empty] {
-  color: var(--color-mute);
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
 }
 
 .contact-select [data-slot="native-select-icon"] {
@@ -1691,7 +1709,7 @@ html.has-cursor:not(.native-cursor) :where(a, button, summary, [role="button"], 
 }
 
 .contact-input::placeholder {
-  color: var(--color-mute);
+  color: color-mix(in srgb, var(--color-ink) 60%, transparent);
 }
 
 .contact-input:hover,

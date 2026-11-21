@@ -325,6 +325,9 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         showCloseButton={false}
         showOverlay={false}
         aria-describedby={undefined}
+        // Radix hides the rest of the page but does not set `aria-modal`;
+        // `SmoothScroll` also reads it to pause Lenis while the sheet is open.
+        aria-modal="true"
         className={cn(
           "z-150 gap-0 border-0 bg-ink p-gutter text-paper shadow-none md:hidden",
           "data-[side=top]:h-dvh data-[side=top]:border-b-0",
