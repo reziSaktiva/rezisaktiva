@@ -297,7 +297,10 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       }
 
       if (!curtainEnabled()) {
-        router.push(href, { scroll: false });
+        // No curtain (touch, reduced motion): a plain route change that keeps
+        // Next's default scroll, so the new page opens at its top (or at its
+        // `#hash`) instead of at the old page's scroll offset.
+        router.push(href);
         return;
       }
 

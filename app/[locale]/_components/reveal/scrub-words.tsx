@@ -2,13 +2,13 @@
 
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
   type MotionValue,
 } from "motion/react";
 import { useRef } from "react";
 import { splitWords, wordRange } from "@/lib/reveal-math";
+import { useMediaQuery } from "../use-media-query";
 
 type ScrubWordsProps = {
   text: string;
@@ -34,7 +34,9 @@ function Word({
 /** Words light up one by one as the paragraph scrolls through the viewport. */
 export function ScrubWords({ text, className }: ScrubWordsProps) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const reduce = useReducedMotion();
+  // Server and hydration render the scrub markup; reduced motion switches to
+  // the plain paragraph right after (no hydration mismatch).
+  const reduce = useMediaQuery("(prefers-reduced-motion: reduce)");
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 0.82", "end 0.45"],
