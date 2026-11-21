@@ -1,28 +1,33 @@
-"use client";
-
-import { useContactModal } from "@/app/_components/contact-modal-provider";
+import NextLink from "next/link";
 import { Button } from "@/components/ui/button";
+import type { Locale } from "@/lib/locale";
+import { contactHref } from "@/lib/site-url";
 import { Magnetic } from "./home-motion";
 
 /**
- * "Write to me" magnetic button (T-079.2). Opens the same Contact modal as
- * before (ADR-025). The pull is `Magnetic` (Motion): off for reduced motion
- * and for touch / coarse pointers.
+ * "Write to me" magnetic button (T-079.2). Links to the Contact page
+ * (T-083.3; the modal is gone). The pull is `Magnetic` (Motion): off for
+ * reduced motion and for touch / coarse pointers.
  */
-export function SiteFooterCta({ label }: { label: string }) {
-  const { open } = useContactModal();
-
+export function SiteFooterCta({
+  label,
+  locale,
+}: {
+  label: string;
+  locale: Locale;
+}) {
   return (
     <Magnetic>
       <Button
-        type="button"
+        asChild
         variant="ghost"
-        onClick={open}
         className="display h-36 w-36 rounded-full bg-paper px-0 text-2xl text-ink transition-transform duration-500 ease-monolith hover:scale-105 hover:bg-paper hover:text-ink active:translate-y-0 sm:h-44 sm:w-44 sm:text-3xl dark:hover:bg-paper"
       >
-        <span className="max-w-[7ch] text-balance text-center leading-[0.95]">
-          {label}
-        </span>
+        <NextLink href={contactHref(locale)}>
+          <span className="max-w-[7ch] text-balance text-center leading-[0.95]">
+            {label}
+          </span>
+        </NextLink>
       </Button>
     </Magnetic>
   );

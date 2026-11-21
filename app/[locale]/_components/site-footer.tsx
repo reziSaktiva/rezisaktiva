@@ -9,7 +9,7 @@ import { SiteFooterCta } from "./site-footer-cta";
 
 /**
  * Footer (T-079.2, ADR-052 / ADR-054): dark contour-field band with the
- * contact headline, the "write to me" magnetic button (Contact modal, ADR-025),
+ * contact headline, the "write to me" magnetic button (Contact page, T-083.3),
  * the facts Quick Info used to carry (email, location, links; ADR-054),
  * a footer nav, and the giant wordmark. Server shell; the two client islands
  * are `ContourField` and `SiteFooterCta`.
@@ -65,7 +65,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <h2 className="display type-lg max-w-[12ch]">{copy.contactTitle}</h2>
           <p className="copy text-paper/60">{copy.contactBody}</p>
         </div>
-        <SiteFooterCta label={copy.contactCta} />
+        <SiteFooterCta label={copy.contactCta} locale={locale} />
       </div>
 
       <div className="grid gap-10 md:grid-cols-2 md:items-end">

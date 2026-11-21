@@ -1,9 +1,10 @@
 import { WORKFLOW_COPY } from "@/content/workflow";
+import NextLink from "next/link";
 import type { Locale } from "@/lib/locale";
+import { contactHref } from "@/lib/site-url";
 import { SplitLines } from "./reveal";
 import { WorkflowAdrLog } from "./workflow-adr-log";
 import { WorkflowCompare } from "./workflow-compare";
-import { WorkflowContactCta } from "./workflow-contact-cta";
 import { WorkflowMethod } from "./workflow-method";
 import { WorkflowRules } from "./workflow-rules";
 
@@ -50,7 +51,11 @@ export function WorkflowPage({ locale }: { locale: Locale }) {
         </div>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <p className="big">{copy.closeBody}</p>
-          <WorkflowContactCta label={copy.closeCta} />
+          <NextLink href={contactHref(locale)} className="workflow-pill">
+            <span>
+              {copy.closeCta} <span aria-hidden="true">→</span>
+            </span>
+          </NextLink>
         </div>
       </section>
     </div>

@@ -5,29 +5,59 @@ import {
   CONTACT_HONEYPOT_FIELD,
   CONTACT_RATE_LIMIT,
   contactClientKey,
+  contactMailText,
   decideContactPayload,
   handleContactPost,
 } from "@/lib/contact-mail";
 
 const valid = {
+  name: "Ada Lovelace",
   email: "ada@example.com",
+  company: "",
+  need: "build",
   message: "Halo, saya ingin bicara soal proyek.",
   [CONTACT_HONEYPOT_FIELD]: "",
 };
 
 describe("decideContactPayload", () => {
-  it("accepts a trimmed email and message", () => {
+  it("accepts trimmed fields and an empty optional company", () => {
     expect(
       decideContactPayload({
         ...valid,
+        name: "  Ada  ",
         email: "  ada@example.com  ",
+        company: "  ",
         message: "  Halo  ",
       }),
     ).toEqual({
       kind: "send",
+      name: "Ada",
       email: "ada@example.com",
+      company: "",
+      need: "build",
       message: "Halo",
     });
+  });
+
+  it("accepts a payload without the optional company field", () => {
+    const rest: Record<string, unknown> = { ...valid };
+    delete rest.company;
+    expect(decideContactPayload(rest)).toMatchObject({ kind: "send" });
+  });
+
+  it("rejects a missing name, an unknown need, or an oversized company", () => {
+    expect(decideContactPayload({ ...valid, name: " " })).toEqual({
+      kind: "invalid",
+    });
+    expect(decideContactPayload({ ...valid, need: "hire" })).toEqual({
+      kind: "invalid",
+    });
+    expect(decideContactPayload({ ...valid, need: undefined })).toEqual({
+      kind: "invalid",
+    });
+    expect(
+      decideContactPayload({ ...valid, company: "a".repeat(201) }),
+    ).toEqual({ kind: "invalid" });
   });
 
   it("drops a filled honeypot without treating it as invalid", () => {
@@ -144,7 +174,48 @@ describe("handleContactPost", () => {
       to: "inbox@example.com",
       replyTo: "ada@example.com",
       subject: CONTACT_EMAIL_SUBJECT,
-      text: valid.message,
+      text: contactMailText({
+        name: valid.name,
+        email: valid.email,
+        company: "",
+        need: "build",
+        message: valid.message,
+      }),
     });
+  });
+});
+
+describe("contactMailText", () => {
+  it("lists every field with Indonesian labels, then the message", () => {
+    expect(
+      contactMailText({
+        name: "Ada",
+        email: "ada@example.com",
+        company: "Analytical Engines",
+        need: "ai",
+        message: "Halo",
+      }),
+    ).toBe(
+      [
+        "Nama: Ada",
+        "Email: ada@example.com",
+        "Perusahaan/situs: Analytical Engines",
+        "Kebutuhan: AI dan orkestrasi",
+        "",
+        "Halo",
+      ].join("\n"),
+    );
+  });
+
+  it("marks an empty company with a dash", () => {
+    expect(
+      contactMailText({
+        name: "Ada",
+        email: "ada@example.com",
+        company: "",
+        need: "other",
+        message: "Halo",
+      }),
+    ).toContain("Perusahaan/situs: -");
   });
 });

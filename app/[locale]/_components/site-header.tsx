@@ -11,7 +11,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useContactModal } from "@/app/_components/contact-modal-provider";
 import { PERSON_CHROME } from "@/content/person";
 import {
   BANDUNG_TIME_PLACEHOLDER,
@@ -19,7 +18,6 @@ import {
 } from "@/lib/bandung-time";
 import type { Locale } from "@/lib/locale";
 import {
-  CONTACT_LABEL,
   MENU_LABEL,
   MENU_TOGGLE_LABEL,
   NAV_ITEMS,
@@ -29,6 +27,7 @@ import {
   isNavItemActive,
 } from "@/lib/nav";
 import { nextDockState } from "@/lib/site-dock";
+import { contactHref } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { LocaleSwitcher } from "./locale-switcher";
 import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
@@ -39,8 +38,7 @@ import { scrollToPageId, whenPageTransitionUnlocked } from "./smooth-scroll";
  * phones. Reference: `design-mockups/shared.js` (not pixel-exact).
  *
  * - Brand = Home link (ADR-034/035); nav = About / How I Work / Work (ADR-040:
- *   About is `#about` on Home). Contact stays the modal (ADR-019) until T-083
- *   turns it into a page.
+ *   About is `#about` on Home); Contact links to the `/contact` page (T-083).
  * - The masthead is in flow and blends with `difference`, so it reads on both
  *   the legacy dark surfaces and the paper surfaces that replace them.
  * - The dock is a visual duplicate for pointer users: `aria-hidden`, links out
@@ -178,12 +176,13 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const hash = useLocationHash();
   const time = useBandungClock();
   const dockVisible = useDockVisible();
-  const { open: openContact } = useContactModal();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetPath, setSheetPath] = useState(pathname);
   const closeSheet = () => setSheetOpen(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const contactLabel = CONTACT_LABEL[locale];
+  const contactLabel = NAV_LABELS[locale].contact;
+  const contactPath = contactHref(locale);
+  const contactCurrent = pathname === contactPath;
   const menuLabel = MENU_TOGGLE_LABEL[locale];
 
   useEffect(() => {
@@ -230,14 +229,14 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           </p>
           <nav aria-label="Main navigation" className="mh-nav">
             <NavLinks locale={locale} pathname={pathname} hash={hash} />
-            <button
-              type="button"
+            <NextLink
+              href={contactPath}
               className="mh-roll"
               data-t={contactLabel}
-              onClick={openContact}
+              aria-current={contactCurrent ? "page" : undefined}
             >
               <span>{contactLabel}</span>
-            </button>
+            </NextLink>
             <LocaleSwitcher locale={locale} />
           </nav>
           <SheetTrigger asChild>
@@ -300,7 +299,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           // Radix would focus the trigger with a scroll, which jumps the
           // page to the masthead (after About, or after opening from the
           // dock). Refocus without scrolling, and leave focus alone when
-          // something else (the Contact modal) already took it.
+          // something else already took it.
           event.preventDefault();
           const active = document.activeElement;
           if (!active || active === document.body) {
@@ -335,16 +334,12 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               }
             />
           ))}
-          <button
-            type="button"
-            className="mh-sheet-link"
-            onClick={() => {
-              closeSheet();
-              openContact();
-            }}
-          >
-            {contactLabel}
-          </button>
+          <SheetLink
+            href={contactPath}
+            label={contactLabel}
+            current={contactCurrent}
+            onNavigate={closeSheet}
+          />
         </nav>
         <LocaleSwitcher locale={locale} className="mh-sheet-locale" />
       </SheetContent>

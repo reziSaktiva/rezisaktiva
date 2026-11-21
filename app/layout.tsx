@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 
 /**
  * Single theme (ADR-054): no cookie, no anti-flash script, no `data-theme`.
- * Lenis, `ct-lock` / `qi-lock` / `ps-lock`, and `page-vt-lock` write classes on
+ * Lenis, `qi-lock` / `ps-lock`, and `page-vt-lock` write classes on
  * `documentElement` via `classList`, so `<html>` never gets a React `className`.
  * The root layout no longer reads `cookies()`; only the locale request header.
  */

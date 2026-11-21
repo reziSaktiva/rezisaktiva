@@ -54,6 +54,13 @@ export const PROJECTS_PATH = "projects";
 /** M14 workflow path (label Proses Kerja / How I Work). */
 export const WORKFLOW_PATH = "workflow";
 
+/** Contact page path (T-083, ADR-052 point 5; replaces the modal). */
+export const CONTACT_PATH = "contact";
+
+export function contactHref(locale: string): string {
+  return localePath(locale, CONTACT_PATH);
+}
+
 export function projectsHref(locale: string): string {
   return localePath(locale, PROJECTS_PATH);
 }
