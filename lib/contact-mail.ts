@@ -66,13 +66,17 @@ export function decideContactPayload(body: unknown): ContactDecision {
     return { kind: "drop" };
   }
 
+  // Cutover skew (T-086): a cached modal bundle still posts only
+  // `{ email, message }`. Accept that legacy shape when both new keys are
+  // absent; the page form always sends them. Remove after cutover settles.
+  const legacy = !("name" in record) && !("need" in record);
   const name = readText(record.name);
   const email = readText(record.email);
   const company = readText(record.company);
-  const need = readText(record.need);
+  const need = legacy ? "other" : readText(record.need);
   const message = readText(record.message);
   if (
-    !name ||
+    (!legacy && !name) ||
     name.length > CONTACT_NAME_MAX ||
     !isContactEmail(email) ||
     company.length > CONTACT_COMPANY_MAX ||
@@ -93,7 +97,7 @@ export function decideContactPayload(body: unknown): ContactDecision {
 export function contactMailText(submission: ContactSubmission): string {
   const needs = CONTACT_COPY.id.needs;
   return [
-    `Nama: ${submission.name}`,
+    `Nama: ${submission.name || "-"}`,
     `Email: ${submission.email}`,
     `Perusahaan/situs: ${submission.company || "-"}`,
     `Kebutuhan: ${needs[submission.need]}`,

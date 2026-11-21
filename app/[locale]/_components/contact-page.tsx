@@ -24,7 +24,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
             src={ABOUT_PORTRAIT_SRC}
             alt={copy.portraitAlt}
             fill
-            priority
+            preload
             sizes="(max-width: 900px) 100vw, 50vw"
             quality={90}
             className="object-cover grayscale"
