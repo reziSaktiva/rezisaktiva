@@ -182,7 +182,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 - [x] **T-080.1** — Hero: contour field, three-line statement, lede, scroll cue, blur on scroll. **Done 2026-11-18** (`home-hero.tsx`): three-line `h1` and scroll cue are a T-084.2 placeholder.
 - [x] **T-080.2** — About section: portrait reveal, scrubbed lead, supporting copy, link to Workflow. **Done 2026-11-18**: keeps the current redacted photo and caption with the clip reveal (wave decision). The lead and supporting copy are the existing About text, split at the sentence.
 - [x] **T-080.3** — Work section: sticky title under staggered cards, hover blur with description. **Done 2026-11-18** (`home-work.tsx`, shared `project-card.tsx`): cards 1, 2, 3, 7 link to case pages. The title and link labels are a T-084.2 placeholder.
-- [ ] **T-080.4** — Marquee, pinned method section, decision log accordion (data from `content/`). **Not built 2026-11-18:** ADR-054 point 4 keeps the marquee, method and decision log on Workflow only, not Home. Close or reword with Boss Rezi.
+- [x] **T-080.4** — Marquee, pinned method section, decision log accordion (data from `content/`). **Not built 2026-11-18:** ADR-054 point 4 keeps the marquee, method and decision log on Workflow only, not Home. Close or reword with Boss Rezi. **Closed 2026-11-21 by decision (Boss Rezi):** ADR-054 point 4 keeps the marquee, method and decision log on Workflow only; Home stays as approved.
 - [x] **T-080.5** — Delete the old Home components and styles this replaces. **Done 2026-11-18:** removed `home-hero-wallpaper.tsx`, `status-dot.tsx`, the hero media, the unused `home-motion.tsx` exports, and the old Home/About rules in `app/legacy-identity.css`. `home-motion.tsx` stays because it is shared.
 - [ ] **T-080.6** — Verify against the mockup and the ADR-052 gates; Boss Rezi reviews the Preview. Wave 2026-11-18: local production build checked, with no console errors. Still open: Boss Rezi reviews the Preview.
 
@@ -206,7 +206,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-081.1** — Work index: floating glass nav, sticky giant title, two-column card grid with hover blur and name. Wave 2026-11-18: index, sticky giant title and 2-column card grid done. **Still open: the floating glass nav** needs a header (chrome) change.
+- [x] **T-081.1** — Work index: floating glass nav, sticky giant title, two-column card grid with hover blur and name. Wave 2026-11-18: index, sticky giant title and 2-column card grid done. **Still open: the floating glass nav** needs a header (chrome) change. **Done 2026-11-21:** floating frosted glass bar on the Work index only (brand, nav, Contact, ID/EN pill kept by Boss Rezi); masthead and dock hidden there; other pages unchanged.
 - [x] **T-081.2** — Case page: parallax hero, meta row, sticky lede with highlighted points, stack chips, gallery with reveals, next-project link. **Done 2026-11-18.**
 - [x] **T-081.3** — Apply the T-077.2 outcome (sheet kept, changed, or removed) and update routing, links, and metadata. **Done 2026-11-18:** the sheet is removed and tiles go straight to `/[locale]/projects/[slug]` (ADR-054 point 2). `content/work-sheet.ts` was folded into `work-case.ts`.
 - [x] **T-081.4** — Update or add unit tests for the work catalog and slugs. **Done 2026-11-18:** work tests were updated and `pnpm test` passes.
@@ -298,7 +298,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ## T-085 — Quality gates, cleanup, SEO
 
-* **Status:** ⬜ Open
+* **Status:** 🟡 In progress (T-085.1, T-085.5, T-085.6 done 2026-11-21; T-085.2 to T-085.4 and T-085.7 need Boss Rezi)
 * **Domain:** Engineering / QA
 * **Branch:** `redesign/monolith`
 * **Blocked by:** T-080 to T-083
@@ -313,12 +313,12 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-085.1** — Accessibility pass: keyboard, focus order, labels, contrast, accordion and form semantics, screen-reader check of nav and dock.
-- [ ] **T-085.2** — Reduced motion and touch: every effect has a fallback; no scroll hijack on touch.
-- [ ] **T-085.3** — Performance: Lighthouse and Core Web Vitals on the Preview, compared with the T-076.4 baseline; fix or document any regression.
-- [ ] **T-085.4** — Responsive review at 390, 768, 1024, 1440 px on real devices where possible.
-- [ ] **T-085.5** — Metadata, icons, share card and `themeColor` for the new identity (replaces T-031 outputs); sitemap and robots; redirects for changed routes.
-- [ ] **T-085.6** — Delete dead gothic CSS, components, and the old living background; shrink `app/globals.css`; confirm no unused dependencies.
+- [x] **T-085.1** — Accessibility pass: keyboard, focus order, labels, contrast, accordion and form semantics, screen-reader check of nav and dock. **Done 2026-11-21:** keyboard, focus, landmarks, headings, form and accordion semantics checked on all pages; contrast fixes (locale switcher, clock, Workflow labels, Contact placeholders); menu sheet `aria-modal` and 44px targets; pinned method readable by screen readers; contour field settles after 4.5 s (WCAG 2.2.2). Accepted exceptions (Boss Rezi): dim scroll-reveal words on About and case points before scrolling.
+- [ ] **T-085.2** — Reduced motion and touch: every effect has a fallback; no scroll hijack on touch. Wave 2026-11-21 (finish build + quality): code fixes done (reveals, parallax and case points hydration-safe under reduced motion; touch navigation scrolls to top; Lenis paused under the sheet). Still open: browser could not emulate reduced motion, so curtain, cursor, magnetic and pin fallbacks need a manual pass with the OS setting on.
+- [ ] **T-085.3** — Performance: Lighthouse and Core Web Vitals on the Preview, compared with the T-076.4 baseline; fix or document any regression. Wave 2026-11-21 (finish build + quality): local lab stand-in (Lighthouse 12, local production build, sequential, Perf/A11y/BP/SEO mobile | desktop): Home 61/96/100/100 | 99/96/100/100 (TBT 880 ms vs 1650); Workflow 83/100/100/100 | 99; Work index 79/100/100/100 (rerun) | 99; Case minerank 78/96/100/100 | 98/97/100/100 (BP 79 to 100); Contact 80/100/100/100 | 99. Mobile LCP 5.0 to 6.0 s locally (no CDN). A11y 96 is the accepted scroll-reveal exception. Still open: Boss Rezi runs it on the Preview.
+- [ ] **T-085.4** — Responsive review at 390, 768, 1024, 1440 px on real devices where possible. Wave 2026-11-21 (finish build + quality): no horizontal overflow and no clipped layouts at 390, 768, 1024, 1440 px on all six pages (browser emulation). Still open: real phone and tablet, Safari.
+- [x] **T-085.5** — Metadata, icons, share card and `themeColor` for the new identity (replaces T-031 outputs); sitemap and robots; redirects for changed routes. **Done 2026-11-21:** icons, favicon and share card regenerated from the REZI wordmark (Archivo vendored with full OFL, rendered by headless Chrome); `themeColor` and manifest = paper `#f8f8f8`; sitemap includes `/contact`; no redirects needed (no public route removed). Share card text is a placeholder until T-084.6.
+- [x] **T-085.6** — Delete dead gothic CSS, components, and the old living background; shrink `app/globals.css`; confirm no unused dependencies. **Done 2026-11-21:** `app/legacy-identity.css` deleted and the cutover map applied in `globals.css`; Instrument Sans and Texturina removed; 12 unused `components/ui` files, the unmounted cursor ring, `vaul`, `lib/brand-chrome.json` and the Texturina vendor font removed. Visible changes: footer text now Inter, native scrollbar, light select dropdown, ink overscroll canvas.
 - [ ] **T-085.7** — Full test, lint, typecheck, and build run; Boss Rezi reviews every page on the Preview.
 
 ---
