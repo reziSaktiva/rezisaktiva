@@ -1,0 +1,8 @@
+Archivo variable font (basic Latin subset, woff2), as served by Google Fonts
+through next/font in the production build. Weight 100-900, width 62-125.
+
+Copyright 2019 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Full license text and FAQ: https://openfontlicense.org (same license as OFL.txt
+for Texturina in this folder; only the copyright line differs).

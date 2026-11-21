@@ -1,7 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import brandChrome from "@/lib/brand-chrome.json";
 import { PERSON } from "@/content/person";
 import {
   SITE_CANVAS_COLOR,
@@ -36,9 +35,12 @@ describe("siteManifest (T-031.2)", () => {
     expect(manifest.theme_color).toBe(SITE_CANVAS_COLOR);
   });
 
-  it("uses the shared T-039 canvas token", () => {
-    expect(SITE_CANVAS_COLOR).toBe(brandChrome.canvas);
-    expect(SITE_CANVAS_COLOR).toBe("#0b0b0d");
+  it("uses the Monolith paper token", () => {
+    const css = readFileSync(path.join(root, "app/globals.css"), "utf8");
+    const paper = /--color-paper:\s*(#[0-9a-fA-F]{6})/.exec(css)?.[1];
+    expect(SITE_CANVAS_COLOR).toBe(paper?.toLowerCase());
+    expect(SITE_CANVAS_COLOR).toBe("#f8f8f8");
+    expect(siteManifest().background_color).toBe(SITE_CANVAS_COLOR);
   });
 
   it("lists 192 and 512 icons in HTML head metadata", () => {
