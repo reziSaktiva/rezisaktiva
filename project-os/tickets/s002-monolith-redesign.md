@@ -242,7 +242,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ## T-083 — Contact page
 
-* **Status:** ⬜ Open
+* **Status:** 🟡 In progress (T-083.1 to T-083.4 done in PR #103; T-083.5 Preview check open)
 * **Domain:** Product / Engineering
 * **Branch:** `redesign/monolith`
 * **Blocked by:** T-079; T-076.2; T-084.5 (copy)
@@ -259,10 +259,10 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-083.1** — `/[locale]/contact` page: sticky portrait, info panel (location, email, links, current workplace), form section.
-- [ ] **T-083.2** — Form fields and validation (name, email, optional company, need, details); inline errors; sending, success, and failure states wired to the existing Route Handler. Update the Route Handler only if the payload changes.
-- [ ] **T-083.3** — Replace every place that opened the modal (nav, footer, Workflow CTA, cases) with links to the page; remove the modal and its provider.
-- [ ] **T-083.4** — Update metadata, sitemap and `robots`; add the amended contact line to ADR-047 and `PROJECT_STATE.md`.
+- [x] **T-083.1** — `/[locale]/contact` page: sticky portrait, info panel (location, email, links, current workplace), form section. Done 2026-11-21 (PR #103): portrait reuses the About placeholder `about-hero.jpg` (wave decision).
+- [x] **T-083.2** — Form fields and validation (name, email, optional company, need, details); inline errors; sending, success, and failure states wired to the existing Route Handler. Update the Route Handler only if the payload changes. Done 2026-11-21 (PR #103): payload changed, so `lib/contact-mail.ts` validates every field; shadcn `native-select` added.
+- [x] **T-083.3** — Replace every place that opened the modal (nav, footer, Workflow CTA, cases) with links to the page; remove the modal and its provider. Done 2026-11-21 (PR #103): cases had no modal trigger. Legacy `.ct-*` CSS and `overlay-icons.tsx` are now unused; left for T-085.6.
+- [x] **T-083.4** — Update metadata, sitemap and `robots`; add the amended contact line to ADR-047 and `PROJECT_STATE.md`. Done 2026-11-21: metadata, sitemap and `ContactPage` JSON-LD in PR #103; `robots.ts` needed no change; ADR-047 amendment and `PROJECT_STATE.md` in docs PR #104 to `main`.
 - [ ] **T-083.5** — Verify on Preview: real send through the Preview setup from T-076.2, missing-secret failure, ID and EN, mailto fallback. Note 2026-11-18: T-076.2 chose an empty Preview key, so the Preview shows only the missing-secret path and the mailto fallback; the real send moves to the T-086.4 production smoke check.
 
 ---
