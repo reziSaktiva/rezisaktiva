@@ -14,8 +14,9 @@ export type PinStep = {
   /** Oversized word shown while this step is active. */
   word: string;
   /**
-   * Supporting content for the step. Rendered twice (visual stage, inert, and
-   * a screen-reader list), so keep it static text: no links or controls.
+   * Supporting content for the step. Every body stays in the accessibility
+   * tree (only the active one is visible), so keep it static text: hidden
+   * bodies must not hold links or controls.
    */
   body: ReactNode;
 };
@@ -73,18 +74,11 @@ export function PinScrub({ steps, header, className, stepHeight = 100 }: PinScru
             ))}
           </div>
           {/*
-            Screen readers get every step as a list: the stage below only
-            shows the active one, which a reader in browse mode never scrolls.
+            One copy per step. Inactive bodies are only faded, not hidden from
+            assistive tech, so a reader in browse mode gets all steps in order;
+            the sr-only heading stands in for the aria-hidden big word.
           */}
-          <ol className="sr-only">
-            {steps.map((step) => (
-              <li key={step.word}>
-                <h3>{step.word}</h3>
-                {step.body}
-              </li>
-            ))}
-          </ol>
-          <div className="mt-8 grid" aria-hidden="true" inert>
+          <div className="mt-8 grid">
             {steps.map((step, i) => (
               <motion.div
                 key={step.word}
@@ -93,6 +87,7 @@ export function PinScrub({ steps, header, className, stepHeight = 100 }: PinScru
                 animate={{ opacity: i === active ? 1 : 0, y: i === active ? 0 : 14 }}
                 transition={{ duration: dur, ease: EASE }}
               >
+                <h3 className="sr-only">{step.word}</h3>
                 {step.body}
               </motion.div>
             ))}

@@ -601,9 +601,11 @@ html.lenis.page-vt-lock.lenis-stopped {
   right: var(--spacing-gutter);
   left: var(--spacing-gutter);
   z-index: 90;
-  display: flex;
+  /* Brand | nav | end. Side tracks never shrink below their pills, so the
+     centered nav cannot slide under them at tablet widths. */
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   color: var(--color-ink);
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -639,28 +641,39 @@ html.lenis.page-vt-lock.lenis-stopped {
 }
 
 .wbar-brand {
+  justify-self: start;
   padding: 0 20px;
   font-size: 22px;
 }
 
 .wbar-nav {
-  position: absolute;
-  left: 50%;
+  justify-self: center;
   gap: 22px;
   padding: 0 26px;
   font-size: 13px;
-  transform: translateX(-50%);
 }
 
 .wbar-end {
   display: flex;
+  justify-self: end;
   align-items: center;
   gap: 12px;
 }
 
-.wbar-cta.home-pill {
-  padding-block: 0;
-  border-color: var(--color-rule);
+/* Own pill (not `.home-pill`), so Home pill changes never reach the bar. */
+.wbar-cta {
+  padding: 0 22px;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition:
+    background-color 0.45s var(--ease-monolith),
+    color 0.45s var(--ease-monolith);
+}
+
+.wbar-cta:hover,
+.wbar-cta:focus-visible {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
 }
 
 .wbar-locale {
@@ -682,13 +695,18 @@ html.lenis.page-vt-lock.lenis-stopped {
 
 @media (max-width: 767px) {
   .wbar-nav,
-  .wbar-cta.home-pill,
+  .wbar-cta,
   .wbar-locale {
     display: none;
   }
 
   .wbar-menu {
     display: inline-flex;
+  }
+
+  /* Phones: brand left, Menu right; the empty nav track collapses. */
+  .wbar {
+    grid-template-columns: 1fr auto;
   }
 }
 

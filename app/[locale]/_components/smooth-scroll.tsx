@@ -89,8 +89,6 @@ function prefersReducedMotion(): boolean {
 function isOverlayLocked(): boolean {
   const root = document.documentElement;
   return (
-    root.classList.contains("qi-lock") ||
-    root.classList.contains("ps-lock") ||
     root.classList.contains("page-vt-lock") ||
     // Native dialogs and aria-modal overlays (sheet menu, T-079.1) keep their own scroll.
     document.querySelector("dialog[open], [aria-modal='true']") !== null
@@ -164,8 +162,8 @@ function useFinePointer(): boolean {
 
 /**
  * Window Lenis — sibling, does not wrap the page (`SiteChrome` min-height auto).
- * Wheel-only on fine pointers; off on touch and under `prefers-reduced-motion`. Pause `qi-lock` / `ps-lock` /
- * `page-vt-lock` (ADR-025, T-036.5).
+ * Wheel-only on fine pointers; off on touch and under `prefers-reduced-motion`. Pauses under
+ * `page-vt-lock` and open `aria-modal` overlays (ADR-025, T-036.5).
  */
 export function SmoothScroll() {
   const reduceMotion = useReducedMotion();

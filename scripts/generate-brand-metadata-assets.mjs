@@ -207,10 +207,22 @@ function pageHtml(width, height, fontPx, caption) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:ArchivoLocal;src:url("${fontUrl}") format("woff2");font-weight:100 900;font-stretch:62% 125%;}
 html,body{margin:0;width:${width}px;height:${height}px;background:${PAPER};overflow:hidden}
+body{visibility:hidden}
 body{display:flex;flex-direction:column;align-items:center;justify-content:center;color:${INK};font-family:ArchivoLocal,sans-serif}
 .w{font-weight:900;font-stretch:125%;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:${fontPx}px;line-height:1;letter-spacing:-0.02em;padding-left:0.02em}
 .c{margin-top:${capPx * 2}px;font-weight:500;font-stretch:100%;font-variation-settings:"wdth" 100;font-size:${capPx}px;letter-spacing:0.18em;text-transform:uppercase}
-</style></head><body><div class="w">REZI</div>${caption ? `<div class="c">${caption}</div>` : ""}</body></html>`;
+</style></head><body><div class="w">REZI</div>${caption ? `<div class="c">${caption}</div>` : ""}
+<script>
+// Show the text only once the vendored face is loaded, so a slow decode can
+// never screenshot the fallback font. On failure the image says so loudly.
+document.fonts.load('900 100px ArchivoLocal','REZI').then(function(faces){
+  if(!faces.length){throw new Error('no face')}
+  document.body.style.visibility='visible';
+}).catch(function(){
+  document.body.textContent='FONT FAILED';
+  document.body.style.cssText+=';visibility:visible;color:red;font:bold 20px monospace';
+});
+</script></body></html>`;
 }
 
 async function render(chrome, tmp, name, width, height, fontPx, caption) {
@@ -224,6 +236,8 @@ async function render(chrome, tmp, name, width, height, fontPx, caption) {
       "--disable-gpu",
       "--hide-scrollbars",
       "--force-device-scale-factor=1",
+      // Let the font load and the script reveal the text before the shot.
+      "--virtual-time-budget=10000",
       `--window-size=${width},${height}`,
       `--screenshot=${out}`,
       pathToFileURL(html).href,

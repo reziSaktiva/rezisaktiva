@@ -73,25 +73,31 @@ function useLocationHash(): string {
   return hash;
 }
 
-function useBandungClock(): string {
+function useBandungClock(enabled: boolean): string {
   const [time, setTime] = useState(BANDUNG_TIME_PLACEHOLDER);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
     const tick = () => {
       setTime(formatBandungTime(new Date()));
     };
     tick();
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [enabled]);
 
   return time;
 }
 
-function useDockVisible(): boolean {
+function useDockVisible(enabled: boolean): boolean {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
     let state = { visible: false, lastY: window.scrollY };
     const onScroll = () => {
       state = nextDockState(state, window.scrollY, window.innerHeight);
@@ -99,7 +105,7 @@ function useDockVisible(): boolean {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [enabled]);
 
   return visible;
 }
@@ -178,8 +184,10 @@ function NavLinks({
 export function SiteHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const hash = useLocationHash();
-  const time = useBandungClock();
-  const dockVisible = useDockVisible();
+  // The Work glass bar shows neither the clock nor the dock: skip their work.
+  const masthead = siteHeaderVariant(pathname, locale) === "masthead";
+  const time = useBandungClock(masthead);
+  const dockVisible = useDockVisible(masthead);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetPath, setSheetPath] = useState(pathname);
   const closeSheet = () => setSheetOpen(false);
@@ -227,7 +235,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
   return (
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-      {siteHeaderVariant(pathname, locale) === "bar" ? (
+      {!masthead ? (
         <header className="wbar">
           <NextLink
             href={homeHref(locale)}
@@ -242,7 +250,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <div className="wbar-end">
             <NextLink
               href={contactPath}
-              className="home-pill wbar-cta wbar-glass"
+              className="wbar-cta wbar-glass"
             >
               {contactLabel}
             </NextLink>
