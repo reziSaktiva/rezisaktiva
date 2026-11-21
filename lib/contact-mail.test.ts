@@ -45,6 +45,23 @@ describe("decideContactPayload", () => {
     expect(decideContactPayload(rest)).toMatchObject({ kind: "send" });
   });
 
+  it("accepts the legacy modal shape during the cutover window", () => {
+    expect(
+      decideContactPayload({
+        email: "ada@example.com",
+        message: "Halo",
+        [CONTACT_HONEYPOT_FIELD]: "",
+      }),
+    ).toEqual({
+      kind: "send",
+      name: "",
+      email: "ada@example.com",
+      company: "",
+      need: "other",
+      message: "Halo",
+    });
+  });
+
   it("rejects a missing name, an unknown need, or an oversized company", () => {
     expect(decideContactPayload({ ...valid, name: " " })).toEqual({
       kind: "invalid",

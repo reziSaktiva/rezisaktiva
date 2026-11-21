@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   NativeSelect,
@@ -59,6 +59,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const successRef = useRef<HTMLDivElement>(null);
+  // State updates land after the next render; a ref blocks a second submit
+  // fired in the same frame (double Enter or double click).
+  const sendingRef = useRef(false);
 
   useEffect(() => {
     if (status === "sent") {
@@ -79,7 +82,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (status === "sending") {
+    if (sendingRef.current) {
       return;
     }
     setSubmitted(true);
@@ -91,6 +94,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       return;
     }
 
+    sendingRef.current = true;
     setStatus("sending");
     try {
       const response = await fetch("/api/contact", {
@@ -117,6 +121,8 @@ export function ContactForm({ locale }: { locale: Locale }) {
       setStatus("failed");
     } catch {
       setStatus("failed");
+    } finally {
+      sendingRef.current = false;
     }
   };
 
@@ -174,9 +180,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
           {...invalidProps("name")}
         />
         {errors.name ? (
-          <FieldError id={errorId("name")} className="contact-error">
+          <p id={errorId("name")} className="contact-error">
             {copy.name.error}
-          </FieldError>
+          </p>
         ) : null}
       </Field>
 
@@ -198,9 +204,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
           {...invalidProps("email")}
         />
         {errors.email ? (
-          <FieldError id={errorId("email")} className="contact-error">
+          <p id={errorId("email")} className="contact-error">
             {copy.email.error}
-          </FieldError>
+          </p>
         ) : null}
       </Field>
 
@@ -246,9 +252,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
           ))}
         </NativeSelect>
         {errors.need ? (
-          <FieldError id={errorId("need")} className="contact-error">
+          <p id={errorId("need")} className="contact-error">
             {copy.need.error}
-          </FieldError>
+          </p>
         ) : null}
       </Field>
 
@@ -266,14 +272,15 @@ export function ContactForm({ locale }: { locale: Locale }) {
           maxLength={CONTACT_MESSAGE_MAX}
           placeholder={copy.details.placeholder}
           className="contact-input contact-textarea"
+          data-lenis-prevent=""
           value={values.message}
           onChange={(event) => update("message", event.target.value)}
           {...invalidProps("message")}
         />
         {errors.message ? (
-          <FieldError id={errorId("message")} className="contact-error">
+          <p id={errorId("message")} className="contact-error">
             {copy.details.error}
-          </FieldError>
+          </p>
         ) : null}
       </Field>
 
