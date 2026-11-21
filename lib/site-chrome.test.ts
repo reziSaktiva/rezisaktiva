@@ -1,7 +1,21 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { MAIN_CONTENT_ID } from "./site-chrome";
+import { MAIN_CONTENT_ID, siteHeaderVariant } from "./site-chrome";
+
+describe("siteHeaderVariant", () => {
+  it("uses the glass bar on the Work index only", () => {
+    expect(siteHeaderVariant("/en/projects", "en")).toBe("bar");
+    expect(siteHeaderVariant("/id/projects/", "id")).toBe("bar");
+  });
+
+  it("keeps the masthead on case pages and other routes", () => {
+    expect(siteHeaderVariant("/en/projects/some-case", "en")).toBe("masthead");
+    expect(siteHeaderVariant("/en", "en")).toBe("masthead");
+    expect(siteHeaderVariant("/en/contact", "en")).toBe("masthead");
+    expect(siteHeaderVariant("/id/projects", "en")).toBe("masthead");
+  });
+});
 
 const globalsCss = ["app/globals.css", "app/legacy-identity.css"]
   .map((file) => readFileSync(path.join(process.cwd(), file), "utf8"))
