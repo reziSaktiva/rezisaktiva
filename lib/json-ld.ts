@@ -48,7 +48,7 @@ function personNode(locale: Locale): JsonLdNode {
   return {
     "@type": "Person",
     "@id": personId(),
-    name: PERSON.name,
+    name: PERSON.fullName,
     alternateName: PERSON.alternateName,
     jobTitle: PERSON.jobTitle,
     worksFor: {
@@ -216,7 +216,7 @@ function caseWebPageNode(locale: Locale, item: WorkItem): JsonLdNode {
   return {
     "@type": "WebPage",
     "@id": url,
-    name: `${PERSON.alternateName} — ${item.name}`,
+    name: `${PERSON.fullName} — ${item.name}`,
     description: item.outcome,
     url,
     inLanguage: locale,

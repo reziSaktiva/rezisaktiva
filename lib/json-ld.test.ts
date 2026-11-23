@@ -22,7 +22,7 @@ function personFrom(surface: "home" | "workflow" | "work") {
 describe("buildJsonLd", () => {
   it("reads Person fields from content/, not literals in the graph builder", () => {
     const person = personFrom("home");
-    expect(person.name).toBe(PERSON.name);
+    expect(person.name).toBe(PERSON.fullName);
     expect(person.alternateName).toBe(PERSON.alternateName);
     expect(person.jobTitle).toBe(PERSON.jobTitle);
     expect(person.worksFor).toEqual({
@@ -128,7 +128,7 @@ describe("buildJsonLd", () => {
     const work = findNode(doc, "CreativeWork");
     const caseUrl = `${getSiteUrl()}${projectCaseHref("en", item!.slug)}`;
     expect(page?.url).toBe(caseUrl);
-    expect(page?.name).toBe(`${PERSON.alternateName} — ${item!.name}`);
+    expect(page?.name).toBe(`${PERSON.fullName} — ${item!.name}`);
     expect(work?.url).toBe(caseUrl);
     expect(work?.sameAs).toEqual([item!.href]);
     const crumbs = findNode(doc, "BreadcrumbList")

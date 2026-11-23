@@ -5,9 +5,8 @@ import type { Locale } from "@/lib/locale";
  *
  * T-082 (Monolith): today's approved copy reshaped into the mockup sections
  * (page head, two-pane compare, stacking rule cards, pinned method, ADR
- * accordion, closing call to action). No new claims. Spots where a section
- * borrows existing text for a slot the mockup names differently are marked
- * `// T-084.4 placeholder` until the Workflow copy is approved.
+ * accordion, closing call to action). Copy approved by Boss Rezi 2026-11-23
+ * (T-084.4).
  */
 
 export type WorkflowCompareMode = "chaos" | "driven";
@@ -92,7 +91,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     kicker: "How I Work",
     headline: ["AI mengeksekusi kodenya.", "Saya yang mengunci keputusannya."],
     lede: "Saya membangun produk dari arsitektur yang dikunci di dokumen, bukan dari vibe coding yang hilang begitu chat berganti. Kepemimpinan dan keputusan tetap di tangan saya; AI mengeksekusi secara paralel.",
-    // T-084.4 placeholder: pane headlines reuse the former tab labels.
     compare: {
       chaos: {
         label: "The Chat Chaos",
@@ -139,7 +137,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         ],
       },
     },
-    // T-084.4 placeholder: rule cards reuse the five principles (mockup "Five rules" open).
     principlesKicker: "Operating system",
     principlesTitle: "Lima prinsip yang tidak saya kompromikan",
     principles: [
@@ -160,7 +157,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       },
       {
         tag: "ARCHITECTURE",
-        title: "Kamu lead, AI orkestra",
+        title: "Saya memimpin, AI mengeksekusi",
         body: "Saya membedah masalah, merancang arsitektur, dan mereview. Subagent AI mengeksekusi task secara paralel. AI mempercepat; tanggung jawab tetap di manusia.",
       },
       {
@@ -169,11 +166,10 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         body: "Kode produksi adalah acuan visual dan fungsional, bukan Figma atau mockup tua. Iterasi berikutnya berangkat dari yang live, plus data pemakaian.",
       },
     ],
-    // T-084.4 placeholder: pinned method reuses the pipeline copy (Discover / Design / Build / Ship).
     pipelineKicker: "Pipeline",
     pipelineTitle: "Discover → Design → Build → Ship",
     pipelineNote:
-      "Empat langkah yang sama di setiap proyek. Yang berubah hanya skala. Pembagian peran manusia dan AI tetap eksplisit.",
+      "Empat langkah yang sama di setiap proyek. Yang berubah hanya skala. Setiap langkah berjalan di atas custom skill agent yang saya tulis sesuai proses tim (perencanaan wave, review UI, laporan kerja), jadi prosesnya mengikuti tim, bukan sebaliknya.",
     steps: [
       {
         num: "01",
@@ -204,7 +200,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         title: "Build",
         human: {
           label: "My Role: Human Lead",
-          body: "Kontrak API, batas modul, dan review PR. Tidak ada yang masuk produksi tanpa kendali mutu langsung.",
+          body: "Kontrak API, batas modul, dan review PR. Typecheck, lint, test, dan code review berjalan sebelum apa pun di-merge.",
         },
         ai: {
           label: "AI Role: Orchestration",
@@ -227,13 +223,11 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     vaultKicker: "Proof",
     vaultTitle: "ADR Vault",
     vaultNote:
-      "Bukan dekorasi. Tiga rekaman nyata dari project ini: status, konteks, keputusan, dan alternatif yang ditolak. Rencana lama di-supersede, bukan dihapus.",
-    // T-084.4 placeholder: status label for the accordion panel.
+      "Bukan dekorasi. Tiga dari 50+ catatan nyata di proyek ini: status, konteks, keputusan, dan alternatif yang ditolak. Rencana lama di-supersede, bukan dihapus.",
     vaultStatusLabel: "Status",
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
-    // T-084.4 placeholder: status labels "Diterima" / "Digantikan".
     vaultStatus: {
       Accepted: {
         label: "Diterima",
@@ -294,14 +288,12 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeTitle: "Keputusan yang tidak ditulis, tidak pernah terjadi.",
     closeBody:
       "Kalau kita kerja bersama, arah produk tidak tinggal di thread. Pita di bawah ini membuka percakapan yang sama. Email tetap jalur utamanya.",
-    // T-084.4 placeholder: reuses the approved Home contact CTA label.
     closeCta: "Hubungi saya",
   },
   en: {
     kicker: "How I Work",
     headline: ["AI Executes the Code.", "I Drive the Decisions."],
     lede: "I build products from architecture locked in writing, not from vibe coding that vanishes the moment the chat moves on. Leadership and architectural calls stay with me; AI executes in parallel.",
-    // T-084.4 placeholder: pane headlines reuse the former tab labels.
     compare: {
       chaos: {
         label: "The Chat Chaos",
@@ -348,7 +340,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         ],
       },
     },
-    // T-084.4 placeholder: rule cards reuse the five principles (mockup "Five rules" open).
     principlesKicker: "Operating system",
     principlesTitle: "Five principles I will not compromise",
     principles: [
@@ -369,7 +360,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       },
       {
         tag: "ARCHITECTURE",
-        title: "You lead, AI orchestrates",
+        title: "I lead, AI executes",
         body: "I dissect the problem, design the architecture, and review. AI subagents execute tasks in parallel. AI accelerates; accountability stays human.",
       },
       {
@@ -378,11 +369,10 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         body: "Production code is the visual and functional benchmark, not Figma or an old mockup. The next iteration starts from what is live, plus usage data.",
       },
     ],
-    // T-084.4 placeholder: pinned method reuses the pipeline copy (Discover / Design / Build / Ship).
     pipelineKicker: "Pipeline",
     pipelineTitle: "Discover → Design → Build → Ship",
     pipelineNote:
-      "The same four steps on every project. Only the scale changes. The human / AI split stays explicit.",
+      "The same four steps on every project. Only the scale changes. Each step runs on custom agent skills I write for the team's process (wave planning, UI review, work reports), so the process fits the team, not the other way round.",
     steps: [
       {
         num: "01",
@@ -413,7 +403,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         title: "Build",
         human: {
           label: "My Role: Human Lead",
-          body: "API contracts, module boundaries, and PR review. Nothing reaches production without direct quality control.",
+          body: "API contracts, module boundaries, and PR review. Typecheck, lint, tests and a code review run before anything merges.",
         },
         ai: {
           label: "AI Role: Orchestration",
@@ -436,8 +426,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     vaultKicker: "Proof",
     vaultTitle: "ADR Vault",
     vaultNote:
-      "Not decoration. Three real records from this project: status, context, decision, and rejected alternatives. Old plans are superseded, not deleted.",
-    // T-084.4 placeholder: status label for the accordion panel.
+      "Not decoration. Three of the 50+ real records from this project: status, context, decision, and rejected alternatives. Old plans are superseded, not deleted.",
     vaultStatusLabel: "Status",
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
@@ -502,7 +491,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeTitle: "A decision that is not written never happened.",
     closeBody:
       "If we work together, product direction does not stay in a thread. The band below opens the same conversation. Email remains the primary path.",
-    // T-084.4 placeholder: reuses the approved Home contact CTA label.
     closeCta: "Get in touch",
   },
 };

@@ -3,8 +3,8 @@
   "items": [
     {
       "id": "1",
-      "slug": "social-media-management-platform",
-      "name": "Social Media Management Platform",
+      "slug": "postific",
+      "name": "Postific",
       "year": "2026",
       "featured": true,
       "cover": "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=2400&auto=format&fit=crop",
@@ -12,25 +12,25 @@
       "gitHref": null,
       "gallery": [],
       "outcome": {
-        "id": "Platform medsos dari nol, dikerjain bareng 7 AI subagent — backend, QA, arsitektur, UI.",
-        "en": "A social platform built from scratch with 7 AI subagents — backend, QA, architecture, UI."
+        "id": "Platform manajemen media sosial di monorepo Next.js + Bun: 770+ commit, dibangun dengan mengarahkan AI subagent berperan spesifik.",
+        "en": "A social media management platform in a Next.js + Bun monorepo: 770+ commits, built by directing role-specific AI subagents."
       },
       "services": {
-        "id": ["Product Owner & AI Orchestrator"],
-        "en": ["Product Owner & AI Orchestrator"]
+        "id": ["Product Owner & Web Engineer"],
+        "en": ["Product Owner & Web Engineer"]
       },
       "locationOrCompany": {
-        "id": "Bandung, Indonesia",
-        "en": "Bandung, Indonesia"
+        "id": "Insvire Omni Technologies, Bandung",
+        "en": "Insvire Omni Technologies, Bandung"
       },
       "description": {
-        "id": "Membangun platform manajemen media sosial dengan mengorkestrasi 7 AI subagent berperan spesifik (backend, QA, arsitektur, UI, product design) melalui workflow terstruktur end-to-end. Tiga custom skill mendokumentasikan keputusan, bug, dan progres sepanjang siklus development. Staging di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan.",
-        "en": "A social media management platform built by orchestrating 7 role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow. Three custom skills keep decisions, bugs, and progress documented across the development cycle. Staging is live on Railway; third-party publishing (Outstand) is in progress."
+        "id": "Platform manajemen media sosial, dibangun sebagai monorepo hybrid Next.js dan Bun (770+ commit). Saya mengarahkan AI subagent berperan spesifik (backend, QA, arsitektur, UI, product design) dan memegang setiap keputusan teknis; custom skill dan ADR menjaga keputusan, bug, dan progres tetap terdokumentasi. Staging aktif di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan.",
+        "en": "A social media management platform, built as a hybrid Next.js and Bun monorepo (770+ commits). I direct role-specific AI subagents (backend, QA, architecture, UI, product design) and own every technical decision; custom skills and ADRs keep decisions, bugs and progress documented. Staging is live on Railway; third-party publishing (Outstand) is being integrated."
       },
       "case": {
         "period": {
-          "id": "2026 – berjalan, fase 6/8",
-          "en": "2026 – in progress, phase 6/8"
+          "id": "2026 – berjalan",
+          "en": "2026 – in progress"
         },
         "stack": [
           "Next.js 16",
@@ -44,13 +44,13 @@
           {
             "bullets": {
               "id": [
-                "Orkestrasi 7 AI subagent dengan peran spesifik (backend, QA, arsitektur, UI, product design) lewat workflow end-to-end.",
-                "Tiga custom skill untuk mencatat keputusan, bug, dan progres sepanjang siklus development.",
+                "Mengarahkan AI subagent dengan peran spesifik (backend, QA, arsitektur, UI, product design) lewat workflow end-to-end.",
+                "Custom skill dan ADR untuk mencatat keputusan, bug, dan progres sepanjang siklus development.",
                 "Staging di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan."
               ],
               "en": [
-                "Orchestrated 7 role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow.",
-                "Three custom skills keep decisions, bugs, and progress documented across the development cycle.",
+                "Directs role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow.",
+                "Custom skills and ADRs keep decisions, bugs, and progress documented across the development cycle.",
                 "Staging is live on Railway; third-party publishing (Outstand) is in progress."
               ]
             }
@@ -74,16 +74,16 @@
         "/work/cook-it-real-good/logo.jpg"
       ],
       "outcome": {
-        "id": "Migrasi ~500 resep dari WordPress lama ke Next.js headless, tuntas 1–2 hari.",
-        "en": "Migrated ~500 recipes from legacy WordPress to headless Next.js in 1–2 days."
+        "id": "Memindahkan ~500 resep dari WordPress lama dalam 1–2 hari, dengan SEO terjaga lewat structured data.",
+        "en": "Moved ~500 recipes off legacy WordPress in 1–2 days, with SEO kept through structured data."
       },
       "services": {
         "id": ["Web Engineer"],
         "en": ["Web Engineer"]
       },
       "locationOrCompany": {
-        "id": "Insvire Omni Technology, Bandung",
-        "en": "Insvire Omni Technology, Bandung"
+        "id": "Insvire Omni Technologies, Bandung",
+        "en": "Insvire Omni Technologies, Bandung"
       },
       "description": {
         "id": "Memimpin migrasi ~500 resep dari WordPress lama menggunakan Node.js (tuntas 1–2 hari), termasuk migrasi plugin resep dari Mediavine ke WP Recipe Maker. Komponen WordPress (WPRM, Feast, Kadence) diterjemahkan menjadi custom component Next.js agar kartu dan daftar resep konsisten di frontend headless. Menambah Web Stories dan structured data (schema.org: Recipe, Organization) untuk menjaga visibilitas SEO. Infrastruktur bergeser dari VPS + Coolify ke Railway; PostHog terpasang untuk analytics.",
@@ -91,8 +91,8 @@
       },
       "case": {
         "period": {
-          "id": "Januari – November 2025",
-          "en": "January – November 2025"
+          "id": "Maret – November 2025",
+          "en": "March – November 2025"
         },
         "stack": [
           "Next.js",
@@ -130,7 +130,7 @@
       "id": "3",
       "slug": "minerank",
       "name": "Minerank",
-      "year": "2024–2025",
+      "year": "2024",
       "featured": false,
       "cover": "/work/minerank/blog.jpg",
       "liveHref": [
@@ -148,25 +148,25 @@
         "/work/smc-auction/dashboard.jpg"
       ],
       "outcome": {
-        "id": "Web Minerank: migrasi database, lelang real-time, lalu blog headless WordPress.",
-        "en": "Minerank web: database migration, real-time auctions, then a WordPress-headless blog."
+        "id": "Tiga pekerjaan untuk satu produk web: migrasi ribuan artikel yang bisa dilanjutkan, lelang real-time, dan blog headless yang update tanpa rebuild.",
+        "en": "Three builds for one web product: a resumable migration of thousands of articles, real-time auctions, and a headless blog that updates without rebuilds."
       },
       "services": {
         "id": ["Fullstack Developer", "Data Engineering & System Migration"],
         "en": ["Fullstack Developer", "Data Engineering & System Migration"]
       },
       "locationOrCompany": {
-        "id": "Insvire Omni Technology, Bandung",
-        "en": "Insvire Omni Technology, Bandung"
+        "id": "Insvire Omni Technologies, Bandung",
+        "en": "Insvire Omni Technologies, Bandung"
       },
       "description": {
-        "id": "Satu product web Minerank di Insvire Omni Technology, dikerjakan berurutan: migrasi database, lelang, lalu blog.\n\nMigrasi: dua tahap (metadata dan konten) memindahkan ribuan artikel dari MySQL ke WordPress, dengan checkpoint/resume berbasis log CSV. Google Vision AI dan Gemini (gemini-2.5-flash) mengisi alt-text SEO pada gambar yang dimigrasi.\n\nLelang (SMC Auction): job queue BullMQ, notifikasi otomatis ke Discord, klasemen real-time lewat Socket.io, bot Discord interaktif, Next-Auth v5, plus validasi form (React Hook Form + Zod) di klien dan server. Live: https://smc.auction\n\nBlog: WordPress sebagai CMS, Next.js sebagai UI headless di /blog, Core Web Vitals dijaga. ISR on-demand lewat webhook supaya konten update tanpa rebuild penuh; dua plugin WordPress internal untuk routing dan pencarian REST. Live: https://www.minerank.com/blog",
-        "en": "One Minerank web product at Insvire Omni Technology, shipped in sequence: database migration, auctions, then the blog.\n\nMigration: a two-stage job (metadata and content) moving thousands of articles from MySQL to WordPress, with CSV-log checkpoint/resume. Google Vision AI and Gemini (gemini-2.5-flash) generate SEO alt text for migrated images.\n\nAuctions (SMC Auction): BullMQ job queue, automatic Discord alerts, live standings over Socket.io, an interactive Discord bot, Next-Auth v5, and strict form validation (React Hook Form + Zod) on client and server. Live: https://smc.auction\n\nBlog: WordPress as the CMS, Next.js as the headless UI on /blog, with Core Web Vitals kept in range. On-demand ISR via webhook so content updates without a full rebuild; two internal WordPress plugins cover routing and REST search. Live: https://www.minerank.com/blog"
+        "id": "Satu product web Minerank di Insvire Omni Technologies, dikerjakan berurutan: migrasi database, lelang, lalu blog.\n\nMigrasi: dua tahap (metadata dan konten) memindahkan ribuan artikel dari MySQL ke WordPress, dengan checkpoint/resume berbasis log CSV. Google Vision AI dan Gemini (gemini-2.5-flash) mengisi alt-text SEO pada gambar yang dimigrasi.\n\nLelang (SMC Auction): job queue BullMQ, notifikasi otomatis ke Discord, klasemen real-time lewat Socket.io, bot Discord interaktif, Next-Auth v5, plus validasi form (React Hook Form + Zod) di klien dan server. Live: https://smc.auction\n\nBlog: WordPress sebagai CMS, Next.js sebagai UI headless di /blog, Core Web Vitals dijaga. ISR on-demand lewat webhook supaya konten update tanpa rebuild penuh; dua plugin WordPress internal untuk routing dan pencarian REST. Live: https://www.minerank.com/blog",
+        "en": "One Minerank web product at Insvire Omni Technologies, shipped in sequence: database migration, auctions, then the blog.\n\nMigration: a two-stage job (metadata and content) moving thousands of articles from MySQL to WordPress, with CSV-log checkpoint/resume. Google Vision AI and Gemini (gemini-2.5-flash) generate SEO alt text for migrated images.\n\nAuctions (SMC Auction): BullMQ job queue, automatic Discord alerts, live standings over Socket.io, an interactive Discord bot, Next-Auth v5, and strict form validation (React Hook Form + Zod) on client and server. Live: https://smc.auction\n\nBlog: WordPress as the CMS, Next.js as the headless UI on /blog, with Core Web Vitals kept in range. On-demand ISR via webhook so content updates without a full rebuild; two internal WordPress plugins cover routing and REST search. Live: https://www.minerank.com/blog"
       },
       "case": {
         "period": {
-          "id": "Agustus 2024 – September 2025",
-          "en": "August 2024 – September 2025"
+          "id": "2024",
+          "en": "2024"
         },
         "stack": [
           "Next.js",
@@ -293,8 +293,8 @@
         "en": ["Fullstack Developer"]
       },
       "locationOrCompany": {
-        "id": "Insvire Omni Technology, Bandung",
-        "en": "Insvire Omni Technology, Bandung"
+        "id": "Insvire Omni Technologies, Bandung",
+        "en": "Insvire Omni Technologies, Bandung"
       },
       "description": {
         "id": "Sanity CMS (GROQ) untuk pustaka ROM dan metadata game. Emulator WebAssembly menjalankan game konsol (PS1, PSP, NES) langsung di browser. Engagement lewat Disqus, social share, dan Vercel Analytics.",
@@ -350,20 +350,20 @@
         "/work/backend-platform-sosial/admin-maintenance.jpg"
       ],
       "outcome": {
-        "id": "Backend sosial untuk mobile, web, dan admin, plus UI admin panel: topik multimodal, minat, lokasi, chat, data append-only.",
-        "en": "A social backend for mobile, web, and admin, plus the admin panel UI: multimodal topics, interest, location, chat, append-only data."
+        "id": "Memimpin backend platform sosial untuk mobile, web, dan admin: seluruh scope yang direncanakan selesai dan divalidasi oleh 500 pengguna uji.",
+        "en": "Led the backend of a social platform for mobile, web and admin: the full planned scope shipped and was validated with 500 test users."
       },
       "services": {
-        "id": ["Backend Developer", "Frontend admin panel"],
-        "en": ["Backend Developer", "Admin panel frontend"]
+        "id": ["Backend Tech Lead", "Frontend admin panel"],
+        "en": ["Backend Tech Lead", "Admin panel frontend"]
       },
       "locationOrCompany": {
-        "id": "Insvire Omni Technology, Bandung",
-        "en": "Insvire Omni Technology, Bandung"
+        "id": "Insvire Omni Technologies, Bandung",
+        "en": "Insvire Omni Technologies, Bandung"
       },
       "description": {
-        "id": "Backend untuk platform sosial yang dipakai bersama oleh klien mobile, web, dan admin panel. Saya juga mengerjakan frontend admin panel. Post dibaca sebagai kategori atau topik dari teks, gambar, video, dan suara. Feed mengikuti algoritma minat (personalisasi) dan rentang lokasi. Chat ada di sistem yang sama. Basis data dikelola dengan pendekatan event sourcing / append-only.",
-        "en": "A social-platform backend shared by mobile, web, and admin clients. I also built the admin panel frontend. Posts are read as categories or topics from text, image, video, and voice. The feed follows an interest algorithm (personalization) and a location range. Chat lives in the same system. Data is managed with an event-sourcing / append-only approach."
+        "id": "Backend untuk platform sosial yang dipakai bersama oleh klien mobile, web, dan admin panel. Saya juga mengerjakan frontend admin panel. Post dibaca sebagai kategori atau topik dari teks, gambar, video, dan suara. Feed mengikuti algoritma minat (personalisasi) dan rentang lokasi. Chat ada di sistem yang sama. Basis data dikelola dengan pendekatan event sourcing / append-only. Seluruh scope yang direncanakan selesai dan divalidasi oleh 500 pengguna uji. Product owner kemudian menghentikan produknya karena alasan bisnis, bukan teknis.",
+        "en": "A social-platform backend shared by mobile, web, and admin clients. I also built the admin panel frontend. Posts are read as categories or topics from text, image, video, and voice. The feed follows an interest algorithm (personalization) and a location range. Chat lives in the same system. Data is managed with an event-sourcing / append-only approach. The full planned scope shipped and was validated with 500 test users. The product owner later stopped the product for business reasons, not technical ones."
       },
       "case": {
         "period": {

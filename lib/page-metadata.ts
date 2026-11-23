@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { PERSON } from "@/content/person";
-import { SITE_META, type SiteSurface } from "@/content/site-meta";
+import {
+  SITE_META,
+  SITE_TITLE_NAME,
+  type SiteSurface,
+} from "@/content/site-meta";
 import type { Locale } from "@/lib/locale";
 import { getSiteUrl, localePath, PROJECTS_PATH } from "@/lib/site-url";
 
@@ -82,7 +86,7 @@ export function casePageMetadata(
   copy: { name: string; description: string },
 ): Metadata {
   return pageMetadata(locale, "work", `${PROJECTS_PATH}/${slug}`, {
-    title: `${PERSON.alternateName} — ${copy.name}`,
+    title: `${SITE_TITLE_NAME} — ${copy.name}`,
     description: copy.description,
   });
 }

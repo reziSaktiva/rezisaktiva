@@ -42,6 +42,12 @@ const nextConfig: NextConfig = {
         destination: "/:locale#about",
         permanent: true,
       },
+      {
+        // T-084.3: project renamed to Postific; keep shared links working.
+        source: "/:locale(id|en)/projects/social-media-management-platform",
+        destination: "/:locale/projects/postific",
+        permanent: true,
+      },
     ];
   },
 };

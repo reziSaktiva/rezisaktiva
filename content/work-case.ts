@@ -45,33 +45,27 @@ export interface WorkCaseFields {
 
 export const WORK_CASE_COPY: Record<Locale, WorkCaseCopy> = {
   id: {
-    servicesLabel: "Layanan",
+    servicesLabel: "Peran",
     locationLabel: "Lokasi / perusahaan",
     yearLabel: "Tahun",
     periodLabel: "Periode",
     stackLabel: "Stack",
     liveLabel: "Live",
     imagesLabel: "Gambar proyek",
-    // T-084.3 placeholder (reshaped from the "Proyek" nav label)
     nextLabel: "Proyek berikutnya",
-    // T-084.3 placeholder (short form of "Baca selengkapnya")
     viewLabel: "Baca",
-    // T-084.3 placeholder
     nextCursorLabel: "Lanjut",
   },
   en: {
-    servicesLabel: "Services",
+    servicesLabel: "Role",
     locationLabel: "Location / company",
     yearLabel: "Year",
     periodLabel: "Period",
     stackLabel: "Stack",
     liveLabel: "Live",
     imagesLabel: "Project images",
-    // T-084.3 placeholder (reshaped from "Projects")
     nextLabel: "Next project",
-    // T-084.3 placeholder (short form of "Read the full case")
     viewLabel: "Read",
-    // T-084.3 placeholder
     nextCursorLabel: "Next",
   },
 };

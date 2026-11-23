@@ -287,12 +287,13 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-084.1** — Chrome and footer copy (nav labels, footer call to action, legal line).
-- [ ] **T-084.2** — Home copy (hero lines, lede, About, work descriptions, method, decision log intro).
-- [ ] **T-084.3** — Work index and case copy.
-- [ ] **T-084.4** — Workflow copy.
-- [ ] **T-084.5** — Contact copy (panel, form labels, errors, success).
-- [ ] **T-084.6** — Site metadata copy (titles, descriptions, share card text) with T-085.
+- [x] **T-084.1** — Chrome and footer copy (nav labels, footer call to action, legal line). **Done 2026-11-23** (Boss Rezi approved EN and ID): Footer call to action for both readers (hiring + projects); job title Senior Web Engineer in chrome and Person; company Insvire Omni Technologies. Nav labels unchanged.
+- [x] **T-084.2** — Home copy (hero lines, lede, About, work descriptions, method, decision log intro). **Done 2026-11-23** (Boss Rezi approved EN and ID): Hero (role-led), lede, About rewrite (ADR-039 note), Work labels "Selected work", JSON-LD bio.
+- [x] **T-084.3** — Work index and case copy. **Done 2026-11-23** (Boss Rezi approved EN and ID): Postific named; dates from the Nov 2026 resume; outcome lines; social platform stays anonymous (ADR-045) with Backend Tech Lead, 500 test users and an honest ending; Work index head; case label Role.
+- [x] **T-084.4** — Workflow copy. **Done 2026-11-23** (Boss Rezi approved EN and ID): Custom-skills proof in the pipeline note, merge gates in Build, "I lead, AI executes", 50+ ADRs, closing button.
+- [x] **T-084.5** — Contact copy (panel, form labels, errors, success). **Done 2026-11-23** (Boss Rezi approved EN and ID): Intro for both readers, form title, new "hiring" need option, details placeholder.
+- [x] **T-084.6** — Site metadata copy (titles, descriptions, share card text) with T-085. **Done 2026-11-23** (Boss Rezi approved EN and ID): Titles "Rezi Saktiva — …" (cases too), new descriptions, share card line Senior Web Engineer.
+- [ ] **T-084.7** — Work images refresh (Boss Rezi, 2026-11-23): new screenshots for every work item. The agent captures the live sites (Cook It Real Good, Minerank blog, SMC Auction). Boss Rezi sends Postific and social-platform screenshots. Runs after the copy blocks, on the same branch.
 
 ---
 

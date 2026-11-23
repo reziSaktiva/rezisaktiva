@@ -260,7 +260,7 @@ async function main() {
     const icon192 = await render(chrome, tmp, "i192", 192, 192, 54, "");
     const icon512 = await render(chrome, tmp, "i512", 512, 512, 144, "");
     const apple180 = await render(chrome, tmp, "a180", 180, 180, 50, "");
-    const og = await render(chrome, tmp, "og", 1200, 630, 300, "Portfolio");
+    const og = await render(chrome, tmp, "og", 1200, 630, 300, "Senior Web Engineer");
     const decoded32 = decodePngRgba(icon32);
     const ico = rgbaToBmpIco(decoded32.width, decoded32.height, decoded32.rgba);
 
