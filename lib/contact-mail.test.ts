@@ -39,6 +39,13 @@ describe("decideContactPayload", () => {
     });
   });
 
+  it("accepts the hiring need and labels it in the email", () => {
+    const decision = decideContactPayload({ ...valid, need: "hiring" });
+    expect(decision).toMatchObject({ kind: "send", need: "hiring" });
+    if (decision.kind !== "send") throw new Error("expected send");
+    expect(contactMailText(decision)).toContain("Rekrutmen / posisi kerja");
+  });
+
   it("accepts a payload without the optional company field", () => {
     const rest: Record<string, unknown> = { ...valid };
     delete rest.company;

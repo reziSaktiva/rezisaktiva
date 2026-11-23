@@ -3,7 +3,7 @@
   "items": [
     {
       "id": "1",
-      "slug": "social-media-management-platform",
+      "slug": "postific",
       "name": "Postific",
       "year": "2026",
       "featured": true,
@@ -20,8 +20,8 @@
         "en": ["Product Owner & Web Engineer"]
       },
       "locationOrCompany": {
-        "id": "Bandung, Indonesia",
-        "en": "Bandung, Indonesia"
+        "id": "Insvire Omni Technologies, Bandung",
+        "en": "Insvire Omni Technologies, Bandung"
       },
       "description": {
         "id": "Platform manajemen media sosial, dibangun sebagai monorepo hybrid Next.js dan Bun (770+ commit). Saya mengarahkan AI subagent berperan spesifik (backend, QA, arsitektur, UI, product design) dan memegang setiap keputusan teknis; custom skill dan ADR menjaga keputusan, bug, dan progres tetap terdokumentasi. Staging aktif di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan.",
@@ -44,13 +44,13 @@
           {
             "bullets": {
               "id": [
-                "Orkestrasi 7 AI subagent dengan peran spesifik (backend, QA, arsitektur, UI, product design) lewat workflow end-to-end.",
-                "Tiga custom skill untuk mencatat keputusan, bug, dan progres sepanjang siklus development.",
+                "Mengarahkan AI subagent dengan peran spesifik (backend, QA, arsitektur, UI, product design) lewat workflow end-to-end.",
+                "Custom skill dan ADR untuk mencatat keputusan, bug, dan progres sepanjang siklus development.",
                 "Staging di Railway; integrasi publishing pihak ketiga (Outstand) sedang berjalan."
               ],
               "en": [
-                "Orchestrated 7 role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow.",
-                "Three custom skills keep decisions, bugs, and progress documented across the development cycle.",
+                "Directs role-specific AI subagents (backend, QA, architecture, UI, product design) through an end-to-end workflow.",
+                "Custom skills and ADRs keep decisions, bugs, and progress documented across the development cycle.",
                 "Staging is live on Railway; third-party publishing (Outstand) is in progress."
               ]
             }

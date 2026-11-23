@@ -31,7 +31,7 @@ describe("project slugs (T-056.2)", () => {
   it("exposes only visible works as public case routes", () => {
     const publicSlugs = publicProjectRows().map((item) => item.slug);
     expect(publicSlugs).toEqual([
-      "social-media-management-platform",
+      "postific",
       "cook-it-real-good",
       "minerank",
       "backend-platform-sosial",
@@ -106,12 +106,12 @@ describe("projectActionHrefs (T-056.4)", () => {
 
     const social = toWorkItem(
       PROJECTS_CATALOG.find(
-        (row) => row.slug === "social-media-management-platform",
+        (row) => row.slug === "postific",
       )!,
       "id",
     );
     expect(projectActionHrefs("id", social)).toEqual({
-      caseHref: "/id/projects/social-media-management-platform",
+      caseHref: "/id/projects/postific",
       liveHref: undefined,
       liveHrefs: [],
     });

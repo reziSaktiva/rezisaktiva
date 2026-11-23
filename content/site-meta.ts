@@ -1,3 +1,4 @@
+import { PERSON, yearsOfExperience } from "@/content/person";
 import { WORK_PAGE_COPY } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 
@@ -9,7 +10,8 @@ import type { Locale } from "@/lib/locale";
  */
 
 /** Name used in page titles (case pages too). */
-export const SITE_TITLE_NAME = "Rezi Saktiva";
+export const SITE_TITLE_NAME = PERSON.fullName;
+const YEARS = yearsOfExperience();
 
 export type SiteSurface = "home" | "workflow" | "work" | "contact";
 
@@ -23,7 +25,7 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     home: {
       title: `${SITE_TITLE_NAME} — Senior Web Engineer`,
       description:
-        "Senior web engineer di Bandung, Indonesia. 6+ tahun membangun produk fullstack dengan Next.js, TypeScript, dan Node.js, dan cara saya membangunnya bersama AI.",
+        `Senior web engineer di Bandung, Indonesia. ${YEARS}+ tahun membangun produk fullstack dengan Next.js, TypeScript, dan Node.js, dan cara saya membangunnya bersama AI.`,
     },
     workflow: {
       title: `${SITE_TITLE_NAME} — Proses Kerja`,
@@ -44,7 +46,7 @@ export const SITE_META: Record<Locale, Record<SiteSurface, SurfaceMeta>> = {
     home: {
       title: `${SITE_TITLE_NAME} — Senior Web Engineer`,
       description:
-        "Senior web engineer in Bandung, Indonesia. 6+ years shipping fullstack products in Next.js, TypeScript and Node.js, and how I build them with AI.",
+        `Senior web engineer in Bandung, Indonesia. ${YEARS}+ years shipping fullstack products in Next.js, TypeScript and Node.js, and how I build them with AI.`,
     },
     workflow: {
       title: `${SITE_TITLE_NAME} — How I Work`,

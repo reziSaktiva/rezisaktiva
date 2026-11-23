@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/locale";
+import { yearsOfExperience } from "./person";
 import services from "./data/services.json";
 import tools from "./data/tools.json";
 
@@ -27,7 +28,7 @@ export const QUICK_INFO_COPY: Record<Locale, QuickInfoCopy> = {
     tab: "Quick info",
     title: "Quick info",
     close: "Tutup quick info",
-    bio: "Senior Web Engineer di Bandung, Indonesia. 6+ tahun membangun produk web fullstack dengan Next.js, TypeScript, dan Node.js, kini dengan alur kerja berbantuan AI yang mendokumentasikan setiap keputusan.",
+    bio: `Senior Web Engineer di Bandung, Indonesia. ${yearsOfExperience()}+ tahun membangun produk web fullstack dengan Next.js, TypeScript, dan Node.js, kini dengan alur kerja berbantuan AI yang mendokumentasikan setiap keputusan.`,
     servicesLabel: "Services",
     services: services.id,
     toolsLabel: "Tools",
@@ -40,7 +41,7 @@ export const QUICK_INFO_COPY: Record<Locale, QuickInfoCopy> = {
     tab: "Quick info",
     title: "Quick info",
     close: "Close quick info",
-    bio: "Senior Web Engineer in Bandung, Indonesia. 6+ years building fullstack web products in Next.js, TypeScript and Node.js, now with an AI-assisted workflow where every decision is documented.",
+    bio: `Senior Web Engineer in Bandung, Indonesia. ${yearsOfExperience()}+ years building fullstack web products in Next.js, TypeScript and Node.js, now with an AI-assisted workflow where every decision is documented.`,
     servicesLabel: "Services",
     services: services.en,
     toolsLabel: "Tools",

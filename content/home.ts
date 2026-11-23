@@ -1,3 +1,7 @@
+import {
+  capitalizeFirst,
+  yearsOfExperienceWord,
+} from "@/content/person";
 import type { Locale } from "@/lib/locale";
 
 /**
@@ -26,19 +30,27 @@ export interface HomeCopy {
 
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
-    heroLines: ["Senior web engineer.", "Enam tahun membangun", "produk fullstack."],
+    heroLines: [
+      "Senior web engineer.",
+      `${capitalizeFirst(yearsOfExperienceWord("id"))} tahun membangun`,
+      "produk fullstack.",
+    ],
     lede: "Dari migrasi WordPress headless sampai lelang real-time. Saya merancang arsitekturnya, AI agent menulis kodenya, dan setiap keputusan tercatat.",
     scrollCue: "Gulir untuk menjelajah",
     workTitle: ["Karya", "pilihan."],
     workMore: "Semua proyek",
     contactLabel: "Kontak",
-    contactTitle: "Sedang merekrut, atau sedang membangun sesuatu?",
+    contactTitle: "Merekrut, atau membangun sesuatu?",
     contactBody:
       "Email bisa untuk keduanya. Untuk proyek, formulirnya menanyakan hal yang penting lebih dulu.",
     contactCta: "Tulis ke saya",
   },
   en: {
-    heroLines: ["Senior web engineer.", "Six years shipping", "fullstack products."],
+    heroLines: [
+      "Senior web engineer.",
+      `${capitalizeFirst(yearsOfExperienceWord("en"))} years shipping`,
+      "fullstack products.",
+    ],
     lede: "From headless WordPress migrations to real-time auctions. I design the architecture, AI agents write the code, and every decision is on the record.",
     scrollCue: "Scroll to explore",
     workTitle: ["Selected", "work."],

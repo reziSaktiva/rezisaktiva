@@ -1,3 +1,4 @@
+import { yearsOfExperienceWord } from "@/content/person";
 import type { Locale } from "@/lib/locale";
 import { catalogLiveUrls } from "@/lib/linkify";
 import { isProjectRepoUrl } from "@/lib/project-live-preview";
@@ -95,13 +96,13 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
 export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {
   id: {
     h1: ["Semua", "proyek."],
-    lead: "Pekerjaan dari enam tahun di Insvire Omni Technologies dan produk saya sendiri: peran saya, stack-nya, dan apa yang dirilis.",
+    lead: `Pekerjaan dari ${yearsOfExperienceWord("id")} tahun di Insvire Omni Technologies: peran saya, stack-nya, dan apa yang dirilis.`,
     ctaQuestion: "Ada yang mau dibahas?",
     ctaLink: "Tulis ke saya",
   },
   en: {
     h1: ["All", "projects."],
-    lead: "Work from six years at Insvire Omni Technologies and my own products: the role I held, the stack, and what shipped.",
+    lead: `Work from ${yearsOfExperienceWord("en")} years at Insvire Omni Technologies: the role I held, the stack, and what shipped.`,
     ctaQuestion: "Want to talk about one?",
     ctaLink: "Write to me",
   },
