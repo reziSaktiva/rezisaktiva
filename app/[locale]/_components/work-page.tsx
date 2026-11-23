@@ -30,7 +30,7 @@ export function WorkPage({ locale }: { locale: Locale }) {
             href={projectCaseHref(locale, item.slug)}
             name={item.name}
             meta={`${item.year} · ${item.outcome}`}
-            imageSrc={item.imageSrc}
+            imageSrc={item.listImageSrc}
             eager={index < 2}
             cursorLabel={viewLabel}
             headingLevel="h2"

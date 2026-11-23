@@ -293,7 +293,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 - [x] **T-084.4** — Workflow copy. **Done 2026-11-23** (Boss Rezi approved EN and ID): Custom-skills proof in the pipeline note, merge gates in Build, "I lead, AI executes", 50+ ADRs, closing button.
 - [x] **T-084.5** — Contact copy (panel, form labels, errors, success). **Done 2026-11-23** (Boss Rezi approved EN and ID): Intro for both readers, form title, new "hiring" need option, details placeholder.
 - [x] **T-084.6** — Site metadata copy (titles, descriptions, share card text) with T-085. **Done 2026-11-23** (Boss Rezi approved EN and ID): Titles "Rezi Saktiva — …" (cases too), new descriptions, share card line Senior Web Engineer.
-- [ ] **T-084.7** — Work images refresh (Boss Rezi, 2026-11-23): new screenshots for every work item. The agent captures the live sites (Cook It Real Good, Minerank blog, SMC Auction). Boss Rezi sends Postific and social-platform screenshots. Runs after the copy blocks, on the same branch.
+- [ ] **T-084.7** — Work images refresh (Boss Rezi, 2026-11-23): new screenshots for every work item. The agent captures the live sites (Cook It Real Good, Minerank blog, SMC Auction). Boss Rezi sends Postific and social-platform screenshots. Runs after the copy blocks, on the same branch. **Progress 2026-11-23:** new 1600px screenshots for Cook It Real Good (home, recipe) and Minerank (blog, article); smc.auction does not respond, so the SMC Auction images stay. Boss Rezi asked for a separate stock cover per project on the project cards only (`listCover`, popular free Unsplash work photos he approved); case pages keep the real screenshots. Open: Postific and social-platform screenshots from Boss Rezi (`~/Downloads/work-images/`).
 
 ---
 
