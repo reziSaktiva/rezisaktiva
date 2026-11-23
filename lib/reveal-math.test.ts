@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { pinStepIndex, splitWords, wordRange, wrapMarqueeOffset } from "./reveal-math";
+import {
+  isInRevealBand,
+  pinStepIndex,
+  splitWords,
+  wordRange,
+  wrapMarqueeOffset,
+} from "./reveal-math";
 
 describe("reveal math", () => {
   it("splits words on whitespace", () => {
@@ -22,5 +28,14 @@ describe("reveal math", () => {
     expect(wrapMarqueeOffset(-250, 100)).toBe(-50);
     expect(wrapMarqueeOffset(30, 100)).toBe(-70);
     expect(wrapMarqueeOffset(-5, 0)).toBe(0);
+  });
+
+  it("reveals a box in the band, including one the page opened scrolled past", () => {
+    // Half above the fold after a restored scroll: still on screen.
+    expect(isInRevealBand(-90, 327, 959)).toBe(true);
+    // Top inside the bottom 10% margin: not yet.
+    expect(isInRevealBand(900, 1300, 959)).toBe(false);
+    // Fully above the viewport: not on screen.
+    expect(isInRevealBand(-500, -10, 959)).toBe(false);
   });
 });
