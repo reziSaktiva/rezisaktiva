@@ -4,7 +4,7 @@ Open work only. Completed ticket history lives in `tickets/`.
 
 ## Current Focus
 
-**S-002** Monolith redesign migration ([`specs/S-002.md`](specs/S-002.md), ADR-052, ADR-053). T-075 and T-077 are done (ADR-054). Surfaces T-076 and T-078 to T-083 are done (Preview walk 2026-11-23). T-085 quality gates are done (2026-11-23). T-084 copy blocks T-084.1 to T-084.6 are approved (2026-11-23). Next: **T-084.7** work images, then **T-086** cutover. Ticket details: [`tickets/s002-monolith-redesign.md`](tickets/s002-monolith-redesign.md). Earlier history: [`tickets/r2.md`](tickets/r2.md).
+**S-002** Monolith redesign migration ([`specs/S-002.md`](specs/S-002.md), ADR-052, ADR-053). T-075 and T-077 are done (ADR-054). Surfaces T-076 and T-078 to T-083 are done (Preview walk 2026-11-23). T-085 quality gates are done (2026-11-23). T-084 copy blocks T-084.1 to T-084.6 are approved (2026-11-23). **T-086** cutover merged to production 2026-11-23 (PR #112). Open: T-086.4 Contact real send, T-086.5 24 h watch, T-086.6 cleanup, T-084.7 Postific + social screenshots. Ticket details: [`tickets/s002-monolith-redesign.md`](tickets/s002-monolith-redesign.md). Earlier history: [`tickets/r2.md`](tickets/r2.md).
 
 ## Open Tickets
 

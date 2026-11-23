@@ -341,9 +341,12 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ### Subtasks
 
-- [ ] **T-086.1** — Merge `main` into the branch one last time; rerun CI and the Preview checks.
-- [ ] **T-086.2** — Tag `main` as `v1-gothic-final`.
-- [ ] **T-086.3** — Open one pull request `redesign/monolith` → `main`; Boss Rezi approves and merges.
+- [x] **T-086.1** — Merge `main` into the branch one last time; rerun CI and the Preview checks. **Done 2026-11-23:** `main` had no commits missing from `redesign/monolith`; CI green on the last integration PR (#111).
+- [x] **T-086.2** — Tag `main` as `v1-gothic-final`. **Done 2026-11-23:** tag `v1-gothic-final` on `684cf6b`, pushed.
+- [x] **T-086.3** — Open one pull request `redesign/monolith` → `main`; Boss Rezi approves and merges. **Done 2026-11-23:** PR #112 merged on Boss Rezi's approval (`d74fb6e`); Vercel production deploy green.
 - [ ] **T-086.4** — Production smoke checklist: Home, Workflow, Work, a case, Contact (real send), both locales, robots, sitemap, share card, cookies and locale redirect; PageSpeed (mobile and desktop) on the live site against the T-076.4 baseline (moved from T-085.3); confirm or fix the mobile LCP regression noted there (Home, Workflow, Work).
+  - **Smoke 2026-11-23 (agent):** every route 200 in both locales; old URLs redirect (`/en/work`, `/en/about`, old Postific slug → `/en/projects/postific`); robots allows all, sitemap lists all pages, `og.png` and work images serve; `<title>` and copy are the new ones; `/` redirects by geo, and the `NEXT_LOCALE` cookie wins; no console errors on Home; WebGL field starts.
+  - **Lighthouse 12 on production, 2026-11-23** (mobile Perf/A11y/BP/SEO, mobile LCP vs T-076.4 baseline, desktop Perf): Home 82/96/100/100, LCP 4.2 s (4.2 s, same), desktop 99 · Workflow 87/100/100/100, LCP 3.9–4.1 s over three runs (3.5 s, **+0.5 s**; LCP element is the lede `p.big`), desktop 100 · Work 84/100/100/100, LCP 4.5 s (4.9 s, −0.4 s), desktop 98 · Case minerank 79/96/100/100, LCP 5.3 s (6.8 s, −1.5 s), desktop 98 · Contact 82/100/100/100, LCP 4.8 s, desktop 99. Mobile Perf is up on every page (Home 51 → 82, Workflow 61 → 87). The T-085.3 regression does not hold in production, except +0.5 s LCP on Workflow.
+  - **Open:** Contact real send (Boss Rezi); decision on the Workflow mobile LCP.
 - [ ] **T-086.5** — Watch production for 24 hours; if broken, use the Vercel previous-deployment rollback and revert the merge.
 - [ ] **T-086.6** — Delete the integration branch; return `design-mockups/` to archive; restore ADR-024 as the visual source of truth; mark ADR-029 and ADR-031 historical; update `PROJECT_STATE.md`, `AVAILABLE_TICKETS.md`, and close S-002.
