@@ -98,12 +98,12 @@ export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {
     h1: ["Semua", "proyek."],
     lead: `Pekerjaan dari ${yearsOfExperienceWord("id")} tahun di Insvire Omni Technologies: peran saya, stack-nya, dan apa yang dirilis.`,
     ctaQuestion: "Ada yang mau dibahas?",
-    ctaLink: "Tulis ke saya",
+    ctaLink: "Hubungi saya",
   },
   en: {
     h1: ["All", "projects."],
     lead: `Work from ${yearsOfExperienceWord("en")} years at Insvire Omni Technologies: the role I held, the stack, and what shipped.`,
     ctaQuestion: "Want to talk about one?",
-    ctaLink: "Write to me",
+    ctaLink: "Get in touch",
   },
 };

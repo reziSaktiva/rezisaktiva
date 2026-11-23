@@ -43,7 +43,7 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     contactTitle: "Merekrut, atau membangun sesuatu?",
     contactBody:
       "Email bisa untuk keduanya. Untuk proyek, formulirnya menanyakan hal yang penting lebih dulu.",
-    contactCta: "Tulis ke saya",
+    contactCta: "Hubungi saya",
   },
   en: {
     heroLines: [
@@ -59,6 +59,6 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
     contactTitle: "Hiring, or building something?",
     contactBody:
       "Email works for both. For a project, the form asks the useful questions first.",
-    contactCta: "Write to me",
+    contactCta: "Get in touch",
   },
 };

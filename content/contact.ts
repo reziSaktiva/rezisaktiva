@@ -68,7 +68,7 @@ export const CONTACT_COPY: Record<Locale, ContactCopy> = {
     emailLabel: "Email",
     elsewhereLabel: "Di tempat lain",
     nowLabel: "Sekarang",
-    formTitle: ["Ceritakan", "kebutuhannya"],
+    formTitle: ["Mulai", "dari sini"],
     formIntro: [
       "Makin banyak yang saya tahu soal tujuan, orang yang memakainya, dan apa yang menghalangi, makin cepat saya bisa memberi masukan yang berguna.",
       "Tidak ada yang perlu rapi. Catatan kasar pun cukup.",
@@ -124,7 +124,7 @@ export const CONTACT_COPY: Record<Locale, ContactCopy> = {
     emailLabel: "Email",
     elsewhereLabel: "Elsewhere",
     nowLabel: "Right now",
-    formTitle: ["Tell me what", "you need"],
+    formTitle: ["Start", "here"],
     formIntro: [
       "The more I know about the goal, the people using it and what’s in the way, the sooner I can say something useful.",
       "Nothing here needs to be polished. Rough notes are fine.",

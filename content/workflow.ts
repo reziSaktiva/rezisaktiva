@@ -288,7 +288,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeTitle: "Keputusan yang tidak ditulis, tidak pernah terjadi.",
     closeBody:
       "Kalau kita kerja bersama, arah produk tidak tinggal di thread. Pita di bawah ini membuka percakapan yang sama. Email tetap jalur utamanya.",
-    closeCta: "Tulis ke saya",
+    closeCta: "Hubungi saya",
   },
   en: {
     kicker: "How I Work",
@@ -491,6 +491,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeTitle: "A decision that is not written never happened.",
     closeBody:
       "If we work together, product direction does not stay in a thread. The band below opens the same conversation. Email remains the primary path.",
-    closeCta: "Write to me",
+    closeCta: "Get in touch",
   },
 };
