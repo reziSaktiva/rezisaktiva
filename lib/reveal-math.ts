@@ -33,3 +33,19 @@ export function wrapMarqueeOffset(offset: number, loopWidth: number): number {
   const mod = offset % loopWidth;
   return mod > 0 ? mod - loopWidth : mod;
 }
+
+/**
+ * Reveal band for `ClipReveal`: a box counts as seen once its top has risen
+ * above the bottom `bottomMargin` of the viewport while its bottom is still
+ * below the top edge. Pure geometry on purpose: IntersectionObserver applies
+ * the target's own `clip-path`, so a box clipped shut never reports in view
+ * and would stay hidden when the page opens already scrolled past its top.
+ */
+export function isInRevealBand(
+  top: number,
+  bottom: number,
+  viewportHeight: number,
+  bottomMargin = 0.1,
+): boolean {
+  return top < viewportHeight * (1 - bottomMargin) && bottom > 0;
+}
