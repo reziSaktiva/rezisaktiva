@@ -26,7 +26,10 @@ export interface WorkItem {
   slug: string;
   name: string;
   outcome: string;
+  /** Case-page hero: the real screenshot (`cover`). */
   imageSrc: string;
+  /** Project cards only (Home + Work index): stock work photo (`listCover`, T-084.7). */
+  listImageSrc: string;
   year: string;
   featured: boolean;
   href?: string;
@@ -55,6 +58,7 @@ export function toWorkItem(
     name: item.name,
     outcome: item.outcome[locale],
     imageSrc: item.cover,
+    listImageSrc: item.listCover,
     year: item.year,
     featured: item.featured,
     liveHrefs,

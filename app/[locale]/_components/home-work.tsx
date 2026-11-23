@@ -33,7 +33,7 @@ export function HomeWork({ locale }: { locale: Locale }) {
             href={projectCaseHref(locale, item.slug)}
             name={item.name}
             meta={`${item.year} · ${item.outcome}`}
-            imageSrc={item.imageSrc}
+            imageSrc={item.listImageSrc}
             sizes="(max-width: 760px) 100vw, 45vw"
             cursorLabel={viewLabel}
             headingLevel="h3"

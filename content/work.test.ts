@@ -105,9 +105,7 @@ describe("projectActionHrefs (T-056.4)", () => {
     });
 
     const social = toWorkItem(
-      PROJECTS_CATALOG.find(
-        (row) => row.slug === "postific",
-      )!,
+      PROJECTS_CATALOG.find((row) => row.slug === "postific")!,
       "id",
     );
     expect(projectActionHrefs("id", social)).toEqual({
@@ -207,5 +205,16 @@ describe("work case depth (T-058)", () => {
     expect(WORK_CASE_COPY.id.periodLabel).toBe("Periode");
     expect(WORK_CASE_COPY.en.periodLabel).toBe("Period");
     expect(WORK_CASE_COPY.id.stackLabel).toBe("Stack");
+  });
+});
+
+describe("list covers (T-084.7)", () => {
+  it("gives every public project its own card cover, apart from the case hero", () => {
+    const rows = WORK_ITEMS.en;
+    const covers = rows.map((row) => row.listImageSrc);
+    expect(new Set(covers).size).toBe(rows.length);
+    for (const row of rows) {
+      expect(row.listImageSrc).toMatch(/^https:\/\/images\.unsplash\.com\//);
+    }
   });
 });
