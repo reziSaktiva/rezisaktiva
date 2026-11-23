@@ -1,3 +1,4 @@
+import { yearsOfExperienceWord } from "@/content/person";
 import type { Locale } from "@/lib/locale";
 import { catalogLiveUrls } from "@/lib/linkify";
 import { isProjectRepoUrl } from "@/lib/project-live-preview";
@@ -6,15 +7,16 @@ import projects from "./data/projects.json";
 /**
  * R1 work catalog + Work index page copy. Facts in
  * `content/data/projects.json` — locked T-021.5 from resume, do not invent.
- * Kebab-case slug + case page body = same sheet slot (T-056.2).
+ * Kebab-case slug = case route `/[locale]/projects/[slug]` (T-056.2).
  *
  * `liveHrefs` / `href` = live sites (not GitHub). Empty = no link.
- * Work tile opens M10 sheet (T-026); Live on sheet and case page.
+ * Work cards link straight to the case page; Live is a secondary link on the
+ * case page (ADR-054 point 2, T-081.3).
  *
  * Hide work: add id to `hiddenIds` in JSON (data kept).
  * `hiddenIds` items have no public `/projects/[slug]` route (ADR-044).
  * Public work without brand names: descriptive title/slug, no branded live/repo (ADR-045).
- * Case page deeper than sheet (ADR-046): period, stack, bullets from CV.
+ * Case depth (ADR-046): period, stack, bullets from CV — `work-case.ts`.
  */
 
 export const PROJECT_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -24,7 +26,10 @@ export interface WorkItem {
   slug: string;
   name: string;
   outcome: string;
+  /** Case-page hero: the real screenshot (`cover`). */
   imageSrc: string;
+  /** Project cards only (Home + Work index): stock work photo (`listCover`, T-084.7). */
+  listImageSrc: string;
   year: string;
   featured: boolean;
   href?: string;
@@ -53,6 +58,7 @@ export function toWorkItem(
     name: item.name,
     outcome: item.outcome[locale],
     imageSrc: item.cover,
+    listImageSrc: item.listCover,
     year: item.year,
     featured: item.featured,
     liveHrefs,
@@ -87,16 +93,20 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
   en: publicProjectRows().map((item) => toWorkItem(item, "en")),
 };
 
+/**
+ * Work index copy. The Monolith index (T-081.1) shows `h1` as the sticky giant
+ * title and `lead` under it. Copy approved by Boss Rezi 2026-11-23 (T-084.3).
+ */
 export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {
   id: {
-    h1: ["Proyek", "saya."],
-    lead: "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis.",
+    h1: ["Semua", "proyek."],
+    lead: `Pekerjaan dari ${yearsOfExperienceWord("id")} tahun di Insvire Omni Technologies: peran saya, stack-nya, dan apa yang dirilis.`,
     ctaQuestion: "Ada yang mau dibahas?",
     ctaLink: "Hubungi saya",
   },
   en: {
-    h1: ["My", "Projects"],
-    lead: "Here are a few projects I’ve crafted from the ground up.",
+    h1: ["All", "projects."],
+    lead: `Work from ${yearsOfExperienceWord("en")} years at Insvire Omni Technologies: the role I held, the stack, and what shipped.`,
     ctaQuestion: "Want to talk about one?",
     ctaLink: "Get in touch",
   },

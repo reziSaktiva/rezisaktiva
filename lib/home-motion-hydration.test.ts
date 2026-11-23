@@ -13,89 +13,19 @@ const rootLayout = readFileSync(
   "utf8",
 );
 
-const workflowSources = [
-  "workflow-hero.tsx",
-  "workflow-pipeline.tsx",
-  "workflow-principles.tsx",
-  "workflow-adr-vault.tsx",
-].map((file) => ({
-  file,
-  source: readFileSync(path.join(componentsDir, file), "utf8"),
-}));
-
-function exportFn(source: string, name: string, nextName: string): string {
+function exportFn(source: string, name: string): string {
   const start = source.indexOf(`export function ${name}`);
-  const end = source.indexOf(`export function ${nextName}`);
   expect(start).toBeGreaterThan(-1);
-  expect(end).toBeGreaterThan(start);
-  return source.slice(start, end);
+  return source.slice(start);
 }
 
 describe("motion hydration (PR #68 review)", () => {
-  it("does not branch Reveal / WordReveal / HeroWords initial on useReducedMotion", () => {
-    const reveal = exportFn(homeMotion, "Reveal", "WordReveal");
-    const words = exportFn(homeMotion, "WordReveal", "HeroWords");
-    const hero = exportFn(homeMotion, "HeroWords", "Magnetic");
-
-    for (const block of [reveal, words, hero]) {
-      expect(block).not.toContain("useReducedMotion");
-      expect(block).not.toMatch(/reduceMotion\s*\?/);
-    }
-
-    expect(reveal).toContain("initial={{ opacity: 0, y: 18 }}");
-    expect(words).toContain("initial={{");
-    expect(words).toContain("opacity: 0");
-    expect(hero).toContain('initial={{ opacity: 0, y: "0.4em" }}');
-  });
-
   it("skips Magnetic animate() on leave when reduced motion", () => {
-    const magnetic = exportFn(homeMotion, "Magnetic", "CursorRing");
+    const magnetic = exportFn(homeMotion, "Magnetic");
     expect(magnetic).toContain("skipMagneticPull");
-    expect(magnetic).toMatch(/const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/);
-  });
-});
-
-describe("workflow motion hydration", () => {
-  it("does not branch Motion initial on useReducedMotion", () => {
-    for (const { file, source } of workflowSources) {
-      expect(source, file).not.toContain("useReducedMotion");
-      expect(source, file).not.toMatch(/reduceMotion\s*\?/);
-      expect(source, file).toMatch(/initial=\{/);
-    }
-  });
-});
-
-describe("pointer ring contract", () => {
-  const globals = readFileSync(
-    path.join(process.cwd(), "app/globals.css"),
-    "utf8",
-  );
-
-  it("keeps the overlay close glyph and portals the ring", () => {
-    expect(homeMotion).toContain('const closeScrim = "[data-overlay-scrim]"');
-    expect(homeMotion).toContain('className="home-cursor-ring"');
-    expect(homeMotion).toContain("createPortal(");
-    expect(homeMotion).toContain("document.body");
-  });
-
-  it("does not ship the knife pointer", () => {
-    expect(homeMotion).not.toContain("home-cursor-knife");
-    expect(homeMotion).not.toContain("bloody-knife");
-    expect(homeMotion).not.toContain("cursor-knife");
-    expect(globals).not.toContain("home-cursor-knife");
-    expect(globals).not.toContain("cursor-knife");
-  });
-
-  it("hides the portaled ring during page lock, not only inside the clone", () => {
-    expect(globals).toContain("html.page-vt-lock .home-cursor-ring");
-    expect(globals).not.toContain(".page-vt-clone .home-cursor-ring");
-  });
-
-  it("pauses the follow loop when the pointer rests or the tab is hidden", () => {
-    expect(homeMotion).toContain("document.hidden");
-    expect(homeMotion).toContain("visibilitychange");
-    expect(homeMotion).toContain("startTick");
-    expect(homeMotion).toContain("stopTick");
+    expect(magnetic).toMatch(
+      /const onLeave = \(\) => \{\s*if \(skipMagneticPull\(\)\)/,
+    );
   });
 });
 

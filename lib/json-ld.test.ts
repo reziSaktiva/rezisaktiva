@@ -22,7 +22,7 @@ function personFrom(surface: "home" | "workflow" | "work") {
 describe("buildJsonLd", () => {
   it("reads Person fields from content/, not literals in the graph builder", () => {
     const person = personFrom("home");
-    expect(person.name).toBe(PERSON.name);
+    expect(person.name).toBe(PERSON.fullName);
     expect(person.alternateName).toBe(PERSON.alternateName);
     expect(person.jobTitle).toBe(PERSON.jobTitle);
     expect(person.worksFor).toEqual({
@@ -32,7 +32,7 @@ describe("buildJsonLd", () => {
     });
     expect(person.description).toBe(QUICK_INFO_COPY.id.bio);
     expect(person.knowsAbout).toEqual([...QUICK_INFO_COPY.id.services]);
-    expect(ABOUT_COPY.id.h1.join(" ")).toContain(PERSON.name);
+    expect(ABOUT_COPY.id.title.join(" ")).toContain(PERSON.name);
     expect(QUICK_INFO_COPY.id.bio).toContain(PERSON.jobTitle);
   });
 
@@ -75,6 +75,22 @@ describe("buildJsonLd", () => {
     expect(crumbs.map((item) => item.name)).toEqual(["Home", "Proses Kerja"]);
   });
 
+  it("builds Contact as ContactPage with breadcrumbs", () => {
+    const doc = buildJsonLd("en", "contact");
+    const types = doc["@graph"].map((node) => node["@type"]);
+    expect(types).toEqual([
+      "Person",
+      "WebSite",
+      "ContactPage",
+      "BreadcrumbList",
+    ]);
+    const page = findNode(doc, "ContactPage");
+    expect(page?.url).toBe(`${getSiteUrl()}/en/contact`);
+    const crumbs = findNode(doc, "BreadcrumbList")
+      ?.itemListElement as JsonLdNode[];
+    expect(crumbs.map((item) => item.name)).toEqual(["Home", "Contact"]);
+  });
+
   it("points CreativeWork url at the public case page, live as sameAs", () => {
     const doc = buildJsonLd("id", "work");
     const works = findAllNodes(doc, "CreativeWork");
@@ -112,7 +128,7 @@ describe("buildJsonLd", () => {
     const work = findNode(doc, "CreativeWork");
     const caseUrl = `${getSiteUrl()}${projectCaseHref("en", item!.slug)}`;
     expect(page?.url).toBe(caseUrl);
-    expect(page?.name).toBe(`${PERSON.alternateName} — ${item!.name}`);
+    expect(page?.name).toBe(`${PERSON.fullName} — ${item!.name}`);
     expect(work?.url).toBe(caseUrl);
     expect(work?.sameAs).toEqual([item!.href]);
     const crumbs = findNode(doc, "BreadcrumbList")

@@ -1,15 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { cookies, headers } from "next/headers";
+import { headers } from "next/headers";
 import { DEFAULT_LOCALE, LOCALE_REQUEST_HEADER, isLocale } from "@/lib/locale";
 import { SITE_CANVAS_COLOR, SITE_HEAD_ICONS } from "@/lib/site-manifest";
 import { getSiteUrl } from "@/lib/site-url";
-import {
-  parseThemeModeCookieValue,
-  THEME_HOLD_FORCE_DARK,
-  THEME_MODE_STORAGE_KEY,
-} from "@/lib/theme-mode";
-import { ThemeModeProvider } from "./_components/theme-mode-provider";
-import { instrumentSans, texturina } from "./fonts";
+import { archivo, barlowCondensed, inter } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,79 +15,28 @@ export const metadata: Metadata = {
   icons: SITE_HEAD_ICONS,
 };
 
-/** T-031.4 — browser chrome. Static dark (T-038.2 hold); does not read cookie. */
+/** T-031.4 / T-085.5 — browser chrome matches the paper masthead; static, no cookie. */
 export const viewport: Viewport = {
   themeColor: SITE_CANVAS_COLOR,
 };
 
 /**
- * Anti-flash + `html.dark` (T-032.5) without `className` on JSX `<html>`.
- * Lenis, `ct-lock` / `qi-lock` / `ps-lock`, and `page-vt-lock` also write
- * classes on `documentElement` via `classList`. If React owns `className` on
- * `<html>`, RSC reconcile (navigation after theme cookie changes) overwrites the
- * entire `class` attribute and those classes disappear.
- *
- * Initial `dark` class: `ThemeInitScript` (`useServerInsertedHTML`) calls
- * `classList.toggle("dark")` — not `setAttribute("class")`.
- * Cookie wins vs localStorage (code review 2026-08-16). Without cookie,
- * localStorage applies once and cookie is written (one-time migration).
- * `data-theme` is set in JSX from cookie (`initialMode`) so first-paint CSS
- * `html[data-theme]` does not wait for script. Toggle without reload still goes
- * through `ThemeModeProvider` (`setAttribute`), not `className` on `<html>`.
+ * Single theme (ADR-054): no cookie, no anti-flash script, no `data-theme`.
+ * Lenis and `page-vt-lock` write classes on
+ * `documentElement` via `classList`, so `<html>` never gets a React `className`.
+ * The root layout no longer reads `cookies()`; only the locale request header.
  */
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  /**
-   * Theme flash fix (bug found 2026-08-16, see COMPLETE_TASK.md):
-   * read preference from cookie BEFORE the first render so server &
-   * client align immediately — no more `useSyncExternalStore` correction
-   * flash. `cookies()` in Next.js is request-scoped/safe for concurrent
-   * requests (not module state).
-   * Default "dark" while T-038.2 hold (`THEME_HOLD_FORCE_DARK`).
-   * Light cookie must not show the old cream palette.
-   *
-   * Trade-off: calling `cookies()` in the root layout opts the ENTIRE app out
-   * of static rendering (all routes become per-request dynamic, cannot cache
-   * statically/ISR) — inherent to cookie-based SSR theme, not avoidable while
-   * the server must know theme before the first render.
-   */
-  const cookieStore = await cookies();
-  const storedTheme = parseThemeModeCookieValue(
-    cookieStore.get(THEME_MODE_STORAGE_KEY)?.value,
-  );
-  const initialMode = THEME_HOLD_FORCE_DARK ? "dark" : (storedTheme ?? "light");
-
   const headerLocale = (await headers()).get(LOCALE_REQUEST_HEADER);
   const htmlLang =
     headerLocale && isLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE;
 
   return (
-    <html
-      lang={htmlLang}
-      data-theme={initialMode}
-      suppressHydrationWarning
-      style={{ colorScheme: initialMode }}
-    >
-      <head>
-        {/*
-         * Declare `color-scheme` in 2 places from the first HTML byte (no JS/CSS):
-         * this meta tag + inline `style` on `<html>` above. Anti-flash `dark`
-         * class script = `ThemeInitScript` (not `next/script` here — React 19
-         * rejects `<script>` in the layout tree).
-         * Defense against browser "auto dark mode" heuristics (Chrome etc. may
-         * paint unstyled content dark when OS is dark & the page has not declared
-         * color-scheme) — remaining flash Boss Rezi saw specifically in light
-         * mode + OS dark, not caught by the prior two fixes (cookie SSR + Astryx
-         * wrapper div) because those only apply after CSS/React render, not raw HTML.
-         * Value always matches `initialMode` (server, per-request).
-         */}
-        <meta name="color-scheme" content={initialMode} />
-      </head>
+    <html lang={htmlLang} suppressHydrationWarning>
       <body
-        className={`${instrumentSans.variable} ${texturina.variable} ${instrumentSans.className}`}
+        className={`${archivo.variable} ${barlowCondensed.variable} ${inter.variable}`}
       >
-        <ThemeModeProvider initialMode={initialMode}>
-          {children}
-        </ThemeModeProvider>
+        {children}
       </body>
     </html>
   );

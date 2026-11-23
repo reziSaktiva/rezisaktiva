@@ -6,6 +6,7 @@ import { WORK_ITEMS, type WorkItem } from "@/content/work";
 import type { Locale } from "@/lib/locale";
 import { NAV_LABELS } from "@/lib/nav";
 import {
+  CONTACT_PATH,
   getSiteUrl,
   localePath,
   projectCaseHref,
@@ -47,7 +48,7 @@ function personNode(locale: Locale): JsonLdNode {
   return {
     "@type": "Person",
     "@id": personId(),
-    name: PERSON.name,
+    name: PERSON.fullName,
     alternateName: PERSON.alternateName,
     jobTitle: PERSON.jobTitle,
     worksFor: {
@@ -122,9 +123,33 @@ function workflowPageNode(locale: Locale): JsonLdNode {
   };
 }
 
-function breadcrumbNode(locale: Locale, leaf: "work" | "workflow"): JsonLdNode {
+function contactPageNode(locale: Locale): JsonLdNode {
+  const url = pageUrl(locale, CONTACT_PATH);
+  const meta = SITE_META[locale].contact;
+  return {
+    "@type": "ContactPage",
+    "@id": url,
+    name: meta.title,
+    description: meta.description,
+    url,
+    inLanguage: locale,
+    isPartOf: { "@id": websiteId() },
+    about: { "@id": personId() },
+  };
+}
+
+const BREADCRUMB_LEAF_PATH = {
+  work: PROJECTS_PATH,
+  workflow: WORKFLOW_PATH,
+  contact: CONTACT_PATH,
+} as const;
+
+function breadcrumbNode(
+  locale: Locale,
+  leaf: keyof typeof BREADCRUMB_LEAF_PATH,
+): JsonLdNode {
   const homeUrl = pageUrl(locale, "");
-  const leafPath = leaf === "work" ? PROJECTS_PATH : WORKFLOW_PATH;
+  const leafPath = BREADCRUMB_LEAF_PATH[leaf];
   const leafUrl = pageUrl(locale, leafPath);
   return {
     "@type": "BreadcrumbList",
@@ -191,7 +216,7 @@ function caseWebPageNode(locale: Locale, item: WorkItem): JsonLdNode {
   return {
     "@type": "WebPage",
     "@id": url,
-    name: `${PERSON.alternateName} — ${item.name}`,
+    name: `${PERSON.fullName} — ${item.name}`,
     description: item.outcome,
     url,
     inLanguage: locale,
@@ -241,6 +266,8 @@ export function buildJsonLd(
     graph.push(webPageNode(locale));
   } else if (surface === "workflow") {
     graph.push(workflowPageNode(locale), breadcrumbNode(locale, "workflow"));
+  } else if (surface === "contact") {
+    graph.push(contactPageNode(locale), breadcrumbNode(locale, "contact"));
   } else {
     graph.push(
       collectionPageNode(locale),

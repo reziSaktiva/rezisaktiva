@@ -8,6 +8,8 @@ About hero: full lead, no availability, viewport artwork + caption
 
 Accepted
 
+Note (T-084.2, 2026-11-23): Boss Rezi replaced the locked lead with new approved copy in `content/about.ts` (facts only: role, business background, AI workflow with public ADRs). The "no availability" rule is unchanged.
+
 ### Date
 
 2026-09-07

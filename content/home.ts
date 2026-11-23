@@ -1,15 +1,27 @@
+import {
+  capitalizeFirst,
+  yearsOfExperienceWord,
+} from "@/content/person";
 import type { Locale } from "@/lib/locale";
 
 /**
- * Home copy. Claim + two display lines ADR-038 / T-051.
- * Lede + Workflow link ADR-037 / ADR-038. Now is not on Home.
- * Contact footer stays T-021.2.
+ * Home copy (S-002 Monolith, T-080.1). Hero = three-line statement + lede
+ * (ADR-054 point 4 amends the ADR-038 hero shape). The Workflow link moved
+ * to About (`content/about.ts`). Now stays on About (ADR-037).
+ * Contact strings feed the footer (T-079.2). Copy approved by Boss Rezi
+ * 2026-11-23 (T-084.1 footer, T-084.2 hero and Work labels).
  */
 
 export interface HomeCopy {
+  /** SEO `h1`, one entry per visual line. */
+  heroLines: readonly [string, string, string];
   lede: string;
-  ledeCta: string;
-  h1: [string, string];
+  /** Scroll cue under the hero (decorative). */
+  scrollCue: string;
+  /** Sticky Work section title (`h2`), one entry per visual line. */
+  workTitle: readonly [string, string];
+  /** Link from the Home Work section to the Work index. */
+  workMore: string;
   contactLabel: string;
   contactTitle: string;
   contactBody: string;
@@ -18,25 +30,35 @@ export interface HomeCopy {
 
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   id: {
-    lede: "Adaptabilitas adalah skill utama bagi seorang developer. Mengadopsi AI agents memungkinkan saya fokus ke arsitektur tingkat tinggi dan merealisasikan produk digital rumit dengan jauh lebih cepat.",
-    ledeCta: "Lihat cara saya bekerja",
-    h1: [
-      "Saya mengubah ide kompleks",
-      "menjadi produk digital yang mulus.",
+    heroLines: [
+      "Senior web engineer.",
+      `${capitalizeFirst(yearsOfExperienceWord("id"))} tahun membangun`,
+      "produk fullstack.",
     ],
-    contactLabel: "Contact",
-    contactTitle: "Ada project?",
+    lede: "Dari migrasi WordPress headless sampai lelang real-time. Saya merancang arsitekturnya, AI agent menulis kodenya, dan setiap keputusan tercatat.",
+    scrollCue: "Gulir untuk menjelajah",
+    workTitle: ["Karya", "pilihan."],
+    workMore: "Semua proyek",
+    contactLabel: "Kontak",
+    contactTitle: "Merekrut, atau membangun sesuatu?",
     contactBody:
-      "Cerita bentar aja soal apa yang mau dibangun. Kalau cocok, kita lanjut.",
+      "Email bisa untuk keduanya. Untuk proyek, formulirnya menanyakan hal yang penting lebih dulu.",
     contactCta: "Hubungi saya",
   },
   en: {
-    lede: "Adaptability is the ultimate developer skill. Embracing AI agents allowed me to focus on high-level architecture and bring complex digital products to life faster.",
-    ledeCta: "See how I work",
-    h1: ["I transform complex ideas", "into seamless digital products."],
+    heroLines: [
+      "Senior web engineer.",
+      `${capitalizeFirst(yearsOfExperienceWord("en"))} years shipping`,
+      "fullstack products.",
+    ],
+    lede: "From headless WordPress migrations to real-time auctions. I design the architecture, AI agents write the code, and every decision is on the record.",
+    scrollCue: "Scroll to explore",
+    workTitle: ["Selected", "work."],
+    workMore: "All projects",
     contactLabel: "Contact",
-    contactTitle: "Got a project?",
-    contactBody: "Tell me what you're building. If it's a fit, we go from there.",
+    contactTitle: "Hiring, or building something?",
+    contactBody:
+      "Email works for both. For a project, the form asks the useful questions first.",
     contactCta: "Get in touch",
   },
 };

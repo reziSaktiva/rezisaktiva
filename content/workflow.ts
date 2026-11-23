@@ -1,18 +1,18 @@
 import type { Locale } from "@/lib/locale";
 
 /**
- * Workflow / How I Work page copy (ADR-042).
- * Mengganti blok offers / approach / values / accordion T-021.3 di rute ini.
+ * Workflow / How I Work page copy (ADR-042; structure amended by ADR-054 point 5).
+ *
+ * T-082 (Monolith): today's approved copy reshaped into the mockup sections
+ * (page head, two-pane compare, stacking rule cards, pinned method, ADR
+ * accordion, closing call to action). Copy approved by Boss Rezi 2026-11-23
+ * (T-084.4).
  */
 
 export type WorkflowCompareMode = "chaos" | "driven";
 
 export type WorkflowPrincipleTag =
-  | "STRATEGY"
-  | "SCOPE"
-  | "DOCUMENTATION"
-  | "ARCHITECTURE"
-  | "TRUTH";
+  "STRATEGY" | "SCOPE" | "DOCUMENTATION" | "ARCHITECTURE" | "TRUTH";
 
 export type WorkflowAdrStatus = "Accepted" | "Superseded";
 
@@ -22,11 +22,13 @@ export interface WorkflowComparePoint {
 }
 
 export interface WorkflowComparePane {
+  /** Pane headline in the two-pane compare. */
   label: string;
   kicker: string;
   points: readonly WorkflowComparePoint[];
 }
 
+/** One sticky rule card (the five ADR-042 principles). */
 export interface WorkflowPrinciple {
   tag: WorkflowPrincipleTag;
   title: string;
@@ -70,15 +72,18 @@ export interface WorkflowCopy {
   vaultKicker: string;
   vaultTitle: string;
   vaultNote: string;
+  vaultStatusLabel: string;
   vaultContextLabel: string;
   vaultDecisionLabel: string;
   vaultAlternativesLabel: string;
-  vaultAcceptedHint: string;
-  vaultSupersededHint: string;
+  /** Localized label and hint per ADR status (a new status must be added here). */
+  vaultStatus: Record<WorkflowAdrStatus, { label: string; hint: string }>;
   adrs: readonly WorkflowAdrSample[];
   closeKicker: string;
   closeTitle: string;
   closeBody: string;
+  /** Closing call to action; opens the Contact modal until T-083 ships the page. */
+  closeCta: string;
 }
 
 export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
@@ -152,7 +157,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       },
       {
         tag: "ARCHITECTURE",
-        title: "Kamu lead, AI orkestra",
+        title: "Saya memimpin, AI mengeksekusi",
         body: "Saya membedah masalah, merancang arsitektur, dan mereview. Subagent AI mengeksekusi task secara paralel. AI mempercepat; tanggung jawab tetap di manusia.",
       },
       {
@@ -164,7 +169,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     pipelineKicker: "Pipeline",
     pipelineTitle: "Discover → Design → Build → Ship",
     pipelineNote:
-      "Empat langkah yang sama di setiap proyek. Yang berubah hanya skala. Pembagian peran manusia dan AI tetap eksplisit.",
+      "Empat langkah yang sama di setiap proyek. Yang berubah hanya skala. Setiap langkah berjalan di atas custom skill agent yang saya tulis sesuai proses tim (perencanaan wave, review UI, laporan kerja), jadi prosesnya mengikuti tim, bukan sebaliknya.",
     steps: [
       {
         num: "01",
@@ -195,7 +200,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         title: "Build",
         human: {
           label: "My Role: Human Lead",
-          body: "Kontrak API, batas modul, dan review PR. Tidak ada yang masuk produksi tanpa kendali mutu langsung.",
+          body: "Kontrak API, batas modul, dan review PR. Typecheck, lint, test, dan code review berjalan sebelum apa pun di-merge.",
         },
         ai: {
           label: "AI Role: Orchestration",
@@ -218,17 +223,25 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     vaultKicker: "Proof",
     vaultTitle: "ADR Vault",
     vaultNote:
-      "Bukan dekorasi. Tiga rekaman nyata dari project ini: status, konteks, keputusan, dan alternatif yang ditolak. Rencana lama di-supersede, bukan dihapus.",
+      "Bukan dekorasi. Tiga dari 50+ catatan nyata di proyek ini: status, konteks, keputusan, dan alternatif yang ditolak. Rencana lama di-supersede, bukan dihapus.",
+    vaultStatusLabel: "Status",
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
-    vaultAcceptedHint: "Keputusan aktif. Perubahan berikutnya butuh ADR baru.",
-    vaultSupersededHint:
-      "Diganti ADR yang lebih baru. Jejak tetap dibaca, tidak dihapus.",
+    vaultStatus: {
+      Accepted: {
+        label: "Diterima",
+        hint: "Keputusan aktif. Perubahan berikutnya butuh ADR baru.",
+      },
+      Superseded: {
+        label: "Digantikan",
+        hint: "Diganti ADR yang lebih baru. Jejak tetap dibaca, tidak dihapus.",
+      },
+    },
     adrs: [
       {
         id: "ADR-001",
-        file: "ADR-001-product-process-separation.md",
+        file: "ADR-001-pemisahan-product-discovery-dari-project-manager-skills-cursor.md",
         title: "Product–Process Separation",
         status: "Accepted",
         context:
@@ -275,6 +288,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeTitle: "Keputusan yang tidak ditulis, tidak pernah terjadi.",
     closeBody:
       "Kalau kita kerja bersama, arah produk tidak tinggal di thread. Pita di bawah ini membuka percakapan yang sama. Email tetap jalur utamanya.",
+    closeCta: "Hubungi saya",
   },
   en: {
     kicker: "How I Work",
@@ -346,7 +360,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
       },
       {
         tag: "ARCHITECTURE",
-        title: "You lead, AI orchestrates",
+        title: "I lead, AI executes",
         body: "I dissect the problem, design the architecture, and review. AI subagents execute tasks in parallel. AI accelerates; accountability stays human.",
       },
       {
@@ -358,7 +372,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     pipelineKicker: "Pipeline",
     pipelineTitle: "Discover → Design → Build → Ship",
     pipelineNote:
-      "The same four steps on every project. Only the scale changes. The human / AI split stays explicit.",
+      "The same four steps on every project. Only the scale changes. Each step runs on custom agent skills I write for the team's process (wave planning, UI review, work reports), so the process fits the team, not the other way round.",
     steps: [
       {
         num: "01",
@@ -389,7 +403,7 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
         title: "Build",
         human: {
           label: "My Role: Human Lead",
-          body: "API contracts, module boundaries, and PR review. Nothing reaches production without direct quality control.",
+          body: "API contracts, module boundaries, and PR review. Typecheck, lint, tests and a code review run before anything merges.",
         },
         ai: {
           label: "AI Role: Orchestration",
@@ -412,17 +426,25 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     vaultKicker: "Proof",
     vaultTitle: "ADR Vault",
     vaultNote:
-      "Not decoration. Three real records from this project: status, context, decision, and rejected alternatives. Old plans are superseded, not deleted.",
+      "Not decoration. Three of the 50+ real records from this project: status, context, decision, and rejected alternatives. Old plans are superseded, not deleted.",
+    vaultStatusLabel: "Status",
     vaultContextLabel: "Context",
     vaultDecisionLabel: "Decision",
     vaultAlternativesLabel: "Alternatives considered",
-    vaultAcceptedHint: "Active decision. The next change needs a new ADR.",
-    vaultSupersededHint:
-      "Replaced by a newer ADR. The trail stays readable; it is not deleted.",
+    vaultStatus: {
+      Accepted: {
+        label: "Accepted",
+        hint: "Active decision. The next change needs a new ADR.",
+      },
+      Superseded: {
+        label: "Superseded",
+        hint: "Replaced by a newer ADR. The trail stays readable; it is not deleted.",
+      },
+    },
     adrs: [
       {
         id: "ADR-001",
-        file: "ADR-001-product-process-separation.md",
+        file: "ADR-001-pemisahan-product-discovery-dari-project-manager-skills-cursor.md",
         title: "Product–Process Separation",
         status: "Accepted",
         context:
@@ -469,5 +491,6 @@ export const WORKFLOW_COPY: Record<Locale, WorkflowCopy> = {
     closeTitle: "A decision that is not written never happened.",
     closeBody:
       "If we work together, product direction does not stay in a thread. The band below opens the same conversation. Email remains the primary path.",
+    closeCta: "Get in touch",
   },
 };

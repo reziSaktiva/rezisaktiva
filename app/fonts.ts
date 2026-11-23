@@ -1,22 +1,28 @@
-import { Instrument_Sans, Texturina } from "next/font/google";
+import { Archivo, Barlow_Condensed, Inter } from "next/font/google";
 
 /**
- * T-039.2 — pasangan T-038.4.
- * Display: Texturina (textura, OFL, Google Fonts) — manuscript/cathedral, not costume.
- * Body/UI: Instrument Sans (OFL) — readable grotesk; not Inter/Roboto/Arial.
- * Variables on `<body>` (not `<html>`) so `dark`/Lenis classes on
- * documentElement are not overwritten by `className` reconcile.
+ * T-078.2 — Monolith families (ADR-052). Variables are set on `<body>` in
+ * `app/layout.tsx` and consumed by the `--font-wordmark|condensed|body`
+ * theme tokens in `app/globals.css`.
+ * Wordmark: Archivo, variable `wdth` axis so the 125 width is real (not synthetic).
+ * Display: Barlow Condensed (static weights). Body: Inter (variable).
  */
-export const instrumentSans = Instrument_Sans({
+export const archivo = Archivo({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-instrument",
+  axes: ["wdth"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
-export const texturina = Texturina({
+export const barlowCondensed = Barlow_Condensed({
   subsets: ["latin", "latin-ext"],
-  weight: ["600", "700"],
-  variable: "--font-texturina",
+  weight: ["500", "700", "900"],
+  variable: "--font-barlow-condensed",
+  display: "swap",
+});
+
+export const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-inter",
   display: "swap",
 });

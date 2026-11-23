@@ -89,10 +89,9 @@ function prefersReducedMotion(): boolean {
 function isOverlayLocked(): boolean {
   const root = document.documentElement;
   return (
-    root.classList.contains("ct-lock") ||
-    root.classList.contains("qi-lock") ||
-    root.classList.contains("ps-lock") ||
-    root.classList.contains("page-vt-lock")
+    root.classList.contains("page-vt-lock") ||
+    // Native dialogs and aria-modal overlays (sheet menu, T-079.1) keep their own scroll.
+    document.querySelector("dialog[open], [aria-modal='true']") !== null
   );
 }
 
@@ -123,8 +122,17 @@ function OverlayLenisPause() {
       attributes: true,
       attributeFilter: ["class"],
     });
+    // Dialogs open/close anywhere in the tree.
+    const dialogObserver = new MutationObserver(sync);
+    dialogObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["open", "aria-modal"],
+      childList: true,
+      subtree: true,
+    });
     return () => {
       observer.disconnect();
+      dialogObserver.disconnect();
       lenis.off("scroll", notifyPageScroll);
       if (lenisForTransition === lenis) {
         lenisForTransition = null;
@@ -135,20 +143,33 @@ function OverlayLenisPause() {
   return null;
 }
 
-function subscribeNever(): () => void {
-  return () => {};
+const FINE_POINTER_QUERY = "(hover: hover) and (pointer: fine)";
+
+function subscribeFinePointer(onChange: () => void): () => void {
+  const query = window.matchMedia(FINE_POINTER_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+/** Touch and hybrid-coarse devices keep native scrolling (ADR-052). */
+function useFinePointer(): boolean {
+  return useSyncExternalStore(
+    subscribeFinePointer,
+    () => window.matchMedia(FINE_POINTER_QUERY).matches,
+    () => false,
+  );
 }
 
 /**
  * Window Lenis — sibling, does not wrap the page (`SiteChrome` min-height auto).
- * Off jika `prefers-reduced-motion`. Pause `ct-lock` / `qi-lock` / `ps-lock` /
- * `page-vt-lock` (ADR-025, T-036.5).
+ * Wheel-only on fine pointers; off on touch and under `prefers-reduced-motion`. Pauses under
+ * `page-vt-lock` and open `aria-modal` overlays (ADR-025, T-036.5).
  */
 export function SmoothScroll() {
   const reduceMotion = useReducedMotion();
-  const isClient = useSyncExternalStore(subscribeNever, () => true, () => false);
+  const finePointer = useFinePointer();
 
-  if (!isClient || reduceMotion !== false) {
+  if (!finePointer || reduceMotion !== false) {
     return null;
   }
 
@@ -159,6 +180,12 @@ export function SmoothScroll() {
         autoRaf: true,
         lerp: 0.1,
         smoothWheel: true,
+        // Wheel only: touch stays native (no syncTouch).
+        syncTouch: false,
+        // In-page `#hash` links glide instead of jumping; sticky/pinned
+        // sections keep working because Lenis drives the native scroll.
+        anchors: true,
+        // Scrollable regions inside overlays opt out with `data-lenis-prevent`.
       }}
     >
       <OverlayLenisPause />
