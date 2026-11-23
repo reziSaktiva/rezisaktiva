@@ -190,7 +190,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 
 ## T-081 — Work index and case pages
 
-* **Status:** ⬜ Open
+* **Status:** ✅ Done (2026-11-23)
 * **Domain:** Product / Engineering
 * **Branch:** `redesign/monolith`
 * **Blocked by:** T-079; T-077.2, T-077.6; T-084.3 (copy)
@@ -210,7 +210,7 @@ Weak spots: mobile TBT on Home and Workflow, mobile LCP on the case page, Best P
 - [x] **T-081.2** — Case page: parallax hero, meta row, sticky lede with highlighted points, stack chips, gallery with reveals, next-project link. **Done 2026-11-18.**
 - [x] **T-081.3** — Apply the T-077.2 outcome (sheet kept, changed, or removed) and update routing, links, and metadata. **Done 2026-11-18:** the sheet is removed and tiles go straight to `/[locale]/projects/[slug]` (ADR-054 point 2). `content/work-sheet.ts` was folded into `work-case.ts`.
 - [x] **T-081.4** — Update or add unit tests for the work catalog and slugs. **Done 2026-11-18:** work tests were updated and `pnpm test` passes.
-- [ ] **T-081.5** — Delete the replaced work components and styles; verify on Preview. Wave 2026-11-18: deletion done (sheet, tile, live-links components and old styles). Still open: Preview check. Preview walk 2026-11-23: Work accepted except one bug: images using `ClipReveal` (Work cards, About photo, case images) stayed hidden when the page opened already scrolled past them (reload, Back), because IntersectionObserver counts the clipped box as invisible. Fixed in `redesign/t-081-reveal-fix` (reveal from on-screen geometry). Still open: Boss Rezi rechecks on the Preview after merge.
+- [x] **T-081.5** — Delete the replaced work components and styles; verify on Preview. Wave 2026-11-18: deletion done (sheet, tile, live-links components and old styles). Still open: Preview check. Preview walk 2026-11-23: Work accepted except one bug: images using `ClipReveal` (Work cards, About photo, case images) stayed hidden when the page opened already scrolled past them (reload, Back), because IntersectionObserver counts the clipped box as invisible. Fixed in `redesign/t-081-reveal-fix` (reveal from on-screen geometry). **Done 2026-11-23:** Boss Rezi saw the top cards show after a scrolled reload on the PR #108 Preview.
 
 ---
 
