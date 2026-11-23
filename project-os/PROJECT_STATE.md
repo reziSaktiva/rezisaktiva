@@ -18,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-11-16 |
+| Last Updated | 2026-11-21 |
 
 ---
 
@@ -51,7 +51,7 @@
 Allowed:
 
 * **S-002 redesign work (T-075 to T-086)** per ticket: code only on `redesign/monolith` through pull requests with Preview; docs, ADRs, tickets and `design-mockups/` may go to `main`. Visual and interaction reference = `design-mockups/` v5 until cutover (ADR-052). Copy changes only after Boss Rezi approves them per surface (T-084). Surface decisions (Quick Info, project sheet, theme toggle, Home IA, Workflow structure) are locked in T-077 before code.
-* Bugs / regressions on live R1–R2 surfaces, including the Contact form and `/[locale]/projects/[slug]` cases. A new Contact behavior needs a new ticket. **Not** a `/contact` route
+* Bugs / regressions on live R1–R2 surfaces, including the Contact form and `/[locale]/projects/[slug]` cases. A new Contact behavior needs a new ticket. **Not** a `/contact` route on production before cutover; on `redesign/monolith` the Contact page **T-083** replaces the modal (ADR-047 amendment, 2026-11-21)
 * **T-038…T-043** visual identity (skin only, ADR-029) — Q&A per surface, then code; **not** copy rewriting except **T-046…T-048** and **`/workflow` content (ADR-042)**; Home IA follows **ADR-032** + **ADR-037** + **ADR-038** (lede + two-line h1, Now in About) and **ADR-041** (footer ribbon on Home after `#about`); About vs Workflow follows **ADR-035**; Workflow surface follows **ADR-042**; Workflow living background = **T-054** (Cathedral Breath, follows docs; not MP4)
 * R1 polish that does not add pages (a11y, parity); **T-055** navbar skin (Q&A then code; chrome job remains)
 * **T-031** metadata **completed** (T-031.1–T-031.5 ✅; T-039 tokens already done)
