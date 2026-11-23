@@ -173,7 +173,7 @@ describe("work case depth (T-058)", () => {
   it("records admin panel frontend and gallery on the social-backend case", () => {
     const row = PROJECTS_CATALOG.find((item) => item.id === "7")!;
     expect(row.services.id).toEqual([
-      "Backend Developer",
+      "Backend Tech Lead",
       "Frontend admin panel",
     ]);
     expect(row.gallery).toEqual(

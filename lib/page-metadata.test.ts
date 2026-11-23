@@ -56,7 +56,7 @@ describe("casePageMetadata (T-056.5)", () => {
       description: "Minerank web: database migration, real-time auctions.",
     });
     const canonical = `${getSiteUrl()}${localePath("en", "projects/minerank")}`;
-    expect(meta.title).toBe("rezisaktiva — Minerank");
+    expect(meta.title).toBe("Rezi Saktiva — Minerank");
     expect(meta.description).toBe(
       "Minerank web: database migration, real-time auctions.",
     );
@@ -69,14 +69,14 @@ describe("casePageMetadata (T-056.5)", () => {
       },
     });
     expect(meta.openGraph).toMatchObject({
-      title: "rezisaktiva — Minerank",
+      title: "Rezi Saktiva — Minerank",
       description: "Minerank web: database migration, real-time auctions.",
       url: canonical,
       images: [SITE_SHARE_IMAGE],
     });
     expect(meta.twitter).toMatchObject({
       card: "summary_large_image",
-      title: "rezisaktiva — Minerank",
+      title: "Rezi Saktiva — Minerank",
       images: [SITE_SHARE_IMAGE.url],
     });
   });

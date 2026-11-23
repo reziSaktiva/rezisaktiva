@@ -2,8 +2,8 @@ import type { Locale } from "@/lib/locale";
 
 /**
  * About section on Home (`#about`, ADR-040; S-002 Monolith, T-080.2).
- * Lead locked by Boss Rezi 2026-09-07 (ADR-039), split in two for the
- * scrubbed lead and the supporting copy; no words added or dropped.
+ * Lead and body approved by Boss Rezi 2026-11-23 (T-084.2), replacing the
+ * ADR-039 lead.
  * The Workflow link label is the former Home lede CTA (ADR-038).
  * How I work lives in `content/workflow.ts` (ADR-035).
  */
@@ -24,15 +24,15 @@ export const ABOUT_PORTRAIT_SRC = "/media/about-hero.jpg";
 export const ABOUT_COPY: Record<Locale, AboutCopy> = {
   id: {
     title: ["Halo,", "saya Rezi."],
-    lead: "Fokus saya bukan sekadar menulis baris kode, melainkan merancang arsitektur sistem dan efisiensi eksekusi memanfaatkan perangkat modern untuk mengubah ide Anda menjadi produk aktif secepat mungkin tanpa mengorbankan kualitas.",
-    body: "Berbekal pengalaman full-stack selama lebih dari enam tahun, saat ini saya mengelola pipeline sub-agent AI dari tahap discovery hingga deployment, menggabungkan eksekusi teknis dengan sudut pandang bisnis yang tajam untuk menilai kelayakan serta nilai strategis dari setiap fitur yang saya bangun.",
+    lead: "Saya memimpin arsitektur dan code review produk web di Insvire Omni Technologies, dari frontend Next.js sampai backend Node.js dan Bun.",
+    body: "Saya kuliah Manajemen Bisnis sambil bekerja sebagai developer, jadi setiap fitur saya nilai dari biaya dan nilainya, bukan hanya kodenya. Sekarang saya membangun bersama AI subagent dengan peran masing-masing (backend, QA, arsitektur, UI) dan mencatat setiap keputusan sebagai ADR. Lebih dari 50 ADR di balik situs ini terbuka untuk dibaca.",
     workflowCta: "Lihat cara saya bekerja",
     portraitAlt: "Foto hitam-putih Rezi, mata ditutup coretan hitam",
   },
   en: {
     title: ["Hello,", "I'm Rezi."],
-    lead: "Rather than just typing lines of code, my focus is on system architecture and execution efficiency using modern tools to transform your idea into a live product as quickly as possible without compromising quality.",
-    body: "Backed by over six years of full-stack experience, I now orchestrate an AI sub-agent pipeline spanning from discovery to deployment, combining technical execution with a sharp commercial perspective to evaluate both the feasibility and strategic value of every feature I build.",
+    lead: "I lead architecture and code review on web products at Insvire Omni Technologies, from Next.js frontends to Node.js and Bun backends.",
+    body: "I studied Business Management while working as a developer, so I judge a feature by its cost and value, not only its code. Today I build with role-specific AI subagents (backend, QA, architecture, UI) and log every decision as an ADR. The 50+ behind this site are public.",
     workflowCta: "See how I work",
     portraitAlt: "Black-and-white photo of Rezi with eyes redacted",
   },

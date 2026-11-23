@@ -11,9 +11,9 @@ import type { Locale } from "@/lib/locale";
 export const PERSON = {
   name: "Rezi",
   alternateName: "rezisaktiva",
-  jobTitle: "Fullstack Product Builder",
+  jobTitle: "Senior Web Engineer",
   worksFor: {
-    name: "Insvire Technologies",
+    name: "Insvire Omni Technologies",
     url: "https://www.insvire.com/",
   },
 } as const;
@@ -21,7 +21,7 @@ export const PERSON = {
 /** Label chrome kiri (ADR-034). Bukan h1 About / bio Quick Info. */
 export const PERSON_CHROME = {
   name: "REZI SAKTIVA",
-  jobTitle: "Web Engineer",
+  jobTitle: "Senior Web Engineer",
 } as const;
 
 export const PERSON_WORKPLACE_COPY: Record<

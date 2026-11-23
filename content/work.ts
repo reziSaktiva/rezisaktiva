@@ -90,19 +90,19 @@ export const WORK_ITEMS: Record<Locale, readonly WorkItem[]> = {
 
 /**
  * Work index copy. The Monolith index (T-081.1) shows `h1` as the sticky giant
- * title and `lead` under it. `ctaQuestion` / `ctaLink` are kept for T-084.3.
+ * title and `lead` under it. Copy approved by Boss Rezi 2026-11-23 (T-084.3).
  */
 export const WORK_PAGE_COPY: Record<Locale, WorkPageCopy> = {
   id: {
-    h1: ["Proyek", "saya."],
-    lead: "Berikut adalah beberapa proyek yang pernah saya kerjakan dari nol hingga siap rilis.",
+    h1: ["Semua", "proyek."],
+    lead: "Pekerjaan dari enam tahun di Insvire Omni Technologies dan produk saya sendiri: peran saya, stack-nya, dan apa yang dirilis.",
     ctaQuestion: "Ada yang mau dibahas?",
-    ctaLink: "Hubungi saya",
+    ctaLink: "Tulis ke saya",
   },
   en: {
-    h1: ["My", "Projects"],
-    lead: "Here are a few projects I’ve crafted from the ground up.",
+    h1: ["All", "projects."],
+    lead: "Work from six years at Insvire Omni Technologies and my own products: the role I held, the stack, and what shipped.",
     ctaQuestion: "Want to talk about one?",
-    ctaLink: "Get in touch",
+    ctaLink: "Write to me",
   },
 };
