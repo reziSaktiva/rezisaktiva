@@ -2,9 +2,9 @@
 
 ## Snapshot
 
-* **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live) · **S-002 Monolith redesign migration started** (2026-11-17)
-* **Active Mode:** Redesign migration (**S-002**, ADR-052 / ADR-053) on branch `redesign/monolith`; production unchanged until **T-086**. Before that: Validation — **T-059** ✅ (ADR-047, production send confirmed); **S-001** ✅ Project OS English (ADR-049); **T-058** ✅; **T-057** ✅; **T-056** ✅; R1 remains exited
-* **Top Next Tasks:** **T-084.7** work images, then **T-086** cutover — [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md)
+* **Phase / Milestone:** Validation · R1 MVP Clarity **exited** (Hybrid lean live) · **S-002 Monolith redesign live on production** (cutover 2026-11-23, PR #112)
+* **Active Mode:** Redesign post-cutover (**S-002**, ADR-052 / ADR-053): the Monolith design is on production; **T-086.4** smoke check ✅; closing out with the 24 h watch and cleanup. Before that: Validation — **T-059** ✅ (ADR-047, production send confirmed); **S-001** ✅ Project OS English (ADR-049); **T-058** ✅; **T-057** ✅; **T-056** ✅; R1 remains exited
+* **Top Next Tasks:** **T-086.5** 24 h production watch, then **T-086.6** cleanup and S-002 close; **T-084.7** Postific + social screenshots — [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md)
 * **Blocker:** None
 * **Known Issues:** None (KI-001 / KI-002 closed: `rezisaktiva` theme = `shared.css` mockup)
 * **Ticket queue:** [`AVAILABLE_TICKETS.md`](AVAILABLE_TICKETS.md) lists open work only. Ticket history lives in [`tickets/`](tickets/) (`discovery.md` / `bootstrap.md` / `r1.md` / `r2.md` / `s001-project-os-english.md` / `s002-monolith-redesign.md`) + [`R1_COMPLETE.md`](R1_COMPLETE.md)
@@ -18,7 +18,7 @@
 | ----- | ----- |
 | Version | 0.1.0 |
 | Status | Active |
-| Last Updated | 2026-11-23 |
+| Last Updated | 2026-11-24 |
 
 ---
 
@@ -38,7 +38,7 @@
 * Product Discovery **completed** (baseline 01–06 + T-007 exit).
 * Repository & Bootstrap **completed** (`tickets/bootstrap.md`, T-008…T-012).
 * **R1 Development exited (T-018, 2026-08-31).** Must Hybrid lean shipped in code: Home (hero + `#about`), Workflow, Work index + sheet, Contact modal, Quick Info, chrome + theme, meta, T-021 copy (`/workflow` content = ADR-042). Visual reference: production code (ADR-024).
-* Active phase: **Validation**. **T-059** ✅ (Contact Resend form, ADR-047; production send confirmed 2026-11-16). **S-001** ✅ (Project OS English agent ecosystem, ADR-049). **T-058** ✅. **T-057** ✅. **T-056** ✅. R1 polish **T-055** / **T-054** / **T-043** remain Done. **S-002** (T-075 to T-086) is open: ADR-052 adopts the Monolith design as the single public design; ADR-053 sets branch `redesign/monolith`, Vercel Preview as staging, and one cutover. Production stays on the current design until **T-086**.
+* Active phase: **Validation**. **T-059** ✅ (Contact Resend form, ADR-047; production send confirmed 2026-11-16). **S-001** ✅ (Project OS English agent ecosystem, ADR-049). **T-058** ✅. **T-057** ✅. **T-056** ✅. R1 polish **T-055** / **T-054** / **T-043** remain Done. **S-002** (T-075 to T-086) is open: ADR-052 adopts the Monolith design as the single public design; ADR-053 sets branch `redesign/monolith`, Vercel Preview as staging, and one cutover. Cutover **T-086** merged to production 2026-11-23 (PR #112); T-086.4 smoke check done; T-086.5 and T-086.6 remain.
 * **R1 Copy:** **T-021.1–T-021.7 ✅**. **T-046…T-051** ✅. **`/workflow` content superseded by ADR-042** (not T-021.3 offers/values/accordion). Home has no portrait. About photo is still an Unsplash placeholder (not an exit blocker).
 * **Engineering notes:** StyleX/Turbopack gap (T-013.4) closed by removing Astryx. v14 release **T-037.7** ✅. **T-038…T-043** / **v15** ✅. **T-055** / **v20** ✅. **T-031** / **v13** ✅. **T-054** / **v19** ✅. No open R1 tasks.
 
